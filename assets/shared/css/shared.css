@@ -1,0 +1,35 @@
+/**
+ * ====================================
+ * ============= TOOLTIPS =============
+ * ====================================
+ */
+ 
+a.waymark-tooltip {
+	display: inline-block;
+	padding: 1px 5px;
+	float: right;
+	font-size: 13px !important;
+	line-height: 16px;
+	margin-top: 5px;	
+	margin-right: 0.5%;	
+	text-decoration: none !important;
+	cursor: help !important;
+	background: #F9F9F9;
+	color: #444 !important;
+	border: 1px solid #DDDDDD;
+	border-radius: 50%;
+	&.waymark-link {
+		cursor: pointer !important;
+	}
+}
+p#waymark-tooltip-active {
+	position: absolute;
+	z-index: +10000000000;
+	width: 200px;
+	background: rgba(255,255,255,.7);
+	border-radius: 5px;
+	padding: 10px;
+	color: #333;
+	font-size: 13px;
+	border: 1px solid #999;
+}
