@@ -11,15 +11,15 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',		
 			'custom_types' => array(),
-			'plugin_version' => '0.9.14',
+			'plugin_version' => '0.9.15-a1',
 			'site_url' => 'https://www.joesway.ca/waymark/',
 			'multi_value_seperator' => $multi_value_seperator,
 			'shortcode' => 'Waymark',
 			'meta' => array(
 				'inputs' => array(
-					'meta_title' => esc_html__('Description', 'waymark-plugin'),
+					'meta_title' => esc_html__('Description', 'waymark'),
 					'meta_default' => '',
-					'meta_tip' => esc_html__('The Description you enter here will be displayed on the Map Details page.', 'waymark-plugin'),
+					'meta_tip' => esc_html__('The Description you enter here will be displayed on the Map Details page.', 'waymark'),
 					'meta_type' => 'textarea_rich',
 					'meta_options' => ''										
 				)
@@ -66,7 +66,7 @@ class Waymark_Config {
 			),
 			'markers' => array(
 				'marker_types' => array(
-					'marker_title' => esc_html__('Photo', 'waymark-plugin') . $multi_value_seperator . esc_html__('Information', 'waymark-plugin') . $multi_value_seperator . esc_html__('Alert', 'waymark-plugin') . $multi_value_seperator . esc_html__('Trail Access', 'waymark-plugin') . $multi_value_seperator . esc_html__('Food', 'waymark-plugin') . $multi_value_seperator . esc_html__('Water', 'waymark-plugin') . $multi_value_seperator . esc_html__('Shelter', 'waymark-plugin') . $multi_value_seperator . esc_html__('Beer', 'waymark-plugin') . $multi_value_seperator . esc_html__('Start', 'waymark-plugin') . $multi_value_seperator . esc_html__('Finish', 'waymark-plugin'),
+					'marker_title' => esc_html__('Photo', 'waymark') . $multi_value_seperator . esc_html__('Information', 'waymark') . $multi_value_seperator . esc_html__('Alert', 'waymark') . $multi_value_seperator . esc_html__('Trail Access', 'waymark') . $multi_value_seperator . esc_html__('Food', 'waymark') . $multi_value_seperator . esc_html__('Water', 'waymark') . $multi_value_seperator . esc_html__('Shelter', 'waymark') . $multi_value_seperator . esc_html__('Beer', 'waymark') . $multi_value_seperator . esc_html__('Start', 'waymark') . $multi_value_seperator . esc_html__('Finish', 'waymark'),
 					'marker_icon' => 'ion-camera' . $multi_value_seperator . 'ion-information-circled' . $multi_value_seperator . 'ion-android-alert' . $multi_value_seperator . 'ion-android-bicycle' . $multi_value_seperator . 'ion-pizza' . $multi_value_seperator . 'ion-waterdrop' . $multi_value_seperator . 'ion-home' . $multi_value_seperator . 'ion-beer' . $multi_value_seperator . 'ion-power' . $multi_value_seperator . 'ion-power',
 					'marker_colour' => 'white' . $multi_value_seperator . 'white' . $multi_value_seperator . 'red' . $multi_value_seperator . 'green' . $multi_value_seperator . 'red' . $multi_value_seperator . 'blue' . $multi_value_seperator . 'darkgreen' . $multi_value_seperator . 'white' . $multi_value_seperator . 'green' . $multi_value_seperator . 'darkred',
 					'icon_colour' => '#475260' . $multi_value_seperator . '#0069a5' . $multi_value_seperator . 'white' . $multi_value_seperator . 'white' . $multi_value_seperator . '#ffba00' . $multi_value_seperator . '#fff' . $multi_value_seperator . 'white' . $multi_value_seperator . '#754423' . $multi_value_seperator . 'white' . $multi_value_seperator . 'white',
@@ -75,7 +75,7 @@ class Waymark_Config {
 			),
 			'lines' => array(
 				'line_types' => array(
-					'line_title' => esc_html__('Red', 'waymark-plugin') . $multi_value_seperator . esc_html__('Green', 'waymark-plugin') . $multi_value_seperator . esc_html__('Blue', 'waymark-plugin'),
+					'line_title' => esc_html__('Red', 'waymark') . $multi_value_seperator . esc_html__('Green', 'waymark') . $multi_value_seperator . esc_html__('Blue', 'waymark'),
 					'line_colour' => '#d84848' . $multi_value_seperator . '#3cbc47' . $multi_value_seperator . '#487bd9',
 					'line_weight' => '3' . $multi_value_seperator . '3' . $multi_value_seperator . '3',
 					'line_display' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',
@@ -83,7 +83,7 @@ class Waymark_Config {
 			),
 			'shapes' => array(
 				'shape_types' => array(
-					'shape_title' => esc_html__('Red', 'waymark-plugin') . $multi_value_seperator . esc_html__('Green', 'waymark-plugin') . $multi_value_seperator . esc_html__('Blue', 'waymark-plugin'),
+					'shape_title' => esc_html__('Red', 'waymark') . $multi_value_seperator . esc_html__('Green', 'waymark') . $multi_value_seperator . esc_html__('Blue', 'waymark'),
 					'shape_colour' => '#d84848' . $multi_value_seperator . '#3cbc47' . $multi_value_seperator . '#487bd9',
 					'fill_opacity' => '0.5' . $multi_value_seperator . '0.5' . $multi_value_seperator . '0.5',
 					'shape_display' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',					

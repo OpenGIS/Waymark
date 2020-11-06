@@ -7,15 +7,15 @@ class Waymark_Helper {
 		
 		$out .= '	<div id="waymark-about">' . "\n";	
 		$out .= '		<img width="75" height="75" alt="Joe\'s mug" src="//www.josephhawes.co.uk/assets/images/Joe1BW.jpg" />' . "\n";		
-		$out .= '		<p class="waymark-first"><b>' . esc_html__(sprintf("Hi, I'm %s.", "Joe"), 'waymark-plugin') . '</b></p>' . "\n";		
+		$out .= '		<p class="waymark-first"><b>' . esc_html__(sprintf("Hi, I'm %s.", "Joe"), 'waymark') . '</b></p>' . "\n";		
 
-		$out .= '		<p>' . __(sprintf('Thanks for checking out %s. You can find the documentation <a href="%s">here</a>.', Waymark_Config::get_name(true), Waymark_Helper::site_url('docs/')), 'waymark-plugin') . '</p>' . "\n";		
-		$out .= '		<p>' . __(sprintf('This plugin is a work in progress, so please <a href="%s">let me know</a> of any bugs you encounter, or improvements you would like to see. I appreciate all feedback.', 'https://wordpress.org/support/plugin/waymark/'), 'waymark-plugin') . '</p>' . "\n";		
-		$out .= '		<p>' . esc_html__('Thanks', 'waymark-plugin') . '.</p>' . "\n";		
+		$out .= '		<p>' . __(sprintf('Thanks for checking out %s. You can find the documentation <a href="%s">here</a>.', Waymark_Config::get_name(true), Waymark_Helper::site_url('docs/')), 'waymark') . '</p>' . "\n";		
+		$out .= '		<p>' . __(sprintf('This plugin is a work in progress, so please <a href="%s">let me know</a> of any bugs you encounter, or improvements you would like to see. I appreciate all feedback.', 'https://wordpress.org/support/plugin/waymark/'), 'waymark') . '</p>' . "\n";		
+		$out .= '		<p>' . esc_html__('Thanks', 'waymark') . '.</p>' . "\n";		
 
 		$out .= '		<hr />' . "\n";		
 
-		$out .= '		<p>' . esc_html__('A big thank you to the following. Without their work this plugin would not be possible:', 'waymark-plugin') . '</p>' . "\n";		
+		$out .= '		<p>' . esc_html__('A big thank you to the following. Without their work this plugin would not be possible:', 'waymark') . '</p>' . "\n";		
 
 		$out .= '		<ul>' . "\n";		
 		$out .= '			<li><a href="https://wordpress.org/">WordPress</a></li>' . "\n";		
@@ -44,7 +44,7 @@ class Waymark_Helper {
 		$out .= '				<a href="https://stackoverflow.com/questions/44832150/how-to-append-the-leaflet-js-attribution-string">o</a>' . "\n";	
 		$out .= '				<a href="https://stackoverflow.com/questions/22808065/how-to-make-all-links-in-an-iframe-open-in-new-tab/22808227#22808227">w</a>' . "\n";	
 		$out .= '			</li>' . "\n";		
-		$out .= '			<li class="waymark-multi">' . esc_html__('and', 'waymark-plugin') . " \n";	
+		$out .= '			<li class="waymark-multi">' . esc_html__('and', 'waymark') . " \n";	
 		$out .= '				<a href="https://geojson.org/">o</a>' . "\n";	
 		$out .= '				<a href="https://www.thunderforest.com/maps/opencyclemap/">t</a>' . "\n";	
 		$out .= '				<a href="https://www.gaiagps.com/">h</a>' . "\n";	
@@ -74,6 +74,10 @@ class Waymark_Helper {
 	static public function asset_url($file_path = '') {
 		return plugins_url('assets/' . $file_path, str_replace('/inc', '', dirname(__FILE__)));
 	}	
+
+	static public function plugin_path($append = '') {
+		return Waymark_Config::get_item('site_url') . $url_path;
+	}
 	
 	static public function http_url($data = array()) {
 		return trim(add_query_arg(array_merge(array('waymark_http' => '1'), $data), home_url('/')), '/');
@@ -343,11 +347,11 @@ class Waymark_Helper {
 
 	static public function add_map_link_to_description($map_id, $map_title = false, $map_data) {
 		$desc_append = '<div class="waymark-description-link">';
-		$desc_append .= esc_html__('Part of', 'waymark-plugin') . ' <b>';
+		$desc_append .= esc_html__('Part of', 'waymark') . ' <b>';
 		if($map_title) {
 			$desc_append .= '<a href="' . get_permalink($map_id) . '">' . $map_title . '</a>';
 		} else {
-			$desc_append .= '<a href="' . get_permalink($map_id) . '">' . esc_html__('Map', 'waymark-plugin') . '</a>';
+			$desc_append .= '<a href="' . get_permalink($map_id) . '">' . esc_html__('Map', 'waymark') . '</a>';
 		}
 		$desc_append .= '</b>.</div>';
 		
@@ -537,7 +541,7 @@ class Waymark_Helper {
 		$out .= '		<option value="gpx">GPX</option>' . "\n";
 		$out .= '		<option value="kml">KML</option>' . "\n";			
 		$out .= '	</select>' . "\n";
-		$out .= '	<a href="#" class="button">' . __('Download', 'waymark-plugin') . '</a>' . "\n";
+		$out .= '	<a href="#" class="button">' . __('Download', 'waymark') . '</a>' . "\n";
 		$out .= '</div>' . "\n";
 		
 		return $out;

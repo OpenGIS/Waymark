@@ -57,7 +57,7 @@ class Waymark_Admin {
 		wp_register_script('waymark_admin_js', Waymark_Helper::asset_url('admin/js/admin.js'), array('jquery', 'jquery-ui-sortable', 'jquery-effects-core', 'wp-color-picker'), Waymark_Config::get_version());
 		//Localize
 		wp_localize_script('waymark_admin_js', 'waymark_php_lang', array(
-			'repeatable_delete_title' => esc_attr__('Remove!', 'waymark-plugin'),
+			'repeatable_delete_title' => esc_attr__('Remove!', 'waymark'),
 		));
 		wp_enqueue_script('waymark_admin_js');			
 	}
@@ -107,12 +107,12 @@ class Waymark_Admin {
 	function duplicate_post(){
 		//Check for post ID
 		if (! isset($_GET['post_id']) || ! is_numeric($_GET['post_id'])) {
-			wp_die(__('Can not duplicate, no post to supplied!', 'waymark-plugin'));
+			wp_die(__('Can not duplicate, no post to supplied!', 'waymark'));
 		}
 	 
 		//Nonce verification
 		if(! isset($_GET['duplicate_nonce']) || ! wp_verify_nonce($_GET['duplicate_nonce'], basename(__FILE__))) {			
-			wp_die(__('Security verification error!', 'waymark-plugin'));
+			wp_die(__('Security verification error!', 'waymark'));
 		}	 
 	 
 		$Object = new Waymark_Object($_GET['post_id']);
@@ -125,7 +125,7 @@ class Waymark_Admin {
 		//Queries & Layout
 		if(in_array($post->post_type, array('waymark_map'))) {
 			//Add Duplicate Link
-			$actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=waymark_duplicate_post&post_id=' . $post->ID, basename(__FILE__), 'duplicate_nonce') . '" title="' . esc_attr__('Duplicate this post', 'waymark-plugin') . '" rel="permalink">' . esc_html__('Duplicate', 'waymark-plugin') . '</a>';			
+			$actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=waymark_duplicate_post&post_id=' . $post->ID, basename(__FILE__), 'duplicate_nonce') . '" title="' . esc_attr__('Duplicate this post', 'waymark') . '" rel="permalink">' . esc_html__('Duplicate', 'waymark') . '</a>';			
 			
 			//Remove Quick Edit
 			unset($actions['inline hide-if-no-js']);			
@@ -138,7 +138,7 @@ class Waymark_Admin {
 		unset($columns['slug']);
 		unset($columns['description']);
 
-	  $columns['shortcode'] = esc_html__('Shortcode', 'waymark-plugin');
+	  $columns['shortcode'] = esc_html__('Shortcode', 'waymark');
 		
 		return $columns;
 	}	
@@ -158,7 +158,7 @@ class Waymark_Admin {
 	  $columns['shortcode'] = 'Shortcode';
 
 		unset($columns['date']);
-		$columns['date'] = esc_html__('Date', 'waymark-plugin');
+		$columns['date'] = esc_html__('Date', 'waymark');
 	
 	  return $columns;
 	}
@@ -195,13 +195,13 @@ class Waymark_Admin {
 			//Collections List
 			if($current_screen->base == 'edit-tags' && $current_screen->taxonomy == 'waymark_collection') {
 				$title = esc_html__('Collections');
-				$description = sprintf(__('Collections allow you to organise your Maps. Use the <a href="%s">Shortcode</a> to display all Maps in a Collection at once. <a href="%s" class="button waymark-right">Read the Docs &raquo;</a>', 'waymark-plugin'), Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs/collections'));				
+				$description = sprintf(__('Collections allow you to organise your Maps. Use the <a href="%s">Shortcode</a> to display all Maps in a Collection at once. <a href="%s" class="button waymark-right">Read the Docs &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs/collections'));				
 			}
 					
 			//Map Posts List
 			if($current_screen->base == 'edit' && $current_screen->post_type == 'waymark_map') {
 				$title = esc_html__('Maps');
-				$description = sprintf(__('Create Maps here, then add them to your content using the <a href="%s">Shortcode</a>. <a href="%s" class="button waymark-right">Watch the Video &raquo;</a>', 'waymark-plugin'), Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs'));				
+				$description = sprintf(__('Create Maps here, then add them to your content using the <a href="%s">Shortcode</a>. <a href="%s" class="button waymark-right">Watch the Video &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs'));				
 			}
 			
 			$map_posts = get_posts(array(
@@ -220,14 +220,14 @@ class Waymark_Admin {
 					//if(true || sizeof($map_posts) == 0) {
 					if(sizeof($map_posts) == 0) {
 						$title = esc_html__('Creating a Map');
-						$description = sprintf(__('<span class="waymark-lead">Use the Map <a href="%s">Editor</a> to place Markers, draw Lines/Shapes and display Photos. Each can be given a <a target="_blank" href="%s">Type</a>, title, description and an image.</span><br /><br />You can add the Map to your content using the %s <a href="%s">Shortcode</a>. <a class="button waymark-right" href="%s">Watch the Video &raquo;</a>', 'waymark-plugin'), Waymark_Helper::site_url('docs/editor'), Waymark_Helper::site_url('docs/types'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'),  Waymark_Helper::site_url('docs/editor'));
+						$description = sprintf(__('<span class="waymark-lead">Use the Map <a href="%s">Editor</a> to place Markers, draw Lines/Shapes and display Photos. Each can be given a <a target="_blank" href="%s">Type</a>, title, description and an image.</span><br /><br />You can add the Map to your content using the %s <a href="%s">Shortcode</a>. <a class="button waymark-right" href="%s">Watch the Video &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/editor'), Waymark_Helper::site_url('docs/types'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'),  Waymark_Helper::site_url('docs/editor'));
 					}	else {
 						$title = esc_html__('New Map');
-						$description = sprintf(__('You can add the Map to your content using the %s <a href="%s">Shortcode</a>. <a class="button waymark-right" href="%s">Watch the Video &raquo;</a>', 'waymark-plugin'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'),  Waymark_Helper::site_url('docs/editor'));
+						$description = sprintf(__('You can add the Map to your content using the %s <a href="%s">Shortcode</a>. <a class="button waymark-right" href="%s">Watch the Video &raquo;</a>', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'),  Waymark_Helper::site_url('docs/editor'));
 					}
 				} elseif($current_screen->base == 'post') {
 					$title = esc_html__('Edit Map');
-					$description = sprintf(__('You can add the Map to your content using the %s <a href="%s">Shortcode</a>. <a class="button waymark-right" href="%s">Watch the Video &raquo;</a>', 'waymark-plugin'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'),  Waymark_Helper::site_url('docs/editor'));
+					$description = sprintf(__('You can add the Map to your content using the %s <a href="%s">Shortcode</a>. <a class="button waymark-right" href="%s">Watch the Video &raquo;</a>', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'),  Waymark_Helper::site_url('docs/editor'));
 				}				
 			}									
 		}

@@ -40,7 +40,7 @@ class Waymark_Content {
 				$collection_list = get_the_term_list($Map->post_id, 'waymark_collection', '', '<!--,-->, ');
 				if($collection_list) {
 			
-					$meta_title = esc_html__('Collection', 'waymark-plugin');
+					$meta_title = esc_html__('Collection', 'waymark');
 // 					if(strpos($collection_list, '<!--,-->')) {
 // 						$meta_title .= 's';
 // 					}				
@@ -58,9 +58,9 @@ class Waymark_Content {
 			if($has_features && Waymark_Config::get_setting('misc', 'map_options', 'allow_export') == true) {			
 				$map_meta[] = array(
 					'meta_key' => 'export_data',
-					'meta_title' => esc_html__('Export', 'waymark-plugin'),
+					'meta_title' => esc_html__('Export', 'waymark'),
 					'meta_value' => Waymark_Helper::map_export_html($Map),
-					'meta_info' => '<a data-title="' . esc_attr__('This will download the Overlays currently displayed by the Map in the selected format.', 'waymark-plugin') . '" href="#" onclick="return false;" class="waymark-tooltip">?</a>',
+					'meta_info' => '<a data-title="' . esc_attr__('This will download the Overlays currently displayed by the Map in the selected format.', 'waymark') . '" href="#" onclick="return false;" class="waymark-tooltip">?</a>',
 				);
 			}
 					

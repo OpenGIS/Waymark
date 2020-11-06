@@ -53,14 +53,14 @@ function waymark_load_map_data(map_instance, map_id, link_to_map = false) {
 		wp_register_script('waymark-js', Waymark_Helper::asset_url('dist/waymark-js/js/waymark-js.min.js'), array('jquery'), Waymark_Config::get_version(), true);		
 		wp_localize_script('waymark-js', 'waymark_js_lang', array(
 			//Viewer
-			'action_fullscreen_activate' => esc_attr__('View Fullscreen', 'waymark-plugin'),		
-			'action_fullscreen_deactivate' => esc_attr__('Exit Fullscreen', 'waymark-plugin'),		
-			'action_locate_activate' => esc_attr__('Show me where I am', 'waymark-plugin'),		
-			'action_zoom_in' => esc_attr__('Zoom in', 'waymark-plugin'),		
-			'action_zoom_out' => esc_attr__('Zoom out', 'waymark-plugin'),
-			'label_total_length' => esc_attr__('Total Length: ', 'waymark-plugin'),
-			'label_max_elevation' => esc_attr__('Max. Elevation: ', 'waymark-plugin'),
-			'label_min_elevation' => esc_attr__('Min. Elevation: ', 'waymark-plugin'),
+			'action_fullscreen_activate' => esc_attr__('View Fullscreen', 'waymark'),		
+			'action_fullscreen_deactivate' => esc_attr__('Exit Fullscreen', 'waymark'),		
+			'action_locate_activate' => esc_attr__('Show me where I am', 'waymark'),		
+			'action_zoom_in' => esc_attr__('Zoom in', 'waymark'),		
+			'action_zoom_out' => esc_attr__('Zoom out', 'waymark'),
+			'label_total_length' => esc_attr__('Total Length: ', 'waymark'),
+			'label_max_elevation' => esc_attr__('Max. Elevation: ', 'waymark'),
+			'label_min_elevation' => esc_attr__('Min. Elevation: ', 'waymark'),
 		));
 		wp_enqueue_script('waymark-js');								
 			

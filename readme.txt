@@ -4,7 +4,7 @@ Tags: leaflet, openstreetmap, elevation, maps, embed, GPX, KML, GeoJSON, mapping
 Requires at least: 3.2
 Tested up to: 5.5
 Requires PHP: 5.2
-Stable tag: 0.9.14
+Stable tag: 0.9.15-a1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,6 +99,11 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 5. Waymark is very customisable.
 
 == Changelog ==
+
+= 0.9.15 =
+
+* Gallery JavaScript bug fix
+* Plugin is now translation ready!
 
 = 0.9.14 =
 

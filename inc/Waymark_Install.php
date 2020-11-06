@@ -11,7 +11,8 @@ class Waymark_Install {
 
 		add_action('admin_init', array('Waymark_Install', 'activation_redirect'));
 		add_action('admin_init', array('Waymark_Install', 'update_check'));
-
+		add_action('plugins_loaded', array('Waymark_Install', 'load_plugin_textdomain'));
+		
 		add_filter('plugin_action_links_waymark/Waymark.php', array('Waymark_Install', 'add_action_links'));		
 	}
 
@@ -58,8 +59,8 @@ class Waymark_Install {
 		$links_before = array();
 
 		$links_after = array(
-			'<a href="' . admin_url('edit.php?post_type=waymark_map') . '">' . esc_html__('Maps', 'waymark-plugin') . '</a>',
-			'<a href="' . admin_url('edit.php?post_type=waymark_map&page=waymark-settings') . '">' . esc_html__('Settings', 'waymark-plugin') . '</a>'
+			'<a href="' . admin_url('edit.php?post_type=waymark_map') . '">' . esc_html__('Maps', 'waymark') . '</a>',
+			'<a href="' . admin_url('edit.php?post_type=waymark_map&page=waymark-settings') . '">' . esc_html__('Settings', 'waymark') . '</a>'
 		);				
 		
 		return array_merge($links_before, $links, $links_after);
@@ -77,6 +78,10 @@ class Waymark_Install {
 			//Update version
 	    update_option('Waymark_Version', Waymark_Config::get_item('plugin_version'));		
 		}		
+	}
+	
+	static function load_plugin_textdomain() {
+		load_plugin_textdomain('waymark', false, 'waymark/languages');	
 	}
 }	
 

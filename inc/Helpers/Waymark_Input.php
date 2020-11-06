@@ -25,8 +25,8 @@ class Waymark_Input {
 					
 			if(! array_key_exists('options', $field) || ! is_array($field['options'])) {
 				$field['options'] = array(
-					'1' => esc_attr__('Yes', 'waymark-plugin'),
-					'0' => esc_attr__('No', 'waymark-plugin')
+					'1' => esc_attr__('Yes', 'waymark'),
+					'0' => esc_attr__('No', 'waymark')
 				);
 			}
 		}		
@@ -50,7 +50,7 @@ class Waymark_Input {
 		if(array_key_exists('tip', $field)) {
 			$out .= ' <a data-title="' . $field['tip'] . '';
 			if(array_key_exists('tip_link', $field)) {
-				$out .= ' ' . esc_attr__('Click here for more details.', 'waymark-plugin') . '" href="' . $field['tip_link'] . '" target="_blank" class="waymark-tooltip waymark-link"';					
+				$out .= ' ' . esc_attr__('Click here for more details.', 'waymark') . '" href="' . $field['tip_link'] . '" target="_blank" class="waymark-tooltip waymark-link"';					
 			} else {
 				$out .= '" href="#" onclick="return false;" class="waymark-tooltip"';
 			}
@@ -363,13 +363,13 @@ class Waymark_Input {
 // 	
 // 	    if(isset($upload['error']) && $upload['error'] != 0) {
 // 	    	//!!! - Better error handling
-// 	    	wp_die(esc_html__('File upload error.', 'waymark-plugin') . ' (' . $upload['error'] . ')');
+// 	    	wp_die(esc_html__('File upload error.', 'waymark') . ' (' . $upload['error'] . ')');
 // 	    } else {
 //         return $upload;     
 // 	    }
 // 		} else {
 // 			//!!! - Better error handling
-// 			wp_die(esc_html__('The file type uploaded is not supported.', 'waymark-plugin'));
+// 			wp_die(esc_html__('The file type uploaded is not supported.', 'waymark'));
 // 		}
 // 	}
 
@@ -392,7 +392,7 @@ class Waymark_Input {
 			);
 		} else {
 			return array(
-				'error' => esc_html__('The file type uploaded is not supported.', 'waymark-plugin')
+				'error' => esc_html__('The file type uploaded is not supported.', 'waymark')
 			);
 		}
 	}	

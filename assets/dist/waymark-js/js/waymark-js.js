@@ -7938,14 +7938,17 @@ function Waymark_Map_Viewer() {
 	this.size_gallery = function() {
 		Waymark = this;
 
-		if(Waymark.gallery.length) {
-			gallery_padding = Waymark.gallery.css('paddingRight');
-			gallery_padding = gallery_padding.replace('px', '');
-			gallery_padding = parseInt(gallery_padding);
-			var gallery_width = Waymark.config.map_width - (2 * gallery_padding);
-			
-			Waymark.gallery.css('width', gallery_width);
-		}		
+		//Only size gallery if there is one
+		if(typeof Waymark.gallery === 'undefined' || ! Waymark.gallery.length) {
+			return;
+		}
+
+		gallery_padding = Waymark.gallery.css('paddingRight');
+		gallery_padding = gallery_padding.replace('px', '');
+		gallery_padding = parseInt(gallery_padding);
+		var gallery_width = Waymark.config.map_width - (2 * gallery_padding);
+		
+		Waymark.gallery.css('width', gallery_width);
 	}
 
 	this.add_to_gallery = function(layer) {

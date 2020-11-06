@@ -52,7 +52,7 @@ class Waymark_AJAX {
 		check_ajax_referer($this->nonce_string, 'waymark_security');
 
 		$response_json = json_encode(array(
-			'error' => esc_html__('No image metadata available.', 'waymark-plugin')
+			'error' => esc_html__('No image metadata available.', 'waymark')
 		));
 
 		//Get photo metadata
@@ -73,7 +73,7 @@ class Waymark_AJAX {
 		check_ajax_referer($this->nonce_string, 'waymark_security');
 
 		$response_json = json_encode(array(
-			'error' => esc_html__('Unknown file upload error.', 'waymark-plugin')
+			'error' => esc_html__('Unknown file upload error.', 'waymark')
 		));
 
 		//If we have files

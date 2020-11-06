@@ -6,7 +6,7 @@ class Waymark_Meta {
 	
 	function __construct() {
 		//Map
-		add_meta_box('waymark_map_meta', esc_html__('Map Editor', 'waymark-plugin'), array($this, 'get_map_form'), 'waymark_map', 'normal', 'high');			
+		add_meta_box('waymark_map_meta', esc_html__('Map Editor', 'waymark'), array($this, 'get_map_form'), 'waymark_map', 'normal', 'high');			
 
 		//Map
 		add_meta_box('waymark_map_shortcode', 'Shortcode', array($this, 'map_shortcode_content'), 'waymark_map', 'side', 'default');			
@@ -27,42 +27,42 @@ class Waymark_Meta {
 		//Localize
 		wp_localize_script('waymark-js', 'waymark_js_lang', array(
 			//Viewer
-			'action_fullscreen_activate' => esc_attr__('View Fullscreen', 'waymark-plugin'),		
-			'action_fullscreen_deactivate' => esc_attr__('Exit Fullscreen', 'waymark-plugin'),		
-			'action_locate_activate' => esc_attr__('Show me where I am', 'waymark-plugin'),		
-			'action_zoom_in' => esc_attr__('Zoom in', 'waymark-plugin'),		
-			'action_zoom_out' => esc_attr__('Zoom out', 'waymark-plugin'),
+			'action_fullscreen_activate' => esc_attr__('View Fullscreen', 'waymark'),		
+			'action_fullscreen_deactivate' => esc_attr__('Exit Fullscreen', 'waymark'),		
+			'action_locate_activate' => esc_attr__('Show me where I am', 'waymark'),		
+			'action_zoom_in' => esc_attr__('Zoom in', 'waymark'),		
+			'action_zoom_out' => esc_attr__('Zoom out', 'waymark'),
 			//Editor
-			'add_line_title' => esc_attr__('Draw a Line', 'waymark-plugin'),
-			'add_photo_title' => esc_attr__('Upload a Photo', 'waymark-plugin'),
-			'add_marker_title' => esc_attr__('Place a Marker', 'waymark-plugin'),
-			'add_rectangle_title' => esc_attr__('Draw a Rectangle', 'waymark-plugin'),
-			'add_polygon_title' => esc_attr__('Draw a Polygon', 'waymark-plugin'),
-			'add_circle_title' => esc_attr__('Draw a Circle', 'waymark-plugin'),
-			'upload_file_title' => esc_attr__('Read Lines and Markers from file (GPX/KML/GeoJSON supported, which most apps should Export to)', 'waymark-plugin'),
-			'action_delete' => esc_attr__('Delete', 'waymark-plugin'),
-			'action_edit' => esc_attr__('Edit', 'waymark-plugin'),
-			'action_edit_done' => esc_attr__('Finish editing', 'waymark-plugin'),		
-			'action_upload_image' => esc_attr__('Upload Image', 'waymark-plugin'),
-			'object_title_placeholder' => esc_attr__('Title', 'waymark-plugin'),
-			'object_image_placeholder' => esc_attr__('Image URL', 'waymark-plugin'),
-			'object_description_placeholder' => esc_attr__('Description', 'waymark-plugin'),
-			'object_type_label' => esc_attr__('Type', 'waymark-plugin'),
-			'marker_latlng_label' => esc_attr__('Lat,Lng', 'waymark-plugin'),
-			'action_delete_confirm' => esc_attr__('Are you sure you want to delete this', 'waymark-plugin'),		
-			'action_search_placeholder' => esc_attr__('Search...', 'waymark-plugin'),		
-			'object_label_marker' => esc_attr__('Marker', 'waymark-plugin'),		
-			'object_label_line' => esc_attr__('Line', 'waymark-plugin'),		
-			'object_label_shape' => esc_attr__('Shape', 'waymark-plugin'),	
-			'object_label_marker_plural' => esc_attr__('Markers', 'waymark-plugin'),		
-			'object_label_line_plural' => esc_attr__('Lines', 'waymark-plugin'),		
-			'object_label_shape_plural' => esc_attr__('Shapes', 'waymark-plugin'),					
-			'error_message_prefix' => esc_attr__('Waymark Error', 'waymark-plugin'),		
-			'info_message_prefix' => esc_attr__('Waymark Info', 'waymark-plugin'),		
-			'error_file_type' => esc_attr__('This file type is not supported.', 'waymark-plugin'),		
-			'error_file_conversion' => esc_attr__('Could not convert this file to GeoJSON.', 'waymark-plugin'),		
-			'error_file_upload' => esc_attr__('File upload error.', 'waymark-plugin'),		
-			'error_photo_meta' => esc_attr__('Could not retrieve Photo metadata.', 'waymark-plugin')
+			'add_line_title' => esc_attr__('Draw a Line', 'waymark'),
+			'add_photo_title' => esc_attr__('Upload a Photo', 'waymark'),
+			'add_marker_title' => esc_attr__('Place a Marker', 'waymark'),
+			'add_rectangle_title' => esc_attr__('Draw a Rectangle', 'waymark'),
+			'add_polygon_title' => esc_attr__('Draw a Polygon', 'waymark'),
+			'add_circle_title' => esc_attr__('Draw a Circle', 'waymark'),
+			'upload_file_title' => esc_attr__('Read Lines and Markers from file (GPX/KML/GeoJSON supported, which most apps should Export to)', 'waymark'),
+			'action_delete' => esc_attr__('Delete', 'waymark'),
+			'action_edit' => esc_attr__('Edit', 'waymark'),
+			'action_edit_done' => esc_attr__('Finish editing', 'waymark'),		
+			'action_upload_image' => esc_attr__('Upload Image', 'waymark'),
+			'object_title_placeholder' => esc_attr__('Title', 'waymark'),
+			'object_image_placeholder' => esc_attr__('Image URL', 'waymark'),
+			'object_description_placeholder' => esc_attr__('Description', 'waymark'),
+			'object_type_label' => esc_attr__('Type', 'waymark'),
+			'marker_latlng_label' => esc_attr__('Lat,Lng', 'waymark'),
+			'action_delete_confirm' => esc_attr__('Are you sure you want to delete this', 'waymark'),		
+			'action_search_placeholder' => esc_attr__('Search...', 'waymark'),		
+			'object_label_marker' => esc_attr__('Marker', 'waymark'),		
+			'object_label_line' => esc_attr__('Line', 'waymark'),		
+			'object_label_shape' => esc_attr__('Shape', 'waymark'),	
+			'object_label_marker_plural' => esc_attr__('Markers', 'waymark'),		
+			'object_label_line_plural' => esc_attr__('Lines', 'waymark'),		
+			'object_label_shape_plural' => esc_attr__('Shapes', 'waymark'),					
+			'error_message_prefix' => esc_attr__('Waymark Error', 'waymark'),		
+			'info_message_prefix' => esc_attr__('Waymark Info', 'waymark'),		
+			'error_file_type' => esc_attr__('This file type is not supported.', 'waymark'),		
+			'error_file_conversion' => esc_attr__('Could not convert this file to GeoJSON.', 'waymark'),		
+			'error_file_upload' => esc_attr__('File upload error.', 'waymark'),		
+			'error_photo_meta' => esc_attr__('Could not retrieve Photo metadata.', 'waymark')
 		));
 		wp_enqueue_script('waymark-js');		
 	}
@@ -108,7 +108,7 @@ class Waymark_Meta {
 		
 		$has_features = array_key_exists('map_data', $Map->data) && Waymark_Helper::geojson_feature_count($Map->data['map_data']);
 		if($has_features) {			
-			echo '<a data-title="' . esc_attr__('Download the Overlays added to this Map in the selected format.', 'waymark-plugin') . '" href="#" onclick="return false;" class="waymark-tooltip">?</a>';
+			echo '<a data-title="' . esc_attr__('Download the Overlays added to this Map in the selected format.', 'waymark') . '" href="#" onclick="return false;" class="waymark-tooltip">?</a>';
 			echo Waymark_Helper::map_export_html($Map);
 		}
 	}
@@ -117,28 +117,28 @@ class Waymark_Meta {
 		global $post;
 		
 		//Shortcode output
-		echo '<a data-title="' . esc_attr__('Add this Map to your content with this Shortcode. Click here for more details.', 'waymark-plugin') . '" href="' . Waymark_Helper::site_url('docs/shortcodes') . '" class="waymark-tooltip">?</a>';
+		echo '<a data-title="' . esc_attr__('Add this Map to your content with this Shortcode. Click here for more details.', 'waymark') . '" href="' . Waymark_Helper::site_url('docs/shortcodes') . '" class="waymark-tooltip">?</a>';
 		echo '<input type="text" value="[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]" />';
-		//echo '<p>' . sprintf(__('Add this Map to your content with this <a href="%s">Shortcode</a>.', 'waymark-plugin'), ) . '</p>';
+		//echo '<p>' . sprintf(__('Add this Map to your content with this <a href="%s">Shortcode</a>.', 'waymark'), ) . '</p>';
 	}
 
 	function map_help_content() {	
 		//Required the PHP EXIF extension
 		if(! function_exists('exif_read_data')) {
-			echo '<p><b>' . esc_html__('Photo Location Detection Not Supported!', 'waymark-plugin') . '</b></p>';
-			echo '<p>' . __(sprintf('Your hosting environment does not currently have the <a href="%s">PHP EXIF Extension</a> enabled, which is required to read Photo location metadata. Try asking your host to enable it.', 'https://www.php.net/manual/en/book.exif.php'), 'waymark-plugin') . '</p>';		
+			echo '<p><b>' . esc_html__('Photo Location Detection Not Supported!', 'waymark') . '</b></p>';
+			echo '<p>' . __(sprintf('Your hosting environment does not currently have the <a href="%s">PHP EXIF Extension</a> enabled, which is required to read Photo location metadata. Try asking your host to enable it.', 'https://www.php.net/manual/en/book.exif.php'), 'waymark') . '</p>';		
 		}	
 
-		echo '<p><b>' . esc_html__('Read from File', 'waymark-plugin') . '</b></p>';
+		echo '<p><b>' . esc_html__('Read from File', 'waymark') . '</b></p>';
 		echo '<p>' . esc_html__('You can read Lines and Markers from GPX, KML and GeoJSON files (most mapping apps will be able to export to one of these).') . '</p>';
 
-		echo '<p><b>' . esc_html__('Types', 'waymark-plugin') . '</b></p>';
-		echo '<p>' . __(sprintf('Types allow you to control how Overlays (Markers, Lines and Shapes) are displayed on the Map. Types can be customised in <a href="%s" target="_blank">Waymark &gt; Settings</a>.', admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=markers')), 'waymark-plugin') . '</p>';		
+		echo '<p><b>' . esc_html__('Types', 'waymark') . '</b></p>';
+		echo '<p>' . __(sprintf('Types allow you to control how Overlays (Markers, Lines and Shapes) are displayed on the Map. Types can be customised in <a href="%s" target="_blank">Waymark &gt; Settings</a>.', admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=markers')), 'waymark') . '</p>';		
 
-		echo '<p><b>' . esc_html__('Basemap', 'waymark-plugin') . '</b></p>';
-		echo '<p>' . __(sprintf('Add and edit Basemaps in <a href="%s" target="_blank">Waymark &gt; Settings</a>. The first listed will be used as the default, unless specified in the shortcode like this: %s', admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=tiles'), '<code>[Waymark map_id="1234" basemap="Basemap Name"]</code>'), 'waymark-plugin') . '</p>';		
+		echo '<p><b>' . esc_html__('Basemap', 'waymark') . '</b></p>';
+		echo '<p>' . __(sprintf('Add and edit Basemaps in <a href="%s" target="_blank">Waymark &gt; Settings</a>. The first listed will be used as the default, unless specified in the shortcode like this: %s', admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=tiles'), '<code>[Waymark map_id="1234" basemap="Basemap Name"]</code>'), 'waymark') . '</p>';		
 
-		echo '<p><a class="button" href="' . Waymark_Helper::site_url('docs') . '" target="_blank">' . esc_html__('Read the Docs', 'waymark-plugin') . ' &raquo;</a></p>';
+		echo '<p><a class="button" href="' . Waymark_Helper::site_url('docs') . '" target="_blank">' . esc_html__('Read the Docs', 'waymark') . ' &raquo;</a></p>';
 
 		echo '<p>&nbsp;</p>';
 	}
@@ -193,7 +193,7 @@ class Waymark_Meta {
 		$Map->set_input_type('meta');
 		echo $Map->create_form();		
 
-		echo '<p>' . __(sprintf('You can manage Meta fields in <a href="%s">Settings</a>.', admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')), 'waymark-plugin') . '</p>';		
+		echo '<p>' . __(sprintf('You can manage Meta fields in <a href="%s">Settings</a>.', admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')), 'waymark') . '</p>';		
 	}
 }
 new Waymark_Meta;

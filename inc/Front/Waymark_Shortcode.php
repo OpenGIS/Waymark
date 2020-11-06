@@ -138,7 +138,7 @@ class Waymark_Shortcode {
 			
 			//Link
 			if(array_key_exists('link', $shortcode_header)) {
-				$out .= '		<a class="waymark-link" href="' . $shortcode_header['link'] . '">' . esc_html__('View Details', 'waymark-plugin') . ' &raquo;</a>' . "\n";			
+				$out .= '		<a class="waymark-link" href="' . $shortcode_header['link'] . '">' . esc_html__('View Details', 'waymark') . ' &raquo;</a>' . "\n";			
 			}
 
 			//Title
