@@ -7,6 +7,9 @@ class Waymark_Map extends Waymark_Object {
 	public $post_type = 'waymark_map';
 	
 	function __construct($post_id = null) {
+		//Set groups
+		$this->parameter_groups = Waymark_Helper::get_meta_groups();
+	
 		//Map Data
 		$this->parameters['map_data'] = array(
 			'input_types' => array('meta'),
@@ -20,12 +23,8 @@ class Waymark_Map extends Waymark_Object {
 		);
 
 		//Meta
-		$map_meta = Waymark_Config::get_item('meta', 'inputs');
+		$map_meta = Waymark_Config::get_item('meta', 'inputs', true);
 		if($map_meta && sizeof($map_meta)) {
-			$map_meta = Waymark_Helper::convert_values_to_single_value($map_meta);
-			$map_meta = Waymark_Helper::convert_single_value_to_array($map_meta);
-		
-			//Waymark_Helper::debug($map_meta, false);
 		
 			foreach($map_meta as $meta) {
 				$meta_key = Waymark_Helper::make_key($meta['meta_title'], 'map');
@@ -69,6 +68,11 @@ class Waymark_Map extends Waymark_Object {
 				if(isset($meta['meta_tip']) && ! empty($meta['meta_tip'])) {
 					$this->parameters[$meta_key]['tip'] = $meta['meta_tip'];
 				}
+
+				//Group?
+				if(isset($meta['meta_group'])) {
+					$this->parameters[$meta_key]['group'] = $meta['meta_group'];
+				}				
 			}				
 		} else {
 		}

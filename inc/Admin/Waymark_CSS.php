@@ -8,7 +8,20 @@ class Waymark_CSS {
 		self::add_chunk('/* ' . Waymark_Config::get_name(true, true) . ' v' . Waymark_Config::get_version() . ' */');
 		
 		add_action('admin_head', array('Waymark_CSS', 'admin_head'));		
+		add_action('admin_enqueue_scripts', array('Waymark_CSS', 'enqueue_scripts'));								
 	}
+
+	static function enqueue_scripts() {
+		//CSS
+		wp_register_style('waymark_admin_css', Waymark_Helper::asset_url('css/admin.min.css'), array(), Waymark_Config::get_version());
+		wp_enqueue_style('waymark_admin_css');	
+	}
+	
+	function menu_init() {
+		require_once('Admin/Waymark_Settings.php');		
+		require_once('Admin/Waymark_CSS.php');					
+		require_once('Admin/Waymark_Menu.php');	
+	}	
 	
 	static function add_chunk($chunk) {	
 		self::$chunks[] = $chunk . "\n";

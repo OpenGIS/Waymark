@@ -229,18 +229,36 @@ class Waymark_Input {
 	
 	static function create_parameter_groups($post_type, $fields, $groups, $data = array(), $input_name_format = null) {				
 		$out = '<!-- START Parameter Container -->' . "\n";
-		$out .= '<div class="waymark-parameters-container waymark-self-clear" id="waymark-parameters-' . $post_type . '">' . "\n";
-		
+		$out .= '<div class="waymark-parameters-container waymark-accordion-container" id="waymark-parameters-' . $post_type . '">' . "\n";
+
+		//Are we doing groups?
+		$by_group = false;		
+		if(is_array($groups) && sizeof($groups)) {	
+			$by_group = true;
+					
+			$fields_reorder = [];
+			//No group
+			if(isset($fields[''])) {
+				$fields_reorder[''] = $fields[''];		
+			}
+			foreach($groups as $group_id => $group) {
+				if(isset($fields[$group_id])) {
+					$fields_reorder[$group_id] = $fields[$group_id];					
+}
+			}
+			$fields = $fields_reorder;
+		}		
+				
 		$current_group = false;
 		foreach($fields as $group_id => $fields) {
-			if(array_key_exists($group_id, $groups) && $group_id != false) {
-				$group = $groups[$group_id];			
-			} else {
-				$group = array();
-			}
-			
 			//Output group?
-			if($current_group != $group) {
+			if($by_group && ($current_group != $group_id)) {
+				if(array_key_exists($group_id, $groups) && $group_id != false) {
+					$group = $groups[$group_id];			
+				} else {
+					$group = array();
+				}
+			
 				//Close previous fieldset?
 				if($current_group !== false) {			
 					$out .= '	</div>' . "\n";
@@ -248,13 +266,13 @@ class Waymark_Input {
 					$out .= '<!-- END Parameter Group -->' . "\n";										
 				}
 				$out .= '<!-- START Parameter Group -->' . "\n";										
-				$out .= '	<div class="waymark-parameter-group waymark-self-clear waymark-parameter-group-' . $group_id . '" id="waymark-parameter-group-' . $group_id . '">' . "\n";					
-				$out .= '		<legend title="Click to expand">' . $group['name'] . '</legend>' . "\n";
-				$out .= '		<div class="waymark-parameter-group-content">' . "\n";
-				if(array_key_exists('description', $group)) {			
-					$out .= '			<p class="waymark-parameter-group-description">' . $group['description'] . '</p>' . "\n";
+				$out .= '	<div class="waymark-parameter-group waymark-accordion-group waymark-parameter-group-' . $group_id . '" id="waymark-parameter-group-' . $group_id . '">' . "\n";					
+				$out .= '		<legend title="Click to expand">' . $group['group_title'] . '</legend>' . "\n";
+				$out .= '		<div class="waymark-accordion-group-content">' . "\n";
+				if(array_key_exists('group_description', $group)) {			
+					$out .= '			<p class="waymark-parameter-group-description">' . $group['group_description'] . '</p>' . "\n";
 				}
-				$current_group = $group;
+				$current_group = $group_id;
 			}
 			
 			foreach($fields as $field) {
@@ -276,7 +294,7 @@ class Waymark_Input {
 		}
 		
 		//As long as some groups were output
-		if($current_group !== false) {
+		if($by_group && ($current_group !== false)) {
 			$out .= '		</div>' . "\n";
 			$out .= '	</div>' . "\n";			
 			$out .= '<!-- END Parameter Group -->' . "\n";													

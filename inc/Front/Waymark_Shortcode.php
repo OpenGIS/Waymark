@@ -11,6 +11,7 @@ class Waymark_Shortcode {
 		$shortcode_hash = substr(md5(json_encode($shortcode_data)), 0, 6);
 		$maps_output = array();	
 		$shortcode_header = array();
+		$shortcode_meta = array();
 		
 		//Just in case false is passed
 		if(! $shortcode_data) {
@@ -34,6 +35,9 @@ class Waymark_Shortcode {
 				'title' => $Map->post_title,
 				'link' => get_permalink($Map->post_id)				
 			);	
+
+			//Map Meta?
+			$shortcode_meta = Waymark_Helper::get_map_meta($Map, 'shortcode');
 			
 			//Ensure we have data
 			if($Map && array_key_exists('map_data', $Map->data)) {
@@ -51,44 +55,46 @@ class Waymark_Shortcode {
 		} else if(array_key_exists('collection_id', $shortcode_data)) {
 			$collection_id = $shortcode_data['collection_id'];
 
-			//Iterate over Collection
+			//Valid Collection
 			$Collection = new Waymark_Collection($collection_id);
-
-			//Map Class
-			$map_class .= ' waymark-collection-id-' . $collection_id;
+			if($Collection->collection_id) {
+				//Map Class
+				$map_class .= ' waymark-collection-id-' . $collection_id;
 			
-			foreach($Collection->Maps as $Map) {
-				//Ensure we have data
-				if(! array_key_exists('map_data', $Map->data)) {
-					continue;
-				}
-				
-				//Output
-				$maps_output[$Map->post_id] = array(
-					'map_id' => $Map->post_id,
-					'map_title' => $Map->post_title,
-					'collection_id' => $collection_id
-				);
-				
-				//Link to Map page?
-				if(Waymark_Config::get_setting('misc', 'collection_options', 'link_to_maps') == true) {
-					//Modify map data
-					$modified_map_data = Waymark_Helper::add_map_link_to_description($Map->post_id, $Map->post_title, $Map->data['map_data']);
-					if($modified_map_data) {
-						$maps_output[$Map->post_id]['map_data'] = $modified_map_data;					
-					} else {
-						$maps_output[$Map->post_id]['map_data'] = $Map->data['map_data'];					
+				//Iterate over Collection
+				foreach($Collection->Maps as $Map) {
+					//Ensure we have data
+					if(! array_key_exists('map_data', $Map->data)) {
+						continue;
 					}
-				} else {
-					$maps_output[$Map->post_id]['map_data'] = $Map->data['map_data'];
+				
+					//Output
+					$maps_output[$Map->post_id] = array(
+						'map_id' => $Map->post_id,
+						'map_title' => $Map->post_title,
+						'collection_id' => $collection_id
+					);
+				
+					//Link to Map page?
+					if(Waymark_Config::get_setting('misc', 'collection_options', 'link_to_maps') == true) {
+						//Modify map data
+						$modified_map_data = Waymark_Helper::add_map_link_to_description($Map->post_id, $Map->post_title, $Map->data['map_data']);
+						if($modified_map_data) {
+							$maps_output[$Map->post_id]['map_data'] = $modified_map_data;					
+						} else {
+							$maps_output[$Map->post_id]['map_data'] = $Map->data['map_data'];					
+						}
+					} else {
+						$maps_output[$Map->post_id]['map_data'] = $Map->data['map_data'];
+					}
 				}
-			}
 					
-			//Shortcode header
-			$shortcode_header = array(
-				'title' => $Collection->title,
-				'link' => get_term_link((int)$Collection->collection_id, 'waymark_collection')
-			);
+				//Shortcode header
+				$shortcode_header = array(
+					'title' => $Collection->title,
+					'link' => get_term_link((int)$Collection->collection_id, 'waymark_collection')
+				);			
+			}
 		}
 			
 		// ===== Shortcode options (1/2) =====
@@ -138,13 +144,23 @@ class Waymark_Shortcode {
 			
 			//Link
 			if(array_key_exists('link', $shortcode_header)) {
-				$out .= '		<a class="waymark-link" href="' . $shortcode_header['link'] . '">' . esc_html__('View Details', 'waymark') . ' &raquo;</a>' . "\n";			
+				$out .= '		<a class="waymark-link" href="' . $shortcode_header['link'] . '">' . esc_html__('Details', 'waymark') . ' <i class="ion ion-android-open"></i></a>' . "\n";			
 			}
 
 			//Title
 			if(array_key_exists('title', $shortcode_header)) {
 				$out .= '		<div class="waymark-title">' . $shortcode_header['title'] . '</div>' . "\n";			
 			}			
+
+			//Shortcode Meta?
+			//...and it's not the Map Details page
+			if(sizeof($shortcode_meta)) {
+				$out .= '	<div class="waymark-meta">' . "\n";
+				$out .= Waymark_Helper::map_meta_html($shortcode_meta, false);		
+				$out .= '		<a class="waymark-link" href="' . $shortcode_header['link'] . '">' . esc_html__('More Details', 'waymark') . ' <i class="ion ion-android-open"></i></a>' . "\n";			
+				$out .= '	</div>' . "\n";			
+			}	
+			
 			$out .= '	</header>' . "\n";		
 		}
 

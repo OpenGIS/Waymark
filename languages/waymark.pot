@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Waymark\n"
-"POT-Creation-Date: 2020-11-06 13:53-0800\n"
-"PO-Revision-Date: 2020-11-06 13:53-0800\n"
+"POT-Creation-Date: 2020-11-13 12:27-0800\n"
+"PO-Revision-Date: 2020-11-13 12:27-0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,25 +20,35 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
 
 #: assets/dist/waymark-js/js/waymark-js.js:2661
+#: waymark-js/dist/js/waymark-js.js:2661
+#: waymark-js/libs/js/leaflet-elevation.js:899
 msgid "Altitude"
 msgstr ""
 
-#: assets/dist/waymark-js/js/waymark-js.js:3547 inc/Waymark_Front.php:61
+#: assets/dist/waymark-js/js/waymark-js.js:3547 inc/Front/Waymark_JS.php:24
+#: waymark-js/dist/js/waymark-js.js:3547
+#: waymark-js/libs/js/leaflet-elevation.js:1785
 msgid "Total Length: "
 msgstr ""
 
 #: assets/dist/waymark-js/js/waymark-js.js:3547
+#: waymark-js/dist/js/waymark-js.js:3547
+#: waymark-js/libs/js/leaflet-elevation.js:1785
 msgid "Max Elevation: "
 msgstr ""
 
 #: assets/dist/waymark-js/js/waymark-js.js:3547
+#: waymark-js/dist/js/waymark-js.js:3547
+#: waymark-js/libs/js/leaflet-elevation.js:1785
 msgid "Min Elevation: "
 msgstr ""
 
 #: assets/dist/waymark-js/js/waymark-js.js:3550
-#: inc/Helpers/Waymark_Helper.php:544
+#: inc/Helpers/Waymark_Helper.php:544 waymark-js/dist/js/waymark-js.js:3550
+#: waymark-js/libs/js/leaflet-elevation.js:1788
 msgid "Download"
 msgstr ""
 
@@ -50,19 +60,23 @@ msgstr ""
 msgid "Unknown file upload error."
 msgstr ""
 
+#: inc/Admin/Waymark_JS.php:19
+msgid "Remove!"
+msgstr ""
+
 #: inc/Admin/Waymark_Menu.php:15 inc/Admin/Waymark_Menu.php:98
-#: inc/Waymark_Admin.php:203 inc/Waymark_Install.php:62
+#: inc/Waymark_Admin.php:184 inc/Waymark_Install.php:62
 #: inc/Waymark_Types.php:13 inc/Waymark_Types.php:15
 msgid "Maps"
 msgstr ""
 
 #: inc/Admin/Waymark_Menu.php:16 inc/Admin/Waymark_Menu.php:92
-#: inc/Waymark_Admin.php:225 inc/Waymark_Types.php:23
+#: inc/Waymark_Admin.php:206 inc/Waymark_Types.php:23
 msgid "New Map"
 msgstr ""
 
 #: inc/Admin/Waymark_Menu.php:19 inc/Admin/Waymark_Menu.php:100
-#: inc/Waymark_Admin.php:197 inc/Waymark_Taxonomies.php:13
+#: inc/Waymark_Admin.php:178 inc/Waymark_Taxonomies.php:13
 msgid "Collections"
 msgstr ""
 
@@ -75,12 +89,12 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: inc/Admin/Waymark_Menu.php:119 inc/Admin/Waymark_Meta.php:128
+#: inc/Admin/Waymark_Menu.php:119 inc/Admin/Waymark_Meta.php:129
 msgid "Photo Location Detection Not Supported!"
 msgstr ""
 
 #: inc/Admin/Waymark_Menu.php:124 inc/Admin/Waymark_Menu.php:208
-#: inc/Admin/Waymark_Meta.php:141
+#: inc/Admin/Waymark_Meta.php:142
 msgid "Read the Docs"
 msgstr ""
 
@@ -114,7 +128,7 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-#: inc/Admin/Waymark_Menu.php:147 inc/Admin/Waymark_Meta.php:49
+#: inc/Admin/Waymark_Menu.php:147 inc/Admin/Waymark_Meta.php:50
 #: inc/Waymark_Config.php:20
 msgid "Description"
 msgstr ""
@@ -155,23 +169,23 @@ msgstr ""
 msgid "Map Editor"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:30 inc/Waymark_Front.php:56
+#: inc/Admin/Waymark_Meta.php:30 inc/Front/Waymark_JS.php:19
 msgid "View Fullscreen"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:31 inc/Waymark_Front.php:57
+#: inc/Admin/Waymark_Meta.php:31 inc/Front/Waymark_JS.php:20
 msgid "Exit Fullscreen"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:32 inc/Waymark_Front.php:58
+#: inc/Admin/Waymark_Meta.php:32 inc/Front/Waymark_JS.php:21
 msgid "Show me where I am"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:33 inc/Waymark_Front.php:59
+#: inc/Admin/Waymark_Meta.php:33 inc/Front/Waymark_JS.php:22
 msgid "Zoom in"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:34 inc/Waymark_Front.php:60
+#: inc/Admin/Waymark_Meta.php:34 inc/Front/Waymark_JS.php:23
 msgid "Zoom out"
 msgstr ""
 
@@ -205,129 +219,133 @@ msgid ""
 "should Export to)"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:43
-msgid "Delete"
+#: inc/Admin/Waymark_Meta.php:43 inc/Waymark_Admin.php:109
+msgid "Duplicate"
 msgstr ""
 
 #: inc/Admin/Waymark_Meta.php:44
-msgid "Edit"
+msgid "Delete"
 msgstr ""
 
 #: inc/Admin/Waymark_Meta.php:45
-msgid "Finish editing"
+msgid "Edit"
 msgstr ""
 
 #: inc/Admin/Waymark_Meta.php:46
+msgid "Finish editing"
+msgstr ""
+
+#: inc/Admin/Waymark_Meta.php:47
 msgid "Upload Image"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:47 inc/Admin/Waymark_Settings.php:316
+#: inc/Admin/Waymark_Meta.php:48 inc/Admin/Waymark_Settings.php:316
 msgid "Title"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:48
+#: inc/Admin/Waymark_Meta.php:49
 msgid "Image URL"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:50 inc/Admin/Waymark_Settings.php:347
+#: inc/Admin/Waymark_Meta.php:51 inc/Admin/Waymark_Settings.php:347
 msgid "Type"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:51
+#: inc/Admin/Waymark_Meta.php:52
 msgid "Lat,Lng"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:52
+#: inc/Admin/Waymark_Meta.php:53
 msgid "Are you sure you want to delete this"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:53
+#: inc/Admin/Waymark_Meta.php:54
 msgid "Search..."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:54 inc/Admin/Waymark_Settings.php:88
+#: inc/Admin/Waymark_Meta.php:55 inc/Admin/Waymark_Settings.php:88
 #: inc/Admin/Waymark_Settings.php:101 inc/Admin/Waymark_Settings.php:105
 #: inc/Admin/Waymark_Settings.php:113 inc/Admin/Waymark_Settings.php:126
 #: inc/Admin/Waymark_Settings.php:139 inc/Admin/Waymark_Settings.php:150
 msgid "Marker"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:55 inc/Admin/Waymark_Settings.php:169
+#: inc/Admin/Waymark_Meta.php:56 inc/Admin/Waymark_Settings.php:169
 #: inc/Admin/Waymark_Settings.php:182 inc/Admin/Waymark_Settings.php:186
 #: inc/Admin/Waymark_Settings.php:194 inc/Admin/Waymark_Settings.php:206
 #: inc/Admin/Waymark_Settings.php:217
 msgid "Line"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:56 inc/Admin/Waymark_Settings.php:236
+#: inc/Admin/Waymark_Meta.php:57 inc/Admin/Waymark_Settings.php:236
 #: inc/Admin/Waymark_Settings.php:249 inc/Admin/Waymark_Settings.php:253
 #: inc/Admin/Waymark_Settings.php:261 inc/Admin/Waymark_Settings.php:273
 #: inc/Admin/Waymark_Settings.php:284
 msgid "Shape"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:57 inc/Admin/Waymark_Settings.php:83
+#: inc/Admin/Waymark_Meta.php:58 inc/Admin/Waymark_Settings.php:83
 msgid "Markers"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:58 inc/Admin/Waymark_Settings.php:164
+#: inc/Admin/Waymark_Meta.php:59 inc/Admin/Waymark_Settings.php:164
 msgid "Lines"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:59 inc/Admin/Waymark_Settings.php:231
+#: inc/Admin/Waymark_Meta.php:60 inc/Admin/Waymark_Settings.php:231
 msgid "Shapes"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:60
+#: inc/Admin/Waymark_Meta.php:61
 msgid "Waymark Error"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:61
+#: inc/Admin/Waymark_Meta.php:62
 msgid "Waymark Info"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:62
+#: inc/Admin/Waymark_Meta.php:63
 msgid "This file type is not supported."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:63
+#: inc/Admin/Waymark_Meta.php:64
 msgid "Could not convert this file to GeoJSON."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:64
+#: inc/Admin/Waymark_Meta.php:65
 msgid "File upload error."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:65
+#: inc/Admin/Waymark_Meta.php:66
 msgid "Could not retrieve Photo metadata."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:111
+#: inc/Admin/Waymark_Meta.php:112
 msgid "Download the Overlays added to this Map in the selected format."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:120
+#: inc/Admin/Waymark_Meta.php:121
 msgid ""
 "Add this Map to your content with this Shortcode. Click here for more "
 "details."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:132
+#: inc/Admin/Waymark_Meta.php:133
 msgid "Read from File"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:133
+#: inc/Admin/Waymark_Meta.php:134
 msgid ""
 "You can read Lines and Markers from GPX, KML and GeoJSON files (most mapping "
 "apps will be able to export to one of these)."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:135 inc/Admin/Waymark_Settings.php:88
+#: inc/Admin/Waymark_Meta.php:136 inc/Admin/Waymark_Settings.php:88
 #: inc/Admin/Waymark_Settings.php:169 inc/Admin/Waymark_Settings.php:236
 msgid "Types"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:138 inc/Admin/Waymark_Settings.php:49
+#: inc/Admin/Waymark_Meta.php:139 inc/Admin/Waymark_Settings.php:49
 #: inc/Admin/Waymark_Settings.php:53 inc/Admin/Waymark_Settings.php:61
 #: inc/Admin/Waymark_Settings.php:71
 msgid "Basemap"
@@ -874,6 +892,14 @@ msgid ""
 "selected format."
 msgstr ""
 
+#: inc/Front/Waymark_JS.php:25
+msgid "Max. Elevation: "
+msgstr ""
+
+#: inc/Front/Waymark_JS.php:26
+msgid "Min. Elevation: "
+msgstr ""
+
 #: inc/Front/Waymark_Shortcode.php:141
 msgid "View Details"
 msgstr ""
@@ -917,35 +943,27 @@ msgstr ""
 msgid "The file type uploaded is not supported."
 msgstr ""
 
-#: inc/Waymark_Admin.php:60
-msgid "Remove!"
-msgstr ""
-
-#: inc/Waymark_Admin.php:110
+#: inc/Waymark_Admin.php:91
 msgid "Can not duplicate, no post to supplied!"
 msgstr ""
 
-#: inc/Waymark_Admin.php:115
+#: inc/Waymark_Admin.php:96
 msgid "Security verification error!"
 msgstr ""
 
-#: inc/Waymark_Admin.php:128
+#: inc/Waymark_Admin.php:109
 msgid "Duplicate this post"
 msgstr ""
 
-#: inc/Waymark_Admin.php:128
-msgid "Duplicate"
-msgstr ""
-
-#: inc/Waymark_Admin.php:141
+#: inc/Waymark_Admin.php:122
 msgid "Shortcode"
 msgstr ""
 
-#: inc/Waymark_Admin.php:161
+#: inc/Waymark_Admin.php:142
 msgid "Date"
 msgstr ""
 
-#: inc/Waymark_Admin.php:198
+#: inc/Waymark_Admin.php:179
 #, php-format
 msgid ""
 "Collections allow you to organise your Maps. Use the <a href=\"%s"
@@ -953,7 +971,7 @@ msgid ""
 "class=\"button waymark-right\">Read the Docs &raquo;</a>"
 msgstr ""
 
-#: inc/Waymark_Admin.php:204
+#: inc/Waymark_Admin.php:185
 #, php-format
 msgid ""
 "Create Maps here, then add them to your content using the <a href=\"%s"
@@ -961,11 +979,11 @@ msgid ""
 "Video &raquo;</a>"
 msgstr ""
 
-#: inc/Waymark_Admin.php:222
+#: inc/Waymark_Admin.php:203
 msgid "Creating a Map"
 msgstr ""
 
-#: inc/Waymark_Admin.php:223
+#: inc/Waymark_Admin.php:204
 #, php-format
 msgid ""
 "<span class=\"waymark-lead\">Use the Map <a href=\"%s\">Editor</a> to place "
@@ -976,14 +994,14 @@ msgid ""
 "Video &raquo;</a>"
 msgstr ""
 
-#: inc/Waymark_Admin.php:226 inc/Waymark_Admin.php:230
+#: inc/Waymark_Admin.php:207 inc/Waymark_Admin.php:211
 #, php-format
 msgid ""
 "You can add the Map to your content using the %s <a href=\"%s\">Shortcode</"
 "a>. <a class=\"button waymark-right\" href=\"%s\">Watch the Video &raquo;</a>"
 msgstr ""
 
-#: inc/Waymark_Admin.php:229 inc/Waymark_Types.php:24
+#: inc/Waymark_Admin.php:210 inc/Waymark_Types.php:24
 msgid "Edit Map"
 msgstr ""
 
@@ -1042,14 +1060,6 @@ msgstr ""
 
 #: inc/Waymark_Config.php:78 inc/Waymark_Config.php:86
 msgid "Blue"
-msgstr ""
-
-#: inc/Waymark_Front.php:62
-msgid "Max. Elevation: "
-msgstr ""
-
-#: inc/Waymark_Front.php:63
-msgid "Min. Elevation: "
 msgstr ""
 
 #: inc/Waymark_Taxonomies.php:16

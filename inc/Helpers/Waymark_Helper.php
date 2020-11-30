@@ -64,7 +64,7 @@ class Waymark_Helper {
 		if(! $title) {
 			$title = Waymark_Config::get_name();
 		}
-		return '<img class="waymark-logo" alt="' . Waymark_Config::get_name() . '" src="' . self::asset_url('admin/img/waymark-icon-' . $colour . '.png') . '" width="' . $width . '" height="' . $height . '" />';
+		return '<img class="waymark-logo" alt="' . Waymark_Config::get_name() . '" src="' . self::asset_url('img/waymark-icon-' . $colour . '.png') . '" width="' . $width . '" height="' . $height . '" />';
 	}
 	
 	static public function site_url($url_path = '') {
@@ -102,16 +102,21 @@ class Waymark_Helper {
 		return $meta_out;
 	}	
 
-	static public function get_map_meta($Map) {
+	static public function get_map_meta($Map, $context = 'map_single') {
 		$map_meta = array();
 		
 		//Get settings
-		$settings_meta = Waymark_Config::get_item('meta', 'inputs');		
-		$settings_meta = Waymark_Helper::convert_values_to_single_value($settings_meta);
-		$settings_meta = Waymark_Helper::convert_single_value_to_array($settings_meta);		
+		$settings_meta = Waymark_Config::get_item('meta', 'inputs', true);		
 			
 		//For each setting
 		foreach($settings_meta as $setting_meta) {
+			//Shortcode output setting
+			//If we are displaying the shortcode *and* there is a meta_shortcode setting *AND* it's set to false
+			if($context == 'shortcode' && (isset($setting_meta['meta_shortcode']) && ! $setting_meta['meta_shortcode'])) {
+				//Don't display this
+				continue;
+			}
+			
 			$meta_key = self::make_key($setting_meta['meta_title'], 'map');
 
 			//If we have data
@@ -119,6 +124,7 @@ class Waymark_Helper {
 				$data = array(
 					'meta_key' => $meta_key,
 					'meta_title' => $setting_meta['meta_title'],
+					'meta_group' => isset($setting_meta['meta_group']) ? $setting_meta['meta_group'] : ''
 				);
 				
 				//Select				
@@ -150,40 +156,161 @@ class Waymark_Helper {
 					$data['meta_value'] = $Map->data[$meta_key];
 				}
 				
-				$map_meta[] = $data;
+				$map_meta[$meta_key] = $data;
 			}
-		}	
+		}
+
+		//Display Collections?
+		if(Waymark_Config::get_setting('misc', 'collection_options', 'link_from_maps')) {
+			$collection_list = get_the_term_list($Map->post_id, 'waymark_collection', '', '<!--,-->, ');
+			if($collection_list) {
+		
+				$meta_title = esc_html__('Collection', 'waymark');
+// 					if(strpos($collection_list, '<!--,-->')) {
+// 						$meta_title .= 's';
+// 					}				
+		
+				$map_meta['collection_list'] = array(
+					'meta_key' => 'collection_list',
+					'meta_title' => $meta_title,
+					'meta_value' => $collection_list,
+					'meta_group' => ''					
+				);
+			}
+		}
+					
+		//Add Export dropdown/link
+		$has_features = array_key_exists('map_data', $Map->data) && Waymark_Helper::geojson_feature_count($Map->data['map_data']);
+		if($has_features && Waymark_Config::get_setting('misc', 'map_options', 'allow_export') == true) {			
+			$map_meta['export_data'] = array(
+				'meta_key' => 'export_data',
+				'meta_title' => esc_html__('Export', 'waymark'),
+				'meta_value' => Waymark_Helper::map_export_html($Map),
+				'meta_info' => '<a data-title="' . esc_attr__('This will download the Overlays currently displayed by the Map in the selected format.', 'waymark') . '" href="#" onclick="return false;" class="waymark-tooltip">?</a>',
+				'meta_group' => ''					
+			);
+		}			
+		
+// 		Waymark_Helper::debug($map_meta);
 		
 		return $map_meta;
 	}
 
-	static public function meta_table($meta_array = array()) {
+	static public function get_meta_groups() {
+		//Get Groups
+		$meta_groups = Waymark_Config::get_item('meta', 'groups', true);
+		$meta_groups = self::multi_use_as_key($meta_groups, 'group_title');	
+		
+		return $meta_groups;	
+	}
+	
+	static public function group_meta($meta_array, $meta_groups = []) {
+		if(! $meta_groups) {
+			//Get Groups
+			$meta_groups = Waymark_Helper::get_meta_groups();
+		}
+		
+		//Sort into groups
+		$meta_grouped = [];
+		foreach($meta_array as $meta) {	
+			//Group exists
+			if(array_key_exists($meta['meta_group'], $meta_groups)) {
+				$meta_grouped[$meta['meta_group']][$meta['meta_key']] = $meta;				
+			//Group does not exist
+			} else {
+				//Add to "None"
+				$meta_grouped[''][$meta['meta_key']] = $meta;									
+			}
+		}
+		
+		return $meta_grouped;
+	}
+
+	static public function map_meta_html($meta_array = array()) {
 		$out = '';
 		
+		//Do we have data?		
 		if(is_array($meta_array) && sizeof($meta_array)) {
-			$out .= '<table class="waymark-meta-table">' . "\n";	
+			//Get Meta Groups
+			$meta_groups = Waymark_Helper::get_meta_groups();
 
-			foreach($meta_array as $meta) {	
-				//Ensure we have a value
-				if(isset($meta['meta_value'])) {
-					$out .= '	<tr id="waymark-meta-' . $meta['meta_key'] . '" class="waymark-meta-row">' . "\n";			
-					$out .= '		<th class="waymark-meta-title" scope="row">' . $meta['meta_title'] . '</th>' . "\n";	
-					$out .= '		<td class="waymark-meta-content">' . $meta['meta_value'] . '</td>' . "\n";	
-					$out .= '		<td class="waymark-meta-info">' . "\n";
-					if(array_key_exists('meta_info', $meta) && ! empty($meta['meta_info'])) {
-						$out .= $meta['meta_info'];
-					}
-					$out .= '</td>' . "\n";	
+			//Sort into groups
+			$meta_grouped = Waymark_Helper::group_meta($meta_array, $meta_groups);
+			
+			//Container					
+			$out = '<!-- START Parameter Container -->' . "\n";
+			$out .= '<div class="waymark-map-meta waymark-accordion-container">' . "\n";	
 
+			//Do ungrouped first
+			if(isset($meta_grouped[''])) {
+				$out .= '	<div class="waymark-map-meta-ungrouped">' . "\n";	
 
-					$out .= '	</tr>' . "\n";				
+				foreach($meta_grouped[''] as $meta) {
+					$out .= self::meta_entry_html($meta);			
 				}
+				$out .= '	</div>' . "\n";	
+
+				unset($meta_grouped['']);
+			}
+			
+			//Iterate by group
+			if(sizeof($meta_groups)) {
+				$out .= '	<div class="waymark-map-meta-grouped">' . "\n";	
+
+				foreach($meta_groups as $group_key => $meta_groups) {
+					//Do we have meta for this group?
+					if(isset($meta_grouped[$group_key])) {
+						$out .= '		<div class="waymark-meta-group waymark-accordion-group waymark-meta-group-' . $group_key . '">' . "\n";			
+
+						$group_meta = $meta_grouped[$group_key];
+
+						//Container
+						$out .= '			<legend class="waymark-meta-group-title" title="Click to expand">' . $meta_groups['group_title'] . '</legend>' . "\n";			
+						$out .= '			<div class="waymark-accordion-group-content">' . "\n";			
+				
+						//Each meta in group
+						foreach($group_meta as $meta) {	
+							$out .= self::meta_entry_html($meta);			
+						}
+
+						$out .= '			</div>' . "\n";								
+						$out .= '		</div>' . "\n";								
+					}
+				}			
+				$out .= '	</div>' . "\n";	
 			}
 
-			$out .= '</table>' . "\n";	
+			$out .= '</div>' . "\n";	
+			$out .= '<!-- END Parameter Container -->' . "\n";			
 		}
 		
 		return $out;
+	}
+
+	static public function meta_entry_html($meta) {
+		$out = '';
+		
+		//Ensure we have a value
+		if(! isset($meta['meta_value'])) {
+     return $out;
+		}		
+		
+		$out .= '	<div class="waymark-meta-item waymark-meta-' . $meta['meta_key'] . '">' . "\n";			
+		//Special case
+		if($meta['meta_key'] == 'map_description') {
+			$out .= '		<div colspan="3" class="waymark-meta-content">' . $meta['meta_value'] . '</div>' . "\n";						
+		} else {
+			$out .= '		<div class="waymark-meta-info">' . "\n";
+			if(array_key_exists('meta_info', $meta) && ! empty($meta['meta_info'])) {
+				$out .= $meta['meta_info'];
+			}
+			$out .= '		</div>' . "\n";	
+			$out .= '		<div class="waymark-meta-title" scope="row">' . $meta['meta_title'] . '</div>' . "\n";	
+			$out .= '		<div class="waymark-meta-content">' . $meta['meta_value'] . '</div>' . "\n";				
+		}					
+		$out .= '	</div>' . "\n";	
+		
+		return $out;	
 	}
 
 	static public function flatten_meta($data_in) {
@@ -477,27 +604,25 @@ class Waymark_Helper {
 	}	
 	
 	public static function get_object_types($type = 'marker', $use_key = false, $as_options = false) {
-		$marker_types = Waymark_Config::get_item($type . 's', $type . '_types');
-		$marker_types = self::convert_values_to_single_value($marker_types);
-		$marker_types = self::convert_single_value_to_array($marker_types);	
-		
+		$object_types = Waymark_Config::get_item($type . 's', $type . '_types', true);
+
 		//Use keys
 		if($use_key) {
-			$marker_types = self::multi_use_as_key($marker_types, $use_key);			
+			$object_types = self::multi_use_as_key($object_types, $use_key);			
 			
 			//Convert to dropdown
 			if($as_options) {
-				foreach($marker_types as $key => $data) {
+				foreach($object_types as $key => $data) {
 					if(array_key_exists($use_key, $data)) {
-						$marker_types[$key] = $data[$use_key];
+						$object_types[$key] = $data[$use_key];
 					} else {
-						$marker_types[$key] = $key;					
+						$object_types[$key] = $key;					
 					}
 				}
 			}
 		}	
 		
-		return $marker_types;
+		return $object_types;
 	}
 
 	public static function array_string_to_array($string) {
@@ -535,7 +660,7 @@ class Waymark_Helper {
 			return false;
 		}
 		
-		$out  = '<div id="waymark-map-export" data-map_id="' . $Map->post_id . '" data-map_slug="' . sanitize_title($Map->post_title) . '">' . "\n";
+		$out  = '<div id="waymark-map-export-' . $Map->post_id . '" class="waymark-map-export" data-map_id="' . $Map->post_id . '" data-map_slug="' . sanitize_title($Map->post_title) . '">' . "\n";
 		$out .= '	<select name="export_format">' . "\n";
 		$out .= '		<option value="geojson">GeoJSON</option>' . "\n";
 		$out .= '		<option value="gpx">GPX</option>' . "\n";
@@ -555,5 +680,24 @@ class Waymark_Helper {
 		}
 
 		return false;	
+	}
+	
+	static public function repeatable_setting_option_array($tab, $section, $key) {
+		$options_array = array();
+		$values = Waymark_Config::get_item($tab, $section, true);
+		
+		if(! is_array($values)) {
+			return null;
+		}
+		
+		foreach($values as $s) {
+			//If exists
+			if(array_key_exists($key, $s)) {
+				//Add as option
+				$options_array[Waymark_Helper::make_key($s[$key])] = $s[$key];
+			}		
+		}
+		
+		return $options_array;
 	}
 }

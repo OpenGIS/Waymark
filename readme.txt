@@ -4,7 +4,7 @@ Tags: leaflet, openstreetmap, elevation, maps, embed, GPX, KML, GeoJSON, mapping
 Requires at least: 3.2
 Tested up to: 5.5
 Requires PHP: 5.2
-Stable tag: 0.9.15-a1
+Stable tag: 0.9.15-b1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,8 @@ Using the <a href="https://www.joesway.ca/waymark/docs/editor/">Editor</a>, each
 
 Waymark was designed to be very customisable, allowing you to change icons, colours and styles, as well as the ability to add multiple <a href="https://www.joesway.ca/waymark/docs/basemaps/">Basemaps</a>.
 
+<a href="https://github.com/morehawes/waymark">View Waymark on GitHub &raquo;</a>
+
 = Gallery =
 
 An image gallery can be displayed at the bottom of the Map for Markers that have images associated with them. Clicking on an image will display the relevant Marker. Photos are added through the WordPress Media Library and if Waymark detects location metadata (EXIF), photos are added to the Map where they were taken. 
@@ -37,7 +39,7 @@ You can see an example of a Line with elevation data <a href="https://www.joeswa
 
 = Meta =
 
-<a href="https://www.joesway.ca/waymark/docs/meta/">Meta</a> allows you to add information about your Map. By default this is a "Description" field which displays under the Map Editor. You can customise the input fields that are displayed alongside the editor in Waymark > Settings > Meta. Any Meta added will be displayed on the <a href="https://www.joesway.ca/map/route-map/">Map Details</a> page. Text, Textarea, Rich Text, Select and Multi-Select input types are available.
+<a href="https://www.joesway.ca/waymark/docs/meta/">Meta</a> allows you to add information about your Map. By default this is a "Description" field which displays under the Map Editor. You can customise the input fields that are displayed alongside the editor in Waymark > Settings > Meta. Any Meta added will be displayed on the <a href="https://www.joesway.ca/map/route-map/">Map Details</a> page, and can also be displayed through the <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. Text, Textarea, Rich Text, Select and Multi-Select input types are available.
 
 = Collections =
 
@@ -102,8 +104,19 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 
 = 0.9.15 =
 
-* Gallery JavaScript bug fix
+* **Meta**
+    * Meta can now be organised into groups. Meta in the same group will be displayed together when editing and viewing Maps. Groups can be managed in Settings > Meta > Groups.
+    * New layout for Meta to incorporate Meta Groups on Map Details page.
+* **Shortcode**
+    * Meta can now be displayed using the Shortcode by clicking "Details" in the Shortcode Header. Use the Settings > Meta > "In Shortcode?" option to specify which Meta is displayed. Note: this feature requires the Shortcode Header be set to "Show" in Settings > Misc. > Shortcode Options.
+    * The Export option is now available through the Shortcode, if the "Public Export" option is enabled (Settings > Misc. > Map Options).
+* **Editor** 
+    * Overlay descriptions now use a rich text editor.
+    * Added the ability to duplicate Markers/Lines/Shapes in the Edtior.
+    * Editor circle bug fix.
+* Gallery JavaScript bug fix.
 * Plugin is now translation ready!
+* Plugin now <a href="https://github.com/morehawes/waymark">on GitHub</a>.
 
 = 0.9.14 =
 

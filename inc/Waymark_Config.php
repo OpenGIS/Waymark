@@ -11,7 +11,7 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',		
 			'custom_types' => array(),
-			'plugin_version' => '0.9.15-a1',
+			'plugin_version' => '0.9.15-b1',
 			'site_url' => 'https://www.joesway.ca/waymark/',
 			'multi_value_seperator' => $multi_value_seperator,
 			'shortcode' => 'Waymark',
@@ -21,7 +21,9 @@ class Waymark_Config {
 					'meta_default' => '',
 					'meta_tip' => esc_html__('The Description you enter here will be displayed on the Map Details page.', 'waymark'),
 					'meta_type' => 'textarea_rich',
-					'meta_options' => ''										
+					'meta_group' => '',
+					'meta_options' => '',
+					'meta_shortcode' => '0'
 				)
 			),
 			'misc' => array(
@@ -135,12 +137,29 @@ class Waymark_Config {
 		}
 	}
 
-	public static function get_item($key, $key_2 = null) {	
+	public static function get_item($key, $key_2 = null, $is_repeatable = false) {	
+		//Waymark_Helper::debug(self::$data);
+
 		if(array_key_exists($key, self::$data)) {
 			if(is_array(self::$data[$key]) && array_key_exists($key_2, self::$data[$key])) {
-				return self::$data[$key][$key_2];
+				//Single value
+				if(! $is_repeatable) {
+					return self::$data[$key][$key_2];
+				//Multi-value
+				} else {
+					//Convert
+					$values = self::$data[$key][$key_2];
+					$values = Waymark_Helper::convert_values_to_single_value($values);
+					$values = Waymark_Helper::convert_single_value_to_array($values);				
+					
+					return $values;
+				}
 			} else {
-				return self::$data[$key];
+				if(! $is_repeatable) {
+					return self::$data[$key];
+				} else {
+					return [];
+				}
 			}			
 		} else {
 			return null;

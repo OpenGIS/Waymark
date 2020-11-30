@@ -1,0 +1,139 @@
+/*
+	==================================
+	============= EDITOR =============
+	==================================
+*/
+.waymark-map-container.waymark-is-editor div.waymark-edit-toolbar a.waymark-edit-button {
+  padding: 5px;
+  color: #b42714;
+}
+.waymark-map-container.waymark-is-editor div.waymark-edit-toolbar a.waymark-edit-button.waymark-edit-line.waymark-icon {
+  background-size: 20px 20px;
+  background-image: url('../images/waymark-icon-red.png');
+}
+.waymark-map-container.waymark-is-editor div.waymark-edit-toolbar a.waymark-edit-button.waymark-edit-marker i {
+  margin-top: 3px;
+  font-size: 24px;
+}
+.waymark-map-container.waymark-is-editor div.waymark-edit-toolbar a.waymark-edit-button.waymark-edit-polygon i {
+  font-size: 19px;
+  transform: skew(-36deg, 20deg);
+  margin-top: 5px;
+}
+.waymark-map-container.waymark-is-editor div.waymark-edit-toolbar a.waymark-edit-button.waymark-edit-rectangle i {
+  margin-top: 6px;
+  font-size: 18px;
+}
+.waymark-map-container.waymark-is-editor div.waymark-edit-toolbar a.waymark-edit-button.waymark-edit-circle i {
+  margin-top: 5px;
+  font-size: 20px;
+}
+.waymark-map-container.waymark-is-editor div.waymark-edit-toolbar a.waymark-edit-button.waymark-edit-image i {
+  margin-top: 6px;
+  font-size: 18px;
+}
+.waymark-map-container.waymark-is-editor div.waymark-edit-toolbar a.waymark-edit-button.waymark-edit-upload {
+  position: relative;
+}
+.waymark-map-container.waymark-is-editor div.waymark-edit-toolbar a.waymark-edit-button.waymark-edit-upload i.ion-document {
+  margin-top: 4px;
+  font-size: 22px;
+}
+.waymark-map-container.waymark-is-editor div.waymark-edit-toolbar a.waymark-edit-button.waymark-edit-upload i.ion-arrow-up-c {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info {
+  width: 240px;
+  height: 360px;
+  position: relative;
+  list-style-type: none;
+  padding-left: 0;
+  z-index: 1;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li {
+  margin-bottom: 10px;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-description,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-title,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-type {
+  width: 100%;
+  max-width: 100%;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-description input,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-title input,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-type input,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-description textarea,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-title textarea,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-type textarea,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-description select,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-title select,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-type select {
+  width: inherit !important;
+  max-width: inherit !important;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-description {
+  margin-bottom: 0;
+  overflow: hidden;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-description textarea {
+  height: 120px;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-type {
+  margin-top: 10px;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url {
+  position: relative;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 54px;
+  height: 54px;
+  border: 1px solid #d2d2d2;
+  background-color: #f9f9f9;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url a.waymark-hover {
+  left: -2px;
+  width: 240px;
+  height: 240px;
+  z-index: 1000;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url a.waymark-hover img {
+  width: inherit;
+  height: inherit;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url a img {
+  width: 54px;
+  height: 54px;
+  border: none;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url input,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url button {
+  display: block;
+  margin-left: 60px;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url input {
+  margin-bottom: 6px;
+  width: 120px;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button {
+  margin-right: 6px;
+  display: inline;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button .ion-android-done,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button .ion-edit,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button .ion-ios-copy,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button .ion-trash-a {
+  font-size: 16px;
+  margin-top: 5px;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li select,
+.waymark-map-container.waymark-is-editor ul.waymark-info li textarea,
+.waymark-map-container.waymark-is-editor ul.waymark-info li input {
+  width: 100%;
+  max-width: 180px;
+  border: 1px solid #d2d2d2;
+}

@@ -40,6 +40,7 @@ class Waymark_Meta {
 			'add_polygon_title' => esc_attr__('Draw a Polygon', 'waymark'),
 			'add_circle_title' => esc_attr__('Draw a Circle', 'waymark'),
 			'upload_file_title' => esc_attr__('Read Lines and Markers from file (GPX/KML/GeoJSON supported, which most apps should Export to)', 'waymark'),
+			'action_duplicate' => esc_attr__('Duplicate', 'waymark'),
 			'action_delete' => esc_attr__('Delete', 'waymark'),
 			'action_edit' => esc_attr__('Edit', 'waymark'),
 			'action_edit_done' => esc_attr__('Finish editing', 'waymark'),		
@@ -144,8 +145,11 @@ class Waymark_Meta {
 	}
 
 	function get_map_form() {	
-		//WP Media
+		//WP Media Library
 		wp_enqueue_media();
+		
+		//WP TinyMCE
+		wp_enqueue_editor();
 		
 		global $post;
 

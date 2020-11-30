@@ -9,6 +9,16 @@ class Waymark_JS {
 		self::add_chunk('//' . Waymark_Config::get_name(true, true) . ' v' . Waymark_Config::get_version());
 		
 		add_action('admin_footer', array('Waymark_JS', 'admin_footer'));					
+		add_action('admin_enqueue_scripts', array('Waymark_JS', 'enqueue_scripts'));										
+	}
+	
+	static function enqueue_scripts() {
+		wp_register_script('waymark_admin_js', Waymark_Helper::asset_url('js/admin.min.js'), array('jquery', 'jquery-ui-sortable', 'jquery-effects-core', 'wp-color-picker'), Waymark_Config::get_version());
+		//Localize
+		wp_localize_script('waymark_admin_js', 'waymark_php_lang', array(
+			'repeatable_delete_title' => esc_attr__('Remove!', 'waymark'),
+		));
+		wp_enqueue_script('waymark_admin_js');			
 	}
 	
 	static function add_chunk($chunk) {	

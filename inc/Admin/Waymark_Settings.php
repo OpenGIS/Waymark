@@ -294,6 +294,10 @@ class Waymark_Settings {
 		);	
 			
 		//Meta
+
+		$meta_group_options = Waymark_Helper::repeatable_setting_option_array('meta', 'groups', 'group_title');
+		$meta_group_options = array_merge(['' => 'None'], $meta_group_options);
+		
 		$this->tabs['meta'] = array(
 			'name' => esc_html__('Meta', 'waymark'),
 			'description' => '',
@@ -301,7 +305,7 @@ class Waymark_Settings {
 				'inputs' => array(
 					'repeatable' => true,
 					'title' => esc_html__('Meta', 'waymark'),
-					'description' => '<span class="waymark-lead">' . __(sprintf('Create additional input fields that appear underneath the Map Editor. Any Meta that has been input is displayed on the <a href="%s">Map Details</a> page.', 'https://www.joesway.ca/map/route-map/'), 'waymark') . '</span>',
+					'description' => '<span class="waymark-lead">' . __(sprintf('Create additional input fields that appear underneath the Map Editor. Any Meta that has been input is displayed on the <a href="%s">Map Details</a> page, and can also be displayed by the Shortcode.', 'https://www.joesway.ca/map/route-map/'), 'waymark') . '</span>',
 					'help' => array(
 						'url' => esc_attr(Waymark_Helper::site_url('docs/meta')),
 						'text' => esc_attr__('View Docs &raquo;')
@@ -363,19 +367,59 @@ class Waymark_Settings {
 							'title' => '<span class="waymark-invisible">' . esc_html__('Meta', 'waymark') . '</span> ' . esc_html__('Options', 'waymark'),
 							'default' => Waymark_Config::get_setting('meta', 'inputs', 'meta_options'),
 							'tip' => esc_attr__('A comma-separated list of options for the input.', 'waymark')
-						)												
+						),
+						'meta_group' => array(
+							'name' => 'meta_group',
+							'id' => 'meta_group',
+							'type' => 'select',
+							'options' => $meta_group_options,
+							'class' => (sizeof($meta_group_options) === 1) ? 'waymark-hidden' : '',				
+							'title' => '<span class="waymark-invisible">' . esc_html__('Meta', 'waymark') . '</span> ' . esc_html__('Group', 'waymark'),
+							'default' => Waymark_Config::get_setting('meta', 'inputs', 'meta_group'),
+							'tip' => esc_attr__('Which group this Meta belongs to (if any). Meta in the same group will be displayed together when editing and viewing Maps. Meta not in a group will be displayed above any groups.', 'waymark')
+						),						
+						'meta_shortcode' => array(
+							'name' => 'meta_shortcode',
+							'id' => 'meta_shortcode',
+							'type' => 'boolean',
+							'class' => '',	
+							'title' => '<span class="waymark-invisible">' . esc_html__('Meta', 'waymark') . '</span> ' . esc_html__('In Shortcode?', 'waymark'),									
+							'default' => Waymark_Config::get_setting('meta', 'inputs', 'meta_shortcode'),
+							'tip' => esc_attr__('Whether this content should be displayed when embedding a Map using the Shortcode.', 'waymark'),
+						)
 					)																										
-				)
+				),
+				'groups' => array(
+					'repeatable' => true,
+					'title' => esc_html__('Groups', 'waymark'),
+ 					'description' => '<span class="waymark-lead">' . __('Create groups to organise your Map Meta. Meta in the same group will be displayed together when editing and viewing Maps.', 'waymark') . '</span>',
+					'footer' => '<small>' . __('<b>Pro Tip!</b> Drag to re-order, remove all to disable groups.', 'waymark') . '</small>',
+					'fields' => array(
+						'group_title' => array(
+							'name' => 'group_title',
+							'id' => 'group_title',
+							'type' => 'text',
+							'class' => '',				
+							'title' => '<u>' . esc_html__('Group', 'waymark') . '</u> ' . esc_html__('Title', 'waymark'),
+ 							'default' => '',
+ 							'tip' => esc_attr__('The title appears above the Meta in that group.', 'waymark'),
+// 							'class' => Waymark_Config::get_item('meta', 'inputs') ? 'waymark-uneditable' : '',
+// 							'input_processing' => array(
+// 								'(! empty($param_value)) ? $param_value : "' . esc_html__('Meta', 'waymark') . ' ' . substr(md5(rand(0,999999)), 0, 5) . '";'	//Fallback
+// 							)								
+						)
+					)
+				)				
 			)			
 		);	
 
 		//Prepare Basemap values for editor option
-		$tile_layers = Waymark_Config::get_item('tiles', 'layers');
-		$basemap_options = array();
-		$tile_layers = Waymark_Helper::convert_values_to_single_value($tile_layers);
-		$tile_layers = Waymark_Helper::convert_single_value_to_array($tile_layers);
+		$tile_layers = Waymark_Config::get_item('tiles', 'layers', true);
+
+		//Waymark_Helper::debug($tile_layers);
 		
 		//Each layer
+		$basemap_options = array();
 		foreach($tile_layers as $layer) {
 			//If name exists
 			if(array_key_exists('layer_name', $layer)) {

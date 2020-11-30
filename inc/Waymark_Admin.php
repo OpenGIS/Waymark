@@ -11,7 +11,6 @@ class Waymark_Admin {
 				
 		//Actions
 		add_action('admin_init', array($this, 'admin_init'));
-		add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));						
 		add_action('admin_menu', array($this, 'menu_init'));			
 		add_action('current_screen', array($this, 'current_screen'));	
     add_action('admin_notices', array($this, 'admin_notices'));
@@ -42,24 +41,6 @@ class Waymark_Admin {
  		if(Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) {
 	 		Waymark_JS::add_call('jQuery("body").addClass("waymark-debug");');						 		
  		}				
-	}
-	
-	function enqueue_scripts() {
-		//CSS
-		wp_register_style('waymark_shared_css', Waymark_Helper::asset_url('shared/css/shared.css'), array(), Waymark_Config::get_version());
-		wp_enqueue_style('waymark_shared_css');
-		wp_register_style('waymark_admin_css', Waymark_Helper::asset_url('admin/css/admin.css'), array(), Waymark_Config::get_version());
-		wp_enqueue_style('waymark_admin_css');	
-		
-		//JS
-		wp_register_script('waymark_shared_js', Waymark_Helper::asset_url('shared/js/shared.js'), array('jquery'), Waymark_Config::get_version());
-		wp_enqueue_script('waymark_shared_js');			
-		wp_register_script('waymark_admin_js', Waymark_Helper::asset_url('admin/js/admin.js'), array('jquery', 'jquery-ui-sortable', 'jquery-effects-core', 'wp-color-picker'), Waymark_Config::get_version());
-		//Localize
-		wp_localize_script('waymark_admin_js', 'waymark_php_lang', array(
-			'repeatable_delete_title' => esc_attr__('Remove!', 'waymark'),
-		));
-		wp_enqueue_script('waymark_admin_js');			
 	}
 	
 	function menu_init() {
