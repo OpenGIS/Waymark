@@ -149,9 +149,21 @@ class Waymark_Config {
 				} else {
 					//Convert
 					$values = self::$data[$key][$key_2];
+					
+					//Pad if necessary
+					$max_size = null;
+					foreach($values as $key => &$value) {
+						if($max_size !== null && sizeof($value) != $max_size) {
+							$value = array_pad(array(), $max_size, $value);
+						} else {
+
+							$max_size = sizeof($value);
+						}
+					}
+					
 					$values = Waymark_Helper::convert_values_to_single_value($values);
 					$values = Waymark_Helper::convert_single_value_to_array($values);				
-					
+			
 					return $values;
 				}
 			} else {

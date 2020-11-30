@@ -32,8 +32,6 @@ function waymark_setup_repeatable_sections() {
 					values = values.toString();				
 				}
 				
-				console.log(typeof values);
-
 				//Determine clone values
 				values = values.split(waymark_multi_value_seperator);
 				for(i in values) {
