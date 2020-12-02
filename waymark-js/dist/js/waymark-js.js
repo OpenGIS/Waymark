@@ -8124,27 +8124,30 @@ function Waymark_Map_Editor() {
 		//Add rich text editor
 		Waymark.map.on('popupopen', function(e) {
 			var feature = e.popup._source.feature;
-		
-			wp.editor.initialize('waymark-info-description', {
-				tinymce: {
-					toolbar1: 'styleselect | bullist numlist | link image',
-					setup: function (editor) {
-						editor.on('change', function(e) {
-							//Update properties
-							feature.properties.description = wp.editor.getContent('waymark-info-description');
+			
+			//Delay required
+			setTimeout(function() {
+				wp.editor.initialize('waymark-info-description', {
+					tinymce: {
+						toolbar1: 'styleselect | bullist numlist | link image',
+						setup: function (editor) {
+							editor.on('change', function(e) {
+								//Update properties
+								feature.properties.description = wp.editor.getContent('waymark-info-description');
 
-							Waymark.save_data_layer();
-							Waymark.map_was_edited();
-						});
-					}
-				}  				
-			})								
+								Waymark.save_data_layer();
+								Waymark.map_was_edited();
+							});
+						}
+					}  				
+				});			
+			}, 250);		
 		});
 
 		//Remove rich text editor
 		Waymark.map.on('popupclose', function(e) {
 			wp.editor.remove('waymark-info-description');
-			jQuery('#waymark-info-description').show();			
+			jQuery('#waymark-info-description').show();				
 		});
 	}		
 	

@@ -581,7 +581,7 @@
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info {
   width: 240px;
-  height: 360px;
+  height: 375px;
   position: relative;
   list-style-type: none;
   padding-left: 0;
@@ -617,6 +617,11 @@
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-type {
   margin-top: 10px;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-marker-info-latlng {
+  position: absolute;
+  bottom: -21px;
+  z-index: -1;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url {
   position: relative;
