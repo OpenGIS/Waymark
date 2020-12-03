@@ -112,11 +112,11 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
     * The Export option is now available through the Shortcode, if the "Public Export" option is enabled (Settings > Misc. > Map Options).
 * **Editor** 
     * Overlay descriptions now use a rich text editor.
-    * Added the ability to duplicate Markers/Lines/Shapes in the Edtior.
+    * Added the ability to duplicate Markers/Lines/Shapes in the Editor.
     * Editor circle bug fix.
 * Gallery JavaScript bug fix.
 * Plugin is now translation ready!
-* Plugin now <a href="https://github.com/morehawes/waymark">on GitHub</a>.
+* Waymark is now <a href="https://github.com/morehawes/waymark">on GitHub</a>.
 
 = 0.9.14 =
 
