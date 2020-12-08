@@ -147,6 +147,9 @@ div.waymark-accordion-container .waymark-accordion-group .waymark-parameter-grou
   margin-bottom: 5px;
   font-weight: bold;
 }
+.waymark-map-meta .waymark-meta-item .waymark-meta-content {
+  font-weight: normal;
+}
 .waymark-map-meta .waymark-meta-item .waymark-meta-info {
   float: right;
 }

@@ -112,8 +112,23 @@ module.exports = function(grunt) {
 			wp_js: {
 				files: ['assets/js/*.js'],
 				tasks: ['build_wp_js']
+			},
+			wp_readme: {
+				files: ['readme.txt'],
+				tasks: ['build_wp_md']
 			}			
-		}				    
+		},
+
+		wp_readme_to_markdown: {
+			build_wp_md: {
+				files: {
+					'readme.md': 'readme.txt'
+				},
+				options: {
+					screenshot_url: 'https://ps.w.org/{plugin}/assets/{screenshot}.jpg'
+				}				
+			}
+		}
   });
 
  	grunt.loadNpmTasks('grunt-terser');
@@ -122,6 +137,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-less');  
  	grunt.loadNpmTasks('grunt-contrib-copy');	
   grunt.loadNpmTasks('grunt-contrib-watch');	
+	grunt.loadNpmTasks('grunt-wp-readme-to-markdown');
 
   grunt.registerTask('default', [
   	'less',
@@ -129,7 +145,8 @@ module.exports = function(grunt) {
  		'terser',
   	'cssmin',
    	'copy',
-  	'watch'
+  	'watch',
+  	'wp_readme_to_markdown'
   ]);
 
   grunt.registerTask('build_js_js', [
@@ -155,4 +172,8 @@ module.exports = function(grunt) {
  		'concat:wp_js',
    	'terser:wp_js'
   ]);        
+
+  grunt.registerTask('build_wp_md', [
+ 		'wp_readme_to_markdown:build_wp_md'
+  ]);     
 };
