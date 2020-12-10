@@ -14,8 +14,6 @@ Mapping with WordPress Made Easy! Create interactive Maps with your choice of Ba
 
 Add Overlays (Markers, Lines and Shapes) to create detailed interactive Maps. Simply add them to your content using the Waymark <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>.
 
-[vimeo https://vimeo.com/349571522]
-
 <a href="https://www.joesway.ca/waymark/demo/">See the Demo &raquo;</a>
 <a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
 <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
@@ -54,9 +52,7 @@ Download the Overlays added to a Map in GeoJSON, GPX and KML formats while editi
 
 ### Translations ###
 
-Waymark is localization ready! Help with translations is greatly appreciated. Thanks to the following contributions:
-
-Dutch (Netherlands) - <a href="https://profiles.wordpress.org/paulvanbuuren/">paulvanbuuren</a>
+Waymark is localization ready! <a href="https://translate.wordpress.org/projects/wp-plugins/waymark/">Translation contributions</a> greatly appreciated.
 
 ### Acknowledgements ###
 
@@ -79,8 +75,6 @@ A big thank you to the following projects and their contributors. Without their 
 <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
 
 ## Installation ##
-
-[vimeo https://vimeo.com/349575095]
 
 With Waymark enabled, click on the "Maps" link in the sidebar to create and edit Maps. Once you are happy with your Map, copy the Waymark shortcode and add it to your content.
 
@@ -131,7 +125,7 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
     * Added the ability to duplicate Markers/Lines/Shapes in the Editor.
     * Editor circle bug fix.
 * Gallery JavaScript bug fix.
-* Plugin is now translation ready! Thanks to <a href="https://wordpress.org/support/topic/making-plugin-translatable/">paulvanbuuren</a> for nudge and for Dutch translation :)
+* Waymark is now localization ready! <a href="https://translate.wordpress.org/projects/wp-plugins/waymark/">Translation contributions</a> greatly appreciated :)
 * Waymark is now <a href="https://github.com/morehawes/waymark">on GitHub</a>.
 
 ### 0.9.14 ###
