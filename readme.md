@@ -14,9 +14,9 @@ Mapping with WordPress Made Easy! Create interactive Maps with your choice of Ba
 
 Add Overlays (Markers, Lines and Shapes) to create detailed interactive Maps. Simply add them to your content using the Waymark <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>.
 
-<a href="https://www.joesway.ca/waymark/demo/">See the Demo &raquo;</a>
-<a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
-<a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
+* <a href="https://www.joesway.ca/waymark/demo/">See the Demo &raquo;</a>
+* <a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
+* <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
 
 Using the <a href="https://www.joesway.ca/waymark/docs/editor/">Editor</a>, each Overlay you add to a Map can be given a title, description, image and categorised using <a href="https://www.joesway.ca/waymark/docs/types/">Types</a>. Waymark can also read Markers and Lines from file (GPX/KML/GeoJSON supported), allowing you to easily embed data stored in these formats.
 
@@ -70,9 +70,9 @@ A big thank you to the following projects and their contributors. Without their 
 * <a href="https://github.com/perliedman/leaflet-control-geocoder">leaflet-control-geocoder</a>
 * <a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>
 
-<a href="https://www.joesway.ca/waymark/demo/">See the Demo &raquo;</a>
-<a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
-<a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
+* <a href="https://www.joesway.ca/waymark/demo/">See the Demo &raquo;</a>
+* <a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
+* <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
 
 ## Installation ##
 
