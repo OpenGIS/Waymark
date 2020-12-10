@@ -7,10 +7,10 @@ class Waymark_Helper {
 		
 		$out .= '	<div id="waymark-about">' . "\n";	
 		$out .= '		<img width="75" height="75" alt="Joe\'s mug" src="//www.josephhawes.co.uk/assets/images/Joe1BW.jpg" />' . "\n";		
-		$out .= '		<p class="waymark-first"><b>' . esc_html__(sprintf("Hi, I'm %s.", "Joe"), 'waymark') . '</b></p>' . "\n";		
+		$out .= '		<p class="waymark-first"><b>' . sprintf(esc_html__("Hi, I'm %s.", 'waymark'), "Joe") . '</b></p>' . "\n";		
 
-		$out .= '		<p>' . __(sprintf('Thanks for checking out %s. You can find the documentation <a href="%s">here</a>.', Waymark_Config::get_name(true), Waymark_Helper::site_url('docs/')), 'waymark') . '</p>' . "\n";		
-		$out .= '		<p>' . __(sprintf('This plugin is a work in progress, so please <a href="%s">let me know</a> of any bugs you encounter, or improvements you would like to see. I appreciate all feedback.', 'https://wordpress.org/support/plugin/waymark/'), 'waymark') . '</p>' . "\n";		
+		$out .= '		<p>' . sprintf(__('Thanks for checking out %s. You can find the documentation <a href="%s">here</a>.', 'waymark'), Waymark_Config::get_name(true), Waymark_Helper::site_url('docs/')) . '</p>' . "\n";		
+		$out .= '		<p>' . sprintf(__('This plugin is a work in progress, so please <a href="%s">let me know</a> of any bugs you encounter, or improvements you would like to see. I appreciate all feedback.', 'waymark'), 'https://wordpress.org/support/plugin/waymark/') . '</p>' . "\n";		
 		$out .= '		<p>' . esc_html__('Thanks', 'waymark') . '.</p>' . "\n";		
 
 		$out .= '		<hr />' . "\n";		

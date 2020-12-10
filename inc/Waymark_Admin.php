@@ -175,13 +175,13 @@ class Waymark_Admin {
 
 			//Collections List
 			if($current_screen->base == 'edit-tags' && $current_screen->taxonomy == 'waymark_collection') {
-				$title = esc_html__('Collections');
+				$title = esc_html__('Collections', 'waymark');
 				$description = sprintf(__('Collections allow you to organise your Maps. Use the <a href="%s">Shortcode</a> to display all Maps in a Collection at once. <a href="%s" class="button waymark-right">Read the Docs &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs/collections'));				
 			}
 					
 			//Map Posts List
 			if($current_screen->base == 'edit' && $current_screen->post_type == 'waymark_map') {
-				$title = esc_html__('Maps');
+				$title = esc_html__('Maps', 'waymark');
 				$description = sprintf(__('Create Maps here, then add them to your content using the <a href="%s">Shortcode</a>. <a href="%s" class="button waymark-right">Watch the Video &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs'));				
 			}
 			
@@ -200,14 +200,14 @@ class Waymark_Admin {
 					//No Maps created yet					
 					//if(true || sizeof($map_posts) == 0) {
 					if(sizeof($map_posts) == 0) {
-						$title = esc_html__('Creating a Map');
+						$title = esc_html__('Creating a Map', 'waymark');
 						$description = sprintf(__('<span class="waymark-lead">Use the Map <a href="%s">Editor</a> to place Markers, draw Lines/Shapes and display Photos. Each can be given a <a target="_blank" href="%s">Type</a>, title, description and an image.</span><br /><br />You can add the Map to your content using the %s <a href="%s">Shortcode</a>. <a class="button waymark-right" href="%s">Watch the Video &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/editor'), Waymark_Helper::site_url('docs/types'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'),  Waymark_Helper::site_url('docs/editor'));
 					}	else {
-						$title = esc_html__('New Map');
+						$title = esc_html__('New Map', 'waymark');
 						$description = sprintf(__('You can add the Map to your content using the %s <a href="%s">Shortcode</a>. <a class="button waymark-right" href="%s">Watch the Video &raquo;</a>', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'),  Waymark_Helper::site_url('docs/editor'));
 					}
 				} elseif($current_screen->base == 'post') {
-					$title = esc_html__('Edit Map');
+					$title = esc_html__('Edit Map', 'waymark');
 					$description = sprintf(__('You can add the Map to your content using the %s <a href="%s">Shortcode</a>. <a class="button waymark-right" href="%s">Watch the Video &raquo;</a>', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'),  Waymark_Helper::site_url('docs/editor'));
 				}				
 			}									

@@ -54,9 +54,7 @@ Download the Overlays added to a Map in GeoJSON, GPX and KML formats while editi
 
 = Translations =
 
-Waymark is localization ready! Help with translations is greatly appreciated. Thanks to the following contributions:
-
-Dutch (Netherlands) - <a href="https://profiles.wordpress.org/paulvanbuuren/">paulvanbuuren</a>
+Waymark is localization ready! <a href="https://translate.wordpress.org/projects/wp-plugins/waymark/">Translation contributions</a> greatly appreciated.
 
 = Acknowledgements =
 
@@ -121,7 +119,7 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
     * Added the ability to duplicate Markers/Lines/Shapes in the Editor.
     * Editor circle bug fix.
 * Gallery JavaScript bug fix.
-* Plugin is now translation ready! Thanks to <a href="https://wordpress.org/support/topic/making-plugin-translatable/">paulvanbuuren</a> for nudge and for Dutch translation :)
+* Waymark is now localization ready! <a href="https://translate.wordpress.org/projects/wp-plugins/waymark/">Translation contributions</a> greatly appreciated :)
 * Waymark is now <a href="https://github.com/morehawes/waymark">on GitHub</a>.
 
 = 0.9.14 =

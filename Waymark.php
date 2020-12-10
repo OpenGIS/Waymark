@@ -10,6 +10,8 @@ Author URI: https://www.josephhawes.co.uk/
 License: GPL2
 */
 
+load_plugin_textdomain('waymark', false, 'waymark/languages');	
+
 //Base
 require_once('inc/Waymark_Config.php');
 require_once('inc/Waymark_Types.php');

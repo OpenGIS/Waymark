@@ -38,7 +38,7 @@ class Waymark_Settings {
 					'description' => sprintf(__('<span class="waymark-lead">Waymark uses the excellent <a href="%s">OpenStreetMap</a> as it’s default Basemap and allows integration for services that support <a href="%s">tiled web maps</a></span>.<br /><br /><a href="%s">Thunderforest</a> and <a href="%s">Mapbox</a> are examples of providers that offer easy access to beautiful Basemaps (including satellite imagery). They require registration, but have a free usage tier.<br /><br /><small><b>Pro Tip!</b> If you have more than one Basemap, you can switch between them when viewing the Map. The first listed will be used as the default, unless specified in the shortcode like this: %s. Drag to re-order, remove all to restore defaults.</small>', 'waymark'), 'https://www.openstreetmap.org/fixthemap', 'https://en.wikipedia.org/wiki/Tiled_web_map', 'https://www.thunderforest.com/', 'https://www.mapbox.com/maps/', '[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;1234&quot; basemap=&quot;Basemap Name&quot;]'),
 					'help' => array(
 						'url' => esc_attr(Waymark_Helper::site_url('docs/basemaps')),
-						'text' => esc_attr__('View Docs &raquo;')
+						'text' => esc_attr__('View Docs &raquo;', 'waymark')
 					),
 					'fields' => array(
 						'layer_name' => array(
@@ -90,7 +90,7 @@ class Waymark_Settings {
 					'footer' => '<small>' . __('<b>Pro Tip!</b> The first listed will be used as the default. Drag to re-order, remove all to restore defaults.', 'waymark') . '</small>',
 					'help' => array(
 						'url' => esc_attr(Waymark_Helper::site_url('docs/types')),
-						'text' => esc_attr__('View Docs &raquo;')
+						'text' => esc_attr__('View Docs &raquo;', 'waymark')
 					),
 					'fields' => array(
 						'marker_title' => array(
@@ -170,7 +170,7 @@ class Waymark_Settings {
 					'description' => '<span class="waymark-lead">' . __('Customise how Lines are displayed on the Map. Set these styles once, then select the appropriate Type when you add to the Map.', 'waymark') . '</span>',
 					'help' => array(
 						'url' => esc_attr(Waymark_Helper::site_url('docs/types')),
-						'text' => esc_attr__('View Docs &raquo;')
+						'text' => esc_attr__('View Docs &raquo;', 'waymark')
 					),
 					'footer' => '<small>' . __('<b>Pro Tip!</b> The first listed will be used as the default. Drag to re-order, remove all to restore defaults.', 'waymark') . '</small>',
 					'fields' => array(
@@ -237,7 +237,7 @@ class Waymark_Settings {
 					'description' => '<span class="waymark-lead">' . __('Customise how Shapes are displayed on the Map. Set these styles once, then select the appropriate Type when you add to the Map.', 'waymark') . '</span>',
 					'help' => array(
 						'url' => esc_attr(Waymark_Helper::site_url('docs/types')),
-						'text' => esc_attr__('View Docs &raquo;')
+						'text' => esc_attr__('View Docs &raquo;', 'waymark')
 					),
 					'footer' => '<small>' . __('<b>Pro Tip!</b> The first listed will be used as the default. Drag to re-order, remove all to restore defaults.', 'waymark') . '</small>',
 					'fields' => array(
@@ -305,10 +305,10 @@ class Waymark_Settings {
 				'inputs' => array(
 					'repeatable' => true,
 					'title' => esc_html__('Meta', 'waymark'),
-					'description' => '<span class="waymark-lead">' . __(sprintf('Create additional input fields that appear underneath the Map Editor. Any Meta that has been input is displayed on the <a href="%s">Map Details</a> page, and can also be displayed by the Shortcode.', 'https://www.joesway.ca/map/route-map/'), 'waymark') . '</span>',
+					'description' => '<span class="waymark-lead">' . sprintf(__('Create additional input fields that appear underneath the Map Editor. Any Meta that has been input is displayed on the <a href="%s">Map Details</a> page, and can also be displayed by the Shortcode.', 'waymark'), 'https://www.joesway.ca/map/route-map/') . '</span>',
 					'help' => array(
 						'url' => esc_attr(Waymark_Helper::site_url('docs/meta')),
-						'text' => esc_attr__('View Docs &raquo;')
+						'text' => esc_attr__('View Docs &raquo;', 'waymark')
 					),
 					'footer' => '<small>' . __('<b>Pro Tip!</b> The first listed will be used as the default. Drag to re-order, remove all to restore defaults.', 'waymark') . '</small>',
 					'fields' => array(
@@ -576,7 +576,7 @@ class Waymark_Settings {
 							'type' => 'select',
 							'title' => esc_html__('Header for Admin', 'waymark'),
 							'default' => Waymark_Config::get_setting('misc', 'shortcode_options', 'header_override'),
-							'tip' => esc_attr__('Use this Setting to always show the Shortcode Header when signed in as admin, useful for quickly navigating to embeded Maps.'),
+							'tip' => esc_attr__('Use this Setting to always show the Shortcode Header when signed in as admin, useful for quickly navigating to embeded Maps.', 'waymark'),
 							'options' => array(
 								'0' => esc_html__('Use Setting', 'waymark'),
 								'1' => esc_html__('Always Show', 'waymark')						

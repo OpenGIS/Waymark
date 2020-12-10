@@ -9,9 +9,9 @@ class Waymark_Meta {
 		add_meta_box('waymark_map_meta', esc_html__('Map Editor', 'waymark'), array($this, 'get_map_form'), 'waymark_map', 'normal', 'high');			
 
 		//Map
-		add_meta_box('waymark_map_shortcode', 'Shortcode', array($this, 'map_shortcode_content'), 'waymark_map', 'side', 'default');			
-		add_meta_box('waymark_map_export', 'Export', array($this, 'map_export_content'), 'waymark_map', 'side', 'default');			
-		add_meta_box('waymark_map_help', 'Help', array($this, 'map_help_content'), 'waymark_map', 'side', 'default');			
+		add_meta_box('waymark_map_shortcode', __('Shortcode', 'waymark'), array($this, 'map_shortcode_content'), 'waymark_map', 'side', 'default');			
+		add_meta_box('waymark_map_export', __('Export', 'waymark'), array($this, 'map_export_content'), 'waymark_map', 'side', 'default');			
+		add_meta_box('waymark_map_help', __('Help', 'waymark'), array($this, 'map_help_content'), 'waymark_map', 'side', 'default');			
 
 
 		add_filter('mime_types', array($this, 'mime_types'));	
@@ -127,17 +127,17 @@ class Waymark_Meta {
 		//Required the PHP EXIF extension
 		if(! function_exists('exif_read_data')) {
 			echo '<p><b>' . esc_html__('Photo Location Detection Not Supported!', 'waymark') . '</b></p>';
-			echo '<p>' . __(sprintf('Your hosting environment does not currently have the <a href="%s">PHP EXIF Extension</a> enabled, which is required to read Photo location metadata. Try asking your host to enable it.', 'https://www.php.net/manual/en/book.exif.php'), 'waymark') . '</p>';		
+			echo '<p>' . sprintf(__('Your hosting environment does not currently have the <a href="%s">PHP EXIF Extension</a> enabled, which is required to read Photo location metadata. Try asking your host to enable it.', 'waymark'), 'https://www.php.net/manual/en/book.exif.php') . '</p>';		
 		}	
 
 		echo '<p><b>' . esc_html__('Read from File', 'waymark') . '</b></p>';
-		echo '<p>' . esc_html__('You can read Lines and Markers from GPX, KML and GeoJSON files (most mapping apps will be able to export to one of these).') . '</p>';
+		echo '<p>' . esc_html__('You can read Lines and Markers from GPX, KML and GeoJSON files (most mapping apps will be able to export to one of these).', 'waymark') . '</p>';
 
 		echo '<p><b>' . esc_html__('Types', 'waymark') . '</b></p>';
-		echo '<p>' . __(sprintf('Types allow you to control how Overlays (Markers, Lines and Shapes) are displayed on the Map. Types can be customised in <a href="%s" target="_blank">Waymark &gt; Settings</a>.', admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=markers')), 'waymark') . '</p>';		
+		echo '<p>' . sprintf(__('Types allow you to control how Overlays (Markers, Lines and Shapes) are displayed on the Map. Types can be customised in <a href="%s" target="_blank">Waymark &gt; Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=markers')) . '</p>';		
 
 		echo '<p><b>' . esc_html__('Basemap', 'waymark') . '</b></p>';
-		echo '<p>' . __(sprintf('Add and edit Basemaps in <a href="%s" target="_blank">Waymark &gt; Settings</a>. The first listed will be used as the default, unless specified in the shortcode like this: %s', admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=tiles'), '<code>[Waymark map_id="1234" basemap="Basemap Name"]</code>'), 'waymark') . '</p>';		
+		echo '<p>' . sprintf(__('Add and edit Basemaps in <a href="%s" target="_blank">Waymark &gt; Settings</a>. The first listed will be used as the default, unless specified in the shortcode like this: %s', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=tiles'), '<code>[Waymark map_id="1234" basemap="Basemap Name"]</code>') . '</p>';		
 
 		echo '<p><a class="button" href="' . Waymark_Helper::site_url('docs') . '" target="_blank">' . esc_html__('Read the Docs', 'waymark') . ' &raquo;</a></p>';
 
@@ -197,7 +197,7 @@ class Waymark_Meta {
 		$Map->set_input_type('meta');
 		echo $Map->create_form();		
 
-		echo '<p>' . __(sprintf('You can manage Meta fields in <a href="%s">Settings</a>.', admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')), 'waymark') . '</p>';		
+		echo '<p>' . sprintf(__('You can manage Meta fields in <a href="%s">Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')) . '</p>';		
 	}
 }
 new Waymark_Meta;
