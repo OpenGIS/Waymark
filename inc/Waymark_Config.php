@@ -11,7 +11,7 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',		
 			'custom_types' => array(),
-			'plugin_version' => '0.9.15',
+			'plugin_version' => '0.9.15.1',
 			'site_url' => 'https://www.joesway.ca/waymark/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
 			'multi_value_seperator' => $multi_value_seperator,
@@ -154,10 +154,14 @@ class Waymark_Config {
 					//Pad if necessary
 					$max_size = null;
 					foreach($values as $key => &$value) {
+						//Must be an array
+						if(! is_array($value)) {
+							continue;
+						}
+						
 						if($max_size !== null && sizeof($value) != $max_size) {
 							$value = array_pad(array(), $max_size, $value);
 						} else {
-
 							$max_size = sizeof($value);
 						}
 					}

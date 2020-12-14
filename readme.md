@@ -4,7 +4,7 @@
 **Requires at least:** 3.2  
 **Tested up to:** 5.5  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.15  
+**Stable tag:** 0.9.15.1  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -111,6 +111,10 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 
 
 ## Changelog ##
+
+### 0.9.15.1 ###
+
+* Bug fix. Thanks to <a href="https://wordpress.org/support/topic/warning-error-by-new-update/">cameraspots1</a> for bringing this to my attention.
 
 ### 0.9.15 ###
 
