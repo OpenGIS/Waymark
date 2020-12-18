@@ -1,10 +1,10 @@
 # Waymark #
 **Contributors:** [morehawes](https://profiles.wordpress.org/morehawes)  
-**Tags:** leaflet, openstreetmap, elevation, maps, embed, GPX, KML, GeoJSON, mapping, interactive, annotate, topo, topographical, OSM, open street map, markers, waypoints, lines, tracks, shapes, polygon, circle, overlay, photo, photograph, location, EXIF, geotagged, title, description, images, basemaps  
-**Requires at least:** 3.2  
+**Tags:** mapping, leaflet, openstreetmap, topographical, elevation  
+**Requires at least:** 4.6  
 **Tested up to:** 5.5  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.15.1  
+**Stable tag:** 0.9.15.2  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -111,6 +111,10 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 
 
 ## Changelog ##
+
+### 0.9.15.2 ###
+
+* Localization fixes. Thanks to <a href="https://profiles.wordpress.org/tobifjellner/">tobifjellner</a> for the help via Slack.
 
 ### 0.9.15.1 ###
 
