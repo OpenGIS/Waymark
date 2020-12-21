@@ -411,7 +411,7 @@ class Waymark_Helper {
 		return $obj;
 	}
 
-	static public function remove_unwanted_data_properties($data_in, $wanted = array('type', 'title', 'description', 'image_thumbnail_url', 'image_medium_url', 'image_large_url')) {		
+	static public function remove_unwanted_data_properties($data_in, $wanted = array('radius', 'type', 'title', 'description', 'image_thumbnail_url', 'image_medium_url', 'image_large_url')) {		
 		$FeatureCollection = json_decode($data_in);
 		
 		$FeatureCollection = self::stringify_numbers($FeatureCollection);

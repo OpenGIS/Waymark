@@ -7168,7 +7168,7 @@ function Waymark_Map() {
 		Waymark.map_data = Waymark_L.geoJSON(null, {
 		  pointToLayer: function(feature, latlng) {
         if(typeof feature.properties !== 'undefined' && feature.properties.radius) {
-          return new Waymark_L.Circle(latlng, feature.properties.radius);
+          return new Waymark_L.Circle(latlng, parseFloat(feature.properties.radius));
         } else {
 					return Waymark.create_marker(latlng);
 				}			  
@@ -7523,7 +7523,7 @@ function Waymark_Map() {
 	// 
 	// 					break;		
 					case 'radius':
-						data_out[key] = data_in[key];
+						data_out[key] = parseFloat(data_in[key]);
 						
 						break;
 				}		
