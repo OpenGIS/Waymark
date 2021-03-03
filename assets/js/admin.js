@@ -159,18 +159,34 @@ function waymark_setup_marker_tab() {
 	var marker_icon_inputs = jQuery('.waymark-input.waymark-marker_icon');	
 	marker_icon_inputs.each(function() {
 		var input = jQuery(this);
+		
+		//Icon class
+		var icon_class = '';
+		if(input.val().indexOf('ion-') === 0) {
+			icon_class += 'ion ' + input.val();
+		} else if(input.val().indexOf('fa-') === 0) {
+			icon_class += 'fa ' + input.val();							
+		} else {
+			icon_class += 'ion ion-' + input.val();
+		}
 
-		var preview = jQuery('<i />').addClass('ion ' + input.val());
+		var preview = jQuery('<i />').addClass(icon_class);
 		
 		input.parents('.waymark-controls').prepend(preview);			
 	});
 	
 	//Marker Colour
 	var marker_colour_inputs = jQuery('.waymark-input.waymark-marker_colour');
-	
-	marker_colour_inputs.each(function() {
-		waymark_setup_marker_colour_input(jQuery(this));
-	});
+
+	//Convert old colours (using Waymark_Map Object)
+ 	var Map_Object = new Waymark_Map;
+ 	if(typeof Map_Object === 'object') {
+		marker_colour_inputs.each(function() {
+			jQuery(this).val(Map_Object.get_marker_background(jQuery(this).val()));
+			
+			jQuery(this).wpColorPicker();
+		}); 	
+ 	}	
 }
 
 function waymark_setup_marker_colour_input(input) {
@@ -260,8 +276,8 @@ function waymark_setup_select_meta_type() {
 
 jQuery(document).ready(function() {
 	waymark_setup_repeatable_sections();
-	waymark_setup_colour_pickers();
 	waymark_setup_marker_tab();
+	waymark_setup_colour_pickers();
 	waymark_setup_external_links();
 	waymark_setup_select_meta_type();
 });

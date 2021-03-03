@@ -100,49 +100,51 @@ class Waymark_Settings {
 							'class' => 'waymark-uneditable',				
 							'title' => '<u>' . esc_html__('Marker', 'waymark') . '</u> ' . esc_html__('Label', 'waymark'),
 							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'marker_title'),
-							'tip' => esc_attr__('What kind of Marker is this? E.g. "Photo", "Grocery Store", "Warning!". The Marker Label is displayed in the Tooltip (when hovering over the Marker) and in the Marker Info Window. Once saved, Marker labels can not be edited.', 'waymark'),
+							'tip' => esc_attr__('What kind of Marker is this? E.g. "Photo", "Grocery Store", "Warning!". Once saved, Marker labels can not be edited. The Marker Label is displayed in the Tooltip (when hovering over the Marker) and in the Info Window (once the Marker is clicked). Hide in Settings > Misc. > Map Options > Type Labels.', 'waymark'),
 							'input_processing' => array(
 								'(! empty($param_value)) ? $param_value : "' . esc_html__('Marker', 'waymark') . ' ' . substr(md5(rand(0,999999)), 0, 5) . '";'	//Fallback
 							)									
 						),
+						'marker_shape' => array(
+							'name' => 'marker_shape',
+							'id' => 'marker_shape',
+							'type' => 'select',
+							'class' => '',				
+							'title' => '<span class="waymark-invisible">' . esc_html__('Marker', 'waymark') . '</span> ' . esc_html__('Shape', 'waymark'),
+							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'marker_shape'),
+							'tip' => esc_attr__('Which shape of Marker to use. Circles and Squares are centered at the specified location, Markers point down to that location.', 'waymark'),
+							'options' => array(
+								'marker' => esc_html__('Marker', 'waymark'),
+								'circle' => esc_html__('Circle', 'waymark'),
+								'rectangle' => esc_html__('Square', 'waymark'),
+							)
+						),
+						'marker_size' => array(
+							'name' => 'marker_size',
+							'id' => 'marker_size',
+							'type' => 'select',
+							'class' => '',				
+							'title' => '<span class="waymark-invisible">' . esc_html__('Marker', 'waymark') . '</span> ' . esc_html__('Size', 'waymark'),
+							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'marker_size'),
+							'tip' => esc_attr__('Which size of Marker to use.', 'waymark'),
+							'options' => array(
+								'small' => esc_html__('Small', 'waymark'),
+								'medium' => esc_html__('Medium', 'waymark'),
+								'large' => esc_html__('Large', 'waymark')
+							)
+						),						
 						'marker_colour' => array(
 							'name' => 'marker_colour',
 							'id' => 'marker_colour',
 							'type' => 'text',
 							'class' => 'waymark-short-input',				
-							'title' => '<span class="waymark-invisible">' . esc_html__('Marker', 'waymark') . '</span> ' . esc_html__('Colour', 'waymark'),
+							'title' => '<span class="waymark-invisible">' . esc_html__('Marker', 'waymark') . '</span> ' . esc_html__('Background', 'waymark'),
 							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'marker_colour'),
-							'tip' => esc_attr__('The Marker background colour. Thanks awesome-markers!', 'waymark'),
-							'tip_link' => 'https://github.com/lvoogdt/Leaflet.awesome-markers',
+							'tip' => esc_attr__('The Marker background colour. Click "Select Colour" to select.', 'waymark'),
 							'input_processing' => array(
 								'(! empty($param_value)) ? $param_value : "white";'	//Fallback
 							)								
 						),							
-						'marker_icon' => array(
-							'name' => 'marker_icon',
-							'id' => 'marker_icon',
-							'type' => 'text',
-							'class' => 'waymark-short-input',				
-							'title' => '<span class="waymark-invisible">' . esc_html__('Marker', 'waymark') . '</span> ' . esc_html__('Icon Name', 'waymark'),
-							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'marker_icon'),
-							'tip' => esc_attr__('The desired icon name, e.g. "camera". Full list provided by Ionicons. Thanks Ionicons!', 'waymark'),
-							'tip_link' => 'https://ionicons.com/v2/',
-							'input_processing' => array(
-								'(! empty($param_value)) ? $param_value : "ion-help";'	//Fallback
-							)	
-						),							
-						'icon_colour' => array(
-							'name' => 'icon_colour',
-							'id' => 'icon_colour',
-							'type' => 'text',
-							'class' => 'waymark-short-input waymark-colour-picker',				
-							'title' => '<span class="waymark-invisible">' . esc_html__('Marker', 'waymark') . '</span> ' . esc_html__('Icon Colour', 'waymark'),
-							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'icon_colour'),
-							'tip' => esc_attr__('The colour of the icon. Click "Select Colour" to select.', 'waymark'),
-							'input_processing' => array(
-								'(! empty($param_value)) ? $param_value : "#81d742";'	//Fallback
-							)							
-						),
 						'marker_display' => array(
 							'name' => 'marker_display',
 							'id' => 'marker_display',
@@ -153,7 +155,32 @@ class Waymark_Settings {
 							'input_processing' => array(
 								'(is_numeric($param_value)) ? $param_value : 1;'	//Fallback
 							)					
-						)
+						),
+						'marker_icon' => array(
+							'name' => 'marker_icon',
+							'id' => 'marker_icon',
+							'type' => 'text',
+							'class' => 'waymark-short-input',				
+							'title' => '<span style="display:inline-block;min-width:50px">' . esc_html__('Icon', 'waymark') . '</span>' . esc_html__('Name', 'waymark'),
+							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'marker_icon'),
+							'tip' => esc_attr__('The desired icon name from either the Ionicons or Font Awesome library, e.g. "ion-camera", or "fa-camera". Click the links to see the full list of icons available.', 'waymark'),
+							'input_processing' => array(
+								'(! empty($param_value)) ? $param_value : "ion-help";'	//Fallback
+							),
+							'append' => '<div id="waymark-icons-help"><a href="https://ionicons.com/v2/">Ionic Icons</a><a href="https://fontawesome.com/v4.7.0/cheatsheet/">Font Awesome</a></div>',										
+						),							
+						'icon_colour' => array(
+							'name' => 'icon_colour',
+							'id' => 'icon_colour',
+							'type' => 'text',
+							'class' => 'waymark-short-input waymark-colour-picker',				
+							'title' => '<span class="waymark-invisible" style="display:inline-block;min-width:50px">' . esc_html__('Icon', 'waymark') . '</span>' . esc_html__('Colour', 'waymark'),
+							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'icon_colour'),
+							'tip' => esc_attr__('The colour of the icon. Click "Select Colour" to select.', 'waymark'),
+							'input_processing' => array(
+								'(! empty($param_value)) ? $param_value : "#81d742";'	//Fallback
+							)				
+						)						
 					)																	
 				)
 			)
@@ -657,7 +684,15 @@ class Waymark_Settings {
 							'default' => Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap'),
 							'tip' => esc_attr__('Which Basemap to use as the editor default.', 'waymark'),
 							'options' => $basemap_options
-						)													
+						),
+						'media_library_uploads' => array(
+							'name' => 'media_library_uploads',
+							'id' => 'media_library_uploads',
+							'type' => 'boolean',
+							'title' => esc_html__('Media Library Uploads', 'waymark'),
+							'default' => Waymark_Config::get_setting('misc', 'editor_options', 'media_library_uploads'),
+							'tip' => esc_attr__('By default Waymark does not save any files uploaded through the Editor. Using this option you can use the Media Library to store and import GPX/KML/GeoJSON files into your Map.', 'waymark')
+						)																	
 					)											
 				),
 

@@ -14,7 +14,6 @@ class Waymark_Meta {
 		add_meta_box('waymark_map_help', __('Help', 'waymark'), array($this, 'map_help_content'), 'waymark_map', 'side', 'default');			
 
 
-		add_filter('mime_types', array($this, 'mime_types'));	
 		add_action('post_edit_form_tag', array($this, 'add_post_enctype'));
 		add_action('post_updated', array($this, 'post_updated'), 10, 2);			
 	
@@ -76,16 +75,6 @@ class Waymark_Meta {
 		}
 	}	
 
-	function mime_types($existing_mimes) {
-		$existing_mimes['gpx'] = 'application/gpx+xml';
-		$existing_mimes['kml'] = 'application/vnd.google-earth.kml+xml';
-		$existing_mimes['kmz'] = 'application/vnd.google-earth.kmz';
-		$existing_mimes['json'] = 'application/geo+json';
-		$existing_mimes['geojson'] = 'application/geo+json';
-
-		return $existing_mimes;
-	}
-	
 	function post_updated() {
 		global $post;
 			

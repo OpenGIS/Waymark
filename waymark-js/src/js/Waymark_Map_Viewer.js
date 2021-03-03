@@ -90,11 +90,11 @@ function Waymark_Map_Viewer() {
 					if(Waymark.config.map_options.show_type_labels != '1') {
 						break;	
 					}
-					
+									
 					//Get type
 					var type = Waymark.get_type(layer_type, feature.properties.type);
 					if(type) {
-						ele = jQuery('<small />').text(type[layer_type + '_title']);						
+						ele = Waymark.type_to_text(layer_type, type, 'small');						
 					}			
 					
 					break;

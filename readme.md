@@ -63,8 +63,8 @@ A big thank you to the following projects and their contributors. Without their 
 * <a href="https://leafletjs.com/">Leaflet</a>
 * <a href="https://jquery.com/">jQuery</a>
 * <a href="https://github.com/mapbox/togeojson">mapbox/togeojson</a>
-* <a href="https://github.com/lvoogdt/Leaflet.awesome-markers">Leaflet.awesome-markers</a>
 * <a href="https://ionicons.com/v2/">Ionicons</a>
+* <a href="https://fontawesome.com/v4.7.0/">Font Awesome</a>
 * <a href="https://github.com/Leaflet/Leaflet.Editable">Leaflet.Editable</a>
 * <a href="https://github.com/CliffCloud/Leaflet.Sleep">Leaflet.Sleep</a>
 * <a href="https://github.com/perliedman/leaflet-control-geocoder">leaflet-control-geocoder</a>
@@ -111,6 +111,15 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 
 
 ## Changelog ##
+
+### 0.9.16 ###
+
+* **Markers **
+    * Markers can now be different shapes: Markers, Circles or Squares in three different sizes: Small, Medium and Large.
+    * Markers can now have any colour background, selected using the colour picker or by entering a hexadecimal color (i.e. #RRGGBB)
+    * Markers now support Font Awesome icons as well as Ionic Icons.
+* **Types **
+    * Type labels displayed by popups now match the colours of their respective Marker, Line or Shape.
 
 ### 0.9.15.2 ###
 
