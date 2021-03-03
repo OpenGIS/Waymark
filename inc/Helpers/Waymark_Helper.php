@@ -10,7 +10,8 @@ class Waymark_Helper {
 		$out .= '		<p class="waymark-first"><b>' . sprintf(esc_html__("Hi, I'm %s.", 'waymark'), "Joe") . '</b></p>' . "\n";		
 
 		$out .= '		<p>' . sprintf(__('Thanks for checking out %s. You can find the documentation <a href="%s">here</a>.', 'waymark'), Waymark_Config::get_name(true), Waymark_Helper::site_url('docs/')) . '</p>' . "\n";		
-		$out .= '		<p>' . sprintf(__('This plugin is a work in progress, so please <a href="%s">let me know</a> of any bugs you encounter, or improvements you would like to see. I appreciate all feedback.', 'waymark'), 'https://wordpress.org/support/plugin/waymark/') . '</p>' . "\n";		
+		$out .= '		<p>' . sprintf(__('This plugin is a work in progress, so please <a href="%s">let me know</a> of any bugs you encounter, or improvements you would like to see.', 'waymark'), 'https://wordpress.org/support/plugin/waymark/') . '</p>' . "\n";		
+		$out .= '		<p>' . sprintf(__('Waymark is open source, issues and contributions welcome through <a href="%s">GitHub</a>.', 'waymark'), 'https://github.com/morehawes/waymark') . '</p>' . "\n";		
 		$out .= '		<p>' . esc_html__('Thanks', 'waymark') . '.</p>' . "\n";		
 
 		$out .= '		<hr />' . "\n";		
@@ -23,7 +24,6 @@ class Waymark_Helper {
 		$out .= '			<li><a href="https://leafletjs.com/">Leaflet</a></li>' . "\n";				
 		$out .= '			<li><a href="https://jquery.com/">jQuery</a></li>' . "\n";		
 		$out .= '			<li><a href="https://github.com/mapbox/togeojson">mapbox/togeojson</a></li>' . "\n";				
-// 		$out .= '			<li><a href="https://github.com/lvoogdt/Leaflet.awesome-markers">Leaflet.awesome-markers</a></li>' . "\n";				
 		$out .= '			<li><a href="https://ionicons.com/v2/">Ionicons</a></li>' . "\n";				
 		$out .= '			<li><a href="https://fontawesome.com/v4.7.0/">Font Awesome</a></li>' . "\n";				
 		$out .= '			<li><a href="https://github.com/Leaflet/Leaflet.Editable">Leaflet.Editable</a></li>' . "\n";	

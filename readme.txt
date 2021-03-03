@@ -72,6 +72,8 @@ A big thank you to the following projects and their contributors. Without their 
 * <a href="https://github.com/perliedman/leaflet-control-geocoder">leaflet-control-geocoder</a>
 * <a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>
 
+= Links =
+ 
 * <a href="https://www.joesway.ca/waymark/demo/">See the Demo &raquo;</a>
 * <a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
 * <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
@@ -106,14 +108,16 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 
 == Changelog ==
 
-= 0.9.16 =
+= 0.9.16-a1 =
 
-* **Markers **
-    * Markers can now be different shapes: Markers, Circles or Squares in three different sizes: Small, Medium and Large.
+* **Markers**
+    * Markers can now be different shapes! Markers, Circles or Squares in three different sizes: Small, Medium and Large.
     * Markers can now have any colour background, selected using the colour picker or by entering a hexadecimal color (i.e. #RRGGBB)
     * Markers now support Font Awesome icons as well as Ionic Icons.
-* **Types **
+* **Types**
     * Type labels displayed by popups now match the colours of their respective Marker, Line or Shape.
+* **Media Library Uploads**
+    * By default Waymark does not save any files uploaded through the Editor. Using this option you can use the Media Library to store and import GPX/KML/GeoJSON files into your Map.
 
 = 0.9.15.2 =
 
