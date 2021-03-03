@@ -114,7 +114,7 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 
 ## Changelog ##
 
-### 0.9.16-a1 ###
+### 0.9.16-b1 ###
 
 * **Markers**
     * Markers can now be different shapes! Markers, Circles or Squares in three different sizes: Small, Medium and Large.
