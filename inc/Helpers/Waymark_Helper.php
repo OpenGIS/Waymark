@@ -72,9 +72,9 @@ class Waymark_Helper {
 		return Waymark_Config::get_item('site_url') . $url_path;
 	}
 
-	static public function asset_url($file_path = '') {
-		return plugins_url('assets/' . $file_path, str_replace('/inc', '', dirname(__FILE__)));
-	}	
+	static public function asset_url($file_path = '') {	
+		return plugin_dir_url('') . 'waymark/assets/' . $file_path;
+	}
 
 	static public function plugin_path($append = '') {
 		return Waymark_Config::get_item('site_url') . $url_path;

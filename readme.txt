@@ -118,6 +118,7 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
     * Type labels displayed by popups now match the colours of their respective Marker, Line or Shape.
 * **Media Library Uploads**
     * By default Waymark does not save any files uploaded through the Editor. Using this option you can use the Media Library to store and import GPX/KML/GeoJSON files into your Map.
+* Bug fix. Thanks to <a href="https://wordpress.org/support/topic/filter-by-markers-category/">pwrdp</a> for bringing this to my attention. 
 
 = 0.9.15.2 =
 
