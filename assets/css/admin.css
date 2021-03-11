@@ -302,7 +302,7 @@ li#toplevel_page_edit-post_type-waymark_map .wp-menu-image {
   background-repeat: no-repeat;
 }
 li#toplevel_page_edit-post_type-waymark_map:hover .wp-menu-image {
-  background-image: url('../img/waymark-icon-blue.png');
+  background-image: url('../img/waymark-icon-white.png');
 }
 li#toplevel_page_edit-post_type-waymark_map.wp-has-current-submenu .wp-menu-image,
 li#toplevel_page_edit-post_type-waymark_map.wp-menu-open .wp-menu-image {
