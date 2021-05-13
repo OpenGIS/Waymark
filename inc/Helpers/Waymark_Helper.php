@@ -24,7 +24,7 @@ class Waymark_Helper {
 		$out .= '			<li><a href="https://leafletjs.com/">Leaflet</a></li>' . "\n";				
 		$out .= '			<li><a href="https://jquery.com/">jQuery</a></li>' . "\n";		
 		$out .= '			<li><a href="https://github.com/mapbox/togeojson">mapbox/togeojson</a></li>' . "\n";				
-		$out .= '			<li><a href="https://ionicons.com/v2/">Ionicons</a></li>' . "\n";				
+		$out .= '			<li><a href="https://ionic.io/ionicons/v2/cheatsheet.html">Ionicons</a></li>' . "\n";				
 		$out .= '			<li><a href="https://fontawesome.com/v4.7.0/">Font Awesome</a></li>' . "\n";				
 		$out .= '			<li><a href="https://github.com/Leaflet/Leaflet.Editable">Leaflet.Editable</a></li>' . "\n";	
 		$out .= '			<li><a href="https://github.com/CliffCloud/Leaflet.Sleep">Leaflet.Sleep</a></li>' . "\n";	

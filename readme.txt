@@ -65,7 +65,7 @@ A big thank you to the following projects and their contributors. Without their 
 * <a href="https://leafletjs.com/">Leaflet</a>
 * <a href="https://jquery.com/">jQuery</a>
 * <a href="https://github.com/mapbox/togeojson">mapbox/togeojson</a>
-* <a href="https://ionicons.com/v2/">Ionicons</a>
+* <a href="https://ionic.io/ionicons/v2/cheatsheet.html">Ionicons</a>
 * <a href="https://fontawesome.com/v4.7.0/">Font Awesome</a>
 * <a href="https://github.com/Leaflet/Leaflet.Editable">Leaflet.Editable</a>
 * <a href="https://github.com/CliffCloud/Leaflet.Sleep">Leaflet.Sleep</a>

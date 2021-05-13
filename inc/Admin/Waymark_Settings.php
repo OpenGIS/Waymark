@@ -167,7 +167,7 @@ class Waymark_Settings {
 							'input_processing' => array(
 								'(! empty($param_value)) ? $param_value : "ion-help";'	//Fallback
 							),
-							'append' => '<div id="waymark-icons-help"><a href="https://ionicons.com/v2/">Ionic Icons</a><a href="https://fontawesome.com/v4.7.0/cheatsheet/">Font Awesome</a></div>',										
+							'append' => '<div id="waymark-icons-help"><a href="https://ionic.io/ionicons/v2/cheatsheet.html">Ionic Icons</a><a href="https://fontawesome.com/v4.7.0/cheatsheet/">Font Awesome</a></div>',										
 						),							
 						'icon_colour' => array(
 							'name' => 'icon_colour',
