@@ -253,7 +253,15 @@ function Waymark_Map() {
 			'drawCircle' : false,
 			'strings': {
 				'title': waymark_js_lang.action_locate_activate
-			}		
+			},
+			'locateOptions': {
+				'enableHighAccuracy': true		
+			}// ,
+// 			'getLocationBounds': function(locationEvent) {
+// 				console.log(locationEvent);
+// 			
+// 				return locationEvent.bounds;
+// 			}                
 		}).addTo(Waymark.map);
 
 		//Fullscreen Control
