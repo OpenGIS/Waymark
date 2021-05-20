@@ -114,7 +114,7 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 
 ## Changelog ##
 
-### 0.9.16-b1 ###
+### 0.9.16-b2 ###
 
 * **Markers**
     * Markers can now be different shapes! Markers, Circles or Squares in three different sizes: Small, Medium and Large.
@@ -124,7 +124,10 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
     * Type labels displayed by popups now match the colours of their respective Marker, Line or Shape.
 * **Media Library Uploads**
     * By default Waymark does not save any files uploaded through the Editor. Using this option you can use the Media Library to store and import GPX/KML/GeoJSON files into your Map.
-* Bug fix. Thanks to <a href="https://wordpress.org/support/topic/filter-by-markers-category/">pwrdp</a> for bringing this to my attention. 
+* **Bug fixes**
+* Improved location accuracy when relying on device GPS. Thanks to <a href="https://wordpress.org/support/users/coloursign/">coloursign</a> and <a href="https://wordpress.org/support/users/edwinfr/">edwinfr</a> for <a href="https://wordpress.org/support/topic/more-accurate-location-possible/">bringing this to my attention.</a>
+* Waymark_Helper `asset_url()` fix. Thanks to <a href="https://wordpress.org/support/topic/filter-by-markers-category/">pwrdp</a> for bringing this to my attention.
+* Updated Ion Icons v2 URLs. Thanks to <a href="https://wordpress.org/support/users/gudulemartens/">gudulemartens</a> for <a href="https://wordpress.org/support/topic/ion-icons/">letting me know about this</a>.
 
 ### 0.9.15.2 ###
 
