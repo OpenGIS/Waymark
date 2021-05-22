@@ -4,7 +4,7 @@ Tags: mapping, leaflet, openstreetmap, topographical, elevation
 Requires at least: 4.6
 Tested up to: 5.7
 Requires PHP: 5.2
-Stable tag: 0.9.15.2
+Stable tag: 0.9.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,8 @@ Waymark is localization ready! <a href="https://translate.wordpress.org/projects
 
 = Acknowledgements =
 
+Waymark relies on input from it's users, thank you to everyone for providing feedback :)
+
 A big thank you to the following projects and their contributors. Without their work this plugin would not be possible:
 
 * <a href="https://wordpress.org/">WordPress</a>
@@ -108,7 +110,7 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 
 == Changelog ==
 
-= 0.9.16-b2 =
+= 0.9.16 =
 
 * **Markers**
     * Markers can now be different shapes! Markers, Circles or Squares in three different sizes: Small, Medium and Large.
@@ -119,9 +121,9 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 * **Media Library Uploads**
     * By default Waymark does not save any files uploaded through the Editor. Using this option you can use the Media Library to store and import GPX/KML/GeoJSON files into your Map.
 * **Bug fixes**
-* Improved location accuracy when relying on device GPS. Thanks to <a href="https://wordpress.org/support/users/coloursign/">coloursign</a> and <a href="https://wordpress.org/support/users/edwinfr/">edwinfr</a> for <a href="https://wordpress.org/support/topic/more-accurate-location-possible/">bringing this to my attention.</a>
-* Waymark_Helper `asset_url()` fix. Thanks to <a href="https://wordpress.org/support/topic/filter-by-markers-category/">pwrdp</a> for bringing this to my attention.
-* Updated Ion Icons v2 URLs. Thanks to <a href="https://wordpress.org/support/users/gudulemartens/">gudulemartens</a> for <a href="https://wordpress.org/support/topic/ion-icons/">letting me know about this</a>.
+	* Improved location accuracy when relying on device GPS. Thanks to <a href="https://wordpress.org/support/users/coloursign/">coloursign</a> and <a href="https://wordpress.org/support/users/edwinfr/">edwinfr</a> for <a href="https://wordpress.org/support/topic/more-accurate-location-possible/">bringing this to my attention.</a>
+	* Waymark_Helper `asset_url()` fix. Thanks to <a href="https://wordpress.org/support/topic/filter-by-markers-category/">pwrdp</a> for bringing this to my attention.
+	* Updated Ion Icons v2 URLs. Thanks to <a href="https://wordpress.org/support/users/gudulemartens/">gudulemartens</a> for <a href="https://wordpress.org/support/topic/ion-icons/">letting me know about this</a>.
 
 = 0.9.15.2 =
 
