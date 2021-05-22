@@ -147,7 +147,7 @@ function Waymark_Map() {
 		Waymark.config.marker_data_defaults.type = default_marker_type_key;		
 								
 		//Markers icons
-		Waymark_L.AwesomeMarkers.Icon.prototype.options.prefix = 'ion';				
+		//Waymark_L.AwesomeMarkers.Icon.prototype.options.prefix = 'ion';				
 
 		//Groups
 		Waymark.marker_parent_group = Waymark_L.layerGroup();
@@ -253,7 +253,15 @@ function Waymark_Map() {
 			'drawCircle' : false,
 			'strings': {
 				'title': waymark_js_lang.action_locate_activate
-			}		
+			},
+			'locateOptions': {
+				'enableHighAccuracy': true		
+			}// ,
+// 			'getLocationBounds': function(locationEvent) {
+// 				console.log(locationEvent);
+// 			
+// 				return locationEvent.bounds;
+// 			}                
 		}).addTo(Waymark.map);
 
 		//Fullscreen Control
@@ -318,15 +326,13 @@ function Waymark_Map() {
 						} else {
 							//Build Waymark data
 							feature.properties = Waymark.parse_layer_data('marker', feature.properties);										
-							
+		
 							//Set marker style
 							var type = Waymark.get_type('marker', feature.properties.type);									  				  					
+							
+							//Create Icon								
 							layer.setIcon(
-								Waymark_L.AwesomeMarkers.icon({
-							  	icon: type.marker_icon,
-									markerColor: type.marker_colour,
-									iconColor: type.icon_colour
-								})
+								L.divIcon(Waymark.build_icon_data(type))
 							);		
 
 							//Add any photos to photo gallery
@@ -691,28 +697,9 @@ function Waymark_Map() {
 					var this_type = Waymark.get_type(layer_type, key);
 					var group = Waymark[layer_type + '_sub_groups'][key];
 
-					//Preview
-					var preview_class = 'waymark-type waymark-' + layer_type + '-type';
-					var preview_style = '';
-					switch(layer_type) {
-						case 'marker' : 
-							preview_class +=  ' waymark-swatch waymark-swatch-' + this_type.marker_colour;					
-							preview_style +=  'color:' + this_type.icon_colour;					
-							
-							break;
-						case 'line' : 
-							preview_style +=  'color:' + this_type.line_colour + ';box-shadow:inset 0 0 0 1px ' + this_type.line_colour;					
-							
-							break;
-						case 'shape' : 
-							preview_style +=  'background:' + this_type.shape_colour;					
-							
-							break;														
-					}
-
 					//(Re-?)add to control
 					Waymark.layer_control.removeLayer(group);						    						    								
-					Waymark.layer_control.addOverlay(group, '<span class="' + preview_class + '" style="' + preview_style + '">' + this_type[layer_type + '_title'] + '</span>');						    						    								
+					Waymark.layer_control.addOverlay(group, Waymark.type_to_text(layer_type, this_type));						    						    								
 				}
 			}
 		//No type key - just add to Map
@@ -720,11 +707,153 @@ function Waymark_Map() {
 			layer.addTo(Waymark[layer_type + '_parent_group']);							
 		}	
 	}		
+	
+	//Represent Type as text
+	this.type_to_text = function(layer_type, type, ele = 'span') {
+		var preview_class = 'waymark-type-text waymark-' + layer_type + '-type';
+		var preview_style = '';
+
+		switch(layer_type) {
+			case 'marker' : 
+				preview_style +=  'color:' + type.icon_colour + ';';					
+				preview_style +=  'background:' + Waymark.get_marker_background(type.marker_colour);					
+				
+				break;
+			case 'line' : 
+				preview_style +=  'color:' + type.line_colour + ';box-shadow:inset 0 0 0 1px ' + type.line_colour;					
+				
+				break;
+			case 'shape' : 
+				preview_style +=  'background:' + type.shape_colour;					
+				
+				break;														
+		}
+
+		return '<' + ele + ' class="' + preview_class + '" style="' + preview_style + '">' + type[layer_type + '_title'] + '</' + ele + '>';
+	}
 
 	//Create marker										  
 	this.create_marker = function(latlng) {
 		return Waymark_L.marker(latlng);
 	}		
+	
+	this.build_icon_data = function(type) {
+		var icon_data = {
+			className: 'waymark-marker waymark-marker-' + type.type_key,
+		};
+
+		//Shape
+		if(typeof type.marker_shape !== 'undefined' && typeof type.marker_size !== 'undefined') {
+			icon_data.className += ' waymark-marker-' + type.marker_shape;		
+			icon_data.className += ' waymark-marker-' + type.marker_size;
+
+			switch(type.marker_shape) {
+				//Markers & Circles
+				case 'rectangle' :
+				case 'circle' :
+				case 'marker' :					
+					//Size
+					switch(type.marker_size) {
+						case 'small' :
+							icon_data.iconSize = [16, 16];
+
+							break;
+						case 'medium' :
+							icon_data.iconSize = [25, 25];
+							
+							break;
+						default :
+						case 'large' :
+							icon_data.iconSize = [32, 32];
+											
+							break;
+					}
+					
+					break;												
+			}
+			
+			//Marker only
+			if(type.marker_shape == 'marker') {
+				icon_data.iconAnchor = [icon_data.iconSize[0]/2, icon_data.iconSize[1]*1.25];			
+			}
+		}
+		
+		//CSS Styles
+		var background_css = 'background:' + Waymark.get_marker_background(type.marker_colour) + ';';
+		var icon_css = 'color:' + type.icon_colour + ';';
+		
+		//Classes
+		var icon_class = 'waymark-marker-icon';
+
+		//If Ionic Icons
+		if(type.marker_icon.indexOf('ion-') === 0) {
+			icon_class += ' ion ';
+			icon_class += ' ' + type.marker_icon;			
+		//Font Awesome
+		} else if(type.marker_icon.indexOf('fa-') === 0) {
+			icon_class += ' fa';
+			icon_class += ' ' + type.marker_icon;	
+		//Default to Ionic
+		} else {
+			icon_class += ' ion';
+			icon_class += ' ion-' + type.marker_icon;			
+		}
+		
+ 		//HTML
+ 		icon_data.html = '<div class="waymark-marker-background" style="' + background_css + '"></div><i style="' + icon_css + '" class="' + icon_class + '"></i>';
+						
+		return icon_data;
+	}
+	
+	this.get_marker_background = function(colour) {
+		var old_background_options = ['red', 'darkred', 'orange', 'green', 'darkgreen', 'blue', 'purple', 'darkpurple', 'cadetblue', 'white', 'black'];
+		
+		//Already hex
+// 		if(colour.indexOf('#' === 0)) {
+// 			return colour;
+// 		}
+
+		//Convert		
+		if(old_background_options.includes(colour)) {
+			switch(colour) {
+				case 'red':
+					return '#da3d20';
+					break;
+				case 'darkred':
+					return '#a43233';
+					break;
+				case 'orange':
+					return '#f9960a';
+					break;
+				case 'green':
+					return '#70af00';
+					break;
+				case 'darkgreen':
+					return '#72820d';
+					break;
+				case 'blue':
+					return '#2aabe1';
+					break;
+				case 'purple':
+					return '#d553bd';
+					break;
+				case 'darkpurple':
+					return '#5c3a6e';
+					break;
+				case 'cadetblue':
+					return '#416979';
+					break;
+				case 'white':
+					return '#fbfbfb';
+					break;
+				case 'black':
+					return '#303030';
+					break;								
+			}
+		}
+		
+		return colour;						
+	}
 
 /*
 	==================================

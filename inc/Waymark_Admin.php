@@ -24,7 +24,9 @@ class Waymark_Admin {
 		add_filter('manage_edit-waymark_collection_columns', array($this, 'collection_taxonomy_columns'), 10, 3);		
 		add_filter('manage_waymark_collection_custom_column' , array($this, 'collection_taxonomy_custom_column'), 10, 3);		
 		add_filter('manage_waymark_map_posts_columns', array($this, 'map_posts_columns'));
-		add_filter('wp_read_image_metadata', array($this, 'add_gps_exif'), 10, 3);		
+		add_filter('wp_read_image_metadata', array($this, 'add_gps_exif'), 10, 3);
+		add_filter('upload_mimes', array($this, 'upload_mimes'), 1);				
+		add_filter('wp_check_filetype_and_ext', array($this, 'wp_check_filetype_and_ext'), 10, 4);				
 	}
 	
 	function admin_init() {
@@ -253,6 +255,39 @@ class Waymark_Admin {
 		}
 		
 		return $meta;		
+	}	
+
+	function upload_mimes($existing_mimes) {
+		$existing_mimes['gpx'] = 'application/gpx+xml';
+		$existing_mimes['kml'] = 'application/vnd.google-earth.kml+xml';
+		$existing_mimes['json'] = 'application/geo+json';
+		$existing_mimes['geojson'] = 'application/geo+json';
+
+		return $existing_mimes;
 	}		
+
+	function wp_check_filetype_and_ext( $check, $file, $filename, $mimes ) {
+		//Check file type
+		$mimes = array(
+			'gpx' => 'application/gpx+xml',
+			'kml' => 'application/vnd.google-earth.kml+xml',
+			'kmz' => 'application/vnd.google-earth.kmz',
+			'json' => 'application/geo+json',
+			'geojson' => 'application/geo+json'
+		);
+		$filetype = wp_check_filetype($filename, $mimes);
+
+		//File type we are interested in
+		if(array_key_exists('type', $filetype) && $filetype['type']) {
+			//Allow
+			return array(
+				'ext' => $filetype['ext'],
+				'type' => $filetype['type'],
+				'proper_filename' => $filename
+			);
+		}
+	
+		return $check;
+	}
 }	
 new Waymark_Admin;

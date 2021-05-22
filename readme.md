@@ -2,9 +2,9 @@
 **Contributors:** [morehawes](https://profiles.wordpress.org/morehawes)  
 **Tags:** mapping, leaflet, openstreetmap, topographical, elevation  
 **Requires at least:** 4.6  
-**Tested up to:** 5.5  
+**Tested up to:** 5.7  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.15.2  
+**Stable tag:** 0.9.16  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -56,6 +56,8 @@ Waymark is localization ready! <a href="https://translate.wordpress.org/projects
 
 ### Acknowledgements ###
 
+Waymark relies on input from it's users, thank you to everyone for providing feedback :)
+
 A big thank you to the following projects and their contributors. Without their work this plugin would not be possible:
 
 * <a href="https://wordpress.org/">WordPress</a>
@@ -63,13 +65,15 @@ A big thank you to the following projects and their contributors. Without their 
 * <a href="https://leafletjs.com/">Leaflet</a>
 * <a href="https://jquery.com/">jQuery</a>
 * <a href="https://github.com/mapbox/togeojson">mapbox/togeojson</a>
-* <a href="https://github.com/lvoogdt/Leaflet.awesome-markers">Leaflet.awesome-markers</a>
-* <a href="https://ionicons.com/v2/">Ionicons</a>
+* <a href="https://ionic.io/ionicons/v2/cheatsheet.html">Ionicons</a>
+* <a href="https://fontawesome.com/v4.7.0/">Font Awesome</a>
 * <a href="https://github.com/Leaflet/Leaflet.Editable">Leaflet.Editable</a>
 * <a href="https://github.com/CliffCloud/Leaflet.Sleep">Leaflet.Sleep</a>
 * <a href="https://github.com/perliedman/leaflet-control-geocoder">leaflet-control-geocoder</a>
 * <a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>
 
+### Links ###
+ 
 * <a href="https://www.joesway.ca/waymark/demo/">See the Demo &raquo;</a>
 * <a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
 * <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
@@ -111,6 +115,21 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 
 
 ## Changelog ##
+
+### 0.9.16 ###
+
+* **Markers**
+    * Markers can now be different shapes! Markers, Circles or Squares in three different sizes: Small, Medium and Large.
+    * Markers can now have any colour background, selected using the colour picker or by entering a hexadecimal color (i.e. #RRGGBB)
+    * Markers now support Font Awesome icons as well as Ionic Icons.
+* **Types**
+    * Type labels displayed by popups now match the colours of their respective Marker, Line or Shape.
+* **Media Library Uploads**
+    * By default Waymark does not save any files uploaded through the Editor. Using this option you can use the Media Library to store and import GPX/KML/GeoJSON files into your Map.
+* **Bug fixes**
+	* Improved location accuracy when relying on device GPS. Thanks to <a href="https://wordpress.org/support/users/coloursign/">coloursign</a> and <a href="https://wordpress.org/support/users/edwinfr/">edwinfr</a> for <a href="https://wordpress.org/support/topic/more-accurate-location-possible/">bringing this to my attention.</a>
+	* Waymark_Helper `asset_url()` fix. Thanks to <a href="https://wordpress.org/support/topic/filter-by-markers-category/">pwrdp</a> for bringing this to my attention.
+	* Updated Ion Icons v2 URLs. Thanks to <a href="https://wordpress.org/support/users/gudulemartens/">gudulemartens</a> for <a href="https://wordpress.org/support/topic/ion-icons/">letting me know about this</a>.
 
 ### 0.9.15.2 ###
 

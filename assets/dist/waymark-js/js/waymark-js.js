@@ -3579,14 +3579,6 @@ Copyright (c) 2016 Dominik Moritz */
 })));
 //# sourceMappingURL=leaflet-elevation.js.map
 
-/*
-  Leaflet.AwesomeMarkers, a plugin that adds colorful iconic markers for Leaflet, based on the Font Awesome icons
-  (c) 2012-2013, Lennard Voogdt
-
-  http://leafletjs.com
-  https://github.com/lvoogdt
-*//*global L*/(function(e,t,n){"use strict";Waymark_L.AwesomeMarkers={};Waymark_L.AwesomeMarkers.version="2.0.1";Waymark_L.AwesomeMarkers.Icon=Waymark_L.Icon.extend({options:{iconSize:[35,45],iconAnchor:[17,42],popupAnchor:[1,-32],shadowAnchor:[10,12],shadowSize:[36,16],className:"awesome-marker",prefix:"glyphicon",spinClass:"fa-spin",icon:"home",markerColor:"blue",iconColor:"white"},initialize:function(e){e=Waymark_L.Util.setOptions(this,e)},createIcon:function(){var e=t.createElement("div"),n=this.options;n.icon&&(e.innerHTML=this._createInner());n.bgPos&&(e.style.backgroundPosition=-n.bgPos.x+"px "+ -n.bgPos.y+"px");this._setIconStyles(e,"icon-"+n.markerColor);return e},_createInner:function(){var e,t="",n="",r="",i=this.options;i.icon.slice(0,i.prefix.length+1)===i.prefix+"-"?e=i.icon:e=i.prefix+"-"+i.icon;i.spin&&typeof i.spinClass=="string"&&(t=i.spinClass);i.iconColor&&(i.iconColor==="white"||i.iconColor==="black"?n="icon-"+i.iconColor:r="style='color: "+i.iconColor+"' ");return"<i "+r+"class='"+i.prefix+" "+e+" "+t+" "+n+"'></i>"},_setIconStyles:function(e,t){var n=this.options,r=Waymark_L.point(n[t==="shadow"?"shadowSize":"iconSize"]),i;t==="shadow"?i=Waymark_L.point(n.shadowAnchor||n.iconAnchor):i=Waymark_L.point(n.iconAnchor);!i&&r&&(i=r.divideBy(2,!0));e.className="awesome-marker-"+t+" "+n.className;if(i){e.style.marginLeft=-i.x+"px";e.style.marginTop=-i.y+"px"}if(r){e.style.width=r.x+"px";e.style.height=r.y+"px"}},createShadow:function(){var e=t.createElement("div");this._setIconStyles(e,"shadow");return e}});Waymark_L.AwesomeMarkers.icon=function(e){return new Waymark_L.AwesomeMarkers.Icon(e)}})(this,document);
-
 'use strict';
 (function (factory, window) {
     /*globals define, module, require*/
@@ -7032,7 +7024,7 @@ function Waymark_Map() {
 		Waymark.config.marker_data_defaults.type = default_marker_type_key;		
 								
 		//Markers icons
-		Waymark_L.AwesomeMarkers.Icon.prototype.options.prefix = 'ion';				
+		//Waymark_L.AwesomeMarkers.Icon.prototype.options.prefix = 'ion';				
 
 		//Groups
 		Waymark.marker_parent_group = Waymark_L.layerGroup();
@@ -7138,7 +7130,15 @@ function Waymark_Map() {
 			'drawCircle' : false,
 			'strings': {
 				'title': waymark_js_lang.action_locate_activate
-			}		
+			},
+			'locateOptions': {
+				'enableHighAccuracy': true		
+			}// ,
+// 			'getLocationBounds': function(locationEvent) {
+// 				console.log(locationEvent);
+// 			
+// 				return locationEvent.bounds;
+// 			}                
 		}).addTo(Waymark.map);
 
 		//Fullscreen Control
@@ -7203,15 +7203,13 @@ function Waymark_Map() {
 						} else {
 							//Build Waymark data
 							feature.properties = Waymark.parse_layer_data('marker', feature.properties);										
-							
+		
 							//Set marker style
 							var type = Waymark.get_type('marker', feature.properties.type);									  				  					
+							
+							//Create Icon								
 							layer.setIcon(
-								Waymark_L.AwesomeMarkers.icon({
-							  	icon: type.marker_icon,
-									markerColor: type.marker_colour,
-									iconColor: type.icon_colour
-								})
+								L.divIcon(Waymark.build_icon_data(type))
 							);		
 
 							//Add any photos to photo gallery
@@ -7576,28 +7574,9 @@ function Waymark_Map() {
 					var this_type = Waymark.get_type(layer_type, key);
 					var group = Waymark[layer_type + '_sub_groups'][key];
 
-					//Preview
-					var preview_class = 'waymark-type waymark-' + layer_type + '-type';
-					var preview_style = '';
-					switch(layer_type) {
-						case 'marker' : 
-							preview_class +=  ' waymark-swatch waymark-swatch-' + this_type.marker_colour;					
-							preview_style +=  'color:' + this_type.icon_colour;					
-							
-							break;
-						case 'line' : 
-							preview_style +=  'color:' + this_type.line_colour + ';box-shadow:inset 0 0 0 1px ' + this_type.line_colour;					
-							
-							break;
-						case 'shape' : 
-							preview_style +=  'background:' + this_type.shape_colour;					
-							
-							break;														
-					}
-
 					//(Re-?)add to control
 					Waymark.layer_control.removeLayer(group);						    						    								
-					Waymark.layer_control.addOverlay(group, '<span class="' + preview_class + '" style="' + preview_style + '">' + this_type[layer_type + '_title'] + '</span>');						    						    								
+					Waymark.layer_control.addOverlay(group, Waymark.type_to_text(layer_type, this_type));						    						    								
 				}
 			}
 		//No type key - just add to Map
@@ -7605,11 +7584,153 @@ function Waymark_Map() {
 			layer.addTo(Waymark[layer_type + '_parent_group']);							
 		}	
 	}		
+	
+	//Represent Type as text
+	this.type_to_text = function(layer_type, type, ele = 'span') {
+		var preview_class = 'waymark-type-text waymark-' + layer_type + '-type';
+		var preview_style = '';
+
+		switch(layer_type) {
+			case 'marker' : 
+				preview_style +=  'color:' + type.icon_colour + ';';					
+				preview_style +=  'background:' + Waymark.get_marker_background(type.marker_colour);					
+				
+				break;
+			case 'line' : 
+				preview_style +=  'color:' + type.line_colour + ';box-shadow:inset 0 0 0 1px ' + type.line_colour;					
+				
+				break;
+			case 'shape' : 
+				preview_style +=  'background:' + type.shape_colour;					
+				
+				break;														
+		}
+
+		return '<' + ele + ' class="' + preview_class + '" style="' + preview_style + '">' + type[layer_type + '_title'] + '</' + ele + '>';
+	}
 
 	//Create marker										  
 	this.create_marker = function(latlng) {
 		return Waymark_L.marker(latlng);
 	}		
+	
+	this.build_icon_data = function(type) {
+		var icon_data = {
+			className: 'waymark-marker waymark-marker-' + type.type_key,
+		};
+
+		//Shape
+		if(typeof type.marker_shape !== 'undefined' && typeof type.marker_size !== 'undefined') {
+			icon_data.className += ' waymark-marker-' + type.marker_shape;		
+			icon_data.className += ' waymark-marker-' + type.marker_size;
+
+			switch(type.marker_shape) {
+				//Markers & Circles
+				case 'rectangle' :
+				case 'circle' :
+				case 'marker' :					
+					//Size
+					switch(type.marker_size) {
+						case 'small' :
+							icon_data.iconSize = [16, 16];
+
+							break;
+						case 'medium' :
+							icon_data.iconSize = [25, 25];
+							
+							break;
+						default :
+						case 'large' :
+							icon_data.iconSize = [32, 32];
+											
+							break;
+					}
+					
+					break;												
+			}
+			
+			//Marker only
+			if(type.marker_shape == 'marker') {
+				icon_data.iconAnchor = [icon_data.iconSize[0]/2, icon_data.iconSize[1]*1.25];			
+			}
+		}
+		
+		//CSS Styles
+		var background_css = 'background:' + Waymark.get_marker_background(type.marker_colour) + ';';
+		var icon_css = 'color:' + type.icon_colour + ';';
+		
+		//Classes
+		var icon_class = 'waymark-marker-icon';
+
+		//If Ionic Icons
+		if(type.marker_icon.indexOf('ion-') === 0) {
+			icon_class += ' ion ';
+			icon_class += ' ' + type.marker_icon;			
+		//Font Awesome
+		} else if(type.marker_icon.indexOf('fa-') === 0) {
+			icon_class += ' fa';
+			icon_class += ' ' + type.marker_icon;	
+		//Default to Ionic
+		} else {
+			icon_class += ' ion';
+			icon_class += ' ion-' + type.marker_icon;			
+		}
+		
+ 		//HTML
+ 		icon_data.html = '<div class="waymark-marker-background" style="' + background_css + '"></div><i style="' + icon_css + '" class="' + icon_class + '"></i>';
+						
+		return icon_data;
+	}
+	
+	this.get_marker_background = function(colour) {
+		var old_background_options = ['red', 'darkred', 'orange', 'green', 'darkgreen', 'blue', 'purple', 'darkpurple', 'cadetblue', 'white', 'black'];
+		
+		//Already hex
+// 		if(colour.indexOf('#' === 0)) {
+// 			return colour;
+// 		}
+
+		//Convert		
+		if(old_background_options.includes(colour)) {
+			switch(colour) {
+				case 'red':
+					return '#da3d20';
+					break;
+				case 'darkred':
+					return '#a43233';
+					break;
+				case 'orange':
+					return '#f9960a';
+					break;
+				case 'green':
+					return '#70af00';
+					break;
+				case 'darkgreen':
+					return '#72820d';
+					break;
+				case 'blue':
+					return '#2aabe1';
+					break;
+				case 'purple':
+					return '#d553bd';
+					break;
+				case 'darkpurple':
+					return '#5c3a6e';
+					break;
+				case 'cadetblue':
+					return '#416979';
+					break;
+				case 'white':
+					return '#fbfbfb';
+					break;
+				case 'black':
+					return '#303030';
+					break;								
+			}
+		}
+		
+		return colour;						
+	}
 
 /*
 	==================================
@@ -7713,11 +7834,11 @@ function Waymark_Map_Viewer() {
 					if(Waymark.config.map_options.show_type_labels != '1') {
 						break;	
 					}
-					
+									
 					//Get type
 					var type = Waymark.get_type(layer_type, feature.properties.type);
 					if(type) {
-						ele = jQuery('<small />').text(type[layer_type + '_title']);						
+						ele = Waymark.type_to_text(layer_type, type, 'small');						
 					}			
 					
 					break;
@@ -8380,29 +8501,87 @@ function Waymark_Map_Editor() {
 				}					
 
 				//File Upload
-				//Thanks to: https://stackoverflow.com/a/24939229
-				var input = jQuery('<input />')
-					.attr({
-						'type': 'file',
-						'name': 'add_file'
-					})
-					.css('display', 'none')
-					.change(function() {
-						Waymark.handle_file_upload(jQuery(this));
-					});		
-										
-				var button = Waymark_L.DomUtil.create('a', 'waymark-edit-button waymark-edit-upload', toolbar);
-				jQuery(button).append(input);
-				button.innerHTML = '<i class="ion ion-document"></i><i class="ion ion-arrow-up-c"></i>';								
-				button.setAttribute('title', waymark_js_lang.upload_file_title);
-				button.onclick = function() {
-					//Fire the form
-					input.trigger('click');
-					
-					//Weird circle bug fix...
-        	Waymark.map.editTools.stopDrawing();					
-				};
 
+				//Use Media Library?				
+				var media_library_uploads = waymark_settings.misc.editor_options.media_library_uploads;
+				if(typeof media_library_uploads != 'undefined' && media_library_uploads == true) {
+					var button = Waymark_L.DomUtil.create('a', 'waymark-edit-button waymark-edit-upload', toolbar);
+					jQuery(button).append(input);
+					button.innerHTML = '<i class="ion ion-document"></i><i class="ion ion-arrow-up-c"></i>';								
+					button.setAttribute('title', waymark_js_lang.upload_file_title);
+					button.onclick = function() {
+
+						if(! typeof wp) {
+							return false;
+						}
+										
+						//Thanks to: https://mycyberuniverse.com/integration-wordpress-media-uploader-plugin-options-page.html
+						wp.media.editor.send.attachment = function(props, attachment) {
+							var debug_mode = waymark_settings.misc.advanced.debug_mode;
+							if(typeof debug_mode != 'undefined' && debug_mode == true) {
+								console.log(attachment);		  	
+							}						
+
+							jQuery.ajax({
+								type: "GET",
+								url: attachment.url,
+								dataType: 'text',
+								success: function(response) {
+									switch(attachment.mime) {
+										case 'application/gpx+xml' :
+											Waymark.load_file_contents(response, 'gpx');
+	
+											break;
+
+										case 'application/vnd.google-earth.kml+xml' :
+											Waymark.load_file_contents(response, 'kml');
+
+											break;
+																			
+										case 'application/geo+json' :
+											Waymark.load_file_contents(response, 'geojson');
+
+											break;
+										
+										default :
+											console.log(waymark_js_lang.error_message_prefix + ': ' + waymark_js_lang.error_file_upload);					  
+
+											break;						  									  									  									  			
+									}
+								}
+							});
+						}
+
+						wp.media.editor.open();
+					
+						return false;	
+					};				
+				//Don't use media library - just read and delete
+				} else {
+					//Thanks to: https://stackoverflow.com/a/24939229
+					var input = jQuery('<input />')
+						.attr({
+							'type': 'file',
+							'name': 'add_file'
+						})
+						.css('display', 'none')
+						.change(function() {
+							Waymark.handle_file_upload(jQuery(this));
+						});		
+										
+					var button = Waymark_L.DomUtil.create('a', 'waymark-edit-button waymark-edit-upload', toolbar);
+					jQuery(button).append(input);
+					button.innerHTML = '<i class="ion ion-document"></i><i class="ion ion-arrow-up-c"></i>';								
+					button.setAttribute('title', waymark_js_lang.upload_file_title);
+					button.onclick = function() {
+						//Fire the form
+						input.trigger('click');
+					
+						//Weird circle bug fix...
+						Waymark.map.editTools.stopDrawing();					
+					};
+				}
+				
 				return toolbar;
 			},
 		});
@@ -8426,6 +8605,11 @@ function Waymark_Map_Editor() {
 			processData: false,
 			contentType: false,
 		  success: function(response) {		
+		  	var debug_mode = waymark_settings.misc.advanced.debug_mode;
+		  	if(typeof debug_mode != 'undefined' && debug_mode == true) {
+					console.log(response);		  	
+		  	}
+		  
 			  if(response === null) {
 					console.log(waymark_js_lang.error_message_prefix + ': ' + waymark_js_lang.error_file_upload);					  
 					
@@ -8633,14 +8817,11 @@ function Waymark_Map_Editor() {
 							
 						break;
 					case 'marker' :
+						//Create Icon								
 						layer.setIcon(
-							Waymark_L.AwesomeMarkers.icon({
-								icon: type.marker_icon,
-								markerColor: type.marker_colour,
-								iconColor: type.icon_colour
-							})
-						);	
-				
+							L.divIcon(Waymark.build_icon_data(type))
+						);				
+
 						break;								
 				}
 

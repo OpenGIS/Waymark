@@ -42,9 +42,19 @@ class Waymark_Input {
 			$out .= '	<label class="waymark-control-label" for="' . $field['name'] . '">' . $field['title'] .  '</label>' . "\n";		
 		}
 		$out .= '	<div class="waymark-controls">' . "\n";				
+
+		//Prepend?		
+		if(array_key_exists('prepend', $field)) {
+			$out .= $field['prepend'];
+		}
 	
 		//Create input
 		$out .= self::create_input($field, $set_value);
+
+		//Append?		
+		if(array_key_exists('append', $field)) {
+			$out .= $field['append'];
+		}
 	
 		//Tip
 		if(array_key_exists('tip', $field)) {
@@ -72,7 +82,7 @@ class Waymark_Input {
 	 */			
 	private static function create_input($field, $set_value = null) {
 		$out = '';
-		
+
 		if(! array_key_exists('type', $field)) {
 			$field['type'] = 'text';
 		}
@@ -406,7 +416,8 @@ class Waymark_Input {
 		if(array_key_exists('type', $filetype) && $filetype['type']) {
 	    return array(
 				'file_type' => $filetype['ext'],
-				'file_contents' => file_get_contents($file['tmp_name'])
+				'file_contents' => file_get_contents($file['tmp_name']),
+				'file_info' => $file	
 			);
 		} else {
 			return array(

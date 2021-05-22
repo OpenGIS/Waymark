@@ -94,21 +94,8 @@
 				overflow-x: hidden;				
 				label {
 					font-size: 13px;
-					.waymark-type {
+					.waymark-type-text {
 						margin-left: 10px;
-						padding: 3px 5px;
-						border-radius: 3px;
-						&.waymark-marker-type {
-							&.waymark-swatch-white {
-								box-shadow: inset 0 0 0 1px #ddd;								
-							}
-						}
-						&.waymark-line-type,
-						&.waymark-shape-type {
-							color: #fff;
-							text-shadow: 1px 1px rgba(0,0,0,0.4);
-							box-shadow: inset 0 0 0 1px #ddd;								   			
-						}
 					}				
 				}
 			}	
@@ -147,28 +134,106 @@
 			}
 		}				
 	}
+
+	//Types as text
+	.waymark-type-text {
+		padding: 3px 5px;
+		border-radius: 3px;
+		&.waymark-marker-type {
+			&.waymark-swatch-white {
+				box-shadow: inset 0 0 0 1px #ddd;								
+			}
+		}
+		&.waymark-line-type,
+		&.waymark-shape-type {
+			color: #fff;
+			text-shadow: 1px 1px rgba(0,0,0,0.2);
+			box-shadow: inset 0 0 0 1px #ddd;								   			
+		}
+	}
 	
 	/* Markers */
-	.awesome-marker {
-		&.awesome-marker-icon-white {
-		  background-position: -576px 0;
-		}		
-		i {
-		  font-size: 20px;
-		  margin-top: 8px;
-			&.ion-pizza {
-			  font-size: 23px;
-			  margin-top: 9px;
-			}
-			&.ion-ios-cart {
-			  font-size: 22px;
-			  margin-top: 8px;
-			}
-			&.ion-beer {
-			  font-size: 20px;
-			  margin-top: 9px;
-			}		
+	.waymark-marker {
+		display: table !important;
+		margin: 0 auto;
+// 		overflow: hidden;
+		text-align: center;		
+
+		.waymark-marker-background {	
+			width: inherit;
+			height: inherit;		
+			max-width: inherit;
+			max-height: inherit;
+			position: absolute;
+// 			z-index: 0;
+// 			border: 1px solid rgba(0, 0, 0, 0.3);
+		  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5)); 			
 		}
+		
+		.waymark-marker-icon {	
+			width: inherit;
+			height: inherit;		
+			max-width: inherit;
+			max-height: inherit;
+			position: relative;
+			display: table-cell !important;
+			vertical-align: middle;
+			padding: 0;
+			line-height: 0;
+			text-align: center;					
+			&::before {
+				display: unset;
+				width: inherit;
+				height: inherit;		
+				max-width: inherit;
+				max-height: inherit;	
+				vertical-align: middle;	
+				margin-left: 1px;			
+				line-height: 0;
+			}	
+		}		
+
+		//Circle
+		&.waymark-marker-circle {
+			.waymark-marker-background {	
+				border-radius: 50%;		
+			}
+		}
+
+		//Marker
+		&.waymark-marker-marker {
+			.waymark-marker-background {	
+				transform: rotate(-45deg);	
+				border-radius: 50% 50% 50% 0;
+			}
+		}
+		
+		//Small
+		&.waymark-marker-small {
+			.waymark-marker-icon {	
+				&::before {
+					font-size: 10px;
+				}
+			}
+		}		
+		
+		//Medium
+		&.waymark-marker-medium {
+			.waymark-marker-icon {	
+				&::before {
+					font-size: 13px;
+				}
+			}
+		}		
+		
+		//Large
+		&.waymark-marker-large {
+			.waymark-marker-icon {	
+				&::before {
+					font-size: 20px;
+				}
+			}
+		}								
 	}
 }
 
