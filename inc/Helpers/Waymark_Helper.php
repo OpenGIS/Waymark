@@ -30,6 +30,8 @@ class Waymark_Helper {
 		$out .= '			<li><a href="https://github.com/CliffCloud/Leaflet.Sleep">Leaflet.Sleep</a></li>' . "\n";	
 		$out .= '			<li><a href="https://github.com/perliedman/leaflet-control-geocoder">leaflet-control-geocoder</a></li>' . "\n";	
 		$out .= '			<li><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a></li>' . "\n";			
+		$out .= '			<li><a href="https://github.com/maphubs/tokml">tokml</a></li>' . "\n";			
+		$out .= '			<li><a href="https://github.com/tyrasd/togpx">togpx</a></li>' . "\n";			
 		$out .= '			<li class="waymark-multi">' . "\n";	
 		$out .= '				<a href="https://stackoverflow.com/questions/41522376/leaflet-open-popup-at-cursor-position-instead-of-linestring-center">S</a>' . "\n";	
 		$out .= '				<a href="https://stackoverflow.com/questions/32106243/regex-to-remove-all-non-alpha-numeric-and-replace-spaces-with/32106277">t</a>' . "\n";	
