@@ -73,6 +73,8 @@ A big thank you to the following projects and their contributors. Without their 
 * <a href="https://github.com/CliffCloud/Leaflet.Sleep">Leaflet.Sleep</a>
 * <a href="https://github.com/perliedman/leaflet-control-geocoder">leaflet-control-geocoder</a>
 * <a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>
+* <a href="https://github.com/maphubs/tokml">tokml</a>
+* <a href="https://github.com/tyrasd/togpx">togpx</a>
 
 = Links =
  
@@ -111,6 +113,8 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 == Changelog ==
 
 = 0.9.17-b1 =
+
+* Updated Acknowledgements
 
 = 0.9.16 =
 
