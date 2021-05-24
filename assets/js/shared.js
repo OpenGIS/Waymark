@@ -7,7 +7,8 @@ function waymark_setup_map_export() {
 		var export_parent = export_container.parents('.waymark-meta-export_data');
 	
 		//Not for touch devices	
-		if(waymark_is_touch_device()) {
+		if(false) {
+// 		if(waymark_is_touch_device()) {
 			//Hide it
 			export_parent.hide();
 		//All other devices
@@ -70,8 +71,8 @@ function waymark_setup_map_export() {
 					case 'gpx' :
 						//Convert to GPX 
 						//Thanks! https://github.com/tyrasd/togpx
-						var map_data_gpx = togpx(map_data_geojson);
-						var map_data_export = 'application/gpx+xml;charset=utf-8,' + encodeURIComponent(map_data_gpx);
+						var map_data = togpx(map_data_geojson);
+						var map_data_type = 'application/gpx+xml;charset=utf-8';
 						var file_extension = 'gpx';
 				
 						break;
@@ -80,8 +81,8 @@ function waymark_setup_map_export() {
 					case 'kml' :
 						//Convert to KML 
 						//Thanks! https://github.com/mapbox/tokml & https://github.com/maphubs/tokml
-						var map_data_kml = tokml(map_data_geojson);
-						var map_data_export = 'application/vnd.google-earth.kml+xml;charset=utf-8,' + encodeURIComponent(map_data_kml);
+						var map_data = tokml(map_data_geojson);
+						var map_data_type = 'application/vnd.google-earth.kml+xml;charset=utf-8';
 						var file_extension = 'kml';
 				
 						break;
@@ -89,17 +90,23 @@ function waymark_setup_map_export() {
 					//GeoJSON
 					default:
 					case 'geojson' :
-						var map_data_export = 'application/geo+json;charset=utf-8,' + encodeURIComponent(JSON.stringify(map_data_geojson));
+						var map_data = JSON.stringify(map_data_geojson);
+						var map_data_type = 'application/geo+json;charset=utf-8';
 						var file_extension = 'geojson';
 									
 						break;			
 				}
 		
 				//Attatch data to link and download it
-				jQuery(this).attr({
-					'href': 'data:' + map_data_export,
-					'download': export_container.data('map_slug') + '-' + export_container.data('map_id') + '.' + file_extension
-				});			
+// 				jQuery(this).attr({
+// 					'href': 'data:' + map_data_export,
+// 					'download': export_container.data('map_slug') + '-' + export_container.data('map_id') + '.' + file_extension
+// 				});		
+
+					var blob = new Blob([map_data], {type: map_data_type});
+					saveAs(blob, export_container.data('map_slug') + '-' + export_container.data('map_id') + '.' + file_extension);
+					
+					return false;
 			});
 		}
 	});

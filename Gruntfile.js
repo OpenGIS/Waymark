@@ -46,7 +46,7 @@ module.exports = function(grunt) {
 			},
 			wp_js: {
 				files: {
-					'assets/js/front.min.js': ['assets/js/shared.js', 'assets/js/front.js'],
+					'assets/js/front.min.js': ['assets/js/FileSaver.js', 'assets/js/shared.js', 'assets/js/front.js'],
 					'assets/js/admin.min.js': ['assets/js/shared.js', 'assets/js/admin.js'],					
 				}
 			}			
