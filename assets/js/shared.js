@@ -2,6 +2,7 @@ function waymark_setup_map_export() {
 	//Each Export field
 	jQuery('.waymark-map-export').each(function() {
 		var export_container = jQuery(this);
+		var input_map_data = jQuery('input[name="map_data"]', export_container);
 		
 		if(export_container) {
 			//Container
@@ -91,19 +92,7 @@ function waymark_setup_map_export() {
 						break;			
 				}
 					
-				var map_data_filename = export_container.data('map_slug') + '-' + export_container.data('map_id') + '.' + map_data_extension;
-				
-				
-				var input_map_data = jQuery('input[name="map_data"]', export_container);
-//				var input_map_data_type = jQuery('input[name="map_data_type"]', map_data_type);
-				
-				console.log(map_data);
-				
 				input_map_data.val(encodeURIComponent(map_data));
-				
-				//Save in Browser
-				//Thanks! https://github.com/eligrey/FileSaver.js
-				//saveAs(new Blob([map_data], {type: map_data_type}), map_data_filename);
 					
 				//return false;
 			});
