@@ -28,9 +28,9 @@ class Waymark_HTTP {
 		}
 			
 		//Action
-		if(array_key_exists('waymark_action', $_REQUEST)) {
+		if(array_key_exists('waymark_action', $_REQUEST)) {	
 			//Requires Map Data
-			if(in_array($_REQUEST['waymark_action'], array('get_map_data'))) {
+			if(in_array($_REQUEST['waymark_action'], array('get_map_data', 'download_map_data'))) {
 				//Do we have data?
 				if(array_key_exists('map_id', $_REQUEST) && is_numeric($_REQUEST['map_id'])) {					
 					//Valid Map
@@ -79,15 +79,47 @@ class Waymark_HTTP {
 								
 						//Type
 						header('Content-Type: application/geo+json');						
+
+						//The content
+						if(isset($map_data) && $map_data) {
+							echo $map_data;	
+						}
 					
-						break;			
+						break;		
+					case 'download_map_data' :
+						//Security
+						check_ajax_referer($this->nonce_string, 'waymark_security');						
+
+						//Required data
+						if(! isset($map_data) || ! isset($Map)) {
+							die("-1");											
+						}	
+						
+						//File download name
+						$export_filename = get_post_field('post_name', $Map->post_id) . '-' . $Map->post_id . '.' . $_REQUEST['export_format'];
+						
+						header('Content-Disposition: attachment; filename="' . $export_filename . '"');		
+	
+						switch($_REQUEST['export_format']) {
+							case 'gpx' :
+								header('Content-Type: application/gpx+xml');						
+							
+								break;
+							case 'kml' :
+								header('Content-Type: application/vnd.google-earth.kml+xml');						
+							
+								break;
+							case 'geojson' :
+								header('Content-Type: application/geo+json');						
+							
+								break;																
+						}
+	
+						echo rawurldecode($_REQUEST['map_data']);
+						
+						break;	
 				}	
-
-				//The content
-				if(isset($map_data) && $map_data) {
-					echo $map_data;	
-				}
-
+				
 				//That's it, that's all...
 				die();			
 			}									

@@ -30,7 +30,7 @@ function waymark_setup_map_export() {
 			}		
 		
 			//When clicked
-			export_link.on('click', function(e) {
+			export_container.on('submit', function(e) {
 				var export_format = export_select.val() ? export_select.val() : 'geojson';
 		
 				//Get data layer from Leaflet		
@@ -93,11 +93,19 @@ function waymark_setup_map_export() {
 					
 				var map_data_filename = export_container.data('map_slug') + '-' + export_container.data('map_id') + '.' + map_data_extension;
 				
+				
+				var input_map_data = jQuery('input[name="map_data"]', export_container);
+//				var input_map_data_type = jQuery('input[name="map_data_type"]', map_data_type);
+				
+				console.log(map_data);
+				
+				input_map_data.val(encodeURIComponent(map_data));
+				
 				//Save in Browser
 				//Thanks! https://github.com/eligrey/FileSaver.js
-				saveAs(new Blob([map_data], {type: map_data_type}), map_data_filename);
+				//saveAs(new Blob([map_data], {type: map_data_type}), map_data_filename);
 					
-				return false;
+				//return false;
 			});
 		}
 	});
