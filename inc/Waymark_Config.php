@@ -12,6 +12,7 @@ class Waymark_Config {
 			'plugin_name_short' => 'Waymark',		
 			'custom_types' => array(),
 			'plugin_version' => '0.9.17-b1',
+			'nonce_string' => 'Waymark_Nonce',
 			'site_url' => 'https://www.joesway.ca/waymark/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
 			'multi_value_seperator' => $multi_value_seperator,

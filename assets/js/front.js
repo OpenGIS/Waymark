@@ -17,9 +17,9 @@ function waymark_setup_map_shortcode() {
 				var export_only = has_export && (meta_items.length === 1);
 				
 				//Only export on mobile
-				if(export_only && waymark_is_touch_device()) {
-					return;
-				}
+// 				if(export_only && waymark_is_touch_device()) {
+// 					return;
+// 				}
 				
 				//Open button
 				open.on('click', function() {
