@@ -343,7 +343,8 @@ function Waymark_Map_Editor() {
 				//File Upload
 
 				//Use Media Library?				
-				if(typeof waymark_settings.misc.editor_options.media_library_uploads != 'undefined' && waymark_settings.misc.editor_options.media_library_uploads == true) {
+				var media_library_uploads = waymark_settings.misc.editor_options.media_library_uploads;
+				if(typeof media_library_uploads != 'undefined' && media_library_uploads == true) {
 					var button = Waymark_L.DomUtil.create('a', 'waymark-edit-button waymark-edit-upload', toolbar);
 					jQuery(button).append(input);
 					button.innerHTML = '<i class="ion ion-document"></i><i class="ion ion-arrow-up-c"></i>';								
@@ -444,7 +445,8 @@ function Waymark_Map_Editor() {
 			processData: false,
 			contentType: false,
 		  success: function(response) {		
-		  	if(typeof waymark_settings.misc.advanced.debug_mode != 'undefined' && waymark_settings.misc.advanced.debug_mode == true) {
+		  	var debug_mode = waymark_settings.misc.advanced.debug_mode;
+		  	if(typeof debug_mode != 'undefined' && debug_mode == true) {
 					console.log(response);		  	
 		  	}
 		  
