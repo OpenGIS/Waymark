@@ -115,6 +115,8 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 = 0.9.17-b1 =
 
 * Updated Acknowledgements
+* JavaScript settings bug fix
+
 
 = 0.9.16 =
 
