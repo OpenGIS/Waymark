@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 5.7  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.17-b1  
+**Stable tag:** 0.9.16  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -120,7 +120,7 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 
 ### 0.9.17-b1 ###
 
-* Export on mobile devices working?
+* Enable Map Exports on mobile devices
 * Updated Acknowledgements
 * JavaScript settings bug fix
 
