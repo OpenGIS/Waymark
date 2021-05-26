@@ -1,6 +1,6 @@
 function waymark_setup_map_export() {
 	//Each Export field
-	jQuery('.waymark-map-export').each(function() {
+	jQuery('form.waymark-map-export').each(function() {
 		var export_container = jQuery(this);
 		var input_map_data = jQuery('input[name="map_data"]', export_container);
 		
@@ -58,9 +58,7 @@ function waymark_setup_map_export() {
 					}
 				});
 				var map_data_geojson = map_export_layers.toGeoJSON();		
-					
-				//return false;
-					
+										
 				switch(export_select.val()) {
 					//GPX
 					case 'gpx' :
@@ -92,8 +90,11 @@ function waymark_setup_map_export() {
 						break;			
 				}
 					
+				//Set Map data in form
 				input_map_data.val(encodeURIComponent(map_data));
-					
+				
+				//Form gets submitted...
+				
 				//return false;
 			});
 		}
