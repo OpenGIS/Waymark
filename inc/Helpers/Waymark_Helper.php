@@ -663,7 +663,9 @@ class Waymark_Helper {
 			return false;
 		}
 		
-		$out  = '<form action="' . Waymark_Helper::http_url() . '" method="post" id="waymark-map-export-' . $Map->post_id . '" class="waymark-map-export" data-map_id="' . $Map->post_id . '" data-map_slug="' . sanitize_title($Map->post_title) . '">' . "\n";
+		$element = (is_admin()) ? 'div' : 'form';
+		
+		$out  = '<' . $element . ' action="' . Waymark_Helper::http_url() . '" method="post" id="waymark-map-export-' . $Map->post_id . '" class="waymark-map-export" data-map_id="' . $Map->post_id . '" data-map_slug="' . sanitize_title($Map->post_title) . '">' . "\n";
 		$out .= '	<select name="export_format">' . "\n";
 		$out .= '		<option value="geojson">GeoJSON</option>' . "\n";
 		$out .= '		<option value="gpx">GPX</option>' . "\n";
@@ -671,11 +673,10 @@ class Waymark_Helper {
 		$out .= '	</select>' . "\n";
 		$out .= '	<input type="hidden" name="waymark_action" value="download_map_data" />' . "\n";
 		$out .= '	<input type="hidden" name="waymark_security" value="' . wp_create_nonce('Waymark_Nonce') . '" />' . "\n";
-		$out .= '	<input type="hidden" name="map_data" value="blah" />' . "\n";
-		$out .= '	<input type="hidden" name="map_data_type" value="blah" />' . "\n";
+		$out .= '	<input type="hidden" name="map_data" value="" />' . "\n";
 		$out .= '	<input type="hidden" name="map_id" value="' . $Map->post_id . '" />' . "\n";
 		$out .= '	<input type="submit" value="' . __('Download', 'waymark') . '" class="button" />' . "\n";
-		$out .= '</form>' . "\n";
+		$out .= '</' . $element . '>' . "\n";
 		
 		return $out;
 	}	

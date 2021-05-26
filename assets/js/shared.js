@@ -1,12 +1,31 @@
 function waymark_setup_map_export() {
 	//Each Export field
-	jQuery('form.waymark-map-export').each(function() {
+	jQuery('.waymark-map-export').each(function() {
 		var export_container = jQuery(this);
-		var input_map_data = jQuery('input[name="map_data"]', export_container);
-		
+	
 		if(export_container) {
 			//Container
 			var export_parent = export_container.parents('.waymark-meta-export_data');
+			if(! export_parent.length) {
+				export_parent = export_container.parent('div');
+			}
+
+			//If not form (i.e. admin - Wordpress strips out the form)
+			if(export_container.get(0).tagName != 'FORM') {
+				//Clones contents
+				var form_container = jQuery('<form>').append(export_container.contents());
+				var form_attributes = export_container.get(0).attributes;
+
+				for(var i = form_attributes.length - 1; i >= 0; i--) {
+				 	form_container.attr(form_attributes[i].name, form_attributes[i].value);
+				}
+
+				//Replace with form
+				export_container.replaceWith(form_container);
+				export_container = form_container;
+			}
+		
+			var input_map_data = jQuery('input[name="map_data"]', export_container);
 
 			var export_link = jQuery('a', export_container);
 			var export_select = jQuery('select', export_container);
@@ -36,6 +55,9 @@ function waymark_setup_map_export() {
 		
 				//Get data layer from Leaflet		
 				var map_export_layers = Waymark_L.layerGroup();
+				
+				console.log(map_export_layers);
+				
 				Waymark.map_data.eachLayer(function(layer) {
 					//If visible
 					if(Waymark.map.hasLayer(layer)) {	
