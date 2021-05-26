@@ -2,19 +2,17 @@
 
 class Waymark_AJAX {
 	
-	private $nonce_string = 'Waymark_Nonce';
-	
 	function __construct() {
 		add_action('wp_ajax_waymark_read_file', array($this, 'read_file'));				
 		add_action('wp_ajax_waymark_get_attatchment_meta', array($this, 'get_attatchment_meta'));				
 		//add_action('wp_ajax_waymark_shortcode_form', array($this, 'shortcode_form'));				
 		
 		//Add nonce
-		Waymark_JS::add_chunk('var waymark_ajax_security = "' . wp_create_nonce($this->nonce_string) . '";');					
+		Waymark_JS::add_chunk('var waymark_ajax_security = "' . wp_create_nonce(Waymark_Config::get_item('nonce_string')) . '";');					
 	}
 
 // 	function shortcode_form() {
-// 		check_ajax_referer($this->nonce_string, 'waymark_security');
+// 		check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');
 // 
 // 		$Map = new Waymark_Map;
 // 
@@ -49,7 +47,7 @@ class Waymark_AJAX {
 // 	}	
 
 	function get_attatchment_meta() {
-		check_ajax_referer($this->nonce_string, 'waymark_security');
+		check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');
 
 		$response_json = json_encode(array(
 			'error' => esc_html__('No image metadata available.', 'waymark')
@@ -70,7 +68,7 @@ class Waymark_AJAX {
 	}
 	
 	function read_file() {
-		check_ajax_referer($this->nonce_string, 'waymark_security');
+		check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');
 
 		$response_json = json_encode(array(
 			'error' => esc_html__('Unknown file upload error.', 'waymark')

@@ -1,9 +1,7 @@
 <?php
 
 class Waymark_HTTP {
-	
-	private $nonce_string = 'Waymark_Nonce';
-	
+
 	function __construct() {
 		add_filter('query_vars', array($this, 'query_vars'));		
 		add_action('template_redirect', array($this, 'template_redirect'));					
@@ -11,7 +9,7 @@ class Waymark_HTTP {
 		//Setup AJAX
 		Waymark_JS::add_chunk('//HTTP');					
 		Waymark_JS::add_chunk('var waymark_http_endpoint = "' . Waymark_Helper::http_url() . '";');					
-		Waymark_JS::add_chunk('var waymark_http_security = "' . wp_create_nonce($this->nonce_string) . '";');					
+		Waymark_JS::add_chunk('var waymark_http_security = "' . wp_create_nonce(Waymark_Config::get_item('nonce_string')) . '";');					
 	}
 
 	public function query_vars($vars) {
@@ -65,7 +63,7 @@ class Waymark_HTTP {
 					// === AJAX Load ===
 					case 'get_map_data' :
 						//Security
-						check_ajax_referer($this->nonce_string, 'waymark_security');	
+						check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');	
 
 						//Required data
 						if(! isset($map_data) || ! isset($Map)) {
@@ -88,7 +86,7 @@ class Waymark_HTTP {
 						break;		
 					case 'download_map_data' :
 						//Security
-						check_ajax_referer($this->nonce_string, 'waymark_security');						
+						check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');						
 
 						//Required data
 						if(! isset($map_data) || ! isset($Map)) {
