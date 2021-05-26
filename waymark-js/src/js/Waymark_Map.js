@@ -162,6 +162,11 @@ function Waymark_Map() {
 		Waymark.handle_resize();			
 		Waymark.init_done();			
 	}
+	
+	//Thanks! https://stackoverflow.com/questions/2631001/test-for-existence-of-nested-javascript-object-key
+	this.get_property = function(obj, ...args) {
+  	return args.reduce((obj, level) => obj && obj[level], obj)
+	}
 
 	this.title_case = function(str) {
     return str.replace(/(?:^|\s)\w/g, function(match) {

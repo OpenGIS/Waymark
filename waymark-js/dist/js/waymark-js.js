@@ -7039,6 +7039,11 @@ function Waymark_Map() {
 		Waymark.handle_resize();			
 		Waymark.init_done();			
 	}
+	
+	//Thanks! https://stackoverflow.com/questions/2631001/test-for-existence-of-nested-javascript-object-key
+	this.get_property = function(obj, ...args) {
+  	return args.reduce((obj, level) => obj && obj[level], obj)
+	}
 
 	this.title_case = function(str) {
     return str.replace(/(?:^|\s)\w/g, function(match) {
@@ -8503,8 +8508,7 @@ function Waymark_Map_Editor() {
 				//File Upload
 
 				//Use Media Library?				
-				var media_library_uploads = waymark_settings.misc.editor_options.media_library_uploads;
-				if(typeof media_library_uploads != 'undefined' && media_library_uploads == true) {
+				if(Waymark.get_property(waymark_settings, 'misc', 'editor_options', 'media_library_uploads') {
 					var button = Waymark_L.DomUtil.create('a', 'waymark-edit-button waymark-edit-upload', toolbar);
 					jQuery(button).append(input);
 					button.innerHTML = '<i class="ion ion-document"></i><i class="ion ion-arrow-up-c"></i>';								
@@ -8517,8 +8521,7 @@ function Waymark_Map_Editor() {
 										
 						//Thanks to: https://mycyberuniverse.com/integration-wordpress-media-uploader-plugin-options-page.html
 						wp.media.editor.send.attachment = function(props, attachment) {
-							var debug_mode = waymark_settings.misc.advanced.debug_mode;
-							if(typeof debug_mode != 'undefined' && debug_mode == true) {
+							if(Waymark.get_property(waymark_settings, 'misc', 'advanced', 'debug_mode') {
 								console.log(attachment);		  	
 							}						
 
@@ -8605,10 +8608,9 @@ function Waymark_Map_Editor() {
 			processData: false,
 			contentType: false,
 		  success: function(response) {		
-		  	var debug_mode = waymark_settings.misc.advanced.debug_mode;
-		  	if(typeof debug_mode != 'undefined' && debug_mode == true) {
+				if(Waymark.get_property(waymark_settings, 'misc', 'advanced', 'debug_mode') {
 					console.log(response);		  	
-		  	}
+				}
 		  
 			  if(response === null) {
 					console.log(waymark_js_lang.error_message_prefix + ': ' + waymark_js_lang.error_file_upload);					  
