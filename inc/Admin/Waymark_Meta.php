@@ -147,6 +147,14 @@ class Waymark_Meta {
 		//Create new Map object
 		Waymark_JS::add_call('var Waymark_Map_Editor = window.Waymark_Map_Factory.editor()');
 
+		//Warn user about navigating away from page before Publish/Update
+		//I'm not sure why, but we have to return something here to get the desired behaviour :-/
+		Waymark_JS::add_call('Waymark_Map_Editor.map_was_edited = function() {
+			jQuery(window).on(\'beforeunload.edit-post\', function() {
+				return null;
+			});
+	 	}');
+
 		//Default view
 		if($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
 			//We have a valid LatLng

@@ -148,15 +148,9 @@ function Waymark_Map_Editor() {
 	}
 
 	//Something was edited
-	this.map_was_edited = function() {
-		Waymark = this;
-	
-		//Warn user about navigating away from page before Publish/Update
-		jQuery(window).on('beforeunload.edit-post', function() {
-			//I'm not sure why, but we have to return something here to get the desired behaviour :-/
-			return null;
-		});
-	}
+ 	this.map_was_edited = function() {
+ 	
+ 	}
 		
 	this.create_buttons = function() {
 		Waymark = this;
