@@ -8502,7 +8502,7 @@ function Waymark_Map_Editor() {
 				//File Upload
 
 				//Use Media Library?				
-				if(Waymark.get_property(waymark_settings, 'misc', 'editor_options', 'media_library_uploads')) {
+				if(Waymark.get_property(waymark_settings, 'misc', 'editor_options', 'media_library_uploads') == true) {
 					var button = Waymark_L.DomUtil.create('a', 'waymark-edit-button waymark-edit-upload', toolbar);
 					jQuery(button).append(input);
 					button.innerHTML = '<i class="ion ion-document"></i><i class="ion ion-arrow-up-c"></i>';								
@@ -8515,7 +8515,7 @@ function Waymark_Map_Editor() {
 										
 						//Thanks to: https://mycyberuniverse.com/integration-wordpress-media-uploader-plugin-options-page.html
 						wp.media.editor.send.attachment = function(props, attachment) {
-							if(Waymark.get_property(waymark_settings, 'misc', 'advanced', 'debug_mode')) {
+							if(Waymark.get_property(waymark_settings, 'misc', 'advanced', 'debug_mode') == true) {
 								console.log(attachment);		  	
 							}						
 
@@ -8602,7 +8602,7 @@ function Waymark_Map_Editor() {
 			processData: false,
 			contentType: false,
 		  success: function(response) {		
-				if(Waymark.get_property(waymark_settings, 'misc', 'advanced', 'debug_mode')) {
+				if(Waymark.get_property(waymark_settings, 'misc', 'advanced', 'debug_mode') == true) {
 					console.log(response);		  	
 				}
 		  
