@@ -7679,6 +7679,15 @@ function Waymark_Map() {
 				icon_data.html += '<div style="' + icon_css + '" class="' + icon_class + '">' + icon_class[0] + '</div>';
 
 				break;
+
+			//HTML
+			case 'html' :
+				icon_class += 'waymark-marker-html';		
+
+				icon_data.html += '<b>HTML</b>';
+
+				break;
+				
 			//Icon Name
 			case 'icon' :
 			default	:
