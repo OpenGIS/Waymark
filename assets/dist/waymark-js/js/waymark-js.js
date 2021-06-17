@@ -7668,30 +7668,30 @@ function Waymark_Map() {
 		icon_data.html = '<div class="waymark-marker-background" style="' + background_css + '"></div>';
 
 		//Classes
-		var icon_class = '';
+		var icon_class = 'waymark-marker-icon';
 		
 		//Text, HTML or Icon Name
 		switch(type.icon_type) {
 			//Text
 			case 'text' :
-				icon_class += 'waymark-marker-text';		
+				icon_class += ' waymark-icon-text';		
 
-				icon_data.html += '<div style="' + icon_css + '" class="' + icon_class + '">' + icon_class[0] + '</div>';
+				icon_data.html += '<div style="' + icon_css + '" class="' + icon_class + '">' + type.marker_icon + '</div>';
 
 				break;
 
 			//HTML
 			case 'html' :
-				icon_class += 'waymark-marker-html';		
+				icon_class += ' waymark-icon-html';		
 
-				icon_data.html += '<b>HTML</b>';
+				icon_data.html += '<div class="' + icon_class + '">' + type.marker_icon + '</div>';
 
 				break;
 				
 			//Icon Name
 			case 'icon' :
 			default	:
-				icon_class += 'waymark-marker-icon';		
+				icon_class += ' waymark-icon-icon';		
 
 				//If Ionic Icons
 				if(type.marker_icon.indexOf('ion-') === 0) {

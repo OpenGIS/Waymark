@@ -395,14 +395,14 @@ body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab
   vertical-align: middle;
   font-size: 26px;
 }
-body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers #marker_icon-container #waymark-icons-help {
+body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers #marker_icon-container .waymark-icons-help {
   display: inline-block;
   position: absolute;
   margin-top: -3px;
   margin-left: 5px;
   width: 88px;
 }
-body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers #marker_icon-container #waymark-icons-help a {
+body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers #marker_icon-container .waymark-icons-help a {
   display: inline-block;
   font-size: 10px;
   line-height: 1em;

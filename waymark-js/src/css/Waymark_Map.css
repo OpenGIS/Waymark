@@ -159,7 +159,6 @@
 .waymark-map-container .waymark-marker.waymark-marker-large .waymark-marker-icon::before {
   font-size: 20px;
 }
-.waymark-map-container .waymark-marker .waymark-marker-text,
 .waymark-map-container .waymark-marker .waymark-marker-icon {
   width: inherit;
   height: inherit;
@@ -171,7 +170,6 @@
   padding: 0;
   text-align: center;
 }
-.waymark-map-container .waymark-marker .waymark-marker-text::before,
 .waymark-map-container .waymark-marker .waymark-marker-icon::before {
   display: unset;
   width: inherit;
@@ -182,10 +180,10 @@
   margin-left: 1px;
   line-height: 0;
 }
-.waymark-map-container .waymark-marker .waymark-marker-icon {
+.waymark-map-container .waymark-marker.waymark-icon-icon {
   line-height: 0;
 }
-.waymark-map-container .waymark-marker .waymark-marker-text {
+.waymark-map-container .waymark-marker.waymark-icon-text {
   font-size: 18px;
 }
 /*
