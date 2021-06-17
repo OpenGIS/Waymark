@@ -742,7 +742,7 @@ function Waymark_Map() {
 		return Waymark_L.marker(latlng);
 	}		
 	
-	this.build_icon_data = function(type) {
+	this.build_icon_data = function(type) {	
 		var icon_data = {
 			className: 'waymark-marker waymark-marker-' + type.type_key,
 		};
@@ -786,26 +786,45 @@ function Waymark_Map() {
 		//CSS Styles
 		var background_css = 'background:' + Waymark.get_marker_background(type.marker_colour) + ';';
 		var icon_css = 'color:' + type.icon_colour + ';';
-		
-		//Classes
-		var icon_class = 'waymark-marker-icon';
+			
+		//HTML
+		icon_data.html = '<div class="waymark-marker-background" style="' + background_css + '"></div>';
 
-		//If Ionic Icons
-		if(type.marker_icon.indexOf('ion-') === 0) {
-			icon_class += ' ion ';
-			icon_class += ' ' + type.marker_icon;			
-		//Font Awesome
-		} else if(type.marker_icon.indexOf('fa-') === 0) {
-			icon_class += ' fa';
-			icon_class += ' ' + type.marker_icon;	
-		//Default to Ionic
-		} else {
-			icon_class += ' ion';
-			icon_class += ' ion-' + type.marker_icon;			
-		}
+		//Classes
+		var icon_class = '';
 		
- 		//HTML
- 		icon_data.html = '<div class="waymark-marker-background" style="' + background_css + '"></div><i style="' + icon_css + '" class="' + icon_class + '"></i>';
+		//Text, HTML or Icon Name
+		switch(type.icon_type) {
+			//Text
+			case 'text' :
+				icon_class += 'waymark-marker-text';		
+
+				icon_data.html += '<div style="' + icon_css + '" class="' + icon_class + '">' + icon_class[0] + '</div>';
+
+				break;
+			//Icon Name
+			case 'icon' :
+			default	:
+				icon_class += 'waymark-marker-icon';		
+
+				//If Ionic Icons
+				if(type.marker_icon.indexOf('ion-') === 0) {
+					icon_class += ' ion ';
+					icon_class += ' ' + type.marker_icon;			
+				//Font Awesome
+				} else if(type.marker_icon.indexOf('fa-') === 0) {
+					icon_class += ' fa';
+					icon_class += ' ' + type.marker_icon;	
+				//Default to Ionic
+				} else {
+					icon_class += ' ion';
+					icon_class += ' ion-' + type.marker_icon;			
+				}
+
+				icon_data.html += '<i style="' + icon_css + '" class="' + icon_class + '"></i>';
+				
+				break;
+		}	
 						
 		return icon_data;
 	}

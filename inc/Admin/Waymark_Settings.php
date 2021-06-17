@@ -156,12 +156,26 @@ class Waymark_Settings {
 								'(is_numeric($param_value)) ? $param_value : 1;'	//Fallback
 							)					
 						),
+						'icon_type' => array(
+							'name' => 'icon_type',
+							'id' => 'icon_type',
+							'type' => 'select',
+							'class' => '',				
+							'title' => '<span style="display:inline-block;min-width:50px">' . esc_html__('Icon', 'waymark') . '</span>' . esc_html__('Type', 'waymark'),
+							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'icon_type'),
+							'tip' => esc_attr__('???', 'waymark'),
+							'options' => array(
+								'icon' => esc_html__('Icon Name', 'waymark'),
+								'text' => esc_html__('Text', 'waymark'),
+								'html' => esc_html__('HTML', 'waymark')
+							)
+						),											
 						'marker_icon' => array(
 							'name' => 'marker_icon',
 							'id' => 'marker_icon',
 							'type' => 'text',
 							'class' => 'waymark-short-input',				
-							'title' => '<span style="display:inline-block;min-width:50px">' . esc_html__('Icon', 'waymark') . '</span>' . esc_html__('Name', 'waymark'),
+							'title' => '<span class="waymark-invisible" style="display:inline-block;min-width:50px">' . esc_html__('Icon', 'waymark') . '</span>' . esc_html__('Name', 'waymark'),
 							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'marker_icon'),
 							'tip' => esc_attr__('The desired icon name from either the Ionicons or Font Awesome library, e.g. "ion-camera", or "fa-camera". Click the links to see the full list of icons available.', 'waymark'),
 							'input_processing' => array(
