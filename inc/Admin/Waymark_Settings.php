@@ -177,7 +177,7 @@ class Waymark_Settings {
 							'class' => 'waymark-short-input',				
 							'title' => '<span class="waymark-invisible" style="display:inline-block;min-width:50px">' . esc_html__('Icon', 'waymark') . '</span><span class="waymark-icon-type">' . esc_html__('Name', 'waymark') . '</span>',
 							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'marker_icon'),
-							'tip' => esc_attr__('The desired icon name from either the Ionicons or Font Awesome library, e.g. "ion-camera", or "fa-camera". Click the links to see the full list of icons available.', 'waymark'),
+							'tip' => esc_attr__('The desired icon name from either the Ionicons or Font Awesome library, e.g. "ion-camera", or "fa-camera". Click the links to see the full list of icons available.|Text|HTML', 'waymark'),
 							'input_processing' => array(
 								'(! empty($param_value)) ? $param_value : "ion-help";'	//Fallback
 							),
