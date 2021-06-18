@@ -163,9 +163,9 @@ class Waymark_Settings {
 							'class' => '',				
 							'title' => '<span style="display:inline-block;min-width:50px">' . esc_html__('Icon', 'waymark') . '</span>' . esc_html__('Type', 'waymark'),
 							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'icon_type'),
-							'tip' => esc_attr__('???', 'waymark'),
+							'tip' => esc_attr__('Marker Icons are available from Font Awesome and Ionic Icons, you can also specify your own text, or provide custom HTML.', 'waymark'),
 							'options' => array(
-								'icon' => esc_html__('Icon Name', 'waymark'),
+								'icon' => esc_html__('Font', 'waymark'),
 								'text' => esc_html__('Text', 'waymark'),
 								'html' => esc_html__('HTML', 'waymark')
 							)
@@ -177,7 +177,7 @@ class Waymark_Settings {
 							'class' => 'waymark-short-input',				
 							'title' => '<span class="waymark-invisible" style="display:inline-block;min-width:50px">' . esc_html__('Icon', 'waymark') . '</span><span class="waymark-icon-type">' . esc_html__('Name', 'waymark') . '</span>',
 							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'marker_icon'),
-							'tip' => esc_attr__('The desired icon name from either the Ionicons or Font Awesome library, e.g. "ion-camera", or "fa-camera". Click the links to see the full list of icons available.|Text|HTML', 'waymark'),
+							'tip' => esc_attr__('The desired icon name from Ionicons or Font Awesome, e.g. "ion-camera", or "fa-camera". Click the links to see the full list of icons available.|Text to display inside the Marker, in the chosen colour. Space is very limited! Pro Tip: adjust text size using CSS; for all Markers: .waymark-icon-text{font-size: 18px}, or by Type: .waymark-marker-photo .waymark-icon-text{...}. Use your browser\'s inspector to dig for Type class names.|The HTML entered will be added inside each Marker. Pro Tip! HTML Entities supported (e.g. &amp;cross; as well as Unicode characters), or provide HTML to integrate with other Icon providers.', 'waymark'),
 							'input_processing' => array(
 								'(! empty($param_value)) ? $param_value : "ion-help";'	//Fallback
 							),
