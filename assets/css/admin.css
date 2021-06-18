@@ -353,7 +353,7 @@ body.waymark_page_waymark-settings div.waymark-settings-tab .waymark-repeatable 
   box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.25);
 }
 body.waymark_page_waymark-settings div.waymark-settings-tab .waymark-repeatable .form-table:hover div.waymark-delete {
-  display: block;
+  visibility: visible;
 }
 body.waymark_page_waymark-settings div.waymark-settings-tab .waymark-repeatable .form-table.ui-sortable-handle {
   cursor: move;
@@ -371,7 +371,7 @@ body.waymark_page_waymark-settings div.waymark-settings-tab .waymark-repeatable 
   background: #ac2b2b;
   color: white;
   cursor: pointer;
-  display: none;
+  visibility: hidden;
 }
 body.waymark_page_waymark-settings div.waymark-settings-tab .wp-picker-container {
   display: inline-block;
