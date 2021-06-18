@@ -280,7 +280,7 @@ function waymark_setup_select_icon_type() {
 		var select = jQuery(this);	
 
 		var container = select.parents('.form-table');
-//		var options_row = jQuery('.waymark-input.waymark-meta_options', container).parents('tr');
+		var colour_row = jQuery('.waymark-input.waymark-icon_colour', container).parents('tr');
 		var icon_input = jQuery('.waymark-input.waymark-marker_icon', container);
 		var icon_content_row = icon_input.parents('tr');
 		var icon_name_text = jQuery('.waymark-icon-type', icon_content_row);
@@ -295,6 +295,7 @@ function waymark_setup_select_icon_type() {
 				case 'icon' :
 					icon_preview.show();
 					icon_help.show();
+					colour_row.show();					
 					icon_input.css('maxWidth', 'unset');		
 					icon_name_text.text('Name');
 					
@@ -302,13 +303,15 @@ function waymark_setup_select_icon_type() {
 				case 'text' :
 					icon_preview.hide();
 					icon_help.hide();
-					icon_input.css('maxWidth', '50px');
+					colour_row.show();
+					icon_input.css('maxWidth', '45px');
 					icon_name_text.text('Text');
 					
 					break;					
 				case 'html' :
 					icon_preview.hide();				
 					icon_help.hide();	
+					colour_row.hide();
 					icon_input.css('maxWidth', 'unset');								
 					icon_name_text.text('HTML');
 					

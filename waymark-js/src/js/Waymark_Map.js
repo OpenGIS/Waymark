@@ -807,7 +807,10 @@ function Waymark_Map() {
 			case 'html' :
 				icon_class += ' waymark-icon-html';		
 
-				icon_data.html += '<div class="' + icon_class + '">' + type.marker_icon + '</div>';
+				//Decode HTML entities using jQuery
+				var icon_html = jQuery('<div/>').html(type.marker_icon).text();
+
+				icon_data.html += '<div class="' + icon_class + '">' + icon_html + '</div>';
 
 				break;
 				

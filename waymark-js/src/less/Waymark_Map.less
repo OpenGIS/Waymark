@@ -193,28 +193,43 @@
 		
 		//Small
 		&.waymark-marker-small {
-			.waymark-marker-icon {	
+			//Icon
+			.waymark-icon-icon {	
 				&::before {
 					font-size: 10px;
 				}
 			}
+			//Text
+			.waymark-icon-text {
+				font-size: 8px;
+			}			
 		}		
 		
 		//Medium
 		&.waymark-marker-medium {
-			.waymark-marker-icon {	
+			//Icon
+			.waymark-icon-icon {	
 				&::before {
 					font-size: 13px;
 				}
 			}
+			//Text
+			.waymark-icon-text {
+				font-size: 11px;
+			}			
 		}		
 		
 		//Large
 		&.waymark-marker-large {
-			.waymark-marker-icon {	
+			//Icon
+			.waymark-icon-icon {	
 				&::before {
 					font-size: 20px;
 				}
+			}
+			//Text
+			.waymark-icon-text {
+				font-size: 14px;
 			}
 		}	
 
@@ -241,17 +256,18 @@
 				margin-left: 1px;			
 				line-height: 0;
 			}	
+		
+			//Icon Only
+			&.waymark-icon-icon {	
+				line-height: 0;
+			}		
+		
+			//Text Only
+			&.waymark-icon-text {
+				font-weight: bold;
+				font-family: monaco, Consolas, Lucida Console, monospace;
+			}		
 		}
-		
-		//Icon Only
-		&.waymark-icon-icon {	
-			line-height: 0;
-		}		
-		
-		//Text Only
-		&.waymark-icon-text {
-			font-size: 18px;
-		}		
 	}
 }
 
