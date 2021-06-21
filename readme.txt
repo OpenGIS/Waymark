@@ -112,7 +112,8 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 
 == Changelog ==
 
-= 0.9.17-b2 =
+= 0.9.17 =
+
 
 * **Markers**
 	* Marker Icons can now be custom text or HTML (in addition to Font icons from Ionic Icons and Font Awesome).
