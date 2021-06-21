@@ -120,12 +120,20 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 
 ### 0.9.17-b2 ###
 
-* Enable Map Exports on mobile devices
-* Updated Acknowledgements
-* JavaScript settings bug fix
-* Marker Icons can now be custom text or HTML (in addition to Font icons from Ionic Icons and Font Awesome).
-* Fixed Settings repeatable dropdown bug
-* Improved Settings input sanitisation
+* **Markers**
+	* Marker Icons can now be custom text or HTML (in addition to Font icons from Ionic Icons and Font Awesome).
+	* Map Exports are now available on mobile devices
+	* Updated Acknowledgements
+* **Bug fixes**
+	* Settings JavaScript fix
+	* Settings repeatable dropdown bug
+	* Settings input sanitisation
+
+A <b>BIG</b> thank you to the following users for their help with testing:
+
+* <a href="https://wordpress.org/support/users/dalehopp/">dalehopp</a>
+* <a href="https://wordpress.org/support/users/coloursign/">coloursign</a>
+* <a href="https://wordpress.org/support/users/nhathaway/">nhathaway</a>
 
 ### 0.9.16 ###
 
