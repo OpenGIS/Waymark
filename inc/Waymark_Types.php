@@ -38,7 +38,7 @@ class Waymark_Types {
 					'items_list_navigation' => esc_html__('Maps list navigation', 'waymark'),
 					'filter_items_list'     => esc_html__('Filter Map list', 'waymark'),
 				),
-				'supports'              => array('title', 'author', 'revisions'),
+				'supports'              => array('title', 'author', 'revisions', 'thumbnail'),
 				'hierarchical'          => false,
 				'public'                => true,
 				'show_ui'               => true,
@@ -59,6 +59,9 @@ class Waymark_Types {
 		if(Waymark_Config::get_setting('misc', 'advanced', 'debug_mode') == true) {
 			$this->types['waymark_map']['supports'][] = 'custom-fields';
 		}
+
+		//Add Featured Image Support
+		add_theme_support('post-thumbnails', array('waymark_map'));
 	
 		add_action('init', array($this, 'register_types'), 0);			
 	}	

@@ -1,5 +1,15 @@
 /**
  * ====================================
+ * ============= UTILITY ==============
+ * ====================================
+ */
+.waymark-self-clear:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/**
+ * ====================================
  * ============= TOOLTIPS =============
  * ====================================
  */
@@ -124,6 +134,11 @@ div.waymark-accordion-container .waymark-accordion-group .waymark-parameter-grou
 }
 /**
  * ====================================
+ * ============= THUMBNAIL ============
+ * ====================================
+ */
+/**
+ * ====================================
  * =============== META ===============
  * ====================================
  */
@@ -152,6 +167,24 @@ div.waymark-accordion-container .waymark-accordion-group .waymark-parameter-grou
 }
 .waymark-map-meta .waymark-meta-item .waymark-meta-info {
   float: right;
+}
+.waymark-map-meta .waymark-meta-item.waymark-meta-map_thumbnail {
+  padding: 0;
+}
+.waymark-map-meta .waymark-meta-item.waymark-meta-map_thumbnail .waymark-map-thumbnail {
+  max-width: 100%;
+  height: unset;
+}
+/* Phone */
+@media only screen and (min-width: 768px) {
+  .single-waymark_map .waymark-map-meta .waymark-meta-item {
+    padding: 15px;
+    border-bottom: none;
+  }
+  .single-waymark_map .waymark-map-meta .waymark-meta-item.waymark-meta-map_thumbnail {
+    width: 50%;
+    float: right;
+  }
 }
 .waymark-info-description .waymark-description-link {
   padding-top: 10px;
