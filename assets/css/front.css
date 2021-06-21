@@ -185,6 +185,10 @@ div.waymark-accordion-container .waymark-accordion-group .waymark-parameter-grou
     width: 50%;
     float: right;
   }
+  .single-waymark_map .waymark-map-meta.waymark-meta-count-1 .waymark-meta-map_thumbnail {
+    width: 100% !important;
+    float: unset !important;
+  }
 }
 .waymark-info-description .waymark-description-link {
   padding-top: 10px;

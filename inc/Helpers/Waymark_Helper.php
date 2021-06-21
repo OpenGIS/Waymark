@@ -266,7 +266,7 @@ class Waymark_Helper {
 			
 			//Container					
 			$out = '<!-- START Parameter Container -->' . "\n";
-			$out .= '<div class="waymark-map-meta waymark-accordion-container">' . "\n";	
+			$out .= '<div class="waymark-map-meta waymark-accordion-container waymark-meta-count-' . sizeof($meta_array) . '">' . "\n";	
 
 			//Do ungrouped first
 			if(isset($meta_grouped[''])) {
