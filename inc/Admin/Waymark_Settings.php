@@ -832,8 +832,8 @@ class Waymark_Settings {
 								$value = $input_data[$tab_key][$section_key][$field_definition['name']];
 								
 								//Make safe
-								$field_definition['input_processing'][] = '(! strpos($param_value, "&")) ? htmlspecialchars($param_value) : $param_value';
-								
+								$field_definition['input_processing'][] = 'htmlspecialchars($param_value)';
+																
 								//Process the input
 								$input_data[$tab_key][$section_key][$field_definition['name']] = Waymark_Input::process_input($field_definition, $value);
 							}
