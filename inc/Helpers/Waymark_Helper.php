@@ -107,8 +107,30 @@ class Waymark_Helper {
 
 	static public function get_map_meta($Map, $context = 'map_single') {
 		$map_meta = array();
+
+		// =============== PREPEND ===============
+
+		//Thumbnail?
+		$map_thumbnail = get_the_post_thumbnail($Map->post_id, 'large', array(
+			'class' => 'waymark-map-thumbnail',
+			'width' => '',
+			'height' => ''
+		));
+		if($map_thumbnail) {
+			if($context == 'shortcode') {
+				$map_thumbnail = '<a href="' . get_permalink($Map->post_id) . '">' . $map_thumbnail . '</a>';
+			}
+			
+			$map_meta['map_thumbnail'] = array(
+				'meta_key' => 'map_thumbnail',
+				'meta_value' => $map_thumbnail,
+				'meta_title' => '',
+				'meta_group' => ''					
+			);
+		}
 		
-		//Get settings
+		// =============== SETTINGS ===============
+
 		$settings_meta = Waymark_Config::get_item('meta', 'inputs', true);		
 			
 		//For each setting
@@ -162,6 +184,8 @@ class Waymark_Helper {
 				$map_meta[$meta_key] = $data;
 			}
 		}
+
+		// =============== APPEND ===============
 
 		//Display Collections?
 		if(Waymark_Config::get_setting('misc', 'collection_options', 'link_from_maps')) {
@@ -242,11 +266,11 @@ class Waymark_Helper {
 			
 			//Container					
 			$out = '<!-- START Parameter Container -->' . "\n";
-			$out .= '<div class="waymark-map-meta waymark-accordion-container">' . "\n";	
+			$out .= '<div class="waymark-map-meta waymark-accordion-container waymark-meta-count-' . sizeof($meta_array) . '">' . "\n";	
 
 			//Do ungrouped first
 			if(isset($meta_grouped[''])) {
-				$out .= '	<div class="waymark-map-meta-ungrouped">' . "\n";	
+				$out .= '	<div class="waymark-map-meta-ungrouped waymark-self-clear">' . "\n";	
 
 				foreach($meta_grouped[''] as $meta) {
 					$out .= self::meta_entry_html($meta);			
