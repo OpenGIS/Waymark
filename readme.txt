@@ -117,7 +117,8 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 * Enable Map Exports on mobile devices
 * Updated Acknowledgements
 * JavaScript settings bug fix
-* Admin repeatable dropdown bug
+* Fixed Settings repeatable dropdown bug
+* Improved Settings input sanitisation
 
 = 0.9.16 =
 
