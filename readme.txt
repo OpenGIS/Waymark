@@ -1,6 +1,6 @@
 === Waymark ===
 Contributors: morehawes
-Tags: mapping, leaflet, openstreetmap, topographical, elevation
+Tags: Create interactive Maps, Share geographical data, Add custom Markers, Display geotagged photos, Track elevation graph, Embed GPX KML GeoJSON, Hiking route maps, Collaborate on mapping projects, Display OpenStreetMap Basemaps, No technical knowledge required
 Requires at least: 4.6
 Tested up to: 5.7
 Requires PHP: 5.2
