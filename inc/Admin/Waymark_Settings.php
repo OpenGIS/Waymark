@@ -71,7 +71,10 @@ class Waymark_Settings {
 							'title' => '<span class="waymark-invisible">' . esc_html__('Basemap', 'waymark') . '</span> Attribution',
 							'default' => Waymark_Config::get_setting('tiles', 'layers', 'layer_attribution'),
 							'tip' => esc_attr__('Mapping services often have the requirement that attribution is displayed by the map. Text and HTML links are supported.', 'waymark'),
-							'tip_link' => 'https://www.thunderforest.com/terms/#attribution'
+							'tip_link' => 'https://www.thunderforest.com/terms/#attribution',
+							'input_processing' => array(
+								'(! strpos($param_value, "&")) ? htmlspecialchars($param_value) : $param_value'
+							)								
 						)
 					)																	
 				)
@@ -179,7 +182,7 @@ class Waymark_Settings {
 							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'marker_icon'),
 							'tip' => esc_attr__('The desired icon name from Ionicons or Font Awesome, e.g. "ion-camera", or "fa-camera". Click the links to see the full list of icons available.|Text to display inside the Marker, in the chosen colour. Space is very limited! Pro Tip: adjust text size using CSS; for all Markers: .waymark-icon-text{font-size: 18px}, or by Type: .waymark-marker-photo .waymark-icon-text{...}. Use your browser\'s inspector to dig for Type class names.|The HTML entered will be added inside each Marker. Pro Tip! HTML Entities supported (e.g. &amp;cross; as well as Unicode characters), or provide HTML to integrate with other Icon providers.', 'waymark'),
 							'input_processing' => array(
-								'(! empty($param_value)) ? $param_value : "ion-help";'	//Fallback
+								'(strpbrk($param_value, "\">")) ? htmlspecialchars($param_value) : $param_value'
 							),
 							'append' => '<div class="waymark-icons-help"><a href="https://ionic.io/ionicons/v2/cheatsheet.html">Ionic Icons</a><a href="https://fontawesome.com/v4.7.0/cheatsheet/">Font Awesome</a></div>',										
 						),							
@@ -831,9 +834,12 @@ class Waymark_Settings {
 							if(isset($input_data[$tab_key][$section_key][$field_definition['name']])) {															
 								$value = $input_data[$tab_key][$section_key][$field_definition['name']];
 								
-								//Make safe
-								$field_definition['input_processing'][] = 'htmlspecialchars($param_value)';
-																
+								//If no input processing specified
+								if(! array_key_exists('input_processing', $field_definition)) {
+									//Make safe by default
+									$field_definition['input_processing'][] = 'htmlspecialchars($param_value)';								
+								}
+																						
 								//Process the input
 								$input_data[$tab_key][$section_key][$field_definition['name']] = Waymark_Input::process_input($field_definition, $value);
 							}
