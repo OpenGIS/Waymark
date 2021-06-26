@@ -8,47 +8,36 @@
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
-Mapping with WordPress Made Easy! Create interactive Maps with your choice of Basemaps and customisable Overlays like Markers, location aware Photos and Lines with elevation profiles.
+Create interactive Maps with your choice of Basemaps, customisable Overlays (like Markers, location aware Photos and Lines with elevation profiles.
 
 ## Description ##
-
-Add Overlays (Markers, Lines and Shapes) to create detailed interactive Maps. Simply add them to your content using the Waymark <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>.
 
 * <a href="https://www.joesway.ca/waymark/demo/">See the Demo &raquo;</a>
 * <a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
 * <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
 
-Using the <a href="https://www.joesway.ca/waymark/docs/editor/">Editor</a>, each Overlay you add to a Map can be given a title, description, image and categorised using <a href="https://www.joesway.ca/waymark/docs/types/">Types</a>. Waymark can also read Markers and Lines from file (GPX/KML/GeoJSON supported), allowing you to easily embed data stored in these formats.
+Add Overlays (Markers, Lines and Shapes) to create detailed interactive Maps. Simply add them to your content using the Waymark <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. Waymark is easy to use and developer friendly.
 
-Waymark was designed to be very customisable, allowing you to change icons, colours and styles, as well as the ability to add multiple <a href="https://www.joesway.ca/waymark/docs/basemaps/">Basemaps</a>.
+* <strong>Basemaps</strong> - Waymark uses the excellent <a href="https://www.openstreetmap.org/fixthemap">OpenStreetMap</a> as it’s default Basemap and allows integration for services that support <a href="https://en.wikipedia.org/wiki/Tiled_web_map">tiled web maps</a>. If you have more than one Basemap, you can switch  between them when viewing  the Map.
+* <strong>Editor</strong> - Waymark features a clean, intuative interface for creating and editing your Maps. Simply add Overlays to the Map; each can be given a title, image and description which display when clicked. You can import/export from GPX/KML/GeoJSON too.
+* <strong>Overlays</strong> - Add Markers, Lines and Shapes to your Map. Overlays are customisable using <a href="https://www.joesway.ca/waymark/docs/types/">Types</a>, which allow you set styles once (colours/icons etc), so you can simply select it when you are adding to the Map. Use the Overlay Filter to select which Overlays are currently visible on the Map.
+* <strong>Gallery</strong> - An image gallery can be displayed at the bottom of the Map for Markers that have images associated with them. Clicking on an image will display the relevant Marker. Photos are added through the WordPress Media Library and if Waymark detects location metadata (EXIF), photos are added to the Map where they were taken. 
+* <strong>Line Elevations</strong> - Display an interactive elevation graph for Lines that have elevation data. Minimum/Maximum elevation and total length statistics are also displayed.
+* <strong><a href="https://www.joesway.ca/waymark/docs/meta/">Meta</a></strong> -  allows you to add information about your Map. Meta can be organised into Groups, with support for Text, Textarea, Rich Text, Select and Multi-Select input types. By default this is a "Description" field which displays under the Map Editor. Any Meta added will be displayed on the <a href="https://www.joesway.ca/map/route-map/">Map Details</a> page, and can also be displayed through the <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. 
+* <strong><a href="https://www.joesway.ca/waymark/docs/collections/">Collections</a></strong> - allow you to organise your Maps, as well as the ability to display multiple Maps at once using the <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. Collections can be nested and Maps can be associated with multiple Collections, meaning you can organise your Maps however best suits you.
+* <strong>Export</strong> - Download the Overlays displayed by a Map in GeoJSON, GPX and KML formats. You can also offer this option to your website visitors.
 
-### Gallery ###
+You can see an example Map <a href="https://www.joesway.ca/map/route-map/">here</a>.
 
-An image gallery can be displayed at the bottom of the Map for Markers that have images associated with them. Clicking on an image will display the relevant Marker. Photos are added through the WordPress Media Library and if Waymark detects location metadata (EXIF), photos are added to the Map where they were taken. 
+### Customisable ###
 
-You can see an example of the image gallery <a href="https://www.joesway.ca/map/route-map/">here</a>.
+- List settings?
 
-### Line Elevations ###
+### Developer Friendly ###
 
-Display an interactive elevation graph for Lines that have elevation data. Minimum/Maximum elevation and total length statistics are also displayed. Customise in Waymark > Settings > Misc. > Elevation Options. 
-
-You can see an example of a Line with elevation data <a href="https://www.joesway.ca/map/route-map/">here</a>.
-
-### Meta ###
-
-<a href="https://www.joesway.ca/waymark/docs/meta/">Meta</a> allows you to add information about your Map. By default this is a "Description" field which displays under the Map Editor. You can customise the input fields that are displayed alongside the editor in Waymark > Settings > Meta. Any Meta added will be displayed on the <a href="https://www.joesway.ca/map/route-map/">Map Details</a> page, and can also be displayed through the <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. Meta can be organised into Groups, with support for Text, Textarea, Rich Text, Select and Multi-Select input types.
-
-### Collections ###
-
-<a href="https://www.joesway.ca/waymark/docs/collections/">Collections</a> allow you to organise your Maps, as well as the ability to display multiple Maps at once using the <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. Collections can be nested and Maps can be associated with multiple Collections, meaning you can organise your Maps however best suits you.
-
-### Overlay Filter ###
-
-When enabled, users can filter which Markers, Lines and Shapes are currently visible on the Map by clicking on the layer icon. You can also choose to show/hide certain Types when the Map initially loads.
-
-### Export ###
-
-Download the Overlays added to a Map in GeoJSON, GPX and KML formats while editing a Map. With the "Public Export" Setting enabled, site visitors can also download the Overlays currently displayed on the Map Details page. This can be used in conjunction with the Overlay Filter to select which Overlays are downloaded.
+- waymark_map post Type
+- waymark_collection taxonomy
+- HTML/CSS
 
 ### Translations ###
 
