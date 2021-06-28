@@ -16,16 +16,7 @@ Create interactive Maps with your choice of Basemaps, customisable Overlays (lik
 * <a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
 * <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
 
-Add Overlays (Markers, Lines and Shapes) to create detailed interactive Maps. Simply add them to your content using the Waymark <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. Waymark is easy to use and developer friendly.
-
-* <strong>Customisable Overlays</strong> - Add Markers, Lines and Shapes to your Map. Overlays are customisable using <a href="https://www.joesway.ca/waymark/docs/types/">Types</a>, which allow you set styles once (colours/icons etc), so you can simply select it when you are adding to the Map. Use the Overlay Filter to select which Overlays are currently visible on the Map.
-* <strong>Multiple Basemaps</strong> - Waymark uses the excellent <a href="https://www.openstreetmap.org/fixthemap">OpenStreetMap</a> as it’s default Basemap and allows integration for services that support <a href="https://en.wikipedia.org/wiki/Tiled_web_map">tiled web maps</a>. If you have more than one Basemap, you can switch  between them when viewing  the Map.
-* <strong>Intuitive Editor</strong> - Waymark features a clean, intuative interface for creating and editing your Maps. Simply add Overlays to the Map; each can be given a title, image and description which display when clicked. You can import/export from GPX/KML/GeoJSON too.
-* <strong>Image Galleries</strong> - An image gallery can be displayed at the bottom of the Map for Markers that have images associated with them. Clicking on an image will display the relevant Marker. Photos are added through the WordPress Media Library and if Waymark detects location metadata (EXIF), photos are added to the Map where they were taken. 
-* <strong>Line Elevations</strong> - Display an interactive elevation graph for Lines that have elevation data. Minimum/Maximum elevation and total length statistics are also displayed.
-* <strong><a href="https://www.joesway.ca/waymark/docs/meta/">Map Meta</a></strong> -  allows you to add information about your Map. Meta can be organised into Groups, with support for Text, Textarea, Rich Text, Select and Multi-Select input types. By default this is a "Description" field which displays under the Map Editor. Any Meta added will be displayed on the <a href="https://www.joesway.ca/map/route-map/">Map Details</a> page, and can also be displayed through the <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. 
-* <strong><a href="https://www.joesway.ca/waymark/docs/collections/">Collections</a></strong> - allow you to organise your Maps, as well as the ability to display multiple Maps at once using the <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. Collections can be nested and Maps can be associated with multiple Collections, meaning you can organise your Maps however best suits you.
-* <strong>Export</strong> - Download the Overlays displayed by a Map in GeoJSON, GPX and KML formats. You can also offer this option to your website visitors.
+Waymark is easy to use and developer friendly.
 
 You can see an example Map <a href="https://www.joesway.ca/map/route-map/">here</a>.
 
@@ -90,20 +81,32 @@ While Google Basemaps can be added to Waymark, Waymark does not use the Google M
 
 ## Screenshots ##
 
-### 1. A Map displaying an image gallery and elevation profile. ###
-![A Map displaying an image gallery and elevation profile.](https://ps.w.org/waymark/assets/screenshot-1.jpg)
+### 1. Add Overlays (Markers, Lines and Shapes) to create detailed interactive Maps. You can import/export from GPX/KML/GeoJSON. ###
+![Add Overlays (Markers, Lines and Shapes) to create detailed interactive Maps. You can import/export from GPX/KML/GeoJSON.](https://ps.w.org/waymark/assets/screenshot-1.jpg)
 
-### 2. Editing the Map using the Waymark editor. ###
-![Editing the Map using the Waymark editor.](https://ps.w.org/waymark/assets/screenshot-2.jpg)
+### 2. Every Overlay can be given a title, image and description. Marker images can be displayed as a gallery. ###
+![Every Overlay can be given a title, image and description. Marker images can be displayed as a gallery.](https://ps.w.org/waymark/assets/screenshot-2.jpg)
 
-### 3. Switch between multiple Basemaps and choose which Overlays to display. ###
-![Switch between multiple Basemaps and choose which Overlays to display.](https://ps.w.org/waymark/assets/screenshot-3.jpg)
+### 3. Waymark features a clean, intuative <a href="https://www.joesway.ca/waymark/docs/editor/">Editor</a> for creating and editing your Maps. Overlays are customisable using <a href="https://www.joesway.ca/waymark/docs/types/">Types</a>, which allow you set styles once (colours/icons etc), so you can simply select it when you are adding to the Map.  ###
+![Waymark features a clean, intuative <a href="https://www.joesway.ca/waymark/docs/editor/">Editor</a> for creating and editing your Maps. Overlays are customisable using <a href="https://www.joesway.ca/waymark/docs/types/">Types</a>, which allow you set styles once (colours/icons etc), so you can simply select it when you are adding to the Map. ](https://ps.w.org/waymark/assets/screenshot-3.jpg)
 
-### 4. Manage your Maps in WordPress admin. ###
-![Manage your Maps in WordPress admin.](https://ps.w.org/waymark/assets/screenshot-4.jpg)
+### 4. The excellent <a href="https://www.openstreetmap.org/fixthemap">OpenStreetMap</a> is the default <a href="https://www.joesway.ca/waymark/docs/basemaps/">Basemap</a>, with support for other providers. If you have more than one Basemap, you can switch between them when viewing the Map. ###
+![The excellent <a href="https://www.openstreetmap.org/fixthemap">OpenStreetMap</a> is the default <a href="https://www.joesway.ca/waymark/docs/basemaps/">Basemap</a>, with support for other providers. If you have more than one Basemap, you can switch between them when viewing the Map.](https://ps.w.org/waymark/assets/screenshot-4.jpg)
 
-### 5. Waymark is very customisable. ###
-![Waymark is very customisable.](https://ps.w.org/waymark/assets/screenshot-5.jpg)
+### 5. Use <a href="https://www.joesway.ca/waymark/docs/meta/">Meta</a> to provide extra information about your Maps. The Meta inputs displayed are customisable.  ###
+![Use <a href="https://www.joesway.ca/waymark/docs/meta/">Meta</a> to provide extra information about your Maps. The Meta inputs displayed are customisable. ](https://ps.w.org/waymark/assets/screenshot-5.jpg)
+
+### 6. The Map Details page displays an image gallery, elevation profile, export options, featured image and all Meta provided for the Map. ###
+![The Map Details page displays an image gallery, elevation profile, export options, featured image and all Meta provided for the Map.](https://ps.w.org/waymark/assets/screenshot-6.jpg)
+
+### 7. Add Maps to your content using the Waymark <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. You can choose which Meta is displayed. ###
+![Add Maps to your content using the Waymark <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. You can choose which Meta is displayed.](https://ps.w.org/waymark/assets/screenshot-7.jpg)
+
+### 8. <a href="https://www.joesway.ca/waymark/docs/collections/">Collections</a> allow you to organise your Maps, as well as the ability to display multiple Maps at once using the <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. Collections can be nested and Maps can be associated with multiple Collections. ###
+![<a href="https://www.joesway.ca/waymark/docs/collections/">Collections</a> allow you to organise your Maps, as well as the ability to display multiple Maps at once using the <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. Collections can be nested and Maps can be associated with multiple Collections.](https://ps.w.org/waymark/assets/screenshot-8.jpg)
+
+### 9. Waymark was designed to be very flexible, with lots of Settings to choose from. ###
+![Waymark was designed to be very flexible, with lots of Settings to choose from.](https://ps.w.org/waymark/assets/screenshot-9.jpg)
 
 
 ## Changelog ##
