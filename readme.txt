@@ -18,26 +18,50 @@ Create interactive Maps with your choice of Basemaps, customisable Overlays (lik
 * <a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
 * <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
 
-Waymark is easy to use and developer friendly.
+Features:
 
-You can see an example Map <a href="https://www.joesway.ca/map/route-map/">here</a>.
+* Easy to use, customisable and developer friendly.
+* Use the <a href="https://www.joesway.ca/waymark/docs/editor/">Editor</a> to create Maps containing Overlays (Markers, Lines and Shapes).
+* Every Overlay can be given a title, image and description; which is displayed once the Overlay is clicked.
+* Set styles and options once using <a href="https://www.joesway.ca/waymark/docs/types/">Types</a>, then simply select the appropriate Type when adding an Overlay.
+* Add Maps to your content using the Waymark <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>, or link to the <a href="https://www.joesway.ca/map/route-map/">Map Details</a> page. 
+* <a href="https://www.openstreetmap.org/fixthemap">OpenStreetMap</a> is the default <a href="https://www.joesway.ca/waymark/docs/basemaps/">Basemap</a>, with support for multiple Basemaps.
+* Images uploaded with location data (EXIF) will have a Marker placed where the photo was taken.
+* Import from GPX, KML and GeoJSON formats. You can export Maps in the same formats and let your visitors do it too.
+* An interactive profile chart can be displayed for Tracks uploaded with elevation data.
+* Group Maps together using <a href="https://www.joesway.ca/waymark/docs/collections/">Collections</a> and display multiple Maps at once.
+* Add extra information to your Maps using <a href="https://www.joesway.ca/waymark/docs/meta/">Meta</a>; these are customisable form inputs that allow you to add additional data to your Maps. 
+* For the developers: Maps are stored using the custom post type `waymark_map`, Meta are stored as Custom Fields and Collections use the `waymark_collection` Taxonomy. Most elements can be styled using CSS and have sensibly named `waymark-` classes.
 
-= Customisable =
+Waymark is free, with no features to "unlock". I try to keep the plugin well supported, so please feel free to <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">reach out</a> with any questions or feedback.
 
-- List settings?
+== Installation ==
 
-= Developer Friendly =
+[vimeo https://vimeo.com/349575095]
 
-- waymark_map post Type
-- https://wordpress.org/support/article/custom-fields/
-- waymark_collection taxonomy
-- HTML/CSS
+With Waymark enabled, click on the "Maps" link in the sidebar to create and edit Maps. Once you are happy with your Map, copy the Waymark shortcode and add it to your content.
 
-= Translations =
+<a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
 
-Waymark is localization ready! <a href="https://translate.wordpress.org/projects/wp-plugins/waymark/">Translation contributions</a> greatly appreciated.
+== Frequently Asked Questions ==
 
-= Acknowledgements =
+= Is There a Demo? =
+
+Yes, <a href="https://www.joesway.ca/waymark/demo/">here</a>.
+
+= Can I Get More Help? =
+
+Yes, please view the <a href="https://www.joesway.ca/waymark/docs/">documentation</a>.
+
+= Does Waymark Support Google Maps? =
+
+While Google Basemaps can be added to Waymark, Waymark does not use the Google Maps API (it uses <a href="https://leafletjs.com/">Leaflet</a>). There are other plugins available that are made specifically for Google Maps.
+
+= Can I Translate the Plugin? =
+
+Please! Waymark is localization ready, <a href="https://translate.wordpress.org/projects/wp-plugins/waymark/">translation contributions</a> are greatly appreciated.
+
+= Acknowledgements? =
 
 Waymark relies on input from it's users, thank you to everyone for providing feedback :)
 
@@ -57,42 +81,16 @@ A big thank you to the following projects and their contributors. Without their 
 * <a href="https://github.com/maphubs/tokml">tokml</a>
 * <a href="https://github.com/tyrasd/togpx">togpx</a>
 
-= Links =
- 
-* <a href="https://www.joesway.ca/waymark/demo/">See the Demo &raquo;</a>
-* <a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
-* <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
-
-== Installation ==
-
-[vimeo https://vimeo.com/349575095]
-
-With Waymark enabled, click on the "Maps" link in the sidebar to create and edit Maps. Once you are happy with your Map, copy the Waymark shortcode and add it to your content.
-
-== Frequently Asked Questions ==
-
-= Is There a Demo? =
-
-Yes, <a href="https://www.joesway.ca/waymark/demo/">here</a>.
-
-= Can I Get More Help? =
-
-Yes, please view the <a href="https://www.joesway.ca/waymark/docs/">documentation</a>.
-
-= Does Waymark Support Google Maps? =
-
-While Google Basemaps can be added to Waymark, Waymark does not use the Google Maps API (it uses <a href="https://leafletjs.com/">Leaflet</a>). There are other plugins available that are made specifically for Google Maps.
-
 == Screenshots ==
 
 1. Add Overlays (Markers, Lines and Shapes) to create detailed interactive Maps. You can import/export from GPX/KML/GeoJSON.
 2. Every Overlay can be given a title, image and description. Marker images can be displayed as a gallery.
-3. Waymark features a clean, intuative <a href="https://www.joesway.ca/waymark/docs/editor/">Editor</a> for creating and editing your Maps. Overlays are customisable using <a href="https://www.joesway.ca/waymark/docs/types/">Types</a>, which allow you set styles once (colours/icons etc), so you can simply select it when you are adding to the Map. 
-4. The excellent <a href="https://www.openstreetmap.org/fixthemap">OpenStreetMap</a> is the default <a href="https://www.joesway.ca/waymark/docs/basemaps/">Basemap</a>, with support for other providers. If you have more than one Basemap, you can switch between them when viewing the Map.
-5. Use <a href="https://www.joesway.ca/waymark/docs/meta/">Meta</a> to provide extra information about your Maps. The Meta inputs displayed are customisable. 
+3. Waymark features a clean, intuative Editor for creating and editing your Maps. Overlays are customisable using Types, which allow you set styles once (colours/icons etc.), so you can simply select it when you are adding to the Map. 
+4. If you have more than one Basemap, you can switch between them when viewing the Map. Overlays can be shown/hidden by Type.
+5. Use Meta to provide extra information about your Maps. Meta inputs are customisable and can be grouped. 
 6. The Map Details page displays an image gallery, elevation profile, export options, featured image and all Meta provided for the Map.
-7. Add Maps to your content using the Waymark <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. You can choose which Meta is displayed.
-8. <a href="https://www.joesway.ca/waymark/docs/collections/">Collections</a> allow you to organise your Maps, as well as the ability to display multiple Maps at once using the <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>. Collections can be nested and Maps can be associated with multiple Collections.
+7. Add Maps to your content using the Waymark Shortcode. You can choose which Meta is displayed.
+8. Organise Maps with Collections and display multiple Maps at once using the Shortcode. Collections can be nested and Maps can be associated with multiple Collections.
 9. Waymark was designed to be very flexible, with lots of Settings to choose from.
 
 == Changelog ==
