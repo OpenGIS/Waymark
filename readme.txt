@@ -4,7 +4,7 @@ Tags: Create interactive Maps, Share geographical data, Add custom Markers, Disp
 Requires at least: 4.6
 Tested up to: 5.7
 Requires PHP: 5.2
-Stable tag: 0.9.16
+Stable tag: 0.9.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
