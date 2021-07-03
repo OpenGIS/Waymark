@@ -142,7 +142,8 @@ function waymark_setup_repeatable_sections() {
 					jQuery(this).before(clone);
 					waymark_setup_parameter_tooltips();
 					waymark_setup_select_meta_type();
-									
+					waymark_setup_select_icon_type();
+
 					return false;
 				})
 			;
@@ -274,10 +275,72 @@ function waymark_setup_select_meta_type() {
 	});
 }
 
+function waymark_setup_select_icon_type() {
+	jQuery('select.waymark-icon_type').each(function() {
+		var select = jQuery(this);	
+
+		var container = select.parents('.form-table');
+		var colour_row = jQuery('.waymark-input.waymark-icon_colour', container).parents('tr');
+		var icon_input = jQuery('.waymark-input.waymark-marker_icon', container);
+		var icon_content_row = icon_input.parents('tr');
+		var icon_name_text = jQuery('.waymark-icon-type', icon_content_row);
+		var icon_preview = jQuery('.waymark-controls i', icon_content_row);
+		var icon_help = jQuery('.waymark-icons-help', icon_content_row);
+
+		var icon_tip = jQuery('.waymark-tooltip', icon_content_row);
+		var icon_tips = icon_tip.attr('data-title').split('|');
+		
+		//Update logic
+		var update_row = function(type) {
+			switch(type) {
+				case 'icon' :
+					icon_preview.show();
+					icon_help.show();
+					colour_row.show();					
+					icon_input.css('maxWidth', 'unset');		
+					icon_name_text.text(waymark_php_lang.marker_icon_icon_label);
+					icon_tip.data('title', icon_tips[0]);
+					
+					break;
+				case 'text' :
+					icon_preview.hide();
+					icon_help.hide();
+					colour_row.show();
+					icon_input.css('maxWidth', '45px');
+					icon_name_text.text(waymark_php_lang.marker_icon_text_label);
+					icon_tip.data('title', icon_tips[1]);
+										
+					break;					
+				case 'html' :
+					icon_preview.hide();				
+					icon_help.hide();	
+					colour_row.hide();
+					icon_input.css('maxWidth', 'unset');								
+					icon_name_text.text(waymark_php_lang.marker_icon_html_label);
+					icon_tip.data('title', icon_tips[2]);
+										
+					break;
+			}	
+
+			//Update tooltips
+			waymark_setup_parameter_tooltips();			
+		};	
+		
+		//On load
+		update_row(select.val());
+		
+		//On change		
+		select.change(function() {
+			update_row(select.val());
+		});
+	});
+}
+
 jQuery(document).ready(function() {
 	waymark_setup_repeatable_sections();
 	waymark_setup_marker_tab();
 	waymark_setup_colour_pickers();
 	waymark_setup_external_links();
 	waymark_setup_select_meta_type();
+	waymark_setup_select_icon_type();
 });

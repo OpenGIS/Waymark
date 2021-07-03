@@ -52,6 +52,15 @@
 
 /**
  * ====================================
+ * ============= THUMBNAIL ============
+ * ====================================
+ */
+.waymark-meta-map_thumbnail {
+
+}
+
+/**
+ * ====================================
  * =============== META ===============
  * ====================================
  */
@@ -89,6 +98,41 @@
 // 			position: absolute;
 // 			top: 15px;
 // 			right: 15px;
+		}
+
+		//Thumbnail
+		&.waymark-meta-map_thumbnail {
+			padding: 0;
+			.waymark-map-thumbnail {
+				max-width: 100%;
+				height: unset;
+			}
+		}
+	}	
+}
+
+/* Phone */
+@media only screen and (min-width: 768px) {
+	//Map Details Meta
+	.single-waymark_map {
+		.waymark-map-meta {
+			.waymark-meta-item {
+				padding: 15px;
+				border-bottom: none;
+				//Thumbnail
+				&.waymark-meta-map_thumbnail {
+					width: 50%;
+					float: right;
+				}
+			}
+
+			//If only thumbnail
+			&.waymark-meta-count-1 {
+				.waymark-meta-map_thumbnail {
+					width: 100% !important;
+					float: unset !important;
+				}
+			}
 		}
 	}
 }

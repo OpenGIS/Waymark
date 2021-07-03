@@ -2,16 +2,31 @@ function waymark_setup_map_export() {
 	//Each Export field
 	jQuery('.waymark-map-export').each(function() {
 		var export_container = jQuery(this);
-		
-		//Container
-		var export_parent = export_container.parents('.waymark-meta-export_data');
 	
-		//Not for touch devices	
-		if(waymark_is_touch_device()) {
-			//Hide it
-			export_parent.hide();
-		//All other devices
-		} else if(export_container) {
+		if(export_container) {
+			//Container
+			var export_parent = export_container.parents('.waymark-meta-export_data');
+			if(! export_parent.length) {
+				export_parent = export_container.parent('div');
+			}
+
+			//If not form (i.e. admin - Wordpress strips out the form)
+			if(export_container.get(0).tagName != 'FORM') {
+				//Clones contents
+				var form_container = jQuery('<form>').append(export_container.contents());
+				var form_attributes = export_container.get(0).attributes;
+
+				for(var i = form_attributes.length - 1; i >= 0; i--) {
+				 	form_container.attr(form_attributes[i].name, form_attributes[i].value);
+				}
+
+				//Replace with form
+				export_container.replaceWith(form_container);
+				export_container = form_container;
+			}
+		
+			var input_map_data = jQuery('input[name="map_data"]', export_container);
+
 			var export_link = jQuery('a', export_container);
 			var export_select = jQuery('select', export_container);
 		
@@ -35,11 +50,14 @@ function waymark_setup_map_export() {
 			}		
 		
 			//When clicked
-			export_link.on('click', function(e) {
+			export_container.on('submit', function(e) {
 				var export_format = export_select.val() ? export_select.val() : 'geojson';
 		
 				//Get data layer from Leaflet		
 				var map_export_layers = Waymark_L.layerGroup();
+				
+				console.log(map_export_layers);
+				
 				Waymark.map_data.eachLayer(function(layer) {
 					//If visible
 					if(Waymark.map.hasLayer(layer)) {	
@@ -62,17 +80,15 @@ function waymark_setup_map_export() {
 					}
 				});
 				var map_data_geojson = map_export_layers.toGeoJSON();		
-					
-				//return false;
-					
+										
 				switch(export_select.val()) {
 					//GPX
 					case 'gpx' :
 						//Convert to GPX 
 						//Thanks! https://github.com/tyrasd/togpx
-						var map_data_gpx = togpx(map_data_geojson);
-						var map_data_export = 'application/gpx+xml;charset=utf-8,' + encodeURIComponent(map_data_gpx);
-						var file_extension = 'gpx';
+						var map_data = togpx(map_data_geojson);
+						var map_data_type = 'application/gpx+xml;charset=utf-8';
+						var map_data_extension = 'gpx';
 				
 						break;
 				
@@ -80,26 +96,28 @@ function waymark_setup_map_export() {
 					case 'kml' :
 						//Convert to KML 
 						//Thanks! https://github.com/mapbox/tokml & https://github.com/maphubs/tokml
-						var map_data_kml = tokml(map_data_geojson);
-						var map_data_export = 'application/vnd.google-earth.kml+xml;charset=utf-8,' + encodeURIComponent(map_data_kml);
-						var file_extension = 'kml';
+						var map_data = tokml(map_data_geojson);
+						var map_data_type = 'application/vnd.google-earth.kml+xml;charset=utf-8';
+						var map_data_extension = 'kml';
 				
 						break;
 			
 					//GeoJSON
 					default:
 					case 'geojson' :
-						var map_data_export = 'application/geo+json;charset=utf-8,' + encodeURIComponent(JSON.stringify(map_data_geojson));
-						var file_extension = 'geojson';
+						var map_data = JSON.stringify(map_data_geojson);
+						var map_data_type = 'application/geo+json;charset=utf-8';
+						var map_data_extension = 'geojson';
 									
 						break;			
 				}
-		
-				//Attatch data to link and download it
-				jQuery(this).attr({
-					'href': 'data:' + map_data_export,
-					'download': export_container.data('map_slug') + '-' + export_container.data('map_id') + '.' + file_extension
-				});			
+					
+				//Set Map data in form
+				input_map_data.val(encodeURIComponent(map_data));
+				
+				//Form gets submitted...
+				
+				//return false;
 			});
 		}
 	});

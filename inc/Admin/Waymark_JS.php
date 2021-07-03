@@ -17,6 +17,9 @@ class Waymark_JS {
 		//Localize
 		wp_localize_script('waymark_admin_js', 'waymark_php_lang', array(
 			'repeatable_delete_title' => esc_attr__('Remove!', 'waymark'),
+			'marker_icon_icon_label' => esc_attr__('Name', 'waymark'),
+			'marker_icon_text_label' => esc_attr__('Text', 'waymark'),
+			'marker_icon_html_label' => esc_attr__('HTML', 'waymark'),						
 		));
 		wp_enqueue_script('waymark_admin_js');			
 	}

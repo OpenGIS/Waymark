@@ -1,5 +1,15 @@
 /**
  * ====================================
+ * ============= UTILITY ==============
+ * ====================================
+ */
+.waymark-self-clear:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/**
+ * ====================================
  * ============= TOOLTIPS =============
  * ====================================
  */
@@ -353,7 +363,7 @@ body.waymark_page_waymark-settings div.waymark-settings-tab .waymark-repeatable 
   box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.25);
 }
 body.waymark_page_waymark-settings div.waymark-settings-tab .waymark-repeatable .form-table:hover div.waymark-delete {
-  display: block;
+  visibility: visible;
 }
 body.waymark_page_waymark-settings div.waymark-settings-tab .waymark-repeatable .form-table.ui-sortable-handle {
   cursor: move;
@@ -371,7 +381,7 @@ body.waymark_page_waymark-settings div.waymark-settings-tab .waymark-repeatable 
   background: #ac2b2b;
   color: white;
   cursor: pointer;
-  display: none;
+  visibility: hidden;
 }
 body.waymark_page_waymark-settings div.waymark-settings-tab .wp-picker-container {
   display: inline-block;
@@ -395,14 +405,14 @@ body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab
   vertical-align: middle;
   font-size: 26px;
 }
-body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers #marker_icon-container #waymark-icons-help {
+body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers #marker_icon-container .waymark-icons-help {
   display: inline-block;
   position: absolute;
   margin-top: -3px;
   margin-left: 5px;
   width: 88px;
 }
-body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers #marker_icon-container #waymark-icons-help a {
+body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers #marker_icon-container .waymark-icons-help a {
   display: inline-block;
   font-size: 10px;
   line-height: 1em;

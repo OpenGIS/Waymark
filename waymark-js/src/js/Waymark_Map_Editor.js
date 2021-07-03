@@ -148,15 +148,9 @@ function Waymark_Map_Editor() {
 	}
 
 	//Something was edited
-	this.map_was_edited = function() {
-		Waymark = this;
-	
-		//Warn user about navigating away from page before Publish/Update
-		jQuery(window).on('beforeunload.edit-post', function() {
-			//I'm not sure why, but we have to return something here to get the desired behaviour :-/
-			return null;
-		});
-	}
+ 	this.map_was_edited = function() {
+ 	
+ 	}
 		
 	this.create_buttons = function() {
 		Waymark = this;
@@ -343,8 +337,7 @@ function Waymark_Map_Editor() {
 				//File Upload
 
 				//Use Media Library?				
-				var media_library_uploads = waymark_settings.misc.editor_options.media_library_uploads;
-				if(typeof media_library_uploads != 'undefined' && media_library_uploads == true) {
+				if(Waymark.get_property(waymark_settings, 'misc', 'editor_options', 'media_library_uploads') == true) {
 					var button = Waymark_L.DomUtil.create('a', 'waymark-edit-button waymark-edit-upload', toolbar);
 					jQuery(button).append(input);
 					button.innerHTML = '<i class="ion ion-document"></i><i class="ion ion-arrow-up-c"></i>';								
@@ -357,8 +350,7 @@ function Waymark_Map_Editor() {
 										
 						//Thanks to: https://mycyberuniverse.com/integration-wordpress-media-uploader-plugin-options-page.html
 						wp.media.editor.send.attachment = function(props, attachment) {
-							var debug_mode = waymark_settings.misc.advanced.debug_mode;
-							if(typeof debug_mode != 'undefined' && debug_mode == true) {
+							if(Waymark.get_property(waymark_settings, 'misc', 'advanced', 'debug_mode') == true) {
 								console.log(attachment);		  	
 							}						
 
@@ -445,10 +437,9 @@ function Waymark_Map_Editor() {
 			processData: false,
 			contentType: false,
 		  success: function(response) {		
-		  	var debug_mode = waymark_settings.misc.advanced.debug_mode;
-		  	if(typeof debug_mode != 'undefined' && debug_mode == true) {
+				if(Waymark.get_property(waymark_settings, 'misc', 'advanced', 'debug_mode') == true) {
 					console.log(response);		  	
-		  	}
+				}
 		  
 			  if(response === null) {
 					console.log(waymark_js_lang.error_message_prefix + ': ' + waymark_js_lang.error_file_upload);					  

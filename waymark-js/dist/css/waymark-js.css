@@ -822,7 +822,11 @@
 .waymark-map-container {
   /* Gallery */
   /* Controls */
-  /* Markers */
+  /*
+		==================================
+		============= MARKERS ============
+		==================================
+	*/
 }
 .waymark-map-container .waymark-gallery-container {
   display: none;
@@ -888,6 +892,8 @@
   display: table !important;
   margin: 0 auto;
   text-align: center;
+  /* ============= MARKER TYPES ============= */
+  /* ============= ICON TYPES ============= */
 }
 .waymark-map-container .waymark-marker .waymark-marker-background {
   width: inherit;
@@ -896,6 +902,31 @@
   max-height: inherit;
   position: absolute;
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+}
+.waymark-map-container .waymark-marker.waymark-marker-circle .waymark-marker-background {
+  border-radius: 50%;
+}
+.waymark-map-container .waymark-marker.waymark-marker-marker .waymark-marker-background {
+  transform: rotate(-45deg);
+  border-radius: 50% 50% 50% 0;
+}
+.waymark-map-container .waymark-marker.waymark-marker-small .waymark-icon-icon::before {
+  font-size: 10px;
+}
+.waymark-map-container .waymark-marker.waymark-marker-small .waymark-icon-text {
+  font-size: 8px;
+}
+.waymark-map-container .waymark-marker.waymark-marker-medium .waymark-icon-icon::before {
+  font-size: 13px;
+}
+.waymark-map-container .waymark-marker.waymark-marker-medium .waymark-icon-text {
+  font-size: 11px;
+}
+.waymark-map-container .waymark-marker.waymark-marker-large .waymark-icon-icon::before {
+  font-size: 20px;
+}
+.waymark-map-container .waymark-marker.waymark-marker-large .waymark-icon-text {
+  font-size: 14px;
 }
 .waymark-map-container .waymark-marker .waymark-marker-icon {
   width: inherit;
@@ -906,7 +937,6 @@
   display: table-cell !important;
   vertical-align: middle;
   padding: 0;
-  line-height: 0;
   text-align: center;
 }
 .waymark-map-container .waymark-marker .waymark-marker-icon::before {
@@ -919,21 +949,12 @@
   margin-left: 1px;
   line-height: 0;
 }
-.waymark-map-container .waymark-marker.waymark-marker-circle .waymark-marker-background {
-  border-radius: 50%;
+.waymark-map-container .waymark-marker .waymark-marker-icon.waymark-icon-icon {
+  line-height: 0;
 }
-.waymark-map-container .waymark-marker.waymark-marker-marker .waymark-marker-background {
-  transform: rotate(-45deg);
-  border-radius: 50% 50% 50% 0;
-}
-.waymark-map-container .waymark-marker.waymark-marker-small .waymark-marker-icon::before {
-  font-size: 10px;
-}
-.waymark-map-container .waymark-marker.waymark-marker-medium .waymark-marker-icon::before {
-  font-size: 13px;
-}
-.waymark-map-container .waymark-marker.waymark-marker-large .waymark-marker-icon::before {
-  font-size: 20px;
+.waymark-map-container .waymark-marker .waymark-marker-icon.waymark-icon-text {
+  font-weight: bold;
+  font-family: monaco, Consolas, Lucida Console, monospace;
 }
 /*
 	==================================

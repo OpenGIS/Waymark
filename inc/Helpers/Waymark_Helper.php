@@ -30,6 +30,8 @@ class Waymark_Helper {
 		$out .= '			<li><a href="https://github.com/CliffCloud/Leaflet.Sleep">Leaflet.Sleep</a></li>' . "\n";	
 		$out .= '			<li><a href="https://github.com/perliedman/leaflet-control-geocoder">leaflet-control-geocoder</a></li>' . "\n";	
 		$out .= '			<li><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a></li>' . "\n";			
+		$out .= '			<li><a href="https://github.com/maphubs/tokml">tokml</a></li>' . "\n";			
+		$out .= '			<li><a href="https://github.com/tyrasd/togpx">togpx</a></li>' . "\n";			
 		$out .= '			<li class="waymark-multi">' . "\n";	
 		$out .= '				<a href="https://stackoverflow.com/questions/41522376/leaflet-open-popup-at-cursor-position-instead-of-linestring-center">S</a>' . "\n";	
 		$out .= '				<a href="https://stackoverflow.com/questions/32106243/regex-to-remove-all-non-alpha-numeric-and-replace-spaces-with/32106277">t</a>' . "\n";	
@@ -105,8 +107,30 @@ class Waymark_Helper {
 
 	static public function get_map_meta($Map, $context = 'map_single') {
 		$map_meta = array();
+
+		// =============== PREPEND ===============
+
+		//Thumbnail?
+		$map_thumbnail = get_the_post_thumbnail($Map->post_id, 'large', array(
+			'class' => 'waymark-map-thumbnail',
+			'width' => '',
+			'height' => ''
+		));
+		if($map_thumbnail) {
+			if($context == 'shortcode') {
+				$map_thumbnail = '<a href="' . get_permalink($Map->post_id) . '">' . $map_thumbnail . '</a>';
+			}
+			
+			$map_meta['map_thumbnail'] = array(
+				'meta_key' => 'map_thumbnail',
+				'meta_value' => $map_thumbnail,
+				'meta_title' => '',
+				'meta_group' => ''					
+			);
+		}
 		
-		//Get settings
+		// =============== SETTINGS ===============
+
 		$settings_meta = Waymark_Config::get_item('meta', 'inputs', true);		
 			
 		//For each setting
@@ -160,6 +184,8 @@ class Waymark_Helper {
 				$map_meta[$meta_key] = $data;
 			}
 		}
+
+		// =============== APPEND ===============
 
 		//Display Collections?
 		if(Waymark_Config::get_setting('misc', 'collection_options', 'link_from_maps')) {
@@ -240,11 +266,11 @@ class Waymark_Helper {
 			
 			//Container					
 			$out = '<!-- START Parameter Container -->' . "\n";
-			$out .= '<div class="waymark-map-meta waymark-accordion-container">' . "\n";	
+			$out .= '<div class="waymark-map-meta waymark-accordion-container waymark-meta-count-' . sizeof($meta_array) . '">' . "\n";	
 
 			//Do ungrouped first
 			if(isset($meta_grouped[''])) {
-				$out .= '	<div class="waymark-map-meta-ungrouped">' . "\n";	
+				$out .= '	<div class="waymark-map-meta-ungrouped waymark-self-clear">' . "\n";	
 
 				foreach($meta_grouped[''] as $meta) {
 					$out .= self::meta_entry_html($meta);			
@@ -661,14 +687,20 @@ class Waymark_Helper {
 			return false;
 		}
 		
-		$out  = '<div id="waymark-map-export-' . $Map->post_id . '" class="waymark-map-export" data-map_id="' . $Map->post_id . '" data-map_slug="' . sanitize_title($Map->post_title) . '">' . "\n";
+		$element = (is_admin()) ? 'div' : 'form';
+		
+		$out  = '<' . $element . ' action="' . Waymark_Helper::http_url() . '" method="post" id="waymark-map-export-' . $Map->post_id . '" class="waymark-map-export" data-map_id="' . $Map->post_id . '" data-map_slug="' . sanitize_title($Map->post_title) . '">' . "\n";
 		$out .= '	<select name="export_format">' . "\n";
-		$out .= '		<option value="geojson">GeoJSON</option>' . "\n";
 		$out .= '		<option value="gpx">GPX</option>' . "\n";
 		$out .= '		<option value="kml">KML</option>' . "\n";			
+		$out .= '		<option value="geojson">GeoJSON</option>' . "\n";
 		$out .= '	</select>' . "\n";
-		$out .= '	<a href="#" class="button">' . __('Download', 'waymark') . '</a>' . "\n";
-		$out .= '</div>' . "\n";
+		$out .= '	<input type="hidden" name="waymark_action" value="download_map_data" />' . "\n";
+		$out .= '	<input type="hidden" name="waymark_security" value="' . wp_create_nonce('Waymark_Nonce') . '" />' . "\n";
+		$out .= '	<input type="hidden" name="map_data" value="" />' . "\n";
+		$out .= '	<input type="hidden" name="map_id" value="' . $Map->post_id . '" />' . "\n";
+		$out .= '	<input type="submit" value="' . __('Download', 'waymark') . '" class="button" />' . "\n";
+		$out .= '</' . $element . '>' . "\n";
 		
 		return $out;
 	}	

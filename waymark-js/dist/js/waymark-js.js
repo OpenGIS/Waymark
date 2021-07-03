@@ -7039,6 +7039,11 @@ function Waymark_Map() {
 		Waymark.handle_resize();			
 		Waymark.init_done();			
 	}
+	
+	//Thanks! https://stackoverflow.com/questions/2631001/test-for-existence-of-nested-javascript-object-key
+	this.get_property = function(obj, ...args) {
+  	return args.reduce((obj, level) => obj && obj[level], obj)
+	}
 
 	this.title_case = function(str) {
     return str.replace(/(?:^|\s)\w/g, function(match) {
@@ -7614,7 +7619,7 @@ function Waymark_Map() {
 		return Waymark_L.marker(latlng);
 	}		
 	
-	this.build_icon_data = function(type) {
+	this.build_icon_data = function(type) {	
 		var icon_data = {
 			className: 'waymark-marker waymark-marker-' + type.type_key,
 		};
@@ -7658,26 +7663,57 @@ function Waymark_Map() {
 		//CSS Styles
 		var background_css = 'background:' + Waymark.get_marker_background(type.marker_colour) + ';';
 		var icon_css = 'color:' + type.icon_colour + ';';
-		
+			
+		//HTML
+		icon_data.html = '<div class="waymark-marker-background" style="' + background_css + '"></div>';
+
 		//Classes
 		var icon_class = 'waymark-marker-icon';
-
-		//If Ionic Icons
-		if(type.marker_icon.indexOf('ion-') === 0) {
-			icon_class += ' ion ';
-			icon_class += ' ' + type.marker_icon;			
-		//Font Awesome
-		} else if(type.marker_icon.indexOf('fa-') === 0) {
-			icon_class += ' fa';
-			icon_class += ' ' + type.marker_icon;	
-		//Default to Ionic
-		} else {
-			icon_class += ' ion';
-			icon_class += ' ion-' + type.marker_icon;			
-		}
 		
- 		//HTML
- 		icon_data.html = '<div class="waymark-marker-background" style="' + background_css + '"></div><i style="' + icon_css + '" class="' + icon_class + '"></i>';
+		//Text, HTML or Icon Name
+		switch(type.icon_type) {
+			//Text
+			case 'text' :
+				icon_class += ' waymark-icon-text';		
+
+				icon_data.html += '<div style="' + icon_css + '" class="' + icon_class + '">' + type.marker_icon + '</div>';
+
+				break;
+
+			//HTML
+			case 'html' :
+				icon_class += ' waymark-icon-html';		
+
+				//Decode HTML entities using jQuery
+				var icon_html = jQuery('<div/>').html(type.marker_icon).text();
+
+				icon_data.html += '<div class="' + icon_class + '">' + icon_html + '</div>';
+
+				break;
+				
+			//Icon Name
+			case 'icon' :
+			default	:
+				icon_class += ' waymark-icon-icon';		
+
+				//If Ionic Icons
+				if(type.marker_icon.indexOf('ion-') === 0) {
+					icon_class += ' ion ';
+					icon_class += ' ' + type.marker_icon;			
+				//Font Awesome
+				} else if(type.marker_icon.indexOf('fa-') === 0) {
+					icon_class += ' fa';
+					icon_class += ' ' + type.marker_icon;	
+				//Default to Ionic
+				} else {
+					icon_class += ' ion';
+					icon_class += ' ion-' + type.marker_icon;			
+				}
+
+				icon_data.html += '<i style="' + icon_css + '" class="' + icon_class + '"></i>';
+				
+				break;
+		}	
 						
 		return icon_data;
 	}
@@ -8308,15 +8344,9 @@ function Waymark_Map_Editor() {
 	}
 
 	//Something was edited
-	this.map_was_edited = function() {
-		Waymark = this;
-	
-		//Warn user about navigating away from page before Publish/Update
-		jQuery(window).on('beforeunload.edit-post', function() {
-			//I'm not sure why, but we have to return something here to get the desired behaviour :-/
-			return null;
-		});
-	}
+ 	this.map_was_edited = function() {
+ 	
+ 	}
 		
 	this.create_buttons = function() {
 		Waymark = this;
@@ -8503,8 +8533,7 @@ function Waymark_Map_Editor() {
 				//File Upload
 
 				//Use Media Library?				
-				var media_library_uploads = waymark_settings.misc.editor_options.media_library_uploads;
-				if(typeof media_library_uploads != 'undefined' && media_library_uploads == true) {
+				if(Waymark.get_property(waymark_settings, 'misc', 'editor_options', 'media_library_uploads') == true) {
 					var button = Waymark_L.DomUtil.create('a', 'waymark-edit-button waymark-edit-upload', toolbar);
 					jQuery(button).append(input);
 					button.innerHTML = '<i class="ion ion-document"></i><i class="ion ion-arrow-up-c"></i>';								
@@ -8517,8 +8546,7 @@ function Waymark_Map_Editor() {
 										
 						//Thanks to: https://mycyberuniverse.com/integration-wordpress-media-uploader-plugin-options-page.html
 						wp.media.editor.send.attachment = function(props, attachment) {
-							var debug_mode = waymark_settings.misc.advanced.debug_mode;
-							if(typeof debug_mode != 'undefined' && debug_mode == true) {
+							if(Waymark.get_property(waymark_settings, 'misc', 'advanced', 'debug_mode') == true) {
 								console.log(attachment);		  	
 							}						
 
@@ -8605,10 +8633,9 @@ function Waymark_Map_Editor() {
 			processData: false,
 			contentType: false,
 		  success: function(response) {		
-		  	var debug_mode = waymark_settings.misc.advanced.debug_mode;
-		  	if(typeof debug_mode != 'undefined' && debug_mode == true) {
+				if(Waymark.get_property(waymark_settings, 'misc', 'advanced', 'debug_mode') == true) {
 					console.log(response);		  	
-		  	}
+				}
 		  
 			  if(response === null) {
 					console.log(waymark_js_lang.error_message_prefix + ': ' + waymark_js_lang.error_file_upload);					  
