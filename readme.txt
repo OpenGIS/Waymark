@@ -31,7 +31,7 @@ Features:
 * An interactive profile chart can be displayed for Tracks uploaded with elevation data.
 * Group Maps together using <a href="https://www.joesway.ca/waymark/docs/collections/">Collections</a> and display multiple Maps at once.
 * Add extra information to your Maps using <a href="https://www.joesway.ca/waymark/docs/meta/">Meta</a>; these are customisable form inputs that allow you to add additional data to your Maps. 
-* For the developers: Maps are stored using the custom post type `waymark_map`, Meta are stored as Custom Fields and Collections use the `waymark_collection` Taxonomy. Most elements can be styled using CSS and have sensibly named `waymark-` classes.
+* For the developers: Maps are stored using the custom post type `waymark_map`, Meta is stored as Custom Fields and Collections use the `waymark_collection` Taxonomy. Most elements can be styled using CSS and have sensibly named `waymark-` classes.
 
 Waymark is free, with no features to "unlock". I try to keep the plugin well supported, so please feel free to <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">reach out</a> with any questions or feedback.
 
@@ -51,7 +51,7 @@ Yes, <a href="https://www.joesway.ca/waymark/demo/">here</a>.
 
 = Can I Get More Help? =
 
-Yes, please view the <a href="https://www.joesway.ca/waymark/docs/">documentation</a>.
+Yes, please view the <a href="https://www.joesway.ca/waymark/docs/">Documentation</a>.
 
 = Does Waymark Support Google Maps? =
 
