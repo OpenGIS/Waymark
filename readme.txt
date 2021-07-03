@@ -8,7 +8,7 @@ Stable tag: 0.9.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create interactive Maps with your choice of Basemaps, customisable Overlays (like Markers with Icons, location aware Photos and Lines with elevation profiles).
+Create and share customisable interactive Maps. Embed OpenStreetMap, add Overlays like location aware Photos and Tracks with elevation profiles.
 
 == Description ==
 
