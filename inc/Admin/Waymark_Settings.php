@@ -6,7 +6,7 @@ class Waymark_Settings {
 	private $default_tab = 'tiles';
 	private $current_settings = array();
 
-	protected $tabs = array();	
+	public $tabs = array();	
 	
 	function __construct() {
     add_action('admin_notices', array($this, 'admin_notices'));
