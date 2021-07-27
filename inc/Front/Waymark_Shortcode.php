@@ -108,7 +108,7 @@ class Waymark_Shortcode {
 
 		//Output HTML container
 		$out = '<!-- START Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";
-		$out .= '<div id="waymark-shortcode-' . $shortcode_hash . '" class="waymark-shortcode waymark-container">' . "\n";
+		$out .= '<div id="waymark-shortcode-' . $shortcode_hash . '" data-shortcode_hash="' . $shortcode_hash . '" class="waymark-shortcode waymark-container">' . "\n";
 
 
 		//Header ?
@@ -166,7 +166,7 @@ class Waymark_Shortcode {
 
 		//Map HTML Container
 		$out .= '	<!-- Map -->' . "\n";
-		$out .= '	<div id="waymark-map-' . $shortcode_hash . '" class="' . $map_class . '" style="height:' . $map_height . 'px"></div>' . "\n";
+		$out .= '	<div id="waymark-map-' . $shortcode_hash . '" class="' . $map_class . '" data-shortcode_hash="' . $shortcode_hash . '" style="height:' . $map_height . 'px"></div>' . "\n";
 
 		//Elevation?
 		if(array_key_exists('show_elevation', $shortcode_data)) {

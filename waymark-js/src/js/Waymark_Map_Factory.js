@@ -5,12 +5,22 @@
 */	
 
 function Waymark_Map_Factory() {
+	this.instances = [];
+
 	this.viewer = function() {	
-		return Object.assign(new Waymark_Map, new Waymark_Map_Viewer);
+		var instance = Object.assign(new Waymark_Map, new Waymark_Map_Viewer);
+		
+		this.instances.push(instance);
+		
+		return instance;
 	}
 
 	this.editor = function() {	
-		return Object.assign(new Waymark_Map, new Waymark_Map_Editor);
+		var instance = Object.assign(new Waymark_Map, new Waymark_Map_Editor);
+		
+		this.instances.push(instance);
+				
+		return instance;
 	}	
 }
 

@@ -2,8 +2,17 @@ function waymark_setup_map_export() {
 	//Each Export field
 	jQuery('.waymark-map-export').each(function() {
 		var export_container = jQuery(this);
-	
+		
 		if(export_container) {
+			//Shortcode
+			var shortcode_container = export_container.parents('.waymark-shortcode');
+			if(shortcode_container.length) {
+				var map_container = jQuery('.waymark-map', shortcode_container);			
+			//Map Details & Admin
+			} else {
+				var map_container = jQuery('.waymark-map');						
+			}
+			
 			//Container
 			var export_parent = export_container.parents('.waymark-meta-export_data');
 			if(! export_parent.length) {
@@ -27,16 +36,14 @@ function waymark_setup_map_export() {
 		
 			var input_map_data = jQuery('input[name="map_data"]', export_container);
 
-			var export_link = jQuery('a', export_container);
-			var export_select = jQuery('select', export_container);
-		
 			//Hide Export row if no data to export
-			if(typeof Waymark !== 'undefined') {
-				Waymark.map.on('layerremove layeradd', function() {
+			var Waymark_Instance = map_container.data('Waymark');
+			if(typeof Waymark_Instance !== 'undefined') {
+				Waymark_Instance.map.on('layerremove layeradd', function() {
 					var active_layer_count = 0;
-					Waymark.map_data.eachLayer(function(layer) {
+					Waymark_Instance.map_data.eachLayer(function(layer) {
 						//If visible
-						if(Waymark.map.hasLayer(layer)) {	
+						if(Waymark_Instance.map.hasLayer(layer)) {	
 							active_layer_count++;
 						}				
 					});
@@ -51,16 +58,28 @@ function waymark_setup_map_export() {
 		
 			//When clicked
 			export_container.on('submit', function(e) {
+
+// 				var count = 1;
+// 				for(key in window.Waymark_Map_Factory.instances) {
+// 					if(window.Waymark_Map_Factory.instances[key] === Waymark_Instance) {
+// 						console.log('Export Map #' + count);
+// 						
+// 						return false;
+// 					}
+// 					
+// 					count++;
+// 				}
+
+				var export_select = jQuery('select', export_container);
 				var export_format = export_select.val() ? export_select.val() : 'geojson';
 		
 				//Get data layer from Leaflet		
 				var map_export_layers = Waymark_L.layerGroup();
-				
-				console.log(map_export_layers);
-				
-				Waymark.map_data.eachLayer(function(layer) {
+
+				Waymark_Instance = map_container.data('Waymark');
+				Waymark_Instance.map_data.eachLayer(function(layer) {
 					//If visible
-					if(Waymark.map.hasLayer(layer)) {	
+					if(Waymark_Instance.map.hasLayer(layer)) {	
 						for(key in layer.feature.properties) {
 							//If we have something
 							if(typeof layer.feature.properties[key] != 'undefined') {
