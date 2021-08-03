@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 5.7  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.16  
+**Stable tag:** 0.9.17  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -112,15 +112,15 @@ A big thank you to the following projects and their contributors. Without their 
 ### 0.9.17 ###
 
 * **Maps**
-	* Maps now support Featured Images; if provided this will be displayed on the Map Details page, as well as by the Shortcode. Thanks to David for the suggestion!
+    * Maps now support Featured Images; if provided this will be displayed on the Map Details page, as well as by the Shortcode. Thanks to David for the suggestion!
 * **Markers**
-	* Marker Icons can now be custom text or HTML (in addition to Font icons from Ionic Icons and Font Awesome). Thanks for the <a href="https://wordpress.org/support/topic/feature-request-custom-markers/">suggestion</a>!
-	* Map Exports are now available on mobile devices.
-	* Updated Acknowledgements.
+    * Marker Icons can now be custom text or HTML (in addition to Font icons from Ionic Icons and Font Awesome). Thanks for the <a href="https://wordpress.org/support/topic/feature-request-custom-markers/">suggestion</a>!
+    * Map Exports are now available on mobile devices.
+    * Updated Acknowledgements.
 * **Bug fixes**
-	* Settings JavaScript fix.
-	* Settings repeatable dropdown bug.
-	* Settings input sanitisation.
+    * Settings JavaScript fix.
+    * Settings repeatable dropdown bug.
+    * Settings input sanitisation.
 
 A <b>BIG</b> thank you to the following users for their help with testing:
 
@@ -139,9 +139,9 @@ A <b>BIG</b> thank you to the following users for their help with testing:
 * **Media Library Uploads**
     * By default Waymark does not save any files uploaded through the Editor. Using this option you can use the Media Library to store and import GPX/KML/GeoJSON files into your Map.
 * **Bug fixes**
-	* Improved location accuracy when relying on device GPS. Thanks to <a href="https://wordpress.org/support/users/coloursign/">coloursign</a> and <a href="https://wordpress.org/support/users/edwinfr/">edwinfr</a> for <a href="https://wordpress.org/support/topic/more-accurate-location-possible/">bringing this to my attention.</a>
-	* Waymark_Helper `asset_url()` fix. Thanks to <a href="https://wordpress.org/support/topic/filter-by-markers-category/">pwrdp</a> for bringing this to my attention.
-	* Updated Ion Icons v2 URLs. Thanks to <a href="https://wordpress.org/support/users/gudulemartens/">gudulemartens</a> for <a href="https://wordpress.org/support/topic/ion-icons/">letting me know about this</a>.
+    * Improved location accuracy when relying on device GPS. Thanks to <a href="https://wordpress.org/support/users/coloursign/">coloursign</a> and <a href="https://wordpress.org/support/users/edwinfr/">edwinfr</a> for <a href="https://wordpress.org/support/topic/more-accurate-location-possible/">bringing this to my attention.</a>
+    * Waymark_Helper `asset_url()` fix. Thanks to <a href="https://wordpress.org/support/topic/filter-by-markers-category/">pwrdp</a> for bringing this to my attention.
+    * Updated Ion Icons v2 URLs. Thanks to <a href="https://wordpress.org/support/users/gudulemartens/">gudulemartens</a> for <a href="https://wordpress.org/support/topic/ion-icons/">letting me know about this</a>.
 
 ### 0.9.15.2 ###
 
