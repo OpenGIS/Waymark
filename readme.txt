@@ -4,7 +4,7 @@ Tags: Create interactive Maps, Share geographical data, Add custom Markers, Disp
 Requires at least: 4.6
 Tested up to: 5.7
 Requires PHP: 5.2
-Stable tag: 0.9.17
+Stable tag: 0.9.17.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,23 +14,23 @@ Create and share customisable interactive Maps. Embed OpenStreetMap, add Overlay
 
 [vimeo https://vimeo.com/349571522]
 
-* <a href="https://www.joesway.ca/waymark/demo/">See the Demo &raquo;</a>
-* <a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
+* <a href="https://www.waymark.dev/demo/">See the Demo &raquo;</a>
+* <a href="https://www.waymark.dev/docs/">Read the Docs &raquo;</a>
 * <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
 
 Features:
 
 * Easy to use, customisable and developer friendly.
-* Use the <a href="https://www.joesway.ca/waymark/docs/editor/">Editor</a> to create Maps containing Overlays (Markers, Lines and Shapes).
+* Use the <a href="https://www.waymark.dev/docs/editor/">Editor</a> to create Maps containing Overlays (Markers, Lines and Shapes).
 * Every Overlay can be given a title, image and description; which is displayed once the Overlay is clicked.
-* Set styles and options once using <a href="https://www.joesway.ca/waymark/docs/types/">Types</a>, then simply select the appropriate Type when adding an Overlay.
-* Add Maps to your content using the Waymark <a href="https://www.joesway.ca/waymark/docs/shortcodes/">Shortcode</a>, or link to the <a href="https://www.joesway.ca/map/route-map/">Map Details</a> page. 
-* <a href="https://www.openstreetmap.org/fixthemap">OpenStreetMap</a> is the default <a href="https://www.joesway.ca/waymark/docs/basemaps/">Basemap</a>, with support for multiple Basemaps.
+* Set styles and options once using <a href="https://www.waymark.dev/docs/types/">Types</a>, then simply select the appropriate Type when adding an Overlay.
+* Add Maps to your content using the Waymark <a href="https://www.waymark.dev/docs/shortcodes/">Shortcode</a>, or link to the <a href="https://www.waymark.dev/map/route-map/">Map Details</a> page. 
+* <a href="https://www.openstreetmap.org/fixthemap">OpenStreetMap</a> is the default <a href="https://www.waymark.dev/docs/basemaps/">Basemap</a>, with support for multiple Basemaps.
 * Images uploaded with location data (EXIF) will have a Marker placed where the photo was taken.
 * Import from GPX, KML and GeoJSON formats. You can export Maps in the same formats and let your visitors do it too.
 * An interactive profile chart can be displayed for Tracks uploaded with elevation data.
-* Group Maps together using <a href="https://www.joesway.ca/waymark/docs/collections/">Collections</a> and display multiple Maps at once.
-* Add extra information to your Maps using <a href="https://www.joesway.ca/waymark/docs/meta/">Meta</a>; these are customisable form inputs that allow you to add additional data to your Maps. 
+* Group Maps together using <a href="https://www.waymark.dev/docs/collections/">Collections</a> and display multiple Maps at once.
+* Add extra information to your Maps using <a href="https://www.waymark.dev/docs/meta/">Meta</a>; these are customisable form inputs that allow you to add additional data to your Maps. 
 * For the developers: Maps are stored using the custom post type `waymark_map`, Meta is stored as Custom Fields and Collections use the `waymark_collection` Taxonomy. Most elements can be styled using CSS and have sensibly named `waymark-` classes.
 
 Waymark is free, with no features to "unlock". I try to keep the plugin well supported, so please feel free to <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">reach out</a> with any questions or feedback.
@@ -41,17 +41,17 @@ Waymark is free, with no features to "unlock". I try to keep the plugin well sup
 
 With Waymark enabled, click on the "Maps" link in the sidebar to create and edit Maps. Once you are happy with your Map, copy the Waymark shortcode and add it to your content.
 
-<a href="https://www.joesway.ca/waymark/docs/">Read the Docs &raquo;</a>
+<a href="https://www.waymark.dev/docs/">Read the Docs &raquo;</a>
 
 == Frequently Asked Questions ==
 
 = Is There a Demo? =
 
-Yes, <a href="https://www.joesway.ca/waymark/demo/">here</a>.
+Yes, <a href="https://www.waymark.dev/demo/">here</a>.
 
 = Can I Get More Help? =
 
-Yes, please view the <a href="https://www.joesway.ca/waymark/docs/">Documentation</a>.
+Yes, please view the <a href="https://www.waymark.dev/docs/">Documentation</a>.
 
 = Does Waymark Support Google Maps? =
 
@@ -94,6 +94,10 @@ A big thank you to the following projects and their contributors. Without their 
 9. Waymark was designed to be very flexible, with lots of Settings to choose from.
 
 == Changelog ==
+
+= 0.9.17.1 =
+
+* Waymark now has it's own <a href="https://www.waymark.dev/">website</a>! URLs updated.
 
 = 0.9.17 =
 
@@ -175,8 +179,8 @@ Thanks to <a href="https://wordpress.org/support/users/neilhorton740/">neilhorto
 = 0.9.12 =
 
 * **Gallery** - Added the option to display an image gallery for Markers that have images associated with them. Can be changed in Settings > Misc. > Map Options. Can be enabled using the show_gallery="1" Shortcode option.
-* Created <a href="https://www.joesway.ca/waymark/docs/">Waymark Documentation</a>.
-* Updated the <a href="https://www.joesway.ca/waymark/docs/">Demo</a>.
+* Created <a href="https://www.waymark.dev/docs/">Waymark Documentation</a>.
+* Updated the <a href="https://www.waymark.dev/docs/">Demo</a>.
 * First steps towards <a href="https://developer.wordpress.org/plugins/internationalization/localization/">Localization</a>.
 * Added the ability to change Map author. Thanks to <a href="https://wordpress.org/support/topic/feature-request-shortcode-download-link-author-change/">andreasrns</a> for the suggestion.
 * Maps now support Revisions.
