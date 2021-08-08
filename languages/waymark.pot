@@ -1434,7 +1434,7 @@ msgid "Waymark"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://www.joesway.ca/waymark/demo/"
+msgid "https://www.waymark.dev/demo/"
 msgstr ""
 
 #. Description of the plugin/theme
