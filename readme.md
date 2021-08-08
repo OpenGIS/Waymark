@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 5.7  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.17  
+**Stable tag:** 0.9.17.1  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -108,6 +108,10 @@ A big thank you to the following projects and their contributors. Without their 
 
 
 ## Changelog ##
+
+### 0.9.17.1 ###
+
+* Waymark now has it's own <a href="https://www.waymark.dev/">website</a>! URLs updated.
 
 ### 0.9.17 ###
 
