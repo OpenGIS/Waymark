@@ -111,6 +111,7 @@ A big thank you to the following projects and their contributors. Without their 
 
 ### 0.9.17.1 ###
 
+* Fixed a bug where the Export feature did not work correctly when embedding multiple Maps. Thanks to <a href="https://github.com/shenki">shenki</a> on <a href="https://github.com/morehawes/waymark/issues/3">GitHub</a>.
 * Waymark now has it's own <a href="https://www.waymark.dev/">website</a>! URLs updated.
 
 ### 0.9.17 ###

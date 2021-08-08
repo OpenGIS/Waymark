@@ -184,7 +184,7 @@ class Waymark_Admin {
 			//Map Posts List
 			if($current_screen->base == 'edit' && $current_screen->post_type == 'waymark_map') {
 				$title = esc_html__('Maps', 'waymark');
-				$description = sprintf(__('Create Maps here, then add them to your content using the <a href="%s">Shortcode</a>. <a href="%s" class="button waymark-right">Watch the Video &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs'));				
+				$description = sprintf(__('Create Maps here, then add them to your content using the <a href="%s">Shortcode</a>. <a href="%s" class="button waymark-right">Watch the Video &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs/getting-started'));				
 			}
 			
 			$map_posts = get_posts(array(
