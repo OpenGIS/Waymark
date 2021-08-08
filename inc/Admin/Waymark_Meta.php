@@ -167,7 +167,7 @@ class Waymark_Meta {
 		}
 
 		//Map Div
-		echo '<div id="waymark-map"></div>' . "\n";
+		echo '<div id="waymark-map" class="waymark-map"></div>' . "\n";
 		
 		//Output Config
 		Waymark_JS::add_call('var waymark_user_config = ' . json_encode(Waymark_Config::get_map_config()) . ';');				

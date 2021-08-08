@@ -6,7 +6,7 @@ class Waymark_Settings {
 	private $default_tab = 'tiles';
 	private $current_settings = array();
 
-	protected $tabs = array();	
+	public $tabs = array();	
 	
 	function __construct() {
     add_action('admin_notices', array($this, 'admin_notices'));
@@ -349,7 +349,7 @@ class Waymark_Settings {
 				'inputs' => array(
 					'repeatable' => true,
 					'title' => esc_html__('Meta', 'waymark'),
-					'description' => '<span class="waymark-lead">' . sprintf(__('Create additional input fields that appear underneath the Map Editor. Any Meta that has been input is displayed on the <a href="%s">Map Details</a> page, and can also be displayed by the Shortcode.', 'waymark'), 'https://www.joesway.ca/map/route-map/') . '</span>',
+					'description' => '<span class="waymark-lead">' . sprintf(__('Create additional input fields that appear underneath the Map Editor. Any Meta that has been input is displayed on the <a href="%s">Map Details</a> page, and can also be displayed by the Shortcode.', 'waymark'), 'https://www.waymark.dev/map/route-map/') . '</span>',
 					'help' => array(
 						'url' => esc_attr(Waymark_Helper::site_url('docs/meta')),
 						'text' => esc_attr__('View Docs &raquo;', 'waymark')
