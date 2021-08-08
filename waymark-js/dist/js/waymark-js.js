@@ -7104,6 +7104,9 @@ function Waymark_Map() {
 		});
 		Waymark_L.control.attribution({prefix: '<a href="https://wordpress.org/plugins/waymark" title="Share your way">Waymark</a> | <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>'}).addTo(Waymark.map);
 
+		//Add reference
+		map_container.data('Waymark', Waymark);
+
 		//View
 		if(Waymark.config.map_init_latlng !== undefined) {
 	 		Waymark.map.setView(Waymark.config.map_init_latlng);	
@@ -9171,12 +9174,22 @@ function Waymark_Map_Editor() {
 */	
 
 function Waymark_Map_Factory() {
+	this.instances = [];
+
 	this.viewer = function() {	
-		return Object.assign(new Waymark_Map, new Waymark_Map_Viewer);
+		var instance = Object.assign(new Waymark_Map, new Waymark_Map_Viewer);
+		
+		this.instances.push(instance);
+		
+		return instance;
 	}
 
 	this.editor = function() {	
-		return Object.assign(new Waymark_Map, new Waymark_Map_Editor);
+		var instance = Object.assign(new Waymark_Map, new Waymark_Map_Editor);
+		
+		this.instances.push(instance);
+				
+		return instance;
 	}	
 }
 
