@@ -23,10 +23,17 @@ class Waymark_Content {
 		$Map = new Waymark_Map($post->ID);
 		$shortcode = '[' . Waymark_Config::get_item('shortcode');
 		$shortcode .= ' map_id="' . $post->ID . '"';
+
+		//Shortcode Header?
+		if(Waymark_Config::get_setting('misc', 'shortcode_options', 'shortcode_header') == '1') {
+			$shortcode .= ' shortcode_header="1"';		
+		}
+
 		//Elevation?
 		if(Waymark_Config::get_setting('misc', 'elevation_options', 'show_elevation') == '2') {
 			$shortcode .= ' show_elevation="1"';		
 		}
+
 		$shortcode .= ']';
 		$content = do_shortcode($shortcode);
 		

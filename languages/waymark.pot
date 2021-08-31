@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Waymark\n"
-"POT-Creation-Date: 2021-08-08 11:56-0700\n"
+"POT-Creation-Date: 2021-08-31 13:38-0700\n"
 "PO-Revision-Date: 2020-12-08 15:06-0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -316,7 +316,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:44
+#: inc/Admin/Waymark_Meta.php:44 inc/Front/Waymark_Shortcode.php:161
 msgid "Edit"
 msgstr ""
 
@@ -1102,11 +1102,11 @@ msgstr ""
 msgid "Min. Elevation: "
 msgstr ""
 
-#: inc/Front/Waymark_Shortcode.php:147
+#: inc/Front/Waymark_Shortcode.php:156
 msgid "Details"
 msgstr ""
 
-#: inc/Front/Waymark_Shortcode.php:160
+#: inc/Front/Waymark_Shortcode.php:174
 msgid "More Details"
 msgstr ""
 

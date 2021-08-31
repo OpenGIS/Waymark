@@ -113,7 +113,24 @@ class Waymark_Shortcode {
 
 		//Header ?
 		$do_header = 0;
-		if(get_post_type() !== 'waymark_map') {
+		
+		//Start with Setting
+		$setting = Waymark_Config::get_setting('misc', 'shortcode_options', 'shortcode_header');
+		if(is_numeric($setting)) {
+			$do_header = $setting;
+		}
+		
+		//Maps
+		if(get_post_type() == 'waymark_map') {
+			//Map Details Page
+			if(is_single()) {
+				$do_header = 0;			
+			//Archive
+			} else {
+			
+			}
+		//I.e. Embedding using the Shortcode
+		} else {
 			//Always for Admin			
 			if(current_user_can('administrator') && Waymark_Config::get_setting('misc', 'shortcode_options', 'header_override')) {
 				$do_header = 1;			
@@ -121,17 +138,9 @@ class Waymark_Shortcode {
 				//Shortcode
 				if(array_key_exists('shortcode_header', $shortcode_data)) {
 					$param = $shortcode_data['shortcode_header'];
-				
+
 					if(is_numeric($param)) {
 						$do_header = $param;
-					}
-				//Setting
-				} else {
-					$setting = Waymark_Config::get_setting('misc', 'shortcode_options', 'shortcode_header');
-				
-					//Boolean
-					if(is_numeric($setting)) {
-						$do_header = $setting;
 					}
 				}			
 			}
@@ -141,7 +150,7 @@ class Waymark_Shortcode {
 		if($do_header && sizeof($shortcode_header)) {
 			$out .= '	<!-- Shortcode Header -->' . "\n";
 			$out .= '	<header class="waymark-header">' . "\n";
-			
+	
 			//Link
 			if(array_key_exists('link', $shortcode_header)) {
 				$out .= '		<a class="waymark-link" href="' . $shortcode_header['link'] . '">' . esc_html__('Details', 'waymark') . ' <i class="ion ion-android-open"></i></a>' . "\n";			
