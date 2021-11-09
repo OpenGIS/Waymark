@@ -8,6 +8,15 @@
   display: table;
   clear: both;
 }
+.waymark-code {
+  display: inline-block;
+  margin: 0 3px;
+  padding: 3px;
+  font-size: 90%;
+  color: #999;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+}
 /**
  * ====================================
  * ============= TOOLTIPS =============
@@ -81,6 +90,11 @@ div.waymark-accordion-container .waymark-accordion-group .waymark-parameter-grou
   font-size: 1.15em;
 }
 
+/**
+ * ====================================
+ * ============= SHORTCODE ============
+ * ====================================
+ */
 .waymark-shortcode {
   overflow: hidden;
   margin-bottom: 1.5em;
@@ -131,6 +145,25 @@ div.waymark-accordion-container .waymark-accordion-group .waymark-parameter-grou
 }
 .waymark-shortcode .waymark-header .waymark-meta .waymark-map-meta legend {
   font-size: 1.1em;
+}
+/**
+ * ====================================
+ * ============== MESSAGES ============
+ * ====================================
+ */
+.waymark-message {
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  border-width: 1px;
+  border-style: solid;
+}
+.waymark-message.waymark-success {
+  color: green;
+  border-color: green;
+}
+.waymark-message.waymark-error {
+  color: red;
+  border-color: red;
 }
 /**
  * ====================================

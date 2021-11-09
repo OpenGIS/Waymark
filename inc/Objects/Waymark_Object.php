@@ -270,12 +270,12 @@ class Waymark_Object {
 		  'post_title' => $title,
 		  'post_status' => 'publish'
 		);
-		$post_id = wp_insert_post(array_merge($args, $extra_args));
+		$this->post_id = wp_insert_post(array_merge($args, $extra_args));
 		
 		//Set meta
-		$this->save_meta($post_id);
+		$this->save_meta($this->post_id);
 		
-		return $post_id;
+		return $this->post_id;
 	}	
 	
 	function update_post_title($title = null) {

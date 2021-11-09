@@ -18,6 +18,22 @@ class Waymark_Shortcode {
 			$shortcode_data = array();
 		}
 
+		// ============ Content? ================
+		
+		if(array_key_exists('content', $shortcode_data)) {
+			switch($shortcode_data['content']) {
+				case 'submission' :
+					$Submission = new Waymark_Submission;
+					
+					$content = $Submission->render_front();
+
+					break;
+			}
+
+			//Stop here		
+			return $content;
+		}
+
 		// ============ START HTML ================
 		
 		//Map Hash given?

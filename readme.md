@@ -109,9 +109,12 @@ A big thank you to the following projects and their contributors. Without their 
 
 ## Changelog ##
 
-### 0.9.17.2-b1 ###
+### 0.9.18-b1 ###
 
+* **<a href="https://www.waymark.dev/docs/submissions/">Submissions</a>**
+    * Allow registered users, or guests to create Maps from the front-end of your site. You can control who can Submit Maps, what editor features are available and whether submissions should be approved before they are published. Originally suggested <a href="https://wordpress.org/support/topic/feature-request-add-marker-from-frontend/">here</a>.
 * Fixed a bug where Shortcode Headers were not displaying on Collection archive pages. Thanks to <a href="https://wordpress.org/support/users/meggsico/">meggsico</a> for <a href="https://wordpress.org/support/topic/maybe-a-bug-7/#post-14815812">bringing this to my attention</a>.
+* Lots of back-end fixes and improvements.
 
 ### 0.9.17.1 ###
 

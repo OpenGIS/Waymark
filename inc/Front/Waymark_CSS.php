@@ -18,6 +18,9 @@ class Waymark_CSS {
 		wp_register_style('waymark_front_css', Waymark_Helper::asset_url('css/front.min.css'), array(), Waymark_Config::get_version());
 		wp_enqueue_style('waymark_front_css');	
 
+		wp_register_style('waymark_admin_css', Waymark_Helper::asset_url('css/admin.min.css'), array(), Waymark_Config::get_version());
+		wp_enqueue_style('waymark_admin_css');	
+
 		//CSS
 		self::add_chunk('
 div.waymark-container .waymark-map .elevation-polyline { stroke: ' . Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_colour') . '; }

@@ -314,11 +314,12 @@ div.widget-content {
  * ====================================
  */			
 body.waymark_page_waymark-settings {
+	//Tabs
 	h2.nav-tab-wrapper {
 		a {
+			font-size: 13px !important;
 			margin-left: 4px;
-			&:first-child {
-			}
+			&:first-child {}
 			&.nav-tab-active {
 				background: #fff;
 				border-bottom: 1px solid #fff;
@@ -623,14 +624,21 @@ div#waymark-admin-container {
 		}
 		table.form-table {
 			margin-bottom: 30px;
-			th {
-				padding: 10px 20px;
-				width: 160px;
-				vertical-align: middle;
+			tr {
+				&.waymark-align-top {
+					th {
+						vertical-align: top;
+					}
+				}
+				th {
+					padding: 10px 20px;
+					width: 160px;
+					vertical-align: middle;
+				}
+				td {
+					padding: 0;
+				}					
 			}
-			td {
-				padding: 0;
-			}		
 		}
 		select,
 		input[type="file"],
@@ -660,29 +668,34 @@ div#waymark-admin-container {
 		position: absolute;
 		top: 0;
 		right: 0;
-		width: 160px;
-// 		height: 555px;
+		width: 180px;
+ 		max-height: 555px;
+ 		overflow-y: scroll;
 		padding: 15px;
 		border: 1px solid #ccc;
 		background: #f7f7f7;
-		ul li.waymark-multi {
-			a {
-				margin-right: -4px;
+		ul {
+			padding-left: 15px;
+			list-style: circle;
+			li {
+		 		&.waymark-multi {
+					a { margin-right: -4px; }	
+				}
 			}
 		}
 		p {
 			margin-top: 0;
 			line-height: 1.5em;
 			&.waymark-first {
-				margin: 17px 0 30px 0;
+				margin: 7px 0 20px 0;
 				font-weight: bold;
-				font-size: 1.8em;
+				font-size: 1.7em;
 				line-height: 1.1em;				
 			}
 		}
 		img {
-			width: 80px;
-			height: 80px;
+			width: 60px;
+			height: 60px;
 			margin-right: 12px;
 			float: left;
 			border-radius: 50%;
@@ -939,24 +952,24 @@ body.wp-admin {
  * ============== DEBUG ===============
  * ====================================
  */
- body {
-	 div.waymark-settings-section-advanced {
-			.form-table {
-				tr:last-child {
-					display: none;
-					th {
-						vertical-align: top !important;						
-					}
-				}
-			}
-		}
-	 &.waymark-debug {
-		 div.waymark-settings-section-advanced {
-				.form-table {
-					tr:last-child {
-						display: table-row;
-					}
-				}
-			}		 
-	 }
- }
+//  body {
+// 	 div.waymark-settings-section-advanced {
+// 			.form-table {
+// 				tr:last-child {
+// 					display: none;
+// 					th {
+// 						vertical-align: top !important;						
+// 					}
+// 				}
+// 			}
+// 		}
+// 	 &.waymark-debug {
+// 		 div.waymark-settings-section-advanced {
+// 				.form-table {
+// 					tr:last-child {
+// 						display: table-row;
+// 					}
+// 				}
+// 			}		 
+// 	 }
+//  }

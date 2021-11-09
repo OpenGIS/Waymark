@@ -11,12 +11,41 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',		
 			'custom_types' => array(),
-			'plugin_version' => '0.9.17.2-b1',
+			'plugin_version' => '0.9.18-b1',
 			'nonce_string' => 'Waymark_Nonce',
 			'site_url' => 'https://www.waymark.dev/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
 			'multi_value_seperator' => $multi_value_seperator,
 			'shortcode' => 'Waymark',
+			'media_library_sizes' => ['thumbnail', 'medium', 'large', 'full'],
+			'mimes' => array(
+// 				'image' => array(
+// 					
+				'file' => array(
+					'gpx' => array(
+						'application/gpx+xml',
+						'application/xml',
+						'text/xml'
+					),
+					'kml' => array(
+						'application/vnd.google-earth.kml+xml',
+						'application/xml',
+						'text/html',
+						'text/xml'
+					),
+//					'kmz' => 'application/vnd.google-earth.kmz',
+					'json' => array(
+						'application/geo+json',
+						'application/json',						
+						'text/plain'
+					),
+					'geojson' => array(
+						'application/geo+json',
+						'application/json',
+						'text/plain'
+					)
+				)
+			),
 			'meta' => array(
 				'inputs' => array(
 					'meta_title' => esc_html__('Description', 'waymark'),
@@ -25,8 +54,27 @@ class Waymark_Config {
 					'meta_type' => 'textarea_rich',
 					'meta_group' => '',
 					'meta_options' => '',
-					'meta_shortcode' => '0'
+					'meta_shortcode' => '0',
+					'meta_submission' => '0'					
 				)
+			),
+			'submission' => array(
+				'global' => array(
+					'submission_enable' => '0'
+				),
+				'from_users' => array(
+					'submission_roles' => '',
+					'submission_features' => 'draw' . $multi_value_seperator . 'photo' . $multi_value_seperator . 'file' . $multi_value_seperator . 'title' . $multi_value_seperator . 'meta',
+					'submission_status' => 'publish',
+					'submission_alert' => '0'
+				),
+				'from_public' => array(
+					'submission_public' => '0',
+					'submission_features' => 'draw' . $multi_value_seperator . 'photo' . $multi_value_seperator . 'file' . $multi_value_seperator . 'title',
+					'submission_upload_dir' => 'waymark_submission',
+					'submission_status' => 'draft',
+					'submission_alert' => '1'
+				)			
 			),
 			'misc' => array(
 				'map_options' => array(
@@ -57,7 +105,7 @@ class Waymark_Config {
 					'elevation_units' => 'metric',
 					'elevation_colour' => '#b42714',
 					'elevation_initial' => '1'
-				),				
+				),
 				'advanced' => array(
 					'debug_mode' => '0'
 				)
@@ -78,7 +126,8 @@ class Waymark_Config {
 					'marker_icon' => 'ion-camera' . $multi_value_seperator . 'ion-information-circled' . $multi_value_seperator . 'ion-android-alert' . $multi_value_seperator . 'ion-android-bicycle' . $multi_value_seperator . 'ion-pizza' . $multi_value_seperator . 'ion-waterdrop' . $multi_value_seperator . 'ion-home' . $multi_value_seperator . 'ion-beer' . $multi_value_seperator . 'ion-power' . $multi_value_seperator . 'ion-power',
 					'marker_colour' => 'white' . $multi_value_seperator . 'white' . $multi_value_seperator . 'red' . $multi_value_seperator . 'green' . $multi_value_seperator . 'red' . $multi_value_seperator . 'blue' . $multi_value_seperator . 'darkgreen' . $multi_value_seperator . 'white' . $multi_value_seperator . 'green' . $multi_value_seperator . 'darkred',
 					'icon_colour' => '#475260' . $multi_value_seperator . '#0069a5' . $multi_value_seperator . 'white' . $multi_value_seperator . 'white' . $multi_value_seperator . '#ffba00' . $multi_value_seperator . '#fff' . $multi_value_seperator . 'white' . $multi_value_seperator . '#754423' . $multi_value_seperator . 'white' . $multi_value_seperator . 'white',
-					'marker_display' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1'					
+					'marker_display' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',
+					'marker_submission' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1'
 				)		
 			),
 			'lines' => array(
@@ -87,6 +136,7 @@ class Waymark_Config {
 					'line_colour' => '#d84848' . $multi_value_seperator . '#3cbc47' . $multi_value_seperator . '#487bd9',
 					'line_weight' => '3' . $multi_value_seperator . '3' . $multi_value_seperator . '3',
 					'line_display' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',
+					'line_submission' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1'
 				)
 			),
 			'shapes' => array(
@@ -95,6 +145,7 @@ class Waymark_Config {
 					'shape_colour' => '#d84848' . $multi_value_seperator . '#3cbc47' . $multi_value_seperator . '#487bd9',
 					'fill_opacity' => '0.5' . $multi_value_seperator . '0.5' . $multi_value_seperator . '0.5',
 					'shape_display' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',					
+					'shape_submission' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1'					
 				)
 			)
 		);
@@ -117,22 +168,29 @@ class Waymark_Config {
 				}
 			}
 			
-			//Fix multi-settings
+			// ====== Fix multi-settings ======
+			
+			//If a Type gets a new setting, then we use the first value
+			//from the default as the value for all existing Types. 
 
-			//Lines exist
-			if(is_array(self::$data['lines']['line_types']['line_title'])) {
-				$line_count = sizeof(self::$data['lines']['line_types']['line_title']);
+			//For each Overlay
+			foreach(['marker', 'line', 'shape'] as $overlay_name) {
+				//Existing Types set
+				if(is_array(self::$data[$overlay_name . 's'][$overlay_name . '_types'][$overlay_name . '_title'])) {
+					$line_count = sizeof(self::$data[$overlay_name . 's'][$overlay_name . '_types'][$overlay_name . '_title']);
 				
-				foreach(self::$data['lines']['line_types'] as &$value) {
-					if(! is_array($value) || sizeof($value) != $line_count) {
-						$default = $value[0];
+					foreach(self::$data[$overlay_name . 's'][$overlay_name . '_types'] as &$value) {
+						if(! is_array($value) || sizeof($value) != $line_count) {
+							$default = $value[0];
 					
-						$value = array();
-						for($i=0; $i<$line_count; $i++) {
-							$value[$i] = $default;
-						}	
-					}
-				}				
+							$value = array();
+							for($i=0; $i<$line_count; $i++) {
+								$value[$i] = $default;
+							}	
+						}
+					}				
+				}
+			
 			}
 		}
 	}	
@@ -200,8 +258,8 @@ class Waymark_Config {
 		}	
 	}
 
-	public static function get_setting($tab, $group, $key) {	
-		if(array_key_exists($tab, self::$data) && array_key_exists($group, self::$data[$tab]) && array_key_exists($key, self::$data[$tab][$group])) {
+	public static function get_setting($tab, $group, $key) {
+		if(array_key_exists($tab, self::$data) && array_key_exists($group, self::$data[$tab]) && array_key_exists($key, self::$data[$tab][$group])) {			
 			return self::$data[$tab][$group][$key];
 		} else {
 			return false;
@@ -286,6 +344,34 @@ class Waymark_Config {
 		}
 		
 		return in_array($type, self::$data['custom_types']) || in_array('waymark_' . $type, self::$data['custom_types']);
+	}
+	
+	public static function get_settings_js() {
+		$settings = get_option('Waymark_Settings');
+		
+		$settings_js = [];
+		
+		//Media library uploads
+		if(isset($settings['misc']['editor_options']['media_library_uploads'])) {
+			$media_library_uploads = $settings['misc']['editor_options']['media_library_uploads'];
+		} else {
+			$media_library_uploads = '0';		
+		}
+		$settings_js['misc']['editor_options']['media_library_uploads'] = $media_library_uploads;
+		
+		//Debug mode
+		//Only admin
+		if(! current_user_can('administrator')) {
+			$debug_mode = '0';				
+		//Setting
+		} elseif(isset($settings['misc']['advanced']['debug_mode'])) {
+			$debug_mode = $settings['misc']['advanced']['debug_mode'];
+		} else {
+			$debug_mode = '0';		
+		}
+		$settings_js['misc']['advanced']['debug_mode'] = $debug_mode;
+
+		return json_encode($settings_js);
 	}
 }
 
