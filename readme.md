@@ -13,6 +13,7 @@ Create and share customisable interactive Maps. Embed OpenStreetMap, add Overlay
 ## Description ##
 
 * <a href="https://www.waymark.dev/demo/">See the Demo &raquo;</a>
+* <a href="https://www.waymark.dev/try/">Try the Editor &raquo;</a>
 * <a href="https://www.waymark.dev/docs/">Read the Docs &raquo;</a>
 * <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
 
@@ -30,6 +31,15 @@ Features:
 * Group Maps together using <a href="https://www.waymark.dev/docs/collections/">Collections</a> and display multiple Maps at once.
 * Add extra information to your Maps using <a href="https://www.waymark.dev/docs/meta/">Meta</a>; these are customisable form inputs that allow you to add additional data to your Maps. 
 * For the developers: Maps are stored using the custom post type `waymark_map`, Meta is stored as Custom Fields and Collections use the `waymark_collection` Taxonomy. Most elements can be styled using CSS and have sensibly named `waymark-` classes.
+
+**Try the <a href="https://www.waymark.dev/forums/topic/development-release/">Development Release</a>!**
+
+Currently <a href="https://www.waymark.dev/forums/topic/v0-9-18-b1-submissions/">v0.9.18-b1</a>
+
+* **<a href="https://www.waymark.dev/docs/submissions/">Submissions</a>**
+    * Allow registered users, or guests to create Maps from the front-end of your site. You can control who can Submit Maps, what editor features are available and whether submissions should be approved before they are published. Originally suggested <a href="https://wordpress.org/support/topic/feature-request-add-marker-from-frontend/">here</a>.
+* Fixed a bug where Shortcode Headers were not displaying on Collection archive pages. Thanks to <a href="https://wordpress.org/support/users/meggsico/">meggsico</a> for <a href="https://wordpress.org/support/topic/maybe-a-bug-7/#post-14815812">bringing this to my attention</a>.
+* Lots of back-end fixes and improvements.
 
 Waymark is free, with no features to "unlock". I try to keep the plugin well supported, so please feel free to <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">reach out</a> with any questions or feedback.
 
