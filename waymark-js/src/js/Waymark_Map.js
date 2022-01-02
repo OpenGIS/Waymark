@@ -263,7 +263,7 @@ function Waymark_Map() {
 	    attributionControl: false,
 	    editable: true,
 	    zoomControl: false,
-      wakeTime: 1000,
+      wakeTime: 2000,
       sleepNote: false,
 	    sleepOpacity: 1      
 		});
