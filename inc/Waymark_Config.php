@@ -46,6 +46,13 @@ class Waymark_Config {
 					)
 				)
 			),
+
+			/**
+			 * ===========================================
+			 * ================= META ====================
+			 * ===========================================
+			 */
+			
 			'meta' => array(
 				'inputs' => array(
 					'meta_title' => esc_html__('Description', 'waymark'),
@@ -58,6 +65,13 @@ class Waymark_Config {
 					'meta_submission' => '0'					
 				)
 			),
+
+			/**
+			 * ===========================================
+			 * =============== SUBMISSIONS ===============
+			 * ===========================================
+			 */
+			
 			'submission' => array(
 				'global' => array(
 					'submission_enable' => '0'
@@ -76,6 +90,36 @@ class Waymark_Config {
 					'submission_alert' => '1'
 				)			
 			),
+
+			/**
+			 * ===========================================
+			 * ================= QUERIES =================
+			 * ===========================================
+			 */			
+			
+			'query' => array(
+				'defaults' => array(
+					'query_area'=> '47.505026,-52.646484,47.533864,-52.605972',
+					'query_area_ratio' => '1',
+					'query_overpass' => '[bbox:{{bbox}}];
+(node["amenity"];
+  way["amenity"];
+  relation["amenity"];);
+out center;'
+				),
+				'performance' => array(
+					'cache_minutes' => 15,
+				),		
+			),
+			
+			
+			/**
+			 * ===========================================
+			 * ================= MISC ====================
+			 * ===========================================
+			 */
+			
+						
 			'misc' => array(
 				'map_options' => array(
 					'map_default_latlng' => '51.38436,-68.74923',
@@ -110,6 +154,13 @@ class Waymark_Config {
 					'debug_mode' => '0'
 				)
 			),
+
+			/**
+			 * ===========================================
+			 * =============== BASEMAPS ==================
+			 * ===========================================
+			 */			
+			
 			'tiles' => array(
 				'layers' => array(
 			    'layer_name' => 'Open Street Map',
@@ -117,6 +168,13 @@ class Waymark_Config {
 			    'layer_attribution' => '© &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors'
 				)
 			),
+
+			/**
+			 * ===========================================
+			 * ================= MARKERS =================
+			 * ===========================================
+			 */			
+			
 			'markers' => array(
 				'marker_types' => array(
 					'marker_title' => esc_html__('Photo', 'waymark') . $multi_value_seperator . esc_html__('Information', 'waymark') . $multi_value_seperator . esc_html__('Alert', 'waymark') . $multi_value_seperator . esc_html__('Trail Access', 'waymark') . $multi_value_seperator . esc_html__('Food', 'waymark') . $multi_value_seperator . esc_html__('Water', 'waymark') . $multi_value_seperator . esc_html__('Shelter', 'waymark') . $multi_value_seperator . esc_html__('Beer', 'waymark') . $multi_value_seperator . esc_html__('Start', 'waymark') . $multi_value_seperator . esc_html__('Finish', 'waymark'),
@@ -130,6 +188,13 @@ class Waymark_Config {
 					'marker_submission' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1'
 				)		
 			),
+
+			/**
+			 * ===========================================
+			 * ================= LINES ===================
+			 * ===========================================
+			 */
+			
 			'lines' => array(
 				'line_types' => array(
 					'line_title' => esc_html__('Red', 'waymark') . $multi_value_seperator . esc_html__('Green', 'waymark') . $multi_value_seperator . esc_html__('Blue', 'waymark'),
@@ -139,6 +204,13 @@ class Waymark_Config {
 					'line_submission' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1'
 				)
 			),
+			
+			/**
+			 * ===========================================
+			 * ================= SHAPES ==================
+			 * ===========================================
+			 */
+			
 			'shapes' => array(
 				'shape_types' => array(
 					'shape_title' => esc_html__('Red', 'waymark') . $multi_value_seperator . esc_html__('Green', 'waymark') . $multi_value_seperator . esc_html__('Blue', 'waymark'),

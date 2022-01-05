@@ -20,10 +20,15 @@ require_once('inc/Waymark_Install.php');
 //Objects
 require_once('inc/Objects/Waymark_Map.php');
 require_once('inc/Objects/Waymark_Collection.php');
+require_once('inc/Objects/Waymark_Query.php');
+
+//Request
+require_once('inc/Request/Waymark_Overpass_Request.php');
 
 //Helpers
 require_once('inc/Helpers/Waymark_Helper.php');
 require_once('inc/Helpers/Waymark_Input.php');
+require_once('inc/Helpers/Waymark_Cache.php');
 
 //Front
 require_once('inc/Waymark_Front.php');

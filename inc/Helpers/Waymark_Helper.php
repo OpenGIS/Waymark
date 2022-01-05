@@ -957,4 +957,8 @@ class Waymark_Helper {
 			//return [-7.57216793459, 49.959999905, 1.68153079591, 58.6350001085];
 		}
 	}	
+
+	public static function build_query_map_html($args = array()) {
+		return '<div id="query_map" style="width:100%;"></div>';	
+	}
 }
