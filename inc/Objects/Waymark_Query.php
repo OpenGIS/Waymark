@@ -68,11 +68,20 @@ class Waymark_Query extends Waymark_Object {
 			return;
 		}
 
- 		//Waymark_Helper::debug($this, false);
-
 		if(isset($this->data['query_overpass']) && isset($this->data['query_area'])) {
-// 				$query_area_array = explode(',', $this->data['query_area']);
-// 				$query_area_string = $query_area_array[0] . ',' . $query_area_array[1] . ',' . $query_area_array[2] . ',' . $query_area_array[3];
+			$query_area_array = explode(',', $this->data['query_area']);
+			$query_area_string = '[[' . $query_area_array[0] . ',' . $query_area_array[1] . '],[' . $query_area_array[2] . ',' . $query_area_array[3] . ']]';
+
+			//Bounding Box
+			Waymark_JS::add_call('
+    //Query
+    var bounds = ' . $query_area_string . ';
+    var rectangle = L.rectangle(bounds, {
+      color: "#ff7800",
+      weight: 1
+    }).addTo(Waymark_Map_Viewer.map);
+    rectangle.enableEdit();
+    Waymark_Map_Viewer.map.fitBounds(bounds)');						
 
 			//Build request
 			$Request = new Waymark_Overpass_Request();							
@@ -82,13 +91,17 @@ class Waymark_Query extends Waymark_Object {
 			));
 
 			//Execute request
-			$response_elements = $Request->get_processed_response();
+			$response = $Request->get_processed_response();
 	
-			//Save response
-			$this->data['query_result'] = json_encode($response_elements);
-			$this->save_meta();						
+			//Markers
+			if(array_key_exists('nodes', $response)) {
+				Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['nodes'] . ');');						
+			}
 
-			Waymark_JS::add_chunk('var waymark_query_data  = ' . json_encode($this->data) . ';');				
+			//Lines
+			if(array_key_exists('ways', $response)) {
+				Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['ways'] . ');');						
+			}			
 		}			
 
 		echo Waymark_Helper::build_query_map_html();

@@ -5,6 +5,11 @@ require_once('Waymark_Request.php');
 class Waymark_Overpass_Request extends Waymark_Request {
 	
 	function __construct() {
+		//Thanks! 
+		//!!!
+		//https://github.com/mediasuitenz/Overpass2Geojson
+		Waymark_Helper::require('Libs/Overpass2Geojson/Overpass2Geojson.php');
+		
 		//$this->request_type = 'rss';
 		$this->request_endpoint = 'http://overpass-api.de/api/interpreter';	
 
@@ -59,7 +64,16 @@ class Waymark_Overpass_Request extends Waymark_Request {
 		return $params_out;
 	}
 
-	function process_response($response) {
+	function process_response($response_raw) {
+		$response_out = null;
+		
+		$response_out = [
+			'raw' => $response_raw,
+			'nodes' => Overpass2Geojson::convertNodes($response_raw),			
+			'ways' => Overpass2Geojson::convertWays($response_raw)						
+		];
+	
+/*	
 		//Is valid JSON
 		if($response_object = json_decode($response)) {
 			if(isset($response_object->elements)) {
@@ -79,10 +93,9 @@ class Waymark_Overpass_Request extends Waymark_Request {
 					}				
 				}			
 			}
-
-			return $response_object->elements;
 		}
+*/
 		
-		return null;
+		return $response_out;
 	}	
 }

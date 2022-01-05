@@ -168,6 +168,12 @@ class Waymark_Meta {
 		echo '<p>&nbsp;</p>';
 	}
 
+	/**
+	 * ===========================================
+	 * =================== MAP ===================
+	 * ===========================================
+	 */	
+
 	function get_map_form() {	
 		//WP Media Library
 		wp_enqueue_media();
@@ -230,6 +236,12 @@ class Waymark_Meta {
 		echo '<p>' . sprintf(__('You can manage Meta fields in <a href="%s">Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')) . '</p>';		
 	}
 
+	/**
+	 * ===========================================
+	 * ================= QUERY ===================
+	 * ===========================================
+	 */		
+
 	function get_query_form() {	
 		global $post;
 
@@ -263,10 +275,6 @@ class Waymark_Meta {
 
 		//Go!
 		Waymark_JS::add_call('Waymark_Map_Viewer.init(waymark_user_config)');
-
-		Waymark_JS::add_call('
-			console.log(waymark_query_data)
-		');			
 
 		$Query = new Waymark_Query;		
 		$Query->set_data($data);
