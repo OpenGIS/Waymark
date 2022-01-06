@@ -97,7 +97,7 @@ class Waymark_Query extends Waymark_Object {
 		}
 		
 		//Load existing data		
-		if(isset($this->data['query_data']) && json_decode($this->data['query_data'])) {
+		if(isset($this->data['query_data']) && Waymark_GeoJSON::get_feature_count($this->data['query_data'])) {
 			Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $this->data['query_data'] . ', false);');								
 		}
 
@@ -152,6 +152,8 @@ class Waymark_Query extends Waymark_Object {
 				case 'marker' :
 					if(array_key_exists('nodes', $response)) {
 						$response_geojson = $response['nodes'];
+
+						$response_geojson = Waymark_GeoJSON::update_feature_property($response_geojson, 'type', $this->data['query_cast_marker_type']);						
 					}
 
 					break;
