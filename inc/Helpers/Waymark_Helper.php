@@ -654,25 +654,27 @@ class Waymark_Helper {
 	}	
 	
 	public static function get_object_types($type = 'marker', $use_key = false, $as_options = false) {
+		$types_out = [];
+		
 		$object_types = Waymark_Config::get_item($type . 's', $type . '_types', true);
 
 		//Use keys
-		if($use_key) {
+		if(is_string($use_key)) {
 			$object_types = self::multi_use_as_key($object_types, $use_key);			
-			
+
 			//Convert to dropdown
 			if($as_options) {
 				foreach($object_types as $key => $data) {
-					if(array_key_exists($use_key, $data)) {
-						$object_types[$key] = $data[$use_key];
-					} else {
-						$object_types[$key] = $key;					
-					}
+
+					$types_out[$key] = $data[$use_key];					
 				}
 			}
-		}	
-		
-		return $object_types;
+		//Don't modify
+		}	else {
+			$types_out = $object_types;
+		}
+				
+		return $types_out;
 	}
 
 	public static function array_string_to_array($string) {

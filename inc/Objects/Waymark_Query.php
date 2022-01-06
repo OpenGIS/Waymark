@@ -7,6 +7,12 @@ class Waymark_Query extends Waymark_Object {
 	public $post_type = 'waymark_query';
 	
 	function __construct($post_id = null) {
+ 		$marker_types = Waymark_Helper::get_object_types('marker', 'marker_title', true);
+ 		$default_marker_type = array_keys($marker_types)[0];
+
+		$line_types = Waymark_Helper::get_object_types('line', 'line_title', true);
+		$default_line_type = array_keys($line_types)[0];
+	
 		//Query Data
 		$this->parameters = array(
 			'query_area' => array(
@@ -47,7 +53,29 @@ class Waymark_Query extends Waymark_Object {
 					'line' => 'Line',
 //					'shape' => 'Shape'										
 				]
-			),					
+			),
+			'query_cast_marker_type' => array(
+				'input_types' => array('meta'),
+				'name' => 'query_cast_marker_type',
+				'id' => 'query_cast_marker_type',
+				'type' => 'select',				
+				'tip' => 'Cast to Type',
+				'group' => '',
+				'title' => 'Marker Type',
+				'default' => $default_marker_type,
+				'options' => Waymark_Helper::get_object_types('marker', 'marker_title', true)
+			),
+			'query_cast_line_type' => array(
+				'input_types' => array('meta'),
+				'name' => 'query_cast_line_type',
+				'id' => 'query_cast_line_type',
+				'type' => 'select',				
+				'tip' => 'Cast to Type',
+				'group' => '',
+				'title' => 'Line Type',
+				'default' => $default_line_type,
+				'options' => Waymark_Helper::get_object_types('line', 'line_title', true)
+			),											
 			//!!!
 			'query_data' => array(
 				'input_types' => array('meta'),
@@ -68,6 +96,11 @@ class Waymark_Query extends Waymark_Object {
 			return;
 		}
 		
+		//Load existing data		
+		if(isset($this->data['query_data']) && json_decode($this->data['query_data'])) {
+			Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $this->data['query_data'] . ', false);');								
+		}
+
 		//Already exists
 		if(isset($this->data['query_overpass']) && isset($this->data['query_area'])) {
 			$query_overpass = $this->data['query_overpass'];

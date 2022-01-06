@@ -6,7 +6,7 @@ class Waymark_Config {
 	
 	public static function init() {
 		$multi_value_seperator = '__multi__';
-		
+
 		self::$data = array(
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',		
@@ -96,7 +96,7 @@ class Waymark_Config {
 			 * ================= QUERIES =================
 			 * ===========================================
 			 */			
-			
+
 			'query' => array(
 				'defaults' => array(
 					'query_area'=> '-52.648029327392585,47.505026,-52.605972,47.53435623467226',
@@ -106,6 +106,8 @@ class Waymark_Config {
   relation["amenity"];);
 out center;',
 					'query_cast_overlay' => 'marker',
+					'query_cast_marker_type' => null,
+					'query_cast_line_type' => null
 				),
 				'performance' => array(
 					'cache_minutes' => 15,

@@ -336,6 +336,10 @@ function waymark_setup_select_icon_type() {
 	});
 }
 
+function waymark_setup_query() {
+
+}
+
 jQuery(document).ready(function() {
 	waymark_setup_repeatable_sections();
 	waymark_setup_marker_tab();
@@ -343,4 +347,5 @@ jQuery(document).ready(function() {
 	waymark_setup_external_links();
 	waymark_setup_select_meta_type();
 	waymark_setup_select_icon_type();
+	waymark_setup_query();
 });
