@@ -151,7 +151,7 @@ class Waymark_Query extends Waymark_Object {
 				//Markers
 				case 'marker' :
 					if(array_key_exists('nodes', $response)) {
-						$response_geojson = $response['nodes'];						
+						$response_geojson = $response['nodes'];
 					}
 
 					break;
@@ -161,6 +161,8 @@ class Waymark_Query extends Waymark_Object {
 					//Lines
 					if(array_key_exists('ways', $response)) {
 						$response_geojson = $response['ways'];						
+
+						$response_geojson = Waymark_GeoJSON::update_feature_property($response_geojson, 'type', $this->data['query_cast_line_type']);
 					}								
 
 					break;

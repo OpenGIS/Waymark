@@ -29,6 +29,7 @@ require_once('inc/Request/Waymark_Overpass_Request.php');
 require_once('inc/Helpers/Waymark_Helper.php');
 require_once('inc/Helpers/Waymark_Input.php');
 require_once('inc/Helpers/Waymark_Cache.php');
+require_once('inc/Helpers/Waymark_GeoJSON.php');
 
 //Front
 require_once('inc/Waymark_Front.php');

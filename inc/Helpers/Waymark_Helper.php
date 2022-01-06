@@ -230,7 +230,7 @@ class Waymark_Helper {
 		}
 					
 		//Add Export dropdown/link
-		$has_features = array_key_exists('map_data', $Map->data) && Waymark_Helper::geojson_feature_count($Map->data['map_data']);
+		$has_features = array_key_exists('map_data', $Map->data) && Waymark_GeoJSON::get_feature_count($Map->data['map_data']);
 		if($has_features && Waymark_Config::get_setting('misc', 'map_options', 'allow_export') == true) {			
 			$map_meta['export_data'] = array(
 				'meta_key' => 'export_data',
@@ -696,17 +696,7 @@ class Waymark_Helper {
 	
 		return $options_array;
 	}
-	
-	static public function geojson_feature_count($geojson) {		
-		$FeatureCollection = json_decode($geojson);
-		
-		if($FeatureCollection && is_array($FeatureCollection->features)) {	
-			return sizeof($FeatureCollection->features);
-		}		
-			
-		return false;	
-	}	
-	
+
 	static public function map_export_html($Map) {
 		if(! isset($Map->post_id) || ! isset($Map->post_title)) {
 			return false;

@@ -336,8 +336,34 @@ function waymark_setup_select_icon_type() {
 	});
 }
 
-function waymark_setup_query() {
+function waymark_setup_dropdowns() {
+	jQuery('.waymark-parameters-container').each(function() {
+		var container = jQuery(this);
+		
+		jQuery('select', container).each(function() {
+			//Prefix
+			var class_string = 'waymark-dropdown-' + jQuery(this).attr('id') + '-';			
 
+			//Add new
+			class_string += jQuery(this).val();
+			container.addClass(class_string);
+			
+			//On Change
+			jQuery(this).on('change', function() {			
+				//Prefix
+				var class_string = 'waymark-dropdown-' + jQuery(this).attr('id') + '-';			
+				
+				//Remove old
+				jQuery('option', jQuery(this)).each(function() {
+					container.removeClass(class_string + jQuery(this).attr('value'))
+				});
+
+				//Add new
+				class_string += jQuery(this).val();
+				container.addClass(class_string);
+			});
+		});			
+	});
 }
 
 jQuery(document).ready(function() {
@@ -347,5 +373,5 @@ jQuery(document).ready(function() {
 	waymark_setup_external_links();
 	waymark_setup_select_meta_type();
 	waymark_setup_select_icon_type();
-	waymark_setup_query();
+	waymark_setup_dropdowns();
 });

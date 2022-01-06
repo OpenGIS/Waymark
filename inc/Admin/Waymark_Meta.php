@@ -131,7 +131,7 @@ class Waymark_Meta {
 		
 		$Map = new Waymark_Map($post->ID);
 		
-		$has_features = array_key_exists('map_data', $Map->data) && Waymark_Helper::geojson_feature_count($Map->data['map_data']);
+		$has_features = array_key_exists('map_data', $Map->data) && Waymark_GeoJSON::get_feature_count($Map->data['map_data']);
 		if($has_features) {			
 			echo '<a data-title="' . esc_attr__('Download the Overlays added to this Map in the selected format.', 'waymark') . '" href="#" onclick="return false;" class="waymark-tooltip">?</a>';
 			echo Waymark_Helper::map_export_html($Map);
