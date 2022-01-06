@@ -102,16 +102,22 @@ class Waymark_Query extends Waymark_Object {
 
 		//Execute request
 		$response = $Request->get_processed_response();
+		
+		//Success
+		if(! array_key_exists('error', $response)) {
+			//Markers
+			if(array_key_exists('nodes', $response)) {
+				Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['nodes'] . ', false);');						
+			}
 
-		//Markers
-		if(array_key_exists('nodes', $response)) {
-			Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['nodes'] . ', false);');						
+			//Lines
+			if(array_key_exists('ways', $response)) {
+				Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['ways'] . ', false);');						
+			}					
+		//Error
+		} else {
+			echo $response['error'];
 		}
-
-		//Lines
-		if(array_key_exists('ways', $response)) {
-			Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['ways'] . ', false);');						
-		}			
 
 		echo Waymark_Helper::build_query_map_html();
 	

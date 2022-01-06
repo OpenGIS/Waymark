@@ -65,40 +65,39 @@ class Waymark_Overpass_Request extends Waymark_Request {
 	}
 
 	function process_response($response_raw) {
+//		Waymark_Helper::debug($response_raw, false);
 
-// 		Waymark_Helper::debug($response_raw);
-
-		$response_out = null;
-		
 		$response_out = [
-			'raw' => $response_raw,
-			'nodes' => Overpass2Geojson::convertNodes($response_raw),			
-			'ways' => Overpass2Geojson::convertWays($response_raw)						
+			'raw' => $response_raw
 		];
-	
-/*	
-		//Is valid JSON
-		if($response_object = json_decode($response)) {
-			if(isset($response_object->elements)) {
-				//Empty
-				if(! sizeof($response_object->elements)) {
-					return $response_object->elements; 
-				}
+		
+		//WP Error?
+		if(is_wp_error($response_raw)) {
+			$response_out['error'] = $return->get_error_message();
+		}
+		
+		//Invalid data?	
+		if(! is_array($response_raw)) {
+			$response_out['error'] = 'Invalid response.';
+		}
+		
+		if(isset($response_raw['response']['code'])) {
+			switch($response_raw['response']['code']) {
+				case '200' :
+					$response_out = [
+						'nodes' => Overpass2Geojson::convertNodes($response_raw['body']),			
+						'ways' => Overpass2Geojson::convertWays($response_raw['body'])						
+					];
 				
-				//Each element
-				foreach($response_object->elements as $element) {
-					//Use centers?
-					if(! isset($element->lon) && isset($element->center->lon)) {
-						$element->lon = $element->center->lon;
-					}
-					if(! isset($element->lat) && isset($element->center->lat)) {
-						$element->lat = $element->center->lat;
-					}				
-				}			
+					break;
+				case '400' :
+					$response_out = [
+						'error' => $response_raw['body']						
+					];				
+					break;
 			}
 		}
-*/
-		
+			
 		return $response_out;
 	}	
 }

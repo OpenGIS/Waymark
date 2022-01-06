@@ -144,15 +144,6 @@ abstract class Waymark_Request {
 
 // 		Waymark_Helper::debug($request);
 
-		$response = wp_remote_get($request);
-		
-		if(is_array($response) && ! is_wp_error($response)) {
-	    //$headers = $response['headers'];
-			return $response['body'];
-		} else {
-			return false;
-		}
-
-		return $response;
+		return wp_remote_get($request);
 	}
 }
