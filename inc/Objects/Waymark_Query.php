@@ -13,22 +13,13 @@ class Waymark_Query extends Waymark_Object {
 				'input_types' => array('meta'),
 				'name' => 'query_area',
 				'id' => 'query_area',
-				'type' => 'textarea',				
+				'type' => 'text',				
 //				'tip' => 'Query Area.',
 				'group' => '',
 				'title' => 'query_area',
 				'default' => Waymark_Config::get_setting('query', 'defaults', 'query_area'),
-//				'class' => 'waymark-hidden'
-			),
-// 			'query_area_locked' => array(
-// 				'name' => 'query_area_locked',
-// 				'id' => 'query_area_locked',
-// 				'type' => 'boolean',				
-// //				'tip' => 'Query Area.',
-// 				'group' => '',
-// 				'title' => 'Lock Area',
-// 				'default' => 1
-// 			),								
+				'class' => 'waymark-hidden'
+			),					
 			'query_overpass' => array(
 				'input_types' => array('meta'),
 				'name' => 'query_overpass',
@@ -42,14 +33,29 @@ class Waymark_Query extends Waymark_Object {
 					'html_entity_decode($param_value)'
 				)				
 			),
-			//!!!
-			'query_result' => array(
+			'query_cast_overlay' => array(
 				'input_types' => array('meta'),
-				'name' => 'query_result',
-				'id' => 'query_result',
+				'name' => 'query_cast_overlay',
+				'id' => 'query_cast_overlay',
+				'type' => 'select',				
+				'tip' => 'Marker/Line/Shape',
+				'group' => '',
+				'title' => 'Overlay Type',
+				'default' => Waymark_Config::get_setting('query', 'defaults', 'query_cast_overlay'),
+				'options' => [
+					'marker' => 'Marker',
+					'line' => 'Line',
+//					'shape' => 'Shape'										
+				]
+			),					
+			//!!!
+			'query_data' => array(
+				'input_types' => array('meta'),
+				'name' => 'query_data',
+				'id' => 'query_data',
 				'type' => 'textarea',				
 				'group' => '',
-				'title' => 'Query Result',
+				'title' => 'Query Data',
 //				'class' => 'waymark-hidden'
 			)			
 		);
@@ -105,15 +111,33 @@ class Waymark_Query extends Waymark_Object {
 		
 		//Success
 		if(! array_key_exists('error', $response)) {
-			//Markers
-			if(array_key_exists('nodes', $response)) {
-				Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['nodes'] . ', false);');						
-			}
+			$response_geojson = [];						
 
-			//Lines
-			if(array_key_exists('ways', $response)) {
-				Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['ways'] . ', false);');						
-			}					
+			//What kind of Overlay?
+			switch($this->data['query_cast_overlay']) {
+				//Markers
+				case 'marker' :
+					if(array_key_exists('nodes', $response)) {
+						$response_geojson = $response['nodes'];						
+					}
+
+					break;
+
+				//Lines
+				case 'line' :
+					//Lines
+					if(array_key_exists('ways', $response)) {
+						$response_geojson = $response['ways'];						
+					}								
+
+					break;
+			}
+		
+
+			$this->data['query_data'] = $response_geojson;
+			$this->save_meta();
+			
+			Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response_geojson . ', false);');								
 		//Error
 		} else {
 			echo $response['error'];

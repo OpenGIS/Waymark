@@ -104,7 +104,8 @@ class Waymark_Config {
 (node["amenity"];
   way["amenity"];
   relation["amenity"];);
-out center;'
+out center;',
+					'query_cast_overlay' => 'marker',
 				),
 				'performance' => array(
 					'cache_minutes' => 15,
