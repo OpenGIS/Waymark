@@ -748,14 +748,6 @@ class Waymark_Settings {
 						)
 //							'tip' => 'Test test test test test'
 						),
-						'query_area_ratio' => array(
-							'name' => 'query_area_ratio',
-							'id' => 'query_area_ratio',
-							'type' => 'text',
-							'title' => 'query_area_ratio',
-							'default' => Waymark_Config::get_setting('query', 'defaults', 'query_area_ratio'),
-							'class' => 'waymark-hidden'
-						),
 						'query_overpass' => array(
 							'name' => 'query_overpass',
 							'id' => 'query_overpass',

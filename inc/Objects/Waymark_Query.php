@@ -28,17 +28,7 @@ class Waymark_Query extends Waymark_Object {
 // 				'group' => '',
 // 				'title' => 'Lock Area',
 // 				'default' => 1
-// 			),					
-			'query_area_ratio' => array(
-				'input_types' => array('meta'),
-				'name' => 'query_area_ratio',
-				'id' => 'query_area_ratio',
-				'type' => 'text',
-				'group' => '',				
-				'title' => 'query_area_ratio',
-				'default' => Waymark_Config::get_setting('query', 'defaults', 'query_area_ratio'),
-//				'class' => 'waymark-hidden'
-			),				
+// 			),								
 			'query_overpass' => array(
 				'input_types' => array('meta'),
 				'name' => 'query_overpass',
