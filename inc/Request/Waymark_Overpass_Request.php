@@ -85,6 +85,7 @@ class Waymark_Overpass_Request extends Waymark_Request {
 			switch($response_raw['response']['code']) {
 				case '200' :
 					$response_out = [
+						'raw' => $response_raw['body'],
 						'nodes' => Overpass2Geojson::convertNodes($response_raw['body']),			
 						'ways' => Overpass2Geojson::convertWays($response_raw['body'])						
 					];

@@ -24,6 +24,24 @@ class Waymark_Settings {
 		if(is_array($current_settings)) {
 			$this->current_settings = $current_settings;
 		}
+
+		//Bounding Box
+		//!!!
+// 		$query_area_array = explode(',', Waymark_Config::get_setting('query', 'defaults', 'query_area'));
+// 		$query_leaflet_string = '[[' . $query_area_array[1] . ',' . $query_area_array[0] . '],[' . $query_area_array[3] . ',' . $query_area_array[2] . ']]';
+// 		
+// 		Waymark_JS::add_call('
+// 	//Query
+// 	var bounds = ' . $query_leaflet_string . ';
+// 	var rectangle = L.rectangle(bounds, {
+// 		color: "#ff7800",
+// 		weight: 1
+// 	}).addTo(Waymark_Map_Viewer.map);
+// 	rectangle.enableEdit();
+// 	Waymark_Map_Viewer.map.on(\'editable:vertex:dragend\', function(e) {
+// 		jQuery(\'#query_area\').val(e.layer.getBounds().toBBoxString());
+// 	});
+// 	Waymark_Map_Viewer.map.fitBounds(bounds)');							
 	
 		/**
 		 * ===========================================

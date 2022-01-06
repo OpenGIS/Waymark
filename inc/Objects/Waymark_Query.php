@@ -143,8 +143,20 @@ class Waymark_Query extends Waymark_Object {
 		$response = $Request->get_processed_response();
 		
 		//Success
-		if(! array_key_exists('error', $response)) {
+		if(! array_key_exists('error', $response) && array_key_exists('raw', $response)) {
 			$response_geojson = [];						
+
+			//Output Raw Response
+			echo Waymark_Input::create_field([
+// 				'input_types' => array('meta'),
+				'name' => 'response_raw',
+				'id' => 'response_raw',
+				'type' => 'textarea',				
+// 				'tip' => 'Overpass Turbo Query. {{bbox}} will be replaced by the Map area.',
+				'group' => '',
+				'title' => 'Overpass Response',
+				'default' => $response['raw']
+			]);
 
 			//What kind of Overlay?
 			switch($this->data['query_cast_overlay']) {
