@@ -99,7 +99,7 @@ class Waymark_Config {
 			
 			'query' => array(
 				'defaults' => array(
-					'query_area'=> '47.505026,-52.646484,47.533864,-52.605972',
+					'query_area'=> '-52.648029327392585,47.505026,-52.605972,47.53435623467226',
 					'query_area_ratio' => '1',
 					'query_overpass' => '[bbox:{{bbox}}];
 (node["amenity"];

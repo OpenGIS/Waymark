@@ -48,6 +48,9 @@ class Waymark_Query extends Waymark_Object {
 				'group' => '',
 				'title' => 'Overpass Turbo Query',
 				'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass'),
+				'output_processing' => array(
+					'html_entity_decode($param_value)'
+				)				
 			),
 			'query_result' => array(
 				'input_types' => array('meta'),
@@ -70,22 +73,26 @@ class Waymark_Query extends Waymark_Object {
 
 		if(isset($this->data['query_overpass']) && isset($this->data['query_area'])) {
 			$query_area_array = explode(',', $this->data['query_area']);
-			$query_area_string = '[[' . $query_area_array[0] . ',' . $query_area_array[1] . '],[' . $query_area_array[2] . ',' . $query_area_array[3] . ']]';
+			$query_leaflet_string = '[[' . $query_area_array[1] . ',' . $query_area_array[0] . '],[' . $query_area_array[3] . ',' . $query_area_array[2] . ']]';
+			$query_overpass_string = $query_area_array[1] . ',' . $query_area_array[0] . ',' . $query_area_array[3] . ',' . $query_area_array[2];
 
 			//Bounding Box
 			Waymark_JS::add_call('
     //Query
-    var bounds = ' . $query_area_string . ';
+    var bounds = ' . $query_leaflet_string . ';
     var rectangle = L.rectangle(bounds, {
       color: "#ff7800",
       weight: 1
     }).addTo(Waymark_Map_Viewer.map);
     rectangle.enableEdit();
+    Waymark_Map_Viewer.map.on(\'editable:vertex:dragend\', function(e) {
+    	jQuery(\'#query_area\').val(e.layer.getBounds().toBBoxString());
+    });
     Waymark_Map_Viewer.map.fitBounds(bounds)');						
 
 			//Build request
 			$Request = new Waymark_Overpass_Request();							
-			$Request->set_config('bounding_box', $this->data['query_area']);
+			$Request->set_config('bounding_box', $query_overpass_string);
 			$Request->set_parameters(array(
 				'data' => $this->data['query_overpass']
 			));
@@ -95,12 +102,12 @@ class Waymark_Query extends Waymark_Object {
 	
 			//Markers
 			if(array_key_exists('nodes', $response)) {
-				Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['nodes'] . ');');						
+				Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['nodes'] . ', false);');						
 			}
 
 			//Lines
 			if(array_key_exists('ways', $response)) {
-				Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['ways'] . ');');						
+				Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['ways'] . ', false);');						
 			}			
 		}			
 

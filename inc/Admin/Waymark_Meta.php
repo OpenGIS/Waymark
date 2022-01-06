@@ -266,8 +266,10 @@ class Waymark_Meta {
 		
 		//Output Config
 		Waymark_JS::add_call('var waymark_user_config = ' . json_encode(Waymark_Config::get_map_config()) . ';');				
-		Waymark_JS::add_call('waymark_user_config.map_height = 600;');				
-		
+		Waymark_JS::add_call('waymark_user_config.map_height = 600;');	
+		Waymark_JS::add_call('waymark_user_config.map_enable_zoom = 0;');	
+		Waymark_JS::add_call('waymark_user_config.map_enable_pan = 0;');	
+				
 		//Set basemap
 		if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
 			Waymark_JS::add_call('waymark_user_config.map_init_basemap = "' . $editor_basemap . '"');		
