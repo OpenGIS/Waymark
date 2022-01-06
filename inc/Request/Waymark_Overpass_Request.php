@@ -65,6 +65,9 @@ class Waymark_Overpass_Request extends Waymark_Request {
 	}
 
 	function process_response($response_raw) {
+
+// 		Waymark_Helper::debug($response_raw);
+
 		$response_out = null;
 		
 		$response_out = [

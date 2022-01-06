@@ -52,6 +52,7 @@ class Waymark_Query extends Waymark_Object {
 					'html_entity_decode($param_value)'
 				)				
 			),
+			//!!!
 			'query_result' => array(
 				'input_types' => array('meta'),
 				'name' => 'query_result',
@@ -70,45 +71,56 @@ class Waymark_Query extends Waymark_Object {
 		if(! is_admin()) {
 			return;
 		}
-
+		
+		//Already exists
 		if(isset($this->data['query_overpass']) && isset($this->data['query_area'])) {
+			$query_overpass = $this->data['query_overpass'];
 			$query_area_array = explode(',', $this->data['query_area']);
-			$query_leaflet_string = '[[' . $query_area_array[1] . ',' . $query_area_array[0] . '],[' . $query_area_array[3] . ',' . $query_area_array[2] . ']]';
-			$query_overpass_string = $query_area_array[1] . ',' . $query_area_array[0] . ',' . $query_area_array[3] . ',' . $query_area_array[2];
+		//Default
+		} else {
+			$query_overpass = Waymark_Config::get_setting('query', 'defaults', 'query_overpass');
+			$query_area_array = explode(',', Waymark_Config::get_setting('query', 'defaults', 'query_area'));		
+		}
+		
+// 		Waymark_Helper::debug($query_overpass, false);
+// 		Waymark_Helper::debug($query_area_array, true);
+				
+		//Area
+		$query_leaflet_string = '[[' . $query_area_array[1] . ',' . $query_area_array[0] . '],[' . $query_area_array[3] . ',' . $query_area_array[2] . ']]';
+		$query_overpass_string = $query_area_array[1] . ',' . $query_area_array[0] . ',' . $query_area_array[3] . ',' . $query_area_array[2];
 
-			//Bounding Box
-			Waymark_JS::add_call('
-    //Query
-    var bounds = ' . $query_leaflet_string . ';
-    var rectangle = L.rectangle(bounds, {
-      color: "#ff7800",
-      weight: 1
-    }).addTo(Waymark_Map_Viewer.map);
-    rectangle.enableEdit();
-    Waymark_Map_Viewer.map.on(\'editable:vertex:dragend\', function(e) {
-    	jQuery(\'#query_area\').val(e.layer.getBounds().toBBoxString());
-    });
-    Waymark_Map_Viewer.map.fitBounds(bounds)');						
+		//Bounding Box
+		Waymark_JS::add_call('
+	//Query
+	var bounds = ' . $query_leaflet_string . ';
+	var rectangle = L.rectangle(bounds, {
+		color: "#ff7800",
+		weight: 1
+	}).addTo(Waymark_Map_Viewer.map);
+	rectangle.enableEdit();
+	Waymark_Map_Viewer.map.on(\'editable:vertex:dragend\', function(e) {
+		jQuery(\'#query_area\').val(e.layer.getBounds().toBBoxString());
+	});
+	Waymark_Map_Viewer.map.fitBounds(bounds)');						
 
-			//Build request
-			$Request = new Waymark_Overpass_Request();							
-			$Request->set_config('bounding_box', $query_overpass_string);
-			$Request->set_parameters(array(
-				'data' => $this->data['query_overpass']
-			));
+		//Build request
+		$Request = new Waymark_Overpass_Request();							
+		$Request->set_config('bounding_box', $query_overpass_string);
+		$Request->set_parameters(array(
+			'data' => html_entity_decode($query_overpass)
+		));
 
-			//Execute request
-			$response = $Request->get_processed_response();
-	
-			//Markers
-			if(array_key_exists('nodes', $response)) {
-				Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['nodes'] . ', false);');						
-			}
+		//Execute request
+		$response = $Request->get_processed_response();
 
-			//Lines
-			if(array_key_exists('ways', $response)) {
-				Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['ways'] . ', false);');						
-			}			
+		//Markers
+		if(array_key_exists('nodes', $response)) {
+			Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['nodes'] . ', false);');						
+		}
+
+		//Lines
+		if(array_key_exists('ways', $response)) {
+			Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response['ways'] . ', false);');						
 		}			
 
 		echo Waymark_Helper::build_query_map_html();
