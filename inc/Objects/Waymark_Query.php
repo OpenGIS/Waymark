@@ -136,6 +136,7 @@ class Waymark_Query extends Waymark_Object {
 		//Build request
 		$Request = new Waymark_Overpass_Request();							
 		$Request->set_config('bounding_box', $query_overpass_string);
+		$Request->set_config('cast_overlay', $this->data['query_cast_overlay']);
 		$Request->set_parameters(array(
 			'data' => html_entity_decode($query_overpass)
 		));
@@ -143,8 +144,9 @@ class Waymark_Query extends Waymark_Object {
 		//Execute request
 		$response = $Request->get_processed_response();
 		
-		//Success
-		if(! array_key_exists('error', $response) && array_key_exists('raw', $response)) {
+		//Raw Output
+// 		if(! array_key_exists('error', $response) && array_key_exists('raw', $response)) {
+		if(array_key_exists('raw', $response)) {
 			$response_geojson = [];						
 
 			//Output Raw Response
@@ -158,39 +160,29 @@ class Waymark_Query extends Waymark_Object {
 				'title' => 'Overpass Response',
 				'default' => $response['raw']
 			]);
-
+		}
+		
+		//We have GeoJSON to display
+		if(array_key_exists('geojson', $response)) {
 			//What kind of Overlay?
 			switch($this->data['query_cast_overlay']) {
 				//Markers
 				case 'marker' :
-					if(array_key_exists('nodes', $response)) {
-						$response_geojson = $response['nodes'];
-
-						$response_geojson = Waymark_GeoJSON::update_feature_property($response_geojson, 'type', $this->data['query_cast_marker_type']);						
-					}
+					$response['geojson'] = Waymark_GeoJSON::update_feature_property($response['geojson'], 'type', $this->data['query_cast_marker_type']);						
 
 					break;
 
 				//Lines
 				case 'line' :
-					//Lines
-					if(array_key_exists('ways', $response)) {
-						$response_geojson = $response['ways'];						
-
-						$response_geojson = Waymark_GeoJSON::update_feature_property($response_geojson, 'type', $this->data['query_cast_line_type']);
-					}								
+					$response['geojson'] = Waymark_GeoJSON::update_feature_property($response['geojson'], 'type', $this->data['query_cast_line_type']);
 
 					break;
-			}
-		
+			}		
 
-			$this->data['query_data'] = $response_geojson;
+			$this->data['query_data'] = json_encode($response['geojson']);
 			$this->save_meta();
 			
-			Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $response_geojson . ', false);');								
-		//Error
-		} else {
-			echo $response['error'];
+			Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $this->data['query_data'] . ', false);');											
 		}
 
 		echo Waymark_Helper::build_query_map_html();

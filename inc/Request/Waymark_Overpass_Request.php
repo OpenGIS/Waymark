@@ -15,6 +15,8 @@ class Waymark_Overpass_Request extends Waymark_Request {
 
 		$this->set_config('output_type', 'json');
 		$this->set_config('bounding_box', Waymark_Config::get_setting('query', 'defaults', 'query_area'));
+
+		$this->set_config('cast_overlay', 'marker');
 		
 		//Parameter migration
 		//$this->migrate_parameters = array();
@@ -86,8 +88,7 @@ class Waymark_Overpass_Request extends Waymark_Request {
 				case '200' :
 					$response_out = [
 						'raw' => $response_raw['body'],
-						'nodes' => Overpass2Geojson::convertNodes($response_raw['body']),			
-						'ways' => Overpass2Geojson::convertWays($response_raw['body'])						
+						'geojson' => Waymark_GeoJSON::overpass_json_to_geojson($response_raw['body'], $this->get_config('cast_overlay'))
 					];
 				
 					break;
