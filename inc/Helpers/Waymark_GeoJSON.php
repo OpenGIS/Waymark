@@ -47,52 +47,58 @@ class Waymark_GeoJSON {
 		}	
 		
 		$Feature = [];
-		
-		switch($Element->type) {
-			case 'node' :
-									
-				break;
-				
-			case 'way' :
-				if($cast_to == 'marker' && isset($Element->center)) {
-					//Geometry
-					$Feature = [
-						"type" => "Feature",
-						"geometry" => [
-							"type" => "Point",
-							"coordinates" => [
-								$Element->center->lon, $Element->center->lat
-							]
-						],
-						"properties" => []
-					];
-					
-					//Properties
-					if(isset($Element->tags))  {
-						//Title
-						if(isset($Element->tags->name)) {
-							$Feature["properties"]["title"] = $Element->tags->name;
-						}	
-						
-						//Description
-						$desc = '<table>';						
-						foreach($Element->tags as $key => $value) {
-							$desc .= '<tr>';
-							$desc .= '<th>' . $key . '</th><td>' . $value . '</td>';														
-							$desc .= '</tr>';							
-						}
-						
-						$desc .= '</table>';
-						
-						$Feature["properties"]["description"] = $desc;					
-					}
-			
-				}
-				//  elseif($cast_to == 'line' && true) {
-// 				
-// 				}
 
+		switch($cast_to) {
+			case 'marker' :
+				
+				//Geometry
+				$Feature = [
+					'type' => 'Feature',
+					'geometry' => [
+						'type' => 'Point'
+					],					
+					'properties' => []
+				];
+
+				switch($Element->type) {
+					case 'node' :
+						$Feature['geometry']['coordinates'] = [
+							$Element->lon, $Element->lat
+						];
+						
+// 						Waymark_Helper::debug($Element);
+									
+						break;
+				
+					case 'way' :
+						$Feature['geometry']['coordinates'] = [
+							$Element->center->lon, $Element->center->lat
+						];
+
+						break;
+				}
+					
 				break;
+		}
+
+		//Properties
+		if(isset($Element->tags))  {
+			//Title
+			if(isset($Element->tags->name)) {
+				$Feature['properties']['title'] = $Element->tags->name;
+			}	
+			
+			//Description
+			$desc = '<table>';						
+			foreach($Element->tags as $key => $value) {
+				$desc .= '<tr>';
+				$desc .= '<th>' . $key . '</th><td>' . $value . '</td>';														
+				$desc .= '</tr>';							
+			}
+			
+			$desc .= '</table>';
+			
+			$Feature['properties']['description'] = $desc;					
 		}
 		
 		return $Feature;
