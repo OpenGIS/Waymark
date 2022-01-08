@@ -70,32 +70,35 @@ class Waymark_Overpass_Request extends Waymark_Request {
 //		Waymark_Helper::debug($response_raw, false);
 
 		$response_out = [
+			'status' => 'init',
 			'raw' => $response_raw
 		];
 		
 		//WP Error?
 		if(is_wp_error($response_raw)) {
-			$response_out['error'] = $return->get_error_message();
-		}
-		
+			$response_out['status'] = 'error';
+			$response_out['message'] = $response_raw->get_error_message();
 		//Invalid data?	
-		if(! is_array($response_raw)) {
-			$response_out['error'] = 'Invalid response.';
-		}
-		
-		if(isset($response_raw['response']['code'])) {
+		} elseif(! is_array($response_raw)) {
+			$response_out['status'] = 'error';
+			$response_out['message'] = 'Invalid response.';
+		//Success!!!
+		} elseif(isset($response_raw['response']['code'])) {
 			switch($response_raw['response']['code']) {
 				case '200' :
-					$response_out = [
-						'raw' => $response_raw['body'],
-						'geojson' => Waymark_GeoJSON::overpass_json_to_geojson($response_raw['body'], $this->get_config('cast_overlay'))
-					];
+					$response_geojson = Waymark_Overpass::overpass_json_to_geojson($response_raw['body'], $this->get_config('cast_overlay'));
+					$response_message = Waymark_GeoJSON::get_feature_count($response_geojson);
+					$response_message .= ' Overlays!!!';
+								
+					$response_out['status'] = 'success';
+					$response_out['message'] = $response_message;
+					$response_out['geojson'] = $response_geojson;
 				
 					break;
 				case '400' :
-					$response_out = [
-						'error' => $response_raw['body']						
-					];				
+					$response_out['status'] = 'error';
+					$response_out['message'] = Waymark_Overpass::get_overpass_response_error($response_raw['body']);
+
 					break;
 			}
 		}

@@ -30,6 +30,7 @@ require_once('inc/Helpers/Waymark_Helper.php');
 require_once('inc/Helpers/Waymark_Input.php');
 require_once('inc/Helpers/Waymark_Cache.php');
 require_once('inc/Helpers/Waymark_GeoJSON.php');
+require_once('inc/Helpers/Waymark_Overpass.php');
 
 //Front
 require_once('inc/Waymark_Front.php');

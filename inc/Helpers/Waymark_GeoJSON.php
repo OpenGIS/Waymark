@@ -3,11 +3,12 @@
 class Waymark_GeoJSON {
 
 	static public function get_feature_count($FeatureCollection = []) {		
-		if(! is_object($FeatureCollection)) {
+		if(is_string($FeatureCollection)) {
 			$FeatureCollection = json_decode($FeatureCollection);		
 		}
-				
-		if($FeatureCollection && is_array($FeatureCollection->features)) {	
+			
+		if($FeatureCollection && isset($FeatureCollection->features)) {	
+
 			return sizeof($FeatureCollection->features);
 		}		
 			
@@ -26,7 +27,7 @@ class Waymark_GeoJSON {
 
 			//Each Feature
 			foreach($FeatureCollection['features'] as &$Feature) {
-				if(! is_array($Feature['properties'])) {
+				if(! isset($Feature['properties']) || ! is_array($Feature['properties'])) {
 					$Feature['properties'] = [];
 				}
 				
@@ -49,8 +50,8 @@ class Waymark_GeoJSON {
 		$Feature = [];
 
 		switch($cast_to) {
+			//Markers
 			case 'marker' :
-				
 				//Geometry
 				$Feature = [
 					'type' => 'Feature',
@@ -79,6 +80,12 @@ class Waymark_GeoJSON {
 				}
 					
 				break;
+
+			//Lines
+			case 'line' :
+				//Waymark_Helper::debug($Element);
+				
+				break;
 		}
 
 		//Properties
@@ -106,7 +113,7 @@ class Waymark_GeoJSON {
 
 	
 	static public function overpass_json_to_geojson($Json = '', $cast_to = 'marker') {
-		if(! is_object($Json)) {
+		if(is_string($Json)) {
 			$Json = json_decode($Json);
 		}
 		
@@ -121,10 +128,6 @@ class Waymark_GeoJSON {
 			foreach($Json->elements as $Element) {
 				$FeatureCollection['features'][] = self::overpass_element_to_geojson_feature($Element, $cast_to);
 			}
-		}
-
-		if(! is_object($Json)) {
-			$FeatureCollection = json_encode($FeatureCollection);
 		}
 		
 		return $FeatureCollection;
