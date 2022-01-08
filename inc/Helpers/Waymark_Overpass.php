@@ -81,6 +81,7 @@ class Waymark_Overpass {
 			
 			//Description
 			$desc = '<table>';						
+				$desc .= '<th>id</th><td><a href="https://www.openstreetmap.org/' . $Element->type . '/' . $Element->id . '">' . $Element->id . '</a></td>';														
 			foreach($Element->tags as $key => $value) {
 				$desc .= '<tr>';
 				$desc .= '<th>' . $key . '</th><td>' . $value . '</td>';														
