@@ -67,11 +67,18 @@ class Waymark_Overpass_Request extends Waymark_Request {
 	}
 
 	function process_response($response_raw) {
-//		Waymark_Helper::debug($response_raw, false);
+		$raw_output = $response_raw['body'];
+	
+		$raw_output = trim(preg_replace('/\s+/', ' ', $raw_output));
+//		$raw_output = stripcslashes($raw_output);
+//		$raw_output = str_replace("\\\"", '', $raw_output);
+//		$raw_output = json_encode($raw_output);
+
+//		Waymark_Helper::debug($raw_output);
 
 		$response_out = [
 			'status' => 'init',
-			'raw' => $response_raw
+			'raw' => $raw_output
 		];
 		
 		//WP Error?

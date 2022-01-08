@@ -140,9 +140,11 @@ class Waymark_Query extends Waymark_Object {
 					echo '</div>' . "\n";
 				}
 
-						//Raw Output
+				//Raw Output
 				if(array_key_exists('raw', $response) && Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) {
 					$response_geojson = [];						
+
+					//Waymark_Helper::debug($response['raw']);
 
 					//Output Raw Response
 					echo Waymark_Input::create_field([
@@ -150,7 +152,7 @@ class Waymark_Query extends Waymark_Object {
 						'id' => 'response_raw',
 						'type' => 'textarea',				
 						'title' => 'Overpass Response',
-						'default' => json_encode($response['raw'])
+						'default' => $response['raw']
 					]);
 				}
 		
