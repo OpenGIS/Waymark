@@ -85,7 +85,7 @@ class Waymark_Query extends Waymark_Object {
 				'type' => 'textarea',				
 				'group' => '',
 				'title' => 'Query Data',
-//				'class' => 'waymark-hidden'
+				'class' => (Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) ? '' : 'waymark-hidden'
 			)			
 		);
 
@@ -139,20 +139,16 @@ class Waymark_Query extends Waymark_Object {
 					echo '	<p>' . $response['message'] . '</p>' . "\n";
 					echo '</div>' . "\n";
 				}
-		
-				//Raw Output
-		// 		if(! array_key_exists('error', $response) && array_key_exists('raw', $response)) {
-				if(array_key_exists('raw', $response)) {
+
+						//Raw Output
+				if(array_key_exists('raw', $response) && Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) {
 					$response_geojson = [];						
 
 					//Output Raw Response
 					echo Waymark_Input::create_field([
-		// 				'input_types' => array('meta'),
 						'name' => 'response_raw',
 						'id' => 'response_raw',
 						'type' => 'textarea',				
-		// 				'tip' => 'Overpass Turbo Query. {{bbox}} will be replaced by the Map area.',
-						'group' => '',
 						'title' => 'Overpass Response',
 						'default' => json_encode($response['raw'])
 					]);
