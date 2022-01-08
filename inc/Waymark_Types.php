@@ -98,7 +98,7 @@ class Waymark_Types {
 					'items_list_navigation' => 'Queries list navigation',
 					'filter_items_list'     => 'Filter queries list',
 				),
-				'supports'              => array('title', 'custom-fields'),
+				'supports'              => array('title', 'author', 'revisions'),
 				'hierarchical'          => false,
 				'public'                => true,
 				'show_ui'               => true,
@@ -120,6 +120,7 @@ class Waymark_Types {
 		//Show if debug
 		if(Waymark_Config::get_setting('misc', 'advanced', 'debug_mode') == true) {
 			$this->types['waymark_map']['supports'][] = 'custom-fields';
+			$this->types['waymark_query']['supports'][] = 'custom-fields';
 		}
 
 		//Add Featured Image Support
