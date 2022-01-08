@@ -771,7 +771,13 @@ class Waymark_Settings {
 							'id' => 'query_overpass',
 							'type' => 'textarea',
 							'title' => 'Query',
-							'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass')
+							'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass'),
+							'output_processing' => array(
+								'html_entity_decode($param_value)'
+							)	
+// 							'input_processing' => array(
+// 								'(! strpos($param_value, "&")) ? htmlspecialchars($param_value) : $param_value'
+// 							)															
 						)											
 					)
 				),
