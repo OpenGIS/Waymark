@@ -21,7 +21,21 @@ class Waymark_Map extends Waymark_Object {
 			'title' => 'Map Data',
 			'class' => 'waymark-hidden'
 		);
-
+		
+		//Queries
+		$Query = new Waymark_Query;		
+		$this->parameters['map_queries'] = array(
+			'input_types' => array('meta'),
+			'name' => 'map_queries',
+			'id' => 'map_queries',
+			'type' => 'select_multi',				
+// 			'tip' => '',
+			'group' => '',
+			'title' => 'Map Queries',
+			'options' => $Query->get_list()
+		);
+		unset($Query);
+		
 		//Meta
 		$map_meta = Waymark_Config::get_item('meta', 'inputs', true);
 		if($map_meta && sizeof($map_meta)) {
@@ -95,5 +109,16 @@ class Waymark_Map extends Waymark_Object {
 		}
 	
 		parent::__construct($post_id);
+		
+		//Queries?
+		if(array_key_exists('map_queries', $this->data)) {
+			$map_queries = Waymark_Helper::array_string_to_array($this->data['map_queries']);
+
+			foreach($map_queries as $query_id) {
+				$Query = new Waymark_Query($query_id);						
+
+				Waymark_Helper::debug($Query->get_data_item('query_overpass'), false);
+			}
+		}
 	}		
 }
