@@ -364,7 +364,7 @@ function waymark_setup_dropdowns() {
 
 function waymark_setup_query() {
 	//Prettify JSON and output to console
-	jQuery('#waymark_query_meta textarea#response_raw, #waymark_query_meta textarea#query_data').each(function() {
+	jQuery('#waymark_query_meta textarea#query_overpass_response, #waymark_query_meta textarea#query_data').each(function() {
 		var textarea = jQuery(this);
 		
 		//Only if visible (i.e. debug mode)

@@ -7,18 +7,18 @@ class Waymark_Query extends Waymark_Object {
 	public $post_type = 'waymark_query';
 	
 	function __construct($post_id = null, $query_area = false) {
-		if($query_area) {
-			$qa = explode(',', $query_area);
-			$query_overpass_string = $qa[1] . ',' . $qa[0] . ',' . $qa[3] . ',' . $qa[2];				
-			
-			$this->set_data_item('query_area', $query_overpass_string);
-		}
-		
  		$marker_types = Waymark_Helper::get_object_types('marker', 'marker_title', true);
  		$default_marker_type = array_keys($marker_types)[0];
 
 		$line_types = Waymark_Helper::get_object_types('line', 'line_title', true);
 		$default_line_type = array_keys($line_types)[0];
+		
+		//Area passed?
+		if($query_area) {
+			$default_query_area = $query_area;
+		} else {
+			$default_query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
+		}
 	
 		//Query Data
 		$this->parameters = array(
@@ -30,8 +30,8 @@ class Waymark_Query extends Waymark_Object {
 //				'tip' => 'Query Area.',
 				'group' => '',
 				'title' => 'query_area',
-// 				'default' => Waymark_Config::get_setting('query', 'defaults', 'query_area'),
-				'class' => 'waymark-hidden'
+ 				'default' => $default_query_area,
+				'class' => (Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) ? '' : 'waymark-hidden'
 			),					
 			'query_overpass' => array(
 				'input_types' => array('meta'),
@@ -52,13 +52,12 @@ class Waymark_Query extends Waymark_Object {
 				'name' => 'query_overpass_response',
 				'id' => 'query_overpass_response',
 				'type' => 'textarea',				
-// 				'tip' => 'OverpassQL Response.',
-// 				'tip_link' => 'https://osm-queries.ldodds.com/tutorial/',				
 				'group' => '',
 				'title' => 'Overpass Turbo Response',
 				'output_processing' => array(
 					'html_entity_decode($param_value)'
-				)				
+				),
+				'class' => (Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) ? '' : 'waymark-hidden'				
 			),
 			'query_cast_overlay' => array(
 				'input_types' => array('meta'),
@@ -108,11 +107,9 @@ class Waymark_Query extends Waymark_Object {
 				'class' => (Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) ? '' : 'waymark-hidden'
 			)			
 		);
-
+		
 		parent::__construct($post_id);
-		
-		//Waymark_Helper::debug($this->data, false);	
-		
+
 		//Execute?
 		if($this->can_execute()) {
 			$this->do_execute();
@@ -128,9 +125,15 @@ class Waymark_Query extends Waymark_Object {
 			return false;
 		}	
 
+		//Convert from Leaflet to Overpass
+		$qa = explode(',', $this->get_data_item('query_area'));
+		$bounding_box = $qa[1] . ',' . $qa[0] . ',' . $qa[3] . ',' . $qa[2];		
+
+		//Waymark_Helper::debug($this->data, false);	
+		
 		//Build request
 		$Request = new Waymark_Overpass_Request();							
-		$Request->set_config('bounding_box', $this->get_data_item('query_area'));
+		$Request->set_config('bounding_box', $bounding_box);
 		$Request->set_config('cast_overlay', $this->data['query_cast_overlay']);
 		$Request->set_parameters(array(
 			'data' => html_entity_decode($this->data['query_overpass'])
