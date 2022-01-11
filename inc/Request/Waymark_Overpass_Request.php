@@ -93,7 +93,10 @@ class Waymark_Overpass_Request extends Waymark_Request {
 		} elseif(isset($response_raw['response']['code'])) {
 			switch($response_raw['response']['code']) {
 				case '200' :
-					$response_geojson = Waymark_Overpass::overpass_json_to_geojson($response_raw['body'], $this->get_config('cast_overlay'));
+					//Ensure is Array
+					$response_json = json_decode($response_raw['body'], null, 512, JSON_OBJECT_AS_ARRAY);
+				
+					$response_geojson = Waymark_Overpass::overpass_json_to_geojson($response_json, $this->get_config('cast_overlay'));
 					$response_message = Waymark_GeoJSON::get_feature_count($response_geojson);
 					$response_message .= ' Overlays!!!';
 								

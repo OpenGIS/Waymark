@@ -2,87 +2,58 @@
 
 class Waymark_Overpass {
 
-	static public function overpass_element_to_geojson_feature($Element = '', $cast_to = 'marker') {
-		if(! is_object($Element)) {
-			$Element = json_decode($Element);
-		}	
-		
+	static public function overpass_element_to_geojson_feature(array $element, $cast_to = 'marker') {
 		$Feature = [];
 
 		switch($cast_to) {
 			//Markers
 			case 'marker' :
-				if(isset($Element->type)) {
-					//Geometry
-					$Feature = [
-						'type' => 'Feature',
-						'geometry' => [
-							'type' => 'Point'
-						],					
-						'properties' => []
-					];
+				//Geometry
+				$Feature = [
+					'type' => 'Feature',
+					'geometry' => [
+						'type' => 'Point'
+					],					
+					'properties' => []
+				];
 
-					switch($Element->type) {
-						case 'node' :
-							$Feature['geometry']['coordinates'] = [
-								$Element->lon, $Element->lat
-							];
+				switch($element['type']) {
+					case 'node' :
+						$Feature['geometry']['coordinates'] = [
+							$element['lon'], $element['lat']
+						];
 						
-	// 						Waymark_Helper::debug($Element);
+// 						Waymark_Helper::debug($Element);
 									
-							break;
+						break;
 				
-						case 'way' :
-							$Feature['geometry']['coordinates'] = [
-								$Element->center->lon, $Element->center->lat
-							];
+					case 'way' :
+						$Feature['geometry']['coordinates'] = [
+							$element['center']['lon'], $element['center']['lat']
+						];
 
-							break;
-					}
+						break;
 				}
 					
 				break;
 
 			//Lines
 			case 'line' :
-				if(isset($Element->type)) {
-					//Geometry
-					$Feature = [
-						'type' => 'Feature',
-						'geometry' => [
-							'type' => 'LineString'
-						],					
-						'properties' => []
-					];
-
-					switch($Element->type) {
-						case 'way' :
-							if(isset($Element->geometry) && sizeof($Element->geometry)) {
-								foreach($Element->geometry as $coordinates) {
-									$Feature['geometry']['coordinates'][] = [
-										$coordinates->lon, $coordinates->lat
-									];
-								}
-							}
-
-							break;
-					}
-				}
-										
+				//Waymark_Helper::debug($Element);
+				
 				break;
 		}
 
 		//Properties
-		if(isset($Element->tags))  {
+		if(isset($element['tags']))  {
 			//Title
-			if(isset($Element->tags->name)) {
-				$Feature['properties']['title'] = $Element->tags->name;
+			if(isset($element['tags']['name'])) {
+				$Feature['properties']['title'] = $element['tags']['name'];
 			}	
 			
 			//Description
 			$desc = '<table>';						
-				$desc .= '<th>id</th><td><a href="https://www.openstreetmap.org/' . $Element->type . '/' . $Element->id . '">' . $Element->id . '</a></td>';														
-			foreach($Element->tags as $key => $value) {
+			foreach($element['tags'] as $key => $value) {
 				$desc .= '<tr>';
 				$desc .= '<th>' . $key . '</th><td>' . $value . '</td>';														
 				$desc .= '</tr>';							
@@ -90,32 +61,25 @@ class Waymark_Overpass {
 			
 			$desc .= '</table>';
 			
-			$Feature['properties']['description'] = $desc;					
+			$Feature['properties']['description'] = $desc;
+//			$Feature['properties']['description'] = htmlentities($desc);
 		}
 		
 		return $Feature;
 	}
 
-	static public function overpass_json_to_geojson($Json = '', $cast_to = 'marker') {
-		if(! is_object($Json)) {
-			$Json = json_decode($Json);
-		}
-		
+	static public function overpass_json_to_geojson(array $overpass_json, $cast_to = 'marker') {
 		$FeatureCollection = [
     	"type" => "FeatureCollection",
       "features" => []		
 		];
 		
 		//
-		if(isset($Json->elements) && is_array($Json->elements)) {
+		if(isset($overpass_json['elements']) && is_array($overpass_json['elements'])) {
 			//Each feature
-			foreach($Json->elements as $Element) {
-				$FeatureCollection['features'][] = self::overpass_element_to_geojson_feature($Element, $cast_to);
+			foreach($overpass_json['elements'] as $element) {
+				$FeatureCollection['features'][] = self::overpass_element_to_geojson_feature($element, $cast_to);
 			}
-		}
-
-		if(! is_object($Json)) {
-			$FeatureCollection = json_encode($FeatureCollection);
 		}
 		
 		return $FeatureCollection;

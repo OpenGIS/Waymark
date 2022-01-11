@@ -34,8 +34,21 @@ class Waymark_Query extends Waymark_Object {
 				'tip' => 'OverpassQL Query.',
 				'tip_link' => 'https://osm-queries.ldodds.com/tutorial/',				
 				'group' => '',
-				'title' => 'Overpass Turbo Query',
+				'title' => 'Overpass QL Query',
 				'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass'),
+				'output_processing' => array(
+					'html_entity_decode($param_value)'
+				)				
+			),
+			'query_overpass_response' => array(
+				'input_types' => array('meta'),
+				'name' => 'query_overpass_response',
+				'id' => 'query_overpass_response',
+				'type' => 'textarea',				
+// 				'tip' => 'OverpassQL Response.',
+// 				'tip_link' => 'https://osm-queries.ldodds.com/tutorial/',				
+				'group' => '',
+				'title' => 'Overpass Turbo Response',
 				'output_processing' => array(
 					'html_entity_decode($param_value)'
 				)				
@@ -90,97 +103,106 @@ class Waymark_Query extends Waymark_Object {
 		);
 
 		parent::__construct($post_id);
-	}		
+		
+		//Execute?
+		if($this->can_execute()) {
+			$this->do_execute();
+		}
+	}	
+	
+	function can_execute() {
+		return isset($this->data['query_overpass']) && isset($this->data['query_area']);
+	}	
+	
+	function do_execute() {
+		if(! $this->can_execute()) {
+			return false;
+		}	
+
+		$query_overpass_array = explode(',', $this->data['query_area']);
+		$query_overpass_string = $query_overpass_array[1] . ',' . $query_overpass_array[0] . ',' . $query_overpass_array[3] . ',' . $query_overpass_array[2];				
+	
+		//Build request
+		$Request = new Waymark_Overpass_Request();							
+		$Request->set_config('bounding_box', $query_overpass_string);
+		$Request->set_config('cast_overlay', $this->data['query_cast_overlay']);
+		$Request->set_parameters(array(
+			'data' => html_entity_decode($this->data['query_overpass'])
+		));
+
+		//Execute request
+		$response = $Request->get_processed_response();
+
+//		Waymark_Helper::debug($Request);
+	
+	
+		//Message?
+// 				if(array_key_exists('message', $response)) {
+// 					$class = '';
+// 					if(array_key_exists('status', $response)) {
+// 						if($response['status'] == 'success') {
+// 							$class .= ' notice-success';
+// 						} elseif($response['status'] == 'error') {
+// 							$class .= ' notice-error';						
+// 						}
+// 					}
+// 					echo '<div class="notice' . $class . '">' . "\n";
+// 					echo '	<p>' . $response['message'] . '</p>' . "\n";
+// 					echo '</div>' . "\n";
+// 				}
+
+		//Raw Output
+		if(array_key_exists('raw', $response)) {
+			$this->set_data_item('query_overpass_response', $response['raw']);
+		}
+
+		//We have GeoJSON to display
+		if(array_key_exists('geojson', $response)) {
+			//What kind of Overlay?
+			switch($this->data['query_cast_overlay']) {
+				//Markers
+				case 'marker' :
+					$response['geojson'] = Waymark_GeoJSON::update_feature_property($response['geojson'], 'type', $this->data['query_cast_marker_type']);						
+
+					break;
+
+				//Lines
+				case 'line' :
+					$response['geojson'] = Waymark_GeoJSON::update_feature_property($response['geojson'], 'type', $this->data['query_cast_line_type']);
+
+					break;
+			}		
+
+			$this->data['query_data'] = json_encode($response['geojson']);
+
+//					Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $this->data['query_data'] . ', false);');											
+//				}
+//			}
+			$this->save_meta();
+		}		
+	}
 	
 	function create_form() {
 		if(! is_admin()) {
 			return;
 		}
-		
-		//Initial load - no data yet
-		if(! sizeof($this->data)) {
-			$query_overpass = Waymark_Config::get_setting('query', 'defaults', 'query_overpass');
-			$query_area_array = explode(',', Waymark_Config::get_setting('query', 'defaults', 'query_area'));		
-		//We have data
-		} else {
-			//Load existing data		
-			if(isset($this->data['query_data']) && Waymark_GeoJSON::get_feature_count($this->data['query_data'])) {
-				Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $this->data['query_data'] . ', false);');								
-			}
 
-			//New request?
-			if(isset($this->data['query_overpass']) && isset($this->data['query_area'])) {
-				$query_overpass = $this->data['query_overpass'];
-				$query_area_array = explode(',', $this->data['query_area']);
-				$query_overpass_string = $query_area_array[1] . ',' . $query_area_array[0] . ',' . $query_area_array[3] . ',' . $query_area_array[2];				
-				
-				//Build request
-				$Request = new Waymark_Overpass_Request();							
-				$Request->set_config('bounding_box', $query_overpass_string);
-				$Request->set_config('cast_overlay', $this->data['query_cast_overlay']);
-				$Request->set_parameters(array(
-					'data' => html_entity_decode($query_overpass)
-				));
-
-				//Execute request
-				$response = $Request->get_processed_response();
-				
-				//Message?
-				if(array_key_exists('message', $response)) {
-					$class = '';
-					if(array_key_exists('status', $response)) {
-						if($response['status'] == 'success') {
-							$class .= ' notice-success';
-						} elseif($response['status'] == 'error') {
-							$class .= ' notice-error';						
-						}
-					}
-					echo '<div class="notice' . $class . '">' . "\n";
-					echo '	<p>' . $response['message'] . '</p>' . "\n";
-					echo '</div>' . "\n";
-				}
-
-				//Raw Output
-				if(array_key_exists('raw', $response) && Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) {
-					$response_geojson = [];						
-
-					//Waymark_Helper::debug($response['raw']);
-
-					//Output Raw Response
-					echo Waymark_Input::create_field([
-						'name' => 'response_raw',
-						'id' => 'response_raw',
-						'type' => 'textarea',				
-						'title' => 'Overpass Response',
-						'default' => $response['raw']
-					]);
-				}
-		
-				//We have GeoJSON to display
-				if(array_key_exists('geojson', $response)) {
-					//What kind of Overlay?
-					switch($this->data['query_cast_overlay']) {
-						//Markers
-						case 'marker' :
-							$response['geojson'] = Waymark_GeoJSON::update_feature_property($response['geojson'], 'type', $this->data['query_cast_marker_type']);						
-
-							break;
-
-						//Lines
-						case 'line' :
-							$response['geojson'] = Waymark_GeoJSON::update_feature_property($response['geojson'], 'type', $this->data['query_cast_line_type']);
-
-							break;
-					}		
-
-					$this->data['query_data'] = json_encode($response['geojson']);
-					$this->save_meta();
-			
-					Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $this->data['query_data'] . ', false);');											
-				}
-			}
+		$feature_count = 0;
+		if(isset($this->data['query_data'])) {
+			$query_data = json_decode($this->data['query_data'], null, 512, JSON_OBJECT_AS_ARRAY);
+			$feature_count = Waymark_GeoJSON::get_feature_count($query_data);
 		}
-		
+
+		//Load existing data		
+		if($feature_count) {
+			Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . json_encode($query_data) . ', false);');								
+
+			$query_area_array = explode(',', $this->data['query_area']);
+		//No data (yet)
+		} else {
+			$query_area_array = explode(',', Waymark_Config::get_setting('query', 'defaults', 'query_area'));		
+		}
+
 		//Area
 		$query_leaflet_string = '[[' . $query_area_array[1] . ',' . $query_area_array[0] . '],[' . $query_area_array[3] . ',' . $query_area_array[2] . ']]';
 

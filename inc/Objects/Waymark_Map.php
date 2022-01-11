@@ -34,6 +34,15 @@ class Waymark_Map extends Waymark_Object {
 			'title' => 'Map Queries',
 			'options' => $Query->get_list()
 		);
+		$this->parameters['map_queries_data'] = array(
+			'input_types' => array('meta'),
+			'name' => 'map_queries_data',
+			'id' => 'map_queries_data',
+			'type' => 'textarea',				
+// 			'tip' => '',
+			'group' => '',
+			'title' => 'Map Queries Data'
+		);		
 		unset($Query);
 		
 		//Meta
@@ -113,12 +122,17 @@ class Waymark_Map extends Waymark_Object {
 		//Queries?
 		if(array_key_exists('map_queries', $this->data)) {
 			$map_queries = Waymark_Helper::array_string_to_array($this->data['map_queries']);
+			$queries_data = [];
 
 			foreach($map_queries as $query_id) {
 				$Query = new Waymark_Query($query_id);						
-
-				Waymark_Helper::debug($Query->get_data_item('query_overpass'), false);
+				
+				if($data = $Query->get_data_item('query_data')) {
+					$queries_data[] = $data;							
+				}
 			}
+			
+			$this->set_data_item('map_queries_data', $queries_data);
 		}
 	}		
 }

@@ -131,7 +131,7 @@ class Waymark_Meta {
 		
 		$Map = new Waymark_Map($post->ID);
 		
-		$has_features = array_key_exists('map_data', $Map->data) && Waymark_GeoJSON::get_feature_count($Map->data['map_data']);
+		$has_features = array_key_exists('map_data', $Map->data) && Waymark_GeoJSON::get_feature_count(json_decode($Map->data['map_data'], null, 512, JSON_OBJECT_AS_ARRAY));
 		if($has_features) {			
 			echo '<a data-title="' . esc_attr__('Download the Overlays added to this Map in the selected format.', 'waymark') . '" href="#" onclick="return false;" class="waymark-tooltip">?</a>';
 			echo Waymark_Helper::map_export_html($Map);
@@ -174,15 +174,13 @@ class Waymark_Meta {
 	 * ===========================================
 	 */	
 
-	function get_map_form() {	
+	function get_map_form($post) {	
 		//WP Media Library
 		wp_enqueue_media();
 		
 		//WP TinyMCE
 		wp_enqueue_editor();
 		
-		global $post;
-
 		$data = Waymark_Helper::flatten_meta(get_post_meta($post->ID));
 								
 		//Create new Map object
@@ -226,12 +224,20 @@ class Waymark_Meta {
 		if(array_key_exists('waymark_map_data', $data)) {
 			Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $data['waymark_map_data'] . ');');			
 		}
-
+		
 		//Create Feed meta input
-		$Map = new Waymark_Map;		
+		$Map = new Waymark_Map($post->ID);		
 		$Map->set_data($data);
 		$Map->set_input_type('meta');
 		echo $Map->create_form();		
+
+		//Queries data?
+		if($map_queries_data = $Map->get_data_item('map_queries_data', $data)) {
+			foreach($map_queries_data as $data) {
+				Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $data . ');');			
+			}
+
+		}
 
 		echo '<p>' . sprintf(__('You can manage Meta fields in <a href="%s">Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')) . '</p>';		
 	}
@@ -242,9 +248,7 @@ class Waymark_Meta {
 	 * ===========================================
 	 */		
 
-	function get_query_form() {	
-		global $post;
-
+	function get_query_form($post) {	
 		$data = Waymark_Helper::flatten_meta(get_post_meta($post->ID));
 								
 		//Create new Map object
@@ -276,7 +280,7 @@ class Waymark_Meta {
 		//Go!
 		Waymark_JS::add_call('Waymark_Map_Viewer.init(waymark_user_config)');
 
-		$Query = new Waymark_Query;		
+		$Query = new Waymark_Query($post->ID);		
 		$Query->set_data($data);
 		$Query->set_input_type('meta');
 		echo $Query->create_form();		
