@@ -110,6 +110,11 @@ class Waymark_Query extends Waymark_Object {
 		
 		parent::__construct($post_id);
 
+		//Area passed?
+		if($query_area) {
+			$this->set_data_item('query_area', $query_area);
+		}
+
 		//Execute?
 		if($this->can_execute()) {
 			$this->do_execute();

@@ -134,19 +134,13 @@ class Waymark_Map extends Waymark_Object {
 		//Queries?
 		if($this->get_data_item('map_data_bounds') && $this->get_data_item('map_queries')) {
 			$map_queries = Waymark_Helper::array_string_to_array($this->data['map_queries']);
+			$queries_data = [];
 
 			foreach($map_queries as $query_id) {
 				$Query = new Waymark_Query($query_id, $this->get_data_item('map_data_bounds'));						
 
 				$this->Queries[$query_id] = $Query;
-
-				$queries_data = [];
-				if($data = $Query->get_data_item('query_data')) {
-					$queries_data[] = $data;							
-				}
 			}
-			
-			$this->set_data_item('map_queries_data', $queries_data);
 		}
 	}		
 }

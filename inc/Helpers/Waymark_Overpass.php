@@ -39,8 +39,30 @@ class Waymark_Overpass {
 
 			//Lines
 			case 'line' :
-				//Waymark_Helper::debug($Element);
-				
+				if(isset($element['type'])) {
+					//Geometry
+					$Feature = [
+						'type' => 'Feature',
+						'geometry' => [
+							'type' => 'LineString'
+						],					
+						'properties' => []
+					];
+
+					switch($element['type']) {
+						case 'way' :
+							if(isset($element['geometry']) && sizeof($element['geometry'])) {
+								foreach($element['geometry'] as $coordinates) {
+									$Feature['geometry']['coordinates'][] = [
+										$coordinates['lon'], $coordinates['lat']
+									];
+								}
+							}
+
+							break;
+					}
+				}
+										
 				break;
 		}
 

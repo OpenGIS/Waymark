@@ -231,16 +231,12 @@ class Waymark_Meta {
 		$Map->set_input_type('meta');
 		echo $Map->create_form();		
 
-		//Queries data?
-		if($map_queries_data = $Map->get_data_item('map_queries_data', $data)) {
-//  			Waymark_Helper::debug($map_queries_data);
+// 		Waymark_Helper::debug($Map);
 
-			if(is_array($map_queries_data)) {		
-				foreach($map_queries_data as $data) {
-					Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $data . ');');			
-				}
-			} else {
-				Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $map_queries_data . ');');			
+		//Queries data?
+		foreach($Map->Queries as $Query) {
+			if($query_data = $Query->get_data_item('query_data')) {
+				Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $query_data . ', \'query_data\');');								
 			}
 		}
 

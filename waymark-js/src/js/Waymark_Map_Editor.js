@@ -1040,12 +1040,33 @@ function Waymark_Map_Editor() {
 */	
 
 	//Add GeoJSON to map	
-	this.load_json = function(json) {
+	this.load_json = function(json, data_layer = 'map_data') {
 		Waymark = this;
 	
+		//Valid Datd
 		if(typeof json === 'object') {
-			//Add JSON
-			Waymark.map_data.addData(json);		 	
+			//By layer
+			switch(data_layer) {
+				case 'map_data' :
+					//Add JSON
+					Waymark.map_data.addData(json);		 	
+
+					//Save
+					Waymark.save_data_layer();
+			
+					//Update map bounds (if we have)
+					var bounds = Waymark.map_data.getBounds();
+					if(bounds.isValid()) {
+						Waymark.map.fitBounds(bounds);
+					}
+			
+					break;
+				case 'query_data' :
+					//Add JSON
+					Waymark.query_data.addData(json);		 	
+
+					break;					
+			}
 			
 			//Make all editable
 /*
@@ -1054,14 +1075,6 @@ function Waymark_Map_Editor() {
 			});
 */
 			
-			//Save
-			Waymark.save_data_layer();
-			
-			//Update map bounds (if we have)
-			var bounds = Waymark.map_data.getBounds();
-			if(bounds.isValid()) {
-				Waymark.map.fitBounds(bounds);
-			}
 		} 		
 	}	
 }
