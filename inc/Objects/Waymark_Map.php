@@ -9,6 +9,8 @@ class Waymark_Map extends Waymark_Object {
 	function __construct($post_id = null) {
 		//Set groups
 		$this->parameter_groups = Waymark_Helper::get_meta_groups();
+
+		$this->Queries = [];
 	
 		//Map Data
 		$this->parameters['map_data'] = array(
@@ -20,6 +22,16 @@ class Waymark_Map extends Waymark_Object {
 			'group' => '',
 			'title' => 'Map Data',
 			'class' => 'waymark-hidden'
+		);
+		$this->parameters['map_data_bounds'] = array(
+			'input_types' => array('meta'),
+			'name' => 'map_data_bounds',
+			'id' => 'map_data_bounds',
+			'type' => 'textarea',				
+//			'tip' => '',
+			'group' => '',
+			'title' => 'Map Data Bounds',
+//			'class' => 'waymark-hidden'
 		);
 		
 		//Queries
@@ -120,13 +132,15 @@ class Waymark_Map extends Waymark_Object {
 		parent::__construct($post_id);
 		
 		//Queries?
-		if(array_key_exists('map_queries', $this->data)) {
+		if($this->get_data_item('map_data_bounds') && $this->get_data_item('map_queries')) {
 			$map_queries = Waymark_Helper::array_string_to_array($this->data['map_queries']);
-			$queries_data = [];
 
 			foreach($map_queries as $query_id) {
-				$Query = new Waymark_Query($query_id);						
-				
+				$Query = new Waymark_Query($query_id, $this->get_data_item('map_data_bounds'));						
+
+				$this->Queries[$query_id] = $Query;
+
+				$queries_data = [];
 				if($data = $Query->get_data_item('query_data')) {
 					$queries_data[] = $data;							
 				}

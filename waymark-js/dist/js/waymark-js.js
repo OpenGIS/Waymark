@@ -8439,12 +8439,20 @@ function Waymark_Map_Editor() {
 	//Update meta field
 	this.save_data_layer = function() {
 		Waymark = this;
-	
+		
+		//Map Data	
 		var map_data_container = jQuery('#map_data');
 		var map_data_string = JSON.stringify(Waymark.map_data.toGeoJSON());
 
 		//Update custom field form
 		map_data_container.html(map_data_string);	
+
+		//Map Data Bound
+		var map_data_bounds_container = jQuery('#map_data_bounds');
+		if(map_data_bounds_container) {
+			var map_data_bounds = Waymark.map_data.getBounds().toBBoxString();		
+			map_data_bounds_container.html(map_data_bounds);	
+		}
 	}
 
 	//Something was edited

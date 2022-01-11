@@ -233,10 +233,15 @@ class Waymark_Meta {
 
 		//Queries data?
 		if($map_queries_data = $Map->get_data_item('map_queries_data', $data)) {
-			foreach($map_queries_data as $data) {
-				Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $data . ');');			
-			}
+//  			Waymark_Helper::debug($map_queries_data);
 
+			if(is_array($map_queries_data)) {		
+				foreach($map_queries_data as $data) {
+					Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $data . ');');			
+				}
+			} else {
+				Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $map_queries_data . ');');			
+			}
 		}
 
 		echo '<p>' . sprintf(__('You can manage Meta fields in <a href="%s">Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')) . '</p>';		

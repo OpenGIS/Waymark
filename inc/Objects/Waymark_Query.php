@@ -6,7 +6,14 @@ class Waymark_Query extends Waymark_Object {
 	
 	public $post_type = 'waymark_query';
 	
-	function __construct($post_id = null) {
+	function __construct($post_id = null, $query_area = false) {
+		if($query_area) {
+			$qa = explode(',', $query_area);
+			$query_overpass_string = $qa[1] . ',' . $qa[0] . ',' . $qa[3] . ',' . $qa[2];				
+			
+			$this->set_data_item('query_area', $query_overpass_string);
+		}
+		
  		$marker_types = Waymark_Helper::get_object_types('marker', 'marker_title', true);
  		$default_marker_type = array_keys($marker_types)[0];
 
@@ -16,14 +23,14 @@ class Waymark_Query extends Waymark_Object {
 		//Query Data
 		$this->parameters = array(
 			'query_area' => array(
-				'input_types' => array('meta'),
+ 				'input_types' => array('meta'),
 				'name' => 'query_area',
 				'id' => 'query_area',
 				'type' => 'text',				
 //				'tip' => 'Query Area.',
 				'group' => '',
 				'title' => 'query_area',
-				'default' => Waymark_Config::get_setting('query', 'defaults', 'query_area'),
+// 				'default' => Waymark_Config::get_setting('query', 'defaults', 'query_area'),
 				'class' => 'waymark-hidden'
 			),					
 			'query_overpass' => array(
@@ -104,6 +111,8 @@ class Waymark_Query extends Waymark_Object {
 
 		parent::__construct($post_id);
 		
+		//Waymark_Helper::debug($this->data, false);	
+		
 		//Execute?
 		if($this->can_execute()) {
 			$this->do_execute();
@@ -119,12 +128,9 @@ class Waymark_Query extends Waymark_Object {
 			return false;
 		}	
 
-		$query_overpass_array = explode(',', $this->data['query_area']);
-		$query_overpass_string = $query_overpass_array[1] . ',' . $query_overpass_array[0] . ',' . $query_overpass_array[3] . ',' . $query_overpass_array[2];				
-	
 		//Build request
 		$Request = new Waymark_Overpass_Request();							
-		$Request->set_config('bounding_box', $query_overpass_string);
+		$Request->set_config('bounding_box', $this->get_data_item('query_area'));
 		$Request->set_config('cast_overlay', $this->data['query_cast_overlay']);
 		$Request->set_parameters(array(
 			'data' => html_entity_decode($this->data['query_overpass'])
@@ -133,7 +139,6 @@ class Waymark_Query extends Waymark_Object {
 		//Execute request
 		$response = $Request->get_processed_response();
 
-//		Waymark_Helper::debug($Request);
 	
 	
 		//Message?
