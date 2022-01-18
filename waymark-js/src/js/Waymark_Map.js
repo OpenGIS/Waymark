@@ -494,7 +494,18 @@ function Waymark_Map() {
 			var basemap_key = Waymark.config.tile_layers[i].layer_name.replace(/ /g, '');
 			
 			//Create tile layer
-			var basemap = Waymark_L.tileLayer(Waymark.config.tile_layers[i].layer_url, {id: basemap_key, attribution: Waymark.config.tile_layers[i].layer_attribution});
+			var layer_options = {
+				id: basemap_key,
+				attribution: Waymark.config.tile_layers[i].layer_attribution
+			}
+			
+			//Max zoom?
+			var layer_max_zoom = parseInt(Waymark.config.tile_layers[i].layer_max_zoom);
+			if(layer_max_zoom) {
+				layer_options.maxZoom = layer_max_zoom;
+			}
+			
+			var basemap = Waymark_L.tileLayer(Waymark.config.tile_layers[i].layer_url, layer_options);
 			basemaps[Waymark.config.tile_layers[i].layer_name] = basemap;
 			
 			//Set initial basemap
