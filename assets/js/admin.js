@@ -176,8 +176,9 @@ function waymark_setup_marker_tab() {
 	var marker_colour_inputs = jQuery('.waymark-input.waymark-marker_colour');
 
 	//Convert old colours (using Waymark_Map Object)
- 	var Map_Object = new Waymark_Map;
- 	if(typeof Map_Object === 'object') {
+ 	if(typeof Waymark_Map === 'function') {
+	 	var Map_Object = new Waymark_Map;
+
 		marker_colour_inputs.each(function() {
 			jQuery(this).val(Map_Object.get_marker_background(jQuery(this).val()));
 			
