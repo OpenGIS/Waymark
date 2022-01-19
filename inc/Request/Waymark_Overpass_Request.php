@@ -67,30 +67,20 @@ class Waymark_Overpass_Request extends Waymark_Request {
 	}
 
 	function process_response($response_raw) {
-		$raw_output = $response_raw['body'];
-	
-		$raw_output = trim(preg_replace('/\s+/', ' ', $raw_output));
-//		$raw_output = stripcslashes($raw_output);
-//		$raw_output = str_replace("\\\"", '', $raw_output);
-//		$raw_output = json_encode($raw_output);
-
-//		Waymark_Helper::debug($raw_output);
-
 		$response_out = [
-			'status' => 'init',
-			'raw' => $raw_output
+			'status' => 'init'
 		];
-		
+
 		//WP Error?
 		if(is_wp_error($response_raw)) {
 			$response_out['status'] = 'error';
 			$response_out['message'] = $response_raw->get_error_message();
-		//Invalid data?	
-		} elseif(! is_array($response_raw)) {
-			$response_out['status'] = 'error';
-			$response_out['message'] = 'Invalid response.';
 		//Success!!!
 		} elseif(isset($response_raw['response']['code'])) {
+			$raw_output = $response_raw['body'];
+			$raw_output = trim(preg_replace('/\s+/', ' ', $raw_output));
+			$response_out['raw'] = $raw_output;
+
 			switch($response_raw['response']['code']) {
 				case '200' :
 					//Ensure is Array

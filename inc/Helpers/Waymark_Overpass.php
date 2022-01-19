@@ -50,6 +50,7 @@ class Waymark_Overpass {
 					];
 
 					switch($element['type']) {
+						//Way
 						case 'way' :
 							if(isset($element['geometry']) && sizeof($element['geometry'])) {
 								foreach($element['geometry'] as $coordinates) {
@@ -59,6 +60,23 @@ class Waymark_Overpass {
 								}
 							}
 
+							break;
+
+						//Relation
+						case 'relation' :
+							if(isset($element['members']) && sizeof($element['members'])) {
+								//Each Way
+								foreach($element['members'] as $way) {							
+									if(isset($way['geometry']) && sizeof($way['geometry'])) {
+										foreach($way['geometry'] as $coordinates) {
+											$Feature['geometry']['coordinates'][] = [
+												$coordinates['lon'], $coordinates['lat']
+											];
+										}
+									}
+								}
+							}
+							
 							break;
 					}
 				}

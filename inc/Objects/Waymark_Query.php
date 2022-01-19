@@ -150,19 +150,19 @@ class Waymark_Query extends Waymark_Object {
 	
 	
 		//Message?
-// 				if(array_key_exists('message', $response)) {
-// 					$class = '';
-// 					if(array_key_exists('status', $response)) {
-// 						if($response['status'] == 'success') {
-// 							$class .= ' notice-success';
-// 						} elseif($response['status'] == 'error') {
-// 							$class .= ' notice-error';						
-// 						}
-// 					}
-// 					echo '<div class="notice' . $class . '">' . "\n";
-// 					echo '	<p>' . $response['message'] . '</p>' . "\n";
-// 					echo '</div>' . "\n";
-// 				}
+		if(array_key_exists('message', $response)) {
+			$class = '';
+			if(array_key_exists('status', $response)) {
+				if($response['status'] == 'success') {
+					$class .= ' notice-success';
+				} elseif($response['status'] == 'error') {
+					$class .= ' notice-error';						
+				}
+			}
+			echo '<div class="notice' . $class . '">' . "\n";
+			echo '	<p>' . $response['message'] . '</p>' . "\n";
+			echo '</div>' . "\n";
+		}
 
 		//Raw Output
 		if(array_key_exists('raw', $response)) {
