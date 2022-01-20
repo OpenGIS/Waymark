@@ -137,8 +137,8 @@ class Waymark_Map extends Waymark_Object {
 			$queries_data = [];
 
 			foreach($map_queries as $query_id) {
-				$Query = new Waymark_Query($query_id);						
-//				$Query = new Waymark_Query($query_id, $this->get_data_item('map_data_bounds'));						
+//				$Query = new Waymark_Query($query_id);						
+				$Query = new Waymark_Query($query_id, $this->get_data_item('map_data_bounds'));						
 
 				$this->Queries[$query_id] = $Query;
 			}
