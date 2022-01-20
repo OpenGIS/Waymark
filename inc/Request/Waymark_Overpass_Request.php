@@ -5,11 +5,6 @@ require_once('Waymark_Request.php');
 class Waymark_Overpass_Request extends Waymark_Request {
 	
 	function __construct() {
-		//Thanks! 
-		//!!!
-		//https://github.com/mediasuitenz/Overpass2Geojson
-		Waymark_Helper::require('Libs/Overpass2Geojson/Overpass2Geojson.php');
-		
 		//$this->request_type = 'rss';
 		$this->request_endpoint = 'http://overpass-api.de/api/interpreter';	
 
