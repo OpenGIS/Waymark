@@ -12,11 +12,19 @@ class Waymark_Meta {
 		add_action('post_updated', array($this, 'post_updated'), 10, 2);			
 	
 		//Waymark JS
+		if(Waymark_Helper::is_debug()) {
+			$waymark_css_url = Waymark_Helper::asset_url('dist/waymark-js/css/waymark-js.css');
+			$waymark_js_url = Waymark_Helper::asset_url('dist/waymark-js/js/waymark-js.js');			
+		} else {
+			$waymark_css_url = Waymark_Helper::asset_url('dist/waymark-js/css/waymark-js.min.css');
+			$waymark_js_url = Waymark_Helper::asset_url('dist/waymark-js/js/waymark-js.min.js');			
+		}
+		
 		//CSS
-		wp_register_style('waymark-js', Waymark_Helper::asset_url('dist/waymark-js/css/waymark-js.min.css'), array(), Waymark_Config::get_version());
+		wp_register_style('waymark-js', $waymark_css_url, array(), Waymark_Config::get_version());
 		wp_enqueue_style('waymark-js');		
 		//JS
-		wp_register_script('waymark-js', Waymark_Helper::asset_url('dist/waymark-js/js/waymark-js.min.js'), array('jquery'), Waymark_Config::get_version());
+		wp_register_script('waymark-js', $waymark_js_url, array('jquery'), Waymark_Config::get_version());
 		//Localize
 		wp_localize_script('waymark-js', 'waymark_js', array(
 			'ajaxurl' => admin_url('admin-ajax.php'),
@@ -282,7 +290,12 @@ class Waymark_Meta {
 		Waymark_JS::add_call('Waymark_Map_Viewer.init(waymark_user_config)');
 
 		$Query = new Waymark_Query($post->ID);		
-		$Query->set_data($data);
+
+		if($query_data = $Query->get_data_item('query_data')) {
+			Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $query_data . ');');								
+		}
+
+//		$Query->set_data($data);
 		$Query->set_input_type('meta');
 		echo $Query->create_form();		
 	}

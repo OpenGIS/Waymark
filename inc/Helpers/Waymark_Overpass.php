@@ -6,7 +6,9 @@ class Waymark_Overpass {
 		$Feature = [];
 
 		switch($cast_to) {
-			//Markers
+
+			// ========== Markers ==========
+
 			case 'marker' :
 				//Geometry
 				$Feature = [
@@ -19,25 +21,39 @@ class Waymark_Overpass {
 
 				switch($element['type']) {
 					case 'node' :
-						$Feature['geometry']['coordinates'] = [
-							$element['lon'], $element['lat']
-						];
+						if(isset($element['lon']) && isset($element['lat'])) {
+							$Feature['geometry']['coordinates'] = [
+								$element['lon'], $element['lat']
+							];
+						}
 						
 // 						Waymark_Helper::debug($Element);
 									
 						break;
 				
 					case 'way' :
-						$Feature['geometry']['coordinates'] = [
-							$element['center']['lon'], $element['center']['lat']
-						];
-
+						if(isset($element['center']['lon']) && isset($element['center']['lat'])) {
+							$Feature['geometry']['coordinates'] = [
+								$element['center']['lon'], $element['center']['lat']
+							];
+						}
+						
 						break;
+						
+					case 'relation' :
+						if(isset($element['center']['lon']) && isset($element['center']['lat'])) {
+							$Feature['geometry']['coordinates'] = [
+								$element['center']['lon'], $element['center']['lat']
+							];
+						}
+												
+						break;						
 				}
 					
 				break;
 
-			//Lines
+			// ========== Lines ==========
+			
 			case 'line' :
 				if(isset($element['type'])) {
 					//Geometry
@@ -102,7 +118,7 @@ class Waymark_Overpass {
 			$desc .= '</table>';
 			
 			$Feature['properties']['description'] = $desc;
-//			$Feature['properties']['description'] = htmlentities($desc);
+			//$Feature['properties']['description'] = htmlentities($desc);
 		}
 		
 		return $Feature;

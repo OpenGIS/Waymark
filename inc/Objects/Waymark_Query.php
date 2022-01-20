@@ -200,16 +200,7 @@ class Waymark_Query extends Waymark_Object {
 			return;
 		}
 
-		$feature_count = 0;
-		if(isset($this->data['query_data'])) {
-			$query_data = json_decode($this->data['query_data'], null, 512, JSON_OBJECT_AS_ARRAY);
-			$feature_count = Waymark_GeoJSON::get_feature_count($query_data);
-		}
-
-		//Load existing data		
-		if($feature_count) {
-			Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . json_encode($query_data) . ', false);');								
-
+		if(isset($this->data['query_area'])) {
 			$query_area_array = explode(',', $this->data['query_area']);
 		//No data (yet)
 		} else {
@@ -225,6 +216,7 @@ class Waymark_Query extends Waymark_Object {
 	var bounds = ' . $query_leaflet_string . ';
 	var rectangle = L.rectangle(bounds, {
 		color: "#ff7800",
+		fill: 0,
 		weight: 1
 	}).addTo(Waymark_Map_Viewer.map);
 	rectangle.enableEdit();
