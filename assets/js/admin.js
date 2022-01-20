@@ -333,6 +333,53 @@ function waymark_setup_select_icon_type() {
 	});
 }
 
+function waymark_setup_dropdowns() {
+	jQuery('.waymark-parameters-container').each(function() {
+		var container = jQuery(this);
+		
+		jQuery('select', container).each(function() {
+			//Prefix
+			var class_string = 'waymark-dropdown-' + jQuery(this).attr('id') + '-';			
+
+			//Add new
+			class_string += jQuery(this).val();
+			container.addClass(class_string);
+			
+			//On Change
+			jQuery(this).on('change', function() {			
+				//Prefix
+				var class_string = 'waymark-dropdown-' + jQuery(this).attr('id') + '-';			
+				
+				//Remove old
+				jQuery('option', jQuery(this)).each(function() {
+					container.removeClass(class_string + jQuery(this).attr('value'))
+				});
+
+				//Add new
+				class_string += jQuery(this).val();
+				container.addClass(class_string);
+			});
+		});			
+	});
+}
+
+function waymark_setup_query() {
+	//Prettify JSON and output to console
+	jQuery('#waymark_query_meta textarea#query_overpass_response, #waymark_query_meta textarea#query_data').each(function() {
+		var textarea = jQuery(this);
+		
+		//Only if visible (i.e. debug mode)
+		if(textarea.is(':visible')) {
+			try {
+				if(json = JSON.parse(textarea.val())) {
+					console.log(json);
+					textarea.val(JSON.stringify(json, null, 2));			
+				}
+			} catch (e) {}		
+		
+		}
+	});
+}
 jQuery(document).ready(function() {
 	waymark_setup_repeatable_sections();
 	waymark_setup_marker_tab();
@@ -340,4 +387,6 @@ jQuery(document).ready(function() {
 	waymark_setup_external_links();
 	waymark_setup_select_meta_type();
 	waymark_setup_select_icon_type();
+	waymark_setup_dropdowns();
+	waymark_setup_query();	
 });

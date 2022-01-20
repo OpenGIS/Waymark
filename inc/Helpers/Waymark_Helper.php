@@ -230,7 +230,7 @@ class Waymark_Helper {
 		}
 					
 		//Add Export dropdown/link
-		$has_features = array_key_exists('map_data', $Map->data) && Waymark_Helper::geojson_feature_count($Map->data['map_data']);
+		$has_features = array_key_exists('map_data', $Map->data) && Waymark_GeoJSON::get_feature_count($Map->data['map_data']);
 		if($has_features && Waymark_Config::get_setting('misc', 'map_options', 'allow_export') == true) {			
 			$map_meta['export_data'] = array(
 				'meta_key' => 'export_data',
@@ -654,25 +654,27 @@ class Waymark_Helper {
 	}	
 	
 	public static function get_object_types($type = 'marker', $use_key = false, $as_options = false) {
+		$types_out = [];
+		
 		$object_types = Waymark_Config::get_item($type . 's', $type . '_types', true);
 
 		//Use keys
-		if($use_key) {
+		if(is_string($use_key)) {
 			$object_types = self::multi_use_as_key($object_types, $use_key);			
-			
+
 			//Convert to dropdown
 			if($as_options) {
 				foreach($object_types as $key => $data) {
-					if(array_key_exists($use_key, $data)) {
-						$object_types[$key] = $data[$use_key];
-					} else {
-						$object_types[$key] = $key;					
-					}
+
+					$types_out[$key] = $data[$use_key];					
 				}
 			}
-		}	
-		
-		return $object_types;
+		//Don't modify
+		}	else {
+			$types_out = $object_types;
+		}
+				
+		return $types_out;
 	}
 
 	public static function array_string_to_array($string) {
@@ -694,17 +696,7 @@ class Waymark_Helper {
 	
 		return $options_array;
 	}
-	
-	static public function geojson_feature_count($geojson) {		
-		$FeatureCollection = json_decode($geojson);
-		
-		if($FeatureCollection && is_array($FeatureCollection->features)) {	
-			return sizeof($FeatureCollection->features);
-		}		
-			
-		return false;	
-	}	
-	
+
 	static public function map_export_html($Map) {
 		if(! isset($Map->post_id) || ! isset($Map->post_title)) {
 			return false;
@@ -957,4 +949,8 @@ class Waymark_Helper {
 			//return [-7.57216793459, 49.959999905, 1.68153079591, 58.6350001085];
 		}
 	}	
+
+	public static function build_query_map_html($args = array()) {
+		return '<div id="query_map" style="width:100%;"></div>';	
+	}
 }

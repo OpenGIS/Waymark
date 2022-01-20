@@ -13,10 +13,6 @@ class Waymark_Object {
 	protected $parameters = array();
 
 	protected $meta_prefix = 'waymark_';
-
-	protected $instance_data = array();
-	protected $feed_data = array();
-	protected $layout_data = array();
 	
 	function __construct($post_id = null) {
 		//Set defaults
@@ -160,6 +156,8 @@ class Waymark_Object {
 		if(! $post_id) {
 			$post_id = $this->post_id;
 		}
+		
+// 		Waymark_Helper::debug($this, false);
 		
 		//Iterate over each parameter
 		foreach($this->parameters as $param_defition) {

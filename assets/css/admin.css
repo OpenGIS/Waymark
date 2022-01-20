@@ -161,6 +161,17 @@ div.postbox#waymark_map_help .inside {
 div.postbox#waymark_map_help .inside p:first-child {
   margin-top: 0;
 }
+/*
+	==================================
+	=========== QUERY META ===========
+	==================================
+*/
+#waymark-parameters-waymark_query.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container {
+  display: none;
+}
+#waymark-parameters-waymark_query.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container {
+  display: none;
+}
 /**
  * ====================================
  * ============= TOOLTIPS =============

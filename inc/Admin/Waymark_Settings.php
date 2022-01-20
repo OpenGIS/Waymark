@@ -24,11 +24,32 @@ class Waymark_Settings {
 		if(is_array($current_settings)) {
 			$this->current_settings = $current_settings;
 		}
-	
-		// === Tabs ===
 
-		//Tiles
-		$this->tabs['tiles'] = array(
+		//Bounding Box
+		//!!!
+// 		$query_area_array = explode(',', Waymark_Config::get_setting('query', 'defaults', 'query_area'));
+// 		$query_leaflet_string = '[[' . $query_area_array[1] . ',' . $query_area_array[0] . '],[' . $query_area_array[3] . ',' . $query_area_array[2] . ']]';
+// 		
+// 		Waymark_JS::add_call('
+// 	//Query
+// 	var bounds = ' . $query_leaflet_string . ';
+// 	var rectangle = L.rectangle(bounds, {
+// 		color: "#ff7800",
+// 		weight: 1
+// 	}).addTo(Waymark_Map_Viewer.map);
+// 	rectangle.enableEdit();
+// 	Waymark_Map_Viewer.map.on(\'editable:vertex:dragend\', function(e) {
+// 		jQuery(\'#query_area\').val(e.layer.getBounds().toBBoxString());
+// 	});
+// 	Waymark_Map_Viewer.map.fitBounds(bounds)');							
+	
+		/**
+		 * ===========================================
+		 * ================= BASEMAPS ================
+		 * ===========================================
+		 */	
+		 
+		 $this->tabs['tiles'] = array(
 			'name' => esc_html__('Basemaps', 'waymark'),
 			'description' => '',
 			'sections' => array(
@@ -93,7 +114,12 @@ class Waymark_Settings {
 			)
 		);
 			
-		//Markers
+		/**
+		 * ===========================================
+		 * ================= MARKERS =================
+		 * ===========================================
+		 */	
+		 
 		$this->tabs['markers'] = array(
 			'name' => esc_html__('Markers', 'waymark'),
 			'description' => '',
@@ -226,7 +252,12 @@ class Waymark_Settings {
 			)
 		);
 		
-		//Lines
+		/**
+		 * ===========================================
+		 * ================== LINES ==================
+		 * ===========================================
+		 */	
+		 
 		$this->tabs['lines'] = array(
 			'name' => esc_html__('Lines', 'waymark'),
 			'description' => '',
@@ -304,7 +335,12 @@ class Waymark_Settings {
 			)
 		);
 		
-		//Shapes
+		/**
+		 * ===========================================
+		 * ================= SHAPES ==================
+		 * ===========================================
+		 */	
+		 
 		$this->tabs['shapes'] = array(
 			'name' => esc_html__('Shapes', 'waymark'),
 			'description' => '',
@@ -382,8 +418,12 @@ class Waymark_Settings {
 			)
 		);	
 			
-		//Meta
-
+		/**
+		 * ===========================================
+		 * =================== META ==================
+		 * ===========================================
+		 */	
+		 
 		$meta_group_options = Waymark_Helper::repeatable_setting_option_array('meta', 'groups', 'group_title');
 		$meta_group_options = array_merge(['' => 'None'], $meta_group_options);
 		
@@ -524,8 +564,12 @@ class Waymark_Settings {
 			}		
 		}
 		
-		// ==================== Submission ====================
-		
+		/**
+		 * ===========================================
+		 * =============== SUBMISSIONS ===============
+		 * ===========================================
+		 */	
+		 		
 		//Roles
 		if(! function_exists('get_editable_roles')) {
     	require_once ABSPATH . 'wp-admin/includes/user.php';
@@ -707,9 +751,72 @@ class Waymark_Settings {
 			$this->tabs['submission']['sections']['from_public']['fields']['submission_alert']['class'] .= ' waymark-hidden';						
 			$this->tabs['submission']['sections']['from_public']['fields']['submission_upload_dir']['class'] .= ' waymark-hidden';
 		}
+
+		/**
+		 * ===========================================
+		 * ================= QUERIES =================
+		 * ===========================================
+		 */		
+
+		$this->tabs['query'] = array(
+			'name' => 'Queries',
+			'description' => '',
+			'sections' => array(
+				'defaults' => array(
+					'title' => 'Defaults',
+//					'description' => 'Test test test.',
+					'fields' => array(	
+						'query_area' => array(
+							'name' => 'query_area',
+							'id' => 'query_area',
+							'type' => 'textarea',
+							'title' => 'Area',
+							'default' => Waymark_Config::get_setting('query', 'defaults', 'query_area'),
+							'before' => Waymark_Helper::build_query_map_html(),
+							'attributes' => array(
+							'style' => 'display:none'
+						)
+//							'tip' => 'Test test test test test'
+						),
+						'query_overpass' => array(
+							'name' => 'query_overpass',
+							'id' => 'query_overpass',
+							'type' => 'textarea',
+							'title' => 'Query',
+							'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass'),
+							'output_processing' => array(
+								'html_entity_decode($param_value)'
+							)	
+// 							'input_processing' => array(
+// 								'(! strpos($param_value, "&")) ? htmlspecialchars($param_value) : $param_value'
+// 							)															
+						)											
+					)
+				),
+				'performance' => array(
+					'title' => 'Performance',
+//					'description' => 'Test test test.',
+					'fields' => array(	
+						'cache_minutes' => array(
+							'name' => 'cache_minutes',
+							'id' => 'cache_minutes',
+							'type' => 'text',
+							'title' => 'Cache Minutes',
+							'default' => Waymark_Config::get_setting('query', 'performance', 'cache_minutes'),
+//							'tip' => 'Test test test test test'
+						)												
+					)											
+					
+				)												
+			)
+		);
 		
-		// ==================== Misc ====================
-		
+		/**
+		 * ===========================================
+		 * ================== MISC ===================
+		 * ===========================================
+		 */		
+		 		
 		$this->tabs['misc'] = array(
 			'name' => esc_html__('Misc.', 'waymark'),
 			'description' => '',
