@@ -1,5 +1,8 @@
 <?php
 
+//Thanks!
+//https://www.smashingmagazine.com/2015/12/how-to-use-term-meta-data-in-wordpress/
+
 class Waymark_Query_Taxonomy {
 
 	private $parameters = array();
@@ -100,6 +103,8 @@ class Waymark_Query_Taxonomy {
 		add_action('waymark_query_edit_form', array($this, 'edit_form_append'), 10, 2);
 		add_action('created_waymark_query', array($this, 'save_query_meta'), 10, 2);
 		add_action('edited_waymark_query', array($this, 'update_query_meta'), 10, 2);
+		add_filter('manage_edit-waymark_query_columns', array($this, 'add_query_column'));		
+		add_filter('manage_waymark_query_custom_column', array($this, 'add_query_column_content'), 10, 3);		
 	}	
 
 	function register_taxonomy() {
@@ -182,6 +187,45 @@ class Waymark_Query_Taxonomy {
 				update_term_meta($term_id, $param['id'], sanitize_text_field($_POST[$param['id']]));
 			}
 		}
+	}	
+	
+	function add_query_column($columns){
+		//Unwanted
+		unset($columns['description']);
+		unset($columns['slug']);
+		
+		//Renamed
+		unset($columns['name']);
+
+		return array_merge([
+			'name' => __('Title', 'waymark'),
+			'query_overlay' => __('Overlay Type', 'waymark'),
+			'query_cast' => __('Cast To', 'waymark')
+		], $columns);
+	}	
+	
+	function add_query_column_content($content, $column_name, $term_id){
+		
+		switch($column_name) {
+			case 'query_overlay' :
+				$content .= get_term_meta($term_id, 'query_cast_overlay', true);
+
+				break;
+			case 'query_cast' :
+				$cast_overlay = get_term_meta($term_id, 'query_cast_overlay', true);
+				
+				switch($cast_overlay) {
+					case 'marker' :
+					case 'line' :
+						$content .= get_term_meta($term_id, 'query_cast_' . $cast_overlay . '_type', true);
+
+						break;
+				}			
+
+				break;				
+		}
+		
+		return $content;
 	}			
 }
 new Waymark_Query_Taxonomy;
