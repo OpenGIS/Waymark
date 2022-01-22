@@ -388,5 +388,5 @@ jQuery(document).ready(function() {
 	waymark_setup_select_meta_type();
 	waymark_setup_select_icon_type();
 	waymark_setup_dropdowns();
-	waymark_setup_query();	
+	//waymark_setup_query();	
 });

@@ -8,7 +8,10 @@ class Waymark_Input {
 	static public function create_field($field, $set_value = null, $show_label = true) {
 		$out = "\n" . '<!-- START ' . $field['id'] . ' Input -->' . "\n";
 
-
+		//Use ID for Name
+		if(array_key_exists('id', $field) && (! array_key_exists('name', $field))) {
+			$field['name'] = $field['id'];
+		}
 
 		//Default type
 		if(! array_key_exists('type', $field)) {
