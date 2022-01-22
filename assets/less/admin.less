@@ -61,6 +61,26 @@ div.postbox {
 
 /*
 	==================================
+	=========== TAXONOMIES ===========
+	==================================
+*/
+body.wp-admin {
+	&.term-php,
+	&.edit-tags-php {
+		&.taxonomy-waymark_query {
+			.form-field {
+				&.term-name-wrap,
+				&.term-slug-wrap,
+				&.term-description-wrap {
+					display: none;
+				}
+			}	
+		}
+	}
+}
+
+/*
+	==================================
 	============ MAP META ============
 	==================================
 */

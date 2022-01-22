@@ -83,8 +83,8 @@ class Waymark_Taxonomies {
 		);
 		
 		add_action('init', array($this, 'register_taxonomies'));
-		add_action('waymark_query_add_form_fields', array($this, 'add_form_fields'), 10, 2);					
-		add_action('waymark_query_edit_form_fields', array($this, 'edit_form_fields'), 10, 2);
+		add_action('waymark_query_add_form_fields', array($this, 'add_form_append'), 10, 2);					
+		add_action('waymark_query_edit_form', array($this, 'edit_form_append'), 10, 2);
 		add_action('created_waymark_query', array($this, 'save_query_meta'), 10, 2);
 		add_action('edited_waymark_query', array($this, 'update_query_meta'), 10, 2);
 	}	
@@ -95,10 +95,10 @@ class Waymark_Taxonomies {
 		}
 	}
 	
-	function add_form_fields($taxonomy) {
+	function add_form_append($taxonomy) {
 		$out = '<div class="waymark-query form-field">' . "\n";
 
-		$out .= Waymark_Input::create_input([
+		$out .= Waymark_Input::create_field([
 			'name' => 'query_overpass',
 			'id' => 'query_overpass',
 			'type' => 'textarea',
@@ -108,7 +108,7 @@ class Waymark_Taxonomies {
 //			'tip' => esc_attr__('What features to offer in the Editor. Important! Uploaded images are added to the Media Library, reading from file does not keep a copy of the file on the server. Whether an individual Meta input is displayed can be set in the Settings > Meta.', 'waymark'),
 		]);
 		
-		$out .= Waymark_Input::create_input([
+		$out .= Waymark_Input::create_field([
 			'name' => 'query_type',
 			'id' => 'query_type',
 			'type' => 'select',
@@ -127,10 +127,10 @@ class Waymark_Taxonomies {
 		echo $out;
 	}
 
-	function edit_form_fields($term, $taxonomy) {
+	function edit_form_append($term, $taxonomy) {
 		$out = '<div class="waymark-query form-field">' . "\n";
 
-		$out .= Waymark_Input::create_input([
+		$out .= Waymark_Input::create_field([
 			'name' => 'query_overpass',
 			'id' => 'query_overpass',
 			'type' => 'textarea',
@@ -140,7 +140,7 @@ class Waymark_Taxonomies {
 //			'tip' => esc_attr__('What features to offer in the Editor. Important! Uploaded images are added to the Media Library, reading from file does not keep a copy of the file on the server. Whether an individual Meta input is displayed can be set in the Settings > Meta.', 'waymark'),
 		]);
 		
-		$out .= Waymark_Input::create_input([
+		$out .= Waymark_Input::create_field([
 			'name' => 'query_type',
 			'id' => 'query_type',
 			'type' => 'select',

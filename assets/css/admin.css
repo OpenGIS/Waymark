@@ -140,6 +140,19 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 }
 /*
 	==================================
+	=========== TAXONOMIES ===========
+	==================================
+*/
+body.wp-admin.term-php.taxonomy-waymark_query .form-field.term-name-wrap,
+body.wp-admin.edit-tags-php.taxonomy-waymark_query .form-field.term-name-wrap,
+body.wp-admin.term-php.taxonomy-waymark_query .form-field.term-slug-wrap,
+body.wp-admin.edit-tags-php.taxonomy-waymark_query .form-field.term-slug-wrap,
+body.wp-admin.term-php.taxonomy-waymark_query .form-field.term-description-wrap,
+body.wp-admin.edit-tags-php.taxonomy-waymark_query .form-field.term-description-wrap {
+  display: none;
+}
+/*
+	==================================
 	============ MAP META ============
 	==================================
 */
