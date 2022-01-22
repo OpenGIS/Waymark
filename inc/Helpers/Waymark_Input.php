@@ -86,7 +86,7 @@ class Waymark_Input {
 	 * ============== PRIVATE =============
 	 * ====================================
 	 */			
-	private static function create_input($field, $set_value = null) {
+	static public function create_input($field, $set_value = null) {
 		$out = '';
 
 		if(! array_key_exists('type', $field)) {
