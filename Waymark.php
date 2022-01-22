@@ -21,8 +21,11 @@ require_once('inc/Helpers/Waymark_GeoJSON.php');
 //Base
 require_once('inc/Waymark_Config.php');
 require_once('inc/Waymark_Types.php');
-require_once('inc/Waymark_Taxonomies.php');
 require_once('inc/Waymark_Install.php');
+
+//Taxonomies
+require_once('inc/Taxonomies/Waymark_Collection.php');
+require_once('inc/Taxonomies/Waymark_Query.php');
 
 //Objects
 require_once('inc/Objects/Waymark_Map.php');
