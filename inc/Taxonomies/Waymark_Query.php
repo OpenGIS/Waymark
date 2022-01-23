@@ -105,6 +105,8 @@ class Waymark_Query_Taxonomy {
 		add_action('edited_waymark_query', array($this, 'update_query_meta'), 10, 2);
 		add_filter('manage_edit-waymark_query_columns', array($this, 'add_query_column'));		
 		add_filter('manage_waymark_query_custom_column', array($this, 'add_query_column_content'), 10, 3);		
+
+// 		add_filter('manage_edit-waymark_query_sortable_columns', array($this, 'add_query_column_sortable'));
 	}	
 
 	function register_taxonomy() {
@@ -226,6 +228,13 @@ class Waymark_Query_Taxonomy {
 		}
 		
 		return $content;
-	}			
+	}		
+// 	
+// 	function add_query_column_sortable($sortable){
+// 		$sortable['query_overlay'] = 'query_overlay';
+// 		$sortable['query_cast'] = 'query_cast';	
+// 
+// 		return $sortable;
+// 	}		
 }
 new Waymark_Query_Taxonomy;
