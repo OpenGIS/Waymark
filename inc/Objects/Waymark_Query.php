@@ -57,33 +57,34 @@ class Waymark_Query {
 		$qa = explode(',', $this->get_parameter('query_area'));
 		$bounding_box = $qa[1] . ',' . $qa[0] . ',' . $qa[3] . ',' . $qa[2];		
 
-		Waymark_Helper::debug($this->parameters, false);	
-		
 		//Build request
 		$Request = new Waymark_Overpass_Request();							
 		$Request->set_config('bounding_box', $bounding_box);
 		$Request->set_config('cast_overlay', $this->parameters['query_cast_overlay']);
+
 		$Request->set_parameters(array(
-			'data' => html_entity_decode($this->parameters['query_overpass'])
+			'data' => html_entity_decode($this->parameters['query_overpass_request'])
 		));
 
 		//Execute request
 		$response = $Request->get_processed_response();
 
+//		Waymark_Helper::debug($response);
+
 		//Message?
-// 		if(array_key_exists('message', $response)) {
-// 			$class = '';
-// 			if(array_key_exists('status', $response)) {
-// 				if($response['status'] == 'success') {
-// 					$class .= ' notice-success';
-// 				} elseif($response['status'] == 'error') {
-// 					$class .= ' notice-error';						
-// 				}
-// 			}
-// 			echo '<div class="notice' . $class . '">' . "\n";
-// 			echo '	<p>' . $response['message'] . '</p>' . "\n";
-// 			echo '</div>' . "\n";
-// 		}
+		if(array_key_exists('message', $response)) {
+			$class = '';
+			if(array_key_exists('status', $response)) {
+				if($response['status'] == 'success') {
+					$class .= ' notice-success';
+				} elseif($response['status'] == 'error') {
+					$class .= ' notice-error';						
+				}
+			}
+			echo '<div class="notice' . $class . '">' . "\n";
+			echo '	<p>' . $response['message'] . '</p>' . "\n";
+			echo '</div>' . "\n";
+		}
 
 		//Raw Output
 // 		if(array_key_exists('raw', $response)) {
@@ -112,7 +113,7 @@ class Waymark_Query {
 //					Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $this->parameters['query_data'] . ', false);');											
 //				}
 //			}
-			$this->save_meta();
+			//$this->save_meta();
 		}		
 	}
 	

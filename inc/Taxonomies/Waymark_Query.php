@@ -40,7 +40,7 @@ class Waymark_Query_Taxonomy {
 				'tip_link' => 'https://osm-queries.ldodds.com/tutorial/',				
 // 				'group' => 'test2',
 				'title' => 'Overpass QL Query',
-				'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass'),
+				'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass_request'),
 				'output_processing' => array(
 					'html_entity_decode($param_value)'
 				)				

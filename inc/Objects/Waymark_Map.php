@@ -121,12 +121,12 @@ class Waymark_Map extends Waymark_Object {
 			$query_meta = Waymark_Helper::flatten_meta($query_meta);
 								
 			if(sizeof($query_meta)) {
-				$Query = new Waymark_Query(array_merge($query_meta, [
+				$this->Queries[] = new Waymark_Query(array_merge($query_meta, [
 					'query_area' => $this->get_data_item('map_data_bounds')
 				]));
-			}
-		
-			Waymark_Helper::debug($Query);								
-		}		
+			}		
+		}	
+
+		//Waymark_Helper::debug($this->Queries, false);									
 	}		
 }

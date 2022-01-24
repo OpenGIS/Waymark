@@ -778,12 +778,12 @@ class Waymark_Settings {
 						)
 //							'tip' => 'Test test test test test'
 						),
-						'query_overpass' => array(
-							'name' => 'query_overpass',
-							'id' => 'query_overpass',
+						'query_overpass_request' => array(
+							'name' => 'query_overpass_request',
+							'id' => 'query_overpass_request',
 							'type' => 'textarea',
 							'title' => 'Query',
-							'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass'),
+							'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass_request'),
 							'output_processing' => array(
 								'html_entity_decode($param_value)'
 							)	

@@ -22,7 +22,6 @@ class Waymark_Overpass_Request extends Waymark_Request {
 		if(! $this->get_config('bounding_box')) {
 			return false;
 		}
-		//debug($params_in, false);
 		
 		//Setup call
 		$params_out = array();
@@ -48,7 +47,7 @@ class Waymark_Overpass_Request extends Waymark_Request {
 					//$param_value = urlencode($param_value);
 
 					$overpass_query = str_replace('+', '%20', $overpass_query);
-			
+	
 					$params_out[$param_key] = $overpass_query;						
 
 					break; 
@@ -58,8 +57,6 @@ class Waymark_Overpass_Request extends Waymark_Request {
 					break;
 			}
 		}
-		
-// 		debug($params_out, false);
 					
 		return $params_out;
 	}
@@ -68,7 +65,7 @@ class Waymark_Overpass_Request extends Waymark_Request {
 		$response_out = [
 			'status' => 'init'
 		];
-
+		
 		//WP Error?
 		if(is_wp_error($response_raw)) {
 			$response_out['status'] = 'error';
@@ -83,7 +80,9 @@ class Waymark_Overpass_Request extends Waymark_Request {
 				case '200' :
 					//Ensure is Array
 					$response_json = json_decode($response_raw['body'], null, 512, JSON_OBJECT_AS_ARRAY);
-							
+					
+					Waymark_Helper::debug($response_json);
+					
 					$response_geojson = Waymark_Overpass::overpass_json_to_geojson($response_json, $this->get_config('cast_overlay'));
 					$response_message = Waymark_GeoJSON::get_feature_count($response_geojson);
 					$response_message .= ' Overlays!!!';
