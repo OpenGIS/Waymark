@@ -10,7 +10,7 @@ class Waymark_Admin {
 		if(! is_admin()) {
 			return;
 		}
-		
+
 		//Actions
 		add_action('admin_init', array($this, 'admin_init'));
 		add_action('admin_menu', array($this, 'menu_init'));			
@@ -32,6 +32,10 @@ class Waymark_Admin {
 	}
 	
 	function admin_init() {
+		if(Waymark_Helper::is_debug()) {
+			ob_start();
+		}
+	
 		require_once('Admin/Waymark_JS.php');			
 		require_once('Admin/Waymark_AJAX.php');			
 		require_once('Admin/Waymark_Meta.php');	

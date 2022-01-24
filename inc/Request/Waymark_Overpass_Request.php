@@ -4,21 +4,24 @@ require_once('Waymark_Request.php');
 	
 class Waymark_Overpass_Request extends Waymark_Request {
 	
-	function __construct() {
+	function __construct($params_in = []) {
 		//$this->request_type = 'rss';
 		$this->request_endpoint = 'http://overpass-api.de/api/interpreter';	
 
 		$this->set_config('output_type', 'json');
-		$this->set_config('bounding_box', Waymark_Config::get_setting('query', 'defaults', 'query_area'));
 
-		$this->set_config('cast_overlay', 'marker');
-		
-		//Parameter migration
-		//$this->migrate_parameters = array();
-		//$this->migrate_parameters_values = array();				
+		foreach($params_in as $key => $value) {
+			if(is_string($value)) {
+				$this->set_config($key, $value);		
+			}
+		}
 	}
 
 	function build_request_parameters(array $params_in) {
+		//Check for required data
+		if(! $this->get_config('bounding_box')) {
+			return false;
+		}
 		//debug($params_in, false);
 		
 		//Setup call
@@ -80,7 +83,7 @@ class Waymark_Overpass_Request extends Waymark_Request {
 				case '200' :
 					//Ensure is Array
 					$response_json = json_decode($response_raw['body'], null, 512, JSON_OBJECT_AS_ARRAY);
-				
+							
 					$response_geojson = Waymark_Overpass::overpass_json_to_geojson($response_json, $this->get_config('cast_overlay'));
 					$response_message = Waymark_GeoJSON::get_feature_count($response_geojson);
 					$response_message .= ' Overlays!!!';

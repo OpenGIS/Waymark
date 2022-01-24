@@ -5,6 +5,7 @@ require_once('Waymark_Object.php');
 class Waymark_Map extends Waymark_Object {
 	
 	public $post_type = 'waymark_map';
+	public $Queries = [];
 	
 	function __construct($post_id = null) {
 		//Set groups
@@ -32,7 +33,7 @@ class Waymark_Map extends Waymark_Object {
 //			'class' => 'waymark-hidden'
 		);
 				
-		//Meta
+		//If we have Map Meta
 		$map_meta = Waymark_Config::get_item('meta', 'inputs', true);
 		if($map_meta && sizeof($map_meta)) {
 		
@@ -101,9 +102,31 @@ class Waymark_Map extends Waymark_Object {
 					$this->parameters[$meta_key]['group'] = $meta['meta_group'];
 				}				
 			}				
-		} else {
 		}
-	
+
+
 		parent::__construct($post_id);
+
+
+
+		//Queries
+		$query_taxonomies = get_terms([
+			'taxonomy' => 'waymark_query',			
+		]);
+		
+		foreach($query_taxonomies as $query_tax) {
+			
+			//Meta available?
+			$query_meta = get_term_meta($query_tax->term_id);
+			$query_meta = Waymark_Helper::flatten_meta($query_meta);
+								
+			if(sizeof($query_meta)) {
+				$Query = new Waymark_Query(array_merge($query_meta, [
+					'query_area' => $this->get_data_item('map_data_bounds')
+				]));
+			}
+		
+			Waymark_Helper::debug($Query);								
+		}		
 	}		
 }

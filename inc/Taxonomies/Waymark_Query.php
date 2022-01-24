@@ -33,9 +33,8 @@ class Waymark_Query_Taxonomy {
 // 				'class' => (Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) ? '' : 'waymark-hidden'
 // 			),	
 							
-			'query_overpass' => array(
-				'name' => 'query_overpass',
-				'id' => 'query_overpass',
+			'query_overpass_request' => array(
+				'id' => 'query_overpass_request',
 				'type' => 'textarea',				
 				'tip' => 'OverpassQL Query.',
 				'tip_link' => 'https://osm-queries.ldodds.com/tutorial/',				
@@ -47,20 +46,18 @@ class Waymark_Query_Taxonomy {
 				)				
 			),
 			
-// 			'query_overpass_response' => array(
-// 				'name' => 'query_overpass_response',
-// 				'id' => 'query_overpass_response',
-// 				'type' => 'textarea',				
-// // 				'group' => 'test1',
-// 				'title' => 'Overpass Turbo Response',
-// 				'output_processing' => array(
-// 					'html_entity_decode($param_value)'
-// 				),
-// 				'class' => (Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) ? '' : 'waymark-hidden'				
-// 			),
+			'query_overpass_response' => array(
+				'id' => 'query_overpass_response',
+				'type' => 'textarea',				
+// 				'group' => 'test1',
+				'title' => 'Overpass Turbo Response',
+				'output_processing' => array(
+					'html_entity_decode($param_value)'
+				),
+				'class' => (Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) ? '' : 'waymark-hidden'				
+			),
 			
 			'query_cast_overlay' => array(
-				'name' => 'query_cast_overlay',
 				'id' => 'query_cast_overlay',
 				'type' => 'select',				
 				'tip' => 'Marker/Line/Shape',

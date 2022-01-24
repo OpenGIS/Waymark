@@ -16,7 +16,7 @@ require_once('inc/Helpers/Waymark_Helper.php');
 require_once('inc/Helpers/Waymark_Input.php');
 require_once('inc/Helpers/Waymark_Cache.php');
 require_once('inc/Helpers/Waymark_GeoJSON.php');
-//require_once('inc/Helpers/Waymark_Overpass.php');
+require_once('inc/Helpers/Waymark_Overpass.php');
 
 //Base
 require_once('inc/Waymark_Config.php');
@@ -30,10 +30,10 @@ require_once('inc/Taxonomies/Waymark_Query.php');
 //Objects
 require_once('inc/Objects/Waymark_Map.php');
 require_once('inc/Objects/Waymark_Collection.php');
-//require_once('inc/Objects/Waymark_Query.php');
+require_once('inc/Objects/Waymark_Query.php');
 
 //Request
-//require_once('inc/Request/Waymark_Overpass_Request.php');
+require_once('inc/Request/Waymark_Overpass_Request.php');
 
 
 

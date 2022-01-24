@@ -436,6 +436,8 @@ class Waymark_Helper {
 		if(! self::is_debug()) {
 			return;	
 		}
+
+		ob_end_clean();
 			
 		echo '<pre>';
 		print_r($thing);
