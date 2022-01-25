@@ -127,11 +127,14 @@ abstract class Waymark_Request {
 								
 			//Process response
 			$response_processed = $this->process_response($response_raw);
-
-			$cache_minutes = Waymark_Config::get_setting('query', 'performance', 'cache_minutes');
+			
+			//Only cache success
+			if(array_key_exists('status', $response_processed) && $response_processed['status'] == 'success') {
+				$cache_minutes = Waymark_Config::get_setting('query', 'performance', 'cache_minutes');
 						
-			//Insert into cache
-			Waymark_Cache::set_item($cache_id, $response_raw, $cache_minutes);	
+				//Insert into cache
+				Waymark_Cache::set_item($cache_id, $response_raw, $cache_minutes);			
+			}
 		}
 		
 		$this->set_response($response_raw);

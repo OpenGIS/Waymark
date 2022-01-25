@@ -103,25 +103,23 @@ class Waymark_Map extends Waymark_Object {
 				}				
 			}				
 		}
-
-
+		
 		parent::__construct($post_id);
-
-
 
 		//Queries
 		$query_taxonomies = get_the_terms($post_id, 'waymark_query');
-		
-		foreach($query_taxonomies as $query_tax) {
-			//Meta available?
-			$query_meta = get_term_meta($query_tax->term_id);
-			$query_meta = Waymark_Helper::flatten_meta($query_meta);
+		if(is_array($query_taxonomies)) {
+			foreach($query_taxonomies as $query_tax) {
+				//Meta available?
+				$query_meta = get_term_meta($query_tax->term_id);
+				$query_meta = Waymark_Helper::flatten_meta($query_meta);
 								
-			if(sizeof($query_meta)) {
-				$this->Queries[] = new Waymark_Query(array_merge($query_meta, [
-					'query_area' => $this->get_data_item('map_data_bounds')
-				]));
-			}		
-		}	
+				if(sizeof($query_meta)) {
+					$this->Queries[] = new Waymark_Query(array_merge($query_meta, [
+						'query_area' => $this->get_data_item('map_data_bounds')
+					]));
+				}		
+			}	
+		}
 	}		
 }

@@ -438,9 +438,9 @@ class Waymark_Helper {
 		}
 
 		//Clear other output
-		if($die) {
-			@ ob_end_clean();
-		}
+// 		if($die) {
+// 			@ ob_end_clean();
+// 		}
 			
 		echo '<pre>';
 		print_r($thing);

@@ -8,7 +8,7 @@ class Waymark_Query {
 		$this->parameters = [
 			'query_area' => null,
 			'query_overpass_request' => null,
-			'query_overpass_response' => null,
+// 			'query_overpass_response' => null,
 			'query_cast_overlay' => null,
 			'query_cast_marker_type' => null,												
 			'query_cast_line_type' => null,

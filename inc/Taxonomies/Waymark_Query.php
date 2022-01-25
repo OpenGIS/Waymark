@@ -6,7 +6,15 @@
 class Waymark_Query_Taxonomy {
 
 	private $parameters = array();
-
+	private $parameter_groups = [
+		'test1' => [
+			'group_title' => 'Test 1',
+		],
+		'test2' => [
+			'group_title' => 'Test 2',
+		]
+	];
+		
 	function __construct() {
  		$marker_types = Waymark_Helper::get_object_types('marker', 'marker_title', true);
  		$default_marker_type = array_keys($marker_types)[0];
@@ -21,78 +29,54 @@ class Waymark_Query_Taxonomy {
 // 			$default_query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
 // 		}
 		
-		$this->parameters = [
-		
-// 			'query_area' => array(
-// 				'id' => 'query_area',
-// 				'type' => 'text',				
-// //				'tip' => 'Query Area.',
-// // 				'group' => 'test1',
-// 				'title' => 'query_area',
-//  				'default' => $default_query_area,
-// 				'class' => (Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) ? '' : 'waymark-hidden'
-// 			),	
-							
-			'query_overpass_request' => array(
-				'id' => 'query_overpass_request',
-				'type' => 'textarea',				
-				'tip' => 'OverpassQL Query.',
-				'tip_link' => 'https://osm-queries.ldodds.com/tutorial/',				
-// 				'group' => 'test2',
-				'title' => 'Overpass QL Query',
-				'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass_request'),
-				'output_processing' => array(
-					'html_entity_decode($param_value)'
-				)				
-			),
+		$this->parameters['query_overpass_request'] = array(
+			'id' => 'query_overpass_request',
+			'type' => 'textarea',				
+			'tip' => 'OverpassQL Query.',
+			'tip_link' => 'https://osm-queries.ldodds.com/tutorial/',				
+			'group' => 'test1',
+			'title' => 'Overpass QL Query',
+			'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass_request'),
+			'output_processing' => array(
+				'html_entity_decode($param_value)'
+			)				
+		);
 			
-			'query_overpass_response' => array(
-				'id' => 'query_overpass_response',
-				'type' => 'textarea',				
-// 				'group' => 'test1',
-				'title' => 'Overpass Turbo Response',
-				'output_processing' => array(
-					'html_entity_decode($param_value)'
-				),
-				'class' => (Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) ? '' : 'waymark-hidden'				
-			),
-			
-			'query_cast_overlay' => array(
-				'id' => 'query_cast_overlay',
-				'type' => 'select',				
-				'tip' => 'Marker/Line/Shape',
-// 				'group' => 'test2',
-				'title' => 'Overlay Type',
-				'default' => Waymark_Config::get_setting('query', 'defaults', 'query_cast_overlay'),
-				'options' => [
-					'marker' => 'Marker',
-					'line' => 'Line',
+		$this->parameters['query_cast_overlay'] = array(
+			'id' => 'query_cast_overlay',
+			'type' => 'select',				
+			'tip' => 'Marker/Line/Shape',
+			'group' => 'test1',
+			'title' => 'Overlay Type',
+			'default' => Waymark_Config::get_setting('query', 'defaults', 'query_cast_overlay'),
+			'options' => [
+				'marker' => 'Marker',
+				'line' => 'Line',
 //					'shape' => 'Shape'										
-				]
-			),
+			]
+		);
 			
-			'query_cast_marker_type' => array(
-				'name' => 'query_cast_marker_type',
-				'id' => 'query_cast_marker_type',
-				'type' => 'select',				
-				'tip' => 'Cast to Type',
-// 				'group' => 'test2',
-				'title' => 'Marker Type',
-				'default' => $default_marker_type,
-				'options' => Waymark_Helper::get_object_types('marker', 'marker_title', true)
-			),
+		$this->parameters['query_cast_marker_type'] = array(
+			'name' => 'query_cast_marker_type',
+			'id' => 'query_cast_marker_type',
+			'type' => 'select',				
+			'tip' => 'Cast to Type',
+			'group' => 'test2',
+			'title' => 'Marker Type',
+			'default' => $default_marker_type,
+			'options' => Waymark_Helper::get_object_types('marker', 'marker_title', true)
+		);
 			
-			'query_cast_line_type' => array(
-				'name' => 'query_cast_line_type',
-				'id' => 'query_cast_line_type',
-				'type' => 'select',				
-				'tip' => 'Cast to Type',
-// 				'group' => 'test2',
-				'title' => 'Line Type',
-				'default' => $default_line_type,
-				'options' => Waymark_Helper::get_object_types('line', 'line_title', true)
-			)
-		];		
+		$this->parameters['query_cast_line_type'] = array(
+			'name' => 'query_cast_line_type',
+			'id' => 'query_cast_line_type',
+			'type' => 'select',				
+			'tip' => 'Cast to Type',
+			'group' => 'test2',
+			'title' => 'Line Type',
+			'default' => $default_line_type,
+			'options' => Waymark_Helper::get_object_types('line', 'line_title', true)
+		);		
 		
 		add_action('init', array($this, 'register_taxonomy'));
 		
@@ -150,10 +134,8 @@ class Waymark_Query_Taxonomy {
 	
 	function add_form_append($taxonomy) {
 		$out = '<div id="waymark-query-add" class="waymark-query-form form-field waymark-parameters-container">' . "\n";
-		
-		foreach($this->parameters as $param) {
-			$out .= Waymark_Input::create_field($param);		
-		}
+
+		$out .= Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups);
 
 		$out .= '</div>' . "\n";		
 		
@@ -161,11 +143,15 @@ class Waymark_Query_Taxonomy {
 	}
 
 	function edit_form_append($term, $taxonomy) {
+		//Get existing data
+		$data = [];
+		foreach($this->parameters as $param) {
+			$data[$param['id']] = get_term_meta($term->term_id, $param['id']);
+		}
+
 		$out = '<div id="waymark-query-edit" class="waymark-query-form form-field waymark-parameters-container">' . "\n";
 
-		foreach($this->parameters as $param) {
-			$out .= Waymark_Input::create_field($param, get_term_meta($term->term_id, $param['id'], true));		
-		}
+		$out .= Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups, $data);
 
 		$out .= '</div>' . "\n";		
 		

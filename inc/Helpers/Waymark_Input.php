@@ -247,29 +247,54 @@ class Waymark_Input {
 		
 		return $out;
 	}	
+
+	static function group_fields($fields, $groups) {		
+		$fields_grouped = array();
+		
+		foreach($fields as $field_key => $field_data) {
+			$group_id = '';
+			if(array_key_exists('group', $field_data)) {
+				$group_id = $field_data['group'];			
+			}		
+			$fields_grouped[$group_id][$field_key] = $field_data;					
+		}
+		
+		return $fields_grouped;	
+	}	
 	
-	static function create_parameter_groups($post_type, $fields, $groups, $data = array(), $input_name_format = null) {				
+	static function create_parameter_groups($fields, $groups = array(), $data = array(), $input_name_format = null, $id = '', $class_append = '') {				
+		//Group
+		$fields = self::group_fields($fields, $groups);
+		
+// 		Waymark_Helper::debug($fields);
+		
 		$out = '<!-- START Parameter Container -->' . "\n";
-		$out .= '<div class="waymark-parameters-container waymark-accordion-container" id="waymark-parameters-' . $post_type . '">' . "\n";
+		
+		$id = ($id) ? ' id="' . $id . '"' : '';
+		$class_append = ($class_append) ? ' ' . $class_append : '';		
+		
+		$out .= '<div' . $id . ' class="waymark-parameters-container waymark-accordion-container' . $class_append . '">' . "\n";
 
 		//Are we doing groups?
 		$by_group = false;		
 		if(is_array($groups) && sizeof($groups)) {	
 			$by_group = true;
-					
+			
 			$fields_reorder = [];
 			//No group
 			if(isset($fields[''])) {
 				$fields_reorder[''] = $fields[''];		
 			}
 			foreach($groups as $group_id => $group) {
+// 				Waymark_Helper::debug($fields);
+
 				if(isset($fields[$group_id])) {
 					$fields_reorder[$group_id] = $fields[$group_id];					
-}
+				}
 			}
 			$fields = $fields_reorder;
 		}		
-				
+					
 		$current_group = false;
 		foreach($fields as $group_id => $fields) {
 			//Output group?
@@ -297,6 +322,11 @@ class Waymark_Input {
 			}
 			
 			foreach($fields as $field) {
+				//Use ID for Name
+				if(array_key_exists('id', $field) && (! array_key_exists('name', $field))) {
+					$field['name'] = $field['id'];
+				}
+
 				//Set value?
 				if(array_key_exists($field['name'], $data)) {
 					$set_value = $data[$field['name']];
