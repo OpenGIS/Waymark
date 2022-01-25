@@ -18,9 +18,11 @@ class Waymark_JS {
 		if(is_object($current_screen)) {
 			switch($current_screen->id) {
 				//Map Editor
-				//Query Editor
 				case 'waymark_map' :		
+				//Query Editor
 				case 'edit-waymark_query' :
+				//Settings
+				case 'waymark_page_waymark-settings' :
 					//Waymark JS
 					if(Waymark_Helper::is_debug()) {
 						$waymark_css_url = Waymark_Helper::asset_url('dist/waymark-js/css/waymark-js.css');
@@ -82,19 +84,23 @@ class Waymark_JS {
 						)
 					));
 					wp_enqueue_script('waymark-js');
+
+					wp_register_script('waymark_admin_js', Waymark_Helper::asset_url('js/admin.min.js'), array('jquery', 'jquery-ui-sortable', 'jquery-effects-core', 'wp-color-picker'), Waymark_Config::get_version());	
+					wp_localize_script('waymark_admin_js', 'waymark_admin_js', array(
+						'ajaxurl' => admin_url('admin-ajax.php'),
+						'security' => wp_create_nonce(Waymark_Config::get_item('nonce_string')),
+						'lang' => [
+							'repeatable_delete_title' => esc_attr__('Remove!', 'waymark'),
+							'marker_icon_icon_label' => esc_attr__('Name', 'waymark'),
+							'marker_icon_text_label' => esc_attr__('Text', 'waymark'),
+							'marker_icon_html_label' => esc_attr__('HTML', 'waymark'),						
+						]
+					));
+					wp_enqueue_script('waymark_admin_js');	
 		
 					break;
 			}
 		}
-	
-		wp_register_script('waymark_admin_js', Waymark_Helper::asset_url('js/admin.min.js'), array('jquery', 'jquery-ui-sortable', 'jquery-effects-core', 'wp-color-picker'), Waymark_Config::get_version());	
-		wp_localize_script('waymark_admin_js', 'waymark_php_lang', array(
-			'repeatable_delete_title' => esc_attr__('Remove!', 'waymark'),
-			'marker_icon_icon_label' => esc_attr__('Name', 'waymark'),
-			'marker_icon_text_label' => esc_attr__('Text', 'waymark'),
-			'marker_icon_html_label' => esc_attr__('HTML', 'waymark'),						
-		));
-		wp_enqueue_script('waymark_admin_js');			
 	}
 	
 	static function add_chunk($chunk) {	

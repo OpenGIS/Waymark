@@ -9,7 +9,8 @@ class Waymark_AJAX {
 		//User
 		add_action('wp_ajax_waymark_read_file', array($this, 'handle_read_file'));				
 		add_action('wp_ajax_waymark_get_attatchment_meta', array($this, 'get_attatchment_meta'));				
-
+		add_action('wp_ajax_waymark_get_query_data', array($this, 'get_query_data'));				
+		
 		//Add nonce
 		Waymark_JS::add_chunk('var waymark_security = "' . wp_create_nonce(Waymark_Config::get_item('nonce_string')) . '";');					
 	}
@@ -242,6 +243,12 @@ class Waymark_AJAX {
 		header('Content-Type: text/javascript');
 		echo json_encode($response);
 		die;
+	}
+	
+	function get_query_data() {
+		header('Content-Type: text/javascript');
+		echo json_encode($_POST);
+		die;	
 	}
 }
 new Waymark_AJAX;

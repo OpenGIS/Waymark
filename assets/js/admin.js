@@ -73,7 +73,7 @@ function waymark_setup_repeatable_sections() {
 				//Delete button
 				var delete_button = jQuery('<div />')
 					.text('x')
-					.attr('title', waymark_php_lang.repeatable_delete_title)
+					.attr('title', waymark_admin_js.lang.repeatable_delete_title)
 					.addClass('waymark-delete')						
 					.on('click', function(e) {
 						e.preventDefault();
@@ -295,7 +295,7 @@ function waymark_setup_select_icon_type() {
 					icon_help.show();
 					colour_row.show();					
 					icon_input.css('maxWidth', 'unset');		
-					icon_name_text.text(waymark_php_lang.marker_icon_icon_label);
+					icon_name_text.text(waymark_admin_js.lang.marker_icon_icon_label);
 					icon_tip.data('title', icon_tips[0]);
 					
 					break;
@@ -304,7 +304,7 @@ function waymark_setup_select_icon_type() {
 					icon_help.hide();
 					colour_row.show();
 					icon_input.css('maxWidth', '45px');
-					icon_name_text.text(waymark_php_lang.marker_icon_text_label);
+					icon_name_text.text(waymark_admin_js.lang.marker_icon_text_label);
 					icon_tip.data('title', icon_tips[1]);
 										
 					break;					
@@ -313,7 +313,7 @@ function waymark_setup_select_icon_type() {
 					icon_help.hide();	
 					colour_row.hide();
 					icon_input.css('maxWidth', 'unset');								
-					icon_name_text.text(waymark_php_lang.marker_icon_html_label);
+					icon_name_text.text(waymark_admin_js.lang.marker_icon_html_label);
 					icon_tip.data('title', icon_tips[2]);
 										
 					break;
@@ -383,7 +383,23 @@ function waymark_setup_query() {
 		.on('click', function(e) {
 			e.preventDefault();
 		
-			Waymark.debug('Preview!');
+			Waymark.debug(waymark_admin_js.ajaxurl);
+
+			var form_data = new FormData();
+			form_data.append('waymark_security', waymark_admin_js.security);			
+			form_data.append('action', 'waymark_get_query_data');			
+
+			jQuery.ajax({
+				type: "POST",
+				url: waymark_admin_js.ajaxurl,
+				data: form_data,
+				dataType: 'json',
+				processData: false,
+				contentType: false,
+				success: function(response) {				
+					Waymark.debug(response);						
+				}
+			});			
 		
 			return false;
 		})
@@ -391,24 +407,6 @@ function waymark_setup_query() {
 	query_form.append(preview_button);
 	
 	return;
-
-	//Get Image EXIF
-	var form_data = new FormData();
-	form_data.append('waymark_security', waymark_security);			
-	form_data.append('action', 'waymark_get_attatchment_meta');			
-	form_data.append('attachment_id', attachment.id);			
-
-	jQuery.ajax({
-		type: "POST",
-		url: waymark_js.ajaxurl,
-		data: form_data,
-		dataType: 'json',
-		processData: false,
-		contentType: false,
-		success: function(response) {				
-			Waymark.debug(response);						
-		}
-	});
 
 	//Prettify JSON and output to console
 // 	jQuery('#waymark_query_meta textarea#query_overpass_response, #waymark_query_meta textarea#query_data').each(function() {
