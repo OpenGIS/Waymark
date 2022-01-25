@@ -5,13 +5,12 @@ require_once('Waymark_Object.php');
 class Waymark_Map extends Waymark_Object {
 	
 	public $post_type = 'waymark_map';
+	public $Queries = [];
 	
 	function __construct($post_id = null) {
 		//Set groups
 		$this->parameter_groups = Waymark_Helper::get_meta_groups();
 
-		$this->Queries = [];
-	
 		//Map Data
 		$this->parameters['map_data'] = array(
 			'input_types' => array('meta'),
@@ -33,31 +32,8 @@ class Waymark_Map extends Waymark_Object {
 			'title' => 'Map Data Bounds',
 //			'class' => 'waymark-hidden'
 		);
-		
-		//Queries
-		$Query = new Waymark_Query;		
-		$this->parameters['map_queries'] = array(
-			'input_types' => array('meta'),
-			'name' => 'map_queries',
-			'id' => 'map_queries',
-			'type' => 'select_multi',				
-// 			'tip' => '',
-			'group' => '',
-			'title' => 'Map Queries',
-			'options' => $Query->get_list()
-		);
-		$this->parameters['map_queries_data'] = array(
-			'input_types' => array('meta'),
-			'name' => 'map_queries_data',
-			'id' => 'map_queries_data',
-			'type' => 'textarea',				
-// 			'tip' => '',
-			'group' => '',
-			'title' => 'Map Queries Data'
-		);		
-		unset($Query);
-		
-		//Meta
+				
+		//If we have Map Meta
 		$map_meta = Waymark_Config::get_item('meta', 'inputs', true);
 		if($map_meta && sizeof($map_meta)) {
 		
@@ -126,22 +102,26 @@ class Waymark_Map extends Waymark_Object {
 					$this->parameters[$meta_key]['group'] = $meta['meta_group'];
 				}				
 			}				
-		} else {
 		}
-	
+
+
 		parent::__construct($post_id);
+
+
+
+		//Queries
+		$query_taxonomies = get_the_terms($post_id, 'waymark_query');
 		
-		//Queries?
-		if($this->get_data_item('map_data_bounds') && $this->get_data_item('map_queries')) {
-			$map_queries = Waymark_Helper::array_string_to_array($this->data['map_queries']);
-			$queries_data = [];
-
-			foreach($map_queries as $query_id) {
-//				$Query = new Waymark_Query($query_id);						
-				$Query = new Waymark_Query($query_id, $this->get_data_item('map_data_bounds'));						
-
-				$this->Queries[$query_id] = $Query;
-			}
-		}
+		foreach($query_taxonomies as $query_tax) {
+			//Meta available?
+			$query_meta = get_term_meta($query_tax->term_id);
+			$query_meta = Waymark_Helper::flatten_meta($query_meta);
+								
+			if(sizeof($query_meta)) {
+				$this->Queries[] = new Waymark_Query(array_merge($query_meta, [
+					'query_area' => $this->get_data_item('map_data_bounds')
+				]));
+			}		
+		}	
 	}		
 }

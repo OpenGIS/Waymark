@@ -61,6 +61,38 @@ div.postbox {
 
 /*
 	==================================
+	=========== TAXONOMIES ===========
+	==================================
+*/
+body.wp-admin {
+	&.term-php,
+	&.edit-tags-php {
+		&.taxonomy-waymark_query {
+			.form-field {
+				border: 1px solid red !important;
+				&.waymark-dropdown-query_cast_overlay-marker {
+					border: 1px solid blue !important;				
+					#query_cast_line_type-container {
+						display: none;
+					}
+				}
+				&.waymark-dropdown-query_cast_overlay-line {
+					#query_cast_marker_type-container {
+						display: none;
+					}
+				}
+// 				&.term-name-wrap,
+				&.term-slug-wrap,
+				&.term-description-wrap {
+					display: none;
+				}
+			}	
+		}
+	}
+}
+
+/*
+	==================================
 	============ MAP META ============
 	==================================
 */
@@ -88,24 +120,6 @@ div.postbox#waymark_map_help {
 			&:first-child {
 				margin-top: 0;			
 			}
-		}
-	}
-}
-
-/*
-	==================================
-	=========== QUERY META ===========
-	==================================
-*/
-#waymark-parameters-waymark_query {
-	&.waymark-dropdown-query_cast_overlay-marker {
-		#query_cast_line_type-container {
-			display: none;
-		}
-	}
-	&.waymark-dropdown-query_cast_overlay-line {
-		#query_cast_marker_type-container {
-			display: none;
 		}
 	}
 }

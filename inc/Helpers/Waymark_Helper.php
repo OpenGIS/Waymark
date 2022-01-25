@@ -436,6 +436,11 @@ class Waymark_Helper {
 		if(! self::is_debug()) {
 			return;	
 		}
+
+		//Clear other output
+		if($die) {
+			@ ob_end_clean();
+		}
 			
 		echo '<pre>';
 		print_r($thing);

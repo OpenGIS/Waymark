@@ -10,7 +10,7 @@ class Waymark_Admin {
 		if(! is_admin()) {
 			return;
 		}
-		
+
 		//Actions
 		add_action('admin_init', array($this, 'admin_init'));
 		add_action('admin_menu', array($this, 'menu_init'));			
@@ -32,6 +32,10 @@ class Waymark_Admin {
 	}
 	
 	function admin_init() {
+		if(Waymark_Helper::is_debug()) {
+			ob_start();
+		}
+	
 		require_once('Admin/Waymark_JS.php');			
 		require_once('Admin/Waymark_AJAX.php');			
 		require_once('Admin/Waymark_Meta.php');	
@@ -106,7 +110,7 @@ class Waymark_Admin {
 
 	function edit_post_links($actions, $post) {		
 		//Queries & Layout
-		if(in_array($post->post_type, array('waymark_map', 'waymark_query'))) {
+		if(in_array($post->post_type, array('waymark_map'))) {
 			//Add Duplicate Link
 			$actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=waymark_duplicate_post&post_id=' . $post->ID, basename(__FILE__), 'duplicate_nonce') . '" title="' . esc_attr__('Duplicate this post', 'waymark') . '" rel="permalink">' . esc_html__('Duplicate', 'waymark') . '</a>';			
 			
