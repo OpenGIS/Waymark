@@ -26,9 +26,7 @@ class Waymark_Overpass {
 								$element['lon'], $element['lat']
 							];
 						}
-						
-// 						Waymark_Helper::debug($Element);
-									
+													
 						break;
 				
 					case 'way' :
@@ -120,7 +118,7 @@ class Waymark_Overpass {
 			$Feature['properties']['description'] = $desc;
 			//$Feature['properties']['description'] = htmlentities($desc);
 		}
-		
+
 		return $Feature;
 	}
 
@@ -156,5 +154,15 @@ class Waymark_Overpass {
 		preg_match("/<body[^>]*>(.*?)<\/body>/is", $html, $matches);
 
 		return $matches[1];	
+	}
+	
+	static public function leaflet_bb_to_overpass_bb($leaflet_bb) {
+		$qa = explode(',', $leaflet_bb);
+		
+		if(is_array($qa)) {
+			return $qa[1] . ',' . $qa[0] . ',' . $qa[3] . ',' . $qa[2];				
+		} else {
+			return false;
+		}
 	}
 }

@@ -110,12 +110,9 @@ class Waymark_Map extends Waymark_Object {
 
 
 		//Queries
-		$query_taxonomies = get_terms([
-			'taxonomy' => 'waymark_query',			
-		]);
+		$query_taxonomies = get_the_terms($post_id, 'waymark_query');
 		
 		foreach($query_taxonomies as $query_tax) {
-			
 			//Meta available?
 			$query_meta = get_term_meta($query_tax->term_id);
 			$query_meta = Waymark_Helper::flatten_meta($query_meta);
@@ -126,7 +123,5 @@ class Waymark_Map extends Waymark_Object {
 				]));
 			}		
 		}	
-
-		//Waymark_Helper::debug($this->Queries, false);									
 	}		
 }
