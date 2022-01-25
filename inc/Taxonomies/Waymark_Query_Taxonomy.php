@@ -133,26 +133,46 @@ class Waymark_Query_Taxonomy {
 	}
 	
 	function add_form_append($taxonomy) {
-		$out = '<div id="waymark-query-add" class="waymark-query-form form-field waymark-parameters-container">' . "\n";
-
+		$out = '<div id="waymark-query-add" class="waymark-self-clear">' . "\n";
 		$out .= Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups);
-
+		$out .= '	<div id="waymark-map" class="waymark-map waymark-query-preview"></div>';
 		$out .= '</div>' . "\n";		
+
+		//Create new Map object
+		Waymark_JS::add_call('var Waymark_Map_Viewer = window.Waymark_Map_Factory.viewer()');
+
+		//Output Config
+		Waymark_JS::add_call('var waymark_user_config = ' . json_encode(Waymark_Config::get_map_config()) . ';');				
+// 		Waymark_JS::add_call('waymark_user_config.map_height = 600;');				
+		
+		//Set basemap
+		if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
+			Waymark_JS::add_call('waymark_user_config.map_init_basemap = "' . $editor_basemap . '"');		
+		}
+
+		//Go!
+		Waymark_JS::add_call('Waymark_Map_Viewer.init(waymark_user_config)');
+
+		//GeoJSON set?
+// 		if(array_key_exists('waymark_map_data', $data)) {
+// 			Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $data['waymark_map_data'] . ');');			
+// 		}
 		
 		echo $out;
 	}
 
 	function edit_form_append($term, $taxonomy) {
+		echo 'edit_form_append';
+	
 		//Get existing data
 		$data = [];
 		foreach($this->parameters as $param) {
 			$data[$param['id']] = get_term_meta($term->term_id, $param['id']);
 		}
 
-		$out = '<div id="waymark-query-edit" class="waymark-query-form form-field waymark-parameters-container">' . "\n";
-
+		$out = '<div id="waymark-query-edit" class="waymark-self-clear">' . "\n";
 		$out .= Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups, $data);
-
+		$out .= '	<div id="waymark-query-map"></div>';
 		$out .= '</div>' . "\n";		
 		
 		echo $out;

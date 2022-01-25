@@ -772,7 +772,7 @@ class Waymark_Settings {
 							'type' => 'textarea',
 							'title' => 'Area',
 							'default' => Waymark_Config::get_setting('query', 'defaults', 'query_area'),
-							'before' => Waymark_Helper::build_query_map_html(),
+// 							'before' => Waymark_Helper::build_query_map_html(),
 							'attributes' => array(
 							'style' => 'display:none'
 						)

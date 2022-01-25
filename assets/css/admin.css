@@ -143,26 +143,48 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 	=========== TAXONOMIES ===========
 	==================================
 */
-body.wp-admin.term-php.taxonomy-waymark_query .form-field,
-body.wp-admin.edit-tags-php.taxonomy-waymark_query .form-field {
-  border: 1px solid red !important;
-}
-body.wp-admin.term-php.taxonomy-waymark_query .form-field.waymark-dropdown-query_cast_overlay-marker,
-body.wp-admin.edit-tags-php.taxonomy-waymark_query .form-field.waymark-dropdown-query_cast_overlay-marker {
-  border: 1px solid blue !important;
-}
-body.wp-admin.term-php.taxonomy-waymark_query .form-field.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container,
-body.wp-admin.edit-tags-php.taxonomy-waymark_query .form-field.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container {
-  display: none;
-}
-body.wp-admin.term-php.taxonomy-waymark_query .form-field.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container,
-body.wp-admin.edit-tags-php.taxonomy-waymark_query .form-field.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container {
-  display: none;
+body.wp-admin.edit-tags-php #col-left,
+body.wp-admin.edit-tags-php #col-right {
+  float: none;
+  width: 100%;
 }
 body.wp-admin.term-php.taxonomy-waymark_query .form-field.term-slug-wrap,
 body.wp-admin.edit-tags-php.taxonomy-waymark_query .form-field.term-slug-wrap,
 body.wp-admin.term-php.taxonomy-waymark_query .form-field.term-description-wrap,
 body.wp-admin.edit-tags-php.taxonomy-waymark_query .form-field.term-description-wrap {
+  display: none;
+}
+body.wp-admin.term-php.taxonomy-waymark_query #waymark-query-add,
+body.wp-admin.edit-tags-php.taxonomy-waymark_query #waymark-query-add,
+body.wp-admin.term-php.taxonomy-waymark_query #waymark-query-edit,
+body.wp-admin.edit-tags-php.taxonomy-waymark_query #waymark-query-edit {
+  height: 550px;
+}
+body.wp-admin.term-php.taxonomy-waymark_query #waymark-query-add #waymark-query-map,
+body.wp-admin.edit-tags-php.taxonomy-waymark_query #waymark-query-add #waymark-query-map,
+body.wp-admin.term-php.taxonomy-waymark_query #waymark-query-edit #waymark-query-map,
+body.wp-admin.edit-tags-php.taxonomy-waymark_query #waymark-query-edit #waymark-query-map {
+  float: left;
+  width: 66%;
+  height: 100%;
+}
+body.wp-admin.term-php.taxonomy-waymark_query #waymark-query-add .waymark-parameters-container,
+body.wp-admin.edit-tags-php.taxonomy-waymark_query #waymark-query-add .waymark-parameters-container,
+body.wp-admin.term-php.taxonomy-waymark_query #waymark-query-edit .waymark-parameters-container,
+body.wp-admin.edit-tags-php.taxonomy-waymark_query #waymark-query-edit .waymark-parameters-container {
+  float: left;
+  width: 33%;
+}
+body.wp-admin.term-php.taxonomy-waymark_query #waymark-query-add .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container,
+body.wp-admin.edit-tags-php.taxonomy-waymark_query #waymark-query-add .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container,
+body.wp-admin.term-php.taxonomy-waymark_query #waymark-query-edit .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container,
+body.wp-admin.edit-tags-php.taxonomy-waymark_query #waymark-query-edit .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container {
+  display: none;
+}
+body.wp-admin.term-php.taxonomy-waymark_query #waymark-query-add .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container,
+body.wp-admin.edit-tags-php.taxonomy-waymark_query #waymark-query-add .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container,
+body.wp-admin.term-php.taxonomy-waymark_query #waymark-query-edit .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container,
+body.wp-admin.edit-tags-php.taxonomy-waymark_query #waymark-query-edit .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container {
   display: none;
 }
 /*

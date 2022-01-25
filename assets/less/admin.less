@@ -65,28 +65,52 @@ div.postbox {
 	==================================
 */
 body.wp-admin {
+	&.edit-tags-php {
+		#col-left,
+		#col-right {
+			float: none;
+			width: 100%;
+		}
+		#col-left	{
+// 			border: 1px solid green;		
+		}
+		#col-right {
+// 			border: 1px solid purple;
+		}		
+	}
 	&.term-php,
 	&.edit-tags-php {
-		&.taxonomy-waymark_query {
+		&.taxonomy-waymark_query {	
 			.form-field {
-				border: 1px solid red !important;
-				&.waymark-dropdown-query_cast_overlay-marker {
-					border: 1px solid blue !important;				
-					#query_cast_line_type-container {
-						display: none;
-					}
-				}
-				&.waymark-dropdown-query_cast_overlay-line {
-					#query_cast_marker_type-container {
-						display: none;
-					}
-				}
 // 				&.term-name-wrap,
 				&.term-slug-wrap,
 				&.term-description-wrap {
 					display: none;
-				}
-			}	
+				}			
+			}
+			#waymark-query-add,
+			#waymark-query-edit {
+				height: 550px;
+				#waymark-query-map {
+					float: left;
+					width: 66%;
+					height: 100%;
+				}			
+				.waymark-parameters-container {
+					float: left;
+					width: 33%;
+					&.waymark-dropdown-query_cast_overlay-marker {
+						#query_cast_line_type-container {
+							display: none;
+						}
+					}
+					&.waymark-dropdown-query_cast_overlay-line {
+						#query_cast_marker_type-container {
+							display: none;
+						}
+					}
+				}				
+			}				
 		}
 	}
 }

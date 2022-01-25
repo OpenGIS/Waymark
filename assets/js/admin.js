@@ -364,21 +364,67 @@ function waymark_setup_dropdowns() {
 }
 
 function waymark_setup_query() {
-	//Prettify JSON and output to console
-	jQuery('#waymark_query_meta textarea#query_overpass_response, #waymark_query_meta textarea#query_data').each(function() {
-		var textarea = jQuery(this);
+	var query_form = jQuery('body.wp-admin.taxonomy-waymark_query form#addtag');
+	
+	if(! query_form.length) {
+		return;
+	}
+	
+	var add_button = jQuery('#submit', query_form);
+	add_button.attr({
+		'disabled' : 'disabled'
+	});
+	
+	var preview_button = jQuery('<input />')
+		.attr({
+			'type' : 'button',
+			'value' : 'Preview'
+		})		
+		.on('click', function(e) {
+			e.preventDefault();
 		
-		//Only if visible (i.e. debug mode)
-		if(textarea.is(':visible')) {
-			try {
-				if(json = JSON.parse(textarea.val())) {
-					console.log(json);
-					textarea.val(JSON.stringify(json, null, 2));			
-				}
-			} catch (e) {}		
+			Waymark.debug('Preview!');
 		
+			return false;
+		})
+	;
+	query_form.append(preview_button);
+	
+	return;
+
+	//Get Image EXIF
+	var form_data = new FormData();
+	form_data.append('waymark_security', waymark_security);			
+	form_data.append('action', 'waymark_get_attatchment_meta');			
+	form_data.append('attachment_id', attachment.id);			
+
+	jQuery.ajax({
+		type: "POST",
+		url: waymark_js.ajaxurl,
+		data: form_data,
+		dataType: 'json',
+		processData: false,
+		contentType: false,
+		success: function(response) {				
+			Waymark.debug(response);						
 		}
 	});
+
+	//Prettify JSON and output to console
+// 	jQuery('#waymark_query_meta textarea#query_overpass_response, #waymark_query_meta textarea#query_data').each(function() {
+// 		var textarea = jQuery(this);
+// 		
+// 		//Only if visible (i.e. debug mode)
+// 		if(textarea.is(':visible')) {
+// 			try {
+// 				if(json = JSON.parse(textarea.val())) {
+// 					console.log(json);
+// 					textarea.val(JSON.stringify(json, null, 2));			
+// 				}
+// 			} catch (e) {}		
+// 		
+// 		}
+// 	});
 }
 jQuery(document).ready(function() {
 	waymark_setup_repeatable_sections();
@@ -388,5 +434,5 @@ jQuery(document).ready(function() {
 	waymark_setup_select_meta_type();
 	waymark_setup_select_icon_type();
 	waymark_setup_dropdowns();
-	//waymark_setup_query();	
+	waymark_setup_query();	
 });
