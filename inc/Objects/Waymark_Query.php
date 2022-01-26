@@ -17,7 +17,9 @@ class Waymark_Query {
 		
 		//Set passed params
 		foreach($params_in as $key => $value) {
-			if(is_string($value)) {
+			//Only accept valid keys
+			//and String values
+			if(array_key_exists($key, $this->parameters) && is_string($value)) {
 				$this->set_parameter($key, $value);			
 			}
 		}
@@ -28,13 +30,21 @@ class Waymark_Query {
 		}
 	}	
 
-	function get_parameter($key) {
+	function get_parameter($key = null) {
+		if(! $key) {
+			return $this->parameters;
+		}
+		
 		if(array_key_exists($key, $this->parameters)) {
 			return $this->parameters[$key];
 		} else {
 			return false;
 		}
 	}	
+
+	function get_parameters() {
+		return $this->get_parameter();
+	}
 	
 	function set_parameter($key, $value) {
 		$this->parameters[$key] = $value;
@@ -52,17 +62,19 @@ class Waymark_Query {
 		if(! $this->can_execute()) {
 			return false;
 		}	
-
+		
+		$request_string = stripslashes($this->parameters['query_overpass_request']);
+		$request_string = html_entity_decode($request_string);
 
 		//Build request
 		$Request = new Waymark_Overpass_Request($this->parameters);							
 		$Request->set_parameters(array(
-			'data' => html_entity_decode($this->parameters['query_overpass_request'])
+			'data' => $request_string
 		));
 
 		//Execute request
 		$response = $Request->get_processed_response();
-		
+			
 		//Valid response
 		if(is_array($response) && array_key_exists('status', $response)) {
 			switch($response['status']) {

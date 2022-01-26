@@ -153,6 +153,13 @@ class Waymark_Query_Taxonomy {
 		//Go!
 		Waymark_JS::add_call('Waymark_Map_Viewer.init(waymark_user_config)');
 
+		$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
+		$query_area = explode(',', $query_area);
+		$query_area = '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]';
+		
+		Waymark_JS::add_call('var query_area = \'' . Waymark_Config::get_setting('query', 'defaults', 'query_area') . '\'');
+		Waymark_JS::add_call('Waymark_Map_Viewer.map.fitBounds(' . $query_area . ')');
+
 		//GeoJSON set?
 // 		if(array_key_exists('waymark_map_data', $data)) {
 // 			Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $data['waymark_map_data'] . ');');			

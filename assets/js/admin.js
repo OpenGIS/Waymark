@@ -382,12 +382,15 @@ function waymark_setup_query() {
 		})		
 		.on('click', function(e) {
 			e.preventDefault();
-		
-			Waymark.debug(waymark_admin_js.ajaxurl);
 
 			var form_data = new FormData();
 			form_data.append('waymark_security', waymark_admin_js.security);			
 			form_data.append('action', 'waymark_get_query_data');			
+
+			//Request Data
+			jQuery('.waymark-input', query_form).each(function() {
+				form_data.append(jQuery(this).attr('id'), jQuery(this).val());
+			});
 
 			jQuery.ajax({
 				type: "POST",
@@ -398,6 +401,14 @@ function waymark_setup_query() {
 				contentType: false,
 				success: function(response) {				
 					Waymark.debug(response);						
+
+					var Waymark_Instance = jQuery('body.wp-admin.taxonomy-waymark_query #waymark-map').data('Waymark');
+
+					Waymark_Instance.map_data.eachLayer(function(layer) {
+						Waymark_Instance.map.removeLayer(layer);			
+					});					
+
+					Waymark_Instance.load_json(response);			
 				}
 			});			
 		
