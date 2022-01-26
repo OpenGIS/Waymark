@@ -1,55 +1,26 @@
 <?php
 
-class Waymark_Query {
+class Waymark_Query extends Waymark_Class {
 
-	private $parameters = [];
+	protected $parameters = [
+		'query_area' => null,
+		'query_overpass_request' => null,
+// 			'query_overpass_response' => null,
+		'query_cast_overlay' => null,
+		'query_cast_marker_type' => null,												
+		'query_cast_line_type' => null,
+		'query_data' => null,			
+	];
 	
 	function __construct($params_in = []) {
-		$this->parameters = [
-			'query_area' => null,
-			'query_overpass_request' => null,
-// 			'query_overpass_response' => null,
-			'query_cast_overlay' => null,
-			'query_cast_marker_type' => null,												
-			'query_cast_line_type' => null,
-			'query_data' => null,			
-		];
-		
-		//Set passed params
-		foreach($params_in as $key => $value) {
-			//Only accept valid keys
-			//and String values
-			if(array_key_exists($key, $this->parameters) && is_string($value)) {
-				$this->set_parameter($key, $value);			
-			}
-		}
+		parent::__construct($params_in);
 		
 		//Execute?
 		if($this->can_execute()) {
 			$this->do_execute();
-		}
+		}		
 	}	
 
-	function get_parameter($key = null) {
-		if(! $key) {
-			return $this->parameters;
-		}
-		
-		if(array_key_exists($key, $this->parameters)) {
-			return $this->parameters[$key];
-		} else {
-			return false;
-		}
-	}	
-
-	function get_parameters() {
-		return $this->get_parameter();
-	}
-	
-	function set_parameter($key, $value) {
-		$this->parameters[$key] = $value;
-	}	
-	
 	function can_execute() {
 		return 
 			(! is_null($this->parameters['query_overpass_request']))
