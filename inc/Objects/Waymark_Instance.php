@@ -5,7 +5,8 @@ class Waymark_Instance extends Waymark_Class {
 		'type' => 'viewer',
 		'basemap' => null,
 		'add_class' => null,
- 		'bounds' => null,			
+ 		'bounds' => null,	
+ 		'bb_selector' => null		
 	];
 	
 	function __construct($params_in = []) {
@@ -34,9 +35,25 @@ class Waymark_Instance extends Waymark_Class {
 		Waymark_JS::add_call('Waymark_Map_Viewer.init(waymark_user_config)');
 
 		if($bounds = $this->get_parameter('bounds')) {		
+			//Bounding Box
+			//!!!
+			if($bb_selector = $this->get_parameter('bb_selector')) {		
+				Waymark_JS::add_call('
+					//Query
+					var bounds = ' . $bounds . ';
+					var rectangle = L.rectangle(bounds, {
+						color: "#ff7800",
+						weight: 1
+					}).addTo(Waymark_Map_Viewer.map);
+					rectangle.enableEdit();
+					Waymark_Map_Viewer.map.on(\'editable:vertex:dragend\', function(e) {
+						jQuery(\'#' . $bb_selector . '\').val(e.layer.getBounds().toBBoxString());
+					});
+				');		
+			}
+		
 			Waymark_JS::add_call('Waymark_Map_Viewer.map.fitBounds(' . $bounds . ')');
-		}			
-	
+		}					
 	}
 	
 	function get_html() {
