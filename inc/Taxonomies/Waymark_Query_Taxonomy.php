@@ -156,31 +156,27 @@ class Waymark_Query_Taxonomy {
 			$out .= Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups);
 		}
 
-		$out .= '	<div id="waymark-map" class="waymark-map waymark-query-preview"></div>';
-		$out .= '</div>' . "\n";		
+		//Waymark Instance
 
-		//Create new Map object
-		Waymark_JS::add_call('var Waymark_Map_Viewer = window.Waymark_Map_Factory.viewer()');
+		$data = [
+			'hash' => '',
+			'add_class' => 'waymark-query-preview'
+		];
 
-		//Output Config
-		Waymark_JS::add_call('var waymark_user_config = ' . json_encode(Waymark_Config::get_map_config()) . ';');				
-// 		Waymark_JS::add_call('waymark_user_config.map_height = 600;');				
-		
-		//Set basemap
-		if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
-			Waymark_JS::add_call('waymark_user_config.map_init_basemap = "' . $editor_basemap . '"');		
-		}
-
-		//Go!
-		Waymark_JS::add_call('Waymark_Map_Viewer.init(waymark_user_config)');
-
+		//Bounds
 		$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
 		$query_area = explode(',', $query_area);
-		$query_area = '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]';
-		
-		Waymark_JS::add_call('var query_area = \'' . Waymark_Config::get_setting('query', 'defaults', 'query_area') . '\'');
-		Waymark_JS::add_call('Waymark_Map_Viewer.map.fitBounds(' . $query_area . ')');
+		$data['bounds'] = '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]';
 
+		//Set basemap
+		if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
+			$data['basemap'] = $editor_basemap;		
+		}
+
+		$Waymark_JS = new Waymark_Instance($data);
+		$Waymark_JS->add_js();
+		$out .= $Waymark_JS->get_html();
+		
 		echo $out;
 	}
 

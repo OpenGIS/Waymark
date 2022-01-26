@@ -32,6 +32,7 @@ require_once('inc/Objects/Waymark_Class.php');
 require_once('inc/Objects/Waymark_Map.php');
 require_once('inc/Objects/Waymark_Collection.php');
 require_once('inc/Objects/Waymark_Query.php');
+require_once('inc/Objects/Waymark_Instance.php');
 
 //Request
 require_once('inc/Request/Waymark_Overpass_Request.php');
