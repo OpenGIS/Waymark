@@ -131,10 +131,31 @@ class Waymark_Query_Taxonomy {
 				
 		register_taxonomy($taxonomy['key'], $taxonomy['type'], $taxonomy['args']);			
 	}
-	
+
 	function add_form_append($taxonomy) {
-		$out = '<div id="waymark-query-add" class="waymark-self-clear">' . "\n";
-		$out .= Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups);
+		$this->create_form($taxonomy, 'add');
+	}
+	
+	function edit_form_append($term, $taxonomy) {
+		$this->create_form($taxonomy, $term, 'edit');
+	}	
+	
+	function create_form($taxonomy, $term = false, $form_type = 'add') {
+		$out = '<div id="waymark-query-' . $form_type . '" class="waymark-self-clear">' . "\n";
+		
+		//Add
+		if($form_type == 'edit' && $term) {
+			//Get existing data
+			$data = [];
+			foreach($this->parameters as $param) {
+				$data[$param['id']] = get_term_meta($term->term_id, $param['id']);
+			}
+			$out .= Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups, $data);				
+		//Edit
+		} else {
+			$out .= Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups);
+		}
+
 		$out .= '	<div id="waymark-map" class="waymark-map waymark-query-preview"></div>';
 		$out .= '</div>' . "\n";		
 
@@ -160,28 +181,6 @@ class Waymark_Query_Taxonomy {
 		Waymark_JS::add_call('var query_area = \'' . Waymark_Config::get_setting('query', 'defaults', 'query_area') . '\'');
 		Waymark_JS::add_call('Waymark_Map_Viewer.map.fitBounds(' . $query_area . ')');
 
-		//GeoJSON set?
-// 		if(array_key_exists('waymark_map_data', $data)) {
-// 			Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $data['waymark_map_data'] . ');');			
-// 		}
-		
-		echo $out;
-	}
-
-	function edit_form_append($term, $taxonomy) {
-		echo 'edit_form_append';
-	
-		//Get existing data
-		$data = [];
-		foreach($this->parameters as $param) {
-			$data[$param['id']] = get_term_meta($term->term_id, $param['id']);
-		}
-
-		$out = '<div id="waymark-query-edit" class="waymark-self-clear">' . "\n";
-		$out .= Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups, $data);
-		$out .= '	<div id="waymark-query-map"></div>';
-		$out .= '</div>' . "\n";		
-		
 		echo $out;
 	}
 
