@@ -26,26 +26,6 @@ class Waymark_Settings {
 			$this->current_settings = $current_settings;
 		}
 
-		//Waymark Instance
-
-		$data = [
-			'hash' => '',
-			'add_class' => 'waymark-query-preview',
-			'bb_selector' => 'query_area',
-		];
-
-		//Bounds
-		$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
-		$query_area = explode(',', $query_area);
-		$data['bounds'] = '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]';
-
-		//Set basemap
-		if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
-			$data['basemap'] = $editor_basemap;		
-		}
-
-		$this->Waymark_Instance = new Waymark_Instance($data);
-	
 		/**
 		 * ===========================================
 		 * ================= BASEMAPS ================
@@ -775,7 +755,7 @@ class Waymark_Settings {
 							'type' => 'textarea',
 							'title' => 'Area',
 							'default' => Waymark_Config::get_setting('query', 'defaults', 'query_area'),
- 							'prepend' => $this->Waymark_Instance->get_html()
+// 							'prepend' => $this->Waymark_Instance->get_html()
 // 							'attributes' => array(
 // 							'style' => 'display:none'
 // 						)
@@ -1108,7 +1088,6 @@ class Waymark_Settings {
 
     add_action('admin_notices', array($this, 'admin_notices'));	
 		add_action('admin_init', array($this, 'register_settings'));				
-		add_action('admin_footer', array($this, 'admin_footer'));		
 	}
 	
 	function get_settings() {
@@ -1215,6 +1194,46 @@ class Waymark_Settings {
 	}	
 
 	function content_admin_page() {
+		global $current_screen;
+		
+// 		Waymark_Helper::debug($current_screen);
+		
+		//Settings page only
+		if(! is_object($current_screen) || ($current_screen->base != 'waymark_page_waymark-settings')) {
+			return;
+		}
+
+		//By Tab
+		if(array_key_exists('tab', $_GET)) {
+			switch($_GET['tab']) {
+				//Query
+				case 'query' :
+					//Waymark Instance
+					$data = [
+						'hash' => '',
+						'add_class' => 'waymark-query-preview',
+						'bb_selector' => 'query_area',
+					];
+
+					//Bounds
+					$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
+					$query_area = explode(',', $query_area);
+					$data['bounds'] = '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]';
+
+					//Set basemap
+					if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
+						$data['basemap'] = $editor_basemap;		
+					}
+
+					$this->Waymark_Instance = new Waymark_Instance($data);
+					echo $this->Waymark_Instance->get_html();
+					$this->Waymark_Instance->add_js();				
+				
+					break;			
+			}
+		//Default tab ('tiles') 
+		} else {}
+		
 		echo '<div id="waymark-admin-container" class="wrap">' . "\n";
 
 		echo Waymark_Helper::plugin_about();
@@ -1346,9 +1365,5 @@ class Waymark_Settings {
 				echo '<div class="waymark-notice notice notice-success is-dismissible"><p>' . esc_html__('Action Complete', 'waymark') . '.</p></div>';				
 			}
 		}
-	}
-	
-	function admin_footer() {
-		$this->Waymark_Instance->add_js();
 	}
 }

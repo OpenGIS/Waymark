@@ -157,9 +157,8 @@ class Waymark_Query_Taxonomy {
 		}
 
 		//Waymark Instance
-
 		$data = [
-			'hash' => '',
+			'hash' => 'query_preview',
 			'add_class' => 'waymark-query-preview'
 		];
 

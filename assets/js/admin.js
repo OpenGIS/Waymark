@@ -401,7 +401,7 @@ function waymark_setup_query() {
 					success: function(response) {				
 						Waymark.debug(response);						
 
-						var Waymark_Instance = jQuery('body.wp-admin.taxonomy-waymark_query #waymark-map').data('Waymark');
+						var Waymark_Instance = jQuery('body.wp-admin.taxonomy-waymark_query #waymark-map-query_preview').data('Waymark');
 
 						Waymark_Instance.map_data.eachLayer(function(layer) {
 							Waymark_Instance.map.removeLayer(layer);			

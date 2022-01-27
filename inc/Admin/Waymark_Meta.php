@@ -129,48 +129,29 @@ class Waymark_Meta {
 		
 		$data = Waymark_Helper::flatten_meta(get_post_meta($post->ID));
 								
-		//Create new Map object
-		Waymark_JS::add_call('var Waymark_Map_Editor = window.Waymark_Map_Factory.editor()');
+		//Waymark Instance
 
-		//Warn user about navigating away from page before Publish/Update
-		//I'm not sure why, but we have to return something here to get the desired behaviour :-/
-		Waymark_JS::add_call('Waymark_Map_Editor.map_was_edited = function() {
-			jQuery(window).on(\'beforeunload.edit-post\', function() {
-				return null;
-			});
-	 	}');
+		//Bounds
+		$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
+		$query_area = explode(',', $query_area);
+		$data['bounds'] = '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]';
 
-		//Default view
-		if($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
-			//We have a valid LatLng
-			if($default_latlng_array = Waymark_Helper::latlng_string_to_array($default_latlng)) {
-		 		Waymark_JS::add_call('Waymark_Map_Editor.fallback_latlng = [' . $default_latlng_array[0] . ',' . $default_latlng_array[1] . ']');					
-			}
-		}
-		if($default_zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
-	 		Waymark_JS::add_call('Waymark_Map_Editor.fallback_zoom = ' . $default_zoom);		
-		}
-
-		//Map Div
-		echo '<div id="waymark-map" class="waymark-map"></div>' . "\n";
-		
-		//Output Config
-		Waymark_JS::add_call('var waymark_user_config = ' . json_encode(Waymark_Config::get_map_config()) . ';');				
-		Waymark_JS::add_call('waymark_user_config.map_height = 600;');				
-		
 		//Set basemap
 		if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
-			Waymark_JS::add_call('waymark_user_config.map_init_basemap = "' . $editor_basemap . '"');		
+			$data['basemap'] = $editor_basemap;		
 		}
 
-		//Go!
-		Waymark_JS::add_call('Waymark_Map_Editor.init(waymark_user_config)');
+		$Waymark_JS = new Waymark_Instance([
+			'type' => 'editor'
+		]);
+		$Waymark_JS->add_js();
+		echo $Waymark_JS->get_html();	
 
-		//GeoJSON set?
+		//Map Data (GeoJSON) exists?
 		if(array_key_exists('waymark_map_data', $data)) {
-			Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $data['waymark_map_data'] . ');');			
+			$Waymark_JS->load_json($data['waymark_map_data']);			
 		}
-		
+			
 		//Create Feed meta input
 		$Map = new Waymark_Map($post->ID);		
 		$Map->set_data($data);
@@ -182,7 +163,7 @@ class Waymark_Meta {
 		//Queries data?
 		foreach($Map->Queries as $Query) {
 			if($query_data = $Query->get_parameter('query_data')) {
-				Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $query_data . ', \'query_data\');');								
+				$Waymark_JS->load_json($query_data, 'query_data');								
 			}
 		}
 
