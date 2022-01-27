@@ -129,21 +129,18 @@ class Waymark_Meta {
 		
 		$data = Waymark_Helper::flatten_meta(get_post_meta($post->ID));
 								
-		//Waymark Instance
+		// ====== Waymark Instance ======
 
-		//Bounds
-		$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
-		$query_area = explode(',', $query_area);
-		$data['bounds'] = '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]';
+		$instance_data = [
+			'type' => 'editor'
+		];
 
 		//Set basemap
 		if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
-			$data['basemap'] = $editor_basemap;		
+			$instance_data['basemap'] = $editor_basemap;		
 		}
 
-		$Waymark_JS = new Waymark_Instance([
-			'type' => 'editor'
-		]);
+		$Waymark_JS = new Waymark_Instance($instance_data);
 		$Waymark_JS->add_js();
 		echo $Waymark_JS->get_html();	
 
@@ -151,7 +148,11 @@ class Waymark_Meta {
 		if(array_key_exists('waymark_map_data', $data)) {
 			$Waymark_JS->load_json($data['waymark_map_data']);			
 		}
-			
+
+
+		// ==============================
+
+				
 		//Create Feed meta input
 		$Map = new Waymark_Map($post->ID);		
 		$Map->set_data($data);

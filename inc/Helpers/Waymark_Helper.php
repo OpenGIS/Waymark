@@ -417,6 +417,10 @@ class Waymark_Helper {
 	}
 	
 	static public function latlng_string_to_array($latlng_string) {
+		if(! is_string($latlng_string)) {
+			return false;
+		}
+		
 		$latlng_array = explode(',', $latlng_string);
 		
 		if(is_array($latlng_array) && sizeof($latlng_array) == 2) {

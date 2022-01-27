@@ -1218,7 +1218,7 @@ class Waymark_Settings {
 					//Bounds
 					$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
 					$query_area = explode(',', $query_area);
-					$data['bounds'] = '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]';
+					$data['init_bounds'] = '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]';
 
 					//Set basemap
 					if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {

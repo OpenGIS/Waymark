@@ -6,7 +6,9 @@ class Waymark_Instance extends Waymark_Class {
 		'type' => 'viewer',
 		'basemap' => null,
 		'add_class' => null,
- 		'bounds' => null,	
+ 		'init_latlng' => null,	
+ 		'init_zoom' => null,	
+ 		'init_bounds' => null,	
  		'bb_selector' => null,
  		'height' => null,
 	];
@@ -120,50 +122,47 @@ class Waymark_Instance extends Waymark_Class {
 			Waymark_JS::add_call('waymark_user_config.map_init_basemap = "' . $editor_basemap . '"');					
 		}
 
-/*
-		//Default view
-		if($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
-			//We have a valid LatLng
-			if($default_latlng_array = Waymark_Helper::latlng_string_to_array($default_latlng)) {
-		 		Waymark_JS::add_call('Waymark_Map_Editor.fallback_latlng = [' . $default_latlng_array[0] . ',' . $default_latlng_array[1] . ']');					
-			}
+
+		//Initial center?
+		if($latlng_array = Waymark_Helper::latlng_string_to_array($this->get_parameter('init_latlng'))) {
+	 		Waymark_JS::add_call('waymark_user_config.map_init_latlng = [' . $latlng_array[0] . ',' . $latlng_array[1] . ']');							
+		//Default
+		} elseif($latlng_array = Waymark_Helper::latlng_string_to_array(Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng'))) {
+	 		Waymark_JS::add_call('waymark_user_config.map_init_latlng = [' . $latlng_array[0] . ',' . $latlng_array[1] . ']');									
 		}
-		if($default_zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
-	 		Waymark_JS::add_call('Waymark_Map_Editor.fallback_zoom = ' . $default_zoom);		
+
+		//Initial center?
+		if($zoom = $this->get_parameter('init_zoom')) {
+	 		Waymark_JS::add_call('waymark_user_config.map_init_zoom = ' . $zoom);							
+		//Default
+		} elseif($zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
+	 		Waymark_JS::add_call('waymark_user_config.map_init_zoom = ' . $zoom);								
 		}
-*/
 
-
-
-
-
-		
-		
 		//Go!
 		Waymark_JS::add_call('waymark_instance_' . $this->get_parameter('hash') . '.init(waymark_user_config)');
-
-		if($bounds = $this->get_parameter('bounds')) {		
-			Waymark_Helper::debug($this->get_parameter('bounds'), false);
 		
-			//Bounding Box
-			//!!!
-			if($bb_selector = $this->get_parameter('bb_selector')) {		
-				Waymark_JS::add_call('
-	//Query
-	var bounds = ' . $bounds . ';
-	var rectangle = L.rectangle(bounds, {
-		color: "#ff7800",
-		weight: 1
-	}).addTo(waymark_instance_' . $this->get_parameter('hash') . '.map);
-	rectangle.enableEdit();
-	waymark_instance_' . $this->get_parameter('hash') . '.map.on(\'editable:vertex:dragend\', function(e) {
-		jQuery(\'#' . $bb_selector . '\').val(e.layer.getBounds().toBBoxString());
-	});
-');		
-			}
-		
+		//Bounds?
+		if($bounds = $this->get_parameter('init_bounds')) {		
 			Waymark_JS::add_call('waymark_instance_' . $this->get_parameter('hash') . '.map.fitBounds(' . $bounds . ')');
 		}					
+
+		//Bounding Box
+		//!!!
+		if($bounds && $bb_selector = $this->get_parameter('bb_selector')) {		
+			Waymark_JS::add_call('
+//Query
+var bounds = ' . $bounds . ';
+var rectangle = L.rectangle(bounds, {
+	color: "#ff7800",
+	weight: 1
+}).addTo(waymark_instance_' . $this->get_parameter('hash') . '.map);
+rectangle.enableEdit();
+waymark_instance_' . $this->get_parameter('hash') . '.map.on(\'editable:vertex:dragend\', function(e) {
+	jQuery(\'#' . $bb_selector . '\').val(e.layer.getBounds().toBBoxString());
+});
+');		
+		}
 	}
 	
 	function get_html() {
