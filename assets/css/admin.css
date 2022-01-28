@@ -140,6 +140,23 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 }
 /*
 	==================================
+	============= QUERIES ============
+	==================================
+*/
+.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container {
+  display: none;
+}
+.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container {
+  display: none;
+}
+.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container {
+  display: none;
+}
+.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container {
+  display: none;
+}
+/*
+	==================================
 	=========== TAXONOMIES ===========
 	==================================
 */
@@ -164,18 +181,6 @@ body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query .form-field
 body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query .form-field.term-slug-wrap,
 body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query .form-field.term-description-wrap,
 body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query .form-field.term-description-wrap {
-  display: none;
-}
-body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query #waymark-query-add .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container,
-body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query #waymark-query-add .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container,
-body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query #waymark-query-edit .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container,
-body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query #waymark-query-edit .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container {
-  display: none;
-}
-body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query #waymark-query-add .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container,
-body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query #waymark-query-add .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container,
-body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query #waymark-query-edit .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container,
-body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query #waymark-query-edit .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container {
   display: none;
 }
 /*

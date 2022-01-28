@@ -61,6 +61,42 @@ div.postbox {
 
 /*
 	==================================
+	============= QUERIES ============
+	==================================
+*/
+
+.waymark-query-form {
+	.waymark-parameters-container {
+		&.waymark-dropdown-query_cast_overlay-marker {
+			#query_cast_line_type-container {
+				display: none;
+			}
+		}
+		&.waymark-dropdown-query_cast_overlay-line {
+			#query_cast_marker_type-container {
+				display: none;
+			}
+		}
+	}				
+}
+.waymark-query-form {
+	.waymark-parameters-container {
+		&.waymark-dropdown-query_cast_overlay-marker {
+			#query_cast_line_type-container {
+				display: none;
+			}
+		}
+		&.waymark-dropdown-query_cast_overlay-line {
+			#query_cast_marker_type-container {
+				display: none;
+			}
+		}
+	}				
+}
+
+
+/*
+	==================================
 	=========== TAXONOMIES ===========
 	==================================
 */
@@ -106,20 +142,6 @@ body.wp-admin.taxonomy-waymark_query {
 			#waymark-query-add,
 			#waymark-query-edit {
 				#waymark-query-map {}			
-				.waymark-parameters-container {
-// 					float: left;
-// 					width: 33%;
-					&.waymark-dropdown-query_cast_overlay-marker {
-						#query_cast_line_type-container {
-							display: none;
-						}
-					}
-					&.waymark-dropdown-query_cast_overlay-line {
-						#query_cast_marker_type-container {
-							display: none;
-						}
-					}
-				}				
 			}				
 		}
 	}

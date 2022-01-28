@@ -117,8 +117,17 @@ class Waymark_Meta {
 	}
 	
 	function map_queries_content() {
+		global $post;
+		
+		$query_data = [];
+		
+		$post_meta = Waymark_Helper::flatten_meta(get_post_meta($post->ID));
+		if(array_key_exists('waymark_map_data_bounds', $post_meta)) {
+			$query_data['query_area']	= $post_meta['waymark_map_data_bounds'];
+		}
+		
 		$Query = new Waymark_Query();
-		$Query->create_form();
+		$Query->create_form($query_data);
 	}
 
 	/**

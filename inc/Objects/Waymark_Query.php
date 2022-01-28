@@ -42,6 +42,7 @@ class Waymark_Query extends Waymark_Class {
 			'id' => 'query_area',
 			'type' => 'textarea',				
 			'title' => 'Query Area',
+			'class' => 'waymark-hidden',
 			'default' => null,
 		);
 		
@@ -175,7 +176,7 @@ class Waymark_Query extends Waymark_Class {
 			$form_type = 'edit';		
 		}
 
-		$out = '<div id="waymark-query-' . $form_type . '" class="waymark-self-clear">' . "\n";
+		$out = '<div class="waymark-query-form waymark-query-' . $form_type . ' waymark-self-clear">' . "\n";
 		
 		//Add
 		if(sizeof($data)) {
