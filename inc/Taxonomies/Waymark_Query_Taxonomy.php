@@ -65,16 +65,39 @@ class Waymark_Query_Taxonomy {
 	}
 
 	function add_form_append($taxonomy) {
-		$this->Query->create_form();
+		echo '<div class="waymark-query-tax-container waymark-self-clear">';
+
+		echo '	<div class="waymark-query-tax-form">';	
+		//Use default Query Area
+		$this->Query->create_form([
+			'query_area' => Waymark_Config::get_setting('query', 'defaults', 'query_area')		
+		]);
+		echo '	</div>';		
+
+		echo '	<div class="waymark-query-tax-preview">';		
 		$this->Query->create_preview();
+		echo '	</div>';		
+
+		echo '</div>';		
 	}
 	
 	function edit_form_append($term, $taxonomy) {
 		$query_meta = get_term_meta($term->term_id);
 		$query_meta = Waymark_Helper::flatten_meta($query_meta);
+		$query_meta['query_area'] = Waymark_Config::get_setting('query', 'defaults', 'query_area');
+		
+		echo '<div class="waymark-query-tax-container waymark-self-clear">';
 
+		echo '	<div class="waymark-query-tax-form">';	
+		//Use default Query Area
 		$this->Query->create_form($query_meta);
+		echo '	</div>';		
+
+		echo '	<div class="waymark-query-tax-preview">';		
 		$this->Query->create_preview();
+		echo '	</div>';		
+
+		echo '</div>';	
 	}	
 	
 	function save_query_meta($term_id, $tt_id){

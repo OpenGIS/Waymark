@@ -38,6 +38,13 @@ class Waymark_Query extends Waymark_Class {
 // 			$default_query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
 // 		}
 		
+		$this->inputs['query_area'] = array(
+			'id' => 'query_area',
+			'type' => 'textarea',				
+			'title' => 'Query Area',
+			'default' => null,
+		);
+		
 		$this->inputs['query_overpass_request'] = array(
 			'id' => 'query_overpass_request',
 			'type' => 'textarea',				
@@ -95,9 +102,9 @@ class Waymark_Query extends Waymark_Class {
 
 	function can_execute() {
 		return 
-			(! is_null($this->parameters['query_overpass_request']))
+			(! empty($this->parameters['query_overpass_request']))
 			&&
-			(! is_null($this->parameters['query_area']))
+			(! empty($this->parameters['query_area']))
 		;
 	}	
 	

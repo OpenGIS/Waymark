@@ -64,6 +64,21 @@ div.postbox {
 	=========== TAXONOMIES ===========
 	==================================
 */
+
+.waymark-query-tax-container {
+	width: 100%;
+// 	height: 550px;
+	border: 1px solid green;
+	.waymark-query-tax-form {
+		width: 33%;
+		float: left;
+	}
+	.waymark-query-tax-preview {
+		width: 66%;
+		float: left;
+	}
+}
+
 body.wp-admin.taxonomy-waymark_query {
 	&.edit-tags-php {
 		#col-left,
@@ -90,15 +105,10 @@ body.wp-admin.taxonomy-waymark_query {
 			}
 			#waymark-query-add,
 			#waymark-query-edit {
-				height: 550px;
-				#waymark-query-map {
-					float: left;
-					width: 66%;
-					height: 100%;
-				}			
+				#waymark-query-map {}			
 				.waymark-parameters-container {
-					float: left;
-					width: 33%;
+// 					float: left;
+// 					width: 33%;
 					&.waymark-dropdown-query_cast_overlay-marker {
 						#query_cast_line_type-container {
 							display: none;
