@@ -66,6 +66,7 @@ class Waymark_Query_Taxonomy {
 
 	function add_form_append($taxonomy) {
 		$this->Query->create_form();
+		$this->Query->create_preview();
 	}
 	
 	function edit_form_append($term, $taxonomy) {
@@ -73,6 +74,7 @@ class Waymark_Query_Taxonomy {
 		$query_meta = Waymark_Helper::flatten_meta($query_meta);
 
 		$this->Query->create_form($query_meta);
+		$this->Query->create_preview();
 	}	
 	
 	function save_query_meta($term_id, $tt_id){

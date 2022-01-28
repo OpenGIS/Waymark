@@ -178,6 +178,12 @@ class Waymark_Query extends Waymark_Class {
 			$out .= Waymark_Input::create_parameter_groups($this->inputs, $this->input_groups);
 		}
 
+		$out .= '</div>' . "\n";
+
+		echo $out;
+	}
+
+	function create_preview() {
 		//Waymark Instance
 		$data = [
 			'hash' => 'query_preview',
@@ -196,9 +202,7 @@ class Waymark_Query extends Waymark_Class {
 
 		$Waymark_JS = new Waymark_Instance($data);
 		$Waymark_JS->add_js();
-		$out .= $Waymark_JS->get_html();
-		
-		echo $out;
+		echo $Waymark_JS->get_html();	
 	}
 	
 	function get_inputs() {

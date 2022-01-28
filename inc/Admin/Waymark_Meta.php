@@ -21,6 +21,8 @@ class Waymark_Meta {
 				//Map
 				case 'waymark_map' :									
 					add_meta_box('waymark_map_meta', esc_html__('Map Editor', 'waymark'), array($this, 'get_map_form'), 'waymark_map', 'normal', 'high');			
+			
+					add_meta_box('waymark_map_queries', __('Map Queries', 'waymark'), array($this, 'map_queries_content'), 'waymark_map', 'side', 'default');			
 
 					break;
 // 
@@ -112,6 +114,11 @@ class Waymark_Meta {
 		echo '<p><a class="button" href="' . Waymark_Helper::site_url('docs') . '" target="_blank">' . esc_html__('Read the Docs', 'waymark') . ' &raquo;</a></p>';
 
 		echo '<p>&nbsp;</p>';
+	}
+	
+	function map_queries_content() {
+		$Query = new Waymark_Query();
+		$Query->create_form();
 	}
 
 	/**

@@ -365,11 +365,11 @@ function waymark_setup_dropdowns() {
 
 function waymark_setup_query() {
 	//Both Add and Edit forms
-	jQuery('body.taxonomy-waymark_query form#addtag, body.taxonomy-waymark_query form#edittag').each(function() {
+	jQuery('#waymark-query-add, #waymark-query-edit').each(function() {
 		//The form
-		var query_form = jQuery(this);
+		var container = jQuery(this);
 	
-		var add_button = jQuery('#submit', query_form);
+		var add_button = jQuery('#submit', container);
 		add_button.attr({
 			'disabled' : 'disabled'
 		});
@@ -387,7 +387,7 @@ function waymark_setup_query() {
 				form_data.append('action', 'waymark_get_query_data');			
 
 				//Request Data
-				jQuery('.waymark-input', query_form).each(function() {
+				jQuery('.waymark-input', container).each(function() {
 					form_data.append(jQuery(this).attr('id'), jQuery(this).val());
 				});
 
@@ -419,7 +419,7 @@ function waymark_setup_query() {
 			})
 			.trigger('click')
 		;
-		query_form.append(preview_button);
+		container.append(preview_button);
 	});
 	//Prettify JSON and output to console
 // 	jQuery('#waymark_query_meta textarea#query_overpass_response, #waymark_query_meta textarea#query_data').each(function() {
