@@ -123,21 +123,22 @@ class Waymark_Instance extends Waymark_Class {
 			Waymark_JS::add_call('waymark_user_config.map_init_basemap = "' . $editor_basemap . '"');					
 		}
 
+		if(! $this->get_parameter('init_bounds')) {
+			//Initial center?
+			if($latlng_array = Waymark_Helper::latlng_string_to_array($this->get_parameter('init_latlng'))) {
+				Waymark_JS::add_call('waymark_user_config.map_init_latlng = [' . $latlng_array[0] . ',' . $latlng_array[1] . ']');							
+			//Default
+			} elseif($latlng_array = Waymark_Helper::latlng_string_to_array(Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng'))) {
+				Waymark_JS::add_call('waymark_user_config.map_init_latlng = [' . $latlng_array[0] . ',' . $latlng_array[1] . ']');									
+			}
 
-		//Initial center?
-		if($latlng_array = Waymark_Helper::latlng_string_to_array($this->get_parameter('init_latlng'))) {
-	 		Waymark_JS::add_call('waymark_user_config.map_init_latlng = [' . $latlng_array[0] . ',' . $latlng_array[1] . ']');							
-		//Default
-		} elseif($latlng_array = Waymark_Helper::latlng_string_to_array(Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng'))) {
-	 		Waymark_JS::add_call('waymark_user_config.map_init_latlng = [' . $latlng_array[0] . ',' . $latlng_array[1] . ']');									
-		}
-
-		//Initial center?
-		if($zoom = $this->get_parameter('init_zoom')) {
-	 		Waymark_JS::add_call('waymark_user_config.map_init_zoom = ' . $zoom);							
-		//Default
-		} elseif($zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
-	 		Waymark_JS::add_call('waymark_user_config.map_init_zoom = ' . $zoom);								
+			//Initial center?
+			if($zoom = $this->get_parameter('init_zoom')) {
+				Waymark_JS::add_call('waymark_user_config.map_init_zoom = ' . $zoom);							
+			//Default
+			} elseif($zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
+				Waymark_JS::add_call('waymark_user_config.map_init_zoom = ' . $zoom);								
+			}		
 		}
 
 		//Go!

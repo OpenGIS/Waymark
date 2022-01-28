@@ -23,16 +23,16 @@ require_once('inc/Waymark_Config.php');
 require_once('inc/Waymark_Types.php');
 require_once('inc/Waymark_Install.php');
 
-//Taxonomies
-require_once('inc/Taxonomies/Waymark_Collection_Taxonomy.php');
-require_once('inc/Taxonomies/Waymark_Query_Taxonomy.php');
-
 //Objects
 require_once('inc/Objects/Waymark_Class.php');
 require_once('inc/Objects/Waymark_Map.php');
 require_once('inc/Objects/Waymark_Collection.php');
 require_once('inc/Objects/Waymark_Query.php');
 require_once('inc/Objects/Waymark_Instance.php');
+
+//Taxonomies
+require_once('inc/Taxonomies/Waymark_Collection_Taxonomy.php');
+require_once('inc/Taxonomies/Waymark_Query_Taxonomy.php');
 
 //Request
 require_once('inc/Request/Waymark_Overpass_Request.php');

@@ -407,12 +407,17 @@ function waymark_setup_query() {
 							Waymark_Instance.map.removeLayer(layer);			
 						});					
 
-						Waymark_Instance.load_json(response);			
+						Waymark_Instance.load_json(response);		
+
+						add_button.attr({
+							'disabled' : null
+						});							
 					}
 				});			
 		
 				return false;
 			})
+			.trigger('click')
 		;
 		query_form.append(preview_button);
 	});

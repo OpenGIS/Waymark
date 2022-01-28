@@ -5,78 +5,10 @@
 
 class Waymark_Query_Taxonomy {
 
-	private $parameters = array();
-	private $parameter_groups = [
-		'test1' => [
-			'group_title' => 'Test 1',
-		],
-		'test2' => [
-			'group_title' => 'Test 2',
-		]
-	];
-		
+	private $Query;
+	
 	function __construct() {
- 		$marker_types = Waymark_Helper::get_object_types('marker', 'marker_title', true);
- 		$default_marker_type = array_keys($marker_types)[0];
-
-		$line_types = Waymark_Helper::get_object_types('line', 'line_title', true);
-		$default_line_type = array_keys($line_types)[0];
-		
-		//Area passed?
-// 		if($query_area) {
-// 			$default_query_area = $query_area;
-// 		} else {
-// 			$default_query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
-// 		}
-		
-		$this->parameters['query_overpass_request'] = array(
-			'id' => 'query_overpass_request',
-			'type' => 'textarea',				
-			'tip' => 'OverpassQL Query.',
-			'tip_link' => 'https://osm-queries.ldodds.com/tutorial/',				
-// 			'group' => 'test1',
-			'title' => 'Overpass QL Query',
-			'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass_request'),
-			'output_processing' => array(
-				'html_entity_decode($param_value)'
-			)				
-		);
-			
-		$this->parameters['query_cast_overlay'] = array(
-			'id' => 'query_cast_overlay',
-			'type' => 'select',				
-			'tip' => 'Marker/Line/Shape',
-// 			'group' => 'test1',
-			'title' => 'Overlay Type',
-			'default' => Waymark_Config::get_setting('query', 'defaults', 'query_cast_overlay'),
-			'options' => [
-				'marker' => 'Marker',
-				'line' => 'Line',
-//					'shape' => 'Shape'										
-			]
-		);
-			
-		$this->parameters['query_cast_marker_type'] = array(
-			'name' => 'query_cast_marker_type',
-			'id' => 'query_cast_marker_type',
-			'type' => 'select',				
-			'tip' => 'Cast to Type',
-// 			'group' => 'test2',
-			'title' => 'Marker Type',
-			'default' => $default_marker_type,
-			'options' => Waymark_Helper::get_object_types('marker', 'marker_title', true)
-		);
-			
-		$this->parameters['query_cast_line_type'] = array(
-			'name' => 'query_cast_line_type',
-			'id' => 'query_cast_line_type',
-			'type' => 'select',				
-			'tip' => 'Cast to Type',
-// 			'group' => 'test2',
-			'title' => 'Line Type',
-			'default' => $default_line_type,
-			'options' => Waymark_Helper::get_object_types('line', 'line_title', true)
-		);		
+		$this->Query = new Waymark_Query();
 		
 		add_action('init', array($this, 'register_taxonomy'));
 		
@@ -133,54 +65,18 @@ class Waymark_Query_Taxonomy {
 	}
 
 	function add_form_append($taxonomy) {
-		$this->create_form($taxonomy, 'add');
+		$this->Query->create_form();
 	}
 	
 	function edit_form_append($term, $taxonomy) {
-		$this->create_form($taxonomy, $term, 'edit');
+		$query_meta = get_term_meta($term->term_id);
+		$query_meta = Waymark_Helper::flatten_meta($query_meta);
+
+		$this->Query->create_form($query_meta);
 	}	
 	
-	function create_form($taxonomy, $term = false, $form_type = 'add') {
-		$out = '<div id="waymark-query-' . $form_type . '" class="waymark-self-clear">' . "\n";
-		
-		//Add
-		if($form_type == 'edit' && $term) {
-			//Get existing data
-			$data = [];
-			foreach($this->parameters as $param) {
-				$data[$param['id']] = get_term_meta($term->term_id, $param['id']);
-			}
-			$out .= Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups, $data);				
-		//Edit
-		} else {
-			$out .= Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups);
-		}
-
-		//Waymark Instance
-		$data = [
-			'hash' => 'query_preview',
-			'add_class' => 'waymark-query-preview'
-		];
-
-		//Bounds
-		$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
-		$query_area = explode(',', $query_area);
-		$data['init_bounds'] = '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]';
-
-		//Set basemap
-		if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
-			$data['basemap'] = $editor_basemap;		
-		}
-
-		$Waymark_JS = new Waymark_Instance($data);
-		$Waymark_JS->add_js();
-		$out .= $Waymark_JS->get_html();
-		
-		echo $out;
-	}
-
 	function save_query_meta($term_id, $tt_id){
-		foreach($this->parameters as $param) {
+		foreach($this->Query->get_inputs() as $param) {
 			if(isset($_POST[$param['id']]) && $_POST[$param['id']]){
 				add_term_meta($term_id, $param['id'], sanitize_text_field($_POST[$param['id']]), true);
 			}
@@ -188,7 +84,7 @@ class Waymark_Query_Taxonomy {
 	}		
 	
 	function update_query_meta($term_id, $tt_id){
-		foreach($this->parameters as $param) {
+		foreach($this->Query->get_inputs() as $param) {
 			if(isset($_POST[$param['id']]) && $_POST[$param['id']]){
 				update_term_meta($term_id, $param['id'], sanitize_text_field($_POST[$param['id']]));
 			}
