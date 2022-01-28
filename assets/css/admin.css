@@ -149,6 +149,9 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 .waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container {
   display: none;
 }
+.waymark-query-form .waymark-parameters-container .waymark-control-group {
+  padding: 5px 15px;
+}
 .waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container {
   display: none;
 }
@@ -162,11 +165,11 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 */
 .waymark-query-tax-container {
   width: 100%;
-  border: 1px solid green;
 }
 .waymark-query-tax-container .waymark-query-tax-form {
   width: 33%;
   float: left;
+  margin-left: 1%;
 }
 .waymark-query-tax-container .waymark-query-tax-preview {
   width: 66%;

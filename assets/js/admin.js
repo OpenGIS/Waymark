@@ -377,10 +377,25 @@ function waymark_setup_query() {
 		var preview_button = jQuery('<input />')
 			.attr({
 				'type' : 'button',
-				'value' : 'Preview'
+				'value' : 'Preview Query',
+				'class' : 'button button-secondary'
 			})		
 			.on('click', function(e) {
 				e.preventDefault();
+				
+				//Ensure we have the data we need
+				if(! jQuery('#query_area').val()) {
+					console.log('No area!');
+					
+					return false;
+				}
+
+				//Ensure we have the data we need
+				if(! jQuery('#query_area').val()) {
+					console.log('No area!');
+					
+					return false;
+				}
 
 				var form_data = new FormData();
 				form_data.append('waymark_security', waymark_admin_js.security);			
@@ -388,6 +403,30 @@ function waymark_setup_query() {
 
 				//Request Data
 				jQuery('.waymark-input', container).each(function() {
+					var input_id = jQuery(this).attr('id');
+					var input_value = jQuery(this).val();
+				
+					switch(input_id) {
+						case 'query_overpass_request' :
+							
+							if(! input_value) {
+								Waymark.debug('No Overpass Query');
+								
+								return false;
+							}
+
+						case 'query_area' :
+							
+							if(! input_value) {
+								Waymark.debug('No Query Area');
+								
+								return false;
+							}
+							
+							break;
+					}
+					
+					//Add data to form
 					form_data.append(jQuery(this).attr('id'), jQuery(this).val());
 				});
 
@@ -403,8 +442,6 @@ function waymark_setup_query() {
 
 						var waymark_container = jQuery('.waymark-instance').first();
 						var Waymark_Instance = waymark_container.data('Waymark');
-
-// 						console.log(response);
 
 						//Editor
 						if(waymark_container.hasClass('waymark-editor')) {
