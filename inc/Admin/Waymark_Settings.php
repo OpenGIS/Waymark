@@ -1096,6 +1096,53 @@ class Waymark_Settings {
 	
 	function register_settings(){
 		register_setting($this->page_slug, 'Waymark_Settings', array($this, 'sanitize_callback'));
+
+		//Settings Page with valid Tab
+		if((array_key_exists('page', $_GET) && $_GET['page'] == $this->page_slug) && array_key_exists('tab', $_GET)) {
+			//Waymark Instance
+			$instance_data = [];
+
+			//Set basemap
+			if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
+				$instance_data['basemap'] = $editor_basemap;		
+			}
+			
+			switch($_GET['tab']) {
+				// === Query ===
+				
+				case 'query' :
+					//Bounds
+					$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
+					$query_area = explode(',', $query_area);
+
+					$this->Waymark_Instance = new Waymark_Instance(array_merge($instance_data, [
+						'hash' => 'query_area',
+						'init_bounds' => '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]',
+						'bb_selector' => 'query_area'					
+					]));
+					$this->Waymark_Instance->add_js();				
+					
+					//Add HTML
+					$this->tabs['query']['sections']['defaults']['fields']['query_area']['prepend'] = $this->Waymark_Instance->get_html();
+					
+					break;
+
+				// === Query ===
+				
+				case 'misc' :
+					$this->Waymark_Instance = new Waymark_Instance(array_merge($instance_data, [
+						'hash' => 'init_latlng',
+						'latlng_selector' => 'map_default_latlng'					
+					]));
+					$this->Waymark_Instance->add_js();				
+					
+					//Add HTML
+					$this->tabs['misc']['sections']['map_options']['fields']['map_default_latlng']['prepend'] = $this->Waymark_Instance->get_html();
+					
+					break;								
+			}
+		//Default tab ('tiles') 
+		} else {}
 		
 		//For each tab		
 		foreach($this->tabs as $tab_key => $tab_data) {		
@@ -1194,46 +1241,6 @@ class Waymark_Settings {
 	}	
 
 	function content_admin_page() {
-		global $current_screen;
-		
-// 		Waymark_Helper::debug($current_screen);
-		
-		//Settings page only
-		if(! is_object($current_screen) || ($current_screen->base != 'waymark_page_waymark-settings')) {
-			return;
-		}
-
-		//By Tab
-		if(array_key_exists('tab', $_GET)) {
-			switch($_GET['tab']) {
-				//Query
-				case 'query' :
-					//Waymark Instance
-					$data = [
-						'hash' => '',
-						'add_class' => 'waymark-query-preview',
-						'bb_selector' => 'query_area',
-					];
-
-					//Bounds
-					$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
-					$query_area = explode(',', $query_area);
-					$data['init_bounds'] = '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]';
-
-					//Set basemap
-					if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
-						$data['basemap'] = $editor_basemap;		
-					}
-
-					$this->Waymark_Instance = new Waymark_Instance($data);
-					echo $this->Waymark_Instance->get_html();
-					$this->Waymark_Instance->add_js();				
-				
-					break;			
-			}
-		//Default tab ('tiles') 
-		} else {}
-		
 		echo '<div id="waymark-admin-container" class="wrap">' . "\n";
 
 		echo Waymark_Helper::plugin_about();

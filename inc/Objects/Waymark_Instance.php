@@ -10,6 +10,7 @@ class Waymark_Instance extends Waymark_Class {
  		'init_zoom' => null,	
  		'init_bounds' => null,	
  		'bb_selector' => null,
+ 		'latlng_selector' => null,
  		'height' => null,
 	];
 	
@@ -146,6 +147,26 @@ class Waymark_Instance extends Waymark_Class {
 		if($bounds = $this->get_parameter('init_bounds')) {		
 			Waymark_JS::add_call('waymark_instance_' . $this->get_parameter('hash') . '.map.fitBounds(' . $bounds . ')');
 		}					
+
+		if($latlng_selector = $this->get_parameter('latlng_selector')) {		
+			Waymark_JS::add_call('
+//Query
+var input = jQuery(\'#' . $latlng_selector . '\');
+var centre = input.val().split(\',\');
+if(typeof centre === \'object\') {
+	var type = waymark_instance_' . $this->get_parameter('hash') . '.get_type(\'marker\');
+	var marker = L.marker([centre[0], centre[1]], { draggable: true }).addTo(waymark_instance_' . $this->get_parameter('hash') . '.map);
+	marker.setIcon(
+		L.divIcon(waymark_instance_' . $this->get_parameter('hash') . '.build_icon_data(type))
+	);	
+	marker.on(\'dragend\', function(e) {
+		var ll = e.target.getLatLng();
+		console.log(ll);
+		input.val(ll.lat + \',\' + ll.lng);
+	});
+}
+');		
+		}
 
 		//Bounding Box
 		//!!!
