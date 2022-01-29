@@ -62,7 +62,7 @@ class Waymark_Settings {
 							'id' => 'layer_url',
 							'type' => 'text',
 							'class' => '',				
-							'title' => '<span class="waymark-invisible">' . esc_html__('Basemap', 'waymark') . '</span> ' . esc_html__('URL', 'waymark'),
+							'title' => '<span class="waymark-invisible">' . esc_html__('Basemap', 'waymark') . '</span> URL',
 							'default' => Waymark_Config::get_setting('tiles', 'layers', 'layer_url'),
 							'tip' => sprintf(esc_attr__('Many mapping services support the Slippy Map format. Waymark requires URLs that contain {z} (zoom level) and {x}/{y} (tile coordinates). For example the OpenCycleMap URL is %s.', 'waymark'), 'https://tile.thunderforest.com/cycle/{z}/{x}/{y}@2x.png?apikey=[your_api_key]'),
 							'tip_link' => 'https://www.thunderforest.com/docs/map-tiles-api/'								
@@ -72,26 +72,14 @@ class Waymark_Settings {
 							'id' => 'layer_attribution',
 							'type' => 'text',
 							'class' => '',				
-							'title' => '<span class="waymark-invisible">' . esc_html__('Basemap', 'waymark') . '</span> ' . esc_html__('Attribution', 'waymark'),
+							'title' => '<span class="waymark-invisible">' . esc_html__('Basemap', 'waymark') . '</span> Attribution',
 							'default' => Waymark_Config::get_setting('tiles', 'layers', 'layer_attribution'),
 							'tip' => esc_attr__('Mapping services often have the requirement that attribution is displayed by the map. Text and HTML links are supported.', 'waymark'),
 							'tip_link' => 'https://www.thunderforest.com/terms/#attribution',
 							'input_processing' => array(
 								'(! strpos($param_value, "&")) ? htmlspecialchars($param_value) : $param_value'
 							)								
-						),
-						'layer_max_zoom' => array(
-							'name' => 'layer_max_zoom',
-							'id' => 'layer_max_zoom',
-							'type' => 'text',
-							'class' => 'waymark-short-input',				
-							'title' => '<span class="waymark-invisible">' . esc_html__('Basemap', 'waymark') . '</span> ' . esc_html__('Max Zoom', 'waymark'),
-							'default' => Waymark_Config::get_setting('tiles', 'layers', 'layer_max_zoom'),
-							'tip' => esc_attr__('Set a maximum zoom level for this Basemap, the default is 18.', 'waymark'),
-							'input_processing' => array(
-								'(is_numeric($param_value) && $param_value >= 1 && $param_value <= 18) ? $param_value : 18;' //Fallback
-							)		
-						),
+						)
 					)																	
 				)
 			)

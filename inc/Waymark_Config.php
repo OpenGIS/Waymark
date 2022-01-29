@@ -163,8 +163,7 @@ class Waymark_Config {
 				'layers' => array(
 			    'layer_name' => 'Open Street Map',
 			    'layer_url' => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
-			    'layer_attribution' => '© &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors',
- 			    'layer_max_zoom' => '18'
+			    'layer_attribution' => '© &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors'
 				)
 			),
 
