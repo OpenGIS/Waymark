@@ -533,7 +533,6 @@ class Waymark_Settings {
 			'name' => esc_html__('Submissions', 'waymark'),
 			'description' => '
 				<h2>' . __('Front-End Submissions', 'waymark') . '</h2>
-				<div class="notice notice-warning inline" style="display:block;padding:15px;">This feature is currently being <strong>tested</strong> and is only available in the development release. This software is <strong>not ready for production</strong>. <strong>Backup your site</strong> first and please do <a href="https://www.waymark.dev/forums/topic/v0-9-18-b1-submissions/">let me know what you think</a> 🙂</div>				
 				<p class="lead">' . sprintf(__('Use the %s Shortcode to allow Map submissions from the front-end of your site.', 'waymark'), '<span class="waymark-code">[Waymark content="submission"]</span>') . '</p>
 			',
 			'sections' => array(
