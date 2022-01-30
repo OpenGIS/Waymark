@@ -68,6 +68,9 @@
 		==================================
 	*/
 }
+.waymark-map-container .sleep-note {
+  display: none;
+}
 .waymark-map-container .waymark-gallery-container {
   display: none;
 }

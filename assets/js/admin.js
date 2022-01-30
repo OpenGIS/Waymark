@@ -121,15 +121,11 @@ function waymark_setup_repeatable_sections() {
 							case 'line_colour' :
 							case 'shape_colour' :
 							case 'icon_colour' :
+							case 'marker_colour' :
 								input.wpColorPicker();
 								
 								break;
 
-							case 'marker_colour' :
-								waymark_setup_marker_colour_input(input);
-								
-								break;
-							
 							case 'meta_options' :
 								input.parents('tr').hide();
 								
@@ -180,8 +176,9 @@ function waymark_setup_marker_tab() {
 	var marker_colour_inputs = jQuery('.waymark-input.waymark-marker_colour');
 
 	//Convert old colours (using Waymark_Map Object)
- 	var Map_Object = new Waymark_Map;
- 	if(typeof Map_Object === 'object') {
+ 	if(typeof Waymark_Map === 'function') {
+	 	var Map_Object = new Waymark_Map;
+
 		marker_colour_inputs.each(function() {
 			jQuery(this).val(Map_Object.get_marker_background(jQuery(this).val()));
 			
@@ -190,52 +187,52 @@ function waymark_setup_marker_tab() {
  	}	
 }
 
-function waymark_setup_marker_colour_input(input) {
-	//input.hide();
-
-	var options = ['red', 'darkred', 'orange', 'green', 'darkgreen', 'blue', 'purple', 'darkpurple', 'cadetblue', 'white', 'black'];
-	
-	var swatch_container = jQuery('<div />').addClass('waymark-swatch-container waymark-self-clear')	
-	
-	for(i in options) {			
-		var value = options[i];
-		
-		var swatch = jQuery('<div />')
-			.addClass('waymark-swatch waymark-swatch-' + value)
-			.attr({
-				'data-value': value,
-				'title': value
-			})
-			.text(' ')
-/*
-			.on('hover', function() {
-				jQuery('.waymark-swatch', swatch_container).each(function() {
-					jQuery(this).removeClass('waymark-selected');
-				})
-			})
-*/
-			.on('click', { 'input' : input }, function(e) {
-				var swatch = jQuery(this);
-				
-				//Clear selected
-				jQuery('.waymark-swatch', swatch_container).each(function() {
-					jQuery(this).removeClass('waymark-selected');
-				});					
-				
-				input.val(swatch.data('value'));				
-				swatch.addClass('waymark-selected');
-			});			
-
-			//Set selected
-			if(value == input.val()) {
-				swatch.addClass('waymark-selected');
-			}
-			
-			swatch_container.append(swatch);
-	};
-
-	input.parents('.waymark-controls').append(swatch_container);		
-}
+// function waymark_setup_marker_colour_input(input) {
+// 	//input.hide();
+// 
+// 	var options = ['red', 'darkred', 'orange', 'green', 'darkgreen', 'blue', 'purple', 'darkpurple', 'cadetblue', 'white', 'black'];
+// 	
+// 	var swatch_container = jQuery('<div />').addClass('waymark-swatch-container waymark-self-clear')	
+// 	
+// 	for(i in options) {			
+// 		var value = options[i];
+// 		
+// 		var swatch = jQuery('<div />')
+// 			.addClass('waymark-swatch waymark-swatch-' + value)
+// 			.attr({
+// 				'data-value': value,
+// 				'title': value
+// 			})
+// 			.text(' ')
+// /*
+// 			.on('hover', function() {
+// 				jQuery('.waymark-swatch', swatch_container).each(function() {
+// 					jQuery(this).removeClass('waymark-selected');
+// 				})
+// 			})
+// */
+// 			.on('click', { 'input' : input }, function(e) {
+// 				var swatch = jQuery(this);
+// 				
+// 				//Clear selected
+// 				jQuery('.waymark-swatch', swatch_container).each(function() {
+// 					jQuery(this).removeClass('waymark-selected');
+// 				});					
+// 				
+// 				input.val(swatch.data('value'));				
+// 				swatch.addClass('waymark-selected');
+// 			});			
+// 
+// 			//Set selected
+// 			if(value == input.val()) {
+// 				swatch.addClass('waymark-selected');
+// 			}
+// 			
+// 			swatch_container.append(swatch);
+// 	};
+// 
+// 	input.parents('.waymark-controls').append(swatch_container);		
+// }
 
 function waymark_setup_external_links() {
 	//Each link in each Settings tab

@@ -3,12 +3,14 @@
 
 class Waymark_Admin {
 
+	private $current_screen;
+
 	function __construct() {
 		//Don't do anything if we're not logged in to the back-end
 		if(! is_admin()) {
 			return;
 		}
-				
+		
 		//Actions
 		add_action('admin_init', array($this, 'admin_init'));
 		add_action('admin_menu', array($this, 'menu_init'));			
@@ -26,7 +28,7 @@ class Waymark_Admin {
 		add_filter('manage_waymark_map_posts_columns', array($this, 'map_posts_columns'));
 		add_filter('wp_read_image_metadata', array($this, 'add_gps_exif'), 10, 3);
 		add_filter('upload_mimes', array($this, 'upload_mimes'), 1);				
-		add_filter('wp_check_filetype_and_ext', array($this, 'wp_check_filetype_and_ext'), 10, 4);				
+//		add_filter('wp_check_filetype_and_ext', array($this, 'wp_check_filetype_and_ext'), 10, 4);				
 	}
 	
 	function admin_init() {
@@ -37,7 +39,7 @@ class Waymark_Admin {
 		//Add nonce
 		Waymark_JS::add_chunk('//Admin');					
  		Waymark_JS::add_chunk('var waymark_multi_value_seperator  = "' . Waymark_Config::get_item('multi_value_seperator') . '"');	
-		Waymark_JS::add_chunk('var waymark_settings  = ' . json_encode(get_option('Waymark_Settings')));			
+		Waymark_JS::add_chunk('var waymark_settings  = ' . Waymark_Config::get_settings_js());			
 
  		//Debug Mode
  		if(Waymark_Config::get_setting('misc', 'advanced', 'debug_mode')) {
@@ -53,22 +55,20 @@ class Waymark_Admin {
 
 	function current_screen() {
 		if(function_exists('get_current_screen')) {  
-			$current_screen = get_current_screen();
-	
-			//Waymark_Helper::debug($current_screen);
-
+			$this->current_screen = get_current_screen();
+			
 			//Actions for specific admin pages
-			switch($current_screen->base) {
+			switch($this->current_screen->base) {
 				//Add / Edit Single
 				case 'post-new' :
 				case 'post' :
-					
-					break;	
 				
+					break;	
+			
 				//Collections
 				case 'term' :
 				case 'edit-tags' :
-					if($current_screen->taxonomy == 'waymark_collection') {
+					if($this->current_screen->taxonomy == 'waymark_collection') {
 						Waymark_CSS::add_chunk('
 							.inline-edit-col label:last-child,
 							.form-field p { 
@@ -76,9 +76,9 @@ class Waymark_Admin {
 							}
 						');												
 					}
-					
+				
 					break;												
-				}
+			}
 		}
 	}
 		
@@ -171,18 +171,14 @@ class Waymark_Admin {
 			$title = '';
 			$description = '';	
 				
-			$current_screen = get_current_screen();
-			
-			//Waymark_Helper::debug($current_screen);
-
 			//Collections List
-			if($current_screen->base == 'edit-tags' && $current_screen->taxonomy == 'waymark_collection') {
+			if($this->current_screen->base == 'edit-tags' && $this->current_screen->taxonomy == 'waymark_collection') {
 				$title = esc_html__('Collections', 'waymark');
 				$description = sprintf(__('Collections allow you to organise your Maps. Use the <a href="%s">Shortcode</a> to display all Maps in a Collection at once. <a href="%s" class="button waymark-right">Read the Docs &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs/collections'));				
 			}
 					
 			//Map Posts List
-			if($current_screen->base == 'edit' && $current_screen->post_type == 'waymark_map') {
+			if($this->current_screen->base == 'edit' && $this->current_screen->post_type == 'waymark_map') {
 				$title = esc_html__('Maps', 'waymark');
 				$description = sprintf(__('Create Maps here, then add them to your content using the <a href="%s">Shortcode</a>. <a href="%s" class="button waymark-right">Watch the Video &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs/getting-started'));				
 			}
@@ -192,13 +188,13 @@ class Waymark_Admin {
 			));	
 
 			//Map New/Edit Page (not Collections... not pages)
-			if($current_screen->post_type == 'waymark_map' && ! $current_screen->taxonomy && strpos($current_screen->id, 'waymark_page') === false) {
+			if($this->current_screen->post_type == 'waymark_map' && ! $this->current_screen->taxonomy && strpos($this->current_screen->id, 'waymark_page') === false) {
 				global $post;
 				
 				//Waymark_Helper::debug($current_screen, false);
 				
 				//Add
-				if($current_screen->action == 'add') {
+				if($this->current_screen->action == 'add') {
 					//No Maps created yet					
 					//if(true || sizeof($map_posts) == 0) {
 					if(sizeof($map_posts) == 0) {
@@ -208,7 +204,7 @@ class Waymark_Admin {
 						$title = esc_html__('New Map', 'waymark');
 						$description = sprintf(__('You can add the Map to your content using the %s <a href="%s">Shortcode</a>. <a class="button waymark-right" href="%s">Watch the Video &raquo;</a>', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'),  Waymark_Helper::site_url('docs/editor'));
 					}
-				} elseif($current_screen->base == 'post') {
+				} elseif($this->current_screen->base == 'post') {
 					$title = esc_html__('Edit Map', 'waymark');
 					$description = sprintf(__('You can add the Map to your content using the %s <a href="%s">Shortcode</a>. <a class="button waymark-right" href="%s">Watch the Video &raquo;</a>', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'),  Waymark_Helper::site_url('docs/editor'));
 				}				
@@ -258,24 +254,36 @@ class Waymark_Admin {
 	}	
 
 	function upload_mimes($existing_mimes) {
-		$existing_mimes['gpx'] = 'application/gpx+xml';
-		$existing_mimes['kml'] = 'application/vnd.google-earth.kml+xml';
-		$existing_mimes['json'] = 'application/geo+json';
-		$existing_mimes['geojson'] = 'application/geo+json';
+		//Don't do this for admin pages not related to Waymark
+		if($this->current_screen && $this->current_screen->post_type != 'waymark_map') {
+			return $existing_mimes;
+		}
+	
+		//Returning limited subset
+		$upload_mimes = [];
+		
+		//Images only
+		foreach($existing_mimes as $mime_key => $mime_string) {
+			if(strpos($mime_string, 'image/') === 0) {
+				$upload_mimes[$mime_key] = $mime_string;
+			}
+		} 
 
-		return $existing_mimes;
-	}		
+		//Files
+		foreach(Waymark_Config::get_item('mimes', 'file') as $ext => $mime) {
+			if(is_array($mime)) {
+				$upload_mimes[$ext] = $mime[0];					
+			} elseif(is_string($mime)) {
+				$upload_mimes[$ext] = $mime;			
+			}
+		}
+
+		return $upload_mimes;
+	}
 
 	function wp_check_filetype_and_ext( $check, $file, $filename, $mimes ) {
 		//Check file type
-		$mimes = array(
-			'gpx' => 'application/gpx+xml',
-			'kml' => 'application/vnd.google-earth.kml+xml',
-			'kmz' => 'application/vnd.google-earth.kmz',
-			'json' => 'application/geo+json',
-			'geojson' => 'application/geo+json'
-		);
-		$filetype = wp_check_filetype($filename, $mimes);
+		$filetype = wp_check_filetype($filename, Waymark_Config::get_item('mimes', 'file'));
 
 		//File type we are interested in
 		if(array_key_exists('type', $filetype) && $filetype['type']) {
@@ -289,5 +297,21 @@ class Waymark_Admin {
 	
 		return $check;
 	}
+// 	function wp_check_filetype_and_ext( $check, $file, $filename, $mimes ) {
+// 		//Check file type
+// 		$filetype = wp_check_filetype($filename, Waymark_Config::get_item('mimes', 'file'));
+// 
+// 		//File type we are interested in
+// 		if(array_key_exists('type', $filetype) && $filetype['type']) {
+// 			//Allow
+// 			return array(
+// 				'ext' => $filetype['ext'],
+// 				'type' => $filetype['type'],
+// 				'proper_filename' => $filename
+// 			);
+// 		}
+// 	
+// 		return $check;
+// 	}
 }	
 new Waymark_Admin;

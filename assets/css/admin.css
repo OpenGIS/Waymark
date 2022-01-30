@@ -8,6 +8,15 @@
   display: table;
   clear: both;
 }
+.waymark-code {
+  display: inline-block;
+  margin: 0 3px;
+  padding: 3px;
+  font-size: 90%;
+  color: #999;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+}
 /**
  * ====================================
  * ============= TOOLTIPS =============
@@ -347,6 +356,7 @@ div.widget-content div.waymark-parameters-container div.waymark-controls input[t
  * ====================================
  */
 body.waymark_page_waymark-settings h2.nav-tab-wrapper a {
+  font-size: 13px !important;
   margin-left: 4px;
 }
 body.waymark_page_waymark-settings h2.nav-tab-wrapper a.nav-tab-active {
@@ -564,12 +574,15 @@ div#waymark-admin-container .waymark-settings-tab .waymark-settings-tab-descript
 div#waymark-admin-container .waymark-settings-tab table.form-table {
   margin-bottom: 30px;
 }
-div#waymark-admin-container .waymark-settings-tab table.form-table th {
+div#waymark-admin-container .waymark-settings-tab table.form-table tr.waymark-align-top th {
+  vertical-align: top;
+}
+div#waymark-admin-container .waymark-settings-tab table.form-table tr th {
   padding: 10px 20px;
   width: 160px;
   vertical-align: middle;
 }
-div#waymark-admin-container .waymark-settings-tab table.form-table td {
+div#waymark-admin-container .waymark-settings-tab table.form-table tr td {
   padding: 0;
 }
 div#waymark-admin-container .waymark-settings-tab select,
@@ -593,10 +606,16 @@ div#waymark-admin-container #waymark-about {
   position: absolute;
   top: 0;
   right: 0;
-  width: 160px;
+  width: 180px;
+  max-height: 555px;
+  overflow-y: scroll;
   padding: 15px;
   border: 1px solid #ccc;
   background: #f7f7f7;
+}
+div#waymark-admin-container #waymark-about ul {
+  padding-left: 15px;
+  list-style: circle;
 }
 div#waymark-admin-container #waymark-about ul li.waymark-multi a {
   margin-right: -4px;
@@ -606,14 +625,14 @@ div#waymark-admin-container #waymark-about p {
   line-height: 1.5em;
 }
 div#waymark-admin-container #waymark-about p.waymark-first {
-  margin: 17px 0 30px 0;
+  margin: 7px 0 20px 0;
   font-weight: bold;
-  font-size: 1.8em;
+  font-size: 1.7em;
   line-height: 1.1em;
 }
 div#waymark-admin-container #waymark-about img {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   margin-right: 12px;
   float: left;
   border-radius: 50%;
@@ -816,12 +835,3 @@ body.wp-admin.post-type-waymark_map.post-php #waymark-admin-container {
  * ============== DEBUG ===============
  * ====================================
  */
-body div.waymark-settings-section-advanced .form-table tr:last-child {
-  display: none;
-}
-body div.waymark-settings-section-advanced .form-table tr:last-child th {
-  vertical-align: top !important;
-}
-body.waymark-debug div.waymark-settings-section-advanced .form-table tr:last-child {
-  display: table-row;
-}

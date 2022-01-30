@@ -1,4 +1,12 @@
-.waymark-shortcode {
+@success_colour: green;
+@error_colour: red;
+
+/**
+ * ====================================
+ * ============= SHORTCODE ============
+ * ====================================
+ */
+ .waymark-shortcode {
 	overflow: hidden;
 	margin-bottom: 1.5em;
 	border: 1px solid #999;
@@ -48,6 +56,26 @@
 			}
 		}
 	}
+}
+
+/**
+ * ====================================
+ * ============== MESSAGES ============
+ * ====================================
+ */
+.waymark-message {
+	margin-bottom: 15px;
+	padding: 10px 15px;
+	border-width: 1px;
+	border-style: solid;
+	&.waymark-success {
+		color: @success_colour;
+		border-color: @success_colour;
+	}
+	&.waymark-error {
+		color: @error_colour;
+		border-color: @error_colour;
+	}	
 }
 
 /**

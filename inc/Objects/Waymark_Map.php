@@ -28,6 +28,23 @@ class Waymark_Map extends Waymark_Object {
 		
 			foreach($map_meta as $meta) {
 				$meta_key = Waymark_Helper::make_key($meta['meta_title'], 'map');
+								
+				//Submissions
+				if(($post_id === null) && (! is_admin()) && class_exists('Waymark_Submission')) {
+					$Submission = new Waymark_Submission;
+					
+					//Meta feature not allowed for user
+					if(! in_array('meta', $Submission->get_features())) {
+						//Skip it
+						continue;										
+					}
+				
+					//Not allowed in submissions
+					if(! $meta['meta_submission']) {
+						//Skip it
+						continue;					
+					}
+				}
 
 				$this->parameters[$meta_key] = array(
 					'input_types' => array('meta'),

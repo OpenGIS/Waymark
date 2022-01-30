@@ -9,7 +9,6 @@ class Waymark_HTTP {
 		//Setup AJAX
 		Waymark_JS::add_chunk('//HTTP');					
 		Waymark_JS::add_chunk('var waymark_http_endpoint = "' . Waymark_Helper::http_url() . '";');					
-		Waymark_JS::add_chunk('var waymark_http_security = "' . wp_create_nonce(Waymark_Config::get_item('nonce_string')) . '";');					
 	}
 
 	public function query_vars($vars) {
@@ -24,11 +23,20 @@ class Waymark_HTTP {
 			//WP loads normally			
 			return;
 		}
-			
+
+		//Action
+		//!!! Submission
+		if(array_key_exists('waymark_message', $_REQUEST)) {	
+			//Waymark_Helper::debug('Joetest!' . $_REQUEST['waymark_message'], false);
+		}
+
 		//Action
 		if(array_key_exists('waymark_action', $_REQUEST)) {	
 			//Requires Map Data
-			if(in_array($_REQUEST['waymark_action'], array('get_map_data', 'download_map_data'))) {
+			if(in_array($_REQUEST['waymark_action'], array(
+				'get_map_data',
+				'download_map_data'
+			))) {
 				//Do we have data?
 				if(array_key_exists('map_id', $_REQUEST) && is_numeric($_REQUEST['map_id'])) {					
 					//Valid Map
@@ -61,6 +69,7 @@ class Waymark_HTTP {
 			
 				switch($_REQUEST['waymark_action']) {
 					// === AJAX Load ===
+					
 					case 'get_map_data' :
 						//Security
 						check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');	
@@ -84,6 +93,9 @@ class Waymark_HTTP {
 						}
 					
 						break;		
+					
+					// === Map Export ===
+					
 					case 'download_map_data' :
 						//Security
 						check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');						
@@ -115,12 +127,41 @@ class Waymark_HTTP {
 	
 						echo rawurldecode($_REQUEST['map_data']);
 						
-						break;	
+						break;
 				}	
 				
 				//That's it, that's all...
-				die();			
-			}									
+				die;			
+			
+			//Does not require Map data
+			} else {
+				switch($_REQUEST['waymark_action']) {				
+					// === Public Submissions ===
+					case'public_add_map' :
+						//Security
+						check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');											
+						
+						//Create submission
+	 					$Submission = new Waymark_Submission($_REQUEST);
+						
+						//Ensure submissions allowed
+						if($Submission->get_allowed() === true) {					
+							//Create Map
+							$Submission->create_map();
+							
+							$Submission->do_redirect();
+							
+//							Waymark_Helper::debug($Submission);
+						//Submission not allowed
+						} else {
+							///!!! Submission
+						}
+						
+						break;
+				}				
+				
+				die;
+			}
 		}
 	}
 }

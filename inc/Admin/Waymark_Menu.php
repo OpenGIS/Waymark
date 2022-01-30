@@ -116,8 +116,8 @@ class Waymark_Menu {
 		//Required the PHP EXIF extension
 		if(! function_exists('exif_read_data')) {
 			echo '<div class="waymark-notice notice notice-warning is-dismissible">' . "\n";
-			echo '	<p><b>' . esc_html__('Photo Location Detection Not Supported!', 'waymark') . '</b></p>';
-			echo '	<p>' . sprintf(__('Your hosting environment does not currently have the <a href="%s">PHP EXIF Extension</a> enabled, which is required to read Photo location metadata. Try asking your host to enable it.', 'waymark'), 'https://www.php.net/manual/en/book.exif.php') . '</p>';		
+			echo '	<p><b>' . esc_html__('Image Location Detection Not Supported!', 'waymark') . '</b></p>';
+			echo '	<p>' . sprintf(__('Your hosting environment does not currently have the <a href="%s">PHP EXIF Extension</a> enabled, which is required to read Image location metadata. Try asking your host to enable it.', 'waymark'), 'https://www.php.net/manual/en/book.exif.php') . '</p>';		
 			echo '</div>' . "\n";
 		}	
 

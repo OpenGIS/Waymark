@@ -58,6 +58,12 @@ class Waymark_Input {
 	
 		//Tip
 		if(array_key_exists('tip', $field)) {
+			//Add missing periods
+			$last_char = $field['tip'][strlen($field['tip'])-1];
+			if(! in_array($last_char, ['.', '?', '!'])) {
+				$field['tip'] .= '.';
+			}
+			
 			$out .= ' <a data-title="' . $field['tip'] . '';
 			if(array_key_exists('tip_link', $field)) {
 				$out .= ' ' . esc_attr__('Click here for more details.', 'waymark') . '" href="' . $field['tip_link'] . '" target="_blank" class="waymark-tooltip waymark-link"';					
@@ -143,7 +149,9 @@ class Waymark_Input {
 				//Is multi?
 				if(is_string($set_value) && strpos($set_value, ',')) {
 					$set_value = explode(',', $field['default']);
-				}				
+				} elseif(is_string($set_value) && strpos($set_value, Waymark_Config::get_item('multi_value_seperator'))) {
+					$set_value = explode(Waymark_Config::get_item('multi_value_seperator'), $field['default']);
+				}
 				
 				$out .= '		<select multiple="multiple" class="waymark-input" name="' . $field['name'] . '[]" id="' . $field['id'] . '">' . "\n";
 				
@@ -401,28 +409,51 @@ class Waymark_Input {
 // 		}
 // 	}
 
-	static function get_file_contents($file) {
-		//Get the file type of the upload
-		$mimes = array(
-			'gpx' => 'application/gpx+xml',
-			'kml' => 'application/vnd.google-earth.kml+xml',
-			'kmz' => 'application/vnd.google-earth.kmz',
-			'json' => 'application/geo+json',
-			'geojson' => 'application/geo+json'
-		);
-		$filetype = wp_check_filetype(basename($file['name']), $mimes);
-				 
-		//File type is supported
-		if(array_key_exists('type', $filetype) && $filetype['type']) {
-	    return array(
-				'file_type' => $filetype['ext'],
-				'file_contents' => file_get_contents($file['tmp_name']),
-				'file_info' => $file	
-			);
-		} else {
-			return array(
-				'error' => esc_html__('The file type uploaded is not supported.', 'waymark')
-			);
+	static function allowable_file($ext = '', $mime = '', $file_image = 'file') {
+		$allowable_mimes = Waymark_Config::get_item('mimes', $file_image);
+		
+		//Valid extension
+		if(array_key_exists($ext, $allowable_mimes)) {
+			//Check MIME
+			//Single
+			if(is_string($allowable_mimes[$ext])) {
+				return $mime == $allowable_mimes[$ext];
+			//Multiple
+			} elseif(is_array($allowable_mimes[$ext])) {
+				return in_array($mime, $allowable_mimes[$ext]);
+			}
 		}
+		
+		return false;
+	}	
+	
+	static function get_file_contents($file) {
+		$response = [];
+
+		//Ensure file is upload
+		if(is_uploaded_file($file['tmp_name'])) {	
+			//Get extension
+			$file_ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+
+			//Get *actual* MIME type
+			$file_mime = mime_content_type($file['tmp_name']);
+			
+			//Is allowed file
+			if(self::allowable_file($file_ext, $file_mime)) {
+				$response = array_merge($response, array(
+					'file_type' => $file_ext,
+					'file_mime' => $file_mime,
+					'file_contents' => file_get_contents($file['tmp_name']),
+					'file_info' => $file
+				));		
+			//Not allowable file
+			} else {
+				$response['error'] = esc_html__('The file extension uploaded is not supported.', 'waymark');		
+				$response['file_ext'] = $file_ext;
+				$response['file_mime'] = $file_mime;					
+			}						
+		}
+		
+		return $response;
 	}	
 }

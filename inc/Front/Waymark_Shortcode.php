@@ -18,6 +18,22 @@ class Waymark_Shortcode {
 			$shortcode_data = array();
 		}
 
+		// ============ Content? ================
+		
+		if(array_key_exists('content', $shortcode_data)) {
+			switch($shortcode_data['content']) {
+				case 'submission' :
+					$Submission = new Waymark_Submission;
+					
+					$content = $Submission->render_front();
+
+					break;
+			}
+
+			//Stop here		
+			return $content;
+		}
+
 		// ============ START HTML ================
 		
 		//Map Hash given?
@@ -113,7 +129,24 @@ class Waymark_Shortcode {
 
 		//Header ?
 		$do_header = 0;
-		if(get_post_type() !== 'waymark_map') {
+		
+		//Start with Setting
+		$setting = Waymark_Config::get_setting('misc', 'shortcode_options', 'shortcode_header');
+		if(is_numeric($setting)) {
+			$do_header = $setting;
+		}
+		
+		//Maps
+		if(get_post_type() == 'waymark_map') {
+			//Map Details Page
+			if(is_single()) {
+				$do_header = 0;			
+			//Archive
+			} else {
+			
+			}
+		//I.e. Embedding using the Shortcode
+		} else {
 			//Always for Admin			
 			if(current_user_can('administrator') && Waymark_Config::get_setting('misc', 'shortcode_options', 'header_override')) {
 				$do_header = 1;			
@@ -121,17 +154,9 @@ class Waymark_Shortcode {
 				//Shortcode
 				if(array_key_exists('shortcode_header', $shortcode_data)) {
 					$param = $shortcode_data['shortcode_header'];
-				
+
 					if(is_numeric($param)) {
 						$do_header = $param;
-					}
-				//Setting
-				} else {
-					$setting = Waymark_Config::get_setting('misc', 'shortcode_options', 'shortcode_header');
-				
-					//Boolean
-					if(is_numeric($setting)) {
-						$do_header = $setting;
 					}
 				}			
 			}
@@ -141,7 +166,7 @@ class Waymark_Shortcode {
 		if($do_header && sizeof($shortcode_header)) {
 			$out .= '	<!-- Shortcode Header -->' . "\n";
 			$out .= '	<header class="waymark-header">' . "\n";
-			
+	
 			//Link
 			if(array_key_exists('link', $shortcode_header)) {
 				$out .= '		<a class="waymark-link" href="' . $shortcode_header['link'] . '">' . esc_html__('Details', 'waymark') . ' <i class="ion ion-android-open"></i></a>' . "\n";			
@@ -213,10 +238,10 @@ class Waymark_Shortcode {
 		//Map Centre
 		if(array_key_exists('map_centre', $shortcode_data)) {
 			$latlng_string = $shortcode_data['map_centre'];
-			$latlng_array = Waymark_Helper::latlng_string_to_array($latlng_string);
+			$map_latlng_array = Waymark_Helper::latlng_string_to_array($latlng_string);
 		
-			if(is_array($latlng_array)) {
-				$out .= 'waymark_config.map_init_latlng = [' . $latlng_array[0] . ',' . $latlng_array[1] . '];' . "\n";								
+			if(is_array($map_latlng_array)) {
+				$out .= 'waymark_config.map_init_latlng = [' . $map_latlng_array[0] . ',' . $map_latlng_array[1] . '];' . "\n";								
 			}				
 		}		
 
@@ -261,11 +286,18 @@ class Waymark_Shortcode {
 	 		$out .= 'waymark_config.elevation_units = "' . Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_units') . '";' . "\n";
 	 		$out .= 'waymark_config.elevation_initial = ' . Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_initial') . ';' . "\n";
 		}
-
-		//Go!
 		
- 		$out .= 'waymark_viewer_' . $shortcode_hash . '.init(waymark_config);' . "\n";					
+		// =====================================
+		// ============ INIT CONFIG ============
+		// =====================================				
+		
+ 		$out .= 'waymark_viewer_' . $shortcode_hash . '.init(waymark_config);' . "\n";			
 
+
+		// =====================================
+		// ================ MAPS ===============
+		// =====================================	
+		
  		$map_count = 0;
 		foreach($maps_output as $map_id => $map_output) {
 			//Load first map_data on-page
@@ -282,6 +314,88 @@ class Waymark_Shortcode {
 			$map_count++;
 		}
 
+		// =====================================
+		// =========== START MARKERS ===========
+		// =====================================				
+
+		//Get Marker data
+		$marker_data_keys = [
+			'marker_centre',
+			'marker_type',
+			'marker_title',
+			'marker_description',
+			'marker_image'			
+		];
+		
+		//Count for marker data
+		$marker_data_count = 0;
+		foreach($shortcode_data as $key => $value) {
+			if(in_array($key, $marker_data_keys)) {
+				$marker_data_count++;
+			}
+		}
+
+		//We have Marker data
+		if($marker_data_count) {
+			//Explicit Marker location?
+			if(array_key_exists('marker_centre', $shortcode_data)) {
+				$latlng_string = $shortcode_data['marker_centre'];
+				$marker_latlng_array = Waymark_Helper::latlng_string_to_array($latlng_string);		
+			//Use Map centre?
+			} elseif(isset($map_latlng_array)) {
+				$marker_latlng_array = $map_latlng_array;		
+			}
+
+			if(isset($marker_latlng_array)) {
+				$marker_data = [];
+
+				foreach($marker_data_keys as $key) {
+					if(array_key_exists($key, $shortcode_data)) {
+						$value = $shortcode_data[$key];
+				
+						switch($key) {
+							case 'marker_type' :
+								$marker_data['type'] = $value;
+					
+								break;
+							case 'marker_title' :
+								$marker_data['title'] = $value;
+
+								break;
+							case 'marker_description' :
+								$marker_data['description'] = $value;
+
+								break;			
+							case 'marker_image' :
+								$marker_data['image_thumbnail_url'] = $value;
+								$marker_data['image_medium_url'] = $value;
+								$marker_data['image_large_url'] = $value;
+
+								break;			
+						}
+					}		
+				}
+
+				$marker_geojson = [
+					'type' => 'FeatureCollection',
+					'features' => [
+						[
+							'type' => 'Feature',
+							'properties' => $marker_data,
+							'geometry' => [
+								'type' => 'Point',
+								'coordinates' => [$marker_latlng_array[1], $marker_latlng_array[0]]
+							]
+						]
+					]				
+				];
+			
+				$out .= 'waymark_viewer_' . $shortcode_hash . '.load_json(' . json_encode($marker_geojson) . ');' . "\n";														
+			}
+		}
+
+		// ============== END MARKERS ==============
+		
 		$out .= '});' . "\n";
 		$out .= '</script>' . "\n";
 		$out .= '<!-- END Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";
