@@ -111,6 +111,8 @@ A big thank you to the following projects and their contributors. Without their 
 
 ## Changelog ##
 
+### 0.9.19-a1 ###
+
 ### 0.9.18 ###
 
 * **<a href="https://www.waymark.dev/docs/submissions/">Submissions</a>**
