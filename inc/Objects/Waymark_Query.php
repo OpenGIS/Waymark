@@ -38,11 +38,24 @@ class Waymark_Query extends Waymark_Class {
 // 			$default_query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
 // 		}
 		
+		$this->inputs['query_area_type'] = array(
+			'id' => 'query_area_type',
+			'type' => 'select',
+			'options' => [
+				'data_bounds' => __('Data Bounds', 'waymark'),
+				'polygon' => __('Polygon', 'waymark'),				
+				'around' => __('Around', 'waymark')
+			],
+			'title' => 'Query Area Type',
+//			'class' => 'waymark-hidden',
+			'default' => null,
+		);
+
 		$this->inputs['query_area'] = array(
 			'id' => 'query_area',
 			'type' => 'textarea',				
 			'title' => 'Query Area',
-			'class' => 'waymark-hidden',
+//			'class' => 'waymark-hidden',
 			'default' => null,
 		);
 		

@@ -107,7 +107,7 @@ class Waymark_Map extends Waymark_Object {
 		parent::__construct($post_id);
 
 		//Queries
-		if(! Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
+		if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
 			$query_taxonomies = get_the_terms($post_id, 'waymark_query');
 			if(is_array($query_taxonomies)) {
 				foreach($query_taxonomies as $query_tax) {
