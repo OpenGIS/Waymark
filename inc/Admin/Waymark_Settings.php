@@ -1099,7 +1099,7 @@ class Waymark_Settings {
 		
 		//Tabs
 		$active_tab = (isset($_GET['tab'])) ? $_GET['tab'] : $this->default_tab;
-		$this->waymark_admin_tabs($active_tab);
+		$this->admin_nav($active_tab);
 		
 		//Open form
 		echo '		<form action="' . admin_url('options.php') . '" method="post">' . "\n";
@@ -1171,21 +1171,22 @@ class Waymark_Settings {
 		echo '	</div>' . "\n";
 		echo '</div>' . "\n";
 	}	
-
-	function waymark_admin_tabs($current = 'map') {
-	  $links = array();
-	  foreach($this->tabs as $tab_key => $tab_data) {
-			if($tab_key == $current) {
-				$links[] = '<a class="nav-tab nav-tab-active" href="?post_type=waymark_map&page=' . $this->page_slug . '&tab=' . $tab_key . '">' . $tab_data['name'] . '</a>';
-			} else {
-				$links[] = '<a class="nav-tab" href="?post_type=waymark_map&page=' . $this->page_slug . '&tab=' . $tab_key . '">' . $tab_data['name'] . '</a>';
-			}
-	  }
-	  echo '<h2 class="nav-tab-wrapper">';
-	  foreach($links as $link) {
-			echo $link; 
-	  }      
-	  echo '</h2>';
+	
+	function admin_nav($current = 'tiles') {
+		echo '
+<div id="waymark-settings-nav" data-init_tab_key="' . $current . '">
+	<select>
+		<option disabled="disabled">Maps</option>
+		<option value="tiles"' . (($current == 'tiles') ? ' selected="selected"' : '') . '>-- Basemaps</option>
+		<option value="meta"' . (($current == 'meta') ? ' selected="selected"' : '') . '>-- Meta</option>
+		<option value="submission"' . (($current == 'submission') ? ' selected="selected"' : '') . '>-- Submissions</option>
+		<option disabled="disabled">Overlays</option>
+		<option value="markers"' . (($current == 'markers') ? ' selected="selected"' : '') . '>-- Markers</option>
+		<option value="lines"' . (($current == 'lines') ? ' selected="selected"' : '') . '>-- Lines</option>
+		<option value="shapes"' . (($current == 'shapes') ? ' selected="selected"' : '') . '>-- Shapes</option>
+		<option value="misc"' . (($current == 'misc') ? ' selected="selected"' : '') . '>Misc.</option>
+	</select>
+</div>';
 	}	
 	
 	function execute_action($action) {

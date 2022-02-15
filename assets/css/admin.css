@@ -355,14 +355,6 @@ div.widget-content div.waymark-parameters-container div.waymark-controls input[t
  * ============= SETTINGS =============
  * ====================================
  */
-body.waymark_page_waymark-settings h2.nav-tab-wrapper a {
-  font-size: 13px !important;
-  margin-left: 4px;
-}
-body.waymark_page_waymark-settings h2.nav-tab-wrapper a.nav-tab-active {
-  background: #fff;
-  border-bottom: 1px solid #fff;
-}
 body.waymark_page_waymark-settings div.waymark-settings-tab > small {
   display: block;
   margin-top: 20px;

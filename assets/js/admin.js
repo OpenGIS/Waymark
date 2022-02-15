@@ -333,7 +333,62 @@ function waymark_setup_select_icon_type() {
 	});
 }
 
+function waymark_setup_settings_nav() {
+	var nav_container = jQuery('#waymark-settings-nav');
+	
+	if(! nav_container) {
+		return false;
+	}
+
+	var admin_container = jQuery('#waymark-admin-container');
+	var form = jQuery('form', admin_container);
+
+	var tabs = jQuery('.waymark-settings-tab', admin_container);
+	var init_tab_key = nav_container.data('init_tab_key');
+	
+	//Initial
+	tabs.each(function() {
+		var tab = jQuery(this);
+
+		var is_default_tab = (tab.attr('class').indexOf('tab-' + init_tab_key)) > 0;
+		
+		if(is_default_tab) {
+			tab.show();			
+
+			console.log('show');
+		} else {
+			console.log('hide');
+			tab.hide();			
+		}
+	});
+	
+	//Change
+	var select = jQuery('select', nav_container);
+	select.change(function () {
+		var selected_tab_key = jQuery(this).val();
+		
+		//Update form redirect
+		var redirect_input = jQuery('input[name="_wp_http_referer"]', form);
+		var redirect_to = document.location.toString().replace('tab=' + init_tab_key, 'tab=' + selected_tab_key);
+		redirect_input.val(redirect_to);
+		
+		//Show selected
+		tabs.each(function() {
+			var tab = jQuery(this);
+
+			var is_selected_tab = (tab.attr('class').indexOf('tab-' + selected_tab_key)) > 0;
+			
+			if(is_selected_tab) {
+				tab.show();			
+			} else {
+				tab.hide();			
+			}
+		});
+	});
+}
+
 jQuery(document).ready(function() {
+	waymark_setup_settings_nav();
 	waymark_setup_repeatable_sections();
 	waymark_setup_marker_tab();
 	waymark_setup_colour_pickers();
