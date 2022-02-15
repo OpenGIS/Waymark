@@ -506,10 +506,7 @@ function waymark_setup_settings_nav() {
 		
 		if(is_default_tab) {
 			tab.show();			
-
-			console.log('show');
 		} else {
-			console.log('hide');
 			tab.hide();			
 		}
 	});
@@ -521,7 +518,13 @@ function waymark_setup_settings_nav() {
 		
 		//Update form redirect
 		var redirect_input = jQuery('input[name="_wp_http_referer"]', form);
-		var redirect_to = document.location.toString().replace('tab=' + init_tab_key, 'tab=' + selected_tab_key);
+		var redirect_to = document.location.toString();
+		if(redirect_to.indexOf('tab=') > 0) {
+			redirect_to = redirect_to.replace('tab=' + init_tab_key, 'tab=' + selected_tab_key);
+		} else {
+			redirect_to = redirect_to + '&tab=' + selected_tab_key;
+		}
+		
 		redirect_input.val(redirect_to);
 		
 		//Show selected

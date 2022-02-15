@@ -18,9 +18,11 @@ class Waymark_Menu {
 		//Collections
     add_submenu_page($this->menu_slug, esc_html__('Collections', 'waymark'), esc_html__('Collections', 'waymark'), 'manage_categories', 'edit-tags.php?taxonomy=waymark_collection&post_type=waymark_map'); 
 
-		//Collections
-    add_submenu_page($this->menu_slug, esc_html__('Queries', 'waymark'), esc_html__('Queries', 'waymark'), 'manage_categories', 'edit-tags.php?taxonomy=waymark_query&post_type=waymark_map'); 
-
+		//Queries
+		if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
+			add_submenu_page($this->menu_slug, esc_html__('Queries', 'waymark'), esc_html__('Queries', 'waymark'), 'manage_categories', 'edit-tags.php?taxonomy=waymark_query&post_type=waymark_map'); 
+		}
+		
 		//Help
 		add_submenu_page($this->menu_slug, esc_html__('Help', 'waymark'), esc_html__('Help', 'waymark'), 'edit_posts', 'waymark-help', array($this, 'help_page_content'));
 	

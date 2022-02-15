@@ -8,6 +8,11 @@ class Waymark_Query_Taxonomy {
 	private $Query;
 	
 	function __construct() {
+		//Check Setting
+		if(! Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
+			return false;
+		}
+	
 		$this->Query = new Waymark_Query();
 		
 		add_action('init', array($this, 'register_taxonomy'));

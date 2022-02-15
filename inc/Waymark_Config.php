@@ -98,6 +98,10 @@ class Waymark_Config {
 			 */			
 
 			'query' => array(
+				'features' => array(
+					'enable_taxonomy' => 0,
+					'enable_single' => 0
+				),
 				'defaults' => array(
 					'query_area'=> '-52.648029327392585,47.505026,-52.605972,47.53435623467226',
 					'query_overpass_request' => '[bbox:{{bbox}}];nwr["amenity"];out center;',

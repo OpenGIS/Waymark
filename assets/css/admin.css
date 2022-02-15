@@ -637,7 +637,7 @@ div#waymark-admin-container .waymark-settings-tab input[type="text"] {
 div#waymark-admin-container .waymark-settings-tab .waymark-short-input select,
 div#waymark-admin-container .waymark-settings-tab .waymark-short-input input[type="file"],
 div#waymark-admin-container .waymark-settings-tab .waymark-short-input input[type="text"] {
-  width: 80px;
+  width: 100px;
 }
 div#waymark-admin-container .waymark-settings-tab .waymark-controls .waymark-tooltip {
   margin-top: 2px;

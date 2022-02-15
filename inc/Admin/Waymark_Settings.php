@@ -732,6 +732,39 @@ class Waymark_Settings {
 			'name' => 'Queries',
 			'description' => '',
 			'sections' => array(
+				//Features
+				'features' => array(
+					'title' => 'Features',
+//					'description' => 'Test test test.',
+					'fields' => array(	
+						'enable_taxonomy' => array(
+							'name' => 'enable_taxonomy',
+							'id' => 'enable_taxonomy',
+							'type' => 'boolean',
+							'title' => esc_html__('Shared Queries', 'waymark'),
+							'default' => Waymark_Config::get_setting('query', 'features', 'enable_taxonomy'),
+//							'tip' => esc_attr__('', 'waymark'),
+							'options' => array(
+								'1' => esc_html__('Enabled', 'waymark'),
+								'0' => esc_html__('Disabled', 'waymark')								
+							)
+						),
+						'enable_map' => array(
+							'name' => 'enable_map',
+							'id' => 'enable_map',
+							'type' => 'boolean',
+							'title' => esc_html__('Map Queries', 'waymark'),
+							'default' => Waymark_Config::get_setting('query', 'features', 'enable_map'),
+//							'tip' => esc_attr__('', 'waymark'),
+							'options' => array(
+								'1' => esc_html__('Enabled', 'waymark'),
+								'0' => esc_html__('Disabled', 'waymark')								
+							)
+						)
+					)
+				),
+				
+				//Defaults
 				'defaults' => array(
 					'title' => 'Defaults',
 //					'description' => 'Test test test.',
@@ -780,7 +813,14 @@ class Waymark_Settings {
 				)												
 			)
 		);
-		
+
+		//Queries Not Enabled
+		if(! (Waymark_Config::get_setting('query', 'features', 'enable_taxonomy') + Waymark_Config::get_setting('query', 'features', 'enable_map'))) {
+			//Hide
+			$this->tabs['query']['sections']['defaults']['class'] = 'waymark-hidden';
+			$this->tabs['query']['sections']['performance']['class'] = 'waymark-hidden';
+		}
+				
 		/**
 		 * ===========================================
 		 * ================== MISC ===================
@@ -1322,6 +1362,8 @@ class Waymark_Settings {
 		<option value="markers"' . (($current == 'markers') ? ' selected="selected"' : '') . '>-- Markers</option>
 		<option value="lines"' . (($current == 'lines') ? ' selected="selected"' : '') . '>-- Lines</option>
 		<option value="shapes"' . (($current == 'shapes') ? ' selected="selected"' : '') . '>-- Shapes</option>
+		<option disabled="disabled">Sources</option>
+		<option value="query"' . (($current == 'query') ? ' selected="selected"' : '') . '>-- OpenStreetMap</option>
 		<option value="misc"' . (($current == 'misc') ? ' selected="selected"' : '') . '>Misc.</option>
 	</select>
 </div>';
