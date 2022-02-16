@@ -53,7 +53,7 @@ class Waymark_Query extends Waymark_Class {
 
 		$this->inputs['query_area'] = array(
 			'id' => 'query_area',
-			'type' => 'textarea',				
+			'type' => 'text',				
 			'title' => 'Query Area',
 //			'class' => 'waymark-hidden',
 			'default' => null,
@@ -183,13 +183,13 @@ class Waymark_Query extends Waymark_Class {
 // 		}		
 	}
 	
-	function create_form($data = []) {
+	function create_tax_form($data = []) {
 		$form_type = 'add';
 		if(sizeof($data)) {
 			$form_type = 'edit';		
 		}
 
-		$out = '<div class="waymark-query-form waymark-query-' . $form_type . ' waymark-self-clear">' . "\n";
+		$out = '<div class="waymark-query-tax-form waymark-query-form waymark-query-' . $form_type . ' waymark-self-clear">' . "\n";
 		
 		//Add
 		if(sizeof($data)) {
@@ -197,6 +197,22 @@ class Waymark_Query extends Waymark_Class {
 		//Edit
 		} else {
 			$out .= Waymark_Input::create_parameter_groups($this->inputs, $this->input_groups);
+		}
+
+		$out .= '</div>' . "\n";
+
+		echo $out;
+	}
+
+	function create_map_form($data = []) {
+		$out = '<div class="waymark-query-map-form waymark-query-form waymark-self-clear">' . "\n";
+		
+		//Add
+		if(sizeof($data)) {
+			$out .= Waymark_Input::create_parameter_groups($this->inputs, $this->input_groups, $data, null, '', 'waymark-repeatable');				
+		//Edit
+		} else {
+			$out .= Waymark_Input::create_parameter_groups($this->inputs, $this->input_groups, [], null, '', 'waymark-repeatable');
 		}
 
 		$out .= '</div>' . "\n";

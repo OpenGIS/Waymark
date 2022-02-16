@@ -129,7 +129,7 @@ class Waymark_Meta {
 		}
 		
 		$Query = new Waymark_Query();
-		$Query->create_form($query_data);
+		$Query->create_map_form($query_data);
 	}
 
 	/**
@@ -235,7 +235,7 @@ class Waymark_Meta {
 // 
 // //		$Query->set_data($data);
 // 		$Query->set_input_type('meta');
-// 		echo $Query->create_form();		
+// 		echo $Query->create_tax_form();		
 // 	}
 }
 new Waymark_Meta;
