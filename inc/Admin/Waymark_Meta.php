@@ -60,6 +60,8 @@ class Waymark_Meta {
 					$Map->set_data($_POST);				
 					$Map->save_meta($post->ID);
 					
+					Waymark_Helper::debug($_POST);
+					
 					break;			
 				
 				//Query

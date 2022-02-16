@@ -392,14 +392,14 @@ function waymark_setup_query() {
 				e.preventDefault();
 				
 				//Ensure we have the data we need
-				if(! jQuery('#query_area').val()) {
+				if(! jQuery('.waymark-input-query_area').val()) {
 					console.log('No area!');
 					
 					return false;
 				}
 
 				//Ensure we have the data we need
-				if(! jQuery('#query_area').val()) {
+				if(! jQuery('.waymark-input-query_area').val()) {
 					console.log('No area!');
 					
 					return false;
@@ -550,9 +550,34 @@ function waymark_setup_settings_nav() {
 	});
 }
 
+function waymark_setup_repeatable_parameters() {
+	jQuery('.waymark-repeatable-container').each(function() {
+		var container = jQuery(this);
+		
+		jQuery('.waymark-map_queries-add-container', container).hide();
+
+		var add_button = jQuery('<button />')
+			.html('<i class="ion ion-plus"></i>')
+			.addClass('button waymark-add')
+			.on('click', function(e) {
+				e.preventDefault();
+		
+				jQuery('.waymark-map_queries-add-container', container).slideDown();
+				
+				jQuery(this).remove();
+				
+				return false;
+			})
+		;
+		
+		container.append(add_button);				
+	});
+}
+
 jQuery(document).ready(function() {
 	waymark_setup_settings_nav();
 	waymark_setup_repeatable_settings();
+	waymark_setup_repeatable_parameters();
 	waymark_setup_marker_tab();
 	waymark_setup_colour_pickers();
 	waymark_setup_external_links();
