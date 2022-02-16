@@ -2,7 +2,7 @@ function waymark_setup_colour_pickers() {
 	jQuery('.waymark-colour-picker .waymark-input').wpColorPicker();	
 }
 
-function waymark_setup_repeatable_sections() {	
+function waymark_setup_repeatable_settings() {	
 	//Each container
 	jQuery('.waymark-settings-tab .waymark-repeatable').each(function() {
 		var container = jQuery(this);
@@ -544,7 +544,7 @@ function waymark_setup_settings_nav() {
 
 jQuery(document).ready(function() {
 	waymark_setup_settings_nav();
-	waymark_setup_repeatable_sections();
+	waymark_setup_repeatable_settings();
 	waymark_setup_marker_tab();
 	waymark_setup_colour_pickers();
 	waymark_setup_external_links();

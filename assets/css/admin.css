@@ -140,22 +140,26 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 }
 /*
 	==================================
+	============== FORMS =============
+	==================================
+*/
+.waymark-form.waymark-repeatable {
+  border: 1px dotted pink;
+  background: pink;
+  border-radius: 15px;
+}
+/*
+	==================================
 	============= QUERIES ============
 	==================================
 */
-.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container {
-  display: none;
-}
-.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container {
-  display: none;
-}
-.waymark-query-form .waymark-parameters-container .waymark-control-group {
+.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group {
   padding: 5px 15px;
 }
-.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container {
+.waymark-form.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker #query_cast_line_type-container {
   display: none;
 }
-.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container {
+.waymark-form.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line #query_cast_marker_type-container {
   display: none;
 }
 /*

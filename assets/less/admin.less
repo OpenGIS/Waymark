@@ -61,25 +61,26 @@ div.postbox {
 
 /*
 	==================================
+	============== FORMS =============
+	==================================
+*/
+
+.waymark-form {
+	//Repeatables
+	&.waymark-repeatable {
+		border: 1px dotted pink;
+		background: pink;
+		border-radius: 15px;
+	}					
+}
+
+/*
+	==================================
 	============= QUERIES ============
 	==================================
 */
 
-.waymark-query-form {
-	.waymark-parameters-container {
-		&.waymark-dropdown-query_cast_overlay-marker {
-			#query_cast_line_type-container {
-				display: none;
-			}
-		}
-		&.waymark-dropdown-query_cast_overlay-line {
-			#query_cast_marker_type-container {
-				display: none;
-			}
-		}
-	}				
-}
-.waymark-query-form {
+.waymark-form.waymark-query-form {
 	.waymark-parameters-container {
 		.waymark-control-group {
 			padding: 5px 15px;
@@ -94,9 +95,8 @@ div.postbox {
 				display: none;
 			}
 		}
-	}				
+	}					
 }
-
 
 /*
 	==================================

@@ -54,7 +54,8 @@ class Waymark_Query extends Waymark_Class {
 		$this->inputs['query_area'] = array(
 			'id' => 'query_area',
 			'type' => 'text',				
-			'title' => 'Query Area',
+ 			'group' => 'test1',
+ 			'title' => 'Query Area',
 //			'class' => 'waymark-hidden',
 			'default' => null,
 		);
@@ -64,7 +65,7 @@ class Waymark_Query extends Waymark_Class {
 			'type' => 'textarea',				
 			'tip' => 'OverpassQL Query.',
 			'tip_link' => 'https://osm-queries.ldodds.com/tutorial/',				
-// 			'group' => 'test1',
+ 			'group' => 'test1',
 			'title' => 'Overpass QL Query',
 			'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass_request'),
 			'output_processing' => array(
@@ -76,7 +77,7 @@ class Waymark_Query extends Waymark_Class {
 			'id' => 'query_cast_overlay',
 			'type' => 'select',				
 			'tip' => 'Marker/Line/Shape',
-// 			'group' => 'test1',
+ 			'group' => 'test1',
 			'title' => 'Overlay Type',
 			'default' => Waymark_Config::get_setting('query', 'defaults', 'query_cast_overlay'),
 			'options' => [
@@ -91,7 +92,7 @@ class Waymark_Query extends Waymark_Class {
 			'id' => 'query_cast_marker_type',
 			'type' => 'select',				
 			'tip' => 'Cast to Type',
-// 			'group' => 'test2',
+ 			'group' => 'test2',
 			'title' => 'Marker Type',
 			'default' => $default_marker_type,
 			'options' => Waymark_Helper::get_object_types('marker', 'marker_title', true)
@@ -102,7 +103,7 @@ class Waymark_Query extends Waymark_Class {
 			'id' => 'query_cast_line_type',
 			'type' => 'select',				
 			'tip' => 'Cast to Type',
-// 			'group' => 'test2',
+ 			'group' => 'test2',
 			'title' => 'Line Type',
 			'default' => $default_line_type,
 			'options' => Waymark_Helper::get_object_types('line', 'line_title', true)
@@ -189,7 +190,7 @@ class Waymark_Query extends Waymark_Class {
 			$form_type = 'edit';		
 		}
 
-		$out = '<div class="waymark-query-tax-form waymark-query-form waymark-query-' . $form_type . ' waymark-self-clear">' . "\n";
+		$out = '<div class="waymark-form waymark-query-form waymark-tax-query waymark-query-' . $form_type . ' waymark-self-clear">' . "\n";
 		
 		//Add
 		if(sizeof($data)) {
@@ -205,15 +206,9 @@ class Waymark_Query extends Waymark_Class {
 	}
 
 	function create_map_form($data = []) {
-		$out = '<div class="waymark-query-map-form waymark-query-form waymark-self-clear">' . "\n";
+		$out = '<div class="waymark-form waymark-query-form waymark-map-query waymark-repeatable waymark-self-clear">' . "\n";
 		
-		//Add
-		if(sizeof($data)) {
-			$out .= Waymark_Input::create_parameter_groups($this->inputs, $this->input_groups, $data, null, '', 'waymark-repeatable');				
-		//Edit
-		} else {
-			$out .= Waymark_Input::create_parameter_groups($this->inputs, $this->input_groups, [], null, '', 'waymark-repeatable');
-		}
+		$out .= Waymark_Input::create_parameter_groups($this->inputs, $this->input_groups, $data);				
 
 		$out .= '</div>' . "\n";
 
