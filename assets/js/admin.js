@@ -18,7 +18,7 @@ function waymark_setup_repeatable_settings() {
 			jQuery('.waymark-input', form).each(function() {
 				var input = jQuery(this);
 				//Copy ID to class
-				input.addClass('waymark-' + input.attr('id'));
+				input.addClass('waymark-' + input.data('id'));
 
 				//Get values
 				if(input.get(0).nodeName != 'SELECT') {
@@ -38,7 +38,7 @@ function waymark_setup_repeatable_settings() {
 					if(typeof clones[i] !== 'object') {
 						clones[i] = {};						
 					}
-					clones[i][input.attr('id')] = values[i];
+					clones[i][input.data('id')] = values[i];
 				}				
 			});
 						
@@ -49,7 +49,8 @@ function waymark_setup_repeatable_settings() {
 				//Create input
 				for(j in clones[i]) {
 					var set_value = clones[i][j];
-					var input = jQuery('#' + j, clone);
+					
+					var input = jQuery('.waymark-input-' + j, clone);
 					input.attr('name', input.attr('name') + '[' + i + ']');
 					
 					//This is a Select without a valid option
@@ -117,7 +118,7 @@ function waymark_setup_repeatable_settings() {
 							input.val('');						
 						}
 
-						switch(input.attr('id')) {
+						switch(input.data('id')) {
 							case 'line_colour' :
 							case 'shape_colour' :
 							case 'icon_colour' :
@@ -148,6 +149,13 @@ function waymark_setup_repeatable_settings() {
 			//form.wrap(container);
 			container.sortable();
 		});
+	});
+}
+
+function waymark_setup_repeatable_forms() {	
+	//Each container
+	jQuery('.waymark-form.waymark-repeatable').each(function() {
+
 	});
 }
 
@@ -339,7 +347,7 @@ function waymark_setup_dropdowns() {
 		
 		jQuery('select', container).each(function() {
 			//Prefix
-			var class_string = 'waymark-dropdown-' + jQuery(this).attr('id') + '-';			
+			var class_string = 'waymark-dropdown-' + jQuery(this).data('id') + '-';			
 
 			//Add new
 			class_string += jQuery(this).val();
@@ -348,7 +356,7 @@ function waymark_setup_dropdowns() {
 			//On Change
 			jQuery(this).on('change', function() {			
 				//Prefix
-				var class_string = 'waymark-dropdown-' + jQuery(this).attr('id') + '-';			
+				var class_string = 'waymark-dropdown-' + jQuery(this).data('id') + '-';			
 				
 				//Remove old
 				jQuery('option', jQuery(this)).each(function() {
@@ -403,7 +411,7 @@ function waymark_setup_query() {
 
 				//Request Data
 				jQuery('.waymark-input', container).each(function() {
-					var input_id = jQuery(this).attr('id');
+					var input_id = jQuery(this).data('id');
 					var input_value = jQuery(this).val();
 				
 					switch(input_id) {
@@ -427,7 +435,7 @@ function waymark_setup_query() {
 					}
 					
 					//Add data to form
-					form_data.append(jQuery(this).attr('id'), jQuery(this).val());
+					form_data.append(jQuery(this).data('id'), jQuery(this).val());
 				});
 
 				jQuery.ajax({

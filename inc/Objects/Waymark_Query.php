@@ -208,7 +208,7 @@ class Waymark_Query extends Waymark_Class {
 	function create_map_form($data = []) {
 		$out = '<div class="waymark-form waymark-query-form waymark-map-query waymark-repeatable waymark-self-clear">' . "\n";
 		
-		$out .= Waymark_Input::create_parameter_groups($this->inputs, $this->input_groups, $data);				
+		$out .= Waymark_Input::create_repeatable_parameter_groups('map_queries', $this->inputs, $this->input_groups, $data);				
 
 		$out .= '</div>' . "\n";
 
