@@ -153,8 +153,22 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 	============= QUERIES ============
 	==================================
 */
+.waymark-form.waymark-query-form .waymark-parameters-container {
+  display: grid;
+  grid-template-columns: 20% 40% 20% 20%;
+  background: grey;
+}
 .waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group {
-  padding: 5px 15px;
+  margin: 0;
+  padding: 0;
+  background: blue;
+  height: inherit;
+}
+.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group .waymark-control-label {
+  display: none;
+}
+.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group .waymark-controls {
+  background: green;
 }
 .waymark-form.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker .query_cast_line_type-container {
   display: none;

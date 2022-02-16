@@ -82,8 +82,21 @@ div.postbox {
 
 .waymark-form.waymark-query-form {
 	.waymark-parameters-container {
+		display: grid;
+	  grid-template-columns: 20% 40% 20% 20%;		
+		background: grey;
+// 		height: 60px;
 		.waymark-control-group {
-			padding: 5px 15px;
+			margin: 0;
+			padding: 0;
+			background: blue;
+			height: inherit;
+			.waymark-control-label {
+				display: none;
+			}
+			.waymark-controls {
+				background: green;			
+			}			
 		}
 		&.waymark-dropdown-query_cast_overlay-marker {
 			.query_cast_line_type-container {

@@ -14,12 +14,12 @@ class Waymark_Query extends Waymark_Class {
 	
 	private $inputs = [];
 	private $input_groups = [
-		'test1' => [
-			'group_title' => 'Test 1',
-		],
-		'test2' => [
-			'group_title' => 'Test 2',
-		]
+// 		'test1' => [
+// 			'group_title' => 'Test 1',
+// 		],
+// 		'test2' => [
+// 			'group_title' => 'Test 2',
+// 		]
 	];	
 	
 	function __construct($params_in = []) {
@@ -47,16 +47,14 @@ class Waymark_Query extends Waymark_Class {
 				'around' => __('Around', 'waymark')
 			],
 			'title' => 'Query Area Type',
-//			'class' => 'waymark-hidden',
 			'default' => null,
 		);
 
 		$this->inputs['query_area'] = array(
 			'id' => 'query_area',
 			'type' => 'text',				
- 			'group' => 'test1',
  			'title' => 'Query Area',
-//			'class' => 'waymark-hidden',
+			'class' => 'waymark-hidden',
 			'default' => null,
 		);
 		
@@ -65,7 +63,6 @@ class Waymark_Query extends Waymark_Class {
 			'type' => 'textarea',				
 			'tip' => 'OverpassQL Query.',
 			'tip_link' => 'https://osm-queries.ldodds.com/tutorial/',				
- 			'group' => 'test1',
 			'title' => 'Overpass QL Query',
 			'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass_request'),
 			'output_processing' => array(
@@ -77,7 +74,6 @@ class Waymark_Query extends Waymark_Class {
 			'id' => 'query_cast_overlay',
 			'type' => 'select',				
 			'tip' => 'Marker/Line/Shape',
- 			'group' => 'test1',
 			'title' => 'Overlay Type',
 			'default' => Waymark_Config::get_setting('query', 'defaults', 'query_cast_overlay'),
 			'options' => [
@@ -92,7 +88,6 @@ class Waymark_Query extends Waymark_Class {
 			'id' => 'query_cast_marker_type',
 			'type' => 'select',				
 			'tip' => 'Cast to Type',
- 			'group' => 'test2',
 			'title' => 'Marker Type',
 			'default' => $default_marker_type,
 			'options' => Waymark_Helper::get_object_types('marker', 'marker_title', true)
@@ -103,7 +98,6 @@ class Waymark_Query extends Waymark_Class {
 			'id' => 'query_cast_line_type',
 			'type' => 'select',				
 			'tip' => 'Cast to Type',
- 			'group' => 'test2',
 			'title' => 'Line Type',
 			'default' => $default_line_type,
 			'options' => Waymark_Helper::get_object_types('line', 'line_title', true)
