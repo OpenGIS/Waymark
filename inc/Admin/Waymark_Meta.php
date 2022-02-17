@@ -60,7 +60,22 @@ class Waymark_Meta {
 					$Map->set_data($_POST);				
 					$Map->save_meta($post->ID);
 					
-					Waymark_Helper::debug($_POST);
+					//Queries?
+					if(isset($_POST['map_queries']) && is_array($_POST['map_queries'])) {
+						$map_queries = $_POST['map_queries'];
+						
+						foreach($map_queries as &$query) {
+							//Strip newlines
+							$query['query_overpass_request'] = preg_replace('~[\r\n]+~', '', $query['query_overpass_request']);
+						}
+
+	//					$string = preg_replace('~[\r\n]+~', '', $query['query_overpass_request']);
+
+
+//	 					Waymark_Helper::debug($map_queries);
+
+						update_post_meta($post->ID, 'waymark_map_queries', json_encode($map_queries));
+					}
 					
 					break;			
 				
@@ -122,16 +137,14 @@ class Waymark_Meta {
 	
 	function map_queries_content() {
 		global $post;
-		
-		$query_data = [];
-		
-		$post_meta = Waymark_Helper::flatten_meta(get_post_meta($post->ID));
-		if(array_key_exists('waymark_map_data_bounds', $post_meta)) {
-			$query_data['query_area']	= $post_meta['waymark_map_data_bounds'];
+
+		$map_queries = json_decode(get_post_meta($post->ID, 'waymark_map_queries', true), null, 512,  JSON_OBJECT_AS_ARRAY);
+		if(! $map_queries) {
+			$map_queries = [];
 		}
-		
+				
 		$Query = new Waymark_Query();
-		$Query->create_map_form($query_data);
+		$Query->create_map_form($map_queries);	
 	}
 
 	/**
@@ -182,12 +195,14 @@ class Waymark_Meta {
 // 		Waymark_Helper::debug($Map);
 
 		//Queries data?
-		foreach($Map->Queries as $Query) {
-			if($query_data = $Query->get_parameter('query_data')) {
-				$Waymark_JS->load_json($query_data, 'query_data');								
+		if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
+			foreach($Map->Queries as $Query) {
+				if($query_data = $Query->get_parameter('query_data')) {
+					$Waymark_JS->load_json($query_data, 'query_data');								
+				}
 			}
 		}
-
+		
 		echo '<p>' . sprintf(__('You can manage Meta fields in <a href="%s">Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')) . '</p>';		
 	}
 

@@ -270,7 +270,7 @@ class Waymark_Input {
 
 	static function create_repeatable_parameter_groups($name = 'repeatable', $fields, $groups = [], $repeatable_data = []) {
 		$out = '';
-		$i = 0;
+		$count = 0;
 
 		$out = '<!-- START Repeatable Container -->' . "\n";
 		$out .= '<div class="waymark-repeatable-container">' . "\n";
@@ -281,15 +281,15 @@ class Waymark_Input {
 			$out .= self::create_parameter_groups($fields, $groups, [], $name . '[0][%s]');
 		//Populate
 		} else {
-			for($i = 0; $i < sizeof($repeatable_data); $i++) {
-				$data = $repeatable_data[$i];
+			foreach($repeatable_data as $data) {
+				$out .= self::create_parameter_groups($fields, $groups, $data, $name . '[' . $count . '][%s]');			
 				
-				$out .= self::create_parameter_groups($fields, $groups, [], $name . '[' . $i . '][%s]', $data);			
+				$count++;
 			}		
 		}		
 
 		//Add
-		$out .= self::create_parameter_groups($fields, $groups, [], $name . '[' . ++$i . '][%s]', '', 'waymark-' . $name . '-add-container');			
+		$out .= self::create_parameter_groups($fields, $groups, [], $name . '[' . $count . '][%s]', '', 'waymark-' . $name . '-add-container');			
 
 		$out .= '</div>' . "\n";
 		$out .= '<!-- END Repeatable Container -->' . "\n";
