@@ -35,7 +35,8 @@ class Waymark_Map extends Waymark_Object {
 				
 		//If we have Map Meta
 		$map_meta = Waymark_Config::get_item('meta', 'inputs', true);
-		if($map_meta && sizeof($map_meta)) {
+		//!!!
+		if(false && $map_meta && sizeof($map_meta)) {
 		
 			foreach($map_meta as $meta) {
 				$meta_key = Waymark_Helper::make_key($meta['meta_title'], 'map');

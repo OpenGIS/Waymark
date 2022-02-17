@@ -156,7 +156,7 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 .waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container {
   padding: 0;
   display: grid;
-  grid-template-columns: 20% 40% 20% 20%;
+  grid-template-columns: 20% 30% 20% 20% 10%;
 }
 .waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group {
   margin: 0;
@@ -170,15 +170,6 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 }
 .waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-input {
   max-height: 32px;
-}
-.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active {
-  height: 120px;
-}
-.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .query_overpass_request-container {
-  max-height: unset !important;
-}
-.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .query_overpass_request-container .waymark-input {
-  max-height: unset !important;
 }
 .waymark-form.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker .query_cast_line_type-container {
   display: none;

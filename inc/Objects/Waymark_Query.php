@@ -54,7 +54,7 @@ class Waymark_Query extends Waymark_Class {
 			'id' => 'query_area',
 			'type' => 'text',				
  			'title' => 'Query Area',
-// 			'class' => 'waymark-hidden',
+ 			'class' => 'waymark-hidden',
 			'default' => null,
 		);
 		

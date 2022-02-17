@@ -375,44 +375,59 @@ function waymark_setup_query_map() {
 	jQuery('.waymark-query-form.waymark-map-query').each(function() {
 		console.log('waymark_setup_query_map');
 
-		var container = jQuery(this);
+		var form_container = jQuery(this);
 		
-		//Expand
-		jQuery('.waymark-parameters-container', container).each(function() {
+		//Each Query
+		jQuery('.waymark-parameters-container', form_container).each(function() {
+			var query_container = jQuery(this);
+			
+			//Expand on hover
 			jQuery(this).hover(
 				function() {
-					waymark_execute_query(jQuery(this));	
-				
 					jQuery(this).addClass('waymark-active');
 				},
 				function() {
 					jQuery(this).removeClass('waymark-active');		
 				}		
 			);
-		});
 
 		//Iterate inputs
-		jQuery('.waymark-parameters-container .waymark-input', container).each(function() {
-			var input = jQuery(this);
-			
-			switch(input.data('id')) {
-				case 'query_area' :
-// 					var waymark_container = jQuery('.waymark-instance').first();
-// 					var Waymark_Instance = waymark_container.data('Waymark');
+// 		jQuery('.waymark-parameters-container .waymark-input', container).each(function() {
+// 			var input = jQuery(this);
+// 			
+// 			switch(input.data('id')) {
+// 				case 'query_area' :
+// // 					var waymark_container = jQuery('.waymark-instance').first();
+// // 					var Waymark_Instance = waymark_container.data('Waymark');
+// // 					
+// // 					console.log(waymark_container);
 // 					
-// 					console.log(waymark_container);
-					
-					break;
-			}
-		
-			//Change
-			jQuery(this).change(function() {
-				waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
-			});
-		});
+// 					break;
+// 			}
+// 		
+// 			//Change
+// 			jQuery(this).change(function() {
+// 				waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
+// 			});
+// 		});
 
-		//Initial
-		jQuery('.waymark-input', container).first().trigger('change');		
+			//Update
+			var button = jQuery('<button />')
+				.html('<i class="ion-android-refresh"></i>')
+				.attr({})
+				.on('click', function(e) {
+					e.preventDefault();
+				
+					waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
+				
+					return false;
+				})
+			;
+			query_container.append(button);
+
+			//Initial
+			button.trigger('click');	
+		});			
 	});
 }
 
@@ -541,10 +556,12 @@ function waymark_execute_query(container) {
 					Waymark_Instance.query_data.eachLayer(function(layer) {
 						Waymark_Instance.map.removeLayer(layer);			
 					});											
+					Waymark_Instance.query_data.clearLayers();			
+				//Viewer
 				} else {
-					Waymark_Instance.map_data.eachLayer(function(layer) {
-						Waymark_Instance.map.removeLayer(layer);			
-					});																	
+// 					Waymark_Instance.map_data.eachLayer(function(layer) {
+// 						Waymark_Instance.map.removeLayer(layer);			
+// 					});																	
 				}
 				
 				if(response.features.length) {
