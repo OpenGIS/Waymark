@@ -572,6 +572,16 @@ function waymark_setup_repeatable_parameters() {
 		
 		container.append(add_button);				
 	});
+	
+	//Expand
+	jQuery('.waymark-input-query_overpass_request').hover(
+		function() {
+			jQuery(this).addClass('waymark-active');
+		},
+		function() {
+			jQuery(this).removeClass('waymark-active');		
+		}		
+	);
 }
 
 jQuery(document).ready(function() {

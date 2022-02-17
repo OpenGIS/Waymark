@@ -82,20 +82,35 @@ div.postbox {
 
 .waymark-form.waymark-query-form {
 	.waymark-parameters-container {
+		padding: 0;
 		display: grid;
 	  grid-template-columns: 20% 40% 20% 20%;		
 		background: grey;
-// 		height: 60px;
 		.waymark-control-group {
 			margin: 0;
 			padding: 0;
 			background: blue;
-			height: inherit;
 			.waymark-control-label {
 				display: none;
-			}
+			}		
 			.waymark-controls {
-				background: green;			
+				background: green;		
+				max-height: 40px;	
+				.waymark-tooltip {
+					display: none;
+				}
+				.waymark-input {
+					max-height: 32px;
+					z-index: 0;
+					&.waymark-input-query_overpass_request {
+						&.waymark-active {
+							position: fixed;
+							width: 200px;
+							z-index: +1000;
+							max-height: unset;
+						}		
+					}
+				}
 			}			
 		}
 		&.waymark-dropdown-query_cast_overlay-marker {
