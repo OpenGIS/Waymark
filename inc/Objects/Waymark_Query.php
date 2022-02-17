@@ -42,9 +42,9 @@ class Waymark_Query extends Waymark_Class {
 			'id' => 'query_area_type',
 			'type' => 'select',
 			'options' => [
-				'data_bounds' => __('Data Bounds', 'waymark'),
-				'polygon' => __('Polygon', 'waymark'),				
-				'around' => __('Around', 'waymark')
+				'bounds' => __('Bounds', 'waymark'),
+//				'polygon' => __('Polygon', 'waymark'),				
+//				'around' => __('Around', 'waymark')
 			],
 			'title' => 'Query Area Type',
 			'default' => null,
@@ -54,7 +54,7 @@ class Waymark_Query extends Waymark_Class {
 			'id' => 'query_area',
 			'type' => 'text',				
  			'title' => 'Query Area',
-			'class' => 'waymark-hidden',
+// 			'class' => 'waymark-hidden',
 			'default' => null,
 		);
 		

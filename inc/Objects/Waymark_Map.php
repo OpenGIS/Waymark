@@ -30,7 +30,7 @@ class Waymark_Map extends Waymark_Object {
 //			'tip' => '',
 			'group' => '',
 			'title' => 'Map Data Bounds',
-		'class' => 'waymark-hidden'
+			'class' => 'waymark-hidden'
 		);
 				
 		//If we have Map Meta

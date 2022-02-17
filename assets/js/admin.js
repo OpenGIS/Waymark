@@ -381,6 +381,8 @@ function waymark_setup_query_map() {
 		jQuery('.waymark-parameters-container', container).each(function() {
 			jQuery(this).hover(
 				function() {
+					waymark_execute_query(jQuery(this));	
+				
 					jQuery(this).addClass('waymark-active');
 				},
 				function() {
@@ -389,15 +391,28 @@ function waymark_setup_query_map() {
 			);
 		});
 
-		//Change
+		//Iterate inputs
 		jQuery('.waymark-parameters-container .waymark-input', container).each(function() {
+			var input = jQuery(this);
+			
+			switch(input.data('id')) {
+				case 'query_area' :
+// 					var waymark_container = jQuery('.waymark-instance').first();
+// 					var Waymark_Instance = waymark_container.data('Waymark');
+// 					
+// 					console.log(waymark_container);
+					
+					break;
+			}
+		
+			//Change
 			jQuery(this).change(function() {
 				waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
 			});
 		});
 
 		//Initial
-		jQuery('.waymark-input', container).trigger('change');		
+		jQuery('.waymark-input', container).first().trigger('change');		
 	});
 }
 
@@ -442,12 +457,13 @@ function waymark_execute_query(container) {
 	form_data.append('waymark_security', waymark_admin_js.security);			
 	form_data.append('action', 'waymark_get_query_data');			
 
-	//Request Data
-	jQuery('.waymark-input', container).each(function() {
-		var input_id = jQuery(this).data('id');
+	//Each input
+	var inputs = jQuery('.waymark-input', container);
+	inputs.each(function() {
+		var input = jQuery(this);
 		var input_value = jQuery(this).val();
 
-		switch(input_id) {
+		switch(input.data('id')) {
 			case 'query_overpass_request' :
 			
 				if(! input_value) {
@@ -457,11 +473,40 @@ function waymark_execute_query(container) {
 				}
 
 			case 'query_area' :
-			
-				if(! input_value) {
-					console.log('No Query Area');
 				
-					return false;
+				//No Query area?
+				if(! input_value) {
+					//Get Instance
+					var waymark_container = jQuery('.waymark-instance').first();
+					var Waymark_Instance = waymark_container.data('Waymark');				
+					
+					//Instance
+					if(Waymark_Instance) {
+						//Area type
+						switch(jQuery('.waymark-input-query_area_type', inputs).val()) {
+							//Bounds
+							default: 
+							case 'bounds' :
+								//Map Data?
+								if(Waymark_Instance.map_data.getLayers().length) {
+									console.log('//Use Map Data bounds');
+									input_value = Waymark_Instance.map_data.getBounds().toBBoxString();							
+								} else {
+									console.log('//Use Map View bounds');
+									input_value = Waymark_Instance.map.getBounds().toBBoxString();								
+								}
+								
+								//Update
+								jQuery(this).val(input_value);
+								
+								break;
+						}										
+					//No Instance
+					} else {		
+						console.log('No Query Area');
+						
+						return false;
+					}
 				}
 			
 				break;
@@ -470,6 +515,8 @@ function waymark_execute_query(container) {
 		//Add data to form
 		form_data.append(jQuery(this).data('id'), jQuery(this).val());
 	});
+	
+	console.log(form_data.values().length);
 	
 	//If we have data
 	if(form_data.entries.length) {
