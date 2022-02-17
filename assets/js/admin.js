@@ -372,116 +372,52 @@ function waymark_setup_dropdowns() {
 }
 
 function waymark_setup_query_map() {
-	//Both Add and Edit forms
 	jQuery('.waymark-query-form.waymark-map-query').each(function() {
 		console.log('waymark_setup_query_map');
+
+		var container = jQuery(this);
+		
+		//Expand
+		jQuery('.waymark-parameters-container', container).each(function() {
+			jQuery(this).hover(
+				function() {
+					jQuery(this).addClass('waymark-active');
+				},
+				function() {
+					jQuery(this).removeClass('waymark-active');		
+				}		
+			);
+		});
+
+		//Change
+		jQuery('.waymark-parameters-container .waymark-input', container).each(function() {
+			jQuery(this).change(function() {
+				waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
+			});
+		});
+
+		//Initial
+		jQuery('.waymark-input', container).trigger('change');		
 	});
 }
 
 function waymark_setup_query_tax() {
 	//Both Add and Edit forms
 	jQuery('.waymark-query-form.waymark-tax-query').each(function() {
+		console.log('waymark_setup_query_tax');
+	
 		//The form
 		var container = jQuery(this);
 	
-		var add_button = jQuery('#submit', container);
-		add_button.attr({
-			'disabled' : 'disabled'
+		//Change
+		jQuery('.waymark-parameters-container .waymark-input', container).each(function() {
+			jQuery(this).change(function() {
+				waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
+			});
 		});
-	
-		var preview_button = jQuery('<input />')
-			.attr({
-				'type' : 'button',
-				'value' : 'Preview Query',
-				'class' : 'button button-secondary'
-			})		
-			.on('click', function(e) {
-				e.preventDefault();
-				
-				//Ensure we have the data we need
-				if(! jQuery('.waymark-input-query_area').val()) {
-					console.log('No area!');
-					
-					return false;
-				}
-
-				//Ensure we have the data we need
-				if(! jQuery('.waymark-input-query_area').val()) {
-					console.log('No area!');
-					
-					return false;
-				}
-
-				var form_data = new FormData();
-				form_data.append('waymark_security', waymark_admin_js.security);			
-				form_data.append('action', 'waymark_get_query_data');			
-
-				//Request Data
-				jQuery('.waymark-input', container).each(function() {
-					var input_id = jQuery(this).data('id');
-					var input_value = jQuery(this).val();
-				
-					switch(input_id) {
-						case 'query_overpass_request' :
-							
-							if(! input_value) {
-								Waymark.debug('No Overpass Query');
-								
-								return false;
-							}
-
-						case 'query_area' :
-							
-							if(! input_value) {
-								Waymark.debug('No Query Area');
-								
-								return false;
-							}
-							
-							break;
-					}
-					
-					//Add data to form
-					form_data.append(jQuery(this).data('id'), jQuery(this).val());
-				});
-
-				jQuery.ajax({
-					type: "POST",
-					url: waymark_admin_js.ajaxurl,
-					data: form_data,
-					dataType: 'json',
-					processData: false,
-					contentType: false,
-					success: function(response) {				
-// 						Waymark.debug(response);						
-
-						var waymark_container = jQuery('.waymark-instance').first();
-						var Waymark_Instance = waymark_container.data('Waymark');
-
-						//Editor
-						if(waymark_container.hasClass('waymark-editor')) {
-							Waymark_Instance.query_data.eachLayer(function(layer) {
-								Waymark_Instance.map.removeLayer(layer);			
-							});											
-						} else {
-							Waymark_Instance.map_data.eachLayer(function(layer) {
-								Waymark_Instance.map.removeLayer(layer);			
-							});																	
-						}
-
-						Waymark_Instance.load_json(response);		
-
-						add_button.attr({
-							'disabled' : null
-						});							
-					}
-				});			
 		
-				return false;
-			})
-			.trigger('click')
-		;
-		container.append(preview_button);
+		//Initial
+		jQuery('.waymark-input', container).trigger('change');
 	});
 	//Prettify JSON and output to console
 // 	jQuery('#waymark_query_meta textarea#query_overpass_response, #waymark_query_meta textarea#query_data').each(function() {
@@ -498,6 +434,74 @@ function waymark_setup_query_tax() {
 // 		
 // 		}
 // 	});
+}
+
+function waymark_execute_query(container) {
+
+	var form_data = new FormData();
+	form_data.append('waymark_security', waymark_admin_js.security);			
+	form_data.append('action', 'waymark_get_query_data');			
+
+	//Request Data
+	jQuery('.waymark-input', container).each(function() {
+		var input_id = jQuery(this).data('id');
+		var input_value = jQuery(this).val();
+
+		switch(input_id) {
+			case 'query_overpass_request' :
+			
+				if(! input_value) {
+					console.log('No Overpass Query');
+				
+					return false;
+				}
+
+			case 'query_area' :
+			
+				if(! input_value) {
+					console.log('No Query Area');
+				
+					return false;
+				}
+			
+				break;
+		}
+	
+		//Add data to form
+		form_data.append(jQuery(this).data('id'), jQuery(this).val());
+	});
+	
+	//If we have data
+	if(form_data.entries.length) {
+		//Do request
+		jQuery.ajax({
+			type: "POST",
+			url: waymark_admin_js.ajaxurl,
+			data: form_data,
+			dataType: 'json',
+			processData: false,
+			contentType: false,
+			success: function(response) {				
+		// 						Waymark.debug(response);						
+
+				var waymark_container = jQuery('.waymark-instance').first();
+				var Waymark_Instance = waymark_container.data('Waymark');
+
+				//Editor
+				if(waymark_container.hasClass('waymark-editor')) {
+					Waymark_Instance.query_data.eachLayer(function(layer) {
+						Waymark_Instance.map.removeLayer(layer);			
+					});											
+				} else {
+					Waymark_Instance.map_data.eachLayer(function(layer) {
+						Waymark_Instance.map.removeLayer(layer);			
+					});																	
+				}
+
+				Waymark_Instance.load_json(response);		
+			}
+		});			
+	}
 }
 
 function waymark_setup_settings_nav() {
@@ -579,16 +583,6 @@ function waymark_setup_repeatable_parameters() {
 		
 		container.append(add_button);				
 	});
-	
-	//Expand
-	jQuery('.waymark-input-query_overpass_request').hover(
-		function() {
-			jQuery(this).addClass('waymark-active');
-		},
-		function() {
-			jQuery(this).removeClass('waymark-active');		
-		}		
-	);
 }
 
 jQuery(document).ready(function() {

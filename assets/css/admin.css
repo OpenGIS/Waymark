@@ -157,32 +157,28 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
   padding: 0;
   display: grid;
   grid-template-columns: 20% 40% 20% 20%;
-  background: grey;
 }
 .waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group {
   margin: 0;
   padding: 0;
-  background: blue;
 }
 .waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-control-label {
   display: none;
-}
-.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-controls {
-  background: green;
-  max-height: 40px;
 }
 .waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-tooltip {
   display: none;
 }
 .waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-input {
   max-height: 32px;
-  z-index: 0;
 }
-.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-input.waymark-input-query_overpass_request.waymark-active {
-  position: fixed;
-  width: 200px;
-  z-index: 1000;
-  max-height: unset;
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active {
+  height: 120px;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .query_overpass_request-container {
+  max-height: unset !important;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .query_overpass_request-container .waymark-input {
+  max-height: unset !important;
 }
 .waymark-form.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker .query_cast_line_type-container {
   display: none;
