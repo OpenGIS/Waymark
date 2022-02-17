@@ -313,6 +313,16 @@ class Waymark_Shortcode {
 
 			$map_count++;
 		}
+		
+		// =====================================
+		// ================ MAPS ===============
+		// =====================================	
+		
+		foreach($Map->Queries as $Query) {
+			if($query_data = $Query->get_parameter('query_data')) {
+				$out .= 'waymark_viewer_' . $shortcode_hash . '.load_json(' . $query_data . ');' . "\n";														
+			}
+		}		
 
 		// =====================================
 		// =========== START MARKERS ===========

@@ -140,6 +140,86 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 }
 /*
 	==================================
+	============== FORMS =============
+	==================================
+*/
+.waymark-form.waymark-repeatable {
+  border: 1px dotted pink;
+  background: pink;
+  border-radius: 15px;
+}
+/*
+	==================================
+	============= QUERIES ============
+	==================================
+*/
+.waymark-form.waymark-query-form .waymark-parameters-container {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 20% 40% 20% 20%;
+  background: grey;
+}
+.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group {
+  margin: 0;
+  padding: 0;
+  background: blue;
+}
+.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group .waymark-control-label {
+  display: none;
+}
+.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group .waymark-controls {
+  background: green;
+  max-height: 40px;
+}
+.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-tooltip {
+  display: none;
+}
+.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-input {
+  max-height: 32px;
+  z-index: 0;
+}
+.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-input.waymark-input-query_overpass_request.waymark-active {
+  position: fixed;
+  width: 200px;
+  z-index: 1000;
+  max-height: unset;
+}
+.waymark-form.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker .query_cast_line_type-container {
+  display: none;
+}
+.waymark-form.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line .query_cast_marker_type-container {
+  display: none;
+}
+/*
+	==================================
+	=========== TAXONOMIES ===========
+	==================================
+*/
+.waymark-query-tax-container {
+  width: 100%;
+}
+.waymark-query-tax-container .waymark-query-tax-form {
+  width: 33%;
+  float: left;
+  margin-left: 1%;
+}
+.waymark-query-tax-container .waymark-query-tax-preview {
+  width: 66%;
+  float: left;
+}
+body.wp-admin.taxonomy-waymark_query.edit-tags-php #col-left,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php #col-right {
+  float: none;
+  width: 100%;
+}
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query .form-field.term-slug-wrap,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query .form-field.term-slug-wrap,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query .form-field.term-description-wrap,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query .form-field.term-description-wrap {
+  display: none;
+}
+/*
+	==================================
 	============ MAP META ============
 	==================================
 */
@@ -355,14 +435,6 @@ div.widget-content div.waymark-parameters-container div.waymark-controls input[t
  * ============= SETTINGS =============
  * ====================================
  */
-body.waymark_page_waymark-settings h2.nav-tab-wrapper a {
-  font-size: 13px !important;
-  margin-left: 4px;
-}
-body.waymark_page_waymark-settings h2.nav-tab-wrapper a.nav-tab-active {
-  background: #fff;
-  border-bottom: 1px solid #fff;
-}
 body.waymark_page_waymark-settings div.waymark-settings-tab > small {
   display: block;
   margin-top: 20px;
@@ -404,45 +476,28 @@ body.waymark_page_waymark-settings div.waymark-settings-tab .wp-picker-container
 body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-misc .form-table {
   margin-bottom: 40px !important;
 }
-body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers #marker_icon-container .waymark-controls {
+body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers .marker_icon-container .waymark-controls {
   position: relative;
 }
-body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers #marker_icon-container .waymark-controls input {
+body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers .marker_icon-container .waymark-controls input {
   width: 175px;
 }
-body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers #marker_icon-container .waymark-controls i {
+body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers .marker_icon-container .waymark-controls i {
   height: 100%;
   vertical-align: middle;
   font-size: 26px;
 }
-body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers #marker_icon-container .waymark-icons-help {
+body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers .marker_icon-container .waymark-icons-help {
   display: inline-block;
   position: absolute;
   margin-top: -3px;
   margin-left: 5px;
   width: 88px;
 }
-body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers #marker_icon-container .waymark-icons-help a {
+body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers .marker_icon-container .waymark-icons-help a {
   display: inline-block;
   font-size: 10px;
   line-height: 1em;
-}
-body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-map {
-  /*
-			table.form-table:nth-child(odd) {
-				th[scope="row"] {
-					display: none;
-				}				
-			}
-*/
-}
-body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-map #user_config-container {
-  width: 480px;
-  overflow-x: scroll;
-}
-body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-map #user_config-container textarea {
-  font-size: 10px;
-  width: 2000px;
 }
 body.waymark_page_waymark-settings div.waymark-settings-tab div.waymark-settings-section-description {
   margin-bottom: 15px;
@@ -597,7 +652,7 @@ div#waymark-admin-container .waymark-settings-tab input[type="text"] {
 div#waymark-admin-container .waymark-settings-tab .waymark-short-input select,
 div#waymark-admin-container .waymark-settings-tab .waymark-short-input input[type="file"],
 div#waymark-admin-container .waymark-settings-tab .waymark-short-input input[type="text"] {
-  width: 80px;
+  width: 100px;
 }
 div#waymark-admin-container .waymark-settings-tab .waymark-controls .waymark-tooltip {
   margin-top: 2px;
