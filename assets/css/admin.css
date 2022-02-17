@@ -153,32 +153,32 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 	============= QUERIES ============
 	==================================
 */
-.waymark-form.waymark-query-form .waymark-parameters-container {
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container {
   padding: 0;
   display: grid;
   grid-template-columns: 20% 40% 20% 20%;
   background: grey;
 }
-.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group {
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group {
   margin: 0;
   padding: 0;
   background: blue;
 }
-.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group .waymark-control-label {
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-control-label {
   display: none;
 }
-.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group .waymark-controls {
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-controls {
   background: green;
   max-height: 40px;
 }
-.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-tooltip {
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-tooltip {
   display: none;
 }
-.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-input {
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-input {
   max-height: 32px;
   z-index: 0;
 }
-.waymark-form.waymark-query-form .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-input.waymark-input-query_overpass_request.waymark-active {
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-input.waymark-input-query_overpass_request.waymark-active {
   position: fixed;
   width: 200px;
   z-index: 1000;
