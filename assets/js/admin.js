@@ -371,9 +371,16 @@ function waymark_setup_dropdowns() {
 	});
 }
 
-function waymark_setup_query() {
+function waymark_setup_query_map() {
 	//Both Add and Edit forms
-	jQuery('.waymark-query-form').each(function() {
+	jQuery('.waymark-query-form.waymark-map-query').each(function() {
+		console.log('waymark_setup_query_map');
+	});
+}
+
+function waymark_setup_query_tax() {
+	//Both Add and Edit forms
+	jQuery('.waymark-query-form.waymark-tax-query').each(function() {
 		//The form
 		var container = jQuery(this);
 	
@@ -594,5 +601,6 @@ jQuery(document).ready(function() {
 	waymark_setup_select_meta_type();
 	waymark_setup_select_icon_type();
 	waymark_setup_dropdowns();
-	waymark_setup_query();	
+	waymark_setup_query_tax();	
+	waymark_setup_query_map();		
 });
