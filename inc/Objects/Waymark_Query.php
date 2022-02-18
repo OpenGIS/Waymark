@@ -116,6 +116,8 @@ class Waymark_Query extends Waymark_Class {
 			case 'query_overpass_request' :
 				//Strip newlines
 				$value = preg_replace('~[\r\n]+~', '', $value);				
+				//Strip slashes
+				$value = stripcslashes($value);				
 
 				break;
 		}

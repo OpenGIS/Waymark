@@ -65,8 +65,7 @@ class Waymark_Meta {
 						$map_queries = [];
 						
 						foreach($_POST['map_queries'] as $query_data) {
-
-
+							
 							$Query = new Waymark_Query($query_data);		
 							
 							if($Query->can_execute()) {
@@ -141,6 +140,8 @@ class Waymark_Meta {
 		if(! $map_queries) {
 			$map_queries = [];
 		}
+		
+		Waymark_Helper::debug($map_queries, 0);
 				
 		$Query = new Waymark_Query();
 		$Query->create_map_form($map_queries);	
