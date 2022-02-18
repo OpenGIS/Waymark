@@ -62,18 +62,17 @@ class Waymark_Meta {
 					
 					//Queries?
 					if(isset($_POST['map_queries']) && is_array($_POST['map_queries'])) {
-						$map_queries = $_POST['map_queries'];
+						$map_queries = [];
 						
-						foreach($map_queries as &$query) {
-							//Strip newlines
-							$query['query_overpass_request'] = preg_replace('~[\r\n]+~', '', $query['query_overpass_request']);
+						foreach($_POST['map_queries'] as $query_data) {
+
+
+							$Query = new Waymark_Query($query_data);		
+							
+							if($Query->can_execute()) {
+								$map_queries[] = $Query->get_parameters_json();
+							}							
 						}
-
-	//					$string = preg_replace('~[\r\n]+~', '', $query['query_overpass_request']);
-
-
-//	 					Waymark_Helper::debug($map_queries);
-
 						update_post_meta($post->ID, 'waymark_map_queries', json_encode($map_queries));
 					}
 					

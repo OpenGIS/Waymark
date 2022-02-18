@@ -289,7 +289,7 @@ class Waymark_Input {
 		}		
 
 		//Add
-		$out .= self::create_parameter_groups($fields, $groups, [], $name . '[' . $count . '][%s]', '', 'waymark-' . $name . '-add-container');			
+		$out .= self::create_parameter_groups($fields, $groups, [], $name . '[' . ++$count . '][%s]', '', 'waymark-' . $name . '-add-container');			
 
 		$out .= '</div>' . "\n";
 		$out .= '<!-- END Repeatable Container -->' . "\n";

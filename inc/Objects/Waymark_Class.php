@@ -32,6 +32,10 @@ class Waymark_Class {
 	}
 	
 	function set_parameter($key, $value) {
-		$this->parameters[$key] = $value;
+		$this->parameters[$key] = $this->process_param_in($key, $value);
 	}	
+
+	function process_param_in(string $key, string $value) {
+		return $value;
+	}
 }

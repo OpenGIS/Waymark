@@ -22,7 +22,7 @@ class Waymark_Query extends Waymark_Class {
 // 		]
 	];	
 	
-	function __construct($params_in = []) {
+	function __construct($params_in = [], $auto_execute = true) {
 		parent::__construct($params_in);
 
  		$marker_types = Waymark_Helper::get_object_types('marker', 'marker_title', true);
@@ -54,7 +54,7 @@ class Waymark_Query extends Waymark_Class {
 			'id' => 'query_area',
 			'type' => 'text',				
  			'title' => 'Query Area',
- 			'class' => 'waymark-hidden',
+// 			'class' => 'waymark-hidden',
 			'default' => null,
 		);
 		
@@ -104,9 +104,23 @@ class Waymark_Query extends Waymark_Class {
 		);
 		
 		//Execute?
-		if($this->can_execute()) {
+		if($auto_execute && $this->can_execute()) {
 			$this->do_execute();
 		}		
+	}	
+
+	
+	function process_param_in($key, $value) {
+		switch($key) {
+			//Request
+			case 'query_overpass_request' :
+				//Strip newlines
+				$value = preg_replace('~[\r\n]+~', '', $value);				
+
+				break;
+		}
+		
+		return $value;
 	}	
 
 	function can_execute() {
@@ -233,5 +247,9 @@ class Waymark_Query extends Waymark_Class {
 	
 	function get_inputs() {
 		return $this->inputs;
+	}
+		
+	function get_parameters_json() {
+		return json_encode($this->get_parameters());	
 	}
 }
