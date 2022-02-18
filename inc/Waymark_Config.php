@@ -103,7 +103,7 @@ class Waymark_Config {
 					'enable_single' => 0
 				),
 				'defaults' => array(
-					'query_area'=> '-52.648029327392585,47.505026,-52.605972,47.53435623467226',
+					'query_area_bounds'=> '-52.648029327392585,47.505026,-52.605972,47.53435623467226',
 					'query_overpass_request' => '[bbox:{{bbox}}];nwr["amenity"];out center;',
 					'query_cast_overlay' => 'marker',
 					'query_cast_marker_type' => null,

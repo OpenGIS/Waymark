@@ -19,7 +19,7 @@ class Waymark_Overpass_Request extends Waymark_Request {
 
 	function build_request_parameters(array $params_in) {
 		//Check for required data
-		if(! $this->get_config('query_area')) {
+		if(! $this->get_config('query_area_bounds')) {
 			return false;
 		}
 		
@@ -41,7 +41,7 @@ class Waymark_Overpass_Request extends Waymark_Request {
 					$overpass_query = preg_replace('/\n\s*\n/', "\n", $overpass_query);
 
 					//Convert from Leaflet to Overpass
-					$overpass_bounding_box = Waymark_Overpass::leaflet_bb_to_overpass_bb($this->get_config('query_area'));
+					$overpass_bounding_box = Waymark_Overpass::leaflet_bb_to_overpass_bb($this->get_config('query_area_bounds'));
 										
 					//Add to request			
 					$overpass_query = str_replace('{{bbox}}', $overpass_bounding_box, $overpass_query);

@@ -378,7 +378,7 @@ function waymark_setup_map_query() {
 			var input = jQuery(this);
 		
 			switch(input.data('id')) {
-				case 'query_area' :
+				case 'query_area_bounds' :
 					if(! input.val()) {
 						Waymark.debug('//No query_area provided');
 						
@@ -390,7 +390,6 @@ function waymark_setup_map_query() {
 							//Area type
 							switch(jQuery('.waymark-input-query_area_type', jQuery(this).parents('.waymark-parameters-container')).val()) {
 								//Bounds
-								default: 
 								case 'bounds' :
 									//Map Data?
 									if(Waymark_Instance.map_data.getLayers().length) {
@@ -422,6 +421,14 @@ function waymark_setup_map_query() {
 		jQuery('.waymark-parameters-container', form_container).each(function() {
 			var query_container = jQuery(this);
 			
+			var inputs = jQuery('.waymark-input', query_container);
+			inputs.each(function() {
+				jQuery(this).change(function() {
+					waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
+				});
+			});
+			inputs.last().trigger('change');
+			
 			//Expand on hover
 			jQuery(this).hover(
 				function() {
@@ -431,23 +438,6 @@ function waymark_setup_map_query() {
 					jQuery(this).removeClass('waymark-active');		
 				}		
 			);
-
-			//Update
-			var button = jQuery('<button />')
-				.html('<i class="ion-android-refresh"></i>')
-				.attr({})
-				.on('click', function(e) {
-					e.preventDefault();
-				
-					waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
-				
-					return false;
-				})
-			;
-			query_container.append(button);
-
-			//Initial
-			button.trigger('click');	
 		});			
 	});
 }
@@ -455,8 +445,6 @@ function waymark_setup_map_query() {
 function waymark_setup_tax_query() {
 	//Both Add and Edit forms
 	jQuery('.waymark-query-form.waymark-tax-query').each(function() {
-		console.log('waymark_setup_tax_query');
-	
 		//The form
 		var container = jQuery(this);
 	
@@ -512,7 +500,7 @@ function waymark_execute_query(container) {
 				
 				break;
 
-			case 'query_area' :
+			case 'query_area_bounds' :
 				
 				//Update
 				if(! input_value) {
@@ -635,33 +623,34 @@ function waymark_setup_repeatable_parameters() {
 		var template = jQuery('.waymark-repeatable-template', repeatable_container);
 		template.remove();
 		
-		var add_button = jQuery('<button />')
-			.html('<i class="ion ion-plus"></i>')
-			.addClass('button waymark-add')
-			.on('click', function(e) {
-				e.preventDefault();
-		
-				var clone = template.clone();
-				
-				//Update inputs
-				jQuery('.waymark-input', clone).each(function() {
-					var input = jQuery(this);
-				
-					input.attr('name', input.attr('name').replace('__count__', repeatable_count));
-				});				
+		var add_button = jQuery('.waymark-repeatable-add', repeatable_container).first();
+		add_button.on('click', function(e) {
+			e.preventDefault();
+	
+			var clone = template.clone();
+			
+			//Update inputs
+			jQuery('.waymark-input', clone).each(function() {
+				var input = jQuery(this);
+			
+				input.attr('name', input.attr('name').replace('__count__', repeatable_count));
+			});	
+
+			jQuery('.waymark-control-label', clone).each(function() {
+				var label = jQuery(this);
+			
+				label.attr('for', label.attr('for').replace('__count__', repeatable_count));
+			});							
 
 //				clone.attr('name', );
-				//Add		
-				add_button.before(clone);
-				
-				//Update count
-				repeatable_container.data('count', ++repeatable_count);
-				
-				return false;
-			})
-		;
-		
-		repeatable_container.append(add_button);				
+			//Add		
+			add_button.before(clone);
+			
+			//Update count
+			repeatable_container.data('count', ++repeatable_count);
+			
+			return false;
+		});
 	});
 }
 

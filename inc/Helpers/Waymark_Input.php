@@ -47,7 +47,7 @@ class Waymark_Input {
 		$out .= '<div class="waymark-control-group waymark-control-type-' . $field['type'] . $add_class . '">' . "\n";
 	
 		//Label
-		if($show_label) {
+		if($show_label && isset($field['title'])) {
 			$out .= '	<label class="waymark-control-label" for="' . $field['name'] . '">' . $field['title'] .  '</label>' . "\n";		
 		}
 		$out .= '	<div class="waymark-controls">' . "\n";				
@@ -288,6 +288,8 @@ class Waymark_Input {
 
 		//Template
 		$out .= self::create_parameter_groups($fields, $groups, [], $name . '[__count__][%s]', '', 'waymark-repeatable-template');			
+
+		$out .= '<button class="button waymark-repeatable-add" title="' . __('Add Query', 'waymark') . '"><i class="ion ion-plus"></i></button>';
 
 		$out .= '</div>' . "\n";
 		$out .= '<!-- END Repeatable Container -->' . "\n";

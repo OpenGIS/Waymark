@@ -75,7 +75,7 @@ class Waymark_Query_Taxonomy {
 		echo '	<div class="waymark-query-tax-form">';	
 		//Use default Query Area
 		$this->Query->create_tax_form([
-			'query_area' => Waymark_Config::get_setting('query', 'defaults', 'query_area')		
+			'query_area_bounds' => Waymark_Config::get_setting('query', 'defaults', 'query_area_bounds')		
 		]);
 		echo '	</div>';		
 
@@ -89,7 +89,7 @@ class Waymark_Query_Taxonomy {
 	function edit_form_append($term, $taxonomy) {
 		$query_meta = get_term_meta($term->term_id);
 		$query_meta = Waymark_Helper::flatten_meta($query_meta);
-		$query_meta['query_area'] = Waymark_Config::get_setting('query', 'defaults', 'query_area');
+		$query_meta['query_area_bounds'] = Waymark_Config::get_setting('query', 'defaults', 'query_area_bounds');
 		
 		echo '<div class="waymark-query-tax-container waymark-self-clear">';
 

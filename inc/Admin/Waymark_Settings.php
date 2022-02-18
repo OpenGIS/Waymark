@@ -769,12 +769,12 @@ class Waymark_Settings {
 					'title' => 'Defaults',
 //					'description' => 'Test test test.',
 					'fields' => array(	
-						'query_area' => array(
-							'name' => 'query_area',
-							'id' => 'query_area',
+						'query_area_bounds' => array(
+							'name' => 'query_area_bounds',
+							'id' => 'query_area_bounds',
 							'type' => 'textarea',
 							'title' => 'Area',
-							'default' => Waymark_Config::get_setting('query', 'defaults', 'query_area'),
+							'default' => Waymark_Config::get_setting('query', 'defaults', 'query_area_bounds'),
 // 							'prepend' => $this->Waymark_Instance->get_html()
 // 							'attributes' => array(
 // 							'style' => 'display:none'
@@ -1139,18 +1139,18 @@ class Waymark_Settings {
 				
 				case 'query' :
 					//Bounds
-					$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
+					$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area_bounds');
 					$query_area = explode(',', $query_area);
 
 					$this->Waymark_Instance = new Waymark_Instance(array_merge($instance_data, [
-						'hash' => 'query_area',
+						'hash' => 'query_area_bounds',
 						'init_bounds' => '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]',
-						'bb_selector' => 'query_area'					
+						'bb_selector' => 'query_area_bounds'					
 					]));
 					$this->Waymark_Instance->add_js();				
 					
 					//Add HTML
-					$this->tabs['query']['sections']['defaults']['fields']['query_area']['prepend'] = $this->Waymark_Instance->get_html();
+					$this->tabs['query']['sections']['defaults']['fields']['query_area_bounds']['prepend'] = $this->Waymark_Instance->get_html();
 					
 					break;
 

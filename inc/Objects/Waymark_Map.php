@@ -117,7 +117,7 @@ class Waymark_Map extends Waymark_Object {
 								
 					if(sizeof($query_meta)) {
 						$this->Queries[] = new Waymark_Query(array_merge($query_meta, [
-							'query_area' => $this->get_data_item('map_data_bounds')
+							'query_area_bounds' => $this->get_data_item('map_data_bounds')
 						]));
 					}		
 				}

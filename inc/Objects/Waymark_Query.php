@@ -3,9 +3,10 @@
 class Waymark_Query extends Waymark_Class {
 
 	protected $parameters = [
-		'query_area' => null,
+		'query_area_type' => null,
+		'query_area_bounds' => null,
+		'query_area_polygon' => null,
 		'query_overpass_request' => null,
-// 			'query_overpass_response' => null,
 		'query_cast_overlay' => null,
 		'query_cast_marker_type' => null,												
 		'query_cast_line_type' => null,
@@ -31,30 +32,29 @@ class Waymark_Query extends Waymark_Class {
 		$line_types = Waymark_Helper::get_object_types('line', 'line_title', true);
 		$default_line_type = array_keys($line_types)[0];
 		
-		//Area passed?
-// 		if($query_area) {
-// 			$default_query_area = $query_area;
-// 		} else {
-// 			$default_query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
-// 		}
-		
 		$this->inputs['query_area_type'] = array(
 			'id' => 'query_area_type',
 			'type' => 'select',
 			'options' => [
+				'polygon' => __('Polygon', 'waymark'),				
 				'bounds' => __('Bounds', 'waymark'),
-//				'polygon' => __('Polygon', 'waymark'),				
 //				'around' => __('Around', 'waymark')
 			],
 			'title' => 'Query Area Type',
+			'default' => 'bounds',
+		);
+
+		$this->inputs['query_area_polygon'] = array(
+			'id' => 'query_area_polygon',
+			'type' => 'text',				
+// 			'class' => 'waymark-hidden',
 			'default' => null,
 		);
 
-		$this->inputs['query_area'] = array(
-			'id' => 'query_area',
+		$this->inputs['query_area_bounds'] = array(
+			'id' => 'query_area_bounds',
 			'type' => 'text',				
- 			'title' => 'Query Area',
-			'class' => 'waymark-hidden',
+// 			'class' => 'waymark-hidden',
 			'default' => null,
 		);
 		
@@ -126,12 +126,46 @@ class Waymark_Query extends Waymark_Class {
 	}	
 
 	function can_execute() {
-		return 
-			(! empty($this->parameters['query_overpass_request']))
-			&&
-			(! empty($this->parameters['query_area']))
-		;
+		//No query?
+		if(empty($this->get_parameter('query_overpass_request'))) {
+			return false;
+		}
+		
+		//Valid Query Area
+		return is_array($this->get_query_area());
 	}	
+	
+	function get_query_area() {
+		switch($this->get_parameter('query_area_type')) {
+			//Bounds
+			case 'bounds' :
+				if(empty($this->get_parameter('query_area_bounds'))) {
+					return false;
+				} else {
+					return [
+						'type' => $this->get_parameter('query_area_type'),
+						'area' => $this->get_parameter('query_area_bounds')					
+					];				
+				}
+				
+				break;
+
+			//Polygon
+			case 'polygon' :
+				if(empty($this->get_parameter('query_area_polygon'))) {
+					return false;
+				} else {
+					return [
+						'type' => $this->get_parameter('query_area_type'),
+						'area' => $this->get_parameter('query_area_polygon')					
+					];				
+				}
+				
+				break;				
+		}
+		
+		return false;
+	}
 	
 	function do_execute() {
 		if(! $this->can_execute()) {
@@ -216,7 +250,7 @@ class Waymark_Query extends Waymark_Class {
 		];
 
 		//Bounds
-		$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area');
+		$query_area = Waymark_Config::get_setting('query', 'defaults', 'query_area_bounds');
 		$query_area = explode(',', $query_area);
 		$data['init_bounds'] = '[[' . $query_area[1] . ',' . $query_area[0] . '],[' . $query_area[3] . ',' . $query_area[2] . ']]';
 

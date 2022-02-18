@@ -249,7 +249,7 @@ class Waymark_AJAX {
 		header('Content-Type: text/javascript');
 		
 		$Query = new Waymark_Query(array_merge($_POST, [
-//			'query_area' => Waymark_Config::get_setting('query', 'defaults', 'query_area')
+//			'query_area_bounds' => Waymark_Config::get_setting('query', 'defaults', 'query_area_bounds')
 		]));
 		
 		if(! ($query_data = $Query->get_parameter('query_data'))) {
