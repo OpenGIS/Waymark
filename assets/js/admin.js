@@ -624,25 +624,39 @@ function waymark_setup_settings_nav() {
 
 function waymark_setup_repeatable_parameters() {
 	jQuery('.waymark-repeatable-container').each(function() {
-		var container = jQuery(this);
+		var repeatable_container = jQuery(this);
+		var repeatable_count = repeatable_container.data('count');
 		
-		jQuery('.waymark-map_queries-add-container', container).hide();
-
+		var template = jQuery('.waymark-repeatable-template', repeatable_container);
+		template.remove();
+		
 		var add_button = jQuery('<button />')
 			.html('<i class="ion ion-plus"></i>')
 			.addClass('button waymark-add')
 			.on('click', function(e) {
 				e.preventDefault();
 		
-				jQuery('.waymark-map_queries-add-container', container).slideDown();
+				var clone = template.clone();
 				
-				jQuery(this).remove();
+				//Update inputs
+				jQuery('.waymark-input', clone).each(function() {
+					var input = jQuery(this);
+				
+					input.attr('name', input.attr('name').replace('__count__', repeatable_count));
+				});				
+
+//				clone.attr('name', );
+				//Add		
+				add_button.before(clone);
+				
+				//Update count
+				repeatable_container.data('count', ++repeatable_count);
 				
 				return false;
 			})
 		;
 		
-		container.append(add_button);				
+		repeatable_container.append(add_button);				
 	});
 }
 

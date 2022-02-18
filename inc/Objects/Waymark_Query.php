@@ -54,7 +54,7 @@ class Waymark_Query extends Waymark_Class {
 			'id' => 'query_area',
 			'type' => 'text',				
  			'title' => 'Query Area',
-// 			'class' => 'waymark-hidden',
+			'class' => 'waymark-hidden',
 			'default' => null,
 		);
 		
@@ -251,7 +251,11 @@ class Waymark_Query extends Waymark_Class {
 		return $this->inputs;
 	}
 		
-	function get_parameters_json() {
-		return json_encode($this->get_parameters());	
+	function get_request_parameters() {
+		$parameters = $this->get_parameters();
+
+		unset($parameters['query_data']);
+		
+		return $parameters;	
 	}
 }

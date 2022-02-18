@@ -8582,14 +8582,14 @@ function Waymark_Map_Editor() {
 		Waymark = this;
 		
 		//Map Data	
-		var map_data_container = jQuery('#map_data');
+		var map_data_container = jQuery('.waymark-input-map_data').first();
 		var map_data_string = JSON.stringify(Waymark.map_data.toGeoJSON());
 
 		//Update custom field form
 		map_data_container.html(map_data_string);	
 
 		//Map Data Bound
-		var map_data_bounds_container = jQuery('#map_data_bounds');
+		var map_data_bounds_container = jQuery('.waymark-input-map_data_bounds').first();
 		if(map_data_bounds_container) {
 			var map_data_bounds = Waymark.map_data.getBounds();		
 			map_data_bounds_container.html(map_data_bounds.toBBoxString());	
