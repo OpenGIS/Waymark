@@ -175,23 +175,6 @@ class Waymark_Query extends Waymark_Class {
 				echo '</div>' . "\n";
 			}
 		}
-		
-
-
-
-
-		//Raw Output
-// 		if(array_key_exists('raw', $response)) {
-// 			$this->set_data_item('query_overpass_response', $response['raw']);
-// 		}
-
-
-
-//					Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $this->parameters['query_data'] . ', false);');											
-//				}
-//			}
-			//$this->save_meta();
-// 		}		
 	}
 	
 	function create_tax_form($data = []) {

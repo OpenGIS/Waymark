@@ -205,54 +205,5 @@ class Waymark_Meta {
 		
 		echo '<p>' . sprintf(__('You can manage Meta fields in <a href="%s">Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')) . '</p>';		
 	}
-
-	/**
-	 * ===========================================
-	 * ================= QUERY ===================
-	 * ===========================================
-	 */		
-
-// 	function get_query_form($post) {	
-// 		$data = Waymark_Helper::flatten_meta(get_post_meta($post->ID));
-// 								
-// 		//Create new Map object
-// 		Waymark_JS::add_call('var Waymark_Map_Viewer = window.Waymark_Map_Factory.viewer()');
-// 
-// 		//Default view
-// 		if($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
-// 			//We have a valid LatLng
-// 			if($default_latlng_array = Waymark_Helper::latlng_string_to_array($default_latlng)) {
-// 		 		Waymark_JS::add_call('Waymark_Map_Viewer.fallback_latlng = [' . $default_latlng_array[0] . ',' . $default_latlng_array[1] . ']');					
-// 			}
-// 		}
-// 		if($default_zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
-// 	 		Waymark_JS::add_call('Waymark_Map_Viewer.fallback_zoom = ' . $default_zoom);		
-// 		}
-// 
-// 		//Map Div
-// 		echo '<div id="waymark-map" class="waymark-map waymark-query"></div>' . "\n";
-// 		
-// 		//Output Config
-// 		Waymark_JS::add_call('var waymark_user_config = ' . json_encode(Waymark_Config::get_map_config()) . ';');				
-// 		Waymark_JS::add_call('waymark_user_config.map_height = 600;');	
-// 				
-// 		//Set basemap
-// 		if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
-// 			Waymark_JS::add_call('waymark_user_config.map_init_basemap = "' . $editor_basemap . '"');		
-// 		}
-// 
-// 		//Go!
-// 		Waymark_JS::add_call('Waymark_Map_Viewer.init(waymark_user_config)');
-// 
-// 		$Query = new Waymark_Query($post->ID);		
-// 
-// 		if($query_data = $Query->get_data_item('query_data')) {
-// 			Waymark_JS::add_call('Waymark_Map_Viewer.load_json(' . $query_data . ');');								
-// 		}
-// 
-// //		$Query->set_data($data);
-// 		$Query->set_input_type('meta');
-// 		echo $Query->create_tax_form();		
-// 	}
 }
 new Waymark_Meta;

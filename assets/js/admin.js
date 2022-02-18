@@ -488,7 +488,8 @@ function waymark_setup_tax_query() {
 }
 
 function waymark_execute_query(container) {
-
+	var request_data = {};
+	
 	var form_data = new FormData();
 	form_data.append('waymark_security', waymark_admin_js.security);			
 	form_data.append('action', 'waymark_get_query_data');			
@@ -526,6 +527,8 @@ function waymark_execute_query(container) {
 		//Add data to form
 		form_data.append(jQuery(this).data('id'), jQuery(this).val());
 		form_data_count++;
+
+		request_data[jQuery(this).data('id')] = jQuery(this).val();
 	});
 	
 	//If we have data
@@ -544,6 +547,7 @@ function waymark_execute_query(container) {
 				var waymark_container = jQuery('.waymark-instance').first();
 				var Waymark_Instance = waymark_container.data('Waymark');
 
+/*
 				//Editor
 				if(waymark_container.hasClass('waymark-editor')) {
 					Waymark_Instance.query_data.eachLayer(function(layer) {
@@ -556,9 +560,10 @@ function waymark_execute_query(container) {
 // 						Waymark_Instance.map.removeLayer(layer);			
 // 					});																	
 				}
+*/	
 				
 				if(response.features.length) {
-					Waymark_Instance.load_json(response, 'query_data');						
+					Waymark_Instance.load_query_json(JSON.stringify(request_data), response);						
 				}
 			}
 		});			

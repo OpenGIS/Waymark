@@ -1032,6 +1032,34 @@ function Waymark_Map_Editor() {
 			Waymark.message(waymark_js.lang.error_file_conversion, 'error');
 		}
 	}		
+
+	//Add Query GeoJSON
+	this.load_query_json = function(query_hash, query_json) {
+		Waymark = this;
+		
+		//console.log(query_hash);
+		
+		//Valid Data
+		if(typeof query_hash === 'string' && typeof query_json === 'object') {
+			//Create New Query data layer
+			Waymark.queries_data[query_hash] = Waymark_L.geoJSON(null, {
+				pointToLayer: function(feature, latlng) {
+					return Waymark.create_marker(latlng);
+				},
+				onEachFeature: function(feature, layer) {
+					Waymark.setup_query_data_feature(feature, layer);
+				}
+			});
+			
+			//Add JSON
+			Waymark.queries_data[query_hash].addData(query_json);		 	
+			
+			//Add to Map
+			Waymark.queries_data[query_hash].addTo(Waymark.map);
+			
+			//console.log(Waymark.queries_data[query_hash]);
+		} 		
+	}	
 	
 /*
 	==================================
@@ -1040,41 +1068,22 @@ function Waymark_Map_Editor() {
 */	
 
 	//Add GeoJSON to map	
-	this.load_json = function(json, data_layer = 'map_data') {
+	this.load_json = function(json) {
 		Waymark = this;
 	
 		//Valid Datd
 		if(typeof json === 'object') {
-			//By layer
-			switch(data_layer) {
-				case 'map_data' :
-					//Add JSON
-					Waymark.map_data.addData(json);		 	
+			//Add JSON
+			Waymark.map_data.addData(json);		 	
 
-					//Save
-					Waymark.save_data_layer();
-			
-					//Update map bounds (if we have)
-					var bounds = Waymark.map_data.getBounds();
-					if(bounds.isValid()) {
-						Waymark.map.fitBounds(bounds);
-					}
-			
-					break;
-				case 'query_data' :
-					//Add JSON
-					Waymark.query_data.addData(json);		 	
-
-					break;					
-			}
-			
-			//Make all editable
-/*
-			Waymark.map_data.eachLayer(function(layer) {
-	    	Waymark.drawn_items.addLayer(layer);
-			});
-*/
-			
+			//Save
+			Waymark.save_data_layer();
+	
+			//Update map bounds (if we have)
+			var bounds = Waymark.map_data.getBounds();
+			if(bounds.isValid()) {
+				Waymark.map.fitBounds(bounds);
+			}		
 		} 		
 	}	
 }

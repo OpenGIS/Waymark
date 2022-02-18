@@ -197,6 +197,10 @@ waymark_instance_' . $this->get_parameter('hash') . '.map.on(\'editable:vertex:d
 		return '<div id="waymark-map-' . $this->get_parameter('hash') . '" class="waymark-map waymark-instance waymark-' . $this->get_parameter('type') . ' ' . $this->get_parameter('add_class') . '" data-shortcode_hash="' . $this->get_parameter('hash') . '"' . $style . '></div>' . "\n";	}
 		
 	function load_json(string $json, $data_layer = 'map_data') {
-		Waymark_JS::add_call('waymark_instance_' . $this->get_parameter('hash') . '.load_json(' . $json . ', "' . $data_layer . '");');									
+		if($data_layer == 'map_data') {
+			Waymark_JS::add_call('waymark_instance_' . $this->get_parameter('hash') . '.load_json(' . $json . ');');											
+		}	elseif($data_layer == 'query_data') {
+			Waymark_JS::add_call('waymark_instance_' . $this->get_parameter('hash') . '.load_query_json(' . $json . ');');										
+		}	
 	}
 }

@@ -585,19 +585,8 @@ function Waymark_Map() {
 			}
 		});
 
-		//Create Query data layer
-		Waymark.query_data = Waymark_L.geoJSON(null, {
-		  pointToLayer: function(feature, latlng) {
-        if(typeof feature.properties !== 'undefined' && feature.properties.radius) {
-          return new Waymark_L.Circle(latlng, parseFloat(feature.properties.radius));
-        } else {
-					return Waymark.create_marker(latlng);
-				}			  
-			},
-			onEachFeature: function(feature, layer) {
-				Waymark.setup_query_data_feature(feature, layer);
-			}
-		});				
+		//Create Array to contain data layers
+		Waymark.queries_data = [];		
 	}
 
 	this.setup_layers = function() {
