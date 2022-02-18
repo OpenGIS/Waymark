@@ -416,7 +416,7 @@ function waymark_setup_map_query() {
 
 	jQuery('.waymark-query-form.waymark-map-query').each(function() {
 		var form_container = jQuery(this);
-		
+
 		//Each Query
 		jQuery('.waymark-parameters-container', form_container).each(function() {
 			var query_container = jQuery(this);
@@ -430,12 +430,48 @@ function waymark_setup_map_query() {
 			inputs.last().trigger('change');
 			
 			//Expand on hover
-			jQuery(this).hover(
+			query_container.hover(
 				function() {
-					jQuery(this).addClass('waymark-active');
+					var query_container = jQuery(this);
+					
+					query_container.addClass('waymark-active');
+
+					var waymark_container = jQuery('.waymark-instance').first();
+					var Waymark_Instance = waymark_container.data('Waymark');
+					
+					var area_type_input = jQuery('.waymark-input-query_area_type', query_container).first();
+
+					switch(area_type_input.val()) {
+						case 'bounds' :
+
+							var query_area_bounds = jQuery('.waymark-input-query_area_bounds', query_container).first().val();
+							query_area_bounds = query_area_bounds.split(',');
+							console.log(query_area_bounds);
+
+							var bounds = [[query_area_bounds[1], query_area_bounds[0]] , [query_area_bounds[3], query_area_bounds[2]]];
+							Waymark_Instance.query_preview = L.rectangle(bounds, {
+								color: "#ff7800",
+								weight: 1
+							}).addTo(Waymark_Instance.map);
+// 							rectangle.enableEdit();
+// 							Waymark_Instance.map.on('editable:vertex:dragend', function(e) {
+// 								console.log(e.layer.getBounds().toBBoxString());
+// 							});
+						
+							break;
+						case 'polygon' :
+							break;
+					}
 				},
 				function() {
 					jQuery(this).removeClass('waymark-active');		
+
+					var waymark_container = jQuery('.waymark-instance').first();
+					var Waymark_Instance = waymark_container.data('Waymark');
+					
+					if(typeof Waymark_Instance.query_preview !== 'undefined') {
+						Waymark_Instance.map.removeLayer(Waymark_Instance.query_preview);
+					}
 				}		
 			);
 		});			
