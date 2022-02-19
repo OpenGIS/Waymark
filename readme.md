@@ -113,6 +113,8 @@ A big thank you to the following projects and their contributors. Without their 
 
 ### 0.9.19-a1 ###
 
+* GPX upload bug fix.
+
 ### 0.9.18 ###
 
 * **<a href="https://www.waymark.dev/docs/submissions/">Submissions</a>**
