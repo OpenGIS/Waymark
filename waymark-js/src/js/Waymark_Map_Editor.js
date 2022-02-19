@@ -1061,6 +1061,106 @@ function Waymark_Map_Editor() {
 		} 		
 	}	
 	
+ 	this.draw_query_area = function(area_type, area, target = null) {
+		Waymark = this;
+
+		if(typeof Waymark.query_area_edit_active !== 'undefined' && Waymark.query_area_edit_active == true) {
+			return;
+		}
+		
+		console.log(area_type, area, target);
+		
+		//Bounds
+		if(area_type == 'bounds') {
+			//Default
+			if(typeof area !== 'undefined' && area) {
+				area = area.split(',');
+				area = [[area[1], area[0]] , [area[3], area[2]]];
+			} else {
+				area = Waymark.map.getBounds().pad(-0.1);	
+				
+				if(target) {
+					target.val(area.toBBoxString());				
+				}
+			}
+			
+			Waymark.query_area_layer = L.rectangle(area, {
+				color: "#ff7800",
+				weight: 1
+			}).addTo(Waymark.map);
+			
+			if(target) {
+				var container = target.parents('.waymark-parameters-container');
+
+				Waymark.query_area_edit_button = jQuery('<button />')
+					.html('<i class="ion ion-edit"></i>')
+					.addClass('button waymark-edit')
+					.on('click', function(e) {
+						e.preventDefault();
+						
+						if(typeof Waymark.query_area_edit_active == 'undefined' || ! Waymark.query_area_edit_active) {
+							Waymark.edit_query_area(target);
+
+							Waymark.query_area_edit_active = true;
+							
+							jQuery(this).html('<i class="ion ion-tick"></i>')							
+						} else {
+							Waymark.unedit_query_area();
+
+							Waymark.query_area_edit_active = false;	
+
+							jQuery(this).html('<i class="ion ion-edit"></i>')																			
+						}							
+					});
+
+				container.append(Waymark.query_area_edit_button);
+			}
+		}
+		
+		if(area_type == 'polygon') {
+		
+		}
+	}
+	
+	this.edit_query_area = function(target) {
+		Waymark = this;
+		
+		if(typeof Waymark.query_area_layer !== 'undefined') {
+			Waymark.query_area_layer.enableEdit();
+			Waymark.map.on('editable:vertex:dragend', function() {
+				target.val(Waymark.query_area_layer.getBounds().toBBoxString());
+				target.trigger('change');
+			});
+		}	
+	}
+
+	this.unedit_query_area = function() {
+		Waymark = this;
+		
+		if(typeof Waymark.query_area_layer !== 'undefined') {
+			Waymark.query_area_layer.disableEdit();
+		}	
+	}
+	
+	this.undraw_query_area = function() {
+		Waymark = this;
+		
+		if(typeof Waymark.query_area_edit_active !== 'undefined' && Waymark.query_area_edit_active == true) {
+			return;
+		}
+		
+		if(typeof Waymark.query_area_layer !== 'undefined' && Waymark.query_area_layer) {
+			Waymark.map.removeLayer(Waymark.query_area_layer);
+			Waymark.query_area_layer = null;
+		}
+
+		if(typeof Waymark.query_area_edit_button !== 'undefined') {
+			console.log('Waymark.query_area_edit_button.remove(');
+			
+			Waymark.query_area_edit_button.remove();
+		}
+	}
+	
 /*
 	==================================
 	============ OVERLOAD ============
