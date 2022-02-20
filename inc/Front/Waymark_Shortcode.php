@@ -315,6 +315,29 @@ class Waymark_Shortcode {
 		}
 
 		// =====================================
+		// =========== START GPX ===========
+		// =====================================		
+		if(array_key_exists('gpx_url', $shortcode_data)) {
+			$gpx_data = wp_remote_get($shortcode_data['gpx_url']);	
+		
+			//Success
+			if(wp_remote_retrieve_response_code($gpx_data) == '200') {
+				 $gpx_string = wp_remote_retrieve_body($gpx_data);
+				 $gpx_string = preg_replace('/\s+/', ' ', $gpx_string);
+				 
+				// Waymark_Helper::debug($gpx_data);
+				 
+				$out .= 'var gpx_data = \'' . $gpx_string . '\';' . "\n";
+				$out .= 'var gpx_doc = (new DOMParser()).parseFromString(gpx_data, "text/xml");' . "\n";
+				$out .= 'var geo_json = toGeoJSON.gpx(gpx_doc);' . "\n";
+
+				$out .= 'waymark_viewer_' . $shortcode_hash . '.load_json(geo_json);' . "\n";
+								 
+			}
+		}			
+		
+
+		// =====================================
 		// =========== START MARKERS ===========
 		// =====================================				
 
