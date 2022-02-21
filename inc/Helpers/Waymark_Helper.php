@@ -963,6 +963,10 @@ class Waymark_Helper {
 		
 		//Valid extension
 		if(array_key_exists($ext, $allowable_mimes)) {
+			if($mime === false) {
+				return true;
+			}
+			
 			//Check MIME
 			//Single
 			if(is_string($allowable_mimes[$ext])) {
