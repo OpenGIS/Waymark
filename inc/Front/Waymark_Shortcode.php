@@ -315,6 +315,87 @@ class Waymark_Shortcode {
 		}
 
 		// =====================================
+		// =========== START FILE URL ==========
+		// =====================================		
+		
+		if(array_key_exists('file_url', $shortcode_data)) {
+			//Accept multiple
+			foreach(explode(',', $shortcode_data['file_url']) as $file_url) {
+				$file_response = wp_remote_get($file_url);	
+				
+				//Success
+				if(wp_remote_retrieve_response_code($file_response) == '200') {
+					//Get file info
+					$file_headers = wp_remote_retrieve_headers($file_response);			
+					$file_ext = pathinfo($file_url, PATHINFO_EXTENSION);
+					
+					//Mime?
+					if(isset($file_headers['content-type'])) {
+						$file_mime = $file_headers['content-type'];					
+					} else {
+						$file_mime = false;					
+					}
+
+					//Is allowable file
+					if(Waymark_Helper::allowable_file($file_ext, $file_mime)) {
+
+						$file_body = wp_remote_retrieve_body($file_response);
+						$file_string = preg_replace('/\s+/', ' ', $file_body);
+
+						$out .= 'var file_geo_json = {}' . "\n";
+						$out .= 'var file_data = \'' . $file_string . '\';' . "\n";
+
+						switch($file_ext) {
+							case 'gpx' :
+								$out .= 'var file_data = (new DOMParser()).parseFromString(file_data, "text/xml");' . "\n";
+								$out .= 'file_geo_json = toGeoJSON.gpx(file_data);' . "\n";
+							
+								break;
+								
+							case 'kml' :
+								$out .= 'var file_data = (new DOMParser()).parseFromString(file_data, "text/xml");' . "\n";
+								$out .= 'var file_geo_json = toGeoJSON.kml(file_data);' . "\n";
+
+								break;	
+								
+							default :
+								$out .= 'var file_geo_json = JSON.parse(file_data);' . "\n";
+
+								break;																
+						}				
+						
+						foreach(['marker', 'line', 'shape'] as $overlay_type) {
+							//Cast Line Type
+							if(array_key_exists('file_' . $overlay_type . '_type', $shortcode_data)) {
+								$cast_type = $shortcode_data['file_' . $overlay_type . '_type'];
+
+								//Add default type
+								$out .= '
+								for(i in file_geo_json.features) {
+									if(typeof file_geo_json.features[i].properties.type == "undefined") {
+										var overlay_type = waymark_viewer_' . $shortcode_hash . '.get_feature_overlay_type(file_geo_json.features[i]);
+										var config_types = waymark_viewer_' . $shortcode_hash . '.config.' . $overlay_type . '_types;
+
+										for(j in config_types) {
+											//Valid Type Key
+											if("' . $cast_type . '" == waymark_viewer_' . $shortcode_hash . '.make_key(config_types[j][overlay_type + "_title"])) {
+												file_geo_json.features[i].properties.type = "' . $cast_type . '";										
+											}
+										}
+									};
+								}' . "\n";
+							}						
+						}
+
+						$out .= 'waymark_viewer_' . $shortcode_hash . '.load_json(file_geo_json);' . "\n";
+					}
+				}			
+			}
+		}			
+
+		// ============ END FILE URL ===========
+
+		// =====================================
 		// =========== START MARKERS ===========
 		// =====================================				
 
