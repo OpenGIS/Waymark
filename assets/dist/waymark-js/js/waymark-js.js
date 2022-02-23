@@ -9528,6 +9528,8 @@ function Waymark_Map_Editor() {
 			return;
 		}
 		
+		console.log(area_type, area, target);
+		
 		//Bounds
 		if(area_type == 'bounds') {
 			//Default
@@ -9613,6 +9615,8 @@ function Waymark_Map_Editor() {
 		}
 
 		if(typeof Waymark.query_area_edit_button !== 'undefined') {
+			console.log('Waymark.query_area_edit_button.remove(');
+			
 			Waymark.query_area_edit_button.remove();
 		}
 	}
