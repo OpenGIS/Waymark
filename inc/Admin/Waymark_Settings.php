@@ -1363,7 +1363,7 @@ class Waymark_Settings {
 		<option value="lines"' . (($current == 'lines') ? ' selected="selected"' : '') . '>-- Lines</option>
 		<option value="shapes"' . (($current == 'shapes') ? ' selected="selected"' : '') . '>-- Shapes</option>
 		<option disabled="disabled">Sources</option>
-		<option value="query"' . (($current == 'query') ? ' selected="selected"' : '') . '>-- OpenStreetMap</option>
+		<option value="query"' . (($current == 'query') ? ' selected="selected"' : '') . '>-- Queries</option>
 		<option value="misc"' . (($current == 'misc') ? ' selected="selected"' : '') . '>Misc.</option>
 	</select>
 </div>';

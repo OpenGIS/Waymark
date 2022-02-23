@@ -962,4 +962,26 @@ class Waymark_Helper {
 			//return [-7.57216793459, 49.959999905, 1.68153079591, 58.6350001085];
 		}
 	}	
+
+	static function allowable_file($ext = '', $mime = '', $file_image = 'file') {
+		$allowable_mimes = Waymark_Config::get_item('mimes', $file_image);
+		
+		//Valid extension
+		if(array_key_exists($ext, $allowable_mimes)) {
+			if($mime === false) {
+				return true;
+			}
+			
+			//Check MIME
+			//Single
+			if(is_string($allowable_mimes[$ext])) {
+				return $mime == $allowable_mimes[$ext];
+			//Multiple
+			} elseif(is_array($allowable_mimes[$ext])) {
+				return in_array($mime, $allowable_mimes[$ext]);
+			}
+		}
+		
+		return false;
+	}	
 }

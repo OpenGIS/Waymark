@@ -616,7 +616,7 @@ function waymark_setup_settings_nav() {
 		} else {
 			redirect_to = redirect_to + '&tab=' + selected_tab_key;
 		}
-		
+
 		redirect_input.val(redirect_to);
 		
 		//Show selected
