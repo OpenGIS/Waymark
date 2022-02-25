@@ -9455,10 +9455,11 @@ function Waymark_Map_Editor() {
 	}		
 
 	//Add Query GeoJSON
-	this.load_query_json = function(query_hash, query_json) {
+	this.load_query_json = function(query_json) {
 		Waymark = this;
 		
 		//console.log(query_hash);
+		var query_hash = JSON.stringify(query_json);
 		
 		//Valid Data
 		if(typeof query_hash === 'string' && typeof query_json === 'object') {
@@ -9488,6 +9489,8 @@ function Waymark_Map_Editor() {
 		if(typeof Waymark.query_area_edit_active !== 'undefined' && Waymark.query_area_edit_active == true) {
 			return;
 		}
+		
+		console.log(area_type, area, target);
 		
 		//Bounds
 		if(area_type == 'bounds') {
@@ -9574,6 +9577,8 @@ function Waymark_Map_Editor() {
 		}
 
 		if(typeof Waymark.query_area_edit_button !== 'undefined') {
+			console.log('Waymark.query_area_edit_button.remove(');
+			
 			Waymark.query_area_edit_button.remove();
 		}
 	}

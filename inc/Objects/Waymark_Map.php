@@ -122,6 +122,6 @@ class Waymark_Map extends Waymark_Object {
 					}		
 				}
 			}	
-		}
+		}	
 	}		
 }
