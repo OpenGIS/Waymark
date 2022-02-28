@@ -49,12 +49,18 @@ class Waymark_Meta {
 		}
 	}	
 
+	/**
+	 * ===========================================
+	 * =============== SAVE POST =================
+	 * ===========================================
+	 */	
 	function post_updated() {
 		global $post;
 		
 		if(is_object($post) && ! (wp_is_post_revision($post->ID) || wp_is_post_autosave($post->ID))) {
 			switch($post->post_type) {
-				//Map
+				// ============ MAP ============
+				
 				case 'waymark_map' :									
 					$Map = new Waymark_Map;
 					$Map->set_data($_POST);				
@@ -77,17 +83,6 @@ class Waymark_Meta {
 					}
 					
 					break;			
-				
-				//Query
-// 				case 'waymark_query' :									
-// // 					Waymark_Helper::debug($_POST, 0);
-// 
-// 					$Query = new Waymark_Query;
-// 					$Query->set_data($_POST);				
-// 					$Query->save_meta($post->ID);
-// 					
-// 					break;			
-
 			}			
 		}
 	}
@@ -133,26 +128,12 @@ class Waymark_Meta {
 
 		echo '<p>&nbsp;</p>';
 	}
-	
-	function map_queries_content() {
-		global $post;
-
-		$map_queries = unserialize(get_post_meta($post->ID, 'waymark_map_queries', true));
-
-		if(! $map_queries) {
-			$map_queries = [];
-		}
-						
-		$Query = new Waymark_Query();
-		$Query->create_map_form($map_queries);	
-	}
 
 	/**
 	 * ===========================================
-	 * =================== MAP ===================
+	 * =============== MAP EDITOR ================
 	 * ===========================================
 	 */	
-
 	function get_map_form($post) {	
 		//WP Media Library
 		wp_enqueue_media();
@@ -205,5 +186,23 @@ class Waymark_Meta {
 		
 		echo '<p>' . sprintf(__('You can manage Meta fields in <a href="%s">Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')) . '</p>';		
 	}
+
+	/**
+	 * ===========================================
+	 * ============== MAP QUERIES ================
+	 * ===========================================
+	 */	
+	function map_queries_content() {
+		global $post;
+
+		$map_queries = unserialize(get_post_meta($post->ID, 'waymark_map_queries', true));
+
+		if(! $map_queries) {
+			$map_queries = [];
+		}
+						
+		$Query = new Waymark_Query();
+		$Query->create_map_form($map_queries);	
+	}	
 }
 new Waymark_Meta;
