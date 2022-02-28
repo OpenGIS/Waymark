@@ -566,7 +566,7 @@ function waymark_execute_query(container) {
 				if(response.features.length) {
 					//Editor
 					if(waymark_container.hasClass('waymark-editor')) {
-						Waymark_Instance.load_query_json(JSON.stringify(request_data), response);						
+						Waymark_Instance.load_query_json(response);						
 					//Viewer
 					} else {
 						Waymark_Instance.load_json(response);						
