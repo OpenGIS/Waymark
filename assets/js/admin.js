@@ -451,6 +451,13 @@ function waymark_setup_map_query() {
 					
 							break;
 						case 'polygon' :
+							var query_area_polygon = jQuery('.waymark-input-query_area_polygon', query_container).first();
+
+							var waymark_container = jQuery('.waymark-instance').first();
+							var Waymark_Instance = waymark_container.data('Waymark');					
+					
+							Waymark_Instance.draw_query_area(area_type_input.val(), query_area_polygon.val(), query_area_polygon);
+
 							break;
 					}
 				},
