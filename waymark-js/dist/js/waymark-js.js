@@ -8100,9 +8100,8 @@ function Waymark_Map() {
 			return;
 		}
 		
-		console.log(area_type, area, target);
+		// ========== Bounds ==========
 		
-		//Bounds
 		if(area_type == 'bounds') {
 			//Default
 			if(typeof area !== 'undefined' && area) {
@@ -8120,37 +8119,39 @@ function Waymark_Map() {
 				color: "#ff7800",
 				weight: 1
 			}).addTo(Waymark.map);
-			
-			if(target) {
-				var container = target.parents('.waymark-parameters-container');
 
-				Waymark.query_area_edit_button = jQuery('<button />')
-					.html('<i class="ion ion-edit"></i>')
-					.addClass('button waymark-edit')
-					.on('click', function(e) {
-						e.preventDefault();
-						
-						if(typeof Waymark.query_area_edit_active == 'undefined' || ! Waymark.query_area_edit_active) {
-							Waymark.edit_query_area(target);
+		// ========== Polygon ==========
 
-							Waymark.query_area_edit_active = true;
-							
-							jQuery(this).html('<i class="ion ion-tick"></i>')							
-						} else {
-							Waymark.unedit_query_area();
-
-							Waymark.query_area_edit_active = false;	
-
-							jQuery(this).html('<i class="ion ion-edit"></i>')																			
-						}							
-					});
-
-				container.append(Waymark.query_area_edit_button);
-			}
+		} else  if(area_type == 'polygon') {
+		
 		}
-		
-		if(area_type == 'polygon') {
-		
+
+		//Add Edit button
+		if(target) {
+			var container = target.parents('.waymark-parameters-container');
+
+			Waymark.query_area_edit_button = jQuery('<button />')
+				.html('<i class="ion ion-edit"></i>')
+				.addClass('button waymark-edit')
+				.on('click', function(e) {
+					e.preventDefault();
+					
+					if(typeof Waymark.query_area_edit_active == 'undefined' || ! Waymark.query_area_edit_active) {
+						Waymark.edit_query_area(target);
+
+						Waymark.query_area_edit_active = true;
+						
+						jQuery(this).html('<i class="ion ion-tick"></i>')							
+					} else {
+						Waymark.unedit_query_area();
+
+						Waymark.query_area_edit_active = false;	
+
+						jQuery(this).html('<i class="ion ion-edit"></i>')																			
+					}							
+				});
+
+			container.append(Waymark.query_area_edit_button);
 		}
 	}
 	
