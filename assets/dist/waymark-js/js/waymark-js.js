@@ -7860,8 +7860,6 @@ function Waymark_Map() {
 	}
 
 	this.create_marker_json = function(lat_lng, properties = {}) {
-		Waymark.debug(Waymark.config.marker_data_defaults);
-	
 		var marker_properties = Object.assign({}, Waymark.config.marker_data_defaults, properties);
 	
 		var marker_json = {
@@ -7872,8 +7870,6 @@ function Waymark_Map() {
 			"type": "Feature", 
 			"properties": marker_properties
 		};	
-		
-		Waymark.debug(marker_json);
 		
 		return marker_json;
 	}
@@ -7920,7 +7916,6 @@ function Waymark_Map() {
 	this.load_query_json = function(query_json) {
 		Waymark = this;
 		
-		//console.log(query_hash);
 		var query_hash = JSON.stringify(query_json);
 		
 		//Valid Data
@@ -7940,16 +7935,12 @@ function Waymark_Map() {
 			
 			//Add to Map
 			Waymark.queries_data[query_hash].addTo(Waymark.map);
-			
-			//console.log(Waymark.queries_data[query_hash]);
 		} 		
 	}
 	
 	this.setup_query_data_feature = function(feature, layer) {
 		Waymark = this;
-		
-		Waymark.debug(feature);
-	
+			
 		switch(feature.geometry.type) {
 			
 			// CIRCLES & MARKERS
@@ -8009,8 +8000,6 @@ function Waymark_Map() {
 								
 			case 'LineString' :
 			case 'MultiLineString' :
-				console.log(feature);
-			
 				//Build Waymark data
 				feature.properties = Waymark.parse_layer_data('line', feature.properties);										
 				
@@ -8063,35 +8052,6 @@ function Waymark_Map() {
 				break;
 		}
 	}		
-
-	//Add Query GeoJSON
-	this.load_query_json = function(query_json) {
-		Waymark = this;
-		
-		//console.log(query_hash);
-		var query_hash = JSON.stringify(query_json);
-		
-		//Valid Data
-		if(typeof query_hash === 'string' && typeof query_json === 'object') {
-			//Create New Query data layer
-			Waymark.queries_data[query_hash] = Waymark_L.geoJSON(null, {
-				pointToLayer: function(feature, latlng) {
-					return Waymark.create_marker(latlng);
-				},
-				onEachFeature: function(feature, layer) {
-					Waymark.setup_query_data_feature(feature, layer);
-				}
-			});
-			
-			//Add JSON
-			Waymark.queries_data[query_hash].addData(query_json);		 	
-			
-			//Add to Map
-			Waymark.queries_data[query_hash].addTo(Waymark.map);
-			
-			//console.log(Waymark.queries_data[query_hash]);
-		} 		
-	}	
 
  	this.draw_query_area = function(area_type, area, target = null) {
 		Waymark = this;
@@ -8188,8 +8148,6 @@ function Waymark_Map() {
 		}
 
 		if(typeof Waymark.query_area_edit_button !== 'undefined') {
-			console.log('Waymark.query_area_edit_button.remove(');
-			
 			Waymark.query_area_edit_button.remove();
 		}
 	}

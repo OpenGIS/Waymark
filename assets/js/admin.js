@@ -380,7 +380,7 @@ function waymark_setup_map_query() {
 			switch(input.data('id')) {
 				case 'query_area_bounds' :
 					if(! input.val()) {
-						Waymark.debug('//No query_area provided');
+						console.log('//No query_area provided');
 						
 						var waymark_container = jQuery('.waymark-instance').first();
 						var Waymark_Instance = waymark_container.data('Waymark');				
@@ -393,10 +393,10 @@ function waymark_setup_map_query() {
 								case 'bounds' :
 									//Map Data?
 									if(Waymark_Instance.map_data.getLayers().length) {
-										Waymark.debug('//Use Map Data bounds');
+										console.log('//Use Map Data bounds');
 										input_value = Waymark_Instance.map_data.getBounds().toBBoxString();							
 									} else {
-										Waymark.debug('//Use Map View bounds');
+										console.log('//Use Map View bounds');
 										input_value = Waymark_Instance.map.getBounds().toBBoxString();								
 									}
 								
@@ -443,8 +443,6 @@ function waymark_setup_map_query() {
 
 					switch(area_type_input.val()) {
 						case 'bounds' :
-
-							console.log(query_area_bounds);
 							var query_area_bounds = jQuery('.waymark-input-query_area_bounds', query_container).first();
 
 							var waymark_container = jQuery('.waymark-instance').first();
@@ -486,21 +484,6 @@ function waymark_setup_tax_query() {
 		//Initial
 		jQuery('.waymark-input', container).first().trigger('change');
 	});
-	//Prettify JSON and output to console
-// 	jQuery('#waymark_query_meta textarea#query_overpass_response, #waymark_query_meta textarea#query_data').each(function() {
-// 		var textarea = jQuery(this);
-// 		
-// 		//Only if visible (i.e. debug mode)
-// 		if(textarea.is(':visible')) {
-// 			try {
-// 				if(json = JSON.parse(textarea.val())) {
-// 					console.log(json);
-// 					textarea.val(JSON.stringify(json, null, 2));			
-// 				}
-// 			} catch (e) {}		
-// 		
-// 		}
-// 	});
 }
 
 function waymark_execute_query(container) {
@@ -558,8 +541,6 @@ function waymark_execute_query(container) {
 			processData: false,
 			contentType: false,
 			success: function(response) {				
-				Waymark.debug(response.features.length + ' Features');						
-
 				var waymark_container = jQuery('.waymark-instance').first();
 				var Waymark_Instance = waymark_container.data('Waymark');
 
@@ -647,8 +628,6 @@ function waymark_setup_repeatable_parameters() {
 			clone.hover(
 				//On
 				function() {
-					console.log('on');
-					
 					var query_container = jQuery(this);
 					
 					var area_type_input = jQuery('.waymark-input-query_area_type', query_container).first();
@@ -671,8 +650,6 @@ function waymark_setup_repeatable_parameters() {
 				}, 
 				//Off
 				function() {			
-					console.log('off');
-					
 					var waymark_container = jQuery('.waymark-instance').first();
 					var Waymark_Instance = waymark_container.data('Waymark');		
 										
