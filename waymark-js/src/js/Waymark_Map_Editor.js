@@ -159,8 +159,12 @@ function Waymark_Map_Editor() {
 		//Map Data Bound
 		var map_data_bounds_container = jQuery('.waymark-input-map_data_bounds').first();
 		if(map_data_bounds_container) {
-			var map_data_bounds = Waymark.map_data.getBounds();		
-			map_data_bounds_container.html(map_data_bounds.toBBoxString());	
+			//If we have data
+			if(Waymark.map_data.getBounds().isValid()) {
+				//Update Meta form
+				var map_data_bounds = Waymark.map_data.getBounds();		
+				map_data_bounds_container.html(map_data_bounds.toBBoxString());				
+			}
 		}
 	}
 
