@@ -372,47 +372,46 @@ function waymark_setup_dropdowns() {
 }
 
 function waymark_setup_map_query() {
-	jQuery('body.post-type-waymark_map #publish').on('click', function() {
-		//Iterate inputs
-		jQuery('.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-input').each(function() {
-			var input = jQuery(this);
-		
-			switch(input.data('id')) {
-				case 'query_area_bounds' :
-					if(! input.val()) {
-						console.log('//No query_area provided');
-						
-						var waymark_container = jQuery('.waymark-instance').first();
-						var Waymark_Instance = waymark_container.data('Waymark');				
-					
-						//Instance
-						if(Waymark_Instance) {
-							//Area type
-							switch(jQuery('.waymark-input-query_area_type', jQuery(this).parents('.waymark-parameters-container')).val()) {
-								//Bounds
-								case 'bounds' :
-									//Map Data?
-									if(Waymark_Instance.map_data.getLayers().length) {
-										console.log('//Use Map Data bounds');
-										input_value = Waymark_Instance.map_data.getBounds().toBBoxString();							
-									} else {
-										console.log('//Use Map View bounds');
-										input_value = Waymark_Instance.map.getBounds().toBBoxString();								
-									}
-								
-									//Update
-									jQuery(this).val(input_value);
-								
-									break;
-							}										
-						}
-					}
-				
-					break;
-			}
-		});	
-	});	
-	
+// 	jQuery('body.post-type-waymark_map #publish').on('click', function() {
+// 		//Iterate inputs
+// 		jQuery('.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-input').each(function() {
+// 			var input = jQuery(this);
+// 		
+// 			switch(input.data('id')) {
+// 				case 'query_area_bounds' :
+// 					if(! input.val()) {
+// 						console.log('//No query_area provided');
+// 						
+// 						var waymark_container = jQuery('.waymark-instance').first();
+// 						var Waymark_Instance = waymark_container.data('Waymark');				
+// 					
+// 						//Instance
+// 						if(Waymark_Instance) {
+// 							//Area type
+// 							switch(jQuery('.waymark-input-query_area_type', jQuery(this).parents('.waymark-parameters-container')).val()) {
+// 								//Bounds
+// 								case 'bounds' :
+// 									//Map Data?
+// 									if(Waymark_Instance.map_data.getLayers().length) {
+// 										console.log('//Use Map Data bounds');
+// 										input_value = Waymark_Instance.map_data.getBounds().toBBoxString();							
+// 									} else {
+// 										console.log('//Use Map View bounds');
+// 										input_value = Waymark_Instance.map.getBounds().toBBoxString();								
+// 									}
+// 								
+// 									//Update
+// 									jQuery(this).val(input_value);
+// 								
+// 									break;
+// 							}										
+// 						}
+// 					}
+// 				
+// 					break;
+// 			}
+// 		});	
+// 	});	
 
 	jQuery('.waymark-query-form.waymark-map-query').each(function() {
 		var form_container = jQuery(this);
@@ -609,8 +608,52 @@ function waymark_setup_settings_nav() {
 	});
 }
 
+function waymark_handle_repeatable_clone(clone) {
+	if(typeof clone == 'object') {
+		//Get context
+		var form = clone.parents('.waymark-form');
+		
+		//Map Queries
+		if(form && form.hasClass('waymark-map-query')) {
+				clone.hover(
+				//On
+				function() {
+					var query_container = jQuery(this);
+				
+					var area_type_input = jQuery('.waymark-input-query_area_type', query_container).first();
+
+					switch(area_type_input.val()) {
+						case 'bounds' :
+							var query_area_input = jQuery('.waymark-input-query_area_bounds', query_container).first();
+				
+							break;
+						case 'polygon' :
+							var query_area_input = jQuery('.waymark-input-query_area_polygon', query_container).first();
+
+							break;
+					}
+
+					var waymark_container = jQuery('.waymark-instance').first();
+					var Waymark_Instance = waymark_container.data('Waymark');					
+		
+					Waymark_Instance.draw_query_area(area_type_input.val(), query_area_input.val(), query_area_input);
+				}, 
+				//Off
+				function() {			
+					var waymark_container = jQuery('.waymark-instance').first();
+					var Waymark_Instance = waymark_container.data('Waymark');		
+									
+					Waymark_Instance.undraw_query_area();											
+				}
+			);	
+		}	
+	}		
+
+	return clone;
+}
+
 function waymark_setup_repeatable_parameters() {
-	jQuery('.waymark-query-form .waymark-repeatable-container').each(function() {
+	jQuery('.waymark-repeatable-container').each(function() {
 		var repeatable_container = jQuery(this);
 		var repeatable_count = repeatable_container.data('count');
 		
@@ -622,40 +665,6 @@ function waymark_setup_repeatable_parameters() {
 			e.preventDefault();
 	
 			var clone = template.clone();
-			
-			//!!! 
-			//To-do: Move from here...
-			clone.hover(
-				//On
-				function() {
-					var query_container = jQuery(this);
-					
-					var area_type_input = jQuery('.waymark-input-query_area_type', query_container).first();
-
-					switch(area_type_input.val()) {
-						case 'bounds' :
-							var query_area_input = jQuery('.waymark-input-query_area_bounds', query_container).first();
-					
-							break;
-						case 'polygon' :
-							var query_area_input = jQuery('.waymark-input-query_area_polygon', query_container).first();
-
-							break;
-					}
-
-					var waymark_container = jQuery('.waymark-instance').first();
-					var Waymark_Instance = waymark_container.data('Waymark');					
-			
-					Waymark_Instance.draw_query_area(area_type_input.val(), query_area_input.val(), query_area_input);
-				}, 
-				//Off
-				function() {			
-					var waymark_container = jQuery('.waymark-instance').first();
-					var Waymark_Instance = waymark_container.data('Waymark');		
-										
-					Waymark_Instance.undraw_query_area();											
-				}
-			);
 			
 			//Update inputs
 			jQuery('.waymark-input', clone).each(function() {
@@ -670,9 +679,11 @@ function waymark_setup_repeatable_parameters() {
 				label.attr('for', label.attr('for').replace('__count__', repeatable_count));
 			});							
 
-//				clone.attr('name', );
 			//Add		
 			add_button.before(clone);
+
+			//Do stuff to clone (now it's in the DOM)...			
+			clone = waymark_handle_repeatable_clone(clone);
 			
 			waymark_setup_dropdowns();
 			
