@@ -195,10 +195,11 @@ class Waymark_Meta {
 	function map_queries_content() {
 		global $post;
 
-		$map_queries = unserialize(get_post_meta($post->ID, 'waymark_map_queries', true));
+		$map_queries = [];
 
-		if(! $map_queries) {
-			$map_queries = [];
+		$meta_queries = get_post_meta($post->ID, 'waymark_map_queries', true);
+		if($meta_queries) {
+			$map_queries = unserialize($meta_queries);		
 		}
 						
 		$Query = new Waymark_Query();
