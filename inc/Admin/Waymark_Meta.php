@@ -199,11 +199,19 @@ class Waymark_Meta {
 
 		$meta_queries = get_post_meta($post->ID, 'waymark_map_queries', true);
 		if($meta_queries) {
-			$map_queries = unserialize($meta_queries);		
+			$meta_queries = @unserialize($meta_queries);		
 		}
 						
+		//Output
 		$Query = new Waymark_Query();
-		$Query->create_map_form($map_queries);	
+
+		//Valid Queries		
+		if(is_array($map_queries)) {
+			$Query->create_map_form($map_queries);			
+		//Blank
+		} else {
+			$Query->create_map_form();		
+		}
 	}	
 }
 new Waymark_Meta;
