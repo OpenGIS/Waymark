@@ -75,11 +75,11 @@ class Waymark_Meta {
 							$Query = new Waymark_Query($query_data);		
 							
 							if($Query->can_execute()) {
-								$map_queries[] = $Query->get_request_parameters();
+								$map_queries[] = $Query->get_request_meta();
 							}							
 						}
 
-						update_post_meta($post->ID, 'waymark_map_queries', base64_encode(serialize($map_queries)));
+						update_post_meta($post->ID, 'waymark_map_queries', serialize($map_queries));
 					}
 					
 					break;			
@@ -197,7 +197,7 @@ class Waymark_Meta {
 		
 		//Get for Map
 		$meta_queries = get_post_meta($post->ID, 'waymark_map_queries', true);
-		$meta_queries = unserialize(base64_decode($meta_queries));		
+		$meta_queries = unserialize($meta_queries);		
 
 		//Output
 		$Query = new Waymark_Query();

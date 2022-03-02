@@ -23,6 +23,20 @@ class Waymark_Query extends Waymark_Class {
 // 		]
 	];	
 	
+	private $json_strip_chars = [
+		'\"',
+		'"',
+		'{',
+		'}',					
+	];
+		
+	private $json_add_chars = [
+		 '__quote__',
+		 '__quote__',
+		 '__lcurl__',
+		 '__rcurl__',
+	];	
+	
 	function __construct($params_in = [], $auto_execute = true) {
 		parent::__construct($params_in);
 
@@ -109,15 +123,29 @@ class Waymark_Query extends Waymark_Class {
 		}		
 	}	
 
-	
-	function process_param_in($key, $value) {
+
+	function process_param_in(string $key, $value = '') {
 		switch($key) {
-			//Request
+			//Area
+			case 'query_area_polygon' :
+			case 'query_area_bounds' :
 			case 'query_overpass_request' :
-				//Strip newlines
-				$value = preg_replace('~[\r\n]+~', '', $value);				
-				//Strip slashes
-				$value = stripcslashes($value);				
+				$value = str_replace($this->json_add_chars, $this->json_strip_chars, $value);
+
+				break;
+		}
+		
+		return $value;
+	}
+	
+	function process_param_out(string $key, $value = '') {
+		switch($key) {
+			//Area
+			case 'query_area_polygon' :
+			case 'query_area_bounds' :
+			case 'query_overpass_request' :
+
+				$value = str_replace($this->json_strip_chars, $this->json_add_chars, $value);
 
 				break;
 		}
@@ -208,18 +236,18 @@ class Waymark_Query extends Waymark_Class {
 			}		
 
 			//Message?
-			if(array_key_exists('message', $response)) {
-				$class = '';
-				if($response['status'] == 'success') {
-					$class .= ' notice-success';
-				} elseif($response['status'] == 'error') {
-					$class .= ' notice-error';						
-				}
-
-				echo '<div class="notice' . $class . '">' . "\n";
-				echo '	<p>' . $response['message'] . '</p>' . "\n";
-				echo '</div>' . "\n";
-			}
+// 			if(array_key_exists('message', $response)) {
+// 				$class = '';
+// 				if($response['status'] == 'success') {
+// 					$class .= ' notice-success';
+// 				} elseif($response['status'] == 'error') {
+// 					$class .= ' notice-error';						
+// 				}
+// 
+// 				echo '<div class="notice' . $class . '">' . "\n";
+// 				echo '	<p>' . $response['message'] . '</p>' . "\n";
+// 				echo '</div>' . "\n";
+// 			}
 		}
 	}
 	
@@ -280,9 +308,9 @@ class Waymark_Query extends Waymark_Class {
 		return $this->inputs;
 	}
 		
-	function get_request_parameters() {
+	function get_request_meta() {
 		$parameters = $this->get_parameters();
-
+				
 		unset($parameters['query_data']);
 		
 		return $parameters;	

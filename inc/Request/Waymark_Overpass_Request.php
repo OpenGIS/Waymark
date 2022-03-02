@@ -63,8 +63,6 @@ class Waymark_Overpass_Request extends Waymark_Request {
 			'data' => $overpass_query
 		];
 		
-		Waymark_Helper::debug($return);
-		
 		return $return;
 	}
 

@@ -17,25 +17,39 @@ class Waymark_Class {
 
 	function get_parameter($key = null) {
 		if(! $key) {
-			return $this->parameters;
+			return $this->get_parameters();
 		}
 		
 		if(array_key_exists($key, $this->parameters)) {
-			return $this->parameters[$key];
+			if(method_exists($this, 'process_param_out')) {
+				return $this->process_param_out($key, $this->parameters[$key]);		
+			} else {
+				return $this->parameters[$key];
+			}
 		} else {
 			return false;
 		}
 	}	
 
 	function get_parameters() {
-		return $this->get_parameter();
+		$out = [];
+		
+		foreach($this->parameters as $key => $value) {
+			if(method_exists($this, 'process_param_out')) {
+				$out[$key] = $this->process_param_out($key, $value);		
+			} else {
+				$out[$key] = $value;
+			}		
+		}
+		
+		return $out;
 	}
 	
 	function set_parameter($key, $value) {
-		$this->parameters[$key] = $this->process_param_in($key, $value);
+		if(method_exists($this, 'process_param_in')) {
+			$this->parameters[$key] = $this->process_param_in($key, $value);		
+		} else {
+			$this->parameters[$key] = $value;		
+		}
 	}	
-
-	function process_param_in(string $key, string $value) {
-		return $value;
-	}
 }
