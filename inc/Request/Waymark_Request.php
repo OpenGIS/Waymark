@@ -2,8 +2,6 @@
 abstract class Waymark_Request {
 	protected $config;
 	protected $parameters;
-	protected $migrate_parameters = array();
-	protected $migrate_parameters_values = array();
 	protected $request_type = false;
 	protected $request_endpoint;
 	private $request;
@@ -21,7 +19,11 @@ abstract class Waymark_Request {
 		return $this->request_type;
 	}
 
-	public function get_config(string $key) {
+	public function get_config(string $key = '') {
+		if($key == '') {
+			return $this->config;
+		}
+		
 		if(array_key_exists($key, $this->config)) {
 			return $this->config[$key];		
 		}
@@ -37,14 +39,14 @@ abstract class Waymark_Request {
 		$this->response = $response;
 	}
 	
-	public function set_config(string $key, string $value) {
+	public function set_config(string $key, $value) {
 		$this->config[$key] = $value;
 	}
 	
 	/**
 	 * Define abstract functions
 	 */
-	abstract function build_request_parameters(array $params);
+	abstract function build_request_parameters($params = []);
 	abstract function process_response($response);
 
 	/**
@@ -54,33 +56,6 @@ abstract class Waymark_Request {
 		foreach($params_in as $param_key => $param_value) {
 			$this->parameters[$param_key] = $param_value;
 		}
-	}
-
-	/**
-	 * Migrate parameters?
-	 */
-	function migrate_parameters(array $params_in) {
-		$params_out = array();
-		
-		//Set the options
-		foreach($params_in as $param_key => $param_value) {
-			//Are we migrating the parameter value?
-			if(array_key_exists($param_key, $this->migrate_parameters_values)) {
-				if(array_key_exists($param_value, $this->migrate_parameters_values[$param_key])) {
-					$param_value = $this->migrate_parameters_values[$param_key][$param_value];					
-				}
-//				 else {
-//					throw new Exception('The <code>' . $param_key . '</code> parameter does not allow this value.');
-//				}
-			}
-			//Are we migrating this parameter?
-			if(array_key_exists($param_key, $this->migrate_parameters)) {
-				$param_key = $this->migrate_parameters[$param_key];
-			}				
-			$params_out[$param_key] = $param_value;
-		}	
-		
-		return $params_out;	
 	}
 
 	/**
@@ -99,12 +74,9 @@ abstract class Waymark_Request {
 	 * Get the response
 	 */
 	function get_processed_response() {
-		//Migrate params for this request
-		$params_migrated = $this->migrate_parameters($this->parameters);
-		
 		//Get request params
-		$request_params = $this->build_request_parameters($params_migrated);		
-		
+		$request_params = $this->build_request_parameters($this->parameters);		
+
 		//Build request
 		$request = $this->build_request($request_params);
 		$this->set_request($request);

@@ -135,6 +135,19 @@ class Waymark_Query extends Waymark_Class {
 		return is_array($this->get_query_area());
 	}	
 	
+	function get_query_overpass() {
+		$overpass_query = $this->get_parameter('query_overpass_request');
+
+		if(! empty($overpass_query)) {
+			//Remove comments & whitespace
+			$overpass_query = preg_replace('/\/\/(.*)/', '', $overpass_query);
+			$overpass_query = preg_replace('!/\*.*?\*/!s', '', $overpass_query);
+			$overpass_query = preg_replace('/\n\s*\n/', "\n", $overpass_query);			
+		}
+		
+		return $overpass_query;
+	}
+	
 	function get_query_area() {
 		switch($this->get_parameter('query_area_type')) {
 			//Bounds
@@ -176,10 +189,9 @@ class Waymark_Query extends Waymark_Class {
 		$request_string = html_entity_decode($request_string);
 
 		//Build request
-		$Request = new Waymark_Overpass_Request($this->parameters);							
-		$Request->set_parameters(array(
-			'data' => $request_string
-		));
+		$Request = new Waymark_Overpass_Request([
+			'Query' => $this
+		]);							
 
 		//Execute request
 		$response = $Request->get_processed_response();

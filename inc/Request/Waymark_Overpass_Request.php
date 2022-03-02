@@ -11,57 +11,61 @@ class Waymark_Overpass_Request extends Waymark_Request {
 		$this->set_config('output_type', 'json');
 
 		foreach($params_in as $key => $value) {
-			if(is_string($value)) {
+//			if(is_string($value)) {
 				$this->set_config($key, $value);		
-			}
+//			}
 		}
 	}
 
-	function build_request_parameters(array $params_in) {
+	function build_request_parameters($params_in = []) {
+		$Query = $this->get_config('Query');
+
+		$query_area = $Query->get_query_area();
+		$query_string = $Query->get_query_overpass();
+
 		//Check for required data
-		if(! $this->get_config('query_area_bounds')) {
+		if(! $query_area || ! $query_string) {
 			return false;
 		}
 		
-		//Setup call
-		$params_out = array();
-						
-		foreach($params_in as $param_key => $param_value) {
-			switch($param_key) {   
-				case 'data' :
-					//Setup
-					$overpass_query = '[out:' . $this->get_config('output_type') . ']';
+		// ==== Query Settings ====
+		$overpass_query = '[out:' . $this->get_config('output_type') . ']';
 
-					//User query
-					$overpass_query .= $param_value;
+		//Query area?
 
-					//Remove comments & whitespace
-					$overpass_query = preg_replace('/\/\/(.*)/', '', $overpass_query);
-					$overpass_query = preg_replace('!/\*.*?\*/!s', '', $overpass_query);
-					$overpass_query = preg_replace('/\n\s*\n/', "\n", $overpass_query);
+		switch($query_area['type']) {
+			case 'bounds' :
+				//Convert from Leaflet to Overpass
+				$overpass_bounding_box = Waymark_Overpass::leaflet_bb_to_overpass_bb($query_area['area']);
+				
+				//!!!
+				//To-do: append
+				
+				//Add to request			
+				$query_string = str_replace('{{bbox}}', $overpass_bounding_box, $query_string);
+			
+				break;
 
-					//Convert from Leaflet to Overpass
-					$overpass_bounding_box = Waymark_Overpass::leaflet_bb_to_overpass_bb($this->get_config('query_area_bounds'));
-										
-					//Add to request			
-					$overpass_query = str_replace('{{bbox}}', $overpass_bounding_box, $overpass_query);
-
-					//Make safe
-					//$param_value = urlencode($param_value);
-
-					$overpass_query = str_replace('+', '%20', $overpass_query);
-	
-					$params_out[$param_key] = $overpass_query;						
-
-					break; 
-				default:
-					$params_out[$param_key] = $param_value;						
-
-					break;
-			}
+			//!!!
+			//To-do: Polygon
+			case 'polygon' :
+			
+				break;				
 		}
+
+		//User query
+		$overpass_query .= $query_string;
+
+		//Make safe
+		$overpass_query = str_replace('+', '%20', $overpass_query);
 					
-		return $params_out;
+		$return = [
+			'data' => $overpass_query
+		];
+		
+		Waymark_Helper::debug($return);
+		
+		return $return;
 	}
 
 	function process_response($response_raw) {
