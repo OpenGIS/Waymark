@@ -8073,66 +8073,73 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 		}
 	}		
 
- 	this.draw_query_area = function(area_type, area, target = null) {
+ 	this.draw_query_area = function(area_type, area_val, target = null) {
 		Waymark = this;
 
 		if(typeof Waymark.query_area_edit_active !== 'undefined' && Waymark.query_area_edit_active == true) {
 			return;
 		}
-		Waymark.debug(area);
+		
+		//Get Valid area from stored GeoJSON
+		var area_feature = false;
+		if(typeof area_val !== 'undefined' && area_val) {
+ 			area_feature = JSON.parse(area_val);
+ 			
+ 			//Test is valid
+ 			if(typeof area_feature.geometry == 'undefined') {
+	 			area_feature = false;
+ 			}
+ 		}
+
 		
 		switch(area_type) {
 			// ========== Bounds ==========
 			
 			case 'bounds' :
 				//Valid area
-				if(typeof area !== 'undefined' && area) {
-					area = area.split(',');
-					area = [[area[1], area[0]] , [area[3], area[2]]];
+				if(area_feature) {
+ 					var latlng_array = area_feature.geometry.coordinates;
 				//Create default from Map
 				} else {
-					area = Waymark.map.getBounds().pad(-0.1);	
-
-					//Update
-					target.val(area.toBBoxString());				
+					var latlng_array = Waymark.map.getBounds().pad(-0.1);	
 				}
-
-				Waymark.query_area_layer = L.rectangle(area, {
+				
+				//Create layer
+				Waymark.query_area_layer = L.rectangle(latlng_array, {
 					color: "#ff7800",
 					weight: 1
 				}).addTo(Waymark.map);
-				
+
 				break;
 
 			// ========== Polygon ==========
 		
 			case 'polygon' :
 				//Valid area
-				if(typeof area !== 'undefined' && area) {
-// 					area = JSON.parse(area);
-// 					area = [[area[1], area[0]] , [area[3], area[2]]];
-				//Create default from Map
+				if(area_feature) {
+ 					var latlng_array = area_feature.geometry.coordinates;
+				//Default from Map
 				} else {
-					area = Waymark.map.getBounds().pad(-0.1);	
-					area = Waymark.latlng_bounds_to_latlng_array(area);
-
-					//Update
-					//target.val(area.toBBoxString());				
+					var bounds = Waymark.map.getBounds().pad(-0.1);	
+					var latlng_array = Waymark.latlng_bounds_to_latlng_array(bounds);		
 				}
 				
-				
-				Waymark.query_area_layer = L.polygon(area, {
+				Waymark.query_area_layer = L.polygon(latlng_array, {
 					color: "#ff7800",
 					weight: 1
 				}).addTo(Waymark.map);
-								
+
 				break;
 		}
 
-		//Add Edit button
+		//We are saving
 		if(target) {
+			//Store value
+			target.val(JSON.stringify(Waymark.query_area_layer.toGeoJSON()));	
+						
 			var container = target.parents('.waymark-parameters-container');
 
+			//Add Edit button
 			Waymark.query_area_edit_button = jQuery('<button />')
 				.html('<i class="ion ion-edit"></i>')
 				.addClass('button waymark-edit')
@@ -8164,7 +8171,9 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 		if(typeof Waymark.query_area_layer !== 'undefined') {
 			Waymark.query_area_layer.enableEdit();
 			Waymark.map.on('editable:vertex:dragend', function() {
-				target.val(Waymark.query_area_layer.getBounds().toBBoxString());
+				var geo_json = Waymark.query_area_layer.toGeoJSON();
+			
+				target.val(JSON.stringify(geo_json));
 				target.trigger('change');
 			});
 		}	
