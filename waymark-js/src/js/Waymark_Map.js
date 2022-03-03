@@ -1036,35 +1036,82 @@ function Waymark_Map() {
 		return image_sizes;			
 	}
 
-	this.latlng_to_string = function(latlng) {
+	this.polygon_array_to_string = function(polygon_array, seperator1 = ',', seperator2 = ' ') {
+		if(typeof polygon_array == 'object') {
+			var latlng_string = '';
+
+			//Single only, use first
+			polygon_array = polygon_array.pop();
+
+			//Terate over array			
+			for(i in polygon_array) {
+				//Stringify
+				polygon_array[i] = polygon_array[i].lat + seperator2 + polygon_array[i].lng;
+			}
+
+			return polygon_array.join(seperator1);
+		}
+	}
+
+	this.string_to_polygon_array = function(str, seperator1 = ',', seperator2 = ' ') {
+		if(typeof str == 'string') {
+			Waymark = this;
+
+			var polygon_array = str.split(seperator1);
+
+			//Terate over array			
+			for(i in polygon_array) {
+				//Stringify
+				polygon_array[i] = Waymark.latlng_to_string(polygon_array[i]);
+			}
+
+			return polygon_array;
+		}
+	}
+
+	this.latlng_to_string = function(latlng, seperator = ',') {
 		if(typeof latlng == 'object') {
 			//LatLng Object
 			if((typeof latlng.lat !== undefined) && (typeof latlng.lat !== undefined)) {
-				return latlng.lat + ',' + latlng.lng;			
+				return latlng.lat + seperator + latlng.lng;			
 			//Array
 			} else if((typeof latlng[0] !== undefined) && (typeof latlng[1] !== undefined)) {
-				return latlng[0] + ',' + latlng[1];
+				return latlng[0] + seperator + latlng[1];
 			}
 		}
 	}
 		
-	this.string_to_latlng_array = function(str) {
+	this.string_to_latlng_array = function(str, seperator = ',') {
 		if(typeof str == 'string') {
-			return str.split(',');
+			var latlng_array = str.split(seperator);
+			
+			if(latlng_array.length == 2) {
+				return latlng_array;
+			} else {
+				return null;
+			}
 		}	
 	}
 	
-	this.string_to_bounds_array = function(str) {
+	this.string_to_bounds_array = function(str, seperator = ',') {
 		if(typeof str == 'string') {
-			var bounds = str.split(',');
-		
-			return [[ bounds[1], bounds[0] ], [ bounds[3], bounds[2] ]];
+			var bounds = str.split(seperator);
+			
+			if(bounds.length == 4) {
+				return [[ bounds[1], bounds[0] ], [ bounds[3], bounds[2] ]];			
+			}
 		}
 	}	
 	
 	this.bounds_to_string = function(bounds) {
 		if(typeof bounds == 'object' && typeof bounds.toBBoxString == 'function') {
 			return bounds.toBBoxString();
+		}		
+	}		
+	
+	this.polygon_to_string = function(polygon) {
+		if(typeof polygon == 'object') {
+			console.log(polygon);
 		}		
 	}		
 	
@@ -1081,7 +1128,7 @@ function Waymark_Map() {
 		if(centre_string) {
 			var centre_latlng = Waymark.string_to_latlng_array(centre_string);
 			
-			if(typeof centre_latlng === 'object') {
+			if(typeof centre_latlng == 'object') {
 				var type = Waymark.get_type('marker');
 				Waymark.latlng_selector_layer = Waymark.create_marker(centre_latlng, {
 					draggable: true,
@@ -1105,10 +1152,15 @@ function Waymark_Map() {
 			return;
 		}
 
-		var bounds = Waymark.string_to_bounds_array(target.val());
-		Waymark.map.fitBounds(bounds);
+		var latlng_array = Waymark.string_to_bounds_array(area_val);
 		
-		Waymark.bounds_selector_layer = L.rectangle(bounds, {
+		//Set default if necessary
+		if(typeof latlng_array != 'object' || ! latlng_array) {
+			var latlng_array = Waymark.map.getBounds().pad(-0.1);						
+		}
+		Waymark.map.fitBounds(latlng_array);
+		
+		Waymark.bounds_selector_layer = L.rectangle(latlng_array, {
 			color: "#ff7800",
 			weight: 1
 		}).addTo(Waymark.map);
@@ -1305,100 +1357,114 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 			return;
 		}
 		
-		//Get Valid area from stored GeoJSON
-		var area_feature = false;
-		if(typeof area_val !== 'undefined' && area_val) {
- 			area_feature = JSON.parse(area_val);
- 			
- 			//Test is valid
- 			if(typeof area_feature.geometry == 'undefined') {
-	 			area_feature = false;
- 			}
- 		}
-
-		
-		switch(area_type) {
-			// ========== Bounds ==========
+		//Check
+		if(typeof area_type == 'string' && typeof area_val == 'string') {
+			switch(area_type) {
+				// ========== Bounds ==========
 			
-			case 'bounds' :
-				//Valid area
-				if(area_feature) {
- 					var latlng_array = area_feature.geometry.coordinates;
-				//Create default from Map
-				} else {
-					var latlng_array = Waymark.map.getBounds().pad(-0.1);	
-				}
-				
-				//Create layer
-				Waymark.query_area_layer = L.rectangle(latlng_array, {
-					color: "#ff7800",
-					weight: 1
-				}).addTo(Waymark.map);
-
-				break;
-
-			// ========== Polygon ==========
-		
-			case 'polygon' :
-				//Valid area
-				if(area_feature) {
- 					var latlng_array = area_feature.geometry.coordinates;
-				//Default from Map
-				} else {
-					var bounds = Waymark.map.getBounds().pad(-0.1);	
-					var latlng_array = Waymark.latlng_bounds_to_latlng_array(bounds);		
-				}
-				
-				Waymark.query_area_layer = L.polygon(latlng_array, {
-					color: "#ff7800",
-					weight: 1
-				}).addTo(Waymark.map);
-
-				break;
-		}
-
-		//We are saving
-		if(target) {
-			//Store value
-			target.val(JSON.stringify(Waymark.query_area_layer.toGeoJSON()));	
-						
-			var container = target.parents('.waymark-parameters-container');
-
-			//Add Edit button
-			Waymark.query_area_edit_button = jQuery('<button />')
-				.html('<i class="ion ion-edit"></i>')
-				.addClass('button waymark-edit')
-				.on('click', function(e) {
-					e.preventDefault();
+				case 'bounds' :
+					var latlng_array = Waymark.string_to_bounds_array(area_val);
 					
-					if(typeof Waymark.query_area_edit_active == 'undefined' || ! Waymark.query_area_edit_active) {
-						Waymark.edit_query_area(target);
+					//Set default if necessary
+					if(typeof latlng_array != 'object' || ! latlng_array) {
+						var latlng_array = Waymark.map.getBounds().pad(-0.1);						
+					}
+				
+					//Create layer
+					Waymark.query_area_layer = L.rectangle(latlng_array, {
+						color: "#ff7800",
+						weight: 1
+					}).addTo(Waymark.map);
 
-						Waymark.query_area_edit_active = true;
+					break;
+
+				// ========== Polygon ==========
+		
+				case 'polygon' :
+					var latlng_array = Waymark.string_to_latlng_array(area_val);
+
+					//Set default if necessary
+					if(typeof latlng_array != 'object' || ! latlng_array) {
+						var latlng_array = Waymark.map.getBounds().pad(-0.1);		
+						latlng_array = Waymark.latlng_bounds_to_latlng_array(latlng_array);
+					}
+
+					Waymark.query_area_layer = L.polygon(latlng_array, {
+						color: "#ff7800",
+						weight: 1
+					}).addTo(Waymark.map);
+
+					break;
+			}
+
+			//We are saving
+			if(target) {
+
+				//Store value
+				switch(area_type) {
+					case 'bounds' :
+						var bounds = Waymark.query_area_layer.getBounds();
+						target.val(Waymark.bounds_to_string(bounds));	
+			
+						break;
+
+					case 'polygon' :
+						var latlng_array = Waymark.query_area_layer.getLatLngs();
+						target.val(Waymark.polygon_array_to_string(latlng_array));
+					
+						break;
+				}
+
+				var container = target.parents('.waymark-parameters-container');
+
+				//Add Edit button
+				Waymark.query_area_edit_button = jQuery('<button />')
+					.html('<i class="ion ion-edit"></i>')
+					.addClass('button waymark-edit')
+					.on('click', function(e) {
+						e.preventDefault();
+					
+						if(typeof Waymark.query_area_edit_active == 'undefined' || ! Waymark.query_area_edit_active) {
+							Waymark.edit_query_area(area_type, target);
+
+							Waymark.query_area_edit_active = true;
 						
-						jQuery(this).html('<i class="ion ion-tick"></i>')							
-					} else {
-						Waymark.unedit_query_area();
+							jQuery(this).html('<i class="ion ion-tick"></i>')							
+						} else {
+							Waymark.unedit_query_area();
 
-						Waymark.query_area_edit_active = false;	
+							Waymark.query_area_edit_active = false;	
 
-						jQuery(this).html('<i class="ion ion-edit"></i>')																			
-					}							
-				});
+							jQuery(this).html('<i class="ion ion-edit"></i>')																			
+						}							
+					});
 
-			container.append(Waymark.query_area_edit_button);
+				container.append(Waymark.query_area_edit_button);
+			}
 		}
 	}
 	
-	this.edit_query_area = function(target) {
+	this.edit_query_area = function(area_type, target) {
 		Waymark = this;
 		
 		if(typeof Waymark.query_area_layer !== 'undefined') {
 			Waymark.query_area_layer.enableEdit();
 			Waymark.map.on('editable:vertex:dragend', function() {
-				var geo_json = Waymark.query_area_layer.toGeoJSON();
+				//Update
+				switch(area_type) {
+					case 'bounds' :
+						var bounds = Waymark.query_area_layer.getBounds();
+						target.val(Waymark.bounds_to_string(bounds));	
 			
-				target.val(JSON.stringify(geo_json));
+						break;
+
+					case 'polygon' :
+						var latlng_array = Waymark.query_area_layer.getLatLngs();
+						target.val(Waymark.polygon_array_to_string(latlng_array));
+					
+						break;
+				}
+
 				target.trigger('change');
 			});
 		}	

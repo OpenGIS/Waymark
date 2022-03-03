@@ -55,7 +55,7 @@ class Waymark_Query extends Waymark_Class {
 //				'around' => __('Around', 'waymark')
 			],
 			'title' => 'Query Area Type',
-			'default' => 'polygon',
+			'default' => 'bounds',
 		);
 
 		$this->inputs['query_area_polygon'] = array(
