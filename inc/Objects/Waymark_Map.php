@@ -17,7 +17,6 @@ class Waymark_Map extends Waymark_Object {
 			'name' => 'map_data',
 			'id' => 'map_data',
 			'type' => 'textarea',				
-			'tip' => 'You are seeing the Map Data (in GeoJSON format) because you have the Waymark Debug Mode enabled. The amount of text shown here can get VERY large, so your browser might struggle to scroll through it. You can disable Debug Mode in Settings > Misc. > Advanced.',
 			'group' => '',
 			'title' => 'Map Data',
 			'class' => 'waymark-hidden'

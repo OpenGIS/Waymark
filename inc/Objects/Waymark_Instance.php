@@ -9,8 +9,6 @@ class Waymark_Instance extends Waymark_Class {
  		'init_latlng' => null,	
  		'init_zoom' => null,	
  		'init_bounds' => null,	
- 		'bb_selector' => null,
- 		'latlng_selector' => null,
  		'height' => null,
 	];
 	
@@ -82,7 +80,9 @@ class Waymark_Instance extends Waymark_Class {
 				'error_file_upload' => esc_attr__('File upload error.', 'waymark'),		
 				'error_photo_meta' => esc_attr__('Could not retrieve Image metadata.', 'waymark'),
 				'info_exif_yes' => esc_attr__('Image location metadata (EXIF) detected!', 'waymark'),
-				'info_exif_no' => esc_attr__('Image location metadata (EXIF) NOT detected.', 'waymark')
+				'info_exif_no' => esc_attr__('Image location metadata (EXIF) NOT detected.', 'waymark'),
+				'error_no_wpmedia' => esc_attr__('WordPress Media Library not found.', 'waymark'),
+				'error_no_container' => esc_attr__('Map container not found.', 'waymark')				
 			)
 		));
 		wp_enqueue_script('waymark-js');
@@ -148,43 +148,6 @@ class Waymark_Instance extends Waymark_Class {
 		if($bounds = $this->get_parameter('init_bounds')) {		
 			Waymark_JS::add_call('waymark_instance_' . $this->get_parameter('hash') . '.map.fitBounds(' . $bounds . ')');
 		}					
-
-		if($latlng_selector = $this->get_parameter('latlng_selector')) {		
-			Waymark_JS::add_call('
-//Query
-var input = jQuery(\'#' . $latlng_selector . '\');
-var centre = input.val().split(\',\');
-if(typeof centre === \'object\') {
-	var type = waymark_instance_' . $this->get_parameter('hash') . '.get_type(\'marker\');
-	var marker = L.marker([centre[0], centre[1]], { draggable: true }).addTo(waymark_instance_' . $this->get_parameter('hash') . '.map);
-	marker.setIcon(
-		L.divIcon(waymark_instance_' . $this->get_parameter('hash') . '.build_icon_data(type))
-	);	
-	marker.on(\'dragend\', function(e) {
-		var ll = e.target.getLatLng();
-		console.log(ll);
-		input.val(ll.lat + \',\' + ll.lng);
-	});
-}
-');		
-		}
-
-		//Bounding Box
-		//!!!
-		if($bounds && $bb_selector = $this->get_parameter('bb_selector')) {		
-			Waymark_JS::add_call('
-//Query
-var bounds = ' . $bounds . ';
-var rectangle = L.rectangle(bounds, {
-	color: "#ff7800",
-	weight: 1
-}).addTo(waymark_instance_' . $this->get_parameter('hash') . '.map);
-rectangle.enableEdit();
-waymark_instance_' . $this->get_parameter('hash') . '.map.on(\'editable:vertex:dragend\', function(e) {
-	jQuery(\'#' . $bb_selector . '\').val(e.layer.getBounds().toBBoxString());
-});
-');		
-		}
 	}
 	
 	function get_html() {

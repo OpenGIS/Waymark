@@ -559,7 +559,7 @@ function waymark_execute_query(container) {
 }
 
 function waymark_setup_settings_nav() {
-	var nav_container = jQuery('#waymark-settings-nav');
+	var nav_container = jQuery('body.wp-admin.waymark_page_waymark-settings #waymark-settings-nav');
 	
 	if(! nav_container) {
 		return false;
@@ -570,49 +570,75 @@ function waymark_setup_settings_nav() {
 
 	var tabs = jQuery('.waymark-settings-tab', admin_container);
 	var init_tab_key = nav_container.data('init_tab_key');
-	
-	//Initial
-	tabs.each(function() {
-		var tab = jQuery(this);
 
-		var is_default_tab = (tab.attr('class').indexOf('tab-' + init_tab_key)) > 0;
-		
-		if(is_default_tab) {
-			tab.show();			
-		} else {
-			tab.hide();			
-		}
-	});
-	
 	//Change
 	var select = jQuery('select', nav_container);
+	select.hover(function() {
+		jQuery(this).attr('size', jQuery('option', jQuery(this)).length);
+  },
+  function() {
+    jQuery(this).removeAttr('size');
+  });
+	
 	select.change(function () {
-		var selected_tab_key = jQuery(this).val();
+	  select.removeAttr('size');
+	
+		var selected_content_id = jQuery(this).val();
+		admin_container.attr('class', '');
 		
 		//Update form redirect
 		var redirect_input = jQuery('input[name="_wp_http_referer"]', form);
 		var redirect_to = document.location.toString();
-		if(redirect_to.indexOf('tab=') > 0) {
-			redirect_to = redirect_to.replace('tab=' + init_tab_key, 'tab=' + selected_tab_key);
+		if(redirect_to.indexOf('content=') > 0) {
+			redirect_to = redirect_to.replace('content=' + init_tab_key, 'content=' + selected_content_id);
 		} else {
-			redirect_to = redirect_to + '&tab=' + selected_tab_key;
+			redirect_to = redirect_to + '&content=' + selected_content_id;
 		}
-
 		redirect_input.val(redirect_to);
+	
+		var show_content = jQuery('.' + selected_content_id).first();
 		
-		//Show selected
-		tabs.each(function() {
+		//Each Tab
+		jQuery('.waymark-settings-tab').each(function() {
 			var tab = jQuery(this);
-
-			var is_selected_tab = (tab.attr('class').indexOf('tab-' + selected_tab_key)) > 0;
+			tab.hide();
 			
-			if(is_selected_tab) {
-				tab.show();			
-			} else {
-				tab.hide();			
+			//Entire Tab
+			if(selected_content_id.indexOf('settings-tab')) {
+				//Selected
+				if(tab.hasClass(selected_content_id)) {
+					tab.show();
+					admin_container.addClass('waymark-active-' + selected_content_id);
+					
+					//Specific Tabs					
+// 					switch(true) {
+// 						case tab.hasClass('waymark-settings-tab-query') :
+// 							
+// 							break;
+// 					}
+				}
 			}
+			
+			//Each Section
+			jQuery('.waymark-settings-section', tab).each(function() {
+				var section = jQuery(this);			
+				
+				if(selected_content_id.indexOf('settings-tab') > 0) {
+					section.show();		
+				} else if(selected_content_id.indexOf('settings-section') > 0) {
+					section.hide();
+
+					//Selected
+					if(section.hasClass(selected_content_id)) {
+						tab.show();		
+						section.show();
+						admin_container.addClass('waymark-active-' + selected_content_id);						
+					}
+				}					
+			});					
 		});
-	});
+	});	
+	select.trigger('change');
 }
 
 function waymark_handle_repeatable_clone(clone) {
@@ -702,11 +728,86 @@ function waymark_setup_repeatable_parameters() {
 	});
 }
 
+function waymark_setup_settings_maps() {
+	var form = jQuery('body.wp-admin.waymark_page_waymark-settings #waymark-admin-container form');
+
+	if(! form) {
+		return;
+	}
+
+ 	// ======== Default Centre ========
+ 	
+	var default_latlng_container = jQuery('.map_default_latlng-container .waymark-controls', form).first();
+	var default_latlng_input = jQuery('.waymark-input-map_default_latlng', default_latlng_container).first();
+	
+	//
+	var edit_button = jQuery('<button />')
+		.html('<i class="ion ion-edit"></i>')
+		.addClass('button waymark-edit')
+		.on('click', function(e) {
+			e.preventDefault();
+			
+			var map_container = jQuery('#waymark-map-latlng_selector');
+			
+			if(map_container.hasClass('waymark-hidden')) {
+				jQuery(this).html('<i class="ion ion-android-done"></i>');
+			
+				map_container.removeClass('waymark-hidden');
+			} else {
+				jQuery(this).html('<i class="ion ion-edit"></i>');
+				
+				map_container.addClass('waymark-hidden');			
+			}
+			
+			var waymark_instance = map_container.data('Waymark');
+			waymark_instance.map.invalidateSize();
+			waymark_instance.draw_latlng_selector(default_latlng_input);
+
+			return false;
+		})
+	;
+	default_latlng_container.append(edit_button);
+
+ 	// ======== Default Query Area ========
+ 	
+	var query_area_container = jQuery('.query_area_bounds-container .waymark-controls', form).first();
+	var query_area_input = jQuery('.waymark-input-query_area_bounds', query_area_container).first();
+	
+	//
+	var edit_button = jQuery('<button />')
+		.html('<i class="ion ion-edit"></i>')
+		.addClass('button waymark-edit')
+		.on('click', function(e) {
+			e.preventDefault();
+			
+			var map_container = jQuery('#waymark-map-bounds_selector');
+			
+			if(map_container.hasClass('waymark-hidden')) {
+				jQuery(this).html('<i class="ion ion-android-done"></i>');
+			
+				map_container.removeClass('waymark-hidden');
+			} else {
+				jQuery(this).html('<i class="ion ion-edit"></i>');
+				
+				map_container.addClass('waymark-hidden');			
+			}
+			
+			var waymark_instance = map_container.data('Waymark');
+			waymark_instance.map.invalidateSize();
+			waymark_instance.draw_bounds_selector(query_area_input);
+
+			return false;
+		})
+	;
+	query_area_container.append(edit_button);	
+}
+
 jQuery(document).ready(function() {
 	waymark_setup_settings_nav();
 	waymark_setup_repeatable_settings();
 	waymark_setup_repeatable_parameters();
 	waymark_setup_marker_tab();
+	waymark_setup_settings_maps();
 	waymark_setup_colour_pickers();
 	waymark_setup_external_links();
 	waymark_setup_select_meta_type();

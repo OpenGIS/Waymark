@@ -5,11 +5,6 @@ class Waymark_CSS {
 	static private $chunks = array();
 	
 	static function init() {
-		//Settings > Appearance > CSS?
-		if($settings_css = Waymark_Config::get_setting('appearance', 'css', 'css')) {
-			self::add_chunk($settings_css);			
-		}
-		
 		add_action('wp_enqueue_scripts', array('Waymark_CSS', 'enqueue_styles'));		
 		add_action('wp_head', array('Waymark_CSS', 'wp_head'));		
 	}
