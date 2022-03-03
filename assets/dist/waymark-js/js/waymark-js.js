@@ -7912,6 +7912,38 @@ function Waymark_Map() {
 		
 		return image_sizes;			
 	}
+
+	this.latlng_to_string = function(latlng) {
+		if(typeof latlng == 'object') {
+			//LatLng Object
+			if((typeof latlng.lat !== undefined) && (typeof latlng.lat !== undefined)) {
+				return latlng.lat + ',' + latlng.lng;			
+			//Array
+			} else if((typeof latlng[0] !== undefined) && (typeof latlng[1] !== undefined)) {
+				return latlng[0] + ',' + latlng[1];
+			}
+		}
+	}
+		
+	this.string_to_latlng_array = function(str) {
+		if(typeof str == 'string') {
+			return str.split(',');
+		}	
+	}
+	
+	this.string_to_bounds_array = function(str) {
+		if(typeof str == 'string') {
+			var bounds = str.split(',');
+		
+			return [[ bounds[1], bounds[0] ], [ bounds[3], bounds[2] ]];
+		}
+	}	
+	
+	this.bounds_to_string = function(bounds) {
+		if(typeof bounds == 'object' && typeof bounds.toBBoxString == 'function') {
+			return bounds.toBBoxString();
+		}		
+	}		
 	
 	this.draw_latlng_selector = function(target) {
 		Waymark = this;
@@ -7924,28 +7956,21 @@ function Waymark_Map() {
 		
 		var centre_string = target.val();
 		if(centre_string) {
-			var centre = centre_string.split(',');
+			var centre_latlng = Waymark.string_to_latlng_array(centre_string);
 			
-			if(typeof centre === 'object') {
+			if(typeof centre_latlng === 'object') {
 				var type = Waymark.get_type('marker');
-				Waymark.latlng_selector_layer = Waymark.create_marker([centre[0], centre[1]], {
+				Waymark.latlng_selector_layer = Waymark.create_marker(centre_latlng, {
 					draggable: true,
 					icon: L.divIcon(Waymark.build_icon_data(type))
 				});
 				Waymark.latlng_selector_layer.addTo(Waymark.map);
 				Waymark.latlng_selector_layer.on('dragend', function(e) {
 					var ll = e.target.getLatLng();
-					console.log(ll);
-					target.val(ll.lat + ',' + ll.lng);
+					target.val(Waymark.latlng_to_string(ll));
 				});
 			}
 		}	
-	}
-	
-	this.bb_string_to_bounds = function(bb_string) {
-		var bounds = bb_string.split(',');
-		
-		return [[ bounds[1], bounds[0] ], [ bounds[3], bounds[2] ]];
 	}
 	
 	this.draw_bounds_selector = function(target) {
@@ -7957,7 +7982,7 @@ function Waymark_Map() {
 			return;
 		}
 
-		var bounds = Waymark.bb_string_to_bounds(target.val());
+		var bounds = Waymark.string_to_bounds_array(target.val());
 		Waymark.map.fitBounds(bounds);
 		
 		Waymark.bounds_selector_layer = L.rectangle(bounds, {
@@ -7966,7 +7991,8 @@ function Waymark_Map() {
 		}).addTo(Waymark.map);
 		Waymark.bounds_selector_layer.enableEdit();
 		Waymark.map.on('editable:vertex:dragend', function(e) {
-			target.val(e.layer.getBounds().toBBoxString());
+			var bounds = e.layer.getBounds();
+			target.val(Waymark.bounds_to_string(bounds));
 		});
 	}	
 
