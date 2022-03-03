@@ -372,47 +372,6 @@ function waymark_setup_dropdowns() {
 }
 
 function waymark_setup_map_query() {
-// 	jQuery('body.post-type-waymark_map #publish').on('click', function() {
-// 		//Iterate inputs
-// 		jQuery('.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-input').each(function() {
-// 			var input = jQuery(this);
-// 		
-// 			switch(input.data('id')) {
-// 				case 'query_area_bounds' :
-// 					if(! input.val()) {
-// 						console.log('//No query_area provided');
-// 						
-// 						var waymark_container = jQuery('.waymark-instance').first();
-// 						var Waymark_Instance = waymark_container.data('Waymark');				
-// 					
-// 						//Instance
-// 						if(Waymark_Instance) {
-// 							//Area type
-// 							switch(jQuery('.waymark-input-query_area_type', jQuery(this).parents('.waymark-parameters-container')).val()) {
-// 								//Bounds
-// 								case 'bounds' :
-// 									//Map Data?
-// 									if(Waymark_Instance.map_data.getLayers().length) {
-// 										console.log('//Use Map Data bounds');
-// 										input_value = Waymark_Instance.map_data.getBounds().toBBoxString();							
-// 									} else {
-// 										console.log('//Use Map View bounds');
-// 										input_value = Waymark_Instance.map.getBounds().toBBoxString();								
-// 									}
-// 								
-// 									//Update
-// 									jQuery(this).val(input_value);
-// 								
-// 									break;
-// 							}										
-// 						}
-// 					}
-// 				
-// 					break;
-// 			}
-// 		});	
-// 	});	
-
 	jQuery('.waymark-query-form.waymark-map-query').each(function() {
 		var form_container = jQuery(this);
 
@@ -435,9 +394,6 @@ function waymark_setup_map_query() {
 					
 					query_container.addClass('waymark-active');
 
-					var waymark_container = jQuery('.waymark-instance').first();
-					var Waymark_Instance = waymark_container.data('Waymark');
-					
 					var area_type_input = jQuery('.waymark-input-query_area_type', query_container).first();
 
 					switch(area_type_input.val()) {
@@ -447,7 +403,7 @@ function waymark_setup_map_query() {
 							var waymark_container = jQuery('.waymark-instance').first();
 							var Waymark_Instance = waymark_container.data('Waymark');					
 					
-							Waymark_Instance.draw_query_area(area_type_input.val(), query_area_bounds.val(), query_area_bounds);
+							Waymark_Instance.draw_bounds_selector(area_type_input.val(), query_area_bounds.val(), query_area_bounds);
 					
 							break;
 						case 'polygon' :
@@ -456,7 +412,7 @@ function waymark_setup_map_query() {
 							var waymark_container = jQuery('.waymark-instance').first();
 							var Waymark_Instance = waymark_container.data('Waymark');					
 					
-							Waymark_Instance.draw_query_area(area_type_input.val(), query_area_polygon.val(), query_area_polygon);
+							Waymark_Instance.draw_bounds_selector(area_type_input.val(), query_area_polygon.val(), query_area_polygon);
 
 							break;
 					}
@@ -467,7 +423,7 @@ function waymark_setup_map_query() {
 					var waymark_container = jQuery('.waymark-instance').first();
 					var Waymark_Instance = waymark_container.data('Waymark');		
 					
-					Waymark_Instance.undraw_query_area();
+					Waymark_Instance.undraw_selectors();
 				}		
 			);
 		});			
@@ -669,14 +625,14 @@ function waymark_handle_repeatable_clone(clone) {
 					var waymark_container = jQuery('.waymark-instance').first();
 					var Waymark_Instance = waymark_container.data('Waymark');					
 		
-					Waymark_Instance.draw_query_area(area_type_input.val(), query_area_input.val(), query_area_input);
+					Waymark_Instance.draw_bounds_selector(area_type_input.val(), query_area_input.val(), query_area_input);
 				}, 
 				//Off
 				function() {			
 					var waymark_container = jQuery('.waymark-instance').first();
 					var Waymark_Instance = waymark_container.data('Waymark');		
 									
-					Waymark_Instance.undraw_query_area();											
+					Waymark_Instance.undraw_selectors();											
 				}
 			);	
 		}	
@@ -794,7 +750,8 @@ function waymark_setup_settings_maps() {
 			
 			var waymark_instance = map_container.data('Waymark');
 			waymark_instance.map.invalidateSize();
-			waymark_instance.draw_bounds_selector(query_area_input);
+			waymark_instance.draw_bounds_selector('bounds', query_area_input.val(), query_area_input);
+			waymark_instance.edit_bounds_selector('bounds', query_area_input);
 
 			return false;
 		})
