@@ -1054,7 +1054,8 @@ function Waymark_Map() {
 	}
 
 	this.string_to_polygon_array = function(str, seperator1 = ',', seperator2 = ' ') {
-		if(typeof str == 'string') {
+		//Valid string
+		if((typeof str == 'string') && (str.indexOf(seperator1) != -1) && (str.indexOf(seperator2) != -1)) {
 			Waymark = this;
 			
 			var polygon_array = str.split(seperator1);
@@ -1180,8 +1181,6 @@ function Waymark_Map() {
 				case 'polygon' :
 					var latlng_array = Waymark.string_to_polygon_array(area_val);
 
-					console.log(latlng_array);
-
 					//Set default if necessary
 					if(typeof latlng_array != 'object' || ! latlng_array) {
 						var latlng_array = Waymark.map.getBounds().pad(-0.1);		
@@ -1249,7 +1248,7 @@ function Waymark_Map() {
 		Waymark = this;
 		
 		if(typeof Waymark.bounds_selector_layer == 'object') {
-			console.log(Waymark.bounds_selector_layer);
+			//console.log(Waymark.bounds_selector_layer);
 		
 			Waymark.bounds_selector_layer.enableEdit();
 			Waymark.map.on('editable:vertex:dragend', function() {
