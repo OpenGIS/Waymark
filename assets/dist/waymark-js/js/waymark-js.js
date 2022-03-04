@@ -8028,6 +8028,8 @@ function Waymark_Map() {
 		if(typeof Waymark.bounds_selector_edit_active != 'undefined' && Waymark.bounds_selector_edit_active == true) {
 			return;
 		}
+
+		Waymark.undraw_selectors();
 		
 		//Check
 		if(typeof area_type == 'string' && typeof area_val == 'string') {
@@ -8166,20 +8168,20 @@ function Waymark_Map() {
 			return;
 		}
 		
-		if(typeof Waymark.latlng_selector_layer == 'object') {
+		if(typeof Waymark.latlng_selector_layer != 'undefined' && Waymark.latlng_selector_layer) {
 			Waymark.map.removeLayer(Waymark.latlng_selector_layer);		
 			Waymark.latlng_selector_layer = null;
 		}
 		
-		if(typeof Waymark.bounds_selector_layer == 'object') {
+		if(typeof Waymark.bounds_selector_layer != 'undefined' && Waymark.bounds_selector_layer) {
 			Waymark.bounds_selector_layer.disableEdit();
 			Waymark.map.removeLayer(Waymark.bounds_selector_layer);		
 			Waymark.bounds_selector_layer = null;
 		}
 		
-		if(typeof Waymark.bounds_selector_edit_button != 'undefined') {
+ 		if(typeof Waymark.bounds_selector_edit_button != 'undefined' && Waymark.bounds_selector_edit_button) {
 			Waymark.bounds_selector_edit_button.remove();
-		}		
+ 		}		
 	}
 
 //Thanks!
