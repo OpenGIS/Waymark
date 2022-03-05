@@ -379,6 +379,7 @@ function waymark_setup_map_query() {
 		jQuery('.waymark-parameters-container', form_container).each(function() {
 			var query_container = jQuery(this);
 			
+			//Execute on change
 			var inputs = jQuery('.waymark-input', query_container);
 			inputs.each(function() {
 				jQuery(this).change(function() {
@@ -390,8 +391,15 @@ function waymark_setup_map_query() {
 			//Expand on hover
 			query_container.hover(
 				function() {
-					var query_container = jQuery(this);
-					
+					var waymark_container = jQuery('.waymark-instance').first();
+					var Waymark_Instance = waymark_container.data('Waymark');					
+
+					//Not while editing
+					if(Waymark_Instance.is_bounds_editing()) {
+						return;					
+					}
+
+					var query_container = jQuery(this);				
 					query_container.addClass('waymark-active');
 
 					var area_type_input = jQuery('.waymark-input-query_area_type', query_container).first();
@@ -400,30 +408,29 @@ function waymark_setup_map_query() {
 						case 'bounds' :
 							var query_area_bounds = jQuery('.waymark-input-query_area_bounds', query_container).first();
 
-							var waymark_container = jQuery('.waymark-instance').first();
-							var Waymark_Instance = waymark_container.data('Waymark');					
-					
 							Waymark_Instance.draw_bounds_selector(area_type_input.val(), query_area_bounds.val(), query_area_bounds);
 					
 							break;
 						case 'polygon' :
 							var query_area_polygon = jQuery('.waymark-input-query_area_polygon', query_container).first();
 
-							var waymark_container = jQuery('.waymark-instance').first();
-							var Waymark_Instance = waymark_container.data('Waymark');					
-					
 							Waymark_Instance.draw_bounds_selector(area_type_input.val(), query_area_polygon.val(), query_area_polygon);
 
 							break;
 					}
 				},
 				function() {
-					jQuery(this).removeClass('waymark-active');		
-					
 					var waymark_container = jQuery('.waymark-instance').first();
 					var Waymark_Instance = waymark_container.data('Waymark');		
+
+					//Not while editing
+					if(Waymark_Instance.is_bounds_editing()) {
+						return;					
+					}
 					
 					Waymark_Instance.undraw_selectors();
+
+					jQuery(this).removeClass('waymark-active');		
 				}		
 			);
 		});			
@@ -653,7 +660,7 @@ function waymark_setup_repeatable_parameters() {
 		add_button.on('click', function(e) {
 			e.preventDefault();
 	
-			var clone = template.clone();
+			var clone = Object.assign({}, template.clone());
 			
 			//Update inputs
 			jQuery('.waymark-input', clone).each(function() {
