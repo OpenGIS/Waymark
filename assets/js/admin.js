@@ -660,7 +660,7 @@ function waymark_setup_repeatable_parameters() {
 		add_button.on('click', function(e) {
 			e.preventDefault();
 	
-			var clone = Object.assign({}, template.clone());
+			var clone = template.clone();
 			
 			//Update inputs
 			jQuery('.waymark-input', clone).each(function() {
