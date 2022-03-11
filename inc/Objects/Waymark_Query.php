@@ -60,14 +60,14 @@ class Waymark_Query extends Waymark_Class {
 
 		$this->inputs['query_area_polygon'] = array(
 			'id' => 'query_area_polygon',
-			'type' => 'text',				
+			'type' => 'textarea',				
 // 			'class' => 'waymark-hidden',
 			'default' => null,
 		);
 
 		$this->inputs['query_area_bounds'] = array(
 			'id' => 'query_area_bounds',
-			'type' => 'text',				
+			'type' => 'textarea',				
 // 			'class' => 'waymark-hidden',
 			'default' => null,
 		);
