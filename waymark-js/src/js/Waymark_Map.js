@@ -1037,7 +1037,7 @@ function Waymark_Map() {
 	}
 
 	this.polygon_array_to_string = function(polygon_array, seperator1 = ',', seperator2 = ' ') {
-		if(typeof polygon_array == 'object') {
+		if(typeof polygon_array === 'object') {
 			var latlng_string = '';
 
 			//Single only, use first
@@ -1202,7 +1202,7 @@ function Waymark_Map() {
 			}
 			
 			//View
-			Waymark.map.fitBounds(Waymark.bounds_selector_layer.getBounds());
+			Waymark.map.fitBounds(latlng_array);
 
 			//We are saving
 			if(target) {
