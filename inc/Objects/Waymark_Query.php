@@ -214,8 +214,8 @@ class Waymark_Query extends Waymark_Class {
 			return false;
 		}	
 		
-		$request_string = stripslashes($this->parameters['query_overpass_request']);
-		$request_string = html_entity_decode($request_string);
+// 		$request_string = stripslashes($this->parameters['query_overpass_request']);
+// 		$request_string = html_entity_decode($request_string);
 
 		//Build request
 		$Request = new Waymark_Overpass_Request([
@@ -224,7 +224,9 @@ class Waymark_Query extends Waymark_Class {
 
 		//Execute request
 		$response = $Request->get_processed_response();
-			
+		
+		Waymark_Helper::debug($response);
+		
 		//Valid response
 		if(is_array($response) && array_key_exists('status', $response)) {
 			switch($response['status']) {

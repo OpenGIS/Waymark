@@ -128,9 +128,8 @@ class Waymark_Overpass {
       "features" => []		
 		];
 
-		Waymark_Helper::debug($overpass_json);
+		//Waymark_Helper::debug(is_array($overpass_json['elements']));
 
-		
 		//
 		if(isset($overpass_json['elements']) && is_array($overpass_json['elements'])) {
 			//Each feature

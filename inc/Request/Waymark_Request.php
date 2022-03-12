@@ -65,7 +65,7 @@ abstract class Waymark_Request {
 		$request = $this->request_endpoint . '?';
 		$request .= http_build_query($params_in);
 		
-		//debug($request, false);
+// 		Waymark_Helper::debug($request);
 		
 		return $request;
 	}	
