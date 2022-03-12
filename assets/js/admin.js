@@ -592,7 +592,7 @@ function waymark_render_map_query(query_container = false) {
 		
 		//Execute on change
 		input.change(function() {
-			waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
+			waymark_execute_query(query_container);	
 		});
 	});
 //	inputs.last().trigger('change');
@@ -631,14 +631,14 @@ function waymark_render_map_query(query_container = false) {
 		switch(this.area_type) {
 			case 'bounds' :
 				var bounds = selector_layer.getBounds();
-				this.area_bounds_input.val(Waymark.bounds_to_string(bounds));	
+				this.area_bounds_input.val(this.Waymark.bounds_to_string(bounds));	
 
 				break;
 
 			case 'polygon' :
 				var latlng_array = selector_layer.getLatLngs();						
 				
-				this.area_polygon_input.val(Waymark.polygon_array_to_string(latlng_array));
+				this.area_polygon_input.val(this.Waymark.polygon_array_to_string(latlng_array));
 	
 				break;
 		}
@@ -662,64 +662,6 @@ function waymark_render_map_query(query_container = false) {
 	;
 
 	query_container.append(edit_button);
-
-/*
-
-			var query_container = jQuery(this);
-			
-
-
-
-
-
-
-					jQuery(this).addClass('waymark-active');
-
-					var area_type_input = jQuery('.waymark-input-query_area_type', jQuery(this)).first();
-
-					switch(area_type_input.val()) {
-						case 'bounds' :
-							var query_area_bounds = jQuery('.waymark-input-query_area_bounds', jQuery(this)).first();
-
-							Waymark_Instance.draw_bounds_selector(area_type_input.val(), query_area_bounds.val(), query_area_bounds);
-					
-							break;
-						case 'polygon' :
-							var query_area_polygon = jQuery('.waymark-input-query_area_polygon', jQuery(this)).first();
-
-							Waymark_Instance.draw_bounds_selector(area_type_input.val(), query_area_polygon.val(), query_area_polygon);
-
-							break;
-					}
-				}
-
-
-				var container = target.parents('.waymark-parameters-container');
-
-				//Add Edit button
-				Waymark.bounds_selector_edit_button = jQuery('<button />')
-					.html('<i class="ion ion-edit"></i>')
-					.addClass('button waymark-edit')
-					.on('click', function(e) {
-						e.preventDefault();
-						
-						if(! Waymark.is_bounds_editing()) {
-							Waymark.edit_bounds_selector(area_type, target);
-
-							Waymark.bounds_selector_edit_active = true;
-						
-							jQuery(this).html('<i class="ion ion-android-done"></i>')							
-						} else {
-							Waymark.unedit_bounds_selector();
-							Waymark.bounds_selector_edit_active = false;	
-
-							jQuery(this).html('<i class="ion ion-edit"></i>')																			
-						}							
-					});
-
-				container.append(Waymark.bounds_selector_edit_button);
-			}
-*/	
 }
 
 function waymark_unrender_map_query(query_container = false) {
