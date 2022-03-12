@@ -1215,6 +1215,11 @@ function Waymark_Map() {
 	this.edit_bounds_selector = function() {
 		Waymark = this;
 		
+		//If already open
+		if(Waymark.is_bounds_editing()) {
+			Waymark.unedit_bounds_selector();
+		}
+		
 		if(typeof Waymark.bounds_selector_layer == 'object') {
 			Waymark.bounds_selector_edit_active = true;
 	

@@ -61,14 +61,14 @@ class Waymark_Query extends Waymark_Class {
 		$this->inputs['query_area_polygon'] = array(
 			'id' => 'query_area_polygon',
 			'type' => 'text',				
-			'class' => 'waymark-hidden',
+// 			'class' => 'waymark-hidden',
 			'default' => null,
 		);
 
 		$this->inputs['query_area_bounds'] = array(
 			'id' => 'query_area_bounds',
 			'type' => 'text',				
-			'class' => 'waymark-hidden',
+// 			'class' => 'waymark-hidden',
 			'default' => null,
 		);
 		
@@ -124,34 +124,34 @@ class Waymark_Query extends Waymark_Class {
 	}	
 
 
-	function process_param_in(string $key, $value = '') {
-		switch($key) {
-			//Area
-			case 'query_area_polygon' :
-			case 'query_area_bounds' :
-			case 'query_overpass_request' :
-				$value = str_replace($this->json_add_chars, $this->json_strip_chars, $value);
-
-				break;
-		}
-		
-		return $value;
-	}
-	
-	function process_param_out(string $key, $value = '') {
-		switch($key) {
-			//Area
-			case 'query_area_polygon' :
-			case 'query_area_bounds' :
-			case 'query_overpass_request' :
-
-				$value = str_replace($this->json_strip_chars, $this->json_add_chars, $value);
-
-				break;
-		}
-		
-		return $value;
-	}	
+// 	function process_param_in(string $key, $value = '') {
+// 		switch($key) {
+// 			//Area
+// 			case 'query_area_polygon' :
+// 			case 'query_area_bounds' :
+// 			case 'query_overpass_request' :
+// 				$value = str_replace($this->json_add_chars, $this->json_strip_chars, $value);
+// 
+// 				break;
+// 		}
+// 		
+// 		return $value;
+// 	}
+// 	
+// 	function process_param_out(string $key, $value = '') {
+// 		switch($key) {
+// 			//Area
+// 			case 'query_area_polygon' :
+// 			case 'query_area_bounds' :
+// 			case 'query_overpass_request' :
+// 
+// 				$value = str_replace($this->json_strip_chars, $this->json_add_chars, $value);
+// 
+// 				break;
+// 		}
+// 		
+// 		return $value;
+// 	}	
 
 	function can_execute() {
 		//No query?
@@ -168,6 +168,7 @@ class Waymark_Query extends Waymark_Class {
 
 		if(! empty($overpass_query)) {
 			//Remove comments & whitespace
+			$overpass_query = stripslashes($overpass_query);
 			$overpass_query = preg_replace('/\/\/(.*)/', '', $overpass_query);
 			$overpass_query = preg_replace('!/\*.*?\*/!s', '', $overpass_query);
 			$overpass_query = preg_replace('/\n\s*\n/', "\n", $overpass_query);			

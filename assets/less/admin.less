@@ -95,7 +95,7 @@ div.postbox {
 		.waymark-parameters-container {
 			padding: 0;
 			display: grid;
-			grid-template-columns: 20% 30% 20% 20% 10%;		
+			grid-template-columns: 20% 30% 20% 20% 5% 5%;		
 // 			background: grey;
 			.waymark-control-group {
 				margin: 0;
@@ -114,10 +114,26 @@ div.postbox {
 					}
 				}			
 			}	
+			.button {
+				display: none;					
+			}
 			
 			&.waymark-active {
-				background: red;
+				background: #f7f7f7;
 //				height: 120px;
+				.button {
+					display: block;
+					&.waymark-delete,
+					&.waymark-edit {
+						color: green;
+					}
+					&.waymark-edit {
+						color: blue;			
+					}
+					&.waymark-delete {
+						color: red;
+					}	
+				}
 				.query_overpass_request-container {
 // 					max-height: unset !important;
 					.waymark-input {

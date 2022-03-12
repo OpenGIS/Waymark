@@ -127,6 +127,9 @@ class Waymark_Overpass {
     	"type" => "FeatureCollection",
       "features" => []		
 		];
+
+		Waymark_Helper::debug($overpass_json);
+
 		
 		//
 		if(isset($overpass_json['elements']) && is_array($overpass_json['elements'])) {

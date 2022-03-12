@@ -377,7 +377,7 @@ function waymark_setup_map_query() {
 
 		//Each Query
 		jQuery('.waymark-parameters-container', form_container).each(function() {
-			//Expand on hover
+			//Render Map Query
 			jQuery(this).hover(
 				function() {
 					waymark_render_map_query(jQuery(this))
@@ -591,8 +591,11 @@ function waymark_render_map_query(query_container = false) {
 // 		}
 		
 		//Execute on change
-		input.change(function() {
-			waymark_execute_query(query_container);	
+		var data = {
+			'query_container': query_container
+		}
+		input.on('change', data, function(e) {
+			waymark_execute_query(e.data.query_container);	
 		});
 	});
 //	inputs.last().trigger('change');
@@ -713,7 +716,24 @@ function waymark_setup_repeatable_parameters() {
 		
 		var template = jQuery('.waymark-repeatable-template', repeatable_container);
 		template.remove();
-		
+
+		//Each Query
+		jQuery('.waymark-parameters-container', repeatable_container).each(function() {
+			var query_container = jQuery(this);
+			
+			var delete_button = jQuery('<button />')
+				.html('<i class="ion ion-android-delete"></i>')
+				.addClass('button waymark-delete')
+				.on('click', function(e) {
+					e.preventDefault();
+
+					query_container.remove();						
+				})
+			;
+			query_container.append(delete_button);		
+		});
+
+		//Add		
 		var add_button = jQuery('.waymark-repeatable-add', repeatable_container).first();
 		add_button.on('click', function(e) {
 			e.preventDefault();

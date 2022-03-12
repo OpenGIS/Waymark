@@ -159,7 +159,7 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 .waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container {
   padding: 0;
   display: grid;
-  grid-template-columns: 20% 30% 20% 20% 10%;
+  grid-template-columns: 20% 30% 20% 20% 5% 5%;
 }
 .waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group {
   margin: 0;
@@ -174,8 +174,24 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 .waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-input {
   max-height: 32px;
 }
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .button {
+  display: none;
+}
 .waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active {
-  background: red;
+  background: #f7f7f7;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .button {
+  display: block;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .button.waymark-delete,
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .button.waymark-edit {
+  color: green;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .button.waymark-edit {
+  color: blue;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .button.waymark-delete {
+  color: red;
 }
 .waymark-form.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker .query_cast_line_type-container {
   display: none;
