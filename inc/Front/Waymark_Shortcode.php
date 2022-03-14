@@ -8,7 +8,7 @@ class Waymark_Shortcode {
 	function handle_shortcode($shortcode_data, $content = null) {
 		$out = '';
 		$map_class = 'waymark-map';
-		$shortcode_hash = substr(md5(json_encode($shortcode_data)), 0, 6);
+		$shortcode_hash = Waymark_Helper::make_hash($shortcode_data);
 		$maps_output = array();	
 		$shortcode_header = array();
 		$shortcode_meta = array();

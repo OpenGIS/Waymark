@@ -7,6 +7,14 @@ class Waymark_Helper {
 		
 		require_once($path);		
 	}
+
+	static public function make_hash($data, $length = 6) {
+		if(! is_string($data)) {
+			$data = json_encode($data);
+		}
+		
+		return substr(md5($data), 0, $length);
+	}
 	
 	static public function plugin_about() {
 		$out = '';

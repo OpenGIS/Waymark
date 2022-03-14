@@ -1303,20 +1303,18 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 */
 
 	//Add Query GeoJSON
-	this.load_query_json = function(query_json) {
+	this.load_query_json = function(query_json, query_index = 1) {
 		Waymark = this;
-		
-		var query_hash = Waymark.make_hash(JSON.stringify(query_json));
 
 		//Valid Data
-		if(typeof query_hash == 'string' && typeof query_json == 'object') {		
+		if(typeof query_json == 'object') {		
 			//Remove existing?
-			if(typeof Waymark.queries_data[query_hash] !== 'undefined') {
-				Waymark.map.removeLayer(Waymark.queries_data[query_hash]);			
+			if(typeof Waymark.queries_data[query_index] !== 'undefined') {
+				Waymark.map.removeLayer(Waymark.queries_data[query_index]);			
 			}
 
 			//Create New Query data layer
-			Waymark.queries_data[query_hash] = Waymark_L.geoJSON(null, {
+			Waymark.queries_data[query_index] = Waymark_L.geoJSON(null, {
 				pointToLayer: function(feature, latlng) {
 					return Waymark.create_marker(latlng);
 				},
@@ -1326,10 +1324,10 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 			});
 			
 			//Add JSON
-			Waymark.queries_data[query_hash].addData(query_json);		 	
+			Waymark.queries_data[query_index].addData(query_json);		 	
 			
 			//Add to Map
-			Waymark.queries_data[query_hash].addTo(Waymark.map);
+			Waymark.queries_data[query_index].addTo(Waymark.map);
 		} 		
 	}
 	

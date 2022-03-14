@@ -17,7 +17,7 @@ class Waymark_Instance extends Waymark_Class {
 		
 		//Gotta have a hash		
 		if(! $this->get_parameter('hash')) {
-			$this->set_parameter('hash', substr(md5(json_encode($this->get_parameters())), 0, 6));		
+			$this->set_parameter('hash', Waymark_Helper::make_hash($this->get_parameter('hash')));		
 		}
 
 		$this->enqueue();

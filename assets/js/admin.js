@@ -371,23 +371,23 @@ function waymark_setup_dropdowns() {
 	});
 }
 
-function waymark_setup_map_query() {
+function waymark_setup_map_query() {	
 	jQuery('.waymark-query-form.waymark-map-query').each(function() {
 		var query_container = jQuery(this);
 
 		//Each Query
+		var query_index = 1;		
 		jQuery('.waymark-parameters-container', query_container).each(function() {
+			jQuery(this).attr('data-index', query_index);
+			
 			//Update on change
 			var inputs = jQuery('.waymark-input', jQuery(this));
 			inputs.each(function() {
 				var input = jQuery(this);
 			
 				//Execute on change
-				var data = {
-					'query_container': query_container
-				}
-				input.on('change', data, function(e) {
-					waymark_execute_query(e.data.query_container);	
+				input.on('change', function() {
+					waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
 				});
 			});
 			
@@ -403,6 +403,8 @@ function waymark_setup_map_query() {
 					waymark_unrender_map_query(jQuery(this))
 				}		
 			);
+
+			query_index++;	
 		});			
 	});
 }
@@ -426,11 +428,21 @@ function waymark_setup_tax_query() {
 }
 
 function waymark_execute_query(container) {
+	//Must be jQuery
+	if(! container instanceof jQuery) {
+		return;
+	}
+	
 	var request_data = {};
 	
 	var form_data = new FormData();
 	form_data.append('waymark_security', waymark_admin_js.security);			
-	form_data.append('action', 'waymark_get_query_data');			
+	form_data.append('action', 'waymark_get_query_data');
+	
+	if(query_index = container.data('index')) {
+		form_data.append('query_index', query_index);		
+	}
+	
 
 	//Each input
 	var form_data_count = 0;
@@ -483,8 +495,14 @@ function waymark_execute_query(container) {
 				var waymark_container = jQuery('.waymark-instance').first();
 				var Waymark_Instance = waymark_container.data('Waymark');
 
+				//Features to display
 				if(response.features.length) {
-					Waymark_Instance.load_query_json(response);						
+					//Index?
+					if(query_index = this.data.get('query_index')) {
+						Waymark_Instance.load_query_json(response, query_index);										
+					} else {
+						Waymark_Instance.load_query_json(response);											
+					}
 				}				
 			}
 		});			
