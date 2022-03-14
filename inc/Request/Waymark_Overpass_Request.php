@@ -27,22 +27,22 @@ class Waymark_Overpass_Request extends Waymark_Request {
 		if(! $query_area || ! $query_string) {
 			return false;
 		}
+
 		
-		// ==== Query Settings ====
+		// ==== Headers ====
+
+		
+		//Output type
 		$overpass_query = '[out:' . $this->get_config('output_type') . ']';
 
-		//Query area?
-
+		//Query area
 		switch($query_area['type']) {
 			case 'bounds' :
 				//Convert from Leaflet to Overpass
 				$overpass_bounding_box = Waymark_Overpass::leaflet_bb_to_overpass_bb($query_area['area']);
 				
-				//!!!
-				//To-do: append
-				
-				//Add to request			
-				$query_string = str_replace('{{bbox}}', $overpass_bounding_box, $query_string);
+				//Create header
+				$overpass_query .= '[bbox:' . $overpass_bounding_box . ']';
 			
 				break;
 
@@ -52,13 +52,35 @@ class Waymark_Overpass_Request extends Waymark_Request {
 			
 				break;				
 		}
+		$overpass_query .= ';';
 
-		//User query
+
+		// ==== User Query ====
+		
 		$overpass_query .= $query_string;
+		$overpass_query .= ';';
+
+		// ==== Output ====
+
+		switch($Query->get_parameter('query_cast_overlay')) {
+			case 'marker' :
+				$overpass_query .= 'out center';
+
+				break;
+
+			case 'line' :
+				$overpass_query .= 'out geom';	
+
+				break;				
+		}
+		$overpass_query .= ';';
+
 
 		//Make safe
 		$overpass_query = str_replace('+', '%20', $overpass_query);
-					
+									
+		//Waymark_Helper::debug($overpass_query);
+										
 		$return = [
 			'data' => $overpass_query
 		];

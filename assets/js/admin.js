@@ -642,7 +642,9 @@ function waymark_render_map_query(query_container = false) {
 		switch(this.area_type) {
 			case 'bounds' :
 				var bounds = selector_layer.getBounds();
+				
 				this.area_bounds_input.val(this.Waymark.bounds_to_string(bounds));	
+				this.area_bounds_input.trigger('change');	
 
 				break;
 
@@ -650,7 +652,8 @@ function waymark_render_map_query(query_container = false) {
 				var latlng_array = selector_layer.getLatLngs();						
 				
 				this.area_polygon_input.val(this.Waymark.polygon_array_to_string(latlng_array));
-	
+				this.area_polygon_input.trigger('change');	
+					
 				break;
 		}
 	}, data);
@@ -725,9 +728,9 @@ function waymark_setup_repeatable_parameters() {
 		var template = jQuery('.waymark-repeatable-template', repeatable_container);
 		template.remove();
 
-		//Each Query
+		//Each
 		jQuery('.waymark-parameters-container', repeatable_container).each(function() {
-			var query_container = jQuery(this);
+			var parameter_container = jQuery(this);
 			
 			var delete_button = jQuery('<button />')
 				.html('<i class="ion ion-android-delete"></i>')
@@ -735,10 +738,10 @@ function waymark_setup_repeatable_parameters() {
 				.on('click', function(e) {
 					e.preventDefault();
 
-					query_container.remove();						
+					parameter_container.remove();						
 				})
 			;
-			query_container.append(delete_button);		
+			parameter_container.append(delete_button);		
 		});
 
 		//Add		
