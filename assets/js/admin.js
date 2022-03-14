@@ -373,10 +373,27 @@ function waymark_setup_dropdowns() {
 
 function waymark_setup_map_query() {
 	jQuery('.waymark-query-form.waymark-map-query').each(function() {
-		var form_container = jQuery(this);
+		var query_container = jQuery(this);
 
 		//Each Query
-		jQuery('.waymark-parameters-container', form_container).each(function() {
+		jQuery('.waymark-parameters-container', query_container).each(function() {
+			//Update on change
+			var inputs = jQuery('.waymark-input', jQuery(this));
+			inputs.each(function() {
+				var input = jQuery(this);
+			
+				//Execute on change
+				var data = {
+					'query_container': query_container
+				}
+				input.on('change', data, function(e) {
+					waymark_execute_query(e.data.query_container);	
+				});
+			});
+			
+			//Inital view
+			inputs.last().trigger('change');		
+			
 			//Render Map Query
 			jQuery(this).hover(
 				function() {
@@ -573,33 +590,6 @@ function waymark_render_map_query(query_container = false) {
 
 	query_container.addClass('waymark-active');		
 
-	//Get data
-	var inputs = jQuery('.waymark-input', query_container);
-	
-	inputs.each(function() {
-		var input = jQuery(this);
-		
-// 		switch(input.data('id')) {
-// 			case 'query_area_type' :
-// 				var area_type = input.val();
-// 			
-// 				break;
-// 			case 'query_area_type' :
-// 				var area_type = input.val();
-// 			
-// 				break;				
-// 		}
-		
-		//Execute on change
-		var data = {
-			'query_container': query_container
-		}
-		input.on('change', data, function(e) {
-			waymark_execute_query(e.data.query_container);	
-		});
-	});
-//	inputs.last().trigger('change');
-	
 	//Get data
 	var area_type_input = jQuery('.waymark-input-query_area_type', query_container).first();
 	var area_type = area_type_input.val();
