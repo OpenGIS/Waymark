@@ -87,29 +87,31 @@ class Waymark_Overpass_Request extends Waymark_Request {
 
 					//Ensure is Array
 					$response_json = json_decode($response_raw['body'], null, 512, JSON_OBJECT_AS_ARRAY);
-					
+
 					//Get Overlays GeoJSON		
 					$response_geojson = Waymark_Overpass::overpass_json_to_geojson($response_json, $this->get_config('query_cast_overlay'));
-					
-					//If we have
-					$overlay_count = Waymark_GeoJSON::get_feature_count($response_geojson);
-					
+
+					//If we have overlays
+					$overlay_count = Waymark_GeoJSON::get_feature_count($response_geojson);					
 					if($overlay_count) {
+						$Query = $this->get_config('Query');			
+						$query_cast_overlay = $Query->get_parameter('query_cast_overlay');
+
 						//What kind of Overlay?
-						switch($this->get_config('query_cast_overlay')) {
+						switch($query_cast_overlay) {
 							//Markers
 							case 'marker' :
-								$query_data = Waymark_GeoJSON::update_feature_property($response_geojson, 'type', $this->get_config('query_cast_marker_type'));						
+								$query_data = Waymark_GeoJSON::update_feature_property($response_geojson, 'type', $query_cast_overlay);						
 
 								break;
 
 							//Lines
 							case 'line' :
-								$query_data = Waymark_GeoJSON::update_feature_property($response_geojson, 'type', $this->get_config('query_cast_line_type'));
+								$query_data = Waymark_GeoJSON::update_feature_property($response_geojson, 'type', $query_cast_overlay);
 
 								break;
 						}		
-	
+
 						$response_out['query_data'] = json_encode($query_data);
 					}
 					
@@ -121,7 +123,7 @@ class Waymark_Overpass_Request extends Waymark_Request {
 					break;
 			}
 		}
-			
+		
 		return $response_out;
 	}	
 }

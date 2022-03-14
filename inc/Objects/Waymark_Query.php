@@ -225,8 +225,6 @@ class Waymark_Query extends Waymark_Class {
 		//Execute request
 		$response = $Request->get_processed_response();
 		
-		Waymark_Helper::debug($response);
-		
 		//Valid response
 		if(is_array($response) && array_key_exists('status', $response)) {
 			switch($response['status']) {
