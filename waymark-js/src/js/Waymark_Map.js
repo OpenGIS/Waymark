@@ -251,6 +251,22 @@ function Waymark_Map() {
 		return str;
 	}
 	
+	//Thanks! https://stackoverflow.com/a/8831937
+	this.make_hash = function(str) {
+    var hash = 0;
+    
+    for(var i = 0; i < str.length; i++) {
+        var char = str.charCodeAt(i);
+        hash = ((hash<<5)-hash)+char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+		
+		//Make positive
+		hash = hash + 2147483647 + 1;
+
+    return hash.toString();
+	}
+	
 	this.get_feature_overlay_type = function(feature) {
 		if(typeof feature.geometry.type == 'undefined') {
 			return false;
@@ -1290,10 +1306,15 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 	this.load_query_json = function(query_json) {
 		Waymark = this;
 		
-		var query_hash = JSON.stringify(query_json);
-		
+		var query_hash = Waymark.make_hash(JSON.stringify(query_json));
+
 		//Valid Data
-		if(typeof query_hash == 'string' && typeof query_json == 'object') {
+		if(typeof query_hash == 'string' && typeof query_json == 'object') {		
+			//Remove existing?
+			if(typeof Waymark.queries_data[query_hash] !== 'undefined') {
+				Waymark.map.removeLayer(Waymark.queries_data[query_hash]);			
+			}
+
 			//Create New Query data layer
 			Waymark.queries_data[query_hash] = Waymark_L.geoJSON(null, {
 				pointToLayer: function(feature, latlng) {

@@ -18,7 +18,7 @@ class Waymark_Overpass {
 					],					
 					'properties' => []
 				];
-
+				
 				switch($element['type']) {
 					case 'node' :
 						if(isset($element['lon']) && isset($element['lat'])) {
@@ -127,8 +127,6 @@ class Waymark_Overpass {
     	"type" => "FeatureCollection",
       "features" => []		
 		];
-
-		//Waymark_Helper::debug(is_array($overpass_json['elements']));
 
 		//
 		if(isset($overpass_json['elements']) && is_array($overpass_json['elements'])) {
