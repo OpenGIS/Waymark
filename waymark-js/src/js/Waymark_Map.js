@@ -1160,6 +1160,12 @@ function Waymark_Map() {
 		}	
 	}
 	
+	this.get_default_bounds = function() {
+		Waymark = this;
+
+		return Waymark.map.getBounds().pad(-0.1);
+	}
+	
 	this.is_bounds_editing = function() {
 		return typeof Waymark.bounds_selector_edit_active != 'undefined' && Waymark.bounds_selector_edit_active == true;
 	}
@@ -1187,7 +1193,7 @@ function Waymark_Map() {
 					
 					//Set default if necessary
 					if(typeof latlng_array != 'object' || ! latlng_array) {
-						var latlng_array = Waymark.map.getBounds().pad(-0.1);						
+						var latlng_array = Waymark.get_default_bounds();						
 					}
 				
 					//Create layer
@@ -1206,7 +1212,7 @@ function Waymark_Map() {
 
 					//Set default if necessary
 					if(typeof latlng_array != 'object' || ! latlng_array) {
-						var latlng_array = Waymark.map.getBounds().pad(-0.1);		
+						var latlng_array = Waymark.get_default_bounds();		
 						latlng_array = Waymark.latlng_bounds_to_latlng_array(latlng_array);
 					}
 
