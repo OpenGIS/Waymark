@@ -720,12 +720,34 @@ function waymark_handle_repeatable_clone(clone) {
 	return clone;
 }
 
+// function waymark_handle_repeatable_template(template) {
+// 	//Must be jQuery
+// 	if(! template instanceof jQuery) {
+// 		return;
+// 	}	
+// 	
+// 	//Get context
+// 	var form = template.parents('.waymark-form');
+// 	
+// 	//Map Queries
+// 	if(form && form.hasClass('waymark-map-query')) {
+// 	
+// 	}	
+// 	
+// 	return template;
+// }
+
 function waymark_setup_repeatable_parameters() {
 	jQuery('.waymark-repeatable-container').each(function() {
 		var repeatable_container = jQuery(this);
 		var repeatable_count = repeatable_container.data('count');
 		
 		var template = jQuery('.waymark-repeatable-template', repeatable_container);
+		template.removeClass('waymark-repeatable-template');
+
+		//Do stuff to template (while it's still in the DOM)...			
+// 		template = waymark_handle_repeatable_template(template);		
+		
 		template.remove();
 
 		//Each
