@@ -79,8 +79,6 @@ class Waymark_Overpass_Request extends Waymark_Request {
 		//Make safe
 		$overpass_query = str_replace('+', '%20', $overpass_query);
 									
-		//Waymark_Helper::debug($overpass_query);
-										
 		$return = [
 			'data' => $overpass_query
 		];
@@ -116,7 +114,6 @@ class Waymark_Overpass_Request extends Waymark_Request {
 					//Get Overlays GeoJSON		
 					$response_geojson = Waymark_Overpass::overpass_json_to_geojson($response_json, $query_cast_overlay);
 
-
 					//If we have overlays
 					$overlay_count = Waymark_GeoJSON::get_feature_count($response_geojson);					
 					if($overlay_count) {
@@ -134,6 +131,7 @@ class Waymark_Overpass_Request extends Waymark_Request {
 
 								break;
 						}		
+
 
 						$response_out['query_data'] = json_encode($query_data);
 					}

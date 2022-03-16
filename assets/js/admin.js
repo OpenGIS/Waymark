@@ -492,18 +492,33 @@ function waymark_execute_query(container) {
 			processData: false,
 			contentType: false,
 			success: function(response) {				
-				var waymark_container = jQuery('.waymark-instance').first();
-				var Waymark_Instance = waymark_container.data('Waymark');
+				if(typeof response.status !== 'undefined') {
+					switch(response.status) {
+						case 'success' :
+							var waymark_container = jQuery('.waymark-instance').first();
+							var Waymark_Instance = waymark_container.data('Waymark');
 
-				//Features to display
-				if(response.features.length) {
-					//Index?
-					if(query_index = this.data.get('query_index')) {
-						Waymark_Instance.load_query_json(response, query_index);										
-					} else {
-						Waymark_Instance.load_query_json(response);											
+							//Features to display
+							if(response.features.length) {
+								//Index?
+								if(query_index = this.data.get('query_index')) {
+									Waymark_Instance.load_query_json(response, query_index);										
+								} else {
+									Waymark_Instance.load_query_json(response);											
+								}
+							}				
+						
+							break;
+						case 'error' :
+							//Features to display
+							if(response.message) {
+								alert(response.message);
+							}				
+						
+							break;							
 					}
-				}				
+				}
+				
 			}
 		});			
 	}

@@ -11,6 +11,7 @@ class Waymark_Query extends Waymark_Class {
 		'query_cast_marker_type' => null,												
 		'query_cast_line_type' => null,
 		'query_data' => null,			
+		'query_data' => null		
 	];
 	
 	private $inputs = [];
@@ -234,21 +235,14 @@ class Waymark_Query extends Waymark_Class {
 					}					
 				
 					break;
+				case 'error' :
+					//Message?
+					if(array_key_exists('message', $response)) {
+						$this->set_parameter('query_error', $response['message']);											
+					}
+				
+					break;					
 			}		
-
-			//Message?
-// 			if(array_key_exists('message', $response)) {
-// 				$class = '';
-// 				if($response['status'] == 'success') {
-// 					$class .= ' notice-success';
-// 				} elseif($response['status'] == 'error') {
-// 					$class .= ' notice-error';						
-// 				}
-// 
-// 				echo '<div class="notice' . $class . '">' . "\n";
-// 				echo '	<p>' . $response['message'] . '</p>' . "\n";
-// 				echo '</div>' . "\n";
-// 			}
 		}
 	}
 	

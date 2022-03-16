@@ -246,17 +246,26 @@ class Waymark_AJAX {
 	}
 	
 	function get_query_data() {
-		header('Content-Type: text/javascript');
+		$response_out = [
+			'status' => 'init'
+		];
 		
-		$Query = new Waymark_Query(array_merge($_POST, [
-//			'query_area_bounds' => Waymark_Config::get_setting('query', 'defaults', 'query_area_bounds')
-		]));
+		//Build Query
+		$Query = new Waymark_Query($_POST);
 		
-		if(! ($query_data = $Query->get_parameter('query_data'))) {
-			$query_data = '{"type": "FeatureCollection","features": []}';
+		//Error?
+		if($query_error = $Query->get_parameter('query_error')) {
+			$response_out['status'] = 'error';
+			$response_out['message'] = $query_error;
+		//Success
+		} elseif($query_data = $Query->get_parameter('query_data')) {
+			$response_out['status'] = 'success';
+			$response_out['query_data'] = $query_data;		
 		}
 		
-		echo $query_data;
+		header('Content-Type: text/javascript');
+		
+		echo json_encode($response_out);
 		
 		die;	
 	}
