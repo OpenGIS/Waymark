@@ -247,7 +247,7 @@ class Waymark_AJAX {
 	
 	function get_query_data() {
 		$response_out = [
-			'status' => 'init'
+			'status' => 'ajax_init'
 		];
 		
 		//Build Query
