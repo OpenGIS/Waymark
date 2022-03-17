@@ -516,7 +516,7 @@ function waymark_execute_query(container) {
 						case 'error' :
 							//Features to display
 							if(response.message) {
-								//alert(response.message);
+								alert(response.message);
 							}				
 						
 							break;							

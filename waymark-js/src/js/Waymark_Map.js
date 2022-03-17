@@ -1322,7 +1322,9 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 			//Create New Query data layer
 			Waymark.queries_data[query_index] = Waymark_L.geoJSON(null, {
 				pointToLayer: function(feature, latlng) {
-					return Waymark.create_marker(latlng);
+					return Waymark.create_marker(latlng, {
+						draggable: false
+					});
 				},
 				onEachFeature: function(feature, layer) {
 					Waymark.setup_query_data_feature(feature, layer);

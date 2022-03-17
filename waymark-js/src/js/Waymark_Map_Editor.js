@@ -121,26 +121,28 @@ function Waymark_Map_Editor() {
 		});
 	}		
 	
-	this.create_marker = function(latlng) {
+	this.create_marker = function(latlng, data = { draggable: true }) {
 		Waymark = this;
 
 		//Create marker										  
-		var marker = Waymark_L.marker(latlng, { draggable: true });
+		var marker = Waymark_L.marker(latlng, data);
 		
 		//Dragged
-		marker.on('moveend', function(e) {
-			var layer = e.target;
-			var feature = layer.feature;			
+		if(typeof data.draggable !== 'undefined' && data.draggable == true) {
+			marker.on('moveend', function(e) {
+				var layer = e.target;
+				var feature = layer.feature;			
 			
-			//Update feature with new coordinates
-			feature.geometry.coordinates = [ layer._latlng.lng.toFixed(6), layer._latlng.lat.toFixed(6) ];
+				//Update feature with new coordinates
+				feature.geometry.coordinates = [ layer._latlng.lng.toFixed(6), layer._latlng.lat.toFixed(6) ];
 
-			//Update content to reflect change in position
-			Waymark.info_window('marker', feature, layer);										
+				//Update content to reflect change in position
+				Waymark.info_window('marker', feature, layer);										
 		
-			Waymark.save_data_layer();
-			Waymark.map_was_edited();
-		});
+				Waymark.save_data_layer();
+				Waymark.map_was_edited();
+			});
+		}		
 		
 		return marker;	
 	}
@@ -1055,8 +1057,6 @@ function Waymark_Map_Editor() {
 	this.info_window = function(layer_type, feature, layer, data_layer = 'map_data') {
 		Waymark = this;
 		
-		console.log(layer);
-
 		//Build content
 		var title = Waymark.title_case(waymark_js.lang.action_edit + ' ' + layer_type);
 
