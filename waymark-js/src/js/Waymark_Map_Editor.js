@@ -535,419 +535,527 @@ function Waymark_Map_Editor() {
 		});												
 	},	 
 	
-	this.build_content = function(layer_type, feature, layer) {
+	this.build_content = function(layer_type, feature, layer, data_layer = 'map_data') {
 		Waymark = this;
 
 		//Build output
 		var content = jQuery('<div />');
-		var list = jQuery('<ul />')
-			.addClass('waymark-info');
 
-		//Edit button
-		if(layer_type == 'line' || layer_type == 'shape') {		
-			var ele = jQuery('<button />')
-				.html('<i class="ion-edit"></i>')
-				.addClass('button')			
-				.attr('title', waymark_js.lang.action_edit + ' ' + Waymark.title_case(waymark_js.lang['object_label_' + layer_type]))			
-				.on('click', function(e) {
-					e.preventDefault();
+		switch(data_layer) {
+			
+			// ====================================			
+			// ============ Map Data ============
+			// ====================================
+			
+			default : 
+			case 'map_data' :
+				var list = jQuery('<ul />')
+					.addClass('waymark-info');
+
+				//Edit button
+				if(layer_type == 'line' || layer_type == 'shape') {		
+					var ele = jQuery('<button />')
+						.html('<i class="ion-edit"></i>')
+						.addClass('button')			
+						.attr('title', waymark_js.lang.action_edit + ' ' + Waymark.title_case(waymark_js.lang['object_label_' + layer_type]))			
+						.on('click', function(e) {
+							e.preventDefault();
 					
-					//Get the element we need
-					var button = jQuery(this);
-					var icon = jQuery('i', button);
+							//Get the element we need
+							var button = jQuery(this);
+							var icon = jQuery('i', button);
 										
-					//Finish
-					if(layer.editEnabled()) {
-						//Disable edit
-						layer.disableEdit();	
+							//Finish
+							if(layer.editEnabled()) {
+								//Disable edit
+								layer.disableEdit();	
 						
-						//Change title
-						button.attr('title', waymark_js.lang.action_edit + ' ' + Waymark.title_case(waymark_js.lang['object_label_' + layer_type]));
+								//Change title
+								button.attr('title', waymark_js.lang.action_edit + ' ' + Waymark.title_case(waymark_js.lang['object_label_' + layer_type]));
 						
-						//Change icon
-						icon.attr('class', 'ion-edit');			
+								//Change icon
+								icon.attr('class', 'ion-edit');			
 						
-						//Callback?
-						if(typeof Waymark.config.handle_edit_callback == 'function') {
-							Waymark.config.handle_edit_callback(false);
-						}
-					//Start
-					} else {
-						//Enable edit
-						layer.enableEdit();					
+								//Callback?
+								if(typeof Waymark.config.handle_edit_callback == 'function') {
+									Waymark.config.handle_edit_callback(false);
+								}
+							//Start
+							} else {
+								//Enable edit
+								layer.enableEdit();					
 	
-						//Close popup
-						layer.closePopup();	
+								//Close popup
+								layer.closePopup();	
 
-						//Change title
-						button.attr('title', waymark_js.lang.action_edit_done);
+								//Change title
+								button.attr('title', waymark_js.lang.action_edit_done);
 
-						//Change icon
-						icon.attr('class', 'ion-android-done');		
+								//Change icon
+								icon.attr('class', 'ion-android-done');		
 
-						//Callback?
-						if(typeof Waymark.config.handle_edit_callback == 'function') {
-							Waymark.config.handle_edit_callback(true);
-						}									
-					}		
+								//Callback?
+								if(typeof Waymark.config.handle_edit_callback == 'function') {
+									Waymark.config.handle_edit_callback(true);
+								}									
+							}		
 	
-					return false;
-				});		
-			list.append(jQuery('<li />').addClass('waymark-info-button waymark-info-edit waymark-' + layer_type + '-edit').append(ele));
-		}
+							return false;
+						});		
+					list.append(jQuery('<li />').addClass('waymark-info-button waymark-info-edit waymark-' + layer_type + '-edit').append(ele));
+				}
 
-		//Duplicate button
-		var ele = jQuery('<button />')
-			.html('<i class="ion-ios-copy"></i>')
-			.addClass('button')
-			.attr('title', waymark_js.lang.action_duplicate + ' ' + Waymark.title_case(waymark_js.lang['object_label_' + layer_type]))						
-			.on('click', function(e) {
-				e.preventDefault();
+				//Duplicate button
+				var ele = jQuery('<button />')
+					.html('<i class="ion-ios-copy"></i>')
+					.addClass('button')
+					.attr('title', waymark_js.lang.action_duplicate + ' ' + Waymark.title_case(waymark_js.lang['object_label_' + layer_type]))						
+					.on('click', function(e) {
+						e.preventDefault();
 				
-				//Clone				
-				Waymark.load_json(Object.assign({}, layer.feature));
+						//Clone				
+						Waymark.load_json(Object.assign({}, layer.feature));
 				
-				Waymark.map_was_edited();
+						Waymark.map_was_edited();
 
-				return false;
-			});		
-		list.append(jQuery('<li />').addClass('waymark-info-button waymark-info-delete waymark-' + layer_type + '-delete').append(ele));
-
-		//Delete button
-		var ele = jQuery('<button />')
-			.html('<i class="ion-trash-a"></i>')
-			.addClass('button')
-			.attr('title', waymark_js.lang.action_delete + ' ' + Waymark.title_case(waymark_js.lang['object_label_' + layer_type]))						
-			.on('click', function(e) {
-				e.preventDefault();
-				
-				//Confirm delete...
-				if(Waymark.config.editor_options.confirm_delete == '1') {
-					if(! confirm(waymark_js.lang.action_delete_confirm + " " + Waymark.title_case(waymark_js.lang['object_label_' + layer_type]) + "?")) {
 						return false;
+					});		
+				list.append(jQuery('<li />').addClass('waymark-info-button waymark-info-delete waymark-' + layer_type + '-delete').append(ele));
+
+				//Delete button
+				var ele = jQuery('<button />')
+					.html('<i class="ion-trash-a"></i>')
+					.addClass('button')
+					.attr('title', waymark_js.lang.action_delete + ' ' + Waymark.title_case(waymark_js.lang['object_label_' + layer_type]))						
+					.on('click', function(e) {
+						e.preventDefault();
+				
+						//Confirm delete...
+						if(Waymark.config.editor_options.confirm_delete == '1') {
+							if(! confirm(waymark_js.lang.action_delete_confirm + " " + Waymark.title_case(waymark_js.lang['object_label_' + layer_type]) + "?")) {
+								return false;
+							}
+						}
+
+						//Remove from Map
+						Waymark.map.removeLayer(layer);
+						//Remove from data later
+						Waymark.map_data.removeLayer(layer);
+
+						Waymark.save_data_layer();
+						Waymark.map_was_edited();
+				
+						//Callback?
+						if(typeof Waymark.config.handle_delete_callback == 'function') {
+							Waymark.config.handle_delete_callback(feature);
+						}
+				
+						return false;
+					});		
+				list.append(jQuery('<li />').addClass('waymark-info-button waymark-info-delete waymark-' + layer_type + '-delete').append(ele));
+
+				//Type
+				var types = Waymark.config[layer_type + '_types'];
+		
+				//Types
+				var ele = jQuery('<select />');
+
+				ele.append(
+					jQuery('<option />')
+						.attr({
+							'disabled': 'disabled'
+						})
+						.text(Waymark.title_case(waymark_js.lang['object_label_' + layer_type]) + ' ' + waymark_js.lang.object_type_label + ':')
+				);
+
+				//Pre-defined types
+				for(i in types) {
+					var type_key = Waymark.make_key(types[i][layer_type + '_title']);
+
+					ele.append(jQuery('<option />').val(type_key).text(types[i][layer_type + '_title']));
+				}
+		
+				//Handling custom types?
+				if(typeof Waymark.config.handle_custom_type_callback == 'function') {
+					//Seperator
+					ele.append(
+						jQuery('<option />')
+							.attr('disabled', 'disabled')
+							.text('──────────')
+					);
+					//'Custom'
+					var custom_option = jQuery('<option />')
+						.attr('id', 'custom_type')
+						.val('{}')
+						.text("Custom")
+					;
+					ele.append(custom_option);
+				}
+
+				//On change
+				ele.change(function() {		
+					var selected_input = jQuery('option:selected', jQuery(this));
+
+					//Custom
+					if(selected_input.attr('id') == 'custom_type') {
+						if(typeof Waymark.config.handle_custom_type_callback == 'function') {
+							Waymark.config.handle_custom_type_callback(layer_type, layer, selected_input);
+						}
+					//Pre-defined		
+					} else {
+						if(typeof Waymark.config.handle_custom_type_callback == 'function') {
+							Waymark.config.handle_custom_type_callback(layer_type, layer, selected_input, 'hide');
+						}
+				
+						//Get type value
+						var selected_type = jQuery(this).val();
+				
+						//Update data layer
+						feature.properties.type = selected_type;
+				
+						//Predefined
+						if(typeof selected_type != 'object') {
+							var type = Waymark.get_type(layer_type, feature.properties.type);		
+						}
+
+						//Change live style
+						switch(layer_type) {
+							case 'line' :
+								layer.setStyle({
+									color: type.line_colour,
+									weight: type.line_weight							
+								});				
+
+								break;
+							case 'shape' :
+								layer.setStyle({
+									color: type.shape_colour,
+									fillOpacity: type.fill_opacity
+								});
+							
+								break;
+							case 'marker' :
+								//Create Icon								
+								layer.setIcon(
+									L.divIcon(Waymark.build_icon_data(type))
+								);				
+
+								break;								
+						}
+
+						Waymark.save_data_layer();
+						Waymark.map_was_edited();			
+					}
+				});
+				list.append(jQuery('<li />').addClass('waymark-info-type waymark-' + layer_type + '-type').append(ele));		
+
+				//Set selected
+				//Custom object
+				if(typeof feature.properties.type == 'object') {
+					if(typeof Waymark.config.handle_custom_type_callback == 'function') {
+						Waymark.config.handle_custom_type_callback(layer_type, layer, custom_option, 'show');			
+
+						custom_option.attr('selected', 'selected');
+					}
+				//Type used
+				} else {
+					if(typeof Waymark.config.handle_custom_type_callback == 'function') {
+						Waymark.config.handle_custom_type_callback(layer_type, layer, custom_option, 'hide');			
+					}
+	
+					jQuery('option', ele).filter(function() {
+						return jQuery(this).val() == Waymark.make_key(feature.properties.type);
+					}).attr('selected', 'selected');			
+				}	
+	
+				//Data
+				for(key in Waymark.config[layer_type + '_data_defaults']) {			
+					var ele = null;
+			
+					switch(key) {
+						case 'title':
+							var ele = jQuery('<input />')
+								.attr({
+									'type': 'text',
+									'value': feature.properties.title,
+									'placeholder': Waymark.title_case(waymark_js.lang['object_label_' + layer_type]) + ' ' + waymark_js.lang.object_title_placeholder													
+								})
+								.on('change', function() {
+									//Update properties
+									feature.properties.title = jQuery(this).val()
+
+									Waymark.save_data_layer();
+									Waymark.map_was_edited();
+								});
+				
+							break;
+						case 'description':
+							var ele_id = 'waymark-info-description';
+					
+							var ele = jQuery('<textarea />')
+								.attr({
+									'id': ele_id,
+									'class': 'wp-editor',							
+									'placeholder': Waymark.title_case(waymark_js.lang['object_label_' + layer_type]) + ' ' + waymark_js.lang.object_description_placeholder
+								})
+								.val(feature.properties.description)
+								.on('change', function() {
+									//Update properties
+									feature.properties.description = jQuery(this).val()
+
+									Waymark.save_data_layer();
+									Waymark.map_was_edited();
+								});
+				
+							break;					
+						case 'image_large_url':
+							var img_input = jQuery('<input />')
+								.attr({
+									'value': feature.properties.image_large_url,
+									'placeholder': waymark_js.lang.object_image_placeholder
+								})
+								.on('change', function() {
+									//Update properties
+									feature.properties.image_large_url = jQuery(this).val()
+
+									Waymark.save_data_layer();
+									Waymark.map_was_edited();
+								});
+						
+								if(typeof feature.properties.image_thumbnail_url !== 'undefined') {
+									var thumb_url = feature.properties.image_thumbnail_url;
+								} else {
+									var thumb_url = feature.properties.image_large_url;							
+								}
+						
+								//Image Preview
+								var img_ele = jQuery('<img />')
+									.attr({
+										'src' : thumb_url,
+										'width' : 160
+									});									
+								img_input.on('change', function() {
+									img_ele.attr('src', jQuery(this).val());
+								});
+						
+								var img_view = jQuery('<a />').
+									attr({
+										'href': feature.properties.image_large_url,
+										'target': '_blank',																	
+									})
+									.append(img_ele)
+									.hover(
+										function() {
+											jQuery(this).addClass('waymark-hover');
+										},
+										function() {
+											jQuery(this).removeClass('waymark-hover');
+										}								
+									)
+												
+								var img_add = jQuery('<button />')
+									.text(waymark_js.lang.action_upload_image)
+									.attr({
+										'type': 'submit',
+										'name': 'add_photo',
+										'class': 'waymark-input button button-small',
+										'id': 'add_photo'
+								}).on('click', function(e) {
+									e.preventDefault();
+
+									//Media Library present...				
+									if(typeof wp.media != 'undefined') {
+										//Thanks to: https://mycyberuniverse.com/integration-wordpress-media-uploader-plugin-options-page.html
+										wp.media.editor.send.attachment = function(props, attachment) {		
+											Waymark.debug(attachment);
+							
+											//Ensure we have the data we want
+											if(typeof attachment.url === 'undefined') {
+												return false;							
+											}
+
+											//Get Image URLs
+											var image_sizes = Waymark.get_image_sizes(attachment.sizes, attachment.url);
+
+											//Update data
+											feature.properties = Object.assign({}, feature.properties, image_sizes);
+																							
+											//Update preview
+											img_view.attr('href', feature.properties.image_large_url);
+											jQuery('img', img_view).attr('src', feature.properties.image_thumbnail_url);
+															
+											//Update input
+											img_input.val(feature.properties.image_large_url);			
+
+											//Save
+											Waymark.save_data_layer();
+											Waymark.map_was_edited();	
+										}
+										wp.media.editor.open();
+					
+										return false;	
+									//No media library
+									} else {
+										//Thanks to: https://stackoverflow.com/a/24939229
+										var photo_input = jQuery('<input />')
+											.attr({
+												'type': 'file',
+												'name': 'marker_photo'
+											})
+											.css('display', 'none')
+											.change(function() {
+												Waymark.handle_file_upload(jQuery(this), {
+													'feature': feature,
+													'img_view': img_view,
+													'img_input': img_input											
+												});
+											});		
+										
+										jQuery('#waymark-edit-toolbar').append(photo_input);
+
+										//Fire the form
+										photo_input.trigger('click');
+				
+										//Weird circle bug fix...
+										//Waymark.map.editTools.stopDrawing();					
+									}
+								});
+								
+								var ele = jQuery('<div />').append(img_view, img_input, img_add);
+										
+							break;										
+					}
+
+					if(ele) {
+						list.append(jQuery('<li />').addClass('waymark-info-' + key + ' waymark-' + layer_type + '-info-' + key).append(ele));				
+					}			
+				}		
+
+				//Position
+				if(layer_type == 'marker' && typeof layer.feature.geometry.coordinates != 'undefined') {
+					var latlng = layer.feature.geometry.coordinates;
+					var lat = layer.feature.geometry.coordinates[1];
+					var lng = layer.feature.geometry.coordinates[0];
+					//Round if numeric
+					if(typeof lat == 'number') {
+						lng = lng.toFixed(6);
+						lat = lat.toFixed(6);
+					}
+			
+					//Output
+					ele = jQuery('<small>').html('<b>' + waymark_js.lang.marker_latlng_label + '</b>: ' + lat + ',' + lng);
+					list.append(jQuery('<li />').addClass('waymark-info-latlng waymark-marker-info-latlng').append(ele));				
+				}			
+
+				//Content
+				if(list.children().length) {
+					content.append(list);
+				}
+
+				break;
+			
+
+			// ====================================			
+			// ============ Query Data ============
+			// ====================================
+
+									
+			case 'query_data' :
+			
+				var list = jQuery('<ul />').addClass('waymark-info waymark-' + layer_type + '-info');
+
+				for(key in Waymark.config[layer_type + '_data_defaults']) {			
+					var ele = null;
+		
+					switch(key) {
+						case 'title':
+							var title = feature.properties.title;
+
+							//We have a title
+							if(title) {
+								ele = jQuery('<strong />').html(feature.properties.title)
+							//No description
+							} else {
+								ele = jQuery('<strong />').html('&nbsp;')
+								list.addClass('waymark-no-title');
+							}
+					
+				
+							break;
+						case 'type':
+							if(Waymark.config.map_options.show_type_labels != '1') {
+								break;	
+							}
+									
+							//Get type
+							var type = Waymark.get_type(layer_type, feature.properties.type);
+							if(type) {
+								ele = Waymark.type_to_text(layer_type, type, 'small');						
+							}			
+					
+							break;
+
+						case 'description':
+							var description = feature.properties.description;
+					
+							//We have a description
+							if(description) {
+								//HTML
+								if(description.indexOf('<') === 0) {
+									ele = description;						
+								//Plain text
+								} else {
+									ele = jQuery('<p />').html(description);
+								}
+							//No description
+							} else {
+								list.addClass('waymark-no-description');
+							}
+				
+							break;					
+						case 'image_large_url':
+								//We have an image
+								if(typeof feature.properties.image_large_url !== 'undefined') {
+									//Use Medium if we have it
+									var thumb_url = feature.properties.image_large_url;
+									if(typeof feature.properties.image_medium_url !== 'undefined') {
+										var thumb_url = feature.properties.image_medium_url;
+									}
+
+									ele = jQuery('<a />')
+										.attr({
+											'href': feature.properties.image_large_url,
+											'target': '_blank',		
+											'style': 'background-image:url(' + thumb_url + ')'	
+										})
+									;
+								//We don't have an image
+								} else {
+									list.addClass('waymark-no-image');							
+								}
+																													
+							break;										
+					}
+			
+					if(ele) {
+						list.append(jQuery('<li />').addClass('waymark-info-' + key + ' waymark-' + layer_type + '-info-' + key).append(ele));				
 					}
 				}
 
-				//Remove from Map
-				Waymark.map.removeLayer(layer);
-				//Remove from data later
-				Waymark.map_data.removeLayer(layer);
-
-				Waymark.save_data_layer();
-				Waymark.map_was_edited();
-				
-				//Callback?
-				if(typeof Waymark.config.handle_delete_callback == 'function') {
-					Waymark.config.handle_delete_callback(feature);
-				}
-				
-				return false;
-			});		
-		list.append(jQuery('<li />').addClass('waymark-info-button waymark-info-delete waymark-' + layer_type + '-delete').append(ele));
-
-		//Type
-		var types = Waymark.config[layer_type + '_types'];
-		
-		//Types
-		var ele = jQuery('<select />');
-
-		ele.append(
-			jQuery('<option />')
-				.attr({
-					'disabled': 'disabled'
-				})
-				.text(Waymark.title_case(waymark_js.lang['object_label_' + layer_type]) + ' ' + waymark_js.lang.object_type_label + ':')
-		);
-
-		//Pre-defined types
-		for(i in types) {
-			var type_key = Waymark.make_key(types[i][layer_type + '_title']);
-
-			ele.append(jQuery('<option />').val(type_key).text(types[i][layer_type + '_title']));
-		}
-		
-		//Handling custom types?
-		if(typeof Waymark.config.handle_custom_type_callback == 'function') {
-			//Seperator
-			ele.append(
-				jQuery('<option />')
-					.attr('disabled', 'disabled')
-					.text('──────────')
-			);
-			//'Custom'
-			var custom_option = jQuery('<option />')
-				.attr('id', 'custom_type')
-				.val('{}')
-				.text("Custom")
-			;
-			ele.append(custom_option);
-		}
-
-		//On change
-		ele.change(function() {		
-			var selected_input = jQuery('option:selected', jQuery(this));
-
-			//Custom
-			if(selected_input.attr('id') == 'custom_type') {
-				if(typeof Waymark.config.handle_custom_type_callback == 'function') {
-					Waymark.config.handle_custom_type_callback(layer_type, layer, selected_input);
-				}
-			//Pre-defined		
-			} else {
-				if(typeof Waymark.config.handle_custom_type_callback == 'function') {
-					Waymark.config.handle_custom_type_callback(layer_type, layer, selected_input, 'hide');
-				}
-				
-				//Get type value
-				var selected_type = jQuery(this).val();
-				
-				//Update data layer
-				feature.properties.type = selected_type;
-				
-				//Predefined
-				if(typeof selected_type != 'object') {
-					var type = Waymark.get_type(layer_type, feature.properties.type);		
-				}
-
-				//Change live style
-				switch(layer_type) {
-					case 'line' :
-						layer.setStyle({
-							color: type.line_colour,
-							weight: type.line_weight							
-						});				
-
-						break;
-					case 'shape' :
-						layer.setStyle({
-							color: type.shape_colour,
-							fillOpacity: type.fill_opacity
-						});
-							
-						break;
-					case 'marker' :
-						//Create Icon								
-						layer.setIcon(
-							L.divIcon(Waymark.build_icon_data(type))
-						);				
-
-						break;								
-				}
-
-				Waymark.save_data_layer();
-				Waymark.map_was_edited();			
-			}
-		});
-		list.append(jQuery('<li />').addClass('waymark-info-type waymark-' + layer_type + '-type').append(ele));		
-
-		//Set selected
-		//Custom object
-		if(typeof feature.properties.type == 'object') {
-			if(typeof Waymark.config.handle_custom_type_callback == 'function') {
-				Waymark.config.handle_custom_type_callback(layer_type, layer, custom_option, 'show');			
-
-				custom_option.attr('selected', 'selected');
-			}
-		//Type used
-		} else {
-			if(typeof Waymark.config.handle_custom_type_callback == 'function') {
-				Waymark.config.handle_custom_type_callback(layer_type, layer, custom_option, 'hide');			
-			}
-	
-			jQuery('option', ele).filter(function() {
-				return jQuery(this).val() == Waymark.make_key(feature.properties.type);
-			}).attr('selected', 'selected');			
-		}	
-	
-		//Data
-		for(key in Waymark.config[layer_type + '_data_defaults']) {			
-			var ele = null;
+				if(list.children().length) {
+					content.append(list);
+				}				
 			
-			switch(key) {
-				case 'title':
-					var ele = jQuery('<input />')
-						.attr({
-							'type': 'text',
-							'value': feature.properties.title,
-							'placeholder': Waymark.title_case(waymark_js.lang['object_label_' + layer_type]) + ' ' + waymark_js.lang.object_title_placeholder													
-						})
-						.on('change', function() {
-							//Update properties
-							feature.properties.title = jQuery(this).val()
-
-							Waymark.save_data_layer();
-							Waymark.map_was_edited();
-						});
-				
-					break;
-				case 'description':
-					var ele_id = 'waymark-info-description';
-					
-					var ele = jQuery('<textarea />')
-						.attr({
-							'id': ele_id,
-							'class': 'wp-editor',							
-							'placeholder': Waymark.title_case(waymark_js.lang['object_label_' + layer_type]) + ' ' + waymark_js.lang.object_description_placeholder
-						})
-						.val(feature.properties.description)
-						.on('change', function() {
-							//Update properties
-							feature.properties.description = jQuery(this).val()
-
-							Waymark.save_data_layer();
-							Waymark.map_was_edited();
-						});
-				
-					break;					
-				case 'image_large_url':
-					var img_input = jQuery('<input />')
-						.attr({
-							'value': feature.properties.image_large_url,
-							'placeholder': waymark_js.lang.object_image_placeholder
-						})
-						.on('change', function() {
-							//Update properties
-							feature.properties.image_large_url = jQuery(this).val()
-
-							Waymark.save_data_layer();
-							Waymark.map_was_edited();
-						});
-						
-						if(typeof feature.properties.image_thumbnail_url !== 'undefined') {
-							var thumb_url = feature.properties.image_thumbnail_url;
-						} else {
-							var thumb_url = feature.properties.image_large_url;							
-						}
-						
-						//Image Preview
-						var img_ele = jQuery('<img />')
-							.attr({
-								'src' : thumb_url,
-								'width' : 160
-							});									
-						img_input.on('change', function() {
-							img_ele.attr('src', jQuery(this).val());
-						});
-						
-						var img_view = jQuery('<a />').
-							attr({
-								'href': feature.properties.image_large_url,
-								'target': '_blank',																	
-							})
-							.append(img_ele)
-							.hover(
-								function() {
-									jQuery(this).addClass('waymark-hover');
-								},
-								function() {
-									jQuery(this).removeClass('waymark-hover');
-								}								
-							)
-												
-						var img_add = jQuery('<button />')
-							.text(waymark_js.lang.action_upload_image)
-							.attr({
-								'type': 'submit',
-								'name': 'add_photo',
-								'class': 'waymark-input button button-small',
-								'id': 'add_photo'
-						}).on('click', function(e) {
-							e.preventDefault();
-
-							//Media Library present...				
-							if(typeof wp.media != 'undefined') {
-								//Thanks to: https://mycyberuniverse.com/integration-wordpress-media-uploader-plugin-options-page.html
-								wp.media.editor.send.attachment = function(props, attachment) {		
-									Waymark.debug(attachment);
-							
-									//Ensure we have the data we want
-									if(typeof attachment.url === 'undefined') {
-										return false;							
-									}
-
-									//Get Image URLs
-									var image_sizes = Waymark.get_image_sizes(attachment.sizes, attachment.url);
-
-									//Update data
-									feature.properties = Object.assign({}, feature.properties, image_sizes);
-																							
-									//Update preview
-									img_view.attr('href', feature.properties.image_large_url);
-									jQuery('img', img_view).attr('src', feature.properties.image_thumbnail_url);
-															
-									//Update input
-									img_input.val(feature.properties.image_large_url);			
-
-									//Save
-									Waymark.save_data_layer();
-									Waymark.map_was_edited();	
-								}
-								wp.media.editor.open();
-					
-								return false;	
-							//No media library
-							} else {
-								//Thanks to: https://stackoverflow.com/a/24939229
-								var photo_input = jQuery('<input />')
-									.attr({
-										'type': 'file',
-										'name': 'marker_photo'
-									})
-									.css('display', 'none')
-									.change(function() {
-										Waymark.handle_file_upload(jQuery(this), {
-											'feature': feature,
-											'img_view': img_view,
-											'img_input': img_input											
-										});
-									});		
-										
-								jQuery('#waymark-edit-toolbar').append(photo_input);
-
-								//Fire the form
-								photo_input.trigger('click');
-				
-								//Weird circle bug fix...
-								//Waymark.map.editTools.stopDrawing();					
-							}
-						});
-					    	
-						var ele = jQuery('<div />').append(img_view, img_input, img_add);
-										
-					break;										
-			}
-
-			if(ele) {
-				list.append(jQuery('<li />').addClass('waymark-info-' + key + ' waymark-' + layer_type + '-info-' + key).append(ele));				
-			}			
-		}		
-
-		//Position
-		if(layer_type == 'marker' && typeof layer.feature.geometry.coordinates != 'undefined') {
-			var latlng = layer.feature.geometry.coordinates;
-			var lat = layer.feature.geometry.coordinates[1];
-			var lng = layer.feature.geometry.coordinates[0];
-			//Round if numeric
-			if(typeof lat == 'number') {
-				lng = lng.toFixed(6);
-				lat = lat.toFixed(6);
-			}
-			
-			//Output
-			ele = jQuery('<small>').html('<b>' + waymark_js.lang.marker_latlng_label + '</b>: ' + lat + ',' + lng);
-			list.append(jQuery('<li />').addClass('waymark-info-latlng waymark-marker-info-latlng').append(ele));				
-		}			
-
-		//Content
-		if(list.children().length) {
-			content.append(list);
+				break;
 		}
-		
+
 		return content;		
 	}
 
-	this.info_window = function(layer_type, feature, layer) {
+	this.info_window = function(layer_type, feature, layer, data_layer = 'map_data') {
 		Waymark = this;
+		
+		console.log(layer);
 
 		//Build content
 		var title = Waymark.title_case(waymark_js.lang.action_edit + ' ' + layer_type);
@@ -957,12 +1065,12 @@ function Waymark_Map_Editor() {
 			//Bind content to info window
 			layer
 				.on('click', function() {
-					var content = Waymark.build_content(layer_type, feature, layer);
+					var content = Waymark.build_content(layer_type, feature, layer, data_layer);
 					Waymark.config.handle_content_callback(content.get(0), title, Waymark.mode);
 				});		
 		//Default handle content
 		} else {	
-			var content = Waymark.build_content(layer_type, feature, layer);
+			var content = Waymark.build_content(layer_type, feature, layer, data_layer);
 			var content_html = content.get(0);
 			
 			var popup_options = {

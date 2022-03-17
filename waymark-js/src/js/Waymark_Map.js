@@ -1358,7 +1358,7 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 					});
 
 					//Set info window
-					Waymark.info_window('shape', feature, layer);					
+					Waymark.info_window('shape', feature, layer, 'query_data');					
 
 					//Set title tooltip
 					Waymark.tooltip('shape', feature, layer);							
@@ -1384,7 +1384,7 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 					}
 					
 					//Set info window
-					Waymark.info_window('marker', feature, layer);										
+					Waymark.info_window('marker', feature, layer, 'query_data');										
 
 					//Set title tooltip
 					Waymark.tooltip('marker', feature, layer);	
@@ -1411,7 +1411,7 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 				});	
 
 				//Set info window
-				Waymark.info_window('line', feature, layer);					
+				Waymark.info_window('line', feature, layer, 'query_data');					
 
 				//Set title tooltip
 				Waymark.tooltip('line', feature, layer);
@@ -1440,7 +1440,7 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 				});
 				
 				//Set info window
-				Waymark.info_window('shape', feature, layer);				
+				Waymark.info_window('shape', feature, layer, 'query_data');				
 
 				//Set title tooltip
 				Waymark.tooltip('shape', feature, layer);
