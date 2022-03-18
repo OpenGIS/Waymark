@@ -9726,7 +9726,8 @@ function Waymark_Map_Editor() {
 									
 			case 'query_data' :
 			
-				var list = jQuery('<ul />').addClass('waymark-info waymark-' + layer_type + '-info');
+				var list = jQuery('<ul />')
+					.addClass('waymark-info waymark-query-info waymark-' + layer_type + '-info');
 
 				for(key in Waymark.config[layer_type + '_data_defaults']) {			
 					var ele = null;

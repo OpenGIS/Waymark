@@ -109,7 +109,19 @@ class Waymark_Overpass {
 			$desc = '<table>';						
 			foreach($element['tags'] as $key => $value) {
 				$desc .= '<tr>';
-				$desc .= '<th>' . $key . '</th><td>' . $value . '</td>';														
+
+				switch($key) {
+					case 'website':
+						$desc .= '<th>' . $key . '</th><td><a href="' . $value . '">' . $value . '</a></td>';														
+						
+						break;
+										
+					default:
+						$desc .= '<th>' . $key . '</th><td>' . $value . '</td>';														
+						
+						break;			
+				}
+
 				$desc .= '</tr>';							
 			}
 			
