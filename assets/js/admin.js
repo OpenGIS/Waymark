@@ -728,6 +728,19 @@ function waymark_handle_repeatable_clone(clone) {
 	
 	//Map Queries
 	if(form && form.hasClass('waymark-map-query')) {
+		var waymark_container = jQuery('.waymark-instance').first();
+		var Waymark_Instance = waymark_container.data('Waymark');		
+		
+		var default_bounds = Waymark_Instance.get_default_bounds();
+
+
+		var area_bounds_input = jQuery('.waymark-input-query_area_bounds', clone).first();
+		area_bounds_input.val(Waymark_Instance.bounds_to_string(default_bounds))
+
+		var area_polygon_input = jQuery('.waymark-input-query_area_polygon', clone).first();
+		var latlng_array = Waymark.latlng_bounds_to_latlng_array(default_bounds);
+		area_polygon_input.val(Waymark_Instance.polygon_array_to_string(latlng_array));
+		
 		clone.hover(function() {
 			waymark_render_map_query(jQuery(this));		
 		},
