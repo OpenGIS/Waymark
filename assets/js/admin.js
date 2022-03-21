@@ -372,7 +372,7 @@ function waymark_setup_dropdowns() {
 }
 
 function waymark_setup_map_query() {	
-	jQuery('.waymark-query-form.waymark-map-query').each(function() {
+	jQuery('.postbox#waymark_map_queries .waymark-query-form.waymark-map-query').each(function() {
 		var query_container = jQuery(this);
 
 		//Each Query
@@ -410,8 +410,8 @@ function waymark_setup_map_query() {
 }
 
 function waymark_setup_tax_query() {
-	//Both Add and Edit forms
-	jQuery('.waymark-query-form.waymark-tax-query').each(function() {
+	//Taxonomy Add / Edit forms
+	jQuery('body.taxonomy-waymark_query .waymark-query-form.waymark-tax-query').each(function() {
 		//The form
 		var container = jQuery(this);
 	
@@ -425,8 +425,71 @@ function waymark_setup_tax_query() {
 		//Initial
 		jQuery('.waymark-input', container).first().trigger('change');
 	});
-}
+	
+	//Setup Tax
+	var tax_queries_content_container = jQuery('.postbox#tax_queries_content');
+	if(tax_queries_content_container.length) {
+	/*
+			//Change
+			jQuery('.waymark-parameters-container .waymark-input', tax_queries_content_container).each(function() {
+				jQuery(this).change(function() {
+					waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
+				});
+			});
+	
+			//Initial
+			jQuery('.waymark-input', tax_queries_content_container).first().trigger('change');
+	*/
 
+		//Map Add / Edit
+		var tax_query_container = jQuery('body.post-type-waymark_map #tagsdiv-waymark_query'); 
+		if(tax_query_container.length) {
+			var tax_query_area_select = jQuery('<select />')
+				.addClass('waymark-input')
+				.append(
+					jQuery('<option />')
+						.attr('value', 'bounds')
+						.text('Bounds')
+				)
+			;
+			tax_query_container.append(tax_query_area_select);
+
+			var tax_query_area_button = jQuery('<button />')
+				.html('<i class="ion-edit"></i>')
+				.addClass('waymark-input')
+				.click('click', 
+					function(e) {
+						e.preventDefault();
+										
+						var waymark_container = jQuery('.waymark-instance').first();
+						var Waymark_Instance = waymark_container.data('Waymark');
+
+						if(! Waymark_Instance.is_bounds_editing()) {
+							jQuery(this).html('<i class="ion-android-done"></i>');
+	
+							Waymark_Instance.draw_bounds_selector('bounds', Waymark_Instance.bounds_to_string(Waymark_Instance.get_default_bounds()));
+							Waymark_Instance.edit_bounds_selector();
+						} else {
+							//Update
+							var query_bounds_string = Waymark_Instance.bounds_to_string(Waymark_Instance.bounds_selector_layer.getBounds());
+
+							jQuery('.postbox#tax_queries_content .waymark-input-query_area_bounds').each(function() {
+								jQuery(this).val(query_bounds_string);
+								
+								waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));
+							});
+							
+							jQuery(this).html('<i class="ion-edit"></i>');						
+							
+							Waymark_Instance.undraw_selectors();
+						}
+					}				
+				)
+			;		
+			tax_query_container.append(tax_query_area_button);
+		}
+	}
+}
 function waymark_execute_query(container) {
 	//Must be jQuery
 	if(! container instanceof jQuery) {
@@ -900,8 +963,8 @@ function waymark_setup_settings_maps() {
 			
 			var waymark_instance = map_container.data('Waymark');
 			waymark_instance.map.invalidateSize();
-			waymark_instance.draw_bounds_selector('bounds', query_area_input.val(), query_area_input);
-			waymark_instance.edit_bounds_selector('bounds', query_area_input);
+			waymark_instance.draw_bounds_selector('bounds', query_area_input.val());
+			waymark_instance.edit_bounds_selector();
 
 			return false;
 		})
@@ -920,6 +983,6 @@ jQuery(document).ready(function() {
 	waymark_setup_select_meta_type();
 	waymark_setup_select_icon_type();
 	waymark_setup_dropdowns();
-	waymark_setup_tax_query();	
 	waymark_setup_map_query();		
+	waymark_setup_tax_query();	
 });

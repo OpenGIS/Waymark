@@ -14,8 +14,8 @@ class Waymark_Query extends Waymark_Class {
 		'query_data' => null		
 	];
 	
-	private $inputs = [];
-	private $input_groups = [
+	public $inputs = [];
+	public $input_groups = [
 // 		'test1' => [
 // 			'group_title' => 'Test 1',
 // 		],
@@ -307,8 +307,9 @@ class Waymark_Query extends Waymark_Class {
 		
 	function get_request_meta() {
 		$parameters = $this->get_parameters();
-				
-		unset($parameters['query_data']);
+
+		unset($parameters['query_data']);			
+		unset($parameters['query_error']);
 		
 		return $parameters;	
 	}

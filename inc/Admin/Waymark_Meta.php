@@ -24,6 +24,8 @@ class Waymark_Meta {
 			
 					if(Waymark_Config::get_setting('query', 'features', 'enable_map')) {
 						add_meta_box('waymark_map_queries', __('Map Queries', 'waymark'), array($this, 'map_queries_content'), 'waymark_map', 'side', 'default');			
+
+						add_meta_box('tax_queries_content', __('Tax Queries', 'waymark'), array($this, 'tax_queries_content'), 'waymark_map', 'side', 'default');			
 					}
 					
 					break;
@@ -173,13 +175,13 @@ class Waymark_Meta {
 // 		Waymark_Helper::debug($Map);
 
 		//Queries data?
-		if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
-			foreach($Map->Queries as $Query) {
-				if($query_data = $Query->get_parameter('query_data')) {
-					$Waymark_JS->load_json($query_data, 'query_data');								
-				}
-			}
-		}
+// 		if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
+// 			foreach($Map->Queries as $Query) {
+// 				if($query_data = $Query->get_parameter('query_data')) {
+// 					$Waymark_JS->load_json($query_data, 'query_data');								
+// 				}
+// 			}
+// 		}
 		
 		echo '<p>' . sprintf(__('You can manage Meta fields in <a href="%s">Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')) . '</p>';		
 	}
@@ -208,5 +210,26 @@ class Waymark_Meta {
 			$Query->create_map_form();		
 		}
 	}	
+
+	/**
+	 * ===========================================
+	 * ============== TAX QUERIES ================
+	 * ===========================================
+	 */	
+	function tax_queries_content() {
+		global $post;
+		
+		//Create Feed meta input
+		$Map = new Waymark_Map($post->ID);		
+
+// 		Waymark_Helper::debug($Map);
+
+		//Queries data?
+		if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
+			foreach($Map->Queries as $Query) {
+				echo Waymark_Input::create_parameter_groups($Query->inputs, $Query->input_groups, $Query->get_request_meta());				
+			}
+		}
+	}		
 }
 new Waymark_Meta;
