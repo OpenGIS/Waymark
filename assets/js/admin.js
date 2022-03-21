@@ -372,12 +372,13 @@ function waymark_setup_dropdowns() {
 }
 
 function waymark_setup_map_query() {	
-	jQuery('.postbox#waymark_map_queries .waymark-query-form.waymark-map-query').each(function() {
+	jQuery('.waymark-query-form.waymark-map-query').each(function() {
 		var query_container = jQuery(this);
 
 		//Each Query
 		var query_index = 1;		
 		jQuery('.waymark-parameters-container', query_container).each(function() {
+			jQuery(this).css('background', 'red');
 			jQuery(this).attr('data-index', query_index);
 			
 			//Update on change
@@ -429,18 +430,17 @@ function waymark_setup_tax_query() {
 	//Setup Tax
 	var tax_queries_content_container = jQuery('.postbox#tax_queries_content');
 	if(tax_queries_content_container.length) {
-	/*
-			//Change
-			jQuery('.waymark-parameters-container .waymark-input', tax_queries_content_container).each(function() {
-				jQuery(this).change(function() {
-					waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
-				});
-			});
-	
-			//Initial
-			jQuery('.waymark-input', tax_queries_content_container).first().trigger('change');
-	*/
-
+		//Initial
+		jQuery('.waymark-input-query_area_bounds', tax_queries_content_container).each(function() {
+			//Get Meta value
+			var query_area_input = jQuery('#waymark-parameters-waymark_map .waymark-input-query_area').first();
+			if(query_area_string = query_area_input.val()) {
+				jQuery(this).val(query_area_string);
+			}
+						
+			waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
+		});
+		
 		//Map Add / Edit
 		var tax_query_container = jQuery('body.post-type-waymark_map #tagsdiv-waymark_query'); 
 		if(tax_query_container.length) {
@@ -467,11 +467,20 @@ function waymark_setup_tax_query() {
 						if(! Waymark_Instance.is_bounds_editing()) {
 							jQuery(this).html('<i class="ion-android-done"></i>');
 	
-							Waymark_Instance.draw_bounds_selector('bounds', Waymark_Instance.bounds_to_string(Waymark_Instance.get_default_bounds()));
+							var query_area_input = jQuery('#waymark-parameters-waymark_map .waymark-input-query_area').first();
+							if(! (query_area_string = query_area_input.val())) {
+								query_area_string = Waymark_Instance.bounds_to_string(Waymark_Instance.get_default_bounds());
+							}
+	
+							Waymark_Instance.draw_bounds_selector('bounds', query_area_string);
 							Waymark_Instance.edit_bounds_selector();
 						} else {
 							//Update
 							var query_bounds_string = Waymark_Instance.bounds_to_string(Waymark_Instance.bounds_selector_layer.getBounds());
+							
+							//Save as Meta
+							var query_area_input = jQuery('#waymark-parameters-waymark_map .waymark-input-query_area').first();
+							query_area_input.val(query_bounds_string);
 
 							jQuery('.postbox#tax_queries_content .waymark-input-query_area_bounds').each(function() {
 								jQuery(this).val(query_bounds_string);

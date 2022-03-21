@@ -226,9 +226,11 @@ class Waymark_Meta {
 
 		//Queries data?
 		if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
+			$tax_queries = [];
 			foreach($Map->Queries as $Query) {
-				echo Waymark_Input::create_parameter_groups($Query->inputs, $Query->input_groups, $Query->get_request_meta());				
+				$tax_queries[] = $Query->get_request_meta();				
 			}
+			$Query->create_map_form($tax_queries, 'tax_queries');						
 		}
 	}		
 }
