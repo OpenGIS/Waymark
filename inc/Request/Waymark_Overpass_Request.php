@@ -44,20 +44,26 @@ class Waymark_Overpass_Request extends Waymark_Request {
 				//Create header
 				$overpass_query .= '[bbox:' . $overpass_bounding_box . ']';
 			
-				break;
-
-			//!!!
-			//To-do: Polygon
-			case 'polygon' :
-			
-				break;				
+				break;		
 		}
 		$overpass_query .= ';';
-
 
 		// ==== User Query ====
 		
 		$overpass_query .= $query_string;
+
+		//Query area
+		switch($query_area['type']) {
+			case 'polygon' :
+				//Convert from Leaflet to Overpass
+				$overpass_polygon = Waymark_Overpass::leaflet_poly_to_overpass_poly($query_area['area']);
+				
+				//Create header
+				$overpass_query .= '(poly:"' . $overpass_polygon . '")';
+
+				break;				
+		}
+
 		$overpass_query .= ';';
 
 		// ==== Output ====
@@ -75,9 +81,10 @@ class Waymark_Overpass_Request extends Waymark_Request {
 		}
 		$overpass_query .= ';';
 
-
 		//Make safe
 		$overpass_query = str_replace('+', '%20', $overpass_query);
+
+//		Waymark_Helper::debug($overpass_query);
 
 		$return = [
 			'data' => $overpass_query

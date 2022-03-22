@@ -177,4 +177,14 @@ class Waymark_Overpass {
 			return false;
 		}
 	}
+	
+	static public function leaflet_poly_to_overpass_poly($leaflet_poly) {
+		$poly_array = explode(',', $leaflet_poly);
+		
+		if(is_array($poly_array)) {
+			return implode(' ', $poly_array);
+		} else {
+			return false;
+		}	
+	}
 }
