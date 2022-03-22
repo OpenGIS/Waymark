@@ -31,14 +31,34 @@ class Waymark_Map extends Waymark_Object {
 			'title' => 'Map Data Bounds',
 			'class' => 'waymark-hidden'
 		);
-		$this->parameters['query_area'] = array(
+		$this->parameters['query_area_type'] = array(
 			'input_types' => array('meta'),
-			'name' => 'query_area',
-			'id' => 'query_area',
+			'name' => 'query_area_type',
+			'id' => 'query_area_type',
+			'type' => 'text',				
+			'default' => 'bounds',
+			'group' => '',
+			'title' => 'Query Area Type',
+// 			'class' => 'waymark-hidden'
+		);	
+		$this->parameters['query_area_bounds'] = array(
+			'input_types' => array('meta'),
+			'name' => 'query_area_bounds',
+			'id' => 'query_area_bounds',
 			'type' => 'textarea',				
 //			'tip' => '',
 			'group' => '',
-			'title' => 'Query Area',
+			'title' => 'Query Area Bounds',
+// 			'class' => 'waymark-hidden'
+		);	
+		$this->parameters['query_area_polygon'] = array(
+			'input_types' => array('meta'),
+			'name' => 'query_area_polygon',
+			'id' => 'query_area_polygon',
+			'type' => 'textarea',				
+//			'tip' => '',
+			'group' => '',
+			'title' => 'Query Area Polygon',
 // 			'class' => 'waymark-hidden'
 		);	
 				

@@ -374,7 +374,6 @@ function waymark_setup_dropdowns() {
 function waymark_setup_map_query() {
 	var query_index = 1;	
 
-	//waymark-parameters-container waymark-accordion-container waymark-self-clear waymark-dropdown-query_area_type-bounds waymark-dropdown-query_cast_overlay-marker waymark-dropdown-query_cast_marker_type-bus_stop waymark-dropdown-query_cast_line_type-green	
 	jQuery('.waymark-query-form.waymark-map-query .waymark-parameters-container').each(function() {
 		jQuery(this).css('background', 'red');
 		jQuery(this).attr('data-index', query_index);
@@ -425,18 +424,26 @@ function waymark_setup_tax_query() {
 	});
 	
 	//Setup Tax
-	var tax_queries_content_container = jQuery('.postbox#tax_queries_content');
-	if(tax_queries_content_container.length) {
-		//Initial
-		jQuery('.waymark-input-query_area_bounds', tax_queries_content_container).each(function() {
+	var container = jQuery('.postbox#tax_queries_content');
+	if(container.length) {
+		//Initial Bounds
+		jQuery('.waymark-input-query_area_bounds', container).each(function() {
 			//Get Meta value
-			var query_area_input = jQuery('#waymark-parameters-waymark_map .waymark-input-query_area').first();
+			var query_area_input = jQuery('#waymark-parameters-waymark_map .waymark-input-query_area_bounds').first();
 			if(query_area_string = query_area_input.val()) {
 				jQuery(this).val(query_area_string);
 			}
-						
-			waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
 		});
+
+		//Initial Polygon
+		jQuery('.waymark-input-query_area_polygon', container).each(function() {
+			//Get Meta value
+			var query_area_input = jQuery('#waymark-parameters-waymark_map .waymark-input-query_area_polygon').first();
+			if(query_area_string = query_area_input.val()) {
+				jQuery(this).val(query_area_string);
+			}						
+		});
+
 		
 		//Map Add / Edit
 		var tax_query_container = jQuery('body.post-type-waymark_map #tagsdiv-waymark_query'); 
@@ -446,10 +453,44 @@ function waymark_setup_tax_query() {
 				.append(
 					jQuery('<option />')
 						.attr('value', 'bounds')
-						.text('Bounds')
+						.text('Bounds'),
+					jQuery('<option />')
+						.attr('value', 'polygon')
+						.text('Polygon'),						
 				)
+				.change(function() {
+					var area_type = jQuery(this).val();
+
+					var waymark_container = jQuery('.waymark-instance').first();
+					var Waymark_Instance = waymark_container.data('Waymark');
+
+					Waymark_Instance.undraw_selectors();
+					Waymark_Instance.unedit_bounds_selector();
+
+					//Update Meta
+					jQuery('#waymark-parameters-waymark_map .waymark-input-query_area_type')
+						.first()
+						.val(area_type)
+					;
+				
+					jQuery('.postbox#tax_queries_content .waymark-input-query_area_type').each(function() {
+						jQuery('option', jQuery(this)).each(function() {
+							if(jQuery(this).val() == area_type) {
+								jQuery(this).attr('selected', 'selected');
+							} else {
+								jQuery(this).removeAttr('selected');
+							}
+						});
+					
+						waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
+					});
+				})
 			;
 			tax_query_container.append(tax_query_area_select);
+
+			//Set initial
+			var query_area_type = jQuery('#waymark-parameters-waymark_map .waymark-input-query_area_type').first().val();			
+			jQuery('option[value="' + query_area_type + '"]', tax_query_container).first().attr('selected', 'selected');			
 
 			var tax_query_area_button = jQuery('<button />')
 				.html('<i class="ion-edit"></i>')
@@ -457,6 +498,8 @@ function waymark_setup_tax_query() {
 				.click('click', 
 					function(e) {
 						e.preventDefault();
+
+						var area_selector_type = jQuery('#tagsdiv-waymark_query select.waymark-input').val();
 										
 						var waymark_container = jQuery('.waymark-instance').first();
 						var Waymark_Instance = waymark_container.data('Waymark');
@@ -464,35 +507,52 @@ function waymark_setup_tax_query() {
 						if(! Waymark_Instance.is_bounds_editing()) {
 							jQuery(this).html('<i class="ion-android-done"></i>');
 	
-							var query_area_input = jQuery('#waymark-parameters-waymark_map .waymark-input-query_area').first();
+							var query_area_input = jQuery('#waymark-parameters-waymark_map .waymark-input-query_area_' + area_selector_type).first();
+													
 							if(! (query_area_string = query_area_input.val())) {
 								query_area_string = Waymark_Instance.bounds_to_string(Waymark_Instance.get_default_bounds());
 							}
-	
-							Waymark_Instance.draw_bounds_selector('bounds', query_area_string);
+							
+							Waymark_Instance.draw_bounds_selector(area_selector_type, query_area_string);
 							Waymark_Instance.edit_bounds_selector();
 						} else {
-							//Update
-							var query_bounds_string = Waymark_Instance.bounds_to_string(Waymark_Instance.bounds_selector_layer.getBounds());
-							
-							//Save as Meta
-							var query_area_input = jQuery('#waymark-parameters-waymark_map .waymark-input-query_area').first();
-							query_area_input.val(query_bounds_string);
+							jQuery(this).html('<i class="ion-edit"></i>');						
 
-							jQuery('.postbox#tax_queries_content .waymark-input-query_area_bounds').each(function() {
-								jQuery(this).val(query_bounds_string);
+							switch(area_selector_type) {
+								case 'bounds' :
+									var bounds = Waymark_Instance.bounds_selector_layer.getBounds();
+									var query_area_string = Waymark_Instance.bounds_to_string(bounds);
+				
+									break;
+
+								case 'polygon' :
+									var latlng_array = Waymark_Instance.bounds_selector_layer.getLatLngs();						
+									var query_area_string = Waymark_Instance.polygon_array_to_string(latlng_array);
+					
+									break;
+							}
+														
+							//Save as Meta
+							var query_area_input = jQuery('#waymark-parameters-waymark_map .waymark-input-query_area_' + area_selector_type).first();
+							query_area_input.val(query_area_string);
+							
+							//Update Queries
+							jQuery('.postbox#tax_queries_content .waymark-input-query_area_' + area_selector_type).each(function() {
+								jQuery(this).val(query_area_string);
 								
 								waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));
 							});
-							
-							jQuery(this).html('<i class="ion-edit"></i>');						
-							
+														
 							Waymark_Instance.undraw_selectors();
+							Waymark_Instance.unedit_bounds_selector();
 						}
 					}				
 				)
 			;		
 			tax_query_container.append(tax_query_area_button);
+
+			//Trigger initial Query
+			tax_query_area_select.trigger('change');			
 		}
 	}
 }
@@ -990,5 +1050,5 @@ jQuery(document).ready(function() {
 	waymark_setup_select_icon_type();
 	waymark_setup_dropdowns();
 	waymark_setup_map_query();		
-	waymark_setup_tax_query();	
+	setTimeout(waymark_setup_tax_query, 2000);	
 });
