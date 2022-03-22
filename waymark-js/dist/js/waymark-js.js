@@ -7407,6 +7407,9 @@ function Waymark_Map() {
 
 		//Create Array to contain data layers
 		Waymark.queries_data = [];		
+
+		//Group Queries
+		Waymark.query_data_group = new Waymark_L.featureGroup();		
 	}
 
 	this.setup_layers = function() {
@@ -8193,7 +8196,9 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 		if(typeof query_json == 'object') {		
 			//Remove existing?
 			if(typeof Waymark.queries_data[query_index] !== 'undefined') {
-				Waymark.map.removeLayer(Waymark.queries_data[query_index]);			
+				Waymark.map.removeLayer(Waymark.queries_data[query_index]);
+				
+				Waymark.query_data_group.removeLayer(Waymark.queries_data[query_index]);			
 			}
 
 			//Create New Query data layer
@@ -8213,6 +8218,16 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 			
 			//Add to Map
 			Waymark.queries_data[query_index].addTo(Waymark.map);
+			
+			//Add to Group
+			Waymark.query_data_group.addLayer(Waymark.queries_data[query_index]);			
+			
+			//Expand bounds
+			var bounds = Waymark.query_data_group.getBounds();
+			if(bounds.isValid()) {
+				Waymark.map.fitBounds(bounds);
+			}		
+			
 		} 		
 	}
 	

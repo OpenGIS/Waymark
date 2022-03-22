@@ -227,10 +227,12 @@ class Waymark_Meta {
 		//Queries data?
 		if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
 			$tax_queries = [];
-			foreach($Map->Queries as $Query) {
-				$tax_queries[] = $Query->get_request_meta();				
+			if(sizeof($Map->Queries) && is_array($Map->Queries)) {
+				foreach($Map->Queries as $Query) {
+					$tax_queries[] = $Query->get_request_meta();				
+				}
+				$Query->create_map_form($tax_queries, 'tax_queries');									
 			}
-			$Query->create_map_form($tax_queries, 'tax_queries');						
 		}
 	}		
 }
