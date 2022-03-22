@@ -371,43 +371,40 @@ function waymark_setup_dropdowns() {
 	});
 }
 
-function waymark_setup_map_query() {	
-	jQuery('.waymark-query-form.waymark-map-query').each(function() {
-		var query_container = jQuery(this);
+function waymark_setup_map_query() {
+	var query_index = 1;	
 
-		//Each Query
-		var query_index = 1;		
-		jQuery('.waymark-parameters-container', query_container).each(function() {
-			jQuery(this).css('background', 'red');
-			jQuery(this).attr('data-index', query_index);
-			
-			//Update on change
-			var inputs = jQuery('.waymark-input', jQuery(this));
-			inputs.each(function() {
-				var input = jQuery(this);
-			
-				//Execute on change
-				input.on('change', function() {
-					waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
-				});
+	//waymark-parameters-container waymark-accordion-container waymark-self-clear waymark-dropdown-query_area_type-bounds waymark-dropdown-query_cast_overlay-marker waymark-dropdown-query_cast_marker_type-bus_stop waymark-dropdown-query_cast_line_type-green	
+	jQuery('.waymark-query-form.waymark-map-query .waymark-parameters-container').each(function() {
+		jQuery(this).css('background', 'red');
+		jQuery(this).attr('data-index', query_index);
+		
+		//Update on change
+		var inputs = jQuery('.waymark-input', jQuery(this));
+		inputs.each(function() {
+			var input = jQuery(this);
+		
+			//Execute on change
+			input.on('change', function() {
+				waymark_execute_query(jQuery(this).parents('.waymark-parameters-container'));	
 			});
-			
-			//Inital view
-			inputs.last().trigger('change');		
-			
-			//Render Map Query
-			jQuery(this).hover(
-				function() {
-					waymark_render_map_query(jQuery(this))
-				},
-				function() {
-					waymark_unrender_map_query(jQuery(this))
-				}		
-			);
+		});
+		
+		//Inital view
+		inputs.last().trigger('change');		
+		
+		//Render Map Query
+		jQuery(this).hover(
+			function() {
+				waymark_render_map_query(jQuery(this))
+			},
+			function() {
+				waymark_unrender_map_query(jQuery(this))
+			}		
+		);
 
-			query_index++;	
-		});			
-	});
+		query_index++;	
+	});			
 }
 
 function waymark_setup_tax_query() {
