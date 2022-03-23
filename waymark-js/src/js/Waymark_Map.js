@@ -1311,49 +1311,6 @@ this.latlng_bounds_to_latlng_array = function(bounds) {
 	==================================
 */
 
-	//Add Query GeoJSON
-	this.load_query_json = function(query_json, query_index = 1) {
-		Waymark = this;
-
-		//Valid Data
-		if(typeof query_json == 'object') {		
-			//Remove existing?
-			if(typeof Waymark.queries_data[query_index] !== 'undefined') {
-				Waymark.map.removeLayer(Waymark.queries_data[query_index]);
-				
-				Waymark.query_data_group.removeLayer(Waymark.queries_data[query_index]);			
-			}
-
-			//Create New Query data layer
-			Waymark.queries_data[query_index] = Waymark_L.geoJSON(null, {
-				pointToLayer: function(feature, latlng) {
-					return Waymark.create_marker(latlng, {
-						draggable: false
-					});
-				},
-				onEachFeature: function(feature, layer) {
-					Waymark.setup_query_data_feature(feature, layer);
-				}
-			});
-			
-			//Add JSON
-			Waymark.queries_data[query_index].addData(query_json);		 	
-			
-			//Add to Map
-			Waymark.queries_data[query_index].addTo(Waymark.map);
-			
-			//Add to Group
-			Waymark.query_data_group.addLayer(Waymark.queries_data[query_index]);			
-			
-			//Expand bounds
-			var bounds = Waymark.query_data_group.getBounds();
-			if(bounds.isValid()) {
-				Waymark.map.fitBounds(bounds);
-			}		
-			
-		} 		
-	}
-	
 	this.setup_query_data_feature = function(feature, layer) {
 		Waymark = this;
 			

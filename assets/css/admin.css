@@ -199,6 +199,9 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 .waymark-form.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line .query_cast_marker_type-container {
   display: none;
 }
+.postbox#tax_queries_content {
+  display: none;
+}
 .postbox#tax_queries_content .waymark-control-label {
   display: none;
 }

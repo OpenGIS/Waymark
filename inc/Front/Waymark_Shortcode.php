@@ -64,6 +64,10 @@ class Waymark_Shortcode {
 					'map_data' => $Map->data['map_data']
 				);
 
+				if(isset($Map->data['query_data']) && ! empty($Map->data['query_data'])) {
+					$maps_output[$Map->post_id]['query_data'] = $Map->data['query_data'];
+				}
+				
 				//Map Class
 				$map_class .= ' waymark-map-id-' . $Map->post_id;				
 			}
@@ -305,10 +309,15 @@ class Waymark_Shortcode {
 				//If map data exists
 				if(isset($map_output['map_data'])) {
 					$out .= 'waymark_viewer_' . $shortcode_hash . '.load_json(' . $map_output['map_data'] . ');' . "\n";														
-				}			
+				}
 			//Load everything else via HTPP
 			} else {
 				$out .= 'waymark_load_map_data(waymark_viewer_' . $shortcode_hash . ', ' . $map_id . ', true);' . "\n";																
+			}
+
+			//If Query data exists
+			if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy') && isset($map_output['query_data'])) {
+				$out .= 'waymark_viewer_' . $shortcode_hash . '.load_json(' . $map_output['query_data'] . ');' . "\n";														
 			}
 
 			$map_count++;

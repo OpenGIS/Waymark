@@ -31,6 +31,17 @@ class Waymark_Map extends Waymark_Object {
 			'title' => 'Map Data Bounds',
 			'class' => 'waymark-hidden'
 		);
+
+		//Query Data
+		$this->parameters['query_data'] = array(
+			'input_types' => array('meta'),
+			'name' => 'query_data',
+			'id' => 'query_data',
+			'type' => 'textarea',				
+			'group' => '',
+			'title' => 'Query Data',
+// 			'class' => 'waymark-hidden'
+		);		
 		$this->parameters['query_area_type'] = array(
 			'input_types' => array('meta'),
 			'name' => 'query_area_type',
