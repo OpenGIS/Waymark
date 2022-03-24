@@ -8731,6 +8731,44 @@ function Waymark_Map_Viewer() {
 			}
 		}		
 	}		
+
+/*
+	==================================
+	============ QUERIES ============
+	==================================
+*/
+
+	//Add Query GeoJSON
+	this.load_query_json = function(query_json, query_index = 1) {
+		Waymark = this;
+
+		//Valid Data
+		if(typeof query_json == 'object') {		
+			//Create New Query data layer
+			Waymark.queries_data[query_index] = Waymark_L.geoJSON(null, {
+				pointToLayer: function(feature, latlng) {
+					return Waymark.create_marker(latlng, {
+						draggable: false
+					});
+				},
+				onEachFeature: function(feature, layer) {
+					Waymark.setup_query_data_feature(feature, layer);
+				}
+			});
+			
+			//Add JSON
+			Waymark.queries_data[query_index].addData(query_json);		 	
+			
+			//Add to Map
+			Waymark.queries_data[query_index].addTo(Waymark.map);
+			
+			//Expand bounds
+// 			var bounds = Waymark.query_data_group.getBounds();
+// 			if(bounds.isValid()) {
+// 				Waymark.map.fitBounds(bounds);
+// 			}		
+		} 		
+	}	
 }
 /*
 	==================================
