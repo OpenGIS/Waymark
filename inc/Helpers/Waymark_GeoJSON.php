@@ -2,9 +2,17 @@
 
 class Waymark_GeoJSON {
 
+	static public function string_to_feature_collection($string = '') {			
+		if(is_string($string)) {
+			return json_decode($string, true, 512,  JSON_OBJECT_AS_ARRAY);		
+		}
+
+		return false;	
+	}	
+
 	static public function get_feature_count($FeatureCollection = []) {			
 		if(is_string($FeatureCollection)) {
-			$FeatureCollection = json_decode($FeatureCollection, true, 512,  JSON_OBJECT_AS_ARRAY);		
+			$FeatureCollection = self::string_to_feature_collection($FeatureCollection);		
 		}
 		
 		if($FeatureCollection && isset($FeatureCollection['features']) && is_array($FeatureCollection['features'])) {			
@@ -17,7 +25,7 @@ class Waymark_GeoJSON {
 
 	static public function update_feature_property($FeatureCollection = [], $property_key = null, $property_value = null) {		
 		if(is_string($FeatureCollection)) {
-			$FeatureCollection = json_decode($FeatureCollection, true, 512,  JSON_OBJECT_AS_ARRAY);		
+			$FeatureCollection = self::string_to_feature_collection($FeatureCollection);		
 		}
 
 		//Feature Collection
