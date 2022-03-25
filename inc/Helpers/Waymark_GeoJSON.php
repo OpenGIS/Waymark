@@ -15,7 +15,7 @@ class Waymark_GeoJSON {
 		return false;	
 	}	
 
-	static public function update_feature_property($FeatureCollection = [], $property_key = null, $property_value = null, $return_type = 'object') {		
+	static public function update_feature_property($FeatureCollection = [], $property_key = null, $property_value = null) {		
 		if(is_string($FeatureCollection)) {
 			$FeatureCollection = json_decode($FeatureCollection, true, 512,  JSON_OBJECT_AS_ARRAY);		
 		}
@@ -32,11 +32,7 @@ class Waymark_GeoJSON {
 				$Feature['properties'][$property_key] = $property_value;
 			}
 		}		
-		
-// 		if($return_type == 'string') {
-// 			$FeatureCollection = json_encode($FeatureCollection);
-// 		}
-		
+
 		return $FeatureCollection;	
 	}	
 }
