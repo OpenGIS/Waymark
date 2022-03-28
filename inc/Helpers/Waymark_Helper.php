@@ -687,7 +687,7 @@ class Waymark_Helper {
 			if($as_options) {
 				foreach($object_types as $key => $data) {
 
-					$types_out[$key] = $data[$use_key];					
+					$types_out[self::make_key($key, '', false)] = $data[$use_key];					
 				}
 			}
 		//Don't modify

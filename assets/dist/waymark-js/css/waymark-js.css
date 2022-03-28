@@ -928,6 +928,7 @@
 */
 .waymark-map-container {
   /* Gallery */
+  /* Popups */
   /* Controls */
   /*
 		==================================
@@ -946,6 +947,15 @@
 }
 .waymark-map-container.waymark-has-gallery .waymark-gallery-container {
   display: block;
+}
+.waymark-map-container .leaflet-popup-pane ul.waymark-info li.waymark-info-description table {
+  width: 100%;
+}
+.waymark-map-container .leaflet-popup-pane ul.waymark-info li.waymark-info-description table tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+.waymark-map-container .leaflet-popup-pane ul.waymark-info li.waymark-info-description table tr td {
+  padding: 5px;
 }
 .waymark-map-container .leaflet-control {
   /* Layers */
