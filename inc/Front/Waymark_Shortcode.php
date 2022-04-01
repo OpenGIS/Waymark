@@ -107,6 +107,10 @@ class Waymark_Shortcode {
 					} else {
 						$maps_output[$Map->post_id]['map_data'] = $Map->data['map_data'];
 					}
+
+					if(isset($Map->data['query_data']) && ! empty($Map->data['query_data'])) {
+						$maps_output[$Map->post_id]['query_data'] = $Map->data['query_data'];
+					}					
 				}
 					
 				//Shortcode header
