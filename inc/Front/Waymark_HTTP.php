@@ -58,7 +58,7 @@ class Waymark_HTTP {
 				}
 
 				//Gzip supported?
-				if(function_exists('gzcompress') && ! in_array('ob_gzhandler', ob_list_handlers())) {
+				if((function_exists('gzcompress') && ! in_array('ob_gzhandler', ob_list_handlers())) && ! extension_loaded('zlib')) {
 					ob_start("ob_gzhandler");							
 				} else {
 					ob_start();							
