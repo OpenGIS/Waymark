@@ -495,6 +495,9 @@ class Waymark_Shortcode {
 		$out .= '<!-- END Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";
  					
 		// ============= END JAVASCRIPT =================
+
+		//Apply filter
+// 		$out = apply_filters('waymark_shortcode_filter', $out);
 		
 		//Return HTML			
 		return $out;		
