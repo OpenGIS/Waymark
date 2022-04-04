@@ -199,14 +199,17 @@ function waymark_setup_accordions() {
 		
 		//Each group
 	  jQuery('.waymark-accordion-group', jQuery(this)).each(function() {
-	  	jQuery(this).addClass('waymark-self-clear');
-	  	jQuery(this).data('waymark-index', group_index);
+	  	var group = jQuery(this);
+	  	
+	  	group.addClass('waymark-self-clear');
+	  	group.data('waymark-index', group_index);
 			
-			var group_content = jQuery('.waymark-accordion-group-content', jQuery(this));
+			var group_content = jQuery('.waymark-accordion-group-content', group);
 			
 			//Show first
 		  if(group_index == 0) {	  	
-		  	jQuery(this).addClass('waymark-first');
+		  	group.addClass('waymark-first waymark-active');
+		  	
 			  group_content.show().addClass(group_index);
 			//Hide others
 			} else {
@@ -215,10 +218,11 @@ function waymark_setup_accordions() {
 			
 			//Each legend
 			jQuery('legend', jQuery(this)).each(function() {
-				//Append text to legend
-				var legend_text = jQuery(this).html();
-				if(legend_text.indexOf('[+]') == -1) {
-					jQuery(this).html(legend_text + ' <span>[+]</span>');			
+				//Append text to legend (if not already exists)
+				var legend_html = jQuery(this).html();			
+				if(legend_html.indexOf('[+]') == -1 && legend_html.indexOf('[-]') == -1) {
+					var text = (group_index == 0) ? '[-]' : '[+]';
+					jQuery(this).html(legend_html + ' <span>' + text + '</span>');			
 				}
 				
 				//Slide
@@ -229,8 +233,30 @@ function waymark_setup_accordions() {
 					jQuery('.waymark-accordion-group', jQuery(this).parents('.waymark-accordion-container')).each(function() {
 						//If this was clicked
 						if(jQuery(this).data('waymark-index') == clicked_group_index) {
-							jQuery('.waymark-accordion-group-content', jQuery(this)).slideDown();		  			
+							var legend = jQuery('legend', jQuery(this));
+
+							//Is it active?
+							if(jQuery(this).hasClass('waymark-active')) {
+								legend.html(legend.html().replace('[-]', '[+]'));			
+
+								jQuery(this).removeClass('waymark-active');								
+
+								jQuery('.waymark-accordion-group-content', jQuery(this)).slideUp();		  															
+							//Not active (yet)
+							} else {
+								legend.html(legend.html().replace('[+]', '[-]'));			
+
+								jQuery(this).addClass('waymark-active');
+
+								jQuery('.waymark-accordion-group-content', jQuery(this)).slideDown();		  										
+							}							
+						//Hide others
 						} else {
+							jQuery(this).removeClass('waymark-active');								
+
+							var legend = jQuery('legend', jQuery(this));
+							legend.html(legend.html().replace('[-]', '[+]'));			
+
 							jQuery('.waymark-accordion-group-content', jQuery(this)).slideUp();		  							
 						}
 					})
