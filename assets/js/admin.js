@@ -452,11 +452,11 @@ function waymark_setup_tax_query() {
 				.addClass('waymark-input')
 				.append(
 					jQuery('<option />')
-						.attr('value', 'bounds')
-						.text('Bounds'),
-					jQuery('<option />')
 						.attr('value', 'polygon')
 						.text('Polygon'),						
+					jQuery('<option />')
+						.attr('value', 'bounds')
+						.text('Bounds')				
 				)
 				.change(function() {
 					var area_type = jQuery(this).val();
