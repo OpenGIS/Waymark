@@ -1017,37 +1017,52 @@ function waymark_setup_settings_maps() {
 
  	// ======== Default Query Area ========
  	
-	var query_area_container = jQuery('.query_area_bounds-container .waymark-controls', form).first();
-	var query_area_input = jQuery('.waymark-input-query_area_bounds', query_area_container).first();
+	var map_container = jQuery('#waymark-map-bounds_selector');
+	var Waymark_Instance = map_container.data('Waymark');	
 	
-	//
-	var edit_button = jQuery('<button />')
-		.html('<i class="ion ion-edit"></i>')
-		.addClass('button waymark-edit')
-		.on('click', function(e) {
-			e.preventDefault();
-			
-			var map_container = jQuery('#waymark-map-bounds_selector');
-			
-			if(map_container.hasClass('waymark-hidden')) {
-				jQuery(this).html('<i class="ion ion-android-done"></i>');
-			
-				map_container.removeClass('waymark-hidden');
-			} else {
-				jQuery(this).html('<i class="ion ion-edit"></i>');
-				
-				map_container.addClass('waymark-hidden');			
-			}
-			
-			var waymark_instance = map_container.data('Waymark');
-			waymark_instance.map.invalidateSize();
-			waymark_instance.draw_bounds_selector('bounds', query_area_input.val());
-			waymark_instance.edit_bounds_selector();
+	if(typeof Waymark_Instance === 'object') {
+		var query_area_container = jQuery('.query_area_bounds-container .waymark-controls', form).first();
+		var query_area_input = jQuery('.waymark-input-query_area_bounds', query_area_container).first();
 
-			return false;
-		})
-	;
-	query_area_container.append(edit_button);	
+		//Create Layer	
+		var selector_layer = Waymark_Instance.draw_bounds_selector('bounds', query_area_input.val());
+		Waymark_Instance.edit_bounds_selector();
+				
+		//On edit
+		var data = {
+			'map_container': map_container,
+			'Waymark_Instance': Waymark_Instance,
+			'query_area_input' : query_area_input
+		}
+		selector_layer.on('editable:vertex:dragend', function() {
+			var bounds = selector_layer.getBounds();
+			this.query_area_input.val(this.Waymark_Instance.bounds_to_string(bounds));	
+		}, data);
+	
+		//
+		var edit_button = jQuery('<button />')
+			.html('<i class="ion ion-edit"></i>')
+			.addClass('button waymark-edit')
+			.on('click', data, function(e) {
+				e.preventDefault();
+			
+				if(e.data.map_container.hasClass('waymark-hidden')) {
+					jQuery(this).html('<i class="ion ion-android-done"></i>');
+							
+					e.data.map_container.removeClass('waymark-hidden');
+					e.data.Waymark_Instance.map.invalidateSize();			
+					e.data.Waymark_Instance.map.fitBounds(Waymark_Instance.bounds_selector_layer.getBounds());
+				} else {
+					jQuery(this).html('<i class="ion ion-edit"></i>');
+				
+					e.data.map_container.addClass('waymark-hidden');			
+				}
+
+				return false;
+			})
+		;
+		query_area_container.append(edit_button);	
+	}	
 }
 
 function waymark_admin_message(text = null, type = 'info', container_selector = '#wpbody-content') {
@@ -1111,12 +1126,12 @@ jQuery(document).ready(function() {
 	waymark_setup_repeatable_settings();
 	waymark_setup_repeatable_parameters();
 	waymark_setup_marker_tab();
-	waymark_setup_settings_maps();
+	setTimeout(waymark_setup_settings_maps, 100);	
 	waymark_setup_colour_pickers();
 	waymark_setup_external_links();
 	waymark_setup_select_meta_type();
 	waymark_setup_select_icon_type();
 	waymark_setup_dropdowns();
 	waymark_setup_map_query();		
-	setTimeout(waymark_setup_tax_query, 2000);	
+	setTimeout(waymark_setup_tax_query, 500);	
 });
