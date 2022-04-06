@@ -195,6 +195,8 @@ function waymark_setup_marker_tab() {
  	}	
 }
 
+
+
 // function waymark_setup_marker_colour_input(input) {
 // 	//input.hide();
 // 
@@ -556,6 +558,7 @@ function waymark_setup_tax_query() {
 		}
 	}
 }
+
 function waymark_execute_query(container) {
 	//Must be jQuery
 	if(! container instanceof jQuery) {
@@ -624,11 +627,19 @@ function waymark_execute_query(container) {
 				if(typeof response.status !== 'undefined') {
 					switch(response.status) {
 						case 'success' :
+							if(typeof response.overpass_request !== 'undefined') {
+								var encoded_request = encodeURIComponent(response.overpass_query);
+								encoded_request.replace(' ', '+');
+							
+								var message = '<a href="https://overpass-turbo.eu/?Q=' + encoded_request + '&R">Run on Overpass Turbo &raquo;</a>'
+								waymark_admin_message(message, 'info', '.waymark-query-form');
+							}		
+													
 							//Valid data
 							if(query_data = JSON.parse(response.query_data)) {
 								var waymark_container = jQuery('.waymark-instance').first();
 								var Waymark_Instance = waymark_container.data('Waymark');
-
+						
 								//Features to display
 								if(query_data.features.length) {
 									//Index?
@@ -642,10 +653,11 @@ function waymark_execute_query(container) {
 							}
 						
 							break;
+							
+						//Error
 						case 'error' :
-							//Features to display
 							if(response.message) {
-								alert(response.message);
+								waymark_admin_message(response.message, 'error');
 							}				
 						
 							break;							
@@ -1036,6 +1048,62 @@ function waymark_setup_settings_maps() {
 		})
 	;
 	query_area_container.append(edit_button);	
+}
+
+function waymark_admin_message(text = null, type = 'info', container_selector = '#wpbody-content') {
+	if(text) {
+		var prefix = '';
+		
+		//Prefix available?
+		if(typeof waymark_admin_js.lang[type + '_message_prefix'] !== 'undefined') {
+			prefix = waymark_admin_js.lang[type + '_message_prefix'];		
+		}
+				
+		switch(type) {
+// 			case 'error' :
+// 				
+// 				break;
+			default:
+// 			case 'info' :
+
+				break;			
+		}
+		
+		if(prefix) {
+			prefix = '<b>[' + prefix + ']</b> ';
+		}
+		
+		var message = prefix + text;
+
+		//Get container
+		var container = jQuery(container_selector).first();
+
+		//Container exists
+		if(container.length) {
+			//Remove existing
+			jQuery('.waymark-notice', container).each(function() {
+				jQuery(this).remove();
+			});
+
+			var notice_div = jQuery('<div />')
+				.attr({
+					'class' : 'waymark-notice notice notice-' + type
+				})
+			;
+		
+			var notice_p = jQuery('<p />')
+				.html(message)
+			;
+		
+			//Put together
+			notice_div.append(notice_p);
+		
+			//Display
+			container.prepend(notice_div);	
+		}	else {
+			alert(message);			
+		}
+	}
 }
 
 jQuery(document).ready(function() {

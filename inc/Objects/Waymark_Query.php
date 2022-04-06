@@ -14,6 +14,8 @@ class Waymark_Query extends Waymark_Class {
 		'query_data' => null		
 	];
 	
+	public $Overpass_Request = null;
+	
 	public $inputs = [];
 	public $input_groups = [
 // 		'test1' => [
@@ -215,16 +217,13 @@ class Waymark_Query extends Waymark_Class {
 			return false;
 		}	
 		
-// 		$request_string = stripslashes($this->parameters['query_overpass_request']);
-// 		$request_string = html_entity_decode($request_string);
-
 		//Build request
-		$Request = new Waymark_Overpass_Request([
+		$this->Overpass_Request = new Waymark_Overpass_Request([
 			'Query' => $this
 		]);							
 
 		//Execute request
-		$response = $Request->get_processed_response();
+		$response = $this->Overpass_Request->get_processed_response();
 		
 // 		Waymark_Helper::debug($response);
 		

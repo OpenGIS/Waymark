@@ -253,6 +253,11 @@ class Waymark_AJAX {
 		//Build Query
 		$Query = new Waymark_Query($_POST);
 		
+		if(isset($Query->Overpass_Request)) {
+			$response_out['overpass_query'] = $Query->Overpass_Request->overpass_query;		
+			$response_out['overpass_request'] = $Query->Overpass_Request->get_request();		
+		}
+
 		//Error?
 		if($query_error = $Query->get_parameter('query_error')) {
 			$response_out['status'] = 'error';

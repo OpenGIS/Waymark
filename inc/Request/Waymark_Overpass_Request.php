@@ -4,6 +4,8 @@ require_once('Waymark_Request.php');
 	
 class Waymark_Overpass_Request extends Waymark_Request {
 	
+	public $overpass_query = null;
+	
 	function __construct($params_in = []) {
 //		$this->request_endpoint = 'http://overpass-api.de/api/interpreter';	
 		$this->request_endpoint = 'https://overpass.kumi.systems/api/interpreter';	
@@ -83,8 +85,9 @@ class Waymark_Overpass_Request extends Waymark_Request {
 
 		//Make safe
 		$overpass_query = str_replace('+', '%20', $overpass_query);
-
-//		Waymark_Helper::debug($overpass_query);
+	
+		//Save
+		$this->overpass_query = $overpass_query;
 
 		$return = [
 			'data' => $overpass_query
