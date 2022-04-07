@@ -63,7 +63,12 @@ abstract class Waymark_Request {
 	 */	
 	function build_request(array $params_in) {
 		$request = $this->request_endpoint . '?';
-		$request .= http_build_query($params_in);
+		
+		//%20, not + for spaces
+		//https://www.php.net/manual/en/function.http-build-query.php
+		$request .= http_build_query($params_in, '', null, PHP_QUERY_RFC3986);
+		
+		//Waymark_Helper::debug($request);
 		
 		return $request;
 	}	
