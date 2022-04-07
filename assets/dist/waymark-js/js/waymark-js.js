@@ -7617,10 +7617,16 @@ function Waymark_Map() {
 			//Has value
 			if(data_in[key]) {
 				switch(key) {
+					case 'osm_id':
+						data_out.osm_id = data_in[key];
+
+						break;
+
 					case 'name':
 						data_out.title = data_in[key];
 
 						break;
+						
 					case 'desc':
 					case 'notes':
 						data_out.description = data_in[key];

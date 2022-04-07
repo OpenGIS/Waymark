@@ -98,6 +98,11 @@ class Waymark_Overpass {
 				break;
 		}
 
+		//OSM ID
+		if(isset($element['type']) && isset($element['id']))  {
+			$Feature['properties']['osm_id'] = $element['type'] . '/' . $element['id'];
+		}
+
 		//Properties
 		if(isset($element['tags']))  {
 			//Title
