@@ -6,8 +6,8 @@ class Waymark_Collection {
 	public $title = null;
 
 	function __construct($collection_id = null) {
-		$collection = get_term_by('term_taxonomy_id', $collection_id);	
-		
+		$collection = get_term($collection_id);	
+
 		//Valid Collection
 		if($collection) {
 			$this->title = $collection->name;
