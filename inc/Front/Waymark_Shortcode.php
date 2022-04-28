@@ -123,9 +123,12 @@ class Waymark_Shortcode {
 		}
 
 		//Output HTML container
+		$shortcode_add_class = '';
+		if(sizeof($shortcode_meta)) {
+			$shortcode_add_class .= ' waymark-has-meta';
+		}
 		$out = '<!-- START Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";
-		$out .= '<div id="waymark-shortcode-' . $shortcode_hash . '" data-shortcode_hash="' . $shortcode_hash . '" class="waymark-shortcode waymark-container">' . "\n";
-
+		$out .= '<div id="waymark-shortcode-' . $shortcode_hash . '" data-shortcode_hash="' . $shortcode_hash . '" class="waymark-shortcode waymark-container'. $shortcode_add_class .'">' . "\n";
 
 		//Header ?
 		$do_header = 0;
