@@ -130,11 +130,6 @@ class Waymark_Shortcode {
 			$map_height = Waymark_Config::get_setting('misc', 'map_options', 'map_height');
 		}
 
-		//Output HTML container
-		$out = '<!-- START Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";
-		$out .= '<div id="waymark-shortcode-' . $shortcode_hash . '" data-shortcode_hash="' . $shortcode_hash . '" class="waymark-shortcode waymark-container">' . "\n";
-
-
 		//Header ?
 		$do_header = 0;
 		
@@ -169,6 +164,14 @@ class Waymark_Shortcode {
 				}			
 			}
 		}		
+
+		//Output HTML container
+		$shortcode_add_class = '';
+		if($do_header && sizeof($shortcode_meta)) {
+			$shortcode_add_class .= ' waymark-header-meta';
+		}
+		$out = '<!-- START Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";
+		$out .= '<div id="waymark-shortcode-' . $shortcode_hash . '" data-shortcode_hash="' . $shortcode_hash . '" class="waymark-shortcode waymark-container'. $shortcode_add_class .'">' . "\n";
 			
 		//Header (non Map pages only)
 		if($do_header && sizeof($shortcode_header)) {
