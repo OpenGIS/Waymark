@@ -8,7 +8,7 @@ class Waymark_Shortcode {
 	function handle_shortcode($shortcode_data, $content = null) {
 		$out = '';
 		$map_class = 'waymark-map';
-		$shortcode_hash = substr(md5(json_encode($shortcode_data)), 0, 6);
+		$shortcode_hash = Waymark_Helper::make_hash($shortcode_data);
 		$maps_output = array();	
 		$shortcode_header = array();
 		$shortcode_meta = array();
@@ -64,6 +64,10 @@ class Waymark_Shortcode {
 					'map_data' => $Map->data['map_data']
 				);
 
+				if(isset($Map->data['query_data']) && ! empty($Map->data['query_data'])) {
+					$maps_output[$Map->post_id]['query_data'] = $Map->data['query_data'];
+				}
+				
 				//Map Class
 				$map_class .= ' waymark-map-id-' . $Map->post_id;				
 			}
@@ -103,6 +107,10 @@ class Waymark_Shortcode {
 					} else {
 						$maps_output[$Map->post_id]['map_data'] = $Map->data['map_data'];
 					}
+
+					if(isset($Map->data['query_data']) && ! empty($Map->data['query_data'])) {
+						$maps_output[$Map->post_id]['query_data'] = $Map->data['query_data'];
+					}					
 				}
 					
 				//Shortcode header
@@ -316,10 +324,15 @@ class Waymark_Shortcode {
 				//If map data exists
 				if(isset($map_output['map_data'])) {
 					$out .= 'waymark_viewer_' . $shortcode_hash . '.load_json(' . $map_output['map_data'] . ');' . "\n";														
-				}			
+				}
 			//Load everything else via HTPP
 			} else {
 				$out .= 'waymark_load_map_data(waymark_viewer_' . $shortcode_hash . ', ' . $map_id . ', true);' . "\n";																
+			}
+
+			//If Query data exists
+			if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy') && isset($map_output['query_data'])) {
+				$out .= 'waymark_viewer_' . $shortcode_hash . '.load_json(' . $map_output['query_data'] . ');' . "\n";														
 			}
 
 			$map_count++;
@@ -493,6 +506,9 @@ class Waymark_Shortcode {
 		$out .= '<!-- END Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";
  					
 		// ============= END JAVASCRIPT =================
+
+		//Apply filter
+// 		$out = apply_filters('waymark_shortcode_filter', $out);
 		
 		//Return HTML			
 		return $out;		

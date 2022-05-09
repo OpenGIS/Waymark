@@ -9,7 +9,8 @@ class Waymark_AJAX {
 		//User
 		add_action('wp_ajax_waymark_read_file', array($this, 'handle_read_file'));				
 		add_action('wp_ajax_waymark_get_attatchment_meta', array($this, 'get_attatchment_meta'));				
-
+		add_action('wp_ajax_waymark_get_query_data', array($this, 'get_query_data'));				
+		
 		//Add nonce
 		Waymark_JS::add_chunk('var waymark_security = "' . wp_create_nonce(Waymark_Config::get_item('nonce_string')) . '";');					
 	}
@@ -242,6 +243,36 @@ class Waymark_AJAX {
 		header('Content-Type: text/javascript');
 		echo json_encode($response);
 		die;
+	}
+	
+	function get_query_data() {
+		$response_out = [
+			'status' => 'ajax_init'
+		];
+		
+		//Build Query
+		$Query = new Waymark_Query($_POST);
+		
+		if(isset($Query->Overpass_Request)) {
+			$response_out['overpass_query'] = $Query->Overpass_Request->overpass_query;		
+			$response_out['overpass_request'] = $Query->Overpass_Request->get_request();		
+		}
+
+		//Error?
+		if($query_error = $Query->get_parameter('query_error')) {
+			$response_out['status'] = 'error';
+			$response_out['message'] = $query_error;
+		//Success
+		} elseif($query_data = $Query->get_parameter('query_data')) {
+			$response_out['status'] = 'success';
+			$response_out['query_data'] = $query_data;		
+		}
+		
+		header('Content-Type: text/javascript');
+		
+		echo json_encode($response_out);
+		
+		die;	
 	}
 }
 new Waymark_AJAX;

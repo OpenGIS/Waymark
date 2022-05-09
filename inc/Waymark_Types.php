@@ -5,8 +5,14 @@ class Waymark_Types {
 	
 	function __construct() {
 		$this->types = array(
-			//Map
-			'waymark_map' => array(
+
+		/**
+		 * ===========================================
+		 * =================== MAP ===================
+		 * ===========================================
+		 */		
+		 
+		 'waymark_map' => array(
 				'label'                 => esc_html__('Map', 'waymark'),
 				'description'           => '',
 				'labels'                => array(
@@ -52,12 +58,69 @@ class Waymark_Types {
 				'publicly_queryable'    => true,
 				'rewrite'               => array('slug' => 'map', 'with_front' => false),
 				'capability_type'       => 'post'
-			)					
+			),
+
+		/**
+		 * ===========================================
+		 * =================== QUERY =================
+		 * ===========================================
+		 */		
+
+// 			'waymark_query' => array(
+// 				'label'                 => 'Query',
+// 				'description'           => 'A query',
+// 				'labels'                => array(
+// 					'name'                  => 'Queries',
+// 					'singular_name'         => 'Query',
+// 					'menu_name'             => 'Queries',
+// 					'name_admin_bar'        => 'Query',
+// 					'archives'              => 'Query Archives',
+// 					'attributes'            => 'Query Attributes',
+// 					'parent_item_colon'     => 'Parent Query:',
+// 					'all_items'             => 'All Queries',
+// 					'add_new_item'          => 'Add New Query',
+// 					'add_new'               => 'Add New',
+// 					'new_item'              => 'New Query',
+// 					'edit_item'             => 'Edit Query',
+// 					'update_item'           => 'Update Query',
+// 					'view_item'             => 'View Query',
+// 					'view_items'            => 'View Queries',
+// 					'search_items'          => 'Search Query',
+// 					'not_found'             => 'Not found',
+// 					'not_found_in_trash'    => 'Not found in Trash',
+// 					'featured_image'        => 'Featured Image',
+// 					'set_featured_image'    => 'Set featured image',
+// 					'remove_featured_image' => 'Remove featured image',
+// 					'use_featured_image'    => 'Use as featured image',
+// 					'insert_into_item'      => 'Insert into query',
+// 					'uploaded_to_this_item' => 'Uploaded to this query',
+// 					'items_list'            => 'Query list',
+// 					'items_list_navigation' => 'Queries list navigation',
+// 					'filter_items_list'     => 'Filter queries list',
+// 				),
+// 				'supports'              => array('title', 'author', 'revisions'),
+// 				'hierarchical'          => false,
+// 				'public'                => true,
+// 				'show_ui'               => true,
+// 				'show_in_menu'          => false,
+// 				'menu_position'         => 5,
+// 				'show_in_admin_bar'     => true,
+// 				'show_in_nav_menus'     => true,
+// 				'can_export'            => true,
+// 				'has_archive'           => false,
+// 				'exclude_from_search'   => false,
+// 				'publicly_queryable'    => true,
+// 				'capability_type'       => 'post',
+// 				'rewrite' => array(
+// 					'slug' => 'query'
+// 				)
+// 			)								
 		);
 
 		//Show if debug
 		if(Waymark_Config::get_setting('misc', 'advanced', 'debug_mode') == true) {
 			$this->types['waymark_map']['supports'][] = 'custom-fields';
+			$this->types['waymark_query']['supports'][] = 'custom-fields';
 		}
 
 		//Add Featured Image Support

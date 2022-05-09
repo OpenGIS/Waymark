@@ -13,10 +13,6 @@ class Waymark_Object {
 	protected $parameters = array();
 
 	protected $meta_prefix = 'waymark_';
-
-	protected $instance_data = array();
-	protected $feed_data = array();
-	protected $layout_data = array();
 	
 	function __construct($post_id = null) {
 		//Set defaults
@@ -136,30 +132,32 @@ class Waymark_Object {
 	}	
 	
 	function create_form() {
-		return Waymark_Input::create_parameter_groups($this->post_type, $this->get_fields(), $this->parameter_groups, $this->data, $this->input_name_format);
+		return Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups, $this->data, $this->input_name_format, 'waymark-parameters-' . $this->post_type);
 	}
 	
-	function get_fields($by_group = true, $by_type = false) {		
-		$fields = array();
-		
-		foreach($this->parameters as $parameter_key => $parameter_data) {
-			
-			if(! $by_type || ($by_type && array_key_exists('input_types', $parameter_data) && in_array($this->input_type, $parameter_data['input_types']))) {
-				if($by_group) {
-					$fields[$parameter_data['group']][$parameter_key] = $parameter_data;					
-				} else {
-					$fields[$parameter_key] = $parameter_data;
-				}
-			}
-		}
-		
-		return $fields;	
-	}	
+// 	function get_fields($by_group = true, $by_type = false) {		
+// 		$fields = array();
+// 		
+// 		foreach($this->parameters as $parameter_key => $parameter_data) {
+// 			
+// 			if(! $by_type || ($by_type && array_key_exists('input_types', $parameter_data) && in_array($this->input_type, $parameter_data['input_types']))) {
+// 				if($by_group) {
+// 					$fields[$parameter_data['group']][$parameter_key] = $parameter_data;					
+// 				} else {
+// 					$fields[$parameter_key] = $parameter_data;
+// 				}
+// 			}
+// 		}
+// 		
+// 		return $fields;	
+// 	}	
 	
 	function save_meta($post_id = null) {
 		if(! $post_id) {
 			$post_id = $this->post_id;
 		}
+		
+// 		Waymark_Helper::debug($this, false);
 		
 		//Iterate over each parameter
 		foreach($this->parameters as $param_defition) {

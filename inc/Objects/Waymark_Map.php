@@ -5,24 +5,75 @@ require_once('Waymark_Object.php');
 class Waymark_Map extends Waymark_Object {
 	
 	public $post_type = 'waymark_map';
+	public $Queries = [];
 	
 	function __construct($post_id = null) {
 		//Set groups
 		$this->parameter_groups = Waymark_Helper::get_meta_groups();
-	
+
 		//Map Data
 		$this->parameters['map_data'] = array(
 			'input_types' => array('meta'),
 			'name' => 'map_data',
 			'id' => 'map_data',
 			'type' => 'textarea',				
-			'tip' => 'You are seeing the Map Data (in GeoJSON format) because you have the Waymark Debug Mode enabled. The amount of text shown here can get VERY large, so your browser might struggle to scroll through it. You can disable Debug Mode in Settings > Misc. > Advanced.',
 			'group' => '',
 			'title' => 'Map Data',
 			'class' => 'waymark-hidden'
 		);
+		$this->parameters['map_data_bounds'] = array(
+			'input_types' => array('meta'),
+			'name' => 'map_data_bounds',
+			'id' => 'map_data_bounds',
+			'type' => 'textarea',				
+//			'tip' => '',
+			'group' => '',
+			'title' => 'Map Data Bounds',
+			'class' => 'waymark-hidden'
+		);
 
-		//Meta
+		//Query Data
+		$this->parameters['query_data'] = array(
+			'input_types' => array('meta'),
+			'name' => 'query_data',
+			'id' => 'query_data',
+			'type' => 'textarea',				
+			'group' => '',
+			'title' => 'Query Data',
+// 			'class' => 'waymark-hidden'
+		);		
+		$this->parameters['query_area_type'] = array(
+			'input_types' => array('meta'),
+			'name' => 'query_area_type',
+			'id' => 'query_area_type',
+			'type' => 'text',				
+			'default' => 'bounds',
+			'group' => '',
+			'title' => 'Query Area Type',
+// 			'class' => 'waymark-hidden'
+		);	
+		$this->parameters['query_area_bounds'] = array(
+			'input_types' => array('meta'),
+			'name' => 'query_area_bounds',
+			'id' => 'query_area_bounds',
+			'type' => 'textarea',				
+//			'tip' => '',
+			'group' => '',
+			'title' => 'Query Area Bounds',
+// 			'class' => 'waymark-hidden'
+		);	
+		$this->parameters['query_area_polygon'] = array(
+			'input_types' => array('meta'),
+			'name' => 'query_area_polygon',
+			'id' => 'query_area_polygon',
+			'type' => 'textarea',				
+//			'tip' => '',
+			'group' => '',
+			'title' => 'Query Area Polygon',
+// 			'class' => 'waymark-hidden'
+		);	
+				
+		//If we have Map Meta
 		$map_meta = Waymark_Config::get_item('meta', 'inputs', true);
 		if($map_meta && sizeof($map_meta)) {
 		
@@ -91,9 +142,26 @@ class Waymark_Map extends Waymark_Object {
 					$this->parameters[$meta_key]['group'] = $meta['meta_group'];
 				}				
 			}				
-		} else {
 		}
-	
+		
 		parent::__construct($post_id);
+
+		//Queries
+		if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
+			$query_taxonomies = get_the_terms($post_id, 'waymark_query');
+			if(is_array($query_taxonomies)) {
+				foreach($query_taxonomies as $query_tax) {
+					//Meta available?
+					$query_meta = get_term_meta($query_tax->term_id);
+					$query_meta = Waymark_Helper::flatten_meta($query_meta);
+								
+					if(sizeof($query_meta)) {
+						$this->Queries[] = new Waymark_Query(array_merge($query_meta, [
+							'query_area_bounds' => $this->get_data_item('map_data_bounds')
+						]), false);	//Don't auto-execute
+					}		
+				}
+			}	
+		}	
 	}		
 }

@@ -62,10 +62,11 @@ div.waymark-accordion-container {
 }
 div.waymark-accordion-container .waymark-accordion-group {
   width: 100%;
-  margin: 0 0 10px 0 !important;
+  margin: 0 ;
+  margin-bottom: 10px;
 }
 div.waymark-accordion-container .waymark-accordion-group.waymark-first {
-  margin-top: 15px !important;
+  margin-top: 15px;
 }
 div.waymark-accordion-container .waymark-accordion-group legend {
   display: block;
