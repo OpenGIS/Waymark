@@ -7,7 +7,7 @@ Description: Mapping with WordPress made easy. With Waymark enabled, click on th
 Version: 0.9.19-a1
 Text Domain: waymark
 Author: Joe Hawes
-Author URI: https://www.josephhawes.co.uk/
+Author URI: https://www.morehawes.co.uk/
 License: GPLv2
 */
 
