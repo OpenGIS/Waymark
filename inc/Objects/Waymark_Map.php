@@ -40,7 +40,7 @@ class Waymark_Map extends Waymark_Object {
 			'type' => 'textarea',				
 			'group' => '',
 			'title' => 'Query Data',
-// 			'class' => 'waymark-hidden'
+ 			'class' => 'waymark-hidden'
 		);		
 		$this->parameters['query_area_type'] = array(
 			'input_types' => array('meta'),
@@ -50,7 +50,7 @@ class Waymark_Map extends Waymark_Object {
 			'default' => 'bounds',
 			'group' => '',
 			'title' => 'Query Area Type',
-// 			'class' => 'waymark-hidden'
+ 			'class' => 'waymark-hidden'
 		);	
 		$this->parameters['query_area_bounds'] = array(
 			'input_types' => array('meta'),
@@ -60,7 +60,7 @@ class Waymark_Map extends Waymark_Object {
 //			'tip' => '',
 			'group' => '',
 			'title' => 'Query Area Bounds',
-// 			'class' => 'waymark-hidden'
+ 			'class' => 'waymark-hidden'
 		);	
 		$this->parameters['query_area_polygon'] = array(
 			'input_types' => array('meta'),
@@ -70,7 +70,7 @@ class Waymark_Map extends Waymark_Object {
 //			'tip' => '',
 			'group' => '',
 			'title' => 'Query Area Polygon',
-// 			'class' => 'waymark-hidden'
+ 			'class' => 'waymark-hidden'
 		);	
 				
 		//If we have Map Meta
