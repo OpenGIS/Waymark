@@ -755,12 +755,17 @@ class Waymark_Settings {
 		 */		
 
 		$this->tabs['query'] = array(
-			'name' => 'Queries',
+			'name' => esc_html__('Queries', 'waymark'),
 			'description' => '',
 			'sections' => array(
 				//Features
 				'features' => array(
-					'title' => 'Features',
+					'title' => esc_html__('Queries', 'waymark'),
+					'description' => sprintf(__('<p class="waymark-notice notice notice-warning" style="margin:0 0 15px 0;padding:10px;font-size:14px">This is an experimental feature and not intended for production sites!</p><span class="waymark-lead">Display data from the <a href="https://www.openstreetmap.org/">OpenStreetMap</a> on your Maps. Queries extract <abbr title="OpenStreetMap">OSM</abbr> data from the <a href="%s">Overpass API</a>.</span>', 'waymark'), 'https://www.openstreetmap.org/fixthemap', 'http://overpass-api.de/'),
+					'help' => array(
+						'url' => esc_attr(Waymark_Helper::site_url('docs/basemaps')),
+						'text' => esc_attr__('Basemap Docs &raquo;', 'waymark')
+					),
 //					'description' => 'Test test test.',
 					'fields' => array(	
 						'enable_taxonomy' => array(
@@ -769,7 +774,7 @@ class Waymark_Settings {
 							'type' => 'boolean',
 							'title' => esc_html__('Shared Queries', 'waymark'),
 							'default' => Waymark_Config::get_setting('query', 'features', 'enable_taxonomy'),
-//							'tip' => esc_attr__('', 'waymark'),
+							'tip' => esc_attr__('Shared Queries can be created once and added to multiple Maps. Once enabled, a "Queries" menu item will appear in the Waymark admin menu.', 'waymark'),
 							'options' => array(
 								'1' => esc_html__('Enabled', 'waymark'),
 								'0' => esc_html__('Disabled', 'waymark')								
@@ -781,7 +786,7 @@ class Waymark_Settings {
 							'type' => 'boolean',
 							'title' => esc_html__('Map Queries', 'waymark'),
 							'default' => Waymark_Config::get_setting('query', 'features', 'enable_map'),
-//							'tip' => esc_attr__('', 'waymark'),
+							'tip' => esc_attr__('Map Queries can be created on a per-Map basis on the Add/Edit Map admin page.', 'waymark'),
 							'options' => array(
 								'1' => esc_html__('Enabled', 'waymark'),
 								'0' => esc_html__('Disabled', 'waymark')								
