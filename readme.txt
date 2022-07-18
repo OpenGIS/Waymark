@@ -1,21 +1,3 @@
-## Querying OpenStreetMap Data with WordPress ##
-
-The development branch currently has a new feature called "Queries", which I have been working on for some months. 
-
-Queries are used to automatically add Overlays to your Map, fetched from the OpenStreetMap.
-
-Data is extracted using the [Overpass API](https://www.openstreetmap.org/fixthemap)
-
-, which .
-
-While there 
-
-[tutorial](https://osm-queries.ldodds.com/tutorial/index.html)
-
-
-
-
-
 === Waymark ===
 Contributors: morehawes
 Tags: Create interactive Maps, Add custom Markers, Display geotagged photos, elevation graph, Embed GPX KML GeoJSON, Hiking route maps, Collaborate on mapping projects, Display OpenStreetMap Basemaps, No technical knowledge required
@@ -129,6 +111,7 @@ Queries are used to automatically add Overlays to your Map, fetched from the Ope
 Data is extracted using the [Overpass API](https://www.openstreetmap.org/fixthemap)
 
 [tutorial](https://osm-queries.ldodds.com/tutorial/index.html)
+
 
 * **<a href="https://www.waymark.dev/docs/shortcodes/#shortcode-files">Shortcode Files</a>**
 		* Files (GPX, KML & GeoJSON) can now be displayed using the Shortcode, without the need for a Map to be created. For example:<br> <code>[Waymark file_url="http://example.com/track.gpx"]</code><br> By default, <em>all</em> Overlays (Markers/Lines/Shapes) will be displayed using the default Type (i.e. the first listed in Settings). You can specify a different Type to use like this:<code>[Waymark file_url="http://example.com/track.gpx" file_line_type="photo"]</code>. Thanks to <a href="https://wordpress.org/support/users/golf1025/" rel="nofollow">Jan de Boer</a> for this <a href="https://wordpress.org/support/topic/migrate-gpx-from-other-app/">suggestion</a>.

@@ -1,14 +1,37 @@
-## Querying OpenStreetMap Data with WordPress ##
+# Waymark #
+**Contributors:** [morehawes](https://profiles.wordpress.org/morehawes)  
+**Tags:** Create interactive Maps, Add custom Markers, Display geotagged photos, elevation graph, Embed GPX KML GeoJSON, Hiking route maps, Collaborate on mapping projects, Display OpenStreetMap Basemaps, No technical knowledge required  
+**Requires at least:** 4.6  
+**Tested up to:** 6.0  
+**Requires PHP:** 5.2  
+**Stable tag:** 0.9.18  
+**License:** GPLv2 or later  
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
-The development branch currently has a new feature called "Queries", which I have been working on for some months. 
+Create and share customisable interactive Maps. Embed OpenStreetMap, add Overlays like location aware Photos and Tracks with elevation profiles.
 
-Queries are used to automatically add Overlays to your Map, fetched from the OpenStreetMap.
+## Description ##
 
-Data is extracted using the [Overpass API](https://www.openstreetmap.org/fixthemap)
+* <a href="https://www.waymark.dev/demo/">See the Demo &raquo;</a>
+* <a href="https://www.waymark.dev/try/">Try the Editor &raquo;</a>
+* <a href="https://www.waymark.dev/docs/">Read the Docs &raquo;</a>
+* <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
 
-, which .
+Features:
 
-While there 
+* Easy to use, customisable and developer friendly.
+* Use the <a href="https://www.waymark.dev/docs/editor/">Editor</a> to create Maps containing Overlays (Markers, Lines and Shapes).
+* Every Overlay can be given a title, image and description; which is displayed once the Overlay is clicked.
+* Set styles and options once using <a href="https://www.waymark.dev/docs/types/">Types</a>, then simply select the appropriate Type when adding an Overlay.
+* Add Maps to your content using the Waymark <a href="https://www.waymark.dev/docs/shortcodes/">Shortcode</a>, or link to the <a href="https://www.waymark.dev/map/route-map/">Map Details</a> page. 
+* <a href="https://www.openstreetmap.org/fixthemap">OpenStreetMap</a> is the default <a href="https://www.waymark.dev/docs/basemaps/">Basemap</a>, with support for multiple Basemaps.
+* Images uploaded with location data (EXIF) will have a Marker placed where the photo was taken.
+* Import from GPX, KML and GeoJSON formats. You can export Maps in the same formats and let your visitors do it too.
+* An interactive profile chart can be displayed for Tracks uploaded with elevation data.
+* Group Maps together using <a href="https://www.waymark.dev/docs/collections/">Collections</a> and display multiple Maps at once.
+* Add extra information to your Maps using <a href="https://www.waymark.dev/docs/meta/">Meta</a>; these are customisable form inputs that allow you to add additional data to your Maps. 
+* <a href="https://www.waymark.dev/docs/submissions/">Submissions</a> allow registered users, or guests to create Maps from the front-end of your site. You can control who can Submit Maps, what editor features are available and whether submissions should be approved before they are published.
+* For the developers: Maps are stored using the custom post type `waymark_map`, Meta is stored as Custom Fields and Collections use the `waymark_collection` Taxonomy. Most elements can be styled using CSS and have sensibly named `waymark-` classes.
 
 Waymark is free, with no features to "unlock". I try to keep the plugin well supported, so please feel free to <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">reach out</a> with any questions or feedback.
 
@@ -102,6 +125,7 @@ Queries are used to automatically add Overlays to your Map, fetched from the Ope
 Data is extracted using the [Overpass API](https://www.openstreetmap.org/fixthemap)
 
 [tutorial](https://osm-queries.ldodds.com/tutorial/index.html)
+
 
 * **<a href="https://www.waymark.dev/docs/shortcodes/#shortcode-files">Shortcode Files</a>**
 		* Files (GPX, KML & GeoJSON) can now be displayed using the Shortcode, without the need for a Map to be created. For example:<br> <code>[Waymark file_url="http://example.com/track.gpx"]</code><br> By default, <em>all</em> Overlays (Markers/Lines/Shapes) will be displayed using the default Type (i.e. the first listed in Settings). You can specify a different Type to use like this:<code>[Waymark file_url="http://example.com/track.gpx" file_line_type="photo"]</code>. Thanks to <a href="https://wordpress.org/support/users/golf1025/" rel="nofollow">Jan de Boer</a> for this <a href="https://wordpress.org/support/topic/migrate-gpx-from-other-app/">suggestion</a>.
