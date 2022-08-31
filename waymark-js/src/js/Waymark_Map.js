@@ -243,6 +243,45 @@ function Waymark_Map() {
 		return str;
 	}
 
+	this.get_feature_overlay_type = function(feature) {
+		if(typeof feature.geometry.type == 'undefined') {
+			return false;
+		}
+
+		switch(feature.geometry.type) {
+			
+			// CIRCLES & MARKERS
+			
+			case 'Point' :
+
+				//Circle
+				if(feature.properties.radius) {
+					return 'shape';
+
+				//Marker
+				} else {
+					return 'marker';										
+				}
+				
+			// LINES								
+			case 'LineString' :
+			case 'MultiLineString' :
+				
+				return 'line';										
+
+			// Polygon & Rectangle							
+			case 'Polygon' :
+				//Is this a retangle?
+//				if(feature.properties.rectangle) {}			
+	
+				return 'shape';							
+				
+				break;
+		}	
+		
+		return false;
+	}
+
 /*
 	==================================
 	========= COMMOM METHODS =========

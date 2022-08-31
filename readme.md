@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.0  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.18  
+**Stable tag:** 0.9.19  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -110,6 +110,11 @@ A big thank you to the following projects and their contributors. Without their 
 
 
 ## Changelog ##
+
+### 0.9.19 ###
+
+* **<a href="https://www.waymark.dev/docs/shortcodes/#shortcode-files">Shortcode Files</a>**
+	* Files (GPX, KML & GeoJSON) can now be displayed using the Shortcode, without the need for a Map to be created. For example:<br> <code>[Waymark file_url="http://example.com/track.gpx"]</code><br> By default, <em>all</em> Overlays (Markers/Lines/Shapes) will be displayed using the default Type (i.e. the first listed in Settings). You can specify a different Type to use like this:<code>[Waymark file_url="http://example.com/track.gpx" file_line_type="photo"]</code>. Thanks to <a href="https://wordpress.org/support/users/golf1025/" rel="nofollow">Jan de Boer</a> for this <a href="https://wordpress.org/support/topic/migrate-gpx-from-other-app/">suggestion</a> and <a href="https://wordpress.org/support/users/yorobo/">yorobo</a> for <a href="https://wordpress.org/support/topic/cant-upload-kml-gpl-file/">the reminder</a>.
 
 ### 0.9.18 ###
 
