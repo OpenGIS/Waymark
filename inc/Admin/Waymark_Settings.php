@@ -514,6 +514,18 @@ class Waymark_Settings {
 		
 		// ==================== Submission ====================
 		
+		//Build list of Collections to use as <select> options
+		$collection_objects = get_terms([
+			'taxonomy' => 'waymark_collection',
+			'hide_empty' => false
+		]);
+		$collection_array = [
+			'' => ' - '
+		];
+		foreach($collection_objects as $collection) {
+			$collection_array[$collection->term_id] = $collection->name;
+		}
+			
 		//Roles
 		if(! function_exists('get_editable_roles')) {
     	require_once ABSPATH . 'wp-admin/includes/user.php';
@@ -586,7 +598,7 @@ class Waymark_Settings {
 							'name' => 'submission_status',
 							'id' => 'submission_users_status',
 							'type' => 'select',
-							'title' => esc_html__('Post Status', 'waymark'),
+							'title' => esc_html__('Default Status', 'waymark'),
 							'default' => Waymark_Config::get_setting('submission', 'from_users', 'submission_status'),
 							'tip' => esc_attr__('This is the initial status of the submitted Map. Note! Publish means that the Map (including any images added) will be *immediately* visible on your site.', 'waymark'),
 							'options' => array(
@@ -594,15 +606,23 @@ class Waymark_Settings {
 								'draft' => esc_attr__('Draft', 'waymark')
 							)							
 						),
-						'submission_alert' => array(
-							'name' => 'submission_alert',
-							'id' => 'submission_users_alert',
-							'type' => 'boolean',
-							'title' => esc_html__('Email Alert', 'waymark'),
-							'default' => Waymark_Config::get_setting('submission', 'from_users', 'submission_alert'),
-							'tip' => esc_attr__('Receive email alerts for new submissions.', 'waymark'),
-							'class' => 'waymark-hidden'
-						),																																								
+						'submission_collection' => array(
+							'name' => 'submission_collection',
+							'id' => 'submission_users_collection',
+							'type' => 'select',
+							'title' => esc_html__('Default Collection', 'waymark'),
+							'tip' => esc_attr__('If specified, user submissions will be automatically added to this Collection.', 'waymark'),
+							'options' => $collection_array
+						),
+// 						'submission_alert' => array(
+// 							'name' => 'submission_alert',
+// 							'id' => 'submission_users_alert',
+// 							'type' => 'boolean',
+// 							'title' => esc_html__('Email Alert', 'waymark'),
+// 							'default' => Waymark_Config::get_setting('submission', 'from_users', 'submission_alert'),
+// 							'tip' => esc_attr__('Receive email alerts for new submissions.', 'waymark'),
+// 							'class' => 'waymark-hidden'
+// 						)																																																			
 					)											
 				),
 				
@@ -652,7 +672,7 @@ class Waymark_Settings {
 							'name' => 'submission_status',
 							'id' => 'submission_public_status',
 							'type' => 'select',
-							'title' => esc_html__('Post Status', 'waymark'),
+							'title' => esc_html__('Default Status', 'waymark'),
 							'default' => Waymark_Config::get_setting('submission', 'from_public', 'submission_status'),
 							'tip' => esc_attr__('This is the initial status of the submitted Map. Note! Publish means that the Map (including any images added) will be *immediately* visible on your site.', 'waymark'),
 							'options' => array(
@@ -661,15 +681,23 @@ class Waymark_Settings {
 							),
 							'class' => ''					
 						),
-						'submission_alert' => array(
-							'name' => 'submission_alert',
-							'id' => 'submission_public_alert',
-							'type' => 'boolean',
-							'title' => esc_html__('Email Alert', 'waymark'),
-							'default' => Waymark_Config::get_setting('submission', 'from_public', 'submission_alert'),
-							'tip' => esc_attr__('Receive email alerts for new submissions.', 'waymark'),
-							'class' => 'waymark-hidden'
-						),																																							
+						'submission_collection' => array(
+							'name' => 'submission_collection',
+							'id' => 'submission_public_collection',
+							'type' => 'select',
+							'title' => esc_html__('Default Collection', 'waymark'),
+							'tip' => esc_attr__('If specified, user submissions will be automatically added to this Collection.', 'waymark'),
+							'options' => $collection_array
+						),
+// 						'submission_alert' => array(
+// 							'name' => 'submission_alert',
+// 							'id' => 'submission_public_alert',
+// 							'type' => 'boolean',
+// 							'title' => esc_html__('Email Alert', 'waymark'),
+// 							'default' => Waymark_Config::get_setting('submission', 'from_public', 'submission_alert'),
+// 							'tip' => esc_attr__('Receive email alerts for new submissions.', 'waymark'),
+// 							'class' => 'waymark-hidden'
+// 						),																																							
 					)											
 				)				
 			)
