@@ -9,6 +9,7 @@ class Waymark_Submission {
 	private $Map;
 	
 	private $user;
+	private $user_type;	// admin / user / guest
 	private $status;
 	private $alert;	
 	private $features = [];	
@@ -32,6 +33,7 @@ class Waymark_Submission {
 			if(sizeof($this->user->roles)) {			
 				//Admin
 				if(in_array('administrator', $this->user->roles)) {
+					$this->user_type = 'admin';
 					$this->allowed = true;
 				
 					$this->status = 'publish';
@@ -40,6 +42,7 @@ class Waymark_Submission {
 					$this->features = $this->all_features;
 				//Current user can
 				} elseif($this->user_can_submit()) {
+					$this->user_type = 'user';
 					$this->allowed = true;
 
 					$this->status = Waymark_Config::get_setting('submission', 'from_users', 'submission_status');
@@ -48,6 +51,7 @@ class Waymark_Submission {
 					$this->features = Waymark_Config::get_setting('submission', 'from_users', 'submission_features');				
 				//Treat as public?
 				} elseif(Waymark_Config::get_setting('submission', 'from_public', 'submission_public')) {
+					$this->user_type = 'guest';
 					$this->allowed = true;
 
 					$this->status = Waymark_Config::get_setting('submission', 'from_public', 'submission_status');				
@@ -62,6 +66,7 @@ class Waymark_Submission {
 			} else {
 				//Public submissions allowed	
 				if(Waymark_Config::get_setting('submission', 'from_public', 'submission_public')) {
+					$this->user_type = 'guest';
 					$this->allowed = true;
 
 					$this->status = Waymark_Config::get_setting('submission', 'from_public', 'submission_status');				
@@ -320,6 +325,23 @@ class Waymark_Submission {
 		$this->Map->create_post($this->data['map_title'], array(
 			'post_status' => $this->status
 		));		
+
+		//Add to collection?
+		$submission_collection = false;
+		switch($this->user_type) {
+			case 'guest' :
+				$submission_collection = Waymark_Config::get_setting('submission', 'from_public', 'submission_collection');
+				
+				break;
+			default :
+				$submission_collection = Waymark_Config::get_setting('submission', 'from_users', 'submission_collection');
+
+				break;
+		}	
+		if($submission_collection) {
+			//Link Map to Collection
+			wp_set_object_terms($this->Map->post_id, (int) $submission_collection, 'waymark_collection');		
+		}
 
 		$this->redirect_data['waymark_map_id'] = $this->Map->post_id;
 		
