@@ -4,7 +4,7 @@ Tags: Create interactive Maps, Add custom Markers, Display geotagged photos, ele
 Requires at least: 4.6
 Tested up to: 6.0
 Requires PHP: 5.2
-Stable tag: 0.9.20
+Stable tag: 0.9.21
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,7 +99,7 @@ A big thank you to the following projects and their contributors. Without their 
 
 = 0.9.21 =
 
-* Bug fix. Uncaught TypeError: Assignment to constant variable.
+* Bug fix. Uncaught TypeError: Assignment to constant variable. Thanks to <a href="https://github.com/huubl">huubl</a> for the <a href="https://github.com/morehawes/waymark/pull/13">Pull Request</a>!
 
 = 0.9.20 = 
 
