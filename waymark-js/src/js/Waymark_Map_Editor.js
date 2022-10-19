@@ -648,7 +648,7 @@ function Waymark_Map_Editor() {
 		);
 
 		//Pre-defined types
-		for(i in types) {
+		for(var i in types) {
 			var type_key = Waymark.make_key(types[i][layer_type + '_title']);
 
 			ele.append(jQuery('<option />').val(type_key).text(types[i][layer_type + '_title']));
@@ -998,7 +998,7 @@ function Waymark_Map_Editor() {
 			//var keep_properties = ['title', 'name', 'description', 'photos'];
 // 			var keep_properties = ['title', 'name', 'description'];
 // 			//Each feature
-// 			for(i in geo_json.features) {
+// 			for(var i in geo_json.features) {
 // 				//Each property
 // 				for(key in geo_json.features[i].properties) {
 // 					//We want this

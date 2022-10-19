@@ -510,7 +510,7 @@ function Waymark_Map() {
 		//Set by name?
 		if(typeof Waymark.config.map_init_basemap !== 'undefined') {
 			//Search
-			for(i in Waymark.config.tile_layers) {			
+			for(var i in Waymark.config.tile_layers) {			
 				var init_basemap_name = Waymark.config.map_init_basemap.toUpperCase();
 				var this_basemap_name = Waymark.config.tile_layers[i].layer_name.toUpperCase();
 				
@@ -523,7 +523,7 @@ function Waymark_Map() {
 		}
 		
 		//For each tile layer
-		for(i in Waymark.config.tile_layers) {			
+		for(var i in Waymark.config.tile_layers) {			
 			//Append URL?
 			if(typeof Waymark.config.tile_layers[i].append !== 'undefined') {
 				Waymark.config.tile_layers[i].layer_url += Waymark.config.tile_layers[i].append;
@@ -558,7 +558,7 @@ function Waymark_Map() {
 		var type = null;
 
 		//Iterate over all types
-		for(i in Waymark.config[layer_type + '_types']) {
+		for(var i in Waymark.config[layer_type + '_types']) {
 			//Use first as default
 			if(i == 0) {
 				type = Waymark.config[layer_type + '_types'][i];
@@ -604,7 +604,7 @@ function Waymark_Map() {
 					}										
 				];
 				
-				for(i in required) {
+				for(var i in required) {
 					//If undefined
 					if(typeof type[required[i]['key']] !== 'string') {
 						//Set default
@@ -715,7 +715,7 @@ function Waymark_Map() {
 	// 				case 'photos':
 	// 					waymark_data.type = 'photo';
 	// 
-	// 					for(i in feature.properties[prop]) {
+	// 					for(var i in feature.properties[prop]) {
 	// 						//Set thumb
 	// 						if(typeof feature.properties[prop][i]['web_url'] !== 'undefined') {
 	// 							waymark_data.image_thumbnail_url = feature.properties[prop][i]['web_url'];
@@ -1008,7 +1008,7 @@ function Waymark_Map() {
 		var image_sizes = {};
 		
 		//Grab these
-		for(i in Waymark.config.media_library_sizes) {
+		for(var i in Waymark.config.media_library_sizes) {
 			//Use fallback
 			image_sizes['image_' + Waymark.config.media_library_sizes[i] + '_url'] = fallback;
 			

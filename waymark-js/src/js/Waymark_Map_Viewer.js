@@ -215,7 +215,7 @@ function Waymark_Map_Viewer() {
 	this.line_has_elevation_data = function(feature) {
 		if(feature.geometry.type == 'MultiLineString') {
 			//Each line
-			for(i in feature.geometry.coordinates) {
+			for(var i in feature.geometry.coordinates) {
 				//Each point
 				for(j in feature.geometry.coordinates[i]) {
 					//If has elevation data

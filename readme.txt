@@ -97,6 +97,10 @@ A big thank you to the following projects and their contributors. Without their 
 
 == Changelog ==
 
+= 0.9.21 =
+
+* Bug fix. Uncaught TypeError: Assignment to constant variable.
+
 = 0.9.20 = 
 
 * Front-end <a href="https://www.waymark.dev/docs/submissions/">Submissions</a> can now be added to a <a href="https://www.waymark.dev/docs/collections/">Collection</a> by default. A collection for User and Guest submissions can be specified in Settings > Submissions > Default Collection.
