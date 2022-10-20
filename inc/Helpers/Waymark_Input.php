@@ -408,24 +408,6 @@ class Waymark_Input {
 // 			wp_die(esc_html__('The file type uploaded is not supported.', 'waymark'));
 // 		}
 // 	}
-
-	static function allowable_file($ext = '', $mime = '', $file_image = 'file') {
-		$allowable_mimes = Waymark_Config::get_item('mimes', $file_image);
-		
-		//Valid extension
-		if(array_key_exists($ext, $allowable_mimes)) {
-			//Check MIME
-			//Single
-			if(is_string($allowable_mimes[$ext])) {
-				return $mime == $allowable_mimes[$ext];
-			//Multiple
-			} elseif(is_array($allowable_mimes[$ext])) {
-				return in_array($mime, $allowable_mimes[$ext]);
-			}
-		}
-		
-		return false;
-	}	
 	
 	static function get_file_contents($file) {
 		$response = [];
@@ -439,7 +421,7 @@ class Waymark_Input {
 			$file_mime = mime_content_type($file['tmp_name']);
 			
 			//Is allowed file
-			if(self::allowable_file($file_ext, $file_mime)) {
+			if(Waymark_Helper::allowable_file($file_ext, $file_mime)) {
 				$response = array_merge($response, array(
 					'file_type' => $file_ext,
 					'file_mime' => $file_mime,

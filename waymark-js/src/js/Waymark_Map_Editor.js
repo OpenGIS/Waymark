@@ -971,7 +971,10 @@ function Waymark_Map_Editor() {
 		
 		//The DOMParser doesn't like whitespace
 		file_contents = file_contents.trim();
-	
+		
+		//Ignore case
+		file_type = file_type.toLowerCase();
+
 		switch(file_type) {
 			case 'gpx' :
 				var gpx_doc = (new DOMParser()).parseFromString(file_contents, 'text/xml');

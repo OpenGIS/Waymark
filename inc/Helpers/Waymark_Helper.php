@@ -958,9 +958,12 @@ class Waymark_Helper {
 		}
 	}	
 
-	static function allowable_file($ext = '', $mime = '', $file_image = 'file') {
+	static function allowable_file($ext = '', $mime = false, $file_image = 'file') {
 		$allowable_mimes = Waymark_Config::get_item('mimes', $file_image);
 		
+		//Make always lower
+		$ext = strtolower($ext);
+
 		//Valid extension
 		if(array_key_exists($ext, $allowable_mimes)) {
 			if($mime === false) {
