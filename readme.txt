@@ -4,7 +4,7 @@ Tags: Create interactive Maps, Add custom Markers, Display geotagged photos, ele
 Requires at least: 4.6
 Tested up to: 6.0
 Requires PHP: 5.2
-Stable tag: 0.9.21
+Stable tag: 0.9.22
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,12 @@ A big thank you to the following projects and their contributors. Without their 
 9. Waymark was designed to be very flexible, with lots of Settings to choose from.
 
 == Changelog ==
+
+= 0.9.22 =
+
+* Ignore file extension capitalisation when reading from file. This was a bug that meant reading from file.GPX (instead of file.gpx) was rejected for no good reason.
+
+Credit to Werner for getting in touch and prompting these changes.
 
 = 0.9.21 =
 
