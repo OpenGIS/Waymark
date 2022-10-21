@@ -8128,7 +8128,7 @@ function Waymark_Map_Viewer() {
 			//Each line
 			for(var i in feature.geometry.coordinates) {
 				//Each point
-				for(j in feature.geometry.coordinates[i]) {
+				for(var j in feature.geometry.coordinates[i]) {
 					//If has elevation data
 					if(feature.geometry.coordinates[i][j].length == 3) {
 						return true;
@@ -8137,9 +8137,9 @@ function Waymark_Map_Viewer() {
 			}
 		} else {
 			//Each point
-			for(j in feature.geometry.coordinates) {
+			for(var j in feature.geometry.coordinates) {
 				//If has elevation data
-				if(feature.geometry.coordinates[i].length == 3) {
+				if(feature.geometry.coordinates[j].length == 3) {
 					return true;
 				}
 			}	

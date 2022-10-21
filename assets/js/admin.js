@@ -47,7 +47,7 @@ function waymark_setup_repeatable_sections() {
 				var clone = form.clone();
 				
 				//Create input
-				for(j in clones[i]) {
+				for(var j in clones[i]) {
 					var set_value = clones[i][j];
 					var input = jQuery('#' + j, clone);
 					input.attr('name', input.attr('name') + '[' + i + ']');

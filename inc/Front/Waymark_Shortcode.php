@@ -458,7 +458,7 @@ class Waymark_Shortcode {
 										var overlay_type = waymark_viewer_' . $shortcode_hash . '.get_feature_overlay_type(file_geo_json.features[i]);
 										var config_types = waymark_viewer_' . $shortcode_hash . '.config.' . $overlay_type . '_types;
 
-										for(j in config_types) {
+										for(var j in config_types) {
 											//Valid Type Key
 											if("' . $cast_type . '" == waymark_viewer_' . $shortcode_hash . '.make_key(config_types[j][overlay_type + "_title"])) {
 												file_geo_json.features[i].properties.type = "' . $cast_type . '";										
