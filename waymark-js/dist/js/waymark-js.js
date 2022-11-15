@@ -8963,7 +8963,11 @@ function Waymark_Map_Editor() {
 		//Type
 		var types = Waymark.config[layer_type + '_types'];
 		
-		//Types
+
+		// ================================
+		// ======== TYPE SELECTOR =========
+		// ================================
+
 		var ele = jQuery('<select />');
 
 		ele.append(
@@ -9073,8 +9077,11 @@ function Waymark_Map_Editor() {
 				return jQuery(this).val() == Waymark.make_key(feature.properties.type);
 			}).attr('selected', 'selected');			
 		}	
-	
-		//Data
+
+		// ================================
+		// ============= DATA =============
+		// ================================
+
 		for(key in Waymark.config[layer_type + '_data_defaults']) {			
 			var ele = null;
 			

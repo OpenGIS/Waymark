@@ -675,6 +675,7 @@
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-type {
   margin-top: 10px;
+  border: 1px solid green;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-marker-info-latlng {
   position: absolute;
@@ -752,10 +753,6 @@
 }
 .waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info {
   margin: 0 !important;
-}
-.waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info .waymark-info-type select {
-  padding: 5px;
-  border-radius: 4px;
 }
 .waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info .waymark-info-title input {
   padding: 5px;
