@@ -634,7 +634,8 @@ function Waymark_Map_Editor() {
 		list.append(jQuery('<li />').addClass('waymark-info-button waymark-info-delete waymark-' + layer_type + '-delete').append(ele));
 
 		//Type
-		var types = Waymark.config[layer_type + '_types'];
+		var config_types = Waymark.config[layer_type + '_types'];
+		var types_data = [];
 
 		// ================================
 		// ======== TYPE SELECTOR =========
@@ -650,132 +651,107 @@ function Waymark_Map_Editor() {
 				.text(Waymark.title_case(waymark_js.lang['object_label_' + layer_type]) + ' ' + waymark_js.lang.object_type_label + ':')
 		);
 
-		//Pre-defined types
-		for(var i in types) {
+		//Pre-defined config_types
+		for(var i in config_types) {
 			//Get Key
-			var type_key = Waymark.make_key(types[i][layer_type + '_title']);
+			var type_key = Waymark.make_key(config_types[i][layer_type + '_title']);
 			
 			//Add option
-			ele.append(jQuery('<option />').val(type_key).text(types[i][layer_type + '_title']));			
-		}
-		
-		//Handling custom types?
-		if(typeof Waymark.config.handle_custom_type_callback == 'function') {
-			//Seperator
-			ele.append(
-				jQuery('<option />')
-					.attr('disabled', 'disabled')
-					.text('──────────')
-			);
-			//'Custom'
-			var custom_option = jQuery('<option />')
-				.attr('id', 'custom_type')
-				.val('{}')
-				.text("Custom")
-			;
-			ele.append(custom_option);
+			ele.append(jQuery('<option />').val(type_key).text(config_types[i][layer_type + '_title']));			
 		}
 
 		//On change
 		ele.change(function() {		
 			var selected_input = jQuery('option:selected', jQuery(this));
 
-			//Custom
-			if(selected_input.attr('id') == 'custom_type') {
-				if(typeof Waymark.config.handle_custom_type_callback == 'function') {
-					Waymark.config.handle_custom_type_callback(layer_type, layer, selected_input);
-				}
-			//Pre-defined		
-			} else {
-				if(typeof Waymark.config.handle_custom_type_callback == 'function') {
-					Waymark.config.handle_custom_type_callback(layer_type, layer, selected_input, 'hide');
-				}
-				
-				//Get type value
-				var selected_type = jQuery(this).val();
-				
-				//Update data layer
-				feature.properties.type = selected_type;
-				
-				//Predefined
-				if(typeof selected_type != 'object') {
-					var type = Waymark.get_type(layer_type, feature.properties.type);		
-				}
-
-				//Change live style
-				switch(layer_type) {
-					case 'line' :
-						layer.setStyle({
-							color: type.line_colour,
-							weight: type.line_weight							
-						});				
-
-						break;
-					case 'shape' :
-						layer.setStyle({
-							color: type.shape_colour,
-							fillOpacity: type.fill_opacity
-						});
-							
-						break;
-					case 'marker' :
-						//Create Icon								
-						layer.setIcon(
-							L.divIcon(Waymark.build_icon_data(type))
-						);				
-
-						break;								
-				}
-
-				Waymark.save_data_layer();
-				Waymark.map_was_edited();			
+			//Get type value
+			var selected_type = jQuery(this).val();
+			
+			//Update data layer
+			feature.properties.type = selected_type;
+			
+			//Predefined
+			if(typeof selected_type != 'object') {
+				var type = Waymark.get_type(layer_type, feature.properties.type);		
 			}
+
+			//Change live style
+			switch(layer_type) {
+				case 'line' :
+					layer.setStyle({
+						color: type.line_colour,
+						weight: type.line_weight							
+					});				
+
+					break;
+				case 'shape' :
+					layer.setStyle({
+						color: type.shape_colour,
+						fillOpacity: type.fill_opacity
+					});
+						
+					break;
+				case 'marker' :
+					//Create Icon								
+					layer.setIcon(
+						L.divIcon(Waymark.build_icon_data(type))
+					);				
+
+					break;								
+			}
+
+			Waymark.save_data_layer();
+			Waymark.map_was_edited();			
 		});
 		list.append(jQuery('<li />').addClass('waymark-info-type waymark-' + layer_type + '-type').append(ele));		
 
 		//Set selected
-		//Custom object
-		if(typeof feature.properties.type == 'object') {
-			if(typeof Waymark.config.handle_custom_type_callback == 'function') {
-				Waymark.config.handle_custom_type_callback(layer_type, layer, custom_option, 'show');			
-
-				custom_option.attr('selected', 'selected');
-			}
-		//Type used
-		} else {
-			if(typeof Waymark.config.handle_custom_type_callback == 'function') {
-				Waymark.config.handle_custom_type_callback(layer_type, layer, custom_option, 'hide');			
-			}
-	
-			jQuery('option', ele).filter(function() {
-				return jQuery(this).val() == Waymark.make_key(feature.properties.type);
-			}).attr('selected', 'selected');			
-		}	
-
+		jQuery('option', ele).filter(function() {
+			return jQuery(this).val() == Waymark.make_key(feature.properties.type);
+		}).attr('selected', 'selected');	
+			
 		// ================================
 		// ========= TYPE PREVIEW =========
 		// ================================
+		
 		if(layer_type == 'marker') {	
 			var jq_marker_preview_container = jQuery('<div />')
 				.addClass('waymark-marker-preview')
 			;
 
-			//Pre-defined types
-			for(var i in types) {
+			//Pre-defined config_types
+			for(var i in config_types) {
 				//Get Key
-				var type_key = Waymark.make_key(types[i][layer_type + '_title']);
+				var type_key = Waymark.make_key(config_types[i][layer_type + '_title']);
 				var type = Waymark.get_type('marker', type_key);									  				  					
 				var icon_data = Waymark.build_icon_data(type);
 
-				console.log(icon_data);
+// 				console.log(icon_data);
+// 
+				var marker_preview = jQuery('<div />')
+					.data('type_key', type_key)
+					.addClass(icon_data.className)
+					.html(icon_data.html)
+					.width(icon_data.iconSize[0])
+					.height(icon_data.iconSize[1])
+					.on('click', function() {
+						var clicked_type_key = jQuery(this).data('type_key');
+						
+						//Set selected
+						jQuery('.waymark-info-type select option').filter(function() {
+							return jQuery(this).val() == clicked_type_key;
+						}).attr('selected', 'selected');						
+					});
+				;
 
-				jq_marker_preview_container.append(
-					jQuery('<div />')
-						.addClass(icon_data.className)
-						.html(icon_data.html)
-						.width(icon_data.iconSize[0])
-						.height(icon_data.iconSize[1])						
-				);	
+				//Current?				
+				if(type_key == Waymark.make_key(feature.properties.type)) {
+					console.log(type_key);
+				
+					marker_preview.addClass('waymark-active');
+				}
+
+				jq_marker_preview_container.append(marker_preview);	
 			}
 		
 			list.append(jq_marker_preview_container);

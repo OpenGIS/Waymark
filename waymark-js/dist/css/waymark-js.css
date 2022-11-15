@@ -776,6 +776,9 @@
   display: block;
   float: left;
 }
+.waymark-marker-preview .waymark-marker.waymark-active {
+  border: 1px solid red;
+}
 
 /*
 	==================================
