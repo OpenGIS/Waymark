@@ -140,6 +140,7 @@
 					}
 				}				
 				&.waymark-info-description {
+					height: 60px;
 					margin-bottom: 0;
 					overflow: hidden;
 					textarea {
@@ -284,11 +285,16 @@
 	==================================
 */
 .waymark-marker-preview {
-	.waymark-marker	{
+	.waymark-marker-wrap {
 		display: block;
 		float: left;	
+		padding: 3px;
+		width: 32px;
+		height: 32px;		
+		&:hover,	
 		&.waymark-active {
-			border: 1px solid red;		
-		}	
+			background: red;		
+		}		
+		.waymark-marker	{}
 	}
 }

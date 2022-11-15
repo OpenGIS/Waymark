@@ -127,6 +127,7 @@
   max-width: inherit !important;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-description {
+  height: 60px;
   margin-bottom: 0;
   overflow: hidden;
   border: 1px solid #d2d2d2;
@@ -233,10 +234,14 @@
 	============= EDITOR =============
 	==================================
 */
-.waymark-marker-preview .waymark-marker {
+.waymark-marker-preview .waymark-marker-wrap {
   display: block;
   float: left;
+  padding: 3px;
+  width: 32px;
+  height: 32px;
 }
-.waymark-marker-preview .waymark-marker.waymark-active {
-  border: 1px solid red;
+.waymark-marker-preview .waymark-marker-wrap:hover,
+.waymark-marker-preview .waymark-marker-wrap.waymark-active {
+  background: red;
 }
