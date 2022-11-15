@@ -8962,7 +8962,6 @@ function Waymark_Map_Editor() {
 
 		//Type
 		var types = Waymark.config[layer_type + '_types'];
-		
 
 		// ================================
 		// ======== TYPE SELECTOR =========
@@ -8980,9 +8979,11 @@ function Waymark_Map_Editor() {
 
 		//Pre-defined types
 		for(var i in types) {
+			//Get Key
 			var type_key = Waymark.make_key(types[i][layer_type + '_title']);
-
-			ele.append(jQuery('<option />').val(type_key).text(types[i][layer_type + '_title']));
+			
+			//Add option
+			ele.append(jQuery('<option />').val(type_key).text(types[i][layer_type + '_title']));			
 		}
 		
 		//Handling custom types?
@@ -9077,6 +9078,35 @@ function Waymark_Map_Editor() {
 				return jQuery(this).val() == Waymark.make_key(feature.properties.type);
 			}).attr('selected', 'selected');			
 		}	
+
+		// ================================
+		// ========= TYPE PREVIEW =========
+		// ================================
+		if(layer_type == 'marker') {	
+			var jq_marker_preview_container = jQuery('<div />')
+				.addClass('waymark-marker-preview')
+			;
+
+			//Pre-defined types
+			for(var i in types) {
+				//Get Key
+				var type_key = Waymark.make_key(types[i][layer_type + '_title']);
+				var type = Waymark.get_type('marker', type_key);									  				  					
+				var icon_data = Waymark.build_icon_data(type);
+
+				console.log(icon_data);
+
+				jq_marker_preview_container.append(
+					jQuery('<div />')
+						.addClass(icon_data.className)
+						.html(icon_data.html)
+						.width(icon_data.iconSize[0])
+						.height(icon_data.iconSize[1])						
+				);	
+			}
+		
+			list.append(jq_marker_preview_container);
+		}
 
 		// ================================
 		// ============= DATA =============

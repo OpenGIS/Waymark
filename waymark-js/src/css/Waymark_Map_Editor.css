@@ -228,3 +228,12 @@
   width: 164px !important;
   border-radius: 4px;
 }
+/*
+	==================================
+	============= EDITOR =============
+	==================================
+*/
+.waymark-marker-preview .waymark-marker {
+  display: block;
+  float: left;
+}
