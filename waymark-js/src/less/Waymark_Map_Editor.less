@@ -140,26 +140,21 @@
 					}
 				}				
 				&.waymark-info-description {
-					height: 60px;
 					margin-bottom: 0;
 					overflow: hidden;
 					textarea {
- 						height: 120px;
+ 						height: 105px;
 					}					
 					border: 1px solid #d2d2d2;				
 				}
 				
 				
-				
+				//Type Select
 				&.waymark-info-type {
-					margin-top: 10px;	
-					
-					border: 1px solid green;					
+					display: none;
+					select {}					
 				}
-				
-				
-				
-				
+
 				&.waymark-marker-info-latlng {
 					position: absolute;
 					bottom: -15px;
@@ -204,14 +199,21 @@
 					}
 				}
 				&.waymark-info-button {
-					margin-right: 6px;
-					display: inline;
-					.ion-android-done,
-					.ion-edit,
-					.ion-ios-copy,
-					.ion-trash-a {
-						font-size: 16px;
-						margin-top: 5px;
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					&.waymark-info-duplicate {
+						right: 36px;
+					}
+					button {
+						border-color: red;
+						.ion-android-done,
+						.ion-edit,
+						.ion-ios-copy,
+						.ion-trash-a {
+							font-size: 16px;
+							margin-top: 5px;
+						}
 					}
 				}
 				select,				
@@ -222,6 +224,32 @@
 					border: 1px solid #d2d2d2;
 				}
 			}
+
+			//Preview
+			.waymark-marker-preview {
+				margin-bottom: 10px;	
+				height: 50px;
+				overflow-y: scroll;
+				overflow-x: hidden;
+				background: #fff;
+				z-index: 1100;
+// 				&:hover {
+// 					position: absolute;
+// 					height: 340px;
+// 				}
+				.waymark-marker-wrap {
+					display: block;
+					float: left;	
+					padding: 5px;		
+					&:hover,	
+					&.waymark-active {
+						box-shadow: inset 0 0 1px @waymark-primary;		
+					}		
+					.waymark-marker	{
+						position: relative;
+					}
+				}
+			}					
 		}
 
 		//Disable features
@@ -276,39 +304,5 @@
 				.waymark-info-description {}
 			}
 		}	
-	}
-}
-
-/*
-	==================================
-	============= EDITOR =============
-	==================================
-*/
-.waymark-marker-preview {
-	height: 80px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	.waymark-marker-wrap {
-		display: block;
-		float: left;	
-		padding: 5px;
-// 		width: 45px;
-// 		height: 45px;		
-		&:hover,	
-		&.waymark-active {
-		  box-shadow: inset 0 0 1px @waymark-primary;		
-		}		
-		.waymark-marker	{
-			position: relative;
-// 			&.waymark-marker-small {}
-// 			&.waymark-marker-medium {
-// 				width: 24px;
-// 				height: 24px;			
-// 			}
-// 			&.waymark-marker-large {
-// 				width: 30px;
-// 				height: 30px;			
-// 			}
-		}
 	}
 }
