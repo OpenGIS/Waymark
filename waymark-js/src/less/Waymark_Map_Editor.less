@@ -285,16 +285,30 @@
 	==================================
 */
 .waymark-marker-preview {
+	height: 80px;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	.waymark-marker-wrap {
 		display: block;
 		float: left;	
-		padding: 3px;
-		width: 40px;
-		height: 45px;		
+		padding: 5px;
+// 		width: 45px;
+// 		height: 45px;		
 		&:hover,	
 		&.waymark-active {
-			background: red;		
+		  box-shadow: inset 0 0 1px @waymark-primary;		
 		}		
-		.waymark-marker	{}
+		.waymark-marker	{
+			position: relative;
+// 			&.waymark-marker-small {}
+// 			&.waymark-marker-medium {
+// 				width: 24px;
+// 				height: 24px;			
+// 			}
+// 			&.waymark-marker-large {
+// 				width: 30px;
+// 				height: 30px;			
+// 			}
+		}
 	}
 }

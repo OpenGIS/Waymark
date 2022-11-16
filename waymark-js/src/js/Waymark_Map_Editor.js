@@ -732,19 +732,19 @@ function Waymark_Map_Editor() {
 				var type = Waymark.get_type('marker', type_key);									  				  					
 				var icon_data = Waymark.build_icon_data(type);
 
-// 				console.log(icon_data);
-// 
+				//Each Marker
 				var marker_preview = jQuery('<div />')
 					.data('type_key', type_key)
 					.addClass(icon_data.className)
 					.html(icon_data.html)
 					.attr('title', type_title)
-					.width(icon_data.iconSize[0])
-					.height(icon_data.iconSize[1])
+					.css({
+						'width': icon_data.iconSize[0],
+						'height': icon_data.iconSize[1]
+					})
 					.on('click', function() {
 						var clicked_type_key = jQuery(this).data('type_key');
 
-						
 						//Set selected
 						jQuery('option', jq_layer_type_select)
 							.each(function() {
@@ -765,7 +765,18 @@ function Waymark_Map_Editor() {
 						jQuery(this).parent('.waymark-marker-wrap').addClass('waymark-active');
 					});
 				;
-
+				
+				//Anchor offset?
+				
+ 				console.log(icon_data);
+				
+				if(typeof icon_data.iconAnchor !== 'undefined') {
+					marker_preview.css({
+// 						'marginLeft': '-' + icon_data.iconAnchor[1] + 'px',
+// 						'marginTop': icon_data.iconAnchor[0] + 'px'
+					});				
+				}
+				
 				//Wrap			
 				var marker_preview_wrap = jQuery('<div />')
 					.addClass('waymark-marker-wrap')
