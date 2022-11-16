@@ -743,11 +743,18 @@ function Waymark_Map_Editor() {
 					.height(icon_data.iconSize[1])
 					.on('click', function() {
 						var clicked_type_key = jQuery(this).data('type_key');
+
 						
 						//Set selected
-						jQuery('option', jq_layer_type_select).filter(function() {
-							return jQuery(this).val() == clicked_type_key;
-						}).attr('selected', 'selected');		
+						jQuery('option', jq_layer_type_select)
+							.each(function() {
+								if(jQuery(this).val() == clicked_type_key) {
+									jQuery(this).attr('selected', 'selected');
+								} else {
+									jQuery(this).removeAttr('selected');								
+								}
+							})
+						;		
 						
 						jq_layer_type_select.trigger('change');		
 						
