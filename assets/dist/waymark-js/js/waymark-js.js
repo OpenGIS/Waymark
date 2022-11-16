@@ -9093,17 +9093,6 @@ function Waymark_Map_Editor() {
 					});
 				;
 				
-				//Anchor offset?
-				
- 				console.log(icon_data);
-				
-				if(typeof icon_data.iconAnchor !== 'undefined') {
-					marker_preview.css({
-// 						'marginLeft': '-' + icon_data.iconAnchor[1] + 'px',
-// 						'marginTop': icon_data.iconAnchor[0] + 'px'
-					});				
-				}
-				
 				//Wrap			
 				var marker_preview_wrap = jQuery('<div />')
 					.addClass('waymark-marker-wrap')
@@ -9113,10 +9102,13 @@ function Waymark_Map_Editor() {
 				//Current?				
 				if(type_key == Waymark.make_key(feature.properties.type)) {
 					marker_preview_wrap.addClass('waymark-active');
-				}
-				
-				//Append
-				jq_marker_preview_container.append(marker_preview_wrap);	
+
+					//Prepend
+					jq_marker_preview_container.prepend(marker_preview_wrap);						
+				} else {
+					//Append
+					jq_marker_preview_container.append(marker_preview_wrap);					
+				}				
 			}
 		
 			list.append(jq_marker_preview_container);
