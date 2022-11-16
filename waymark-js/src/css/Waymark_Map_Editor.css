@@ -100,11 +100,11 @@
   left: 40%;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info {
-  width: 220px;
+  width: 210px;
   height: 375px;
   position: relative;
   list-style-type: none;
-  padding-left: 60px;
+  padding-left: 70px;
   z-index: 1;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li {
@@ -182,7 +182,7 @@
   border-radius: 4px;
   padding: 5px;
   margin-bottom: 6px;
-  width: 156px;
+  width: 146px;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button {
   position: absolute;
@@ -212,10 +212,9 @@
   top: 0;
   left: 0;
   margin-bottom: 10px;
-  width: 50px;
+  width: 60px;
   height: 100%;
-  overflow: ;
-  overflow-y: ;
+  overflow-y: scroll;
   overflow-x: hidden;
   background: #fff;
   border: 1px solid #d2d2d2;
@@ -232,6 +231,13 @@
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info .waymark-marker-preview .waymark-marker-wrap .waymark-marker {
   position: relative;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-marker-preview .waymark-marker-wrap .waymark-type-title {
+  margin-top: -10px;
+  margin-bottom: 3px;
+  text-align: center;
+  font-size: 10px;
+  word-break: break-all;
 }
 .waymark-map-container.waymark-is-editor.waymark-disable-draw .waymark-edit-line,
 .waymark-map-container.waymark-is-editor.waymark-disable-draw .waymark-edit-rectangle,
