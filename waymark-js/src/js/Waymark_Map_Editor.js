@@ -727,6 +727,7 @@ function Waymark_Map_Editor() {
 			//Pre-defined config_types
 			for(var i in config_types) {
 				var type_title = config_types[i][layer_type + '_title'];
+				
 				//Get Key
 				var type_key = Waymark.make_key(type_title);
 				var type = Waymark.get_type('marker', type_key);									  				  					
@@ -769,8 +770,19 @@ function Waymark_Map_Editor() {
 				//Wrap			
 				var marker_preview_wrap = jQuery('<div />')
 					.addClass('waymark-marker-wrap')
-					.append(marker_preview)
 				;
+				
+				//Type labels?
+				if(Waymark.config.map_options.show_type_labels == '1') {			
+					marker_preview_wrap.append(
+						jQuery('<div />')
+							.addClass('waymark-type-title')
+							.text(type_title)
+					);
+				}				
+				
+				//Append actual preview
+				marker_preview_wrap.append(marker_preview)
 
 				//Current?				
 				if(type_key == Waymark.make_key(feature.properties.type)) {
