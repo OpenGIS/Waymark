@@ -24,6 +24,7 @@ require_once('inc/Objects/Waymark_Collection.php');
 //Helpers
 require_once('inc/Helpers/Waymark_Helper.php');
 require_once('inc/Helpers/Waymark_Input.php');
+require_once('inc/Helpers/Waymark_GeoJSON.php');
 
 //Front
 require_once('inc/Waymark_Front.php');
