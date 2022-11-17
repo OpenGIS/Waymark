@@ -16,13 +16,20 @@
 	==================================
 */
 .waymark-map-container {
-	.leaflet-popup-content {
-		margin: 10px !important;
-	}
 	#waymark-loading {
 		display: none;
 	}
+
 	&.waymark-is-editor {
+		//Leaflet UI
+		.leaflet-popup-content {
+			margin: 10px !important;
+		}
+
+		a.leaflet-popup-close-button {
+			display: none;
+		}		
+
 		&.waymark-loading {
 			opacity: 0.6 !important;
 			cursor: wait;
@@ -124,7 +131,7 @@
 		//Popups
 		ul.waymark-info {
 			width: 210px;
-			height: 375px;
+			height: 315px;
 			position: relative;
 			list-style-type: none;
 			padding-left: 70px;
@@ -141,9 +148,10 @@
 						width: inherit !important;
 						max-width: inherit !important;					
 					}
-				}				
+				}		
+				&.waymark-info-title {}
 				&.waymark-info-description {
-					margin-bottom: 0;
+ 					margin-bottom: 8px;
 					overflow: hidden;
 					textarea {
  						height: 105px;
@@ -159,9 +167,7 @@
 				}
 
 				&.waymark-marker-info-latlng {
-					position: absolute;
-					bottom: -15px;
-					z-index: -1;
+					text-align: right;
 				}
 				&.waymark-info-image_large_url {
 					position: relative;
@@ -204,18 +210,25 @@
 				&.waymark-info-button {
 					position: absolute;
 					bottom: 0;
-					right: 0;
+					left: 70px;
 					&.waymark-info-duplicate {
-						right: 36px;
+						left: 101px;
+					}
+					&.waymark-info-edit {
+						left: 130px;					
 					}
 					button {
-						border-color: red;
-						.ion-android-done,
-						.ion-edit,
-						.ion-ios-copy,
-						.ion-trash-a {
-							font-size: 16px;
+						padding: 0 8px;
+						max-height: 30px;
+						i {
 							margin-top: 5px;
+							line-height: initial;						
+							&.ion-android-done,
+							&.ion-edit,
+							&.ion-ios-copy,
+							&.ion-trash-a {
+								font-size: 16px;
+							}
 						}
 					}
 				}
@@ -235,7 +248,7 @@
 				left: 0;
 				margin-bottom: 10px;	
 				width: 60px;
-				height: 100%;
+				max-height: 100%;
 				overflow-y: scroll;
 				overflow-x: hidden;
 				background: #fff;
@@ -298,34 +311,34 @@
 	}
 	
 	//Submissions	
-	&.waymark-submission {
-		//Popups
-		.leaflet-popup-content {	
-			ul.waymark-info {		
-				margin: 0 !important;	
-				.waymark-info-type {
-// 					select {
+// 	&.waymark-submission {
+// 		//Popups
+// 		.leaflet-popup-content {	
+// 			ul.waymark-info {		
+// 				margin: 0 !important;	
+// 				.waymark-info-type {
+// // 					select {
+// // 						padding: 5px;
+// // 						border-radius: 4px;											
+// // 					}
+// 				}
+// 				.waymark-info-title {
+// 					input {
 // 						padding: 5px;
+// 						width: 229px !important;
 // 						border-radius: 4px;											
 // 					}
-				}
-				.waymark-info-title {
-					input {
-						padding: 5px;
-						width: 229px !important;
-						border-radius: 4px;											
-					}
-				}
-				.waymark-info-image_large_url {
-					height: 60px;
-					input {
-						padding: 5px;
-						width: 164px !important;		
-						border-radius: 4px;														
-					}
-				}
-				.waymark-info-description {}
-			}
-		}	
-	}
+// 				}
+// 				.waymark-info-image_large_url {
+// 					height: 60px;
+// 					input {
+// 						padding: 5px;
+// 						width: 164px !important;		
+// 						border-radius: 4px;														
+// 					}
+// 				}
+// 				.waymark-info-description {}
+// 			}
+// 		}	
+// 	}
 }

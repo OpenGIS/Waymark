@@ -558,10 +558,13 @@
 	============= EDITOR =============
 	==================================
 */
-.waymark-map-container .leaflet-popup-content {
+.waymark-map-container #waymark-loading {
+  display: none;
+}
+.waymark-map-container.waymark-is-editor .leaflet-popup-content {
   margin: 10px !important;
 }
-.waymark-map-container #waymark-loading {
+.waymark-map-container.waymark-is-editor a.leaflet-popup-close-button {
   display: none;
 }
 .waymark-map-container.waymark-is-editor.waymark-loading {
@@ -640,7 +643,7 @@
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info {
   width: 210px;
-  height: 375px;
+  height: 315px;
   position: relative;
   list-style-type: none;
   padding-left: 70px;
@@ -669,7 +672,7 @@
   max-width: inherit !important;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-description {
-  margin-bottom: 0;
+  margin-bottom: 8px;
   overflow: hidden;
   border: 1px solid #d2d2d2;
 }
@@ -680,9 +683,7 @@
   display: none;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-marker-info-latlng {
-  position: absolute;
-  bottom: -15px;
-  z-index: -1;
+  text-align: right;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url {
   position: relative;
@@ -726,20 +727,27 @@
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button {
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 70px;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button.waymark-info-duplicate {
-  right: 36px;
+  left: 101px;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button.waymark-info-edit {
+  left: 130px;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button button {
-  border-color: red;
+  padding: 0 8px;
+  max-height: 30px;
 }
-.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button button .ion-android-done,
-.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button button .ion-edit,
-.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button button .ion-ios-copy,
-.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button button .ion-trash-a {
-  font-size: 16px;
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button button i {
   margin-top: 5px;
+  line-height: initial;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button button i.ion-android-done,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button button i.ion-edit,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button button i.ion-ios-copy,
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button button i.ion-trash-a {
+  font-size: 16px;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li select,
 .waymark-map-container.waymark-is-editor ul.waymark-info li textarea,
@@ -752,7 +760,7 @@
   left: 0;
   margin-bottom: 10px;
   width: 60px;
-  height: 100%;
+  max-height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   background: #fff;
@@ -799,22 +807,6 @@
 }
 .waymark-map-container.waymark-is-editor.waymark-disable-file .waymark-edit-upload {
   display: none !important;
-}
-.waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info {
-  margin: 0 !important;
-}
-.waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info .waymark-info-title input {
-  padding: 5px;
-  width: 229px !important;
-  border-radius: 4px;
-}
-.waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info .waymark-info-image_large_url {
-  height: 60px;
-}
-.waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info .waymark-info-image_large_url input {
-  padding: 5px;
-  width: 164px !important;
-  border-radius: 4px;
 }
 
 /*
