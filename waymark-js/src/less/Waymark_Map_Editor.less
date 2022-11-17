@@ -130,7 +130,6 @@
 
 		//Popups
 		ul.waymark-info {
-			width: 210px;
 			height: 315px;
 			position: relative;
 			list-style-type: none;
@@ -141,7 +140,7 @@
 				&.waymark-info-description,
 				&.waymark-info-title,
 				&.waymark-info-type {
-					width: inherit;
+					width: 100%;
 					max-width: inherit;
 					border-radius: 4px;				
 					input, textarea, select {
@@ -204,7 +203,7 @@
 						border-radius: 4px;					
 						padding: 5px;
 						margin-bottom: 6px;
-						width: 146px;
+// 						width: 146px;
 					}
 				}
 				&.waymark-info-button {
@@ -311,34 +310,42 @@
 	}
 	
 	//Submissions	
-// 	&.waymark-submission {
-// 		//Popups
-// 		.leaflet-popup-content {	
-// 			ul.waymark-info {		
-// 				margin: 0 !important;	
-// 				.waymark-info-type {
-// // 					select {
-// // 						padding: 5px;
-// // 						border-radius: 4px;											
-// // 					}
-// 				}
-// 				.waymark-info-title {
-// 					input {
+	&.waymark-submission {
+		//Popups
+		.leaflet-popup-content {	
+			width: 300px !important;
+			ul.waymark-info {		
+				margin: 0 !important;	
+				.waymark-info-type {
+// 					select {
 // 						padding: 5px;
-// 						width: 229px !important;
 // 						border-radius: 4px;											
 // 					}
-// 				}
-// 				.waymark-info-image_large_url {
-// 					height: 60px;
-// 					input {
-// 						padding: 5px;
-// 						width: 164px !important;		
-// 						border-radius: 4px;														
-// 					}
-// 				}
-// 				.waymark-info-description {}
-// 			}
-// 		}	
-// 	}
+				}
+				.waymark-info-title {
+					input {
+						padding: 5px;
+						width: 229px !important;
+						border-radius: 4px;											
+					}
+				}
+				.waymark-info-image_large_url {
+					height: 60px;
+					input {
+						padding: 5px;
+						width: 164px !important;		
+						border-radius: 4px;														
+					}
+					button {
+						min-width: 85px;
+						padding: 3px 5px;
+						font-size: 11px;
+					}
+				}
+				.waymark-info-description {
+					width: 230px;
+				}
+			}
+		}	
+	}
 }

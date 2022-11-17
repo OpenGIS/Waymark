@@ -103,7 +103,6 @@
   left: 40%;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info {
-  width: 210px;
   height: 315px;
   position: relative;
   list-style-type: none;
@@ -116,7 +115,7 @@
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-description,
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-title,
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-type {
-  width: inherit;
+  width: 100%;
   max-width: inherit;
   border-radius: 4px;
 }
@@ -183,7 +182,6 @@
   border-radius: 4px;
   padding: 5px;
   margin-bottom: 6px;
-  width: 146px;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button {
   position: absolute;
@@ -268,4 +266,31 @@
 }
 .waymark-map-container.waymark-is-editor.waymark-disable-file .waymark-edit-upload {
   display: none !important;
+}
+.waymark-map-container.waymark-submission .leaflet-popup-content {
+  width: 300px !important;
+}
+.waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info {
+  margin: 0 !important;
+}
+.waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info .waymark-info-title input {
+  padding: 5px;
+  width: 229px !important;
+  border-radius: 4px;
+}
+.waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info .waymark-info-image_large_url {
+  height: 60px;
+}
+.waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info .waymark-info-image_large_url input {
+  padding: 5px;
+  width: 164px !important;
+  border-radius: 4px;
+}
+.waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info .waymark-info-image_large_url button {
+  min-width: 85px;
+  padding: 3px 5px;
+  font-size: 11px;
+}
+.waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info .waymark-info-description {
+  width: 230px;
 }
