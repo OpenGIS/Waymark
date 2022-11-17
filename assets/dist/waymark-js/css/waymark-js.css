@@ -678,7 +678,7 @@
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-description textarea {
   height: 105px;
 }
-.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-type {
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-type.waymark-marker-type {
   display: none;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-marker-info-latlng {
@@ -752,7 +752,7 @@
 .waymark-map-container.waymark-is-editor ul.waymark-info li input {
   border: 1px solid #d2d2d2;
 }
-.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-marker-preview {
+.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-overlay-preview {
   position: absolute;
   top: 0;
   left: 0;
@@ -766,31 +766,31 @@
   border-radius: 4px;
   z-index: 1100;
 }
-.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-marker-preview .waymark-marker-wrap {
+.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-overlay-preview .waymark-overlay-wrap {
   padding: 10px;
   border-bottom: 1px solid #d2d2d2;
 }
-.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-marker-preview .waymark-marker-wrap:hover,
-.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-marker-preview .waymark-marker-wrap.waymark-active {
+.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-overlay-preview .waymark-overlay-wrap:hover,
+.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-overlay-preview .waymark-overlay-wrap.waymark-active {
   background: #f1f1f1;
 }
-.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-marker-preview .waymark-marker-wrap .waymark-marker {
+.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-overlay-preview .waymark-overlay-wrap .waymark-type-title {
+  margin-top: -10px;
+  margin-bottom: 3px;
+  text-align: center;
+  font-size: 10px;
+  word-break: break-all;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-overlay-preview .waymark-overlay-wrap .waymark-type-title {
+  margin-top: -10px;
+  margin-bottom: 3px;
+  text-align: center;
+  font-size: 10px;
+  word-break: break-all;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-overlay-preview .waymark-overlay-wrap .waymark-marker {
   position: relative;
   cursor: pointer;
-}
-.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-marker-preview .waymark-marker-wrap .waymark-type-title {
-  margin-top: -10px;
-  margin-bottom: 3px;
-  text-align: center;
-  font-size: 10px;
-  word-break: break-all;
-}
-.waymark-map-container.waymark-is-editor ul.waymark-info .waymark-marker-preview .waymark-marker-wrap .waymark-type-title {
-  margin-top: -10px;
-  margin-bottom: 3px;
-  text-align: center;
-  font-size: 10px;
-  word-break: break-all;
 }
 .waymark-map-container.waymark-is-editor.waymark-disable-draw .waymark-edit-line,
 .waymark-map-container.waymark-is-editor.waymark-disable-draw .waymark-edit-rectangle,

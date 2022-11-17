@@ -720,7 +720,7 @@ function Waymark_Map_Editor() {
 		// ================================
 		
 		var jq_overlay_preview_container = jQuery('<div />')
-			.addClass('waymark-' + layer_type + '-preview')
+			.addClass('waymark-overlay-preview waymark-' + layer_type + '-preview')
 		;
 
 		//Pre-defined config_types
@@ -757,13 +757,11 @@ function Waymark_Map_Editor() {
 
 				//Lines
 				case 'line' :
-// line_colour: "#d84848"
-// line_display: "1"
-// line_submission: "1"
-// line_title: "Red"
-// line_weight: "3"
-// type_key: "red"
-// 
+					overlay_preview.css({
+						'height': '1px',
+						'width': '100%',						
+						'borderTop':  type.line_weight + 'px solid ' + type.line_colour,
+					});
 					Waymark.debug(type);
 					
 					break;
@@ -800,7 +798,7 @@ function Waymark_Map_Editor() {
 
 			//Wrap			
 			var overlay_preview_wrap = jQuery('<div />')
-				.addClass('waymark-' + layer_type + '-wrap')
+				.addClass('waymark-overlay-wrap waymark-' + layer_type + '-wrap')
 			;
 	
 			//Type labels?

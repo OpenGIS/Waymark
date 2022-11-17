@@ -161,7 +161,9 @@
 				
 				//Type Select
 				&.waymark-info-type {
-					display: none;
+					&.waymark-marker-type {
+						display: none;					
+					}
 					select {}					
 				}
 
@@ -241,7 +243,7 @@
 			}
 
 			//Preview
-			.waymark-marker-preview {
+			.waymark-overlay-preview {
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -258,30 +260,31 @@
 // 					position: absolute;
 // 					height: 340px;
 // 				}
-				.waymark-marker-wrap {
+				.waymark-overlay-wrap {
 					padding: 10px;		
 					border-bottom: 1px solid #d2d2d2;					
 					&:hover,	
 					&.waymark-active {
 						background: @waymark-grey;		
 					}		
+					.waymark-type-title {
+						margin-top: -10px;
+						margin-bottom: 3px;
+						text-align: center;
+						font-size: 10px;
+						word-break: break-all;
+					}
+					.waymark-type-title {
+						margin-top: -10px;
+						margin-bottom: 3px;
+						text-align: center;
+						font-size: 10px;
+						word-break: break-all;
+					}
+					//Markers
 					.waymark-marker	{
 						position: relative;
 						cursor: pointer;
-					}
-					.waymark-type-title {
-						margin-top: -10px;
-						margin-bottom: 3px;
-						text-align: center;
-						font-size: 10px;
-						word-break: break-all;
-					}
-					.waymark-type-title {
-						margin-top: -10px;
-						margin-bottom: 3px;
-						text-align: center;
-						font-size: 10px;
-						word-break: break-all;
 					}
 				}
 			}					
