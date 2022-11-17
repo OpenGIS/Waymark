@@ -733,20 +733,21 @@ function Waymark_Map_Editor() {
 
 			// Markers, Lines & Shapes...
 
-			var overlay_preview = jQuery('<div />');
+			var overlay_preview = jQuery('<div />')
+				.data('type_key', type_key)
+				.attr('title', type_title)			
+			;
 
 			switch(layer_type) {
 				//Markers
 				case 'marker' :
-
+					//Icon 
 					var icon_data = Waymark.build_icon_data(type);
-
-					//Each Marker
+					
+					//Marker DIV
 					overlay_preview
-						.data('type_key', type_key)
 						.addClass(icon_data.className)
 						.html(icon_data.html)
-						.attr('title', type_title)
 						.css({
 							'width': icon_data.iconSize[0],
 							'height': icon_data.iconSize[1]
@@ -757,17 +758,37 @@ function Waymark_Map_Editor() {
 
 				//Lines
 				case 'line' :
-					overlay_preview.css({
-						'height': '1px',
-						'width': '100%',						
-						'borderTop':  type.line_weight + 'px solid ' + type.line_colour,
-					});
-					Waymark.debug(type);
+					overlay_preview
+						.addClass('waymark-line')
+						.append(
+							jQuery('<div />')
+								.css({
+									'margin': '15px 0',
+									'height': '1px',
+									'borderTop':  type.line_weight + 'px solid ' + type.line_colour,
+								})
+						)						
+					;
 					
 					break;
 				
 				//Shapes
-				case 'shape' :
+				case 'shape' :			
+					overlay_preview
+						.addClass('waymark-shape')
+						.css({
+							'border': '3px solid ' + type.shape_colour,
+						})
+						.append(
+							jQuery('<div />')
+								.css({
+									'height': '20px',
+									'background': type.shape_colour,
+									'opacity': type.fill_opacity								
+								})
+						)
+					;
+									
 					break;
 
 			}
@@ -812,7 +833,12 @@ function Waymark_Map_Editor() {
 
 			//Append actual preview
 			overlay_preview_wrap.append(overlay_preview)
-
+			
+			//Also wrap click event
+// 			overlay_preview_wrap.on('click', function() {
+// 				overlay_preview.trigger('click');
+// 			});
+			
 			//Current?				
 			if(type_key == Waymark.make_key(feature.properties.type)) {
 				overlay_preview_wrap.addClass('waymark-active');

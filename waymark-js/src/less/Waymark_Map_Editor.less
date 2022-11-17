@@ -161,7 +161,9 @@
 				
 				//Type Select
 				&.waymark-info-type {
-					&.waymark-marker-type {
+					&.waymark-marker-type,
+					&.waymark-line-type,
+					&.waymark-shape-type {
 						display: none;					
 					}
 					select {}					
@@ -282,10 +284,20 @@
 						word-break: break-all;
 					}
 					//Markers
-					.waymark-marker	{
-						position: relative;
-						cursor: pointer;
+					&.waymark-marker-wrap {
+						.waymark-marker	{
+							position: relative;
+							cursor: pointer;
+						}
 					}
+					//Lines
+					&.waymark-line-wrap {
+						.waymark-line	{}
+					}
+					//Shapes
+					&.waymark-marker-wrap {
+						.waymark-shape	{}
+					}										
 				}
 			}					
 		}
