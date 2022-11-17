@@ -719,85 +719,115 @@ function Waymark_Map_Editor() {
 		// ========= TYPE PREVIEW =========
 		// ================================
 		
-		if(layer_type == 'marker') {	
-			var jq_marker_preview_container = jQuery('<div />')
-				.addClass('waymark-marker-preview')
-			;
+		var jq_overlay_preview_container = jQuery('<div />')
+			.addClass('waymark-' + layer_type + '-preview')
+		;
 
-			//Pre-defined config_types
-			for(var i in config_types) {
-				var type_title = config_types[i][layer_type + '_title'];
+		//Pre-defined config_types
+		for(var i in config_types) {
+			var type_title = config_types[i][layer_type + '_title'];
+			
+			//Get Key
+			var type_key = Waymark.make_key(type_title);
+			var type = Waymark.get_type(layer_type, type_key);									  				  					
+
+			// Markers, Lines & Shapes...
+
+			var overlay_preview = jQuery('<div />');
+
+			switch(layer_type) {
+				//Markers
+				case 'marker' :
+
+					var icon_data = Waymark.build_icon_data(type);
+
+					//Each Marker
+					overlay_preview
+						.data('type_key', type_key)
+						.addClass(icon_data.className)
+						.html(icon_data.html)
+						.attr('title', type_title)
+						.css({
+							'width': icon_data.iconSize[0],
+							'height': icon_data.iconSize[1]
+						})
+					;
+
+					break;
+
+				//Lines
+				case 'line' :
+// line_colour: "#d84848"
+// line_display: "1"
+// line_submission: "1"
+// line_title: "Red"
+// line_weight: "3"
+// type_key: "red"
+// 
+					Waymark.debug(type);
+					
+					break;
 				
-				//Get Key
-				var type_key = Waymark.make_key(type_title);
-				var type = Waymark.get_type('marker', type_key);									  				  					
-				var icon_data = Waymark.build_icon_data(type);
+				//Shapes
+				case 'shape' :
+					break;
 
-				//Each Marker
-				var marker_preview = jQuery('<div />')
-					.data('type_key', type_key)
-					.addClass(icon_data.className)
-					.html(icon_data.html)
-					.attr('title', type_title)
-					.css({
-						'width': icon_data.iconSize[0],
-						'height': icon_data.iconSize[1]
-					})
-					.on('click', function() {
-						var clicked_type_key = jQuery(this).data('type_key');
-
-						//Set selected
-						jQuery('option', jq_layer_type_select)
-							.each(function() {
-								if(jQuery(this).val() == clicked_type_key) {
-									jQuery(this).attr('selected', 'selected');
-								} else {
-									jQuery(this).removeAttr('selected');								
-								}
-							})
-						;		
-						
-						jq_layer_type_select.trigger('change');		
-						
-						//Active
-						jQuery('.waymark-marker-wrap', jq_marker_preview_container).each(function() {
-							jQuery(this).removeClass('waymark-active');
-						});
-						jQuery(this).parent('.waymark-marker-wrap').addClass('waymark-active');
-					});
-				;
-				
-				//Wrap			
-				var marker_preview_wrap = jQuery('<div />')
-					.addClass('waymark-marker-wrap')
-				;
-				
-				//Type labels?
-				if(Waymark.config.map_options.show_type_labels == '1') {			
-					marker_preview_wrap.append(
-						jQuery('<div />')
-							.addClass('waymark-type-title')
-							.text(type_title)
-					);
-				}				
-				
-				//Append actual preview
-				marker_preview_wrap.append(marker_preview)
-
-				//Current?				
-				if(type_key == Waymark.make_key(feature.properties.type)) {
-					marker_preview_wrap.addClass('waymark-active');
-
-					//Prepend
-					jq_marker_preview_container.prepend(marker_preview_wrap);						
-				} else {
-					//Append
-					jq_marker_preview_container.append(marker_preview_wrap);					
-				}				
 			}
+			
+			//On Click
+			overlay_preview.on('click', function() {
+				var clicked_type_key = jQuery(this).data('type_key');
+
+				//Set selected
+				jQuery('option', jq_layer_type_select)
+					.each(function() {
+						if(jQuery(this).val() == clicked_type_key) {
+							jQuery(this).attr('selected', 'selected');
+						} else {
+							jQuery(this).removeAttr('selected');								
+						}
+					})
+				;		
 		
-			list.append(jq_marker_preview_container);
+				jq_layer_type_select.trigger('change');		
+		
+				//Active
+				jQuery('.waymark-' + layer_type + '-wrap', jq_overlay_preview_container).each(function() {
+					jQuery(this).removeClass('waymark-active');
+				});
+				jQuery(this).parent('.waymark-' + layer_type + '-wrap').addClass('waymark-active');
+			});
+
+			//Wrap			
+			var overlay_preview_wrap = jQuery('<div />')
+				.addClass('waymark-' + layer_type + '-wrap')
+			;
+	
+			//Type labels?
+			if(Waymark.config.map_options.show_type_labels == '1') {			
+				overlay_preview_wrap.append(
+					jQuery('<div />')
+						.addClass('waymark-type-title')
+						.text(type_title)
+				);
+			}				
+
+			//Append actual preview
+			overlay_preview_wrap.append(overlay_preview)
+
+			//Current?				
+			if(type_key == Waymark.make_key(feature.properties.type)) {
+				overlay_preview_wrap.addClass('waymark-active');
+
+				//Prepend
+				jq_overlay_preview_container.prepend(overlay_preview_wrap);						
+			} else {
+				//Append
+				jq_overlay_preview_container.append(overlay_preview_wrap);					
+			}				
 		}
+	
+		list.append(jq_overlay_preview_container);
 
 		// ================================
 		// ============= DATA =============
