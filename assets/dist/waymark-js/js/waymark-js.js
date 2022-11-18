@@ -9134,7 +9134,9 @@ function Waymark_Map_Editor() {
 						}
 					})
 				;		
-		
+				
+				//Update actual select
+				jq_layer_type_select.val(clicked_type_key);
 				jq_layer_type_select.trigger('change');		
 		
 				//Active
