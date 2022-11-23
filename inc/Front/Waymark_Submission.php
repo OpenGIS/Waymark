@@ -277,8 +277,8 @@ class Waymark_Submission {
 	
 		//Title
 		if(in_array('title', $this->features)) {
-			$content .= '		<div class="waymark-control-group waymark-control-type-text" id="map_date-container">' . "\n";
-			$content .= '			<label class="waymark-control-label" for="map_date">' . __('Title', 'waymark') . '</label>' . "\n";
+			$content .= '		<div class="waymark-control-group waymark-control-type-text" id="map_title-container">' . "\n";
+			$content .= '			<label class="waymark-control-label" for="map_title">' . __('Title', 'waymark') . '</label>' . "\n";
 			$content .= '			<div class="waymark-controls">' . "\n";
 			$content .= '				<input class="waymark-input" type="text" name="map_title" id="map_title" value="">' . "\n";
 			$content .= '			</div>' . "\n";
