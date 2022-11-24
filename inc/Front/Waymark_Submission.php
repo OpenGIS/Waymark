@@ -343,8 +343,13 @@ class Waymark_Submission {
 			wp_set_object_terms($this->Map->post_id, (int) $submission_collection, 'waymark_collection');		
 		}
 
-		$this->redirect_data['waymark_map_id'] = $this->Map->post_id;
-		
+		$this->redirect_data['waymark_map_id'] = $this->Map->post_id;		
+
+		//Redirect to newly created Map?		
+		if($this->status == 'publish') {
+			$this->redirect_url = get_permalink($this->Map->post_id);		
+		}
+
 		return $this->Map->post_id;
 	}
 	
