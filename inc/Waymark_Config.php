@@ -25,7 +25,8 @@ class Waymark_Config {
 					'gpx' => array(
 						'application/gpx+xml',
 						'application/xml',
-						'text/xml'
+						'text/xml',
+						'text/plain'												
 					),
 					'kml' => array(
 						'application/vnd.google-earth.kml+xml',
