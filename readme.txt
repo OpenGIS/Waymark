@@ -99,6 +99,9 @@ A big thank you to the following projects and their contributors. Without their 
 
 = 0.9.24-A =
 
+* Editor popup redesign.
+* Bug fixes and improvements.
+
 = 0.9.23 =
 
 * Bug fix
