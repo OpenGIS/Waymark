@@ -313,6 +313,15 @@ class Waymark_Submission {
 			return false;		
 		}
 		
+		//Ensure the data passed is valid JSON
+		$raw_map_data = stripslashes($this->data['map_data']);
+		if(! Waymark_GeoJSON::get_feature_count($raw_map_data)) {
+			$this->status = 'error';
+			$this->redirect_data['waymark_message'] = __('Your Map did not contain valid features.', 'waymark');
+			
+			return false;				
+		}
+
 		//If no Title provided
 		if(! array_key_exists('map_title', $this->data) || ! $this->data['map_title']) {
 			$this->data['map_title'] = esc_html__('Submission', 'waymark') . ' ' . substr(md5(rand(0,999999)), 0, 5);
