@@ -734,6 +734,7 @@ function Waymark_Map_Editor() {
 			// Markers, Lines & Shapes...
 
 			var overlay_preview = jQuery('<div />')
+				.addClass('waymark-type')
 				.data('type_key', type_key)
 				.attr('title', type_title)			
 			;
@@ -793,32 +794,6 @@ function Waymark_Map_Editor() {
 
 			}
 			
-			//On Click
-			overlay_preview.on('click', function() {
-				var clicked_type_key = jQuery(this).data('type_key');
-
-				//Set selected
-				jQuery('option', jq_layer_type_select)
-					.each(function() {
-						if(jQuery(this).val() == clicked_type_key) {
-							jQuery(this).attr('selected', 'selected');
-						} else {
-							jQuery(this).removeAttr('selected');								
-						}
-					})
-				;		
-				
-				//Update actual select
-				jq_layer_type_select.val(clicked_type_key);
-				jq_layer_type_select.trigger('change');		
-		
-				//Active
-				jQuery('.waymark-' + layer_type + '-wrap', jq_overlay_preview_container).each(function() {
-					jQuery(this).removeClass('waymark-active');
-				});
-				jQuery(this).parent('.waymark-' + layer_type + '-wrap').addClass('waymark-active');
-			});
-
 			//Wrap			
 			var overlay_preview_wrap = jQuery('<div />')
 				.addClass('waymark-overlay-wrap waymark-' + layer_type + '-wrap')
@@ -834,8 +809,36 @@ function Waymark_Map_Editor() {
 			}				
 
 			//Append actual preview
-			overlay_preview_wrap.append(overlay_preview)
+			overlay_preview_wrap.append(overlay_preview);
+
+			//On Click
+			overlay_preview_wrap.on('click', function() {
+				overlay_preview = jQuery('.waymark-type', jQuery(this));
 			
+				var clicked_type_key = overlay_preview.data('type_key');
+
+				//Set selected
+				jQuery('option', jq_layer_type_select)
+					.each(function() {
+						if(overlay_preview.val() == clicked_type_key) {
+							overlay_preview.attr('selected', 'selected');
+						} else {
+							overlay_preview.removeAttr('selected');								
+						}
+					})
+				;		
+				
+				//Update actual select
+				jq_layer_type_select.val(clicked_type_key);
+				jq_layer_type_select.trigger('change');		
+		
+				//Active
+				jQuery('.waymark-' + layer_type + '-wrap', jq_overlay_preview_container).each(function() {
+					overlay_preview.removeClass('waymark-active');
+				});
+				overlay_preview.parent('.waymark-' + layer_type + '-wrap').addClass('waymark-active');
+			});
+
 			//Also wrap click event
 // 			overlay_preview_wrap.on('click', function() {
 // 				overlay_preview.trigger('click');
