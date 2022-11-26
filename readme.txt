@@ -99,9 +99,9 @@ A big thank you to the following projects and their contributors. Without their 
 
 = 0.9.24-B =
 
-* Editor popup redesign.
+* Editor popup redesign, including Type previews.
 * Front-end <a href="https://www.waymark.dev/docs/submissions/">Submissions</a> improvements.
-* Bug fixes and improvements.
+* Lots of other bug fixes and improvements.
 
 = 0.9.23 =
 
