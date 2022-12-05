@@ -1,10 +1,10 @@
 # Waymark #
-**Contributors:** [morehawes](https://profiles.wordpress.org/morehawes)  
+**Contributors:** [morehawes](https://profiles.wordpress.org/morehawes/)  
 **Tags:** Create interactive Maps, Add custom Markers, Display geotagged photos, elevation graph, Embed GPX KML GeoJSON, Hiking route maps, Collaborate on mapping projects, Display OpenStreetMap Basemaps, No technical knowledge required  
 **Requires at least:** 4.6  
 **Tested up to:** 6.0  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.24  
+**Stable tag:** 0.9.25-A  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -110,6 +110,10 @@ A big thank you to the following projects and their contributors. Without their 
 
 
 ## Changelog ##
+
+### 0.9.25-A ###
+
+* Settings overhaul
 
 ### 0.9.24 ###
 
