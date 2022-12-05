@@ -564,6 +564,18 @@ class Waymark_Settings {
 		 * ===========================================
 		 */	
 		 		
+		//Build list of Collections to use as <select> options
+		$collection_objects = get_terms([
+			'taxonomy' => 'waymark_collection',
+			'hide_empty' => false
+		]);
+		$collection_array = [
+			'' => ' - '
+		];
+		foreach($collection_objects as $collection) {
+			$collection_array[$collection->term_id] = $collection->name;
+		}
+			
 		//Roles
 		if(! function_exists('get_editable_roles')) {
     	require_once ABSPATH . 'wp-admin/includes/user.php';
@@ -759,6 +771,7 @@ class Waymark_Settings {
 			$this->tabs['submission']['sections']['from_public']['fields']['submission_status']['class'] .= ' waymark-hidden';
 			$this->tabs['submission']['sections']['from_public']['fields']['submission_alert']['class'] .= ' waymark-hidden';						
 			$this->tabs['submission']['sections']['from_public']['fields']['submission_upload_dir']['class'] .= ' waymark-hidden';
+			$this->tabs['submission']['sections']['from_public']['fields']['submission_collection']['class'] .= ' waymark-hidden';
 		}
 
 		/**
