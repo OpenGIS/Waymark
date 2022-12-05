@@ -11,25 +11,31 @@ Author URI: https://www.morehawes.co.uk/
 License: GPLv2
 */
 
+//Helpers
+require_once('inc/Helpers/Waymark_Helper.php');
+require_once('inc/Helpers/Waymark_Input.php');
+require_once('inc/Helpers/Waymark_Cache.php');
+require_once('inc/Helpers/Waymark_GeoJSON.php');
+require_once('inc/Helpers/Waymark_Overpass.php');
+
 //Base
 require_once('inc/Waymark_Config.php');
 require_once('inc/Waymark_Types.php');
 require_once('inc/Waymark_Install.php');
 
-//Helpers
-require_once('inc/Helpers/Waymark_Helper.php');
-require_once('inc/Helpers/Waymark_Input.php');
-require_once('inc/Helpers/Waymark_GeoJSON.php');
-
 //Objects
+require_once('inc/Objects/Waymark_Class.php');
 require_once('inc/Objects/Waymark_Map.php');
 require_once('inc/Objects/Waymark_Collection.php');
-require_once('inc/Objects/Waymark_Class.php');
 require_once('inc/Objects/Waymark_Query.php');
+require_once('inc/Objects/Waymark_Instance.php');
 
 //Taxonomies
 require_once('inc/Taxonomies/Waymark_Collection_Taxonomy.php');
 require_once('inc/Taxonomies/Waymark_Query_Taxonomy.php');
+
+//Request
+require_once('inc/Request/Waymark_Overpass_Request.php');
 
 //Front
 require_once('inc/Waymark_Front.php');
