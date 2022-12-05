@@ -149,7 +149,30 @@ class Waymark_Config {
 					'shape_display' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',					
 					'shape_submission' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1'					
 				)
-			)
+			),
+
+			/**
+			 * ===========================================
+			 * ================= QUERIES =================
+			 * ===========================================
+			 */			
+
+			'query' => array(
+				'features' => array(
+					'enable_taxonomy' => 0,
+					'enable_single' => 0
+				),
+				'defaults' => array(
+					'query_area_bounds'=> '-52.648029327392585,47.505026,-52.605972,47.53435623467226',
+					'query_overpass_request' => 'nwr["amenity"]',
+					'query_cast_overlay' => 'marker',
+					'query_cast_marker_type' => null,
+					'query_cast_line_type' => null
+				),
+				'performance' => array(
+					'cache_minutes' => 15,
+				),		
+			)			
 		);
 		
 		//Keep a copy of the original values

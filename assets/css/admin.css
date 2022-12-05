@@ -140,6 +140,160 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
 }
 /*
 	==================================
+	============== FORMS =============
+	==================================
+*/
+.waymark-form.waymark-repeatable {
+  border: 1px dotted pink;
+  background: pink;
+  border-radius: 15px;
+}
+/*
+	==================================
+	============= QUERIES ============
+	==================================
+*/
+.waymark-form.waymark-query-form.waymark-tax-query .waymark-control-group.query_area_type-container {
+  display: none;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 20% 30% 20% 20% 5% 5%;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group {
+  margin: 0;
+  padding: 0;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-control-label {
+  display: none;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-tooltip {
+  display: none;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .waymark-control-group .waymark-controls .waymark-input {
+  max-height: 32px;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container .button {
+  display: none;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active {
+  background: #f7f7f7;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .button {
+  display: block;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .button.waymark-delete,
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .button.waymark-edit {
+  color: green;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .button.waymark-edit {
+  color: blue;
+}
+.waymark-form.waymark-query-form.waymark-map-query .waymark-parameters-container.waymark-active .button.waymark-delete {
+  color: red;
+}
+.waymark-form.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-marker .query_cast_line_type-container {
+  display: none;
+}
+.waymark-form.waymark-query-form .waymark-parameters-container.waymark-dropdown-query_cast_overlay-line .query_cast_marker_type-container {
+  display: none;
+}
+.postbox#tax_queries_content {
+  display: none;
+}
+.postbox#tax_queries_content .waymark-control-label {
+  display: none;
+}
+.postbox#tax_queries_content .waymark-hidden {
+  display: block !important;
+}
+/*
+	==================================
+	=========== TAXONOMIES ===========
+	==================================
+*/
+.waymark-query-tax-container {
+  width: 100%;
+}
+.waymark-query-tax-container .waymark-query-tax-form {
+  padding-right: 1%;
+  width: 32%;
+  float: left;
+}
+.waymark-query-tax-container .waymark-query-tax-preview {
+  width: 66%;
+  float: left;
+}
+body.wp-admin.taxonomy-waymark_query.edit-tags-php #col-left,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php #col-right {
+  float: none;
+  width: 100%;
+}
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#addtag .form-table,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#addtag .form-table,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#edittag .form-table,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#edittag .form-table {
+  display: block;
+}
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#addtag .form-field,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#addtag .form-field,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#edittag .form-field,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#edittag .form-field {
+  display: block;
+}
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#addtag .form-field.term-slug-wrap,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#addtag .form-field.term-slug-wrap,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#edittag .form-field.term-slug-wrap,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#edittag .form-field.term-slug-wrap,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#addtag .form-field.term-description-wrap,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#addtag .form-field.term-description-wrap,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#edittag .form-field.term-description-wrap,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#edittag .form-field.term-description-wrap {
+  display: none !important;
+}
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#addtag .form-field.term-name-wrap p,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#addtag .form-field.term-name-wrap p,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#edittag .form-field.term-name-wrap p,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#edittag .form-field.term-name-wrap p {
+  display: none;
+}
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#addtag .form-field.term-name-wrap input[type="text"],
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#addtag .form-field.term-name-wrap input[type="text"],
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#edittag .form-field.term-name-wrap input[type="text"],
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#edittag .form-field.term-name-wrap input[type="text"] {
+  padding-top: 0;
+  max-width: 265px;
+}
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#addtag .form-field th,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#addtag .form-field th,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#edittag .form-field th,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#edittag .form-field th,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#addtag .form-field td,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#addtag .form-field td,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#edittag .form-field td,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#edittag .form-field td {
+  display: block;
+}
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#addtag .form-field th,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#addtag .form-field th,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#edittag .form-field th,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#edittag .form-field th,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#addtag .form-field td,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#addtag .form-field td,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#edittag .form-field td,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#edittag .form-field td {
+  padding: 0;
+}
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#addtag .form-field label,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#addtag .form-field label,
+body.wp-admin.taxonomy-waymark_query.term-php.taxonomy-waymark_query form#edittag .form-field label,
+body.wp-admin.taxonomy-waymark_query.edit-tags-php.taxonomy-waymark_query form#edittag .form-field label {
+  font-weight: bold;
+  padding: 0 0 7px 3px;
+}
+/*
+	==================================
 	============ MAP META ============
 	==================================
 */
