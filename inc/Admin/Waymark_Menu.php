@@ -18,12 +18,17 @@ class Waymark_Menu {
 		//Collections
     add_submenu_page($this->menu_slug, esc_html__('Collections', 'waymark'), esc_html__('Collections', 'waymark'), 'manage_categories', 'edit-tags.php?taxonomy=waymark_collection&post_type=waymark_map'); 
 
+		//Queries
+		if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
+			add_submenu_page($this->menu_slug, esc_html__('Queries', 'waymark'), esc_html__('Queries', 'waymark'), 'manage_categories', 'edit-tags.php?taxonomy=waymark_query&post_type=waymark_map'); 
+		}
+
 		//Help
-		add_submenu_page($this->menu_slug, esc_html__('Help', 'waymark'), esc_html__('Help', 'waymark'), 'edit_posts', 'waymark-help', array($this, 'help_page_content'));
-	
+		add_submenu_page($this->menu_slug, esc_html__('Documentation', 'waymark'), esc_html__('Docs', 'waymark') . ' <i style="font-size:12px" class="fa fa-external-link"></i>', 'edit_posts', 'https://www.waymark.dev/docs/');
+		
 		//Settings
 		add_submenu_page($this->menu_slug, esc_html__('Settings', 'waymark'), esc_html__('Settings', 'waymark'), 'manage_options', 'waymark-settings', array(new Waymark_Settings, 'content_admin_page'));					
-		
+	
 		add_action('admin_menu', array($this, 'modify_menu'), 1000);
 		
 			Waymark_CSS::add_chunk('
@@ -105,112 +110,6 @@ class Waymark_Menu {
 		}		
 	}
 
-	function help_page_content() {
-		echo '<div id="waymark-admin-container" class="wrap">' . "\n";
-
-		echo Waymark_Helper::plugin_about();
-
-		echo '	<div class="card">' . "\n";	
-		echo '		<h1>' . esc_html__('Help', 'waymark') . '</h1>' . "\n";
-
-		//Required the PHP EXIF extension
-		if(! function_exists('exif_read_data')) {
-			echo '<div class="waymark-notice notice notice-warning is-dismissible">' . "\n";
-			echo '	<p><b>' . esc_html__('Image Location Detection Not Supported!', 'waymark') . '</b></p>';
-			echo '	<p>' . sprintf(__('Your hosting environment does not currently have the <a href="%s">PHP EXIF Extension</a> enabled, which is required to read Image location metadata. Try asking your host to enable it.', 'waymark'), 'https://www.php.net/manual/en/book.exif.php') . '</p>';		
-			echo '</div>' . "\n";
-		}	
-
-		echo '			<p style="text-align:right"><a class="button" href="' . Waymark_Helper::site_url('docs/') . '">' . esc_html__('Read the Docs', 'waymark') . ' &raquo;</a></p>' . "\n";
-
-		echo '			<hr />' . "\n";
-		echo '			<h2 id="getting-started">' . esc_html__('Getting Started', 'waymark') . '</h2>' . "\n";
-		echo '			<iframe src="https://player.vimeo.com/video/349575095" width="520" height="292" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>' . "\n";
-
-		echo '			<h2 id="using-shortcodes">' . esc_html__('Using Shortcodes', 'waymark') . '</h2>' . "\n";
-
-		echo '			<p class="lead">' . esc_html__('The Waymark shortcode allows you to embed Maps in your content.', 'waymark') . '</p>' . "\n";
-
-		echo '			<p>' . sprintf(__('Once created, <a href="%s">Map</a> and <a href="%s">Collection</a> Data can be displayed by copying the provided shortcode and pasting it into your content. For example, this shortcode will display the Map with an ID of 1234:', 'waymark'), admin_url('edit.php?post_type=waymark_map'), admin_url('edit-tags.php?taxonomy=waymark_collection&post_type=waymark_map')) . '</p>';		
-		echo '			<p></p>' . "\n";
-		echo '			<p><code>[Waymark map_id="1234"]</code></p>' . "\n";
-
-		echo '			<p>' . esc_html__('To display a Basemap without any data, simply provide centre coordinates and zoom level, like this:', 'waymark') . '</p>' . "\n";
-		echo '			<p><code>[Waymark map_centre="54.526814,-3.017289" map_zoom="16"]</code></p>' . "\n";
-
-		echo '			<p>' . esc_html__('The following shortcode options are available:', 'waymark') . '</p>' . "\n";
-		echo '			<table>' . "\n";
-
-		echo '				<tr>' . "\n";
-		echo '					<th>' . esc_html__('Parameter', 'waymark') . '</th>' . "\n";
-		echo '					<th>' . esc_html__('Value', 'waymark') . '</th>' . "\n";
-		echo '					<th>' . esc_html__('Description', 'waymark') . '</th>' . "\n";
-		echo '				</tr>' . "\n";
-
-		echo '				<tr>' . "\n";
-		echo '					<td width="20%"><code>map_id</code></td>' . "\n";
-		echo '					<td width="30%">' . esc_html__('Map ID', 'waymark') . '</td>' . "\n";
-		echo '					<td>' . sprintf(__('Display a single Map. You can create Maps (and obtain Map IDs) <a href="%s">here</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map')) . '</td>';		
-		echo '				</tr>' . "\n";
-
-		echo '				<tr>' . "\n";
-		echo '					<td><code>collection_id</code></td>' . "\n";
-		echo '					<td>' . esc_html__('Collection ID', 'waymark') . '</td>' . "\n";
-		echo '					<td>' . sprintf(__('Display all Maps in a Collection. You can create Collections (and obtain Collection IDs) <a href="%s">here</a>.', 'waymark'), admin_url('edit-tags.php?taxonomy=waymark_collection&post_type=waymark_map')) . '</td>';		
-		echo '				</tr>' . "\n";
-
-		echo '				<tr>' . "\n";
-		echo '					<td><code>map_centre</code></td>' . "\n";
-		echo '					<td>' . esc_html__('Latitude,Longitude', 'waymark') . '</td>' . "\n";
-		echo '					<td>' . esc_html__('The initial centre coordinates of the Map. By default Waymark centres the Map so all Data is visible.', 'waymark') . '</td>' . "\n";
-		echo '				</tr>' . "\n";	
-		
-		echo '				<tr>' . "\n";
-		echo '					<td><code>map_zoom</code></td>' . "\n";
-		echo '					<td>0-18</td>' . "\n";
-		echo '					<td>' . esc_html__('The initial zoom of the Map. By default Waymark zooms the Map so all Data is visible.', 'waymark') . '</td>' . "\n";
-		echo '				</tr>' . "\n";	
-
-		echo '				<tr>' . "\n";
-		echo '					<td><code>basemap</code></td>' . "\n";
-		echo '					<td>' . esc_html__('Basemap Name', 'waymark') . '</td>' . "\n";
-		echo '					<td>' . sprintf(__('Which Basemap to display when the Map first loads (instead of the default). The value must match a Basemap Name listed <a href="%s">here</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=tiles')) . '</td>';		
-		echo '				</tr>' . "\n";	
-
-		echo '				<tr>' . "\n";
-		echo '					<td><code>map_height</code></td>' . "\n";
-		echo '					<td>' . esc_html__('Number of pixels', 'waymark') . '</td>' . "\n";
-		echo '					<td>' . sprintf(__('Specify the desired height of the Map. The default is %s and can be changed <a href="%s">here</a>.', 'waymark'), Waymark_Config::get_setting('misc', 'map_options', 'map_height'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=misc')) . '</td>';		
-		echo '				</tr>' . "\n";
-
-		echo '				<tr>' . "\n";
-		echo '					<td><code>shortcode_header</code></td>' . "\n";
-		echo '					<td>0 or 1</td>' . "\n";
-		echo '					<td>' . sprintf(__('Whether to display the Shortcode Header (if Meta exists for the Map). The default is %s and can be changed <a href="%s">here</a>.', 'waymark'), Waymark_Config::get_setting('misc', 'shortcode_options', 'shortcode_header'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=misc')) . '</td>';		
-		echo '				</tr>' . "\n";	
-
-		echo '				<tr>' . "\n";
-		echo '					<td><code>show_gallery</code></td>' . "\n";
-		echo '					<td>0 or 1</td>' . "\n";
-		echo '					<td>' . sprintf(__('Whether to display the Image Gallery for Markers that have images associated with them. The default is %s and can be changed <a href="%s">here</a>.', 'waymark'), Waymark_Config::get_setting('misc', 'map_options', 'show_gallery'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=misc')) . '</td>';		
-		echo '				</tr>' . "\n";	
-
-		echo '				<tr>' . "\n";
-		echo '					<td><code>show_filter</code></td>' . "\n";
-		echo '					<td>0 or 1</td>' . "\n";
-		echo '					<td>' . sprintf(__('Whether to display the Overlay Filter. This enables visitors to filter for which Markers, Lines and Shapes are currently visible on the Map. The default is %s and can be changed <a href="%s">here</a>.', 'waymark'), Waymark_Config::get_setting('misc', 'map_options', 'show_filter'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=misc')) . '</td>';		
-		echo '				</tr>' . "\n";	
-
-
-		echo '			</table>' . "\n";
-
-		echo '			<hr />' . "\n";
-		echo '			<p style="text-align:right"><a class="button" href="' . Waymark_Helper::site_url('docs/') . '">' . esc_html__('Read the Docs', 'waymark') . ' &raquo;</a></p>' . "\n";
-
-		echo '		</div>' . "\n";	
-		echo '	</div>' . "\n";		
-	}
-	
 	function show_setup_menu($show = true) {
 		//Show
 		if($show) {

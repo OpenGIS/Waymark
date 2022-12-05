@@ -44,7 +44,7 @@ class Waymark_Settings {
 			'waymark-settings-tab-shapes' => '-- ' . esc_html__('Shapes', 'waymark'),
 			'label_sources' => esc_html__('Sources'),
 			'waymark-settings-tab-submission' => '-- ' . esc_html__('Submissions', 'waymark'),
-// 			'waymark-settings-tab-query' => '-- ' . esc_html__('Queries', 'waymark'),
+			'waymark-settings-tab-query' => '-- ' . esc_html__('Queries', 'waymark'),
 			'waymark-settings-tab-misc' => esc_html__('Advanced', 'waymark'),
 		];
 
@@ -780,7 +780,6 @@ class Waymark_Settings {
 		 * ===========================================
 		 */		
 
-/*
 		$this->tabs['query'] = array(
 			'name' => esc_html__('Queries', 'waymark'),
 			'description' => '',
@@ -877,7 +876,6 @@ class Waymark_Settings {
 			$this->tabs['query']['sections']['defaults']['class'] = 'waymark-hidden';
 			$this->tabs['query']['sections']['performance']['class'] = 'waymark-hidden';
 		}
-*/
 				
 		/**
 		 * ===========================================
