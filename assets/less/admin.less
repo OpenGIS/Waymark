@@ -18,7 +18,7 @@
 	visibility: hidden;
 }
 .waymark-hidden {
-	display: none;
+	display: none !important;
 }
 .waymark-icon {
 	background-image: url('../img/waymark-icon-primary.png');
@@ -184,15 +184,6 @@ div.waymark-control-group {
 			height: 200px;
 		}
 	}	
-	/* Requires API */
-	&.waymark-capability-disabled {
-		opacity: 0.5;
-		.waymark-tooltip {
-			padding: 1px 7px;
-			color: red !important;
-			border-color: red;
-		}			
-	}
 		
 	/* Inline - All */
 	&.waymark-inline {
@@ -314,19 +305,69 @@ div.widget-content {
  * ====================================
  */			
 body.waymark_page_waymark-settings {
-	//Tabs
-	h2.nav-tab-wrapper {
-		a {
-			font-size: 13px !important;
-			margin-left: 4px;
-			&:first-child {}
-			&.nav-tab-active {
+	#waymark-admin-container {
+		&.waymark-active-waymark-settings-tab-misc {
+			//Remove from Misc.
+			.waymark-settings-section-elevation_options,
+			.waymark-settings-section-shortcode_options,
+			.waymark-settings-section-collection_options,
+			.waymark-settings-section-map_options {
+				display: none !important;
+			}
+		}	
+	}
+
+	//Nav
+	div#waymark-settings-nav {
+ 		margin-top: 10px;
+ 		height: 35px;
+ 		margin-bottom: 5px;
+		padding-left: 45px;
+		background-image: url('../img/waymark-icon-primary.png');
+		background-size: 35px 35px;
+		background-position: center left;
+		background-repeat: no-repeat;
+		select {
+			position: absolute;
+			padding: 0;
+			z-index: +1000;
+			font-size: 16px;
+			&:hover {
 				background: #fff;
-				border-bottom: 1px solid #fff;
+			}
+			option {
+				padding: 10px 20px;
+				&[disabled] {
+					color: #000 !important;
+					background: #f7f7f7;
+				}
+				&:hover {
+					color: #0073aa;
+				}
 			}
 		}
 	}
+	
+	//Tabs
+// 	h2.nav-tab-wrapper {
+// 		a {
+// 			font-size: 13px !important;
+// 			margin-left: 4px;
+// 			&:first-child {}
+// 			&.nav-tab-active {
+// 				background: #fff;
+// 				border-bottom: 1px solid #fff;
+// 			}
+// 		}
+// 	}
 	div.waymark-settings-tab {
+		//Help
+		.waymark-docs-link	{
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		}
+		//Pro Tip
 		> small {
 			display: block;
 			margin-top: 20px;
@@ -385,7 +426,7 @@ body.waymark_page_waymark-settings {
 
 		//Markers
 		&.waymark-settings-tab-markers {
-			#marker_icon-container {
+			.marker_icon-container {
 				.waymark-controls {
 					position: relative;
 					input {
@@ -410,55 +451,6 @@ body.waymark_page_waymark-settings {
 					}
 				}			
 			}
-// 			#marker_colour-container {
-// 				.waymark-controls {
-// // 					input {
-// // 						display: none;
-// // 					}
-// 					.waymark-swatch-container {
-// 						display: inline-block;
-// 						width: 160px;
-// 						height: 29px;
-// 						.waymark-swatch {
-// 							display: block;
-// 							float: left;
-// 							width: 12px;
-// 							height: 15px;
-// 							margin-top: 7px;
-// 							cursor: pointer;
-// 							&:hover,
-// 							&.waymark-selected {
-// 								width: 24px;
-// 								height: 29px;
-// 								margin-top: 0;
-// 								box-shadow: inset 0 0 0 1px black
-// 							}
-// 							&.waymark-swatch-white {
-// 								box-shadow: inset 0 0 0 1px #ddd								
-// 							}
-// 		  			}							
-// 					}				
-// 				}
-// 			}
-		}
-		
-		//Map
-		&.waymark-settings-tab-map {
-/*
-			table.form-table:nth-child(odd) {
-				th[scope="row"] {
-					display: none;
-				}				
-			}
-*/
-			#user_config-container {
-				width: 480px;
-				overflow-x: scroll;
-				textarea {
-					font-size: 10px;
-					width: 2000px;
-				}				
-			}
 		}
 		div.waymark-settings-section-description {
 			margin-bottom: 15px;
@@ -472,7 +464,8 @@ body.waymark_page_waymark-settings {
 			}
 		}	
 		div.waymark-settings-section-footer {
-			margin-bottom: 40px;
+			margin-top: 20px;
+			margin-bottom: 20px;
 		}		
 		table.form-table {
 			.waymark-control-group {
@@ -621,6 +614,9 @@ div#waymark-admin-container {
 		}
 		.waymark-settings-tab-description {
 			font-size: 1.1em;
+			h2 {
+				display: none;
+			}
 		}
 		table.form-table {
 			margin-bottom: 30px;
@@ -653,7 +649,7 @@ div#waymark-admin-container {
 			select,
 			input[type="file"],
 			input[type="text"] {			
-				width: 80px;
+				width: 100px;
 			}
 		}
 		.waymark-controls {
@@ -687,18 +683,19 @@ div#waymark-admin-container {
 			margin-top: 0;
 			line-height: 1.5em;
 			&.waymark-first {
-				margin: 7px 0 20px 0;
+				margin: 20px 0 40px 0;
 				font-weight: bold;
-				font-size: 1.7em;
+				font-size: 1.8em;
 				line-height: 1.1em;				
 			}
 		}
 		img {
-			width: 60px;
-			height: 60px;
+			width: 100px;
+			height: 100px;
 			margin-right: 12px;
 			float: left;
 			border-radius: 50%;
+			border: 1px solid #999;
 		}
 		a.button {
 			margin-bottom: 5px;
