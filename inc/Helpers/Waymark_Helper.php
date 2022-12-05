@@ -427,10 +427,14 @@ class Waymark_Helper {
 		
 		return false;	
 	}
+
+	static public function is_debug() {
+		return (true == Waymark_Config::get_setting('misc', 'advanced', 'debug_mode'));
+	}
 	
 	static public function debug($thing, $die = true) {
-		if(Waymark_Config::get_setting('misc', 'advanced', 'debug_mode') != true) {
-			//return;	
+		if(! self::is_debug()) {
+			return;	
 		}
 			
 		echo '<pre>';
