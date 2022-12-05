@@ -6,9 +6,17 @@ class Waymark_Input {
 	private static $username_good = array('__dot__', '__dollar__', '__bang__', '__star__');
 	
 	static public function create_field($field, $set_value = null, $show_label = true) {
+		//Must have ID
+		if(! array_key_exists('id', $field) || ! $field['id']) {
+			$field['id'] = substr(md5(rand(0,999999)), 0, 5);
+		}
+
 		$out = "\n" . '<!-- START ' . $field['id'] . ' Input -->' . "\n";
 
-
+		//Use ID for Name (if absent)
+		if(array_key_exists('id', $field) && (! array_key_exists('name', $field))) {
+			$field['name'] = $field['id'];
+		}
 
 		//Default type
 		if(! array_key_exists('type', $field)) {
@@ -33,12 +41,13 @@ class Waymark_Input {
 		
 		//Add class?
 		$add_class = (array_key_exists('class', $field)) ? ' ' . $field['class'] : '';
-			
+		$add_class .= ' ' . $field['id'] . '-container';
+
 		//Container
-		$out .= '<div class="waymark-control-group waymark-control-type-' . $field['type'] . $add_class . '" id="' . $field['id'] . '-container">' . "\n";
+		$out .= '<div class="waymark-control-group waymark-control-type-' . $field['type'] . $add_class . '">' . "\n";
 	
 		//Label
-		if($show_label) {
+		if($show_label && isset($field['title'])) {
 			$out .= '	<label class="waymark-control-label" for="' . $field['name'] . '">' . $field['title'] .  '</label>' . "\n";		
 		}
 		$out .= '	<div class="waymark-controls">' . "\n";				
@@ -86,7 +95,7 @@ class Waymark_Input {
 	 * ============== PRIVATE =============
 	 * ====================================
 	 */			
-	private static function create_input($field, $set_value = null) {
+	static public function create_input($field, $set_value = null) {
 		$out = '';
 
 		if(! array_key_exists('type', $field)) {
@@ -119,7 +128,7 @@ class Waymark_Input {
 					$set_value = $field['default'];
 				}
 							
-				$out .= '		<select data-multi-value="' . $set_value . '" class="waymark-input" name="' . $field['name'] . '" id="' . $field['id'] . '">' . "\n";
+				$out .= '		<select data-multi-value="' . $set_value . '" class="waymark-input waymark-input-' . $field['id'] . '" name="' . $field['name'] . '" data-id="' . $field['id'] . '">' . "\n";
 				if(isset($field['options'])) {
 					foreach($field['options'] as $value => $description) {
 						//Always use strings
@@ -153,7 +162,7 @@ class Waymark_Input {
 					$set_value = explode(Waymark_Config::get_item('multi_value_seperator'), $field['default']);
 				}
 				
-				$out .= '		<select multiple="multiple" class="waymark-input" name="' . $field['name'] . '[]" id="' . $field['id'] . '">' . "\n";
+				$out .= '		<select multiple="multiple" class="waymark-input waymark-input-' . $field['id'] . '" name="' . $field['name'] . '[]" data-id="' . $field['id'] . '">' . "\n";
 				
 				//If we have options
 				if(isset($field['options'])) {
@@ -179,7 +188,7 @@ class Waymark_Input {
 
 				break;					
 			case 'textarea' :
-				$out .= '		<textarea class="waymark-input" name="' . $field['name'] . '" id="' . $field['id'] . '">';
+				$out .= '		<textarea class="waymark-input waymark-input-' . $field['id'] . '" name="' . $field['name'] . '" data-id="' . $field['id'] . '">';
 				//Do we have a value for this post?
 				if($value = htmlspecialchars($set_value)) {
 					$out .= $value;
@@ -200,7 +209,7 @@ class Waymark_Input {
 				
 				
 				//Markup
-				//$out .= '		<textarea class="waymark-input" name="' . $field['name'] . '" id="' . $field['id'] . '"></textarea>' . "\n";
+				//$out .= '		<textarea class="waymark-input waymark-input-' . $field['id'] . '" name="' . $field['name'] . '" data-id="' . $field['id'] . '"></textarea>' . "\n";
 				
 				//Setup rich editor			
 				ob_start();	
@@ -217,16 +226,16 @@ class Waymark_Input {
 				break;				
 			case 'submit' :
 				$value = explode(' ', $field['title'])[0];
-				$out .= '		<input type="submit" name="' . $field['name'] . '" value="' . $value . '" id="' . $field['id'] . '" class="waymark-input button-secondary" />' . "\n";
+				$out .= '		<input type="submit" name="' . $field['name'] . '" value="' . $value . '" data-id="' . $field['id'] . '" class="waymark-input waymark-input-' . $field['id'] . ' button-secondary" />' . "\n";
 				
 				break;				
 			case 'file' :
-				$out .= '		<input class="waymark-input" type="file" name="' . $field['name'] . '" id="' . $field['id'] . '" />' . "\n";
+				$out .= '		<input class="waymark-input waymark-input-' . $field['id'] . '" type="file" name="' . $field['name'] . '" data-id="' . $field['id'] . '" />' . "\n";
 				
 				break;
 			case 'text' :
 			default :
-				$out .= '		<input class="waymark-input" type="text" name="' . $field['name'] . '" id="' . $field['id'] . '"';
+				$out .= '		<input class="waymark-input waymark-input-' . $field['id'] . '" type="text" name="' . $field['name'] . '" data-id="' . $field['id'] . '"';
 				//Do we have a value for this post?
 				if($set_value !== null) {
 					$out .= ' value="' . $set_value . '"';
@@ -244,16 +253,69 @@ class Waymark_Input {
 		
 		return $out;
 	}	
+
+	static function group_fields($fields, $groups) {		
+		$fields_grouped = array();
+		
+		foreach($fields as $field_key => $field_data) {
+			$group_id = '';
+			if(array_key_exists('group', $field_data)) {
+				$group_id = $field_data['group'];			
+			}		
+			$fields_grouped[$group_id][$field_key] = $field_data;					
+		}
+		
+		return $fields_grouped;	
+	}	
+
+	static function create_repeatable_parameter_groups($name = 'repeatable', $fields, $groups = [], $repeatable_data = []) {
+		$count = 0;
+
+		//Populate
+		$repeatable_parameter_groups = '';
+		if(sizeof($repeatable_data)) {
+			foreach($repeatable_data as $data) {
+				$repeatable_parameter_groups .= self::create_parameter_groups($fields, $groups, $data, $name . '[' . $count . '][%s]');			
+				
+				$count++;
+			}		
+		}		
+
+		$out = '<!-- START Repeatable Container -->' . "\n";
+		$out .= '<div class="waymark-repeatable-container" data-count="' . $count . '">' . "\n";
+		
+		$out .= $repeatable_parameter_groups;
+
+		//Template
+		$out .= self::create_parameter_groups($fields, $groups, [], $name . '[__count__][%s]', '', 'waymark-repeatable-template');			
+
+		$out .= '<button class="button waymark-repeatable-add" title="' . __('Add Query', 'waymark') . '"><i class="ion ion-plus"></i></button>';
+
+		$out .= '</div>' . "\n";
+		$out .= '<!-- END Repeatable Container -->' . "\n";
+
+		return $out;
+	}
+
 	
-	static function create_parameter_groups($post_type, $fields, $groups, $data = array(), $input_name_format = null) {				
+	static function create_parameter_groups($fields, $groups = array(), $data = array(), $input_name_format = null, $id = '', $class_append = '') {				
+		//Group
+		$fields = self::group_fields($fields, $groups);
+		
+// 		Waymark_Helper::debug($fields);
+		
 		$out = '<!-- START Parameter Container -->' . "\n";
-		$out .= '<div class="waymark-parameters-container waymark-accordion-container" id="waymark-parameters-' . $post_type . '">' . "\n";
+		
+		$id = ($id) ? ' id="' . $id . '"' : '';
+		$class_append = ($class_append) ? ' ' . $class_append : '';		
+		
+		$out .= '<div' . $id . ' class="waymark-parameters-container waymark-accordion-container' . $class_append . '">' . "\n";
 
 		//Are we doing groups?
 		$by_group = false;		
 		if(is_array($groups) && sizeof($groups)) {	
 			$by_group = true;
-					
+			
 			$fields_reorder = [];
 			//No group
 			if(isset($fields[''])) {
@@ -294,6 +356,11 @@ class Waymark_Input {
 			}
 			
 			foreach($fields as $field) {
+				//Use ID for Name
+				if(array_key_exists('id', $field) && (! array_key_exists('name', $field))) {
+					$field['name'] = $field['id'];
+				}
+
 				//Set value?
 				if(array_key_exists($field['name'], $data)) {
 					$set_value = $data[$field['name']];
