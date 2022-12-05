@@ -268,42 +268,10 @@ class Waymark_Input {
 		return $fields_grouped;	
 	}	
 
-	static function create_repeatable_parameter_groups($name = 'repeatable', $fields, $groups = [], $repeatable_data = []) {
-		$count = 0;
-
-		//Populate
-		$repeatable_parameter_groups = '';
-		if(sizeof($repeatable_data)) {
-			foreach($repeatable_data as $data) {
-				$repeatable_parameter_groups .= self::create_parameter_groups($fields, $groups, $data, $name . '[' . $count . '][%s]');			
-				
-				$count++;
-			}		
-		}		
-
-		$out = '<!-- START Repeatable Container -->' . "\n";
-		$out .= '<div class="waymark-repeatable-container" data-count="' . $count . '">' . "\n";
-		
-		$out .= $repeatable_parameter_groups;
-
-		//Template
-		$out .= self::create_parameter_groups($fields, $groups, [], $name . '[__count__][%s]', '', 'waymark-repeatable-template');			
-
-		$out .= '<button class="button waymark-repeatable-add" title="' . __('Add Query', 'waymark') . '"><i class="ion ion-plus"></i></button>';
-
-		$out .= '</div>' . "\n";
-		$out .= '<!-- END Repeatable Container -->' . "\n";
-
-		return $out;
-	}
-
-	
 	static function create_parameter_groups($fields, $groups = array(), $data = array(), $input_name_format = null, $id = '', $class_append = '') {				
 		//Group
 		$fields = self::group_fields($fields, $groups);
-		
-// 		Waymark_Helper::debug($fields);
-		
+
 		$out = '<!-- START Parameter Container -->' . "\n";
 		
 		$id = ($id) ? ' id="' . $id . '"' : '';
