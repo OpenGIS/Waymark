@@ -27,6 +27,7 @@ module.exports = function(grunt) {
 					'waymark-js/src/js/Waymark_Map.js',
 					'waymark-js/src/js/Waymark_Map_Viewer.js',
 					'waymark-js/src/js/Waymark_Map_Editor.js',
+					'waymark-js/src/js/Waymark_Map_Query.js',
 					'waymark-js/src/js/Waymark_Map_Factory.js'																	
 				],
 				dest: 'waymark-js/dist/js/waymark-js.js'				

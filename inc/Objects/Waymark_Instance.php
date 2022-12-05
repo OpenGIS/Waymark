@@ -111,6 +111,12 @@ class Waymark_Instance extends Waymark_Class {
 
 				break;
 
+		 	//Query	
+			case 'query' :
+		 		Waymark_JS::add_call('var waymark_instance_' . $this->get_parameter('hash') . ' = window.Waymark_Map_Factory.query();');
+			
+				break;
+
 		 	//Viewer	
 			case 'viewer' :
 			default :

@@ -634,6 +634,8 @@ function waymark_execute_query(container) {
 							if(query_data = JSON.parse(response.query_data)) {
 								var waymark_container = jQuery('.waymark-instance').first();
 								var Waymark_Instance = waymark_container.data('Waymark');
+								
+								console.log(Waymark_Instance);
 						
 								//Features to display
 								if(query_data.features.length) {
