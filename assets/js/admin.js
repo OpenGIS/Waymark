@@ -76,7 +76,7 @@ function waymark_setup_repeatable_settings() {
 				//Delete button
 				var delete_button = jQuery('<div />')
 					.text('x')
-					.attr('title', waymark_php_lang.repeatable_delete_title)
+					.attr('title', waymark_admin_js.repeatable_delete_title)
 					.addClass('waymark-delete')						
 					.on('click', function(e) {
 						e.preventDefault();
@@ -300,7 +300,7 @@ function waymark_setup_select_icon_type() {
 					icon_help.show();
 					colour_row.show();					
 					icon_input.css('maxWidth', 'unset');		
-					icon_name_text.text(waymark_php_lang.marker_icon_icon_label);
+					icon_name_text.text(waymark_admin_js.marker_icon_icon_label);
 					icon_tip.data('title', icon_tips[0]);
 					
 					break;
@@ -309,7 +309,7 @@ function waymark_setup_select_icon_type() {
 					icon_help.hide();
 					colour_row.show();
 					icon_input.css('maxWidth', '45px');
-					icon_name_text.text(waymark_php_lang.marker_icon_text_label);
+					icon_name_text.text(waymark_admin_js.marker_icon_text_label);
 					icon_tip.data('title', icon_tips[1]);
 										
 					break;					
@@ -318,7 +318,7 @@ function waymark_setup_select_icon_type() {
 					icon_help.hide();	
 					colour_row.hide();
 					icon_input.css('maxWidth', 'unset');								
-					icon_name_text.text(waymark_php_lang.marker_icon_html_label);
+					icon_name_text.text(waymark_admin_js.marker_icon_html_label);
 					icon_tip.data('title', icon_tips[2]);
 										
 					break;

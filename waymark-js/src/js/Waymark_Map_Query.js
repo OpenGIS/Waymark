@@ -6,6 +6,8 @@
 
 function Waymark_Map_Query() {	
 
+	this.create_buttons = function() {}
+
 	this.build_content = function(layer_type, feature, layer, data_layer = 'map_data') {
 		Waymark = this;
 

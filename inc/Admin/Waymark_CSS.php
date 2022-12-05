@@ -17,12 +17,6 @@ class Waymark_CSS {
 		wp_enqueue_style('waymark_admin_css');	
 	}
 	
-	function menu_init() {
-		require_once('Admin/Waymark_Settings.php');		
-		require_once('Admin/Waymark_CSS.php');					
-		require_once('Admin/Waymark_Menu.php');	
-	}	
-	
 	static function add_chunk($chunk) {	
 		self::$chunks[] = $chunk . "\n";
 	}
