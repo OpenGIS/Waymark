@@ -2,75 +2,46 @@
 
 class Waymark_Meta {
 	
-	private $Waymark_Object;
+	//private $Waymark_Object;
+	private $current_screen;
 	
 	function __construct() {
-		//Map
-		add_meta_box('waymark_map_meta', esc_html__('Map Editor', 'waymark'), array($this, 'get_map_form'), 'waymark_map', 'normal', 'high');			
-
-		//Map
-		add_meta_box('waymark_map_shortcode', __('Shortcode', 'waymark'), array($this, 'map_shortcode_content'), 'waymark_map', 'side', 'default');			
-		add_meta_box('waymark_map_export', __('Export', 'waymark'), array($this, 'map_export_content'), 'waymark_map', 'side', 'default');			
-		add_meta_box('waymark_map_help', __('Help', 'waymark'), array($this, 'map_help_content'), 'waymark_map', 'side', 'default');			
-
+		add_action('current_screen', array($this, 'current_screen'));	
 
 		add_action('post_edit_form_tag', array($this, 'add_post_enctype'));
 		add_action('post_updated', array($this, 'post_updated'), 10, 2);			
-	
-		//Waymark JS
-		//CSS
-		wp_register_style('waymark-js', Waymark_Helper::asset_url('dist/waymark-js/css/waymark-js.min.css'), array(), Waymark_Config::get_version());
-		wp_enqueue_style('waymark-js');		
-		//JS
-		wp_register_script('waymark-js', Waymark_Helper::asset_url('dist/waymark-js/js/waymark-js.min.js'), array('jquery'), Waymark_Config::get_version());
-		//Localize
-		wp_localize_script('waymark-js', 'waymark_js', array(
-			'ajaxurl' => admin_url('admin-ajax.php'),
-			'lang' => array(
-				//Viewer
-				'action_fullscreen_activate' => esc_attr__('View Fullscreen', 'waymark'),		
-				'action_fullscreen_deactivate' => esc_attr__('Exit Fullscreen', 'waymark'),		
-				'action_locate_activate' => esc_attr__('Show me where I am', 'waymark'),		
-				'action_zoom_in' => esc_attr__('Zoom in', 'waymark'),		
-				'action_zoom_out' => esc_attr__('Zoom out', 'waymark'),
-				//Editor
-				'add_line_title' => esc_attr__('Draw a Wine', 'waymark'),
-				'add_photo_title' => esc_attr__('Upload an Image', 'waymark'),
-				'add_marker_title' => esc_attr__('Place a Marker', 'waymark'),
-				'add_rectangle_title' => esc_attr__('Draw a Rectangle', 'waymark'),
-				'add_polygon_title' => esc_attr__('Draw a Polygon', 'waymark'),
-				'add_circle_title' => esc_attr__('Draw a Circle', 'waymark'),
-				'upload_file_title' => esc_attr__('Read Lines and Markers from file (GPX/KML/GeoJSON supported, which most apps should Export to)', 'waymark'),
-				'action_duplicate' => esc_attr__('Duplicate', 'waymark'),
-				'action_delete' => esc_attr__('Delete', 'waymark'),
-				'action_edit' => esc_attr__('Edit', 'waymark'),
-				'action_edit_done' => esc_attr__('Finish editing', 'waymark'),		
-				'action_upload_image' => esc_attr__('Upload Image', 'waymark'),
-				'object_title_placeholder' => esc_attr__('Title', 'waymark'),
-				'object_image_placeholder' => esc_attr__('Image URL', 'waymark'),
-				'object_description_placeholder' => esc_attr__('Description', 'waymark'),
-				'object_type_label' => esc_attr__('Type', 'waymark'),
-				'marker_latlng_label' => esc_attr__('Lat,Lng', 'waymark'),
-				'action_delete_confirm' => esc_attr__('Are you sure you want to delete this', 'waymark'),		
-				'action_search_placeholder' => esc_attr__('Search...', 'waymark'),		
-				'object_label_marker' => esc_attr__('Marker', 'waymark'),		
-				'object_label_line' => esc_attr__('Line', 'waymark'),		
-				'object_label_shape' => esc_attr__('Shape', 'waymark'),	
-				'object_label_marker_plural' => esc_attr__('Markers', 'waymark'),		
-				'object_label_line_plural' => esc_attr__('Lines', 'waymark'),		
-				'object_label_shape_plural' => esc_attr__('Shapes', 'waymark'),					
-				'error_message_prefix' => esc_attr__('Waymark Error', 'waymark'),		
-				'info_message_prefix' => esc_attr__('Waymark Info', 'waymark'),		
-				'error_file_type' => esc_attr__('This file type is not supported.', 'waymark'),		
-				'error_file_conversion' => esc_attr__('Could not convert this file to GeoJSON.', 'waymark'),		
-				'error_file_upload' => esc_attr__('File upload error.', 'waymark'),		
-				'error_photo_meta' => esc_attr__('Could not retrieve Image metadata.', 'waymark'),
-				'info_exif_yes' => esc_attr__('Image location metadata (EXIF) detected!', 'waymark'),
-				'info_exif_no' => esc_attr__('Image location metadata (EXIF) NOT detected.', 'waymark')
-			)
-		));
-		wp_enqueue_script('waymark-js');		
 	}
+	
+	function current_screen() {
+
+		if(function_exists('get_current_screen')) {  
+			$this->current_screen = get_current_screen();
+			
+			switch($this->current_screen->post_type) {
+				//Map
+				case 'waymark_map' :									
+					add_meta_box('waymark_map_meta', esc_html__('Map Editor', 'waymark'), array($this, 'get_map_form'), 'waymark_map', 'normal', 'high');			
+			
+					if(Waymark_Config::get_setting('query', 'features', 'enable_map')) {
+						add_meta_box('waymark_map_queries', __('Map Queries', 'waymark'), array($this, 'map_queries_content'), 'waymark_map', 'side', 'default');			
+
+						add_meta_box('tax_queries_content', __('Tax Queries', 'waymark'), array($this, 'tax_queries_content'), 'waymark_map', 'side', 'default');			
+					}
+					
+					break;
+// 
+// 				Query
+// 				case 'waymark_query' :									
+// 					add_meta_box('waymark_query_meta', 'Query', array($this, 'get_query_form'), 'waymark_query', 'normal', 'high');			
+// 
+// 					break;
+			}		
+		}
+		
+		add_meta_box('waymark_map_shortcode', __('Shortcode', 'waymark'), array($this, 'map_shortcode_content'), 'waymark_map', 'side', 'default');			
+		add_meta_box('waymark_map_export', __('Export', 'waymark'), array($this, 'map_export_content'), 'waymark_map', 'side', 'default');			
+		add_meta_box('waymark_map_help', __('Help', 'waymark'), array($this, 'map_help_content'), 'waymark_map', 'side', 'default');			
+	}	
 
 	function add_post_enctype() {
 		global $post;
@@ -80,16 +51,35 @@ class Waymark_Meta {
 		}
 	}	
 
+	/**
+	 * ===========================================
+	 * =============== SAVE POST =================
+	 * ===========================================
+	 */	
 	function post_updated() {
 		global $post;
-			
+		
 		if(is_object($post) && ! (wp_is_post_revision($post->ID) || wp_is_post_autosave($post->ID))) {
 			switch($post->post_type) {
-				//Map
+				// ============ MAP ============
+				
 				case 'waymark_map' :									
 					$Map = new Waymark_Map;
 					$Map->set_data($_POST);				
 					$Map->save_meta($post->ID);
+					
+					//Queries?
+					if(isset($_POST['map_queries']) && is_array($_POST['map_queries'])) {
+						$map_queries = [];
+
+						foreach($_POST['map_queries'] as $query_data) {							
+							$Query = new Waymark_Query($query_data);		
+							
+							$map_queries[] = $Query->get_request_meta();
+						}
+
+						update_post_meta($post->ID, 'waymark_map_queries', json_encode($map_queries));
+					}
 					
 					break;			
 			}			
@@ -101,7 +91,7 @@ class Waymark_Meta {
 		
 		$Map = new Waymark_Map($post->ID);
 		
-		$has_features = array_key_exists('map_data', $Map->data) && Waymark_GeoJSON::get_feature_count($Map->data['map_data']);
+		$has_features = array_key_exists('map_data', $Map->data) && Waymark_GeoJSON::get_feature_count(json_decode($Map->data['map_data'], null, 512, JSON_OBJECT_AS_ARRAY));
 		if($has_features) {			
 			echo '<a data-title="' . esc_attr__('Download the Overlays added to this Map in the selected format.', 'waymark') . '" href="#" onclick="return false;" class="waymark-tooltip">?</a>';
 			echo Waymark_Helper::map_export_html($Map);
@@ -138,68 +128,101 @@ class Waymark_Meta {
 		echo '<p>&nbsp;</p>';
 	}
 
-	function get_map_form() {	
+	/**
+	 * ===========================================
+	 * =============== MAP EDITOR ================
+	 * ===========================================
+	 */	
+	function get_map_form($post) {	
 		//WP Media Library
 		wp_enqueue_media();
 		
 		//WP TinyMCE
 		wp_enqueue_editor();
 		
-		global $post;
-
 		$data = Waymark_Helper::flatten_meta(get_post_meta($post->ID));
 								
-		//Create new Map object
-		Waymark_JS::add_call('var Waymark_Map_Editor = window.Waymark_Map_Factory.editor()');
+		// ====== Waymark Instance ======
 
-		//Warn user about navigating away from page before Publish/Update
-		//I'm not sure why, but we have to return something here to get the desired behaviour :-/
-		Waymark_JS::add_call('Waymark_Map_Editor.map_was_edited = function() {
-			jQuery(window).on(\'beforeunload.edit-post\', function() {
-				return null;
-			});
-	 	}');
+		$instance_data = [
+			'type' => 'editor'
+		];
 
-		//Default view
-		if($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
-			//We have a valid LatLng
-			if($default_latlng_array = Waymark_Helper::latlng_string_to_array($default_latlng)) {
-		 		Waymark_JS::add_call('Waymark_Map_Editor.fallback_latlng = [' . $default_latlng_array[0] . ',' . $default_latlng_array[1] . ']');					
-			}
-		}
-		if($default_zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
-	 		Waymark_JS::add_call('Waymark_Map_Editor.fallback_zoom = ' . $default_zoom);		
-		}
-
-		//Map Div
-		echo '<div id="waymark-map" class="waymark-map"></div>' . "\n";
-		
-		//Output Config
-		Waymark_JS::add_call('var waymark_user_config = ' . json_encode(Waymark_Config::get_map_config()) . ';');				
-		Waymark_JS::add_call('waymark_user_config.map_height = 600;');				
-		
 		//Set basemap
 		if($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
-			Waymark_JS::add_call('waymark_user_config.map_init_basemap = "' . $editor_basemap . '"');		
+			$instance_data['basemap'] = $editor_basemap;		
 		}
 
-		//Go!
-		Waymark_JS::add_call('Waymark_Map_Editor.init(waymark_user_config)');
+		$Waymark_JS = new Waymark_Instance($instance_data);
+		$Waymark_JS->add_js();
+		echo $Waymark_JS->get_html();	
 
-		//GeoJSON set?
+		//Map Data (GeoJSON) exists?
 		if(array_key_exists('waymark_map_data', $data)) {
-			Waymark_JS::add_call('Waymark_Map_Editor.load_json(' . $data['waymark_map_data'] . ');');			
+			$Waymark_JS->load_json($data['waymark_map_data']);			
 		}
 
-		$map_details_link = (get_post_status($post) == 'publish') ? get_permalink($post->ID) : 'https://www.joesway.ca/map/route-map';
 
+		// ==============================
+
+				
 		//Create Feed meta input
-		$Map = new Waymark_Map;		
+		$Map = new Waymark_Map($post->ID);		
 		$Map->set_data($data);
 		$Map->set_input_type('meta');
 		echo $Map->create_form();		
 
 		echo '<p>' . sprintf(__('You can manage Meta fields in <a href="%s">Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')) . '</p>';		
 	}
+
+	/**
+	 * ===========================================
+	 * ============== MAP QUERIES ================
+	 * ===========================================
+	 */	
+	function map_queries_content() {
+		global $post;
+		
+		//Get for Map
+		$meta_queries = get_post_meta($post->ID, 'waymark_map_queries', true);
+		
+		$meta_queries = json_decode($meta_queries, JSON_OBJECT_AS_ARRAY);		
+
+		//Output
+		$Query = new Waymark_Query();
+
+		//Valid Queries		
+		if(is_array($meta_queries)) {
+			$Query->create_map_form($meta_queries);			
+		//Blank
+		} else {
+			$Query->create_map_form();		
+		}
+	}	
+
+	/**
+	 * ===========================================
+	 * ============== TAX QUERIES ================
+	 * ===========================================
+	 */	
+	function tax_queries_content() {
+		global $post;
+		
+		//Create Feed meta input
+		$Map = new Waymark_Map($post->ID);		
+
+// 		Waymark_Helper::debug($Map);
+
+		//Queries data?
+		if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
+			$tax_queries = [];
+			if(sizeof($Map->Queries) && is_array($Map->Queries)) {
+				foreach($Map->Queries as $Query) {
+					$tax_queries[] = $Query->get_request_meta();				
+				}
+				$Query->create_map_form($tax_queries, 'tax_queries');									
+			}
+		}
+	}		
 }
 new Waymark_Meta;

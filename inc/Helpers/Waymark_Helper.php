@@ -445,6 +445,14 @@ class Waymark_Helper {
 		}
 	}
 
+	static public function make_hash($data, $length = 6) {
+		if(! is_string($data)) {
+			$data = json_encode($data);
+		}
+		
+		return substr(md5($data), 0, $length);
+	}
+
 	//Thanks! https://stackoverflow.com/a/24365425/569788
 	static public function stringify_numbers($obj) {
 		//Bad data

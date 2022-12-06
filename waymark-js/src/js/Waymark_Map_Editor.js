@@ -148,8 +148,9 @@ function Waymark_Map_Editor() {
 	//Update meta field
 	this.save_data_layer = function() {
 		Waymark = this;
-	
-		var map_data_container = jQuery('#map_data');
+		
+		//Map Data	
+		var map_data_container = jQuery('.waymark-input-map_data').first();
 		var map_data_string = JSON.stringify(Waymark.map_data.toGeoJSON());
 
 		//Update custom field form
