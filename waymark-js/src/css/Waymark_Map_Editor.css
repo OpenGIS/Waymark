@@ -109,6 +109,24 @@
   padding-left: 70px;
   z-index: 1;
 }
+.waymark-map-container.waymark-is-editor ul.waymark-info.waymark-query-info {
+  height: unset;
+  max-height: 200px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info.waymark-query-info li.waymark-info-description {
+  width: 95%;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info.waymark-query-info li.waymark-info-description table {
+  width: 100%;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info.waymark-query-info li.waymark-info-description table tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+.waymark-map-container.waymark-is-editor ul.waymark-info.waymark-query-info li.waymark-info-description table tr td {
+  padding: 5px;
+}
 .waymark-map-container.waymark-is-editor ul.waymark-info li {
   margin-bottom: 5px;
 }

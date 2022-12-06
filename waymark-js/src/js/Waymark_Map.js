@@ -21,7 +21,7 @@ var waymark_js_localize = {
 	"add_rectangle_title" : "Draw a Rectangle",
 	"add_polygon_title" : "Draw a Polygon",
 	"add_circle_title" : "Draw a Circle",
-	"upload_file_title" : "Read Lines and Markers from file (GPX/KML/GeoJSON supported, which most apps should Export to)",
+	"upmap_file_title" : "Read Lines and Markers from file (GPX/KML/GeoJSON supported, which most apps should Export to)",
 	"action_duplicate" : "Duplicate",
 	"action_delete" : "Delete",
 	"action_edit" : "Edit",

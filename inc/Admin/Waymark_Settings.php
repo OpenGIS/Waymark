@@ -5,6 +5,8 @@ class Waymark_Settings {
 	private $page_slug = 'waymark-settings';			
 	private $default_content = 'waymark-settings-tab-tiles';
 	private $current_settings = array();
+	private $Waymark_Instance = null;
+	
 	public $tabs = array();	
 	public $settings_nav;
 		
@@ -575,7 +577,7 @@ class Waymark_Settings {
 		foreach($collection_objects as $collection) {
 			$collection_array[$collection->term_id] = $collection->name;
 		}
-			
+
 		//Roles
 		if(! function_exists('get_editable_roles')) {
     	require_once ABSPATH . 'wp-admin/includes/user.php';
@@ -1187,20 +1189,20 @@ class Waymark_Settings {
 		 */	
 		
 		//Default centre
-// 		$this->waymark_instances['latlng_selector'] = new Waymark_Instance([
-// 			'hash' => 'latlng_selector',
-// 			'add_class' => 'waymark-hidden'
-// 		]);
-// 		$this->waymark_instances['latlng_selector']->add_js();				
-// 		$this->tabs['misc']['sections']['map_options']['fields']['map_default_latlng']['prepend'] = $this->waymark_instances['latlng_selector']->get_html();
-// 
-// 		//Query bounds
-// 		$this->waymark_instances['bounds_selector'] = new Waymark_Instance([
-// 			'hash' => 'bounds_selector',
-// 			'add_class' => 'waymark-hidden'
-// 		]);
-// 		$this->waymark_instances['bounds_selector']->add_js();		
-// 		$this->tabs['query']['sections']['defaults']['fields']['query_area_bounds']['prepend'] = $this->waymark_instances['bounds_selector']->get_html();
+		$this->waymark_instances['latlng_selector'] = new Waymark_Instance([
+			'hash' => 'latlng_selector',
+			'add_class' => 'waymark-hidden'
+		]);
+		$this->waymark_instances['latlng_selector']->add_js();				
+		$this->tabs['misc']['sections']['map_options']['fields']['map_default_latlng']['prepend'] = $this->waymark_instances['latlng_selector']->get_html();
+
+		//Query bounds
+		$this->waymark_instances['bounds_selector'] = new Waymark_Instance([
+			'hash' => 'bounds_selector',
+			'add_class' => 'waymark-hidden'
+		]);
+		$this->waymark_instances['bounds_selector']->add_js();		
+		$this->tabs['query']['sections']['defaults']['fields']['query_area_bounds']['prepend'] = $this->waymark_instances['bounds_selector']->get_html();
 
     add_action('admin_notices', array($this, 'admin_notices'));	
 		add_action('admin_init', array($this, 'register_settings'));				

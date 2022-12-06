@@ -554,7 +554,7 @@ msgid ""
 "What kind of Marker is this? E.g. \"Photo\", \"Grocery Store\", \"Warning!"
 "\". Once saved, Marker labels can not be edited. The Marker Label is "
 "displayed in the Tooltip (when hovering over the Marker) and in the Info "
-"Window (once the Marker is clicked). Hide in Settings > Misc. > Map Options "
+"Window (once the Marker is clicked). Hide in Settings > Map > Misc. "
 "> Type Labels."
 msgstr ""
 
@@ -879,7 +879,7 @@ msgid ""
 "What features to offer in the Editor. Important! Uploaded images are added "
 "to the Media Library, reading from file does not keep a copy of the file on "
 "the server. Whether an individual Meta input is displayed can be set in the "
-"Settings > Meta."
+"Settings > Map > Meta."
 msgstr ""
 
 #: inc/Admin/Waymark_Settings.php:575 inc/Admin/Waymark_Settings.php:628
@@ -936,7 +936,7 @@ msgid ""
 "What features to offer in the Editor. Important! Uploaded images are added "
 "to the Media Library (see Upload Location below), reading from file does not "
 "keep a copy of the file on the server. Whether an individual Meta input is "
-"displayed can be set in the Settings > Meta."
+"displayed can be set in the Settings > Map > Meta."
 msgstr ""
 
 #: inc/Admin/Waymark_Settings.php:639

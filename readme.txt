@@ -190,11 +190,11 @@ A <b>BIG</b> thank you to the following users for their help with testing:
 = 0.9.15 =
 
 * **Meta**
-    * Meta can now be organised into groups. Meta in the same group will be displayed together when editing and viewing Maps. Groups can be managed in Settings > Meta > Groups.
+    * Meta can now be organised into groups. Meta in the same group will be displayed together when editing and viewing Maps. Groups can be managed in Settings > Map > Meta > Groups.
     * New layout for Meta to incorporate Meta Groups on Map Details page.
 * **Shortcode**
-    * Meta can now be displayed using the Shortcode by clicking "Details" in the Shortcode Header. Use the Settings > Meta > "In Shortcode?" option to specify which Meta is displayed. Note: this feature requires the Shortcode Header be set to "Show" in Settings > Misc. > Shortcode Options.
-    * The Export option is now available through the Shortcode, if the "Public Export" option is enabled (Settings > Misc. > Map Options).
+    * Meta can now be displayed using the Shortcode by clicking "Details" in the Shortcode Header. Use the Settings > Map > Meta > "In Shortcode?" option to specify which Meta is displayed. Note: this feature requires the Shortcode Header be set to "Show" in Settings > Map > Shortcodes.
+    * The Export option is now available through the Shortcode, if the "Public Export" option is enabled (Settings > Map > Misc.).
 * **Editor** 
     * Overlay descriptions now use a rich text editor.
     * Added the ability to duplicate Markers/Lines/Shapes in the Editor.
@@ -205,7 +205,7 @@ A <b>BIG</b> thank you to the following users for their help with testing:
 
 = 0.9.14 =
 
-* **Line Elevations** - Display an interactive elevation graph for Lines that have elevation data. Minimum/Maximum elevation and total length statistics are also displayed. Customise in Settings > Misc. > Elevation Options. Thanks to <a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>!
+* **Line Elevations** - Display an interactive elevation graph for Lines that have elevation data. Minimum/Maximum elevation and total length statistics are also displayed. Customise in Settings > Map > Elevation. Thanks to <a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>!
 * Cyrillic alphabet fix.
 * GPX parsing fix.
 * Updated user capabilities for plugin features.
@@ -215,8 +215,8 @@ A big thank you to everyone who provided input for this release. Extra special t
 
 = 0.9.13 =
 
-* **Overlay Filter** - This allows your visitors to filter which Markers, Lines and Shapes are currently visible on the Map by clicking on the layer icon. You can choose to show/hide certain Types when the Map initially loads. Enable using the global setting (Settings > Misc. > Map Options), or using the Shortcode.
-* **Export** - There is now an Export function when editing a Map. With "Public Export" enabled (Settings > Misc. > Map Options) site visitors can download the Overlays (Markers, Lines and Shapes) currently displayed on the Map Details page. Can be used in conjunction with the Overlay Filter to select which Overlays to download. GeoJSON, GPX and KML formats  supported.
+* **Overlay Filter** - This allows your visitors to filter which Markers, Lines and Shapes are currently visible on the Map by clicking on the layer icon. You can choose to show/hide certain Types when the Map initially loads. Enable using the global setting (Settings > Map > Misc.), or using the Shortcode.
+* **Export** - There is now an Export function when editing a Map. With "Public Export" enabled (Settings > Map > Misc.) site visitors can download the Overlays (Markers, Lines and Shapes) currently displayed on the Map Details page. Can be used in conjunction with the Overlay Filter to select which Overlays to download. GeoJSON, GPX and KML formats  supported.
 * **Meta** - Added Rich Text, Select and Multi-Select input types.
 * Bug fixes.
 
@@ -224,13 +224,13 @@ Thanks to <a href="https://wordpress.org/support/users/neilhorton740/">neilhorto
 
 = 0.9.12 =
 
-* **Gallery** - Added the option to display an image gallery for Markers that have images associated with them. Can be changed in Settings > Misc. > Map Options. Can be enabled using the show_gallery="1" Shortcode option.
+* **Gallery** - Added the option to display an image gallery for Markers that have images associated with them. Can be changed in Settings > Map > Misc.. Can be enabled using the show_gallery="1" Shortcode option.
 * Created <a href="https://www.waymark.dev/docs/">Waymark Documentation</a>.
 * Updated the <a href="https://www.waymark.dev/docs/">Demo</a>.
 * First steps towards <a href="https://developer.wordpress.org/plugins/internationalization/localization/">Localization</a>.
 * Added the ability to change Map author. Thanks to <a href="https://wordpress.org/support/topic/feature-request-shortcode-download-link-author-change/">andreasrns</a> for the suggestion.
 * Maps now support Revisions.
-* Added "Header for Admin" to Settings > Shortcode Options. Use this Setting to always show the Shortcode Header when signed in as admin, useful for quickly navigating to embedded Maps.
+* Added "Header for Admin" to Settings > Maps > Shortcodes. Use this Setting to always show the Shortcode Header when signed in as admin, useful for quickly navigating to embedded Maps.
 * Fixed a bug where circles were being added as Markers.
 * Removed undocumented shortcode button in Classic Editor.
 * Fixed Leaflet JS conflict when other instances of Leaflet exist. Thanks to <a href="https://wordpress.org/support/topic/blank-map-6/">jmruas</a> for bringing this to my attention.
@@ -263,7 +263,7 @@ Another big thanks to <a href="https://wordpress.org/support/users/neilhorton740
 
 * Release date: December 17th, 2019
 
-Added the ability to specify a default basemap through shortcode: [Waymark map_id="1234" basemap="Basemap Name"]. Which Basemap to use as the Map Editor default can also be specified in Settings > Misc. > Editor Options. Thanks again to <a href="https://wordpress.org/support/users/neilhorton740/">neilhorton740</a> for the suggestion and testing.
+Added the ability to specify a default basemap through shortcode: [Waymark map_id="1234" basemap="Basemap Name"]. Which Basemap to use as the Map Editor default can also be specified in Settings > Advanced > Editor Options. Thanks again to <a href="https://wordpress.org/support/users/neilhorton740/">neilhorton740</a> for the suggestion and testing.
 
 = 0.9.8 =
 

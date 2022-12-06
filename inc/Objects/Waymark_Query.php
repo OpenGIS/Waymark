@@ -281,7 +281,6 @@ class Waymark_Query extends Waymark_Class {
 	function create_preview() {
 		//Waymark Instance
 		$data = [
-			'type' => 'query',
 			'hash' => 'query_preview',
 			'add_class' => 'waymark-query-preview'
 		];

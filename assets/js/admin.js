@@ -154,6 +154,13 @@ function waymark_setup_repeatable_settings() {
 	});
 }
 
+function waymark_setup_repeatable_forms() {	
+	//Each container
+	jQuery('.waymark-form.waymark-repeatable').each(function() {
+
+	});
+}
+
 function waymark_setup_marker_tab() {
 	//Icon name
 	var marker_icon_inputs = jQuery('.waymark-input.waymark-marker_icon');	

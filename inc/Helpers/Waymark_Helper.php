@@ -7,12 +7,20 @@ class Waymark_Helper {
 		
 		require_once($path);		
 	}
+
+	static public function make_hash($data, $length = 6) {
+		if(! is_string($data)) {
+			$data = json_encode($data);
+		}
+		
+		return substr(md5($data), 0, $length);
+	}
 	
 	static public function plugin_about() {
 		$out = '';
 		
 		$out .= '	<div id="waymark-about">' . "\n";	
-		$out .= '		<img width="75" height="75" alt="Joe\'s mug" src="//www.josephhawes.co.uk/assets/images/Joe1BW.jpg" />' . "\n";		
+		$out .= '		<img alt="Joe\'s mug" src="//www.josephhawes.co.uk/assets/images/Joe1BW.jpg" />' . "\n";		
 		$out .= '		<p class="waymark-first"><b>' . sprintf(esc_html__("Hi, I'm %s.", 'waymark'), "Joe") . '</b></p>' . "\n";		
 
 		$out .= '		<p>' . __('Waymark is <strong><a href="https://github.com/morehawes/waymark">open source</a></strong> and a work in progress.', 'waymark') . '</p>' . "\n";		
@@ -417,6 +425,10 @@ class Waymark_Helper {
 	}
 	
 	static public function latlng_string_to_array($latlng_string) {
+		if(! is_string($latlng_string)) {
+			return false;
+		}
+		
 		$latlng_array = explode(',', $latlng_string);
 		
 		if(is_array($latlng_array) && sizeof($latlng_array) == 2) {
@@ -436,6 +448,11 @@ class Waymark_Helper {
 		if(! self::is_debug()) {
 			return;	
 		}
+
+		//Clear other output
+// 		if($die) {
+// 			@ ob_end_clean();
+// 		}
 			
 		echo '<pre>';
 		print_r($thing);
@@ -443,14 +460,6 @@ class Waymark_Helper {
 		if($die) {
 			die;
 		}
-	}
-
-	static public function make_hash($data, $length = 6) {
-		if(! is_string($data)) {
-			$data = json_encode($data);
-		}
-		
-		return substr(md5($data), 0, $length);
 	}
 
 	//Thanks! https://stackoverflow.com/a/24365425/569788
@@ -666,25 +675,27 @@ class Waymark_Helper {
 	}	
 	
 	public static function get_object_types($type = 'marker', $use_key = false, $as_options = false) {
+		$types_out = [];
+		
 		$object_types = Waymark_Config::get_item($type . 's', $type . '_types', true);
 
 		//Use keys
-		if($use_key) {
+		if(is_string($use_key)) {
 			$object_types = self::multi_use_as_key($object_types, $use_key);			
-			
+
 			//Convert to dropdown
 			if($as_options) {
 				foreach($object_types as $key => $data) {
-					if(array_key_exists($use_key, $data)) {
-						$object_types[$key] = $data[$use_key];
-					} else {
-						$object_types[$key] = $key;					
-					}
+
+					$types_out[self::make_key($key, '', false)] = $data[$use_key];					
 				}
 			}
-		}	
-		
-		return $object_types;
+		//Don't modify
+		}	else {
+			$types_out = $object_types;
+		}
+				
+		return $types_out;
 	}
 
 	public static function array_string_to_array($string) {
@@ -706,7 +717,7 @@ class Waymark_Helper {
 	
 		return $options_array;
 	}
-	
+
 	static public function map_export_html($Map) {
 		if(! isset($Map->post_id) || ! isset($Map->post_title)) {
 			return false;

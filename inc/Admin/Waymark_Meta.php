@@ -172,6 +172,17 @@ class Waymark_Meta {
 		$Map->set_input_type('meta');
 		echo $Map->create_form();		
 
+// 		Waymark_Helper::debug($Map);
+
+		//Queries data?
+// 		if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
+// 			foreach($Map->Queries as $Query) {
+// 				if($query_data = $Query->get_parameter('query_data')) {
+// 					$Waymark_JS->load_json($query_data, 'query_data');								
+// 				}
+// 			}
+// 		}
+		
 		echo '<p>' . sprintf(__('You can manage Meta fields in <a href="%s">Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')) . '</p>';		
 	}
 

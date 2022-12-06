@@ -135,6 +135,28 @@
 			list-style-type: none;
 			padding-left: 70px;
 			z-index: 1;
+			&.waymark-query-info {
+				height: unset;				
+				max-height: 200px;				
+				overflow-y: scroll;
+				overflow-x: hidden;
+				li {
+					&.waymark-info-description {
+						width: 95%;
+						table {
+							width: 100%;
+							tr {
+								&:nth-child(odd) {
+									background-color: #f9f9f9;
+								}				
+								td {
+									padding: 5px;
+								}
+							}
+						}
+					}
+				}
+			}
 			li {
 				margin-bottom: 5px;
 				&.waymark-info-description,

@@ -157,6 +157,8 @@ class Waymark_Object {
 			$post_id = $this->post_id;
 		}
 		
+// 		Waymark_Helper::debug($this, false);
+		
 		//Iterate over each parameter
 		foreach($this->parameters as $param_defition) {
 			
