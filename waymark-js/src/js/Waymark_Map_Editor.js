@@ -622,7 +622,7 @@ function Waymark_Map_Editor() {
 
 						return false;
 					});		
-				list.append(jQuery('<li />').addClass('waymark-info-button waymark-info-delete waymark-' + layer_type + '-delete').append(ele));
+				list.append(jQuery('<li />').addClass('waymark-info-button waymark-info-duplicate waymark-' + layer_type + '-delete').append(ele));
 
 				//Delete button
 				var ele = jQuery('<button />')
