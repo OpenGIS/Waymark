@@ -21,14 +21,6 @@ function Waymark_Map_Factory() {
 		this.instances.push(instance);
 				
 		return instance;
-	}	
-
-	this.query = function() {	
-		var instance = Object.assign(new Waymark_Map, new Waymark_Map_Query);
-		
-		this.instances.push(instance);
-				
-		return instance;
 	}		
 }
 
