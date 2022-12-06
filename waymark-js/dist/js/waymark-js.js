@@ -10040,7 +10040,7 @@ function Waymark_Map_Editor() {
 			Waymark.message(waymark_js.lang.error_file_conversion, 'error');
 		}
 	}		
-	
+		
 /*
 	==================================
 	============ OVERLOAD ============

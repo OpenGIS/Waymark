@@ -50,8 +50,6 @@ function waymark_setup_repeatable_settings() {
 				for(var j in clones[i]) {
 					var set_value = clones[i][j];
 					
-					console.log(input);
-					
 					var input = jQuery('.waymark-input-' + j, clone);
 					input.attr('name', input.attr('name') + '[' + i + ']');
 					
@@ -76,7 +74,7 @@ function waymark_setup_repeatable_settings() {
 				//Delete button
 				var delete_button = jQuery('<div />')
 					.text('x')
-					.attr('title', waymark_admin_js.repeatable_delete_title)
+					.attr('title', waymark_admin_js.lang.repeatable_delete_title)
 					.addClass('waymark-delete')						
 					.on('click', function(e) {
 						e.preventDefault();
@@ -307,7 +305,7 @@ function waymark_setup_select_icon_type() {
 					icon_help.show();
 					colour_row.show();					
 					icon_input.css('maxWidth', 'unset');		
-					icon_name_text.text(waymark_admin_js.marker_icon_icon_label);
+					icon_name_text.text(waymark_admin_js.lang.marker_icon_icon_label);
 					icon_tip.data('title', icon_tips[0]);
 					
 					break;
@@ -316,7 +314,7 @@ function waymark_setup_select_icon_type() {
 					icon_help.hide();
 					colour_row.show();
 					icon_input.css('maxWidth', '45px');
-					icon_name_text.text(waymark_admin_js.marker_icon_text_label);
+					icon_name_text.text(waymark_admin_js.lang.marker_icon_text_label);
 					icon_tip.data('title', icon_tips[1]);
 										
 					break;					
@@ -325,7 +323,7 @@ function waymark_setup_select_icon_type() {
 					icon_help.hide();	
 					colour_row.hide();
 					icon_input.css('maxWidth', 'unset');								
-					icon_name_text.text(waymark_admin_js.marker_icon_html_label);
+					icon_name_text.text(waymark_admin_js.lang.marker_icon_html_label);
 					icon_tip.data('title', icon_tips[2]);
 										
 					break;
@@ -641,8 +639,6 @@ function waymark_execute_query(container) {
 							if(query_data = JSON.parse(response.query_data)) {
 								var waymark_container = jQuery('.waymark-instance').first();
 								var Waymark_Instance = waymark_container.data('Waymark');
-								
-								console.log(Waymark_Instance);
 						
 								//Features to display
 								if(query_data.features.length) {
@@ -1128,7 +1124,7 @@ function waymark_admin_message(text = null, type = 'info', container_selector = 
 jQuery(document).ready(function() {
 	waymark_setup_settings_nav();
 	waymark_setup_repeatable_settings();
-// 	waymark_setup_repeatable_parameters();
+	waymark_setup_repeatable_parameters();
 	waymark_setup_marker_tab();
 	setTimeout(waymark_setup_settings_maps, 100);	
 	waymark_setup_colour_pickers();
