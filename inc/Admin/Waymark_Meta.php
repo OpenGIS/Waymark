@@ -21,10 +21,14 @@ class Waymark_Meta {
 				//Map
 				case 'waymark_map' :									
 					add_meta_box('waymark_map_meta', esc_html__('Map Editor', 'waymark'), array($this, 'get_map_form'), 'waymark_map', 'normal', 'high');			
-			
+					
+					//Map Queries			
 					if(Waymark_Config::get_setting('query', 'features', 'enable_map')) {
 						add_meta_box('waymark_map_queries', __('Map Queries', 'waymark'), array($this, 'map_queries_content'), 'waymark_map', 'side', 'default');			
-
+					}
+					
+					//Taxonomy Queries
+					if(Waymark_Config::get_setting('query', 'features', 'enable_taxonomy')) {
 						add_meta_box('tax_queries_content', __('Tax Queries', 'waymark'), array($this, 'tax_queries_content'), 'waymark_map', 'side', 'default');			
 					}
 					
