@@ -17,17 +17,7 @@ class Waymark_JS {
 		wp_localize_script('waymark-js', 'waymark_js', array(
 			//AJAX
 			'ajaxurl' => admin_url('admin-ajax.php'),
-			'lang' => array(
-				//Viewer
-				'action_fullscreen_activate' => esc_attr__('View Fullscreen', 'waymark'),		
-				'action_fullscreen_deactivate' => esc_attr__('Exit Fullscreen', 'waymark'),		
-				'action_locate_activate' => esc_attr__('Show me where I am', 'waymark'),		
-				'action_zoom_in' => esc_attr__('Zoom in', 'waymark'),		
-				'action_zoom_out' => esc_attr__('Zoom out', 'waymark'),
-				'label_total_length' => esc_attr__('Total Length: ', 'waymark'),
-				'label_max_elevation' => esc_attr__('Max. Elevation: ', 'waymark'),
-				'label_min_elevation' => esc_attr__('Min. Elevation: ', 'waymark')
-			)
+			'lang' => Waymark_Lang::get_js_lang()
 		));
 		wp_enqueue_script('waymark-js');								
 			
