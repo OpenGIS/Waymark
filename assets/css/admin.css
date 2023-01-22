@@ -518,6 +518,7 @@ body.waymark_page_waymark-settings div#waymark-settings-nav {
   background-repeat: no-repeat;
 }
 body.waymark_page_waymark-settings div#waymark-settings-nav select {
+  min-width: 200px;
   position: absolute;
   padding: 0;
   z-index: 1000;

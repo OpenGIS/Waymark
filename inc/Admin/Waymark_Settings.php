@@ -769,11 +769,11 @@ class Waymark_Settings {
 		//If No public submissions
 		} elseif(! Waymark_Config::get_setting('submission', 'from_public', 'submission_public')) {
 			//Hide settings
-			$this->tabs['submission']['sections']['from_public']['fields']['submission_features']['class'] .= ' waymark-hidden';
-			$this->tabs['submission']['sections']['from_public']['fields']['submission_status']['class'] .= ' waymark-hidden';
-			$this->tabs['submission']['sections']['from_public']['fields']['submission_alert']['class'] .= ' waymark-hidden';						
-			$this->tabs['submission']['sections']['from_public']['fields']['submission_upload_dir']['class'] .= ' waymark-hidden';
-			$this->tabs['submission']['sections']['from_public']['fields']['submission_collection']['class'] .= ' waymark-hidden';
+			$this->tabs['submission']['sections']['from_public']['fields']['submission_features']['class'] = ' waymark-hidden';
+			$this->tabs['submission']['sections']['from_public']['fields']['submission_status']['class'] = ' waymark-hidden';
+// 			$this->tabs['submission']['sections']['from_public']['fields']['submission_alert']['class'] .= ' waymark-hidden';						
+			$this->tabs['submission']['sections']['from_public']['fields']['submission_upload_dir']['class'] = ' waymark-hidden';
+			$this->tabs['submission']['sections']['from_public']['fields']['submission_collection']['class'] = ' waymark-hidden';
 		}
 
 		/**

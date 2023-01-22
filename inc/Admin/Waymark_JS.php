@@ -27,16 +27,7 @@ class Waymark_JS {
 					wp_localize_script('waymark_admin_js', 'waymark_admin_js', array(
 						'ajaxurl' => admin_url('admin-ajax.php'),
 						'security' => wp_create_nonce(Waymark_Config::get_item('nonce_string')),
-						'lang' => [
-							'repeatable_delete_title' => esc_attr__('Remove!', 'waymark'),
-							'marker_icon_icon_label' => esc_attr__('Name', 'waymark'),
-							'marker_icon_text_label' => esc_attr__('Text', 'waymark'),
-							'marker_icon_html_label' => esc_attr__('HTML', 'waymark'),	
-							'error_message_prefix' => Waymark_Config::get_name() . ' ' . esc_attr__('Error', 'waymark'),	
-							'info_message_prefix' => Waymark_Config::get_name() . ' ' . esc_attr__('Info', 'waymark'),
-							'success_message_prefix' => Waymark_Config::get_name() . ' ' . esc_attr__('Success', 'waymark'),
-							'warning_message_prefix' => Waymark_Config::get_name() . ' ' . esc_attr__('Warning', 'waymark')
-						]
+						'lang' => Waymark_Lang::get_js_lang()
 					));
 					wp_enqueue_script('waymark_admin_js');	
 		
