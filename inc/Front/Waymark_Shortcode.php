@@ -288,15 +288,29 @@ class Waymark_Shortcode {
 		}
 		
 		//Initially Show / Hide Types
-		if(array_key_exists('marker_hide', $shortcode_data)) {
-			$out .= 'for(i in waymark_config.marker_types) {' . "\n";
-			$out .= '	var this_key = waymark_viewer_' . $shortcode_hash . '.make_key(waymark_config.marker_types[i]["marker_title"]);' . "\n";			
-			$out .= '	if(this_key == "' . $shortcode_data['marker_hide'] . '") {' . "\n";
-			$out .= '		console.log("Hiding " + this_key);' . "\n";			
-			$out .= '		waymark_config.marker_types[i]["marker_display"] = 0;' . "\n";			
-			$out .= '	}' . "\n";			
-			$out .= '}' . "\n";
-		}
+		foreach(['hide_marker', 'show_marker', 'hide_line', 'show_line', 'hide_shape', 'show_shape'] as $show_hide_type) {
+			if(array_key_exists($show_hide_type, $shortcode_data)) {			
+				$show_hide_explode = explode('_', $show_hide_type);
+				$overlay_kind = $show_hide_explode[1];
+				
+				if($show_hide_explode[0] == 'show') {
+					$overlay_display = 1;
+				} elseif($show_hide_explode[0] == 'hide') {
+					$overlay_display = 0;				
+				}
+
+				$overlay_type_explode = explode(',', $shortcode_data[$show_hide_type]);
+						
+				foreach($overlay_type_explode as $overlay_type) {
+					$out .= 'for(i in waymark_config.' . $overlay_kind . '_types) {' . "\n";
+					$out .= '	var this_key = waymark_viewer_' . $shortcode_hash . '.make_key(waymark_config.' . $overlay_kind . '_types[i]["' . $overlay_kind . '_title"]);' . "\n";			
+					$out .= '	if(this_key == "' . $overlay_type . '") {' . "\n";
+					$out .= '		waymark_config.' . $overlay_kind . '_types[i]["' . $overlay_kind . '_display"] = ' . $overlay_display . ';' . "\n";			
+					$out .= '	}' . "\n";			
+					$out .= '}' . "\n";
+				}
+			}
+		}		
 		
 		// =====================================
 		// ============ INIT CONFIG ============
