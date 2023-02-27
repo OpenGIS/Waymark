@@ -4,7 +4,7 @@ Tags: Create interactive Maps, Add custom Markers, Display geotagged photos, ele
 Requires at least: 4.6
 Tested up to: 6.0
 Requires PHP: 5.2
-Stable tag: 0.9.25.1
+Stable tag: 0.9.26-dev
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,14 @@ A big thank you to the following projects and their contributors. Without their 
 9. Waymark was designed to be very flexible, with lots of Settings to choose from.
 
 == Changelog ==
+
+= 0.9.26-dev =
+
+* Individual Overlay Types can now be Shown/Hidden initially using the Shortcode, overriding the "Show Initially" Setting for each. Use the `hide_marker`, `show_marker`, `hide_line`, `show_line`, `hide_shape`, `show_shape` Shortcode parameters, providing one or multiple (comma separated) <a href="https://www.waymark.dev/docs/types/#type-keys">Type Keys</a>. For example:
+
+`[Waymark map_id="1234" hide_marker="photo,alert" show_line="green"]`
+
+* Admin Help page removed in favour of a link to the Waymark website Documentation.
 
 = 0.9.25.1 =
 
