@@ -287,6 +287,17 @@ class Waymark_Shortcode {
 	 		$out .= 'waymark_config.elevation_initial = ' . Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_initial') . ';' . "\n";
 		}
 		
+		//Initially Show / Hide Types
+		if(array_key_exists('marker_hide', $shortcode_data)) {
+			$out .= 'for(i in waymark_config.marker_types) {' . "\n";
+			$out .= '	var this_key = waymark_viewer_' . $shortcode_hash . '.make_key(waymark_config.marker_types[i]["marker_title"]);' . "\n";			
+			$out .= '	if(this_key == "' . $shortcode_data['marker_hide'] . '") {' . "\n";
+			$out .= '		console.log("Hiding " + this_key);' . "\n";			
+			$out .= '		waymark_config.marker_types[i]["marker_display"] = 0;' . "\n";			
+			$out .= '	}' . "\n";			
+			$out .= '}' . "\n";
+		}
+		
 		// =====================================
 		// ============ INIT CONFIG ============
 		// =====================================				
