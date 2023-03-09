@@ -1686,5 +1686,5 @@ msgid "Joe Hawes"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://www.josephhawes.co.uk/"
+msgid "https://www.morehawes.ca/"
 msgstr ""

@@ -12,7 +12,7 @@ class Waymark_Helper {
 		$out = '';
 		
 		$out .= '	<div id="waymark-about">' . "\n";	
-		$out .= '		<img width="75" height="75" alt="Joe\'s mug" src="//www.josephhawes.co.uk/assets/images/Joe1BW.jpg" />' . "\n";		
+		$out .= '		<img width="75" height="75" alt="Joe\'s mug" src="//www.morehawes.ca/assets/images/Joe1BW.jpg" />' . "\n";		
 		$out .= '		<p class="waymark-first"><b>' . sprintf(esc_html__("Hi, I'm %s.", 'waymark'), "Joe") . '</b></p>' . "\n";		
 
 		$out .= '		<p>' . __('Waymark is <strong><a href="https://github.com/morehawes/waymark">open source</a></strong> and a work in progress.', 'waymark') . '</p>' . "\n";		
