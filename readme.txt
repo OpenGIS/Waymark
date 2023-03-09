@@ -103,6 +103,8 @@ A big thank you to the following projects and their contributors. Without their 
 
 `[Waymark map_id="1234" hide_marker="photo,alert" show_line="green"]`
 
+Thanks to <a href="https://wordpress.org/support/users/hansolo68/">hansolo68</a> for the <a href="https://wordpress.org/support/topic/show-markers-initially-as-shortcode/">suggestion</a>.
+
 * Admin Help page removed in favour of a link to the Waymark website Documentation.
 
 = 0.9.25.1 =
