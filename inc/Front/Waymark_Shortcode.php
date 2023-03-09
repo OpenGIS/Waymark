@@ -229,7 +229,7 @@ class Waymark_Shortcode {
 		}
 
 		//Output Config
- 		$out .= 'var waymark_config = jQuery.extend({}, waymark_user_config);' . "\n";					
+ 		$out .= 'var waymark_config = jQuery.extend(true, {}, waymark_user_config);' . "\n";					
  		$out .= 'waymark_config.map_div_id = "waymark-map-' . $shortcode_hash . '";' . "\n";					
  		$out .= 'waymark_config.map_height = ' . $map_height . ";\n";
 
