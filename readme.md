@@ -2,7 +2,7 @@
 **Contributors:** [morehawes](https://profiles.wordpress.org/morehawes/)  
 **Tags:** Create interactive Maps, Add custom Markers, Display geotagged photos, elevation graph, Embed GPX KML GeoJSON, Hiking route maps, Collaborate on mapping projects, Display OpenStreetMap Basemaps, No technical knowledge required  
 **Requires at least:** 4.6  
-**Tested up to:** 6.0  
+**Tested up to:** 6.2  
 **Requires PHP:** 5.2  
 **Stable tag:** 0.9.25.1  
 **License:** GPLv2 or later  
