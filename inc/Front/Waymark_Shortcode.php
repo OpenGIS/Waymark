@@ -319,6 +319,7 @@ class Waymark_Shortcode {
  		$out .= 'waymark_viewer_' . $shortcode_hash . '.init(waymark_config);' . "\n";			
 
 
+
 		// =====================================
 		// ================ MAPS ===============
 		// =====================================	
@@ -501,11 +502,21 @@ class Waymark_Shortcode {
 		}		
 
 		// =========== END FILE URL ==========
+
+		// ========== START CALLBACK ===========
+		
+		if(array_key_exists('loaded_callback', $shortcode_data)) {
+			$out .= 'if(typeof ' . $shortcode_data['loaded_callback'] . ' === "function") {' . "\n";
+			$out .= '	' . $shortcode_data['loaded_callback'] . '(waymark_viewer_' . $shortcode_hash . ');' . "\n";
+			$out .= '}' . "\n";
+		}
+
+		// =========== END CALLBACK ============
 		
 		$out .= '});' . "\n";
 		$out .= '</script>' . "\n";
 		$out .= '<!-- END Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";
- 					
+
 		// ============= END JAVASCRIPT =================
 		
 		//Return HTML			
