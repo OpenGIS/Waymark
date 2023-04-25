@@ -7184,7 +7184,12 @@ function Waymark_Map() {
 	    sleepOpacity: 1      
 		});
 		Waymark_L.control.attribution({prefix: '<a href="https://wordpress.org/plugins/waymark" title="Share your way">Waymark</a> | <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>'}).addTo(Waymark.map);
-
+		
+		//Show scale?
+		if(this.get_property(waymark_settings, 'misc', 'map_options', 'show_scale') == true) {
+			Waymark_L.control.scale().addTo(Waymark.map);
+		}
+		
 		//Add reference
 		Waymark.jq_map_container.data('Waymark', Waymark);
 

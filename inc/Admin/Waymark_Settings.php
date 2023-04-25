@@ -981,6 +981,14 @@ class Waymark_Settings {
 							'title' => esc_html__('Public Export', 'waymark'),
 							'default' => Waymark_Config::get_setting('misc', 'map_options', 'allow_export'),
 							'tip' => sprintf(esc_attr__('Enable visitors to download the Overlays (Markers, Lines and Shapes) currently displayed on the Map Details page. Can be used in conjunction with the Overlay Filter to select which Overlays to download. GeoJSON, GPX and KML formats supported.', 'waymark'))
+						),
+						'show_scale' => array(
+							'name' => 'show_scale',
+							'id' => 'show_scale',
+							'type' => 'boolean',
+							'title' => esc_html__('Show Scale', 'waymark'),
+							'default' => Waymark_Config::get_setting('misc', 'map_options', 'show_scale'),
+							'tip' => sprintf(esc_attr__('Show a distance scale (km and miles) on the Map.', 'waymark'))
 						)													
 					)																
 				),

@@ -87,7 +87,8 @@ class Waymark_Config {
 					'button_position' => 'topleft',
 					'show_gallery' => '1',
 					'show_filter' => '1',
-					'allow_export' => '0'						
+					'allow_export' => '0',
+					'show_scale' => '0'
 				),
 				'collection_options' => array(
 					'link_to_maps' => '1',
@@ -360,6 +361,14 @@ class Waymark_Config {
 			$media_library_uploads = '0';		
 		}
 		$settings_js['misc']['editor_options']['media_library_uploads'] = $media_library_uploads;
+		
+		//Scale
+		if(isset($settings['misc']['map_options']['show_scale'])) {
+			$show_scale = $settings['misc']['map_options']['show_scale'];
+		} else {
+			$show_scale = '0';		
+		}
+		$settings_js['misc']['map_options']['show_scale'] = $show_scale;
 		
 		//Debug mode
 		//Only admin

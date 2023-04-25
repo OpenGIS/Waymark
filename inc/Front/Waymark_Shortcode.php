@@ -212,6 +212,8 @@ class Waymark_Shortcode {
 
 		//Create viewer
  		$out .= '<script>' . "\n";					
+		$out .= 'var waymark_settings  = ' . Waymark_Config::get_settings_js() . ';' . "\n";				
+
  		$out .= 'jQuery(document).ready(function() {' . "\n";					
  		$out .= 'var waymark_viewer_' . $shortcode_hash . ' = window.Waymark_Map_Factory.viewer();' . "\n";					
 
