@@ -970,6 +970,7 @@ function waymark_setup_repeatable_parameters() {
 	});
 }
 
+/*
 function waymark_setup_settings_maps() {
 	var form = jQuery('body.wp-admin.waymark_page_waymark-settings #waymark-admin-container form');
 
@@ -1059,6 +1060,7 @@ function waymark_setup_settings_maps() {
 		query_area_container.append(edit_button);	
 	}	
 }
+*/
 
 function waymark_admin_message(text = null, type = 'info', container_selector = '#wpbody-content') {
 	if(text) {
@@ -1121,7 +1123,7 @@ jQuery(document).ready(function() {
 	waymark_setup_repeatable_settings();
 // 	waymark_setup_repeatable_parameters();
 	waymark_setup_marker_tab();
-	setTimeout(waymark_setup_settings_maps, 100);	
+// 	setTimeout(waymark_setup_settings_maps, 100);	
 	waymark_setup_colour_pickers();
 	waymark_setup_external_links();
 	waymark_setup_select_meta_type();

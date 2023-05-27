@@ -156,9 +156,13 @@ Waymark_L.Map.Sleep = Waymark_L.Handler.extend({
   _wakeMap: function (e) {
     this._stopWaiting();
     this._map.scrollWheelZoom.enable();
+		
+		//Joe enable dragging (disabled by default)
+    this._map.dragging.enable();
+
     if (this._map.tap) {
       this._map.touchZoom.enable();
-      this._map.dragging.enable();
+//       this._map.dragging.enable();
       this._map.tap.enable();
       this._map.addControl(this._sleepButton);
     }

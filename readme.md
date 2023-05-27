@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.2  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.27  
+**Stable tag:** 0.9.28  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -22,13 +22,13 @@ Features:
 * Easy to use, customisable and developer friendly.
 * Use the <a href="https://www.waymark.dev/docs/editor/">Editor</a> to create Maps containing Overlays (Markers, Lines and Shapes).
 * Every Overlay can be given a title, image and description; which is displayed once the Overlay is clicked.
-* Set styles and options once using <a href="https://www.waymark.dev/docs/types/">Types</a>, then simply select the appropriate Type when adding an Overlay.
+* Set styles and options once using <a href="https://www.waymark.dev/docs/types/">Types</a>, then simply select the appropriate Type when adding an Overlay. Lines can display arrows to indicate direction.
 * Add Maps to your content using the Waymark <a href="https://www.waymark.dev/docs/shortcodes/">Shortcode</a>, or link to the <a href="https://www.waymark.dev/map/route-map/">Map Details</a> page. 
 * <a href="https://www.openstreetmap.org/fixthemap">OpenStreetMap</a> is the default <a href="https://www.waymark.dev/docs/basemaps/">Basemap</a>, with support for multiple Basemaps.
 * Images uploaded with location data (EXIF) will have a Marker placed where the photo was taken.
-* Import from GPX, KML and GeoJSON formats. You can export Maps in the same formats and let your visitors do it too.
-* An interactive profile chart can be displayed for Tracks uploaded with elevation data.
 * Group Maps together using <a href="https://www.waymark.dev/docs/collections/">Collections</a> and display multiple Maps at once.
+* Import from GPX, KML and GeoJSON formats (GeoJSON properties can also be imported). You can export Maps and Collections in the same formats and let your visitors do it too.
+* An interactive profile chart can be displayed for Tracks uploaded with elevation data.
 * Add extra information to your Maps using <a href="https://www.waymark.dev/docs/meta/">Meta</a>; these are customisable form inputs that allow you to add additional data to your Maps. 
 * <a href="https://www.waymark.dev/docs/submissions/">Submissions</a> allow registered users, or guests to create Maps from the front-end of your site. You can control who can Submit Maps, what editor features are available and whether submissions should be approved before they are published.
 * For the developers: Maps are stored using the custom post type `waymark_map`, Meta is stored as Custom Fields and Collections use the `waymark_collection` Taxonomy. Most elements can be styled using CSS and have sensibly named `waymark-` classes.
@@ -110,6 +110,22 @@ A big thank you to the following projects and their contributors. Without their 
 
 
 ## Changelog ##
+
+### 0.9.28 ###
+
+* **Direction Arrows**
+  * Lines can now have a direction associated with them. To add a direction, click on a Line while editing a Map and select from the direction dropdown. Thanks <a href="https://wordpress.org/support/topic/feature-request-direction-of-travel/">for</a> <a href="https://wordpress.org/support/topic/direction-arrows-in-route/">the</a> <a href="https://github.com/morehawes/waymark/issues/4">suggestions</a>!
+* **Interaction**
+	* By default, Waymark disables scroll zoom until the user hovers over the Map for 2 seconds. This behaviour can now be customised in Waymark Settings > Maps > Interaction. Settings allow you to adjust the delay and optionally display a message to the user while scroll zoom is disabled, for example "Click or Hover to Wake".
+	* Fixed an annoying glitch where mouse "wheeling" over the elevation chart caused the Map to zoom.
+	* Added Max Zoom setting in Maps > Basemaps, which was <a href="https://wordpress.org/support/topic/feature-request-zoom-level-limit/">requested a long time ago</a>!
+* **Permalinks**
+	* Customise your Map and Collection URLs in Waymark Settings > Advanced > Permalinks by specifying Map and Collection slugs (i.e. example.com/[map-slug]/example-map/ and example.com/[collection-slug]/example-collection/). Thanks to <a href="https://wordpress.org/support/users/wkndwlk/">wkndwlk</a> for the <a href="https://wordpress.org/support/topic/map-and-collection-slugs/">suggestion</a>.
+* **GeoJSON Properties**
+	* You can now read GeoJSON feature properties when importing from file by adding them in Waymark Settings > Overlays > Properties. If Waymark finds data for these properties it will be added to the Overlay description when it is imported. Thanks to <a href="https://wordpress.org/support/users/waimek/">waimek</a> for the <a href="https://wordpress.org/support/topic/using-data-from-geojson/">suggestion</a>.
+* **Collection Export**
+	* You can now Export entire Collections when embedding them with the Shortcode. Click Details in the Shortcode Header to see the Export feature. The Public Export (Settings > Map > Misc.) and Shortcode Header (Settings > Map > Shortcodes) Settings must be enabled. As with Maps only the currently visible Overlays are exported, with GeoJSON, KML and GPX supported. Thanks to <a href="https://wordpress.org/support/users/wimzwag/">wimzwag</a> for the <a href="https://wordpress.org/support/topic/download-all-geojson-gpx/">suggestion</a>.
+* Fixed a bug where elevation data remained visible even when a Line was hidden. Thanks to <a href="https://wordpress.org/support/users/canuck069/">Nigel</a> for <a href="https://wordpress.org/support/topic/gpx-tracks-shadowed-with-evelation-colour/">pointing this out</a>.
 
 ### 0.9.27 ###
 

@@ -11,7 +11,9 @@ class Waymark_Collection {
 		//Valid Collection
 		if($collection) {
 			$this->title = $collection->name;
+			$this->description = term_description($collection_id);
 			$this->collection_id = $collection_id;
+			$this->slug = get_term($this->collection_id, 'waymark_collection')->slug;
 		
 			//Get Maps
 			$posts = get_posts(array(

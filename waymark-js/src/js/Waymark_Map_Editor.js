@@ -11,11 +11,16 @@ function Waymark_Map_Editor() {
 		==================================
 	*/
 
+	this.pre_map_setup =  function() {
+		Waymark = this;
+
+		Waymark.mode = 'edit';
+	}
+
 	this.init_done = function() {	
 		Waymark = this;
 
 		//This is the editor
-		Waymark.mode = 'edit';
 		jQuery(Waymark.map.getContainer()).addClass('waymark-is-editor');
 
 		//Add loading
@@ -637,6 +642,53 @@ function Waymark_Map_Editor() {
 		//Type
 		var config_types = Waymark.config[layer_type + '_types'];
 		var types_data = [];
+
+		// ================================
+		// ===== DIRECTION SELECTOR =======
+		// ================================
+
+		if(layer_type == 'line') {		
+			var jq_line_direction_select = jQuery('<select />');
+
+			//Options
+			jq_line_direction_select.append(
+				jQuery('<option />').val('').text(Waymark.title_case(waymark_js.lang.no_direction)),
+				jQuery('<option />').val('default').text(Waymark.title_case(waymark_js.lang.show_direction)),
+				jQuery('<option />').val('reverse').text(Waymark.title_case(waymark_js.lang.reverse_direction))
+			);			
+
+			//On change
+			jq_line_direction_select.change(function() {		
+				var selected_input = jQuery('option:selected', jQuery(this));
+
+				//Get direction value
+				var selected_direction = jQuery(this).val();
+			
+				//Update data layer
+				feature.properties.direction = selected_direction;
+				
+				//Redraw - layer Direction
+				Waymark.draw_line_direction(layer);
+
+				Waymark.save_data_layer();
+				Waymark.map_was_edited();			
+			});
+			
+			//Add item
+			list
+				.append(
+					jQuery('<li />')
+						.addClass('waymark-info-direction waymark-line-direction')
+						.append(jq_line_direction_select)
+			);
+
+			//Set selected
+			if(typeof feature.properties.direction === 'string') {
+				jQuery('option', jq_line_direction_select).filter(function() {
+					return jQuery(this).val() == Waymark.make_key(feature.properties.direction);
+				}).attr('selected', 'selected');			
+			}
+		}
 
 		// ================================
 		// ======== TYPE SELECTOR =========

@@ -50,7 +50,10 @@ class Waymark_Types {
 				'has_archive'           => false,
 				'exclude_from_search'   => false,
 				'publicly_queryable'    => true,
-				'rewrite'               => array('slug' => 'map', 'with_front' => false),
+				'rewrite'               => array(
+					'slug' => Waymark_Config::get_setting('misc', 'permalinks', 'permalink_slug_map'),
+					'with_front' => false
+				),
 				'capability_type'       => 'post'
 			)					
 		);

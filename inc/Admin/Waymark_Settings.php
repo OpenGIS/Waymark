@@ -37,11 +37,13 @@ class Waymark_Settings {
 			'waymark-settings-section-elevation_options' => '-- ' . esc_html__('Elevation', 'waymark'),
 			'waymark-settings-tab-meta' => '-- ' . esc_html__('Meta', 'waymark'),
 			'waymark-settings-section-collection_options' => '-- ' . esc_html__('Collections', 'waymark'),
+			'waymark-settings-section-interaction_options' => '-- ' . esc_html__('Interaction', 'waymark'),
 			'waymark-settings-section-map_options' => '-- ' . esc_html__('Misc.', 'waymark'),
 			'label_overlays' => esc_html__('Overlays'),
 			'waymark-settings-tab-markers' => '-- ' . esc_html__('Markers', 'waymark'),
 			'waymark-settings-tab-lines' => '-- ' . esc_html__('Lines', 'waymark'),
 			'waymark-settings-tab-shapes' => '-- ' . esc_html__('Shapes', 'waymark'),
+			'waymark-settings-tab-properties' => '-- ' . esc_html__('Properties', 'waymark'),
 			'label_sources' => esc_html__('Sources'),
 			'waymark-settings-tab-submission' => '-- ' . esc_html__('Submissions', 'waymark'),
 // 			'waymark-settings-tab-query' => '-- ' . esc_html__('Queries', 'waymark'),
@@ -102,7 +104,19 @@ class Waymark_Settings {
 							'input_processing' => array(
 								'(! strpos($param_value, "&")) ? htmlspecialchars($param_value) : $param_value'
 							)								
-						)
+						),
+						'layer_max_zoom' => array(
+							'name' => 'layer_max_zoom',
+							'id' => 'layer_max_zoom',
+							'type' => 'text',
+							'class' => 'waymark-short-input',				
+							'title' => '<span class="waymark-invisible">' . esc_html__('Basemap', 'waymark') . '</span> ' . esc_html__('Max Zoom', 'waymark'),
+							'default' => Waymark_Config::get_setting('tiles', 'layers', 'layer_max_zoom'),
+							'tip' => esc_attr__('Set a maximum zoom level for this Basemap, the default is 18.', 'waymark'),
+							'input_processing' => array(
+								'(is_numeric($param_value) && $param_value >= 1 && $param_value <= 18) ? $param_value : 18;' //Fallback
+							)		
+						),
 					)																	
 				)
 			)
@@ -780,104 +794,48 @@ class Waymark_Settings {
 		 * ===========================================
 		 */		
 
-/*
-		$this->tabs['query'] = array(
-			'name' => esc_html__('Queries', 'waymark'),
+		$this->tabs['properties'] = array(
+			'name' => esc_html__('Properties', 'waymark'),
 			'description' => '',
 			'sections' => array(
-				//Features
-				'features' => array(
-					'title' => esc_html__('Queries', 'waymark'),
-					'description' => sprintf(__('<p class="waymark-notice notice notice-warning" style="margin:0 0 15px 0;padding:10px;font-size:14px">This is an experimental feature and not intended for production sites!</p><span class="waymark-lead">Display data from the <a href="https://www.openstreetmap.org/">OpenStreetMap</a> on your Maps. Queries extract <abbr title="OpenStreetMap">OSM</abbr> data from the <a href="%s">Overpass API</a>.</span>', 'waymark'), 'https://www.openstreetmap.org/fixthemap', 'http://overpass-api.de/'),
-					'help' => array(
-						'url' => esc_attr(Waymark_Helper::site_url('docs/basemaps')),
-						'text' => esc_attr__('Basemap Docs &raquo;', 'waymark')
-					),
-//					'description' => 'Test test test.',
-					'fields' => array(	
-						'enable_taxonomy' => array(
-							'name' => 'enable_taxonomy',
-							'id' => 'enable_taxonomy',
-							'type' => 'boolean',
-							'title' => esc_html__('Shared Queries', 'waymark'),
-							'default' => Waymark_Config::get_setting('query', 'features', 'enable_taxonomy'),
-							'tip' => esc_attr__('Shared Queries can be created once and added to multiple Maps. Once enabled, a "Queries" menu item will appear in the Waymark admin menu.', 'waymark'),
-							'options' => array(
-								'1' => esc_html__('Enabled', 'waymark'),
-								'0' => esc_html__('Disabled', 'waymark')								
+				'props' => array(
+					'repeatable' => true,
+					'title' => esc_html__('Properties', 'waymark'),
+					'description' => '<span class="waymark-lead">' . __('Read <b><a href="https://geojson.org/">GeoJSON</a></b> feature properties when importing.', 'waymark') . '</span><br /><br /> If Waymark finds data for the property keys below it will be added to the Overlay description when it is imported.',
+					'footer' => sprintf(__('<small><b>Pro Tip!</b> Properties are added to the Overlay Description with class names that can be used to target them, e.g. %s.</small>', 'waymark'), '<code class="waymark-code" style="display:inline">&lt;p class="waymark-property waymark-property-property_key"&gt;&lt;b&gt;property_title&lt;/b&gt;&lt;br&gt;proprty_value&lt;/p&gt;</code>'),
+
+// 					'help' => array(
+// 						'url' => esc_attr(Waymark_Helper::site_url('docs/meta')),
+// 						'text' => esc_attr__('Meta Docs &raquo;', 'waymark')
+// 					),
+					'fields' => array(
+						'property_key' => array(
+							'name' => 'property_key',
+							'id' => 'property_key',
+							'type' => 'text',
+							'class' => '',				
+							'title' => '<u>' . esc_html__('Property', 'waymark') . '</u> ' . esc_html__('Key', 'waymark'),
+							'default' => Waymark_Config::get_setting('property', 'props', 'property_key'),
+							'tip' => esc_attr__('This is the key associated with the data you are trying to access, i.e. "properties": {"property_key": "Some content here"}', 'waymark'),
+// 							'class' => Waymark_Config::get_item('meta', 'inputs') ? 'waymark-uneditable' : '',
+							'input_processing' => array(
+								'preg_replace("/[^0-9a-zA-Z -_.]/", "", $param_value);'
 							)
 						),
-						'enable_map' => array(
-							'name' => 'enable_map',
-							'id' => 'enable_map',
-							'type' => 'boolean',
-							'title' => esc_html__('Map Queries', 'waymark'),
-							'default' => Waymark_Config::get_setting('query', 'features', 'enable_map'),
-							'tip' => esc_attr__('Map Queries can be created on a per-Map basis on the Add/Edit Map admin page.', 'waymark'),
-							'options' => array(
-								'1' => esc_html__('Enabled', 'waymark'),
-								'0' => esc_html__('Disabled', 'waymark')								
-							)
-						)
-					)
-				),
-				
-				//Defaults
-				'defaults' => array(
-					'title' => 'Defaults',
-//					'description' => 'Test test test.',
-					'fields' => array(	
-						'query_area_bounds' => array(
-							'name' => 'query_area_bounds',
-							'id' => 'query_area_bounds',
+						'property_title' => array(
+							'name' => 'property_title',
+							'id' => 'property_title',
 							'type' => 'text',
-							'title' => 'Area',
-							'default' => Waymark_Config::get_setting('query', 'defaults', 'query_area_bounds')
-// 							'attributes' => array(
-// 							'style' => 'display:none'
-// 						)
-//							'tip' => 'Test test test test test'
-						),
-						'query_overpass_request' => array(
-							'name' => 'query_overpass_request',
-							'id' => 'query_overpass_request',
-							'type' => 'textarea',
-							'title' => 'Query',
-							'default' => Waymark_Config::get_setting('query', 'defaults', 'query_overpass_request'),
-							'output_processing' => array(
-								'html_entity_decode($param_value)'
-							)	
-// 							'input_processing' => array(
-// 								'(! strpos($param_value, "&")) ? htmlspecialchars($param_value) : $param_value'
-// 							)															
-						)											
-					)
-				),
-				'performance' => array(
-					'title' => 'Performance',
-//					'description' => 'Test test test.',
-					'fields' => array(	
-						'cache_minutes' => array(
-							'name' => 'cache_minutes',
-							'id' => 'cache_minutes',
-							'type' => 'text',
-							'title' => 'Cache Minutes',
-							'default' => Waymark_Config::get_setting('query', 'performance', 'cache_minutes'),
-//							'tip' => 'Test test test test test'
-						)												
-					)											
-					
-				)												
+							'class' => '',				
+							'title' => '<u><span class="waymark-invisible">' . esc_html__('Property', 'waymark') . '</span></u> ' . esc_html__('Title', 'waymark'),
+							'default' => Waymark_Config::get_setting('property', 'props', 'property_title'),
+							'tip' => esc_attr__('The value for this property will be added to the Overlay Description under this title.', 'waymark'),
+// 							'class' => Waymark_Config::get_item('meta', 'inputs') ? 'waymark-uneditable' : ''
+						)						
+					)																										
+				)
 			)
 		);
-
-		//Queries Not Enabled
-		if(! (Waymark_Config::get_setting('query', 'features', 'enable_taxonomy') + Waymark_Config::get_setting('query', 'features', 'enable_map'))) {
-			//Hide
-			$this->tabs['query']['sections']['defaults']['class'] = 'waymark-hidden';
-			$this->tabs['query']['sections']['performance']['class'] = 'waymark-hidden';
-		}
-*/
 				
 		/**
 		 * ===========================================
@@ -980,7 +938,7 @@ class Waymark_Settings {
 							'type' => 'boolean',
 							'title' => esc_html__('Public Export', 'waymark'),
 							'default' => Waymark_Config::get_setting('misc', 'map_options', 'allow_export'),
-							'tip' => sprintf(esc_attr__('Enable visitors to download the Overlays (Markers, Lines and Shapes) currently displayed on the Map Details page. Can be used in conjunction with the Overlay Filter to select which Overlays to download. GeoJSON, GPX and KML formats supported.', 'waymark'))
+							'tip' => sprintf(esc_attr__('Enable visitors to download the Overlays (Markers, Lines and Shapes) currently displayed on the Map Details page. An Export option is also displayed in the Details section of the Shortcode Header when embedding a Map or Collection. Can be used in conjunction with the Overlay Filter to select which Overlays to download. GeoJSON, GPX and KML formats supported.', 'waymark'))
 						),
 						'show_scale' => array(
 							'name' => 'show_scale',
@@ -991,6 +949,43 @@ class Waymark_Settings {
 							'tip' => sprintf(esc_attr__('Show a distance scale (km and miles) on the Map.', 'waymark'))
 						)													
 					)																
+				),
+
+				//Interaction
+				
+				'interaction_options' => array(
+					'title' => esc_html__('Interaction Options', 'waymark'),
+					'description' => sprintf(__('Waymark Maps will zoom when the user scrolls. This can cause some unexpected/annoying behaviour when scrolling a page.<br /><br />By default, Waymark disables scroll zoom until the user hovers over the Map for %s seconds.', 'waymark'), Waymark_Config::get_default('misc', 'interaction_options', 'delay_seconds')),
+					'fields' => array(															
+						'delay_seconds' => array(
+							'name' => 'delay_seconds',
+							'id' => 'delay_seconds',
+							'type' => 'text',
+							'class' => 'waymark-short-input',
+							'title' => esc_html__('Hover Wake Time', 'waymark'),
+							'append' => esc_html__('Seconds', 'waymark'),
+							'default' => Waymark_Config::get_setting('misc', 'interaction_options', 'delay_seconds'),
+							'tip' => esc_attr__('How many seconds before scroll zoom is enabled. 0 seconds will mean no delay (disbling this feature). A large number of seconds like 3600 (an hour) will esentially *disable hover to wake*, meaning the user will need to *click* to wake.', 'waymark'),
+							'input_processing' => array(
+								'(is_numeric($param_value)) ? $param_value : ' . Waymark_Config::get_default('misc', 'interaction_options', 'delay_seconds') . ';'	//Fallback
+							)								
+						),
+						'do_message' => array(
+							'name' => 'do_message',
+							'id' => 'do_message',
+							'type' => 'boolean',
+							'title' => esc_html__('Display Message', 'waymark'),
+							'default' => Waymark_Config::get_setting('misc', 'interaction_options', 'do_message'),
+							'tip' => esc_attr__('This message will be displayed by the Map while scroll zoom is disabled.', 'waymark')
+						),							
+						'wake_message' => array(
+							'name' => 'wake_message',
+							'id' => 'wake_message',
+							'type' => 'text',
+							'title' => '<span class="waymark-invisible">' . esc_html__('Display', 'waymark') . ' </span> ' . esc_html__('Message Text', 'waymark'),									
+							'default' => Waymark_Config::get_setting('misc', 'interaction_options', 'wake_message')
+						)
+					)							
 				),
 				
 				//Collections
@@ -1144,6 +1139,43 @@ class Waymark_Settings {
 							'default' => Waymark_Config::get_setting('misc', 'editor_options', 'media_library_uploads'),
 							'tip' => esc_attr__('By default Waymark does not store any files read using the Editor. Using this option you can use the Media Library to store the uploaded GPX/KML/GeoJSON file.', 'waymark')
 						)																	
+					)											
+				),
+
+				//Advanced
+				'permalinks' => array(
+					'title' => esc_html__('Permalinks', 'waymark'),
+					'description' => 'Customise your Map and Collection URLs.',
+					'footer' => '<small>For the changes to take affect you must rebuild your Permalinks by going to WP Settings > Permalinks and clicking "Save Changes".</small>',					
+					'fields' => array(
+						'permalink_slug_map' => array(
+							'name' => 'permalink_slug_map',
+							'id' => 'permalink_slug_map',
+							'type' => 'text',
+							'class' => 'waymark-short-input',
+							'title' => esc_html__('Map Slug', 'waymark'),
+							'default' => Waymark_Config::get_setting('misc', 'permalinks', 'permalink_slug_map'),
+							'tip' => esc_attr__('The URL slug that will be used for links to your Maps, i.e. example.com/[map-slug]/example-map/. Only alpha-numeric characters and hyphens (-) are allowed.', 'waymark'),
+							'input_processing' => array(
+								'preg_replace("/[^0-9a-z-]+/", "", $param_value);'
+							),
+							'prepend' => '<small>/</small>',	
+							'append' => '<small>/map-name/</small>'						
+						),
+						'permalink_slug_collection' => array(
+							'name' => 'permalink_slug_collection',
+							'id' => 'permalink_slug_collection',
+							'type' => 'text',
+							'class' => 'waymark-short-input',							
+							'title' => esc_html__('Collection Slug', 'waymark'),
+							'default' => Waymark_Config::get_setting('misc', 'permalinks', 'permalink_slug_collection'),
+							'tip' => esc_attr__('The URL slug that will be used for links to your Collections, i.e. example.com/[collection-slug]/example-collection/. Only alpha-numeric characters and hyphens (-) are allowed.', 'waymark'),
+							'input_processing' => array(
+								'preg_replace("/[^0-9a-z-]+/", "", $param_value);'
+							),
+							'prepend' => '<small>/</small>',	
+							'append' => '<small>/collection-name/</small>'											
+						)																		
 					)											
 				),
 

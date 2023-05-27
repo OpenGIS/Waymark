@@ -7,6 +7,12 @@
 function Waymark_Map_Viewer() {	
 	this.gallery_images = [];
 
+	this.pre_map_setup =  function() {
+		Waymark = this;
+
+		Waymark.mode = 'view';		
+	}
+
 	this.init_done = function() {
 		Waymark = this;
 		
@@ -67,7 +73,8 @@ function Waymark_Map_Viewer() {
 
 		var content = jQuery('<div />');
 		var list = jQuery('<ul />').addClass('waymark-info waymark-' + layer_type + '-info');
-
+		
+		//Expected Waymark properties
 		for(key in Waymark.config[layer_type + '_data_defaults']) {			
 			var ele = null;
 		
@@ -138,7 +145,8 @@ function Waymark_Map_Viewer() {
 							list.addClass('waymark-no-image');							
 						}
 																													
-					break;										
+					break;
+															
 			}
 			
 			if(ele) {
@@ -288,6 +296,34 @@ function Waymark_Map_Viewer() {
 			
 		//Create elevation control
 		Waymark.elevation_control = Waymark_L.control.elevation(config).addTo(Waymark.map);	
+
+		//Close elevation?	
+		Waymark.map.on('overlayremove', function(e) {
+			if(typeof Waymark.elevation_control.layer !== 'undefined') {	
+
+				var lat_lngs = null;
+		
+				//Active Elevation Line
+				Waymark.elevation_control.layer.eachLayer(function(layer) {
+					lat_lngs = JSON.stringify(layer.getLatLngs());
+				});
+		
+				//Valid Line to compare
+				if(lat_lngs) {
+					//Each layer being closed
+					e.layer.eachLayer(function(layer) {
+						if(typeof layer.getLatLngs !== 'undefined') {			
+							//Compare against active elevation
+							if(lat_lngs == JSON.stringify(layer.getLatLngs())) {
+								Waymark.elevation_control.clear();
+								Waymark.elevation_control.layer.removeFrom(Waymark.map);
+								Waymark.elevation_container.hide();					
+							}
+						}
+					});			
+				}
+			}
+		});
 	}
 
 	this.setup_gallery = function() {

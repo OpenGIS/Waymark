@@ -46,7 +46,10 @@ class Waymark_Lang {
 			'error_file_upload' => esc_attr__('File upload error.', 'waymark'),		
 			'error_photo_meta' => esc_attr__('Could not retrieve Image metadata.', 'waymark'),
 			'info_exif_yes' => esc_attr__('Image location metadata (EXIF) detected!', 'waymark'),
-			'info_exif_no' => esc_attr__('Image location metadata (EXIF) NOT detected.', 'waymark')
+			'info_exif_no' => esc_attr__('Image location metadata (EXIF) NOT detected.', 'waymark'),
+			'no_direction' => esc_attr__('No Direction', 'waymark'),
+			'show_direction' => esc_attr__('Show Direction', 'waymark'),
+			'reverse_direction' => esc_attr__('Reverse Direction', 'waymark')
 		];
 	}
 }

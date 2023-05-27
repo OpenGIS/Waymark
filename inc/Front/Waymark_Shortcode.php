@@ -74,6 +74,8 @@ class Waymark_Shortcode {
 			//Valid Collection
 			$Collection = new Waymark_Collection($collection_id);
 			if($Collection->collection_id) {
+				$shortcode_meta = Waymark_Helper::get_collection_meta($Collection, 'shortcode');
+			
 				//Map Class
 				$map_class .= ' waymark-collection-id-' . $collection_id;
 			

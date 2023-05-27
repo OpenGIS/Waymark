@@ -1,6 +1,6 @@
 function waymark_setup_map_export() {
 	//Each Export field
-	jQuery('.waymark-map-export').each(function() {
+	jQuery('.waymark-map-export, .waymark-collection-export').each(function() {
 		var export_container = jQuery(this);
 		
 		if(export_container) {
@@ -92,8 +92,23 @@ function waymark_setup_map_export() {
 								//Get rid of it
 								delete layer.feature.properties[key];						
 							}
+							
+							//Clean up description
+							if(key == 'description' && typeof layer.feature.properties['description'] !== 'undefined') {
+								//Remove HTML
+	 							var description = layer.feature.properties['description'];
+	 							var link_pos = description.indexOf('<div class="waymark-description-link');
+	 							
+	 							if(link_pos !== -1) {
+									description = description.substring(0, link_pos);	 							
+	 							}
+								
+								//Single quotes
+								description = description.replace('\'', '&apos;');								
+								
+								layer.feature.properties['description'] = description;
+							}
 						}
-						//console.log(layer.feature.properties)
 							
 						map_export_layers.addLayer(layer);
 					}

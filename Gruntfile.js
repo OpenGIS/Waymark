@@ -132,6 +132,17 @@ module.exports = function(grunt) {
 					}
 				}				
 			}
+		},
+		
+		makepot: {
+			target: {
+				options: {
+					domainPath: 'languages/',
+					include: ['inc/.*'],
+					mainFile: 'Waymark.php',
+					type: 'wp-plugin'
+				}
+			}
 		}
   });
 
@@ -142,6 +153,7 @@ module.exports = function(grunt) {
  	grunt.loadNpmTasks('grunt-contrib-copy');	
   grunt.loadNpmTasks('grunt-contrib-watch');	
 	grunt.loadNpmTasks('grunt-wp-readme-to-markdown');
+	grunt.loadNpmTasks('grunt-wp-i18n');
 
   grunt.registerTask('default', [
   	'less',
@@ -149,8 +161,9 @@ module.exports = function(grunt) {
  		'terser',
   	'cssmin',
    	'copy',
-  	'watch',
-  	'wp_readme_to_markdown'
+   	'makepot',
+  	'wp_readme_to_markdown',   	
+  	'watch'
   ]);
 
   grunt.registerTask('build_js_js', [

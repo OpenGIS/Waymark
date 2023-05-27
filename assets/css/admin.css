@@ -346,6 +346,7 @@ div.widget-content div.waymark-parameters-container div.waymark-controls input[t
  * ============= SETTINGS =============
  * ====================================
  */
+body.waymark_page_waymark-settings #waymark-admin-container.waymark-active-waymark-settings-tab-misc .waymark-settings-section-interaction_options,
 body.waymark_page_waymark-settings #waymark-admin-container.waymark-active-waymark-settings-tab-misc .waymark-settings-section-elevation_options,
 body.waymark_page_waymark-settings #waymark-admin-container.waymark-active-waymark-settings-tab-misc .waymark-settings-section-shortcode_options,
 body.waymark_page_waymark-settings #waymark-admin-container.waymark-active-waymark-settings-tab-misc .waymark-settings-section-collection_options,
@@ -426,7 +427,7 @@ body.waymark_page_waymark-settings div.waymark-settings-tab .wp-picker-container
   opacity: 0.8;
 }
 body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-misc .form-table {
-  margin-bottom: 40px !important;
+  margin-bottom: 40px;
 }
 body.waymark_page_waymark-settings div.waymark-settings-tab.waymark-settings-tab-markers .marker_icon-container .waymark-controls {
   position: relative;
@@ -481,6 +482,12 @@ body.waymark_page_waymark-settings div.waymark-settings-tab table.form-table tr:
 body.waymark_page_waymark-settings div.waymark-settings-tab table.form-table tr:nth-child(even) th,
 body.waymark_page_waymark-settings div.waymark-settings-tab table.form-table tr:nth-child(even) td {
   background: #fff;
+}
+body.waymark_page_waymark-settings div.waymark-settings-section-permalinks table.form-table {
+  margin-bottom: 10px !important;
+}
+body.waymark_page_waymark-settings div.waymark-settings-section-permalinks .waymark-settings-section-footer {
+  margin-top: 0 !important;
 }
 /**
  * ====================================

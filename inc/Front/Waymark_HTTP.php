@@ -35,7 +35,8 @@ class Waymark_HTTP {
 			//Requires Map Data
 			if(in_array($_REQUEST['waymark_action'], array(
 				'get_map_data',
-				'download_map_data'
+				'download_map_data',
+				'download_collection_data'				
 			))) {
 				//Do we have data?
 				if(array_key_exists('map_id', $_REQUEST) && is_numeric($_REQUEST['map_id'])) {					
@@ -52,6 +53,8 @@ class Waymark_HTTP {
 					} else {
 						die("-1");						
 					}
+				} elseif(array_key_exists('collection_id', $_REQUEST) && is_numeric($_REQUEST['collection_id'])) {
+					$Collection = new Waymark_Collection($_REQUEST['collection_id']);
 				//Invalid Map ID
 				} else {
 					die("-1");											
@@ -93,6 +96,22 @@ class Waymark_HTTP {
 						}
 					
 						break;		
+	
+				// === Collection Export ===
+					
+					case 'download_collection_data' :
+						//Security
+						check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');						
+
+						//Required data
+						if(! isset($Collection)) {
+							die("-1");											
+						}	
+						
+						//File download name
+						$export_filename = $Collection->slug . '-' . $Collection->collection_id . '.' . $_REQUEST['export_format'];
+						
+						break;
 					
 					// === Map Export ===
 					
@@ -107,28 +126,31 @@ class Waymark_HTTP {
 						
 						//File download name
 						$export_filename = get_post_field('post_name', $Map->post_id) . '-' . $Map->post_id . '.' . $_REQUEST['export_format'];
-						
-						header('Content-Disposition: attachment; filename="' . $export_filename . '"');		
-	
-						switch($_REQUEST['export_format']) {
-							case 'gpx' :
-								header('Content-Type: application/gpx+xml');						
-							
-								break;
-							case 'kml' :
-								header('Content-Type: application/vnd.google-earth.kml+xml');						
-							
-								break;
-							case 'geojson' :
-								header('Content-Type: application/geo+json');						
-							
-								break;																
-						}
-	
-						echo rawurldecode($_REQUEST['map_data']);
-						
+											
 						break;
 				}	
+				
+				//Echo 
+				if(isset($export_filename) && isset($_REQUEST['map_data'])) {
+					header('Content-Disposition: attachment; filename="' . $export_filename . '"');		
+
+					switch($_REQUEST['export_format']) {
+						case 'gpx' :
+							header('Content-Type: application/gpx+xml');						
+						
+							break;
+						case 'kml' :
+							header('Content-Type: application/vnd.google-earth.kml+xml');						
+						
+							break;
+						case 'geojson' :
+							header('Content-Type: application/geo+json');						
+						
+							break;																
+					}
+
+					echo rawurldecode(strip_tags($_REQUEST['map_data']));				
+				}
 				
 				//That's it, that's all...
 				die;			

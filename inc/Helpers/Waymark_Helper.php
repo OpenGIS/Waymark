@@ -246,6 +246,35 @@ class Waymark_Helper {
 		return $map_meta;
 	}
 
+	static public function get_collection_meta($Collection, $context = 'shortcode') {
+		$map_meta = array();
+		
+		//Add Description
+		if($Collection->description) {
+			$map_meta['collection_desc'] = array(
+				'meta_key' => 'collection_desc',
+				'meta_title' => '',
+				'meta_group' => '',
+				'meta_value' => $Collection->description
+			);
+		}				
+		
+		//Add Export dropdown/link
+		if(sizeof($Collection->Maps) && Waymark_Config::get_setting('misc', 'map_options', 'allow_export') == true) {			
+			$map_meta['export_data'] = array(
+				'meta_key' => 'export_data',
+				'meta_title' => esc_html__('Export', 'waymark'),
+				'meta_value' => Waymark_Helper::collection_export_html($Collection),
+				'meta_info' => '<a data-title="' . esc_attr__('This will download the Overlays currently displayed by the Map in the selected format.', 'waymark') . '" href="#" onclick="return false;" class="waymark-tooltip">?</a>',
+				'meta_group' => ''					
+			);
+		}			
+
+// 		Waymark_Helper::debug($map_meta);
+		
+		return $map_meta;
+	}
+
 	static public function get_meta_groups() {
 		//Get Groups
 		$meta_groups = Waymark_Config::get_item('meta', 'groups', true);
@@ -642,19 +671,21 @@ class Waymark_Helper {
 		$array_out = array();
 			
 		$count = 0;
-		foreach($array_in as $data) {
-			if(is_array($data) && $as_key && array_key_exists($as_key, $data)) {
-				$out_key = self::make_key($data[$as_key]);
-			} else {
-				$out_key = $count;
-			}
+		if(is_array($array_in)) {
+			foreach($array_in as $data) {
+				if(is_array($data) && $as_key && array_key_exists($as_key, $data)) {
+					$out_key = self::make_key($data[$as_key]);
+				} else {
+					$out_key = $count;
+				}
 
-			$array_out[$out_key] = $data;			
+				$array_out[$out_key] = $data;			
 
-			$count++;						
-		 }	
-		
-		return $array_out;
+				$count++;						
+			 }			
+		}
+
+		return $array_out;				
 	}	
 	
 	public static function get_object_types($type = 'marker', $use_key = false, $as_options = false) {
@@ -716,6 +747,31 @@ class Waymark_Helper {
 		$out .= '	<input type="hidden" name="waymark_security" value="' . wp_create_nonce(Waymark_Config::get_item('nonce_string')) . '" />' . "\n";
 		$out .= '	<input type="hidden" name="map_data" value="" />' . "\n";
 		$out .= '	<input type="hidden" name="map_id" value="' . $Map->post_id . '" />' . "\n";
+		$out .= '	<input type="submit" value="' . __('Download', 'waymark') . '" class="button" />' . "\n";
+		$out .= '</' . $element . '>' . "\n";
+		
+		return $out;
+	}	
+
+	static public function collection_export_html($Collection) {
+// 		Waymark_Helper::debug($Collection);
+	
+		if(! isset($Collection->collection_id)) {
+			return false;
+		}
+		
+		$element = (is_admin()) ? 'div' : 'form';
+		
+		$out  = '<' . $element . ' action="' . Waymark_Helper::http_url() . '" method="post" id="waymark-map-export-' . $Collection->collection_id . '" class="waymark-map-export" data-collection_id="' . $Collection->collection_id . '" data-collection_slug="' . $Collection->slug . '">' . "\n";
+		$out .= '	<select name="export_format">' . "\n";
+		$out .= '		<option value="gpx">GPX</option>' . "\n";
+		$out .= '		<option value="kml">KML</option>' . "\n";			
+		$out .= '		<option value="geojson">GeoJSON</option>' . "\n";
+		$out .= '	</select>' . "\n";
+		$out .= '	<input type="hidden" name="waymark_action" value="download_collection_data" />' . "\n";
+		$out .= '	<input type="hidden" name="waymark_security" value="' . wp_create_nonce(Waymark_Config::get_item('nonce_string')) . '" />' . "\n";
+		$out .= '	<input type="hidden" name="map_data" value="" />' . "\n";
+		$out .= '	<input type="hidden" name="collection_id" value="' . $Collection->collection_id . '" />' . "\n";
 		$out .= '	<input type="submit" value="' . __('Download', 'waymark') . '" class="button" />' . "\n";
 		$out .= '</' . $element . '>' . "\n";
 		

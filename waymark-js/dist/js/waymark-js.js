@@ -3082,7 +3082,8 @@ Copyright (c) 2016 Dominik Moritz */
     			L.DomEvent.on(container, 'click', L.DomEvent.stopPropagation);
     		}
 
-    		L.DomEvent.on(container, 'mousewheel', this._mousewheelHandler, this);
+				//Joe - Scroll Wheel quirk
+    		//L.DomEvent.on(container, 'mousewheel', this._mousewheelHandler, this);
 
     		if (!this.options.detached) {
     			let iconCssClass = "elevation-toggle " + this.options.controlButton.iconCssClass + (this.options.autohide ? "" : " close-button");
@@ -5712,6 +5713,485 @@ Waymark_L.featureGroup.subGroup = function (parentGroup, options) {
 };
 
 (function(factory){var L;if(typeof define==="function"&&define.amd){define(["leaflet"],factory)}else if(typeof module!=="undefined"){L=require("leaflet");module.exports=factory(L)}else{if(typeof window.L==="undefined"){throw new Error("Leaflet must be loaded first")}factory(window.L)}})(function(L){Waymark_L.Control.Fullscreen=Waymark_L.Control.extend({options:{position:"topleft",title:{"false":"View Fullscreen","true":"Exit Fullscreen"}},onAdd:function(map){var container=Waymark_L.DomUtil.create("div","leaflet-control-fullscreen leaflet-bar leaflet-control");this.link=Waymark_L.DomUtil.create("a","leaflet-control-fullscreen-button leaflet-bar-part",container);this.link.href="#";this._map=map;this._map.on("fullscreenchange",this._toggleTitle,this);this._toggleTitle();Waymark_L.DomEvent.on(this.link,"click",this._click,this);return container},_click:function(e){Waymark_L.DomEvent.stopPropagation(e);Waymark_L.DomEvent.preventDefault(e);this._map.toggleFullscreen(this.options)},_toggleTitle:function(){this.link.title=this.options.title[this._map.isFullscreen()]}});Waymark_L.Map.include({isFullscreen:function(){return this._isFullscreen||false},toggleFullscreen:function(options){var container=this.getContainer();if(this.isFullscreen()){if(options&&options.pseudoFullscreen){this._disablePseudoFullscreen(container)}else if(document.exitFullscreen){document.exitFullscreen()}else if(document.mozCancelFullScreen){document.mozCancelFullScreen()}else if(document.webkitCancelFullScreen){document.webkitCancelFullScreen()}else if(document.msExitFullscreen){document.msExitFullscreen()}else{this._disablePseudoFullscreen(container)}}else{if(options&&options.pseudoFullscreen){this._enablePseudoFullscreen(container)}else if(container.requestFullscreen){container.requestFullscreen()}else if(container.mozRequestFullScreen){container.mozRequestFullScreen()}else if(container.webkitRequestFullscreen){container.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT)}else if(container.msRequestFullscreen){container.msRequestFullscreen()}else{this._enablePseudoFullscreen(container)}}},_enablePseudoFullscreen:function(container){Waymark_L.DomUtil.addClass(container,"leaflet-pseudo-fullscreen");this._setFullscreen(true);this.fire("fullscreenchange")},_disablePseudoFullscreen:function(container){Waymark_L.DomUtil.removeClass(container,"leaflet-pseudo-fullscreen");this._setFullscreen(false);this.fire("fullscreenchange")},_setFullscreen:function(fullscreen){this._isFullscreen=fullscreen;var container=this.getContainer();if(fullscreen){Waymark_L.DomUtil.addClass(container,"leaflet-fullscreen-on")}else{Waymark_L.DomUtil.removeClass(container,"leaflet-fullscreen-on")}this.invalidateSize()},_onFullscreenChange:function(e){var fullscreenElement=document.fullscreenElement||document.mozFullScreenElement||document.webkitFullscreenElement||document.msFullscreenElement;if(fullscreenElement===this.getContainer()&&!this._isFullscreen){this._setFullscreen(true);this.fire("fullscreenchange")}else if(fullscreenElement!==this.getContainer()&&this._isFullscreen){this._setFullscreen(false);this.fire("fullscreenchange")}}});Waymark_L.Map.mergeOptions({fullscreenControl:false});Waymark_L.Map.addInitHook(function(){if(this.options.fullscreenControl){this.fullscreenControl=new Waymark_L.Control.Fullscreen(this.options.fullscreenControl);this.addControl(this.fullscreenControl)}var fullscreenchange;if("onfullscreenchange"in document){fullscreenchange="fullscreenchange"}else if("onmozfullscreenchange"in document){fullscreenchange="mozfullscreenchange"}else if("onwebkitfullscreenchange"in document){fullscreenchange="webkitfullscreenchange"}else if("onmsfullscreenchange"in document){fullscreenchange="MSFullscreenChange"}if(fullscreenchange){var onFullscreenChange=Waymark_L.bind(this._onFullscreenChange,this);this.whenReady(function(){Waymark_L.DomEvent.on(document,fullscreenchange,onFullscreenChange)});this.on("unload",function(){Waymark_L.DomEvent.off(document,fullscreenchange,onFullscreenChange)})}});Waymark_L.control.fullscreen=function(options){return new Waymark_L.Control.Fullscreen(options)}});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('leaflet')) :
+	typeof define === 'function' && define.amd ? define(['leaflet'], factory) :
+	(factory(global.L));
+}(this, (function (L$1) { 'use strict';
+
+L$1 = L$1 && L$1.hasOwnProperty('default') ? L$1['default'] : L$1;
+
+// functional re-impl of Waymark_L.Point.distanceTo,
+// with no dependency on Leaflet for easier testing
+function pointDistance(ptA, ptB) {
+    var x = ptB.x - ptA.x;
+    var y = ptB.y - ptA.y;
+    return Math.sqrt(x * x + y * y);
+}
+
+var computeSegmentHeading = function computeSegmentHeading(a, b) {
+    return (Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI + 90 + 360) % 360;
+};
+
+var asRatioToPathLength = function asRatioToPathLength(_ref, totalPathLength) {
+    var value = _ref.value,
+        isInPixels = _ref.isInPixels;
+    return isInPixels ? value / totalPathLength : value;
+};
+
+function parseRelativeOrAbsoluteValue(value) {
+    if (typeof value === 'string' && value.indexOf('%') !== -1) {
+        return {
+            value: parseFloat(value) / 100,
+            isInPixels: false
+        };
+    }
+    var parsedValue = value ? parseFloat(value) : 0;
+    return {
+        value: parsedValue,
+        isInPixels: parsedValue > 0
+    };
+}
+
+var pointsEqual = function pointsEqual(a, b) {
+    return a.x === b.x && a.y === b.y;
+};
+
+function pointsToSegments(pts) {
+    return pts.reduce(function (segments, b, idx, points) {
+        // this test skips same adjacent points
+        if (idx > 0 && !pointsEqual(b, points[idx - 1])) {
+            var a = points[idx - 1];
+            var distA = segments.length > 0 ? segments[segments.length - 1].distB : 0;
+            var distAB = pointDistance(a, b);
+            segments.push({
+                a: a,
+                b: b,
+                distA: distA,
+                distB: distA + distAB,
+                heading: computeSegmentHeading(a, b)
+            });
+        }
+        return segments;
+    }, []);
+}
+
+function projectPatternOnPointPath(pts, pattern) {
+    // 1. split the path into segment infos
+    var segments = pointsToSegments(pts);
+    var nbSegments = segments.length;
+    if (nbSegments === 0) {
+        return [];
+    }
+
+    var totalPathLength = segments[nbSegments - 1].distB;
+
+    var offset = asRatioToPathLength(pattern.offset, totalPathLength);
+    var endOffset = asRatioToPathLength(pattern.endOffset, totalPathLength);
+    var repeat = asRatioToPathLength(pattern.repeat, totalPathLength);
+
+    var repeatIntervalPixels = totalPathLength * repeat;
+    var startOffsetPixels = offset > 0 ? totalPathLength * offset : 0;
+    var endOffsetPixels = endOffset > 0 ? totalPathLength * endOffset : 0;
+
+    // 2. generate the positions of the pattern as offsets from the path start
+    var positionOffsets = [];
+    var positionOffset = startOffsetPixels;
+    do {
+        positionOffsets.push(positionOffset);
+        positionOffset += repeatIntervalPixels;
+    } while (repeatIntervalPixels > 0 && positionOffset < totalPathLength - endOffsetPixels);
+
+    // 3. projects offsets to segments
+    var segmentIndex = 0;
+    var segment = segments[0];
+    return positionOffsets.map(function (positionOffset) {
+        // find the segment matching the offset,
+        // starting from the previous one as offsets are ordered
+        while (positionOffset > segment.distB && segmentIndex < nbSegments - 1) {
+            segmentIndex++;
+            segment = segments[segmentIndex];
+        }
+
+        var segmentRatio = (positionOffset - segment.distA) / (segment.distB - segment.distA);
+        return {
+            pt: interpolateBetweenPoints(segment.a, segment.b, segmentRatio),
+            heading: segment.heading
+        };
+    });
+}
+
+/**
+* Finds the point which lies on the segment defined by points A and B,
+* at the given ratio of the distance from A to B, by linear interpolation.
+*/
+function interpolateBetweenPoints(ptA, ptB, ratio) {
+    if (ptB.x !== ptA.x) {
+        return {
+            x: ptA.x + ratio * (ptB.x - ptA.x),
+            y: ptA.y + ratio * (ptB.y - ptA.y)
+        };
+    }
+    // special case where points lie on the same vertical axis
+    return {
+        x: ptA.x,
+        y: ptA.y + (ptB.y - ptA.y) * ratio
+    };
+}
+
+(function() {
+    // save these original methods before they are overwritten
+    var proto_initIcon = Waymark_L.Marker.prototype._initIcon;
+    var proto_setPos = Waymark_L.Marker.prototype._setPos;
+
+    var oldIE = (Waymark_L.DomUtil.TRANSFORM === 'msTransform');
+
+    Waymark_L.Marker.addInitHook(function () {
+        var iconOptions = this.options.icon && this.options.icon.options;
+        var iconAnchor = iconOptions && this.options.icon.options.iconAnchor;
+        if (iconAnchor) {
+            iconAnchor = (iconAnchor[0] + 'px ' + iconAnchor[1] + 'px');
+        }
+        this.options.rotationOrigin = this.options.rotationOrigin || iconAnchor || 'center bottom' ;
+        this.options.rotationAngle = this.options.rotationAngle || 0;
+
+        // Ensure marker keeps rotated during dragging
+        this.on('drag', function(e) { e.target._applyRotation(); });
+    });
+
+    Waymark_L.Marker.include({
+        _initIcon: function() {
+            proto_initIcon.call(this);
+        },
+
+        _setPos: function (pos) {
+            proto_setPos.call(this, pos);
+            this._applyRotation();
+        },
+
+        _applyRotation: function () {
+            if(this.options.rotationAngle) {
+                this._icon.style[Waymark_L.DomUtil.TRANSFORM+'Origin'] = this.options.rotationOrigin;
+
+                if(oldIE) {
+                    // for IE 9, use the 2D rotation
+                    this._icon.style[Waymark_L.DomUtil.TRANSFORM] = 'rotate(' + this.options.rotationAngle + 'deg)';
+                } else {
+                    // for modern browsers, prefer the 3D accelerated version
+                    this._icon.style[Waymark_L.DomUtil.TRANSFORM] += ' rotateZ(' + this.options.rotationAngle + 'deg)';
+                }
+            }
+        },
+
+        setRotationAngle: function(angle) {
+            this.options.rotationAngle = angle;
+            this.update();
+            return this;
+        },
+
+        setRotationOrigin: function(origin) {
+            this.options.rotationOrigin = origin;
+            this.update();
+            return this;
+        }
+    });
+})();
+
+L$1.Symbol = L$1.Symbol || {};
+
+/**
+* A simple dash symbol, drawn as a Polyline.
+* Can also be used for dots, if 'pixelSize' option is given the 0 value.
+*/
+L$1.Symbol.Dash = L$1.Class.extend({
+    options: {
+        pixelSize: 10,
+        pathOptions: {}
+    },
+
+    initialize: function initialize(options) {
+        L$1.Util.setOptions(this, options);
+        this.options.pathOptions.clickable = false;
+    },
+
+    buildSymbol: function buildSymbol(dirPoint, latLngs, map, index, total) {
+        var opts = this.options;
+        var d2r = Math.PI / 180;
+
+        // for a dot, nothing more to compute
+        if (opts.pixelSize <= 1) {
+            return L$1.polyline([dirPoint.latLng, dirPoint.latLng], opts.pathOptions);
+        }
+
+        var midPoint = map.project(dirPoint.latLng);
+        var angle = -(dirPoint.heading - 90) * d2r;
+        var a = L$1.point(midPoint.x + opts.pixelSize * Math.cos(angle + Math.PI) / 2, midPoint.y + opts.pixelSize * Math.sin(angle) / 2);
+        // compute second point by central symmetry to avoid unecessary cos/sin
+        var b = midPoint.add(midPoint.subtract(a));
+        return L$1.polyline([map.unproject(a), map.unproject(b)], opts.pathOptions);
+    }
+});
+
+L$1.Symbol.dash = function (options) {
+    return new L$1.Symbol.Dash(options);
+};
+
+L$1.Symbol.ArrowHead = L$1.Class.extend({
+    options: {
+        polygon: true,
+        pixelSize: 10,
+        headAngle: 60,
+        pathOptions: {
+            stroke: false,
+            weight: 2
+        }
+    },
+
+    initialize: function initialize(options) {
+        L$1.Util.setOptions(this, options);
+        this.options.pathOptions.clickable = false;
+    },
+
+    buildSymbol: function buildSymbol(dirPoint, latLngs, map, index, total) {
+        return this.options.polygon ? L$1.polygon(this._buildArrowPath(dirPoint, map), this.options.pathOptions) : L$1.polyline(this._buildArrowPath(dirPoint, map), this.options.pathOptions);
+    },
+
+    _buildArrowPath: function _buildArrowPath(dirPoint, map) {
+        var d2r = Math.PI / 180;
+        var tipPoint = map.project(dirPoint.latLng);
+        var direction = -(dirPoint.heading - 90) * d2r;
+        var radianArrowAngle = this.options.headAngle / 2 * d2r;
+
+        var headAngle1 = direction + radianArrowAngle;
+        var headAngle2 = direction - radianArrowAngle;
+        var arrowHead1 = L$1.point(tipPoint.x - this.options.pixelSize * Math.cos(headAngle1), tipPoint.y + this.options.pixelSize * Math.sin(headAngle1));
+        var arrowHead2 = L$1.point(tipPoint.x - this.options.pixelSize * Math.cos(headAngle2), tipPoint.y + this.options.pixelSize * Math.sin(headAngle2));
+
+        return [map.unproject(arrowHead1), dirPoint.latLng, map.unproject(arrowHead2)];
+    }
+});
+
+L$1.Symbol.arrowHead = function (options) {
+    return new L$1.Symbol.ArrowHead(options);
+};
+
+L$1.Symbol.Marker = L$1.Class.extend({
+    options: {
+        markerOptions: {},
+        rotate: false
+    },
+
+    initialize: function initialize(options) {
+        L$1.Util.setOptions(this, options);
+        this.options.markerOptions.clickable = false;
+        this.options.markerOptions.draggable = false;
+    },
+
+    buildSymbol: function buildSymbol(directionPoint, latLngs, map, index, total) {
+        if (this.options.rotate) {
+            this.options.markerOptions.rotationAngle = directionPoint.heading + (this.options.angleCorrection || 0);
+        }
+        return L$1.marker(directionPoint.latLng, this.options.markerOptions);
+    }
+});
+
+L$1.Symbol.marker = function (options) {
+    return new L$1.Symbol.Marker(options);
+};
+
+var isCoord = function isCoord(c) {
+    return c instanceof L$1.LatLng || Array.isArray(c) && c.length === 2 && typeof c[0] === 'number';
+};
+
+var isCoordArray = function isCoordArray(ll) {
+    return Array.isArray(ll) && isCoord(ll[0]);
+};
+
+L$1.PolylineDecorator = L$1.FeatureGroup.extend({
+    options: {
+        patterns: []
+    },
+
+    initialize: function initialize(paths, options) {
+        L$1.FeatureGroup.prototype.initialize.call(this);
+        L$1.Util.setOptions(this, options);
+        this._map = null;
+        this._paths = this._initPaths(paths);
+        this._bounds = this._initBounds();
+        this._patterns = this._initPatterns(this.options.patterns);
+    },
+
+    /**
+    * Deals with all the different cases. input can be one of these types:
+    * array of LatLng, array of 2-number arrays, Polyline, Polygon,
+    * array of one of the previous.
+    */
+    _initPaths: function _initPaths(input, isPolygon) {
+        var _this = this;
+
+        if (isCoordArray(input)) {
+            // Leaflet Polygons don't need the first point to be repeated, but we do
+            var coords = isPolygon ? input.concat([input[0]]) : input;
+            return [coords];
+        }
+        if (input instanceof L$1.Polyline) {
+            // we need some recursivity to support multi-poly*
+            return this._initPaths(input.getLatLngs(), input instanceof L$1.Polygon);
+        }
+        if (Array.isArray(input)) {
+            // flatten everything, we just need coordinate lists to apply patterns
+            return input.reduce(function (flatArray, p) {
+                return flatArray.concat(_this._initPaths(p, isPolygon));
+            }, []);
+        }
+        return [];
+    },
+
+    // parse pattern definitions and precompute some values
+    _initPatterns: function _initPatterns(patternDefs) {
+        return patternDefs.map(this._parsePatternDef);
+    },
+
+    /**
+    * Changes the patterns used by this decorator
+    * and redraws the new one.
+    */
+    setPatterns: function setPatterns(patterns) {
+        this.options.patterns = patterns;
+        this._patterns = this._initPatterns(this.options.patterns);
+        this.redraw();
+    },
+
+    /**
+    * Changes the patterns used by this decorator
+    * and redraws the new one.
+    */
+    setPaths: function setPaths(paths) {
+        this._paths = this._initPaths(paths);
+        this._bounds = this._initBounds();
+        this.redraw();
+    },
+
+    /**
+    * Parse the pattern definition
+    */
+    _parsePatternDef: function _parsePatternDef(patternDef, latLngs) {
+        return {
+            symbolFactory: patternDef.symbol,
+            // Parse offset and repeat values, managing the two cases:
+            // absolute (in pixels) or relative (in percentage of the polyline length)
+            offset: parseRelativeOrAbsoluteValue(patternDef.offset),
+            endOffset: parseRelativeOrAbsoluteValue(patternDef.endOffset),
+            repeat: parseRelativeOrAbsoluteValue(patternDef.repeat)
+        };
+    },
+
+    onAdd: function onAdd(map) {
+        this._map = map;
+        this._draw();
+        this._map.on('moveend', this.redraw, this);
+    },
+
+    onRemove: function onRemove(map) {
+        this._map.off('moveend', this.redraw, this);
+        this._map = null;
+        L$1.FeatureGroup.prototype.onRemove.call(this, map);
+    },
+
+    /**
+    * As real pattern bounds depends on map zoom and bounds,
+    * we just compute the total bounds of all paths decorated by this instance.
+    */
+    _initBounds: function _initBounds() {
+        var allPathCoords = this._paths.reduce(function (acc, path) {
+            return acc.concat(path);
+        }, []);
+        return L$1.latLngBounds(allPathCoords);
+    },
+
+    getBounds: function getBounds() {
+        return this._bounds;
+    },
+
+    /**
+    * Returns an array of ILayers object
+    */
+    _buildSymbols: function _buildSymbols(latLngs, symbolFactory, directionPoints) {
+        var _this2 = this;
+
+        return directionPoints.map(function (directionPoint, i) {
+            return symbolFactory.buildSymbol(directionPoint, latLngs, _this2._map, i, directionPoints.length);
+        });
+    },
+
+    /**
+    * Compute pairs of LatLng and heading angle,
+    * that define positions and directions of the symbols on the path
+    */
+    _getDirectionPoints: function _getDirectionPoints(latLngs, pattern) {
+        var _this3 = this;
+
+        if (latLngs.length < 2) {
+            return [];
+        }
+        var pathAsPoints = latLngs.map(function (latLng) {
+            return _this3._map.project(latLng);
+        });
+        return projectPatternOnPointPath(pathAsPoints, pattern).map(function (point) {
+            return {
+                latLng: _this3._map.unproject(L$1.point(point.pt)),
+                heading: point.heading
+            };
+        });
+    },
+
+    redraw: function redraw() {
+        if (!this._map) {
+            return;
+        }
+        this.clearLayers();
+        this._draw();
+    },
+
+    /**
+    * Returns all symbols for a given pattern as an array of FeatureGroup
+    */
+    _getPatternLayers: function _getPatternLayers(pattern) {
+        var _this4 = this;
+
+        var mapBounds = this._map.getBounds().pad(0.1);
+        return this._paths.map(function (path) {
+            var directionPoints = _this4._getDirectionPoints(path, pattern)
+            // filter out invisible points
+            .filter(function (point) {
+                return mapBounds.contains(point.latLng);
+            });
+            return L$1.featureGroup(_this4._buildSymbols(path, pattern.symbolFactory, directionPoints));
+        });
+    },
+
+    /**
+    * Draw all patterns
+    */
+    _draw: function _draw() {
+        var _this5 = this;
+
+        this._patterns.map(function (pattern) {
+            return _this5._getPatternLayers(pattern);
+        }).forEach(function (layers) {
+            _this5.addLayer(L$1.featureGroup(layers));
+        });
+    }
+});
+/*
+ * Allows compact syntax to be used
+ */
+L$1.polylineDecorator = function (paths, options) {
+    return new L$1.PolylineDecorator(paths, options);
+};
+
+})));
+
 /*
  * Leaflet.Sleep
  */
@@ -5870,9 +6350,13 @@ Waymark_L.Map.Sleep = Waymark_L.Handler.extend({
   _wakeMap: function (e) {
     this._stopWaiting();
     this._map.scrollWheelZoom.enable();
+		
+		//Joe enable dragging (disabled by default)
+    this._map.dragging.enable();
+
     if (this._map.tap) {
       this._map.touchZoom.enable();
-      this._map.dragging.enable();
+//       this._map.dragging.enable();
       this._map.tap.enable();
       this._map.addControl(this._sleepButton);
     }
@@ -6856,6 +7340,9 @@ var escape = module.exports = function escape(string, ignore) {
   var pattern;
 
   if (string === null || string === undefined) return;
+	
+	//Might be Int... cast
+	string = string.toString();
 
   ignore = (ignore || '').replace(/[^&"<>\']/g, '');
   pattern = '([&"<>\'])'.replace(new RegExp('[' + ignore + ']', 'g'), '');
@@ -6925,7 +7412,10 @@ var waymark_js_localize = {
 	"error_photo_meta" : "Could not retrieve Image metadata.",
 	'info_exif_yes' : "Image location metadata (EXIF) detected!",
 	'info_exif_no' : "Image location metadata (EXIF) NOT detected.",
-	"error_no_wpmedia" : "WordPress Media Library not found"
+	"error_no_wpmedia" : "WordPress Media Library not found",
+	"no_direction" : "No Direction",
+	"show_direction" : "Show Direction",
+	"reverse_direction" : "Reverse Direction"		
 };
 
 if(typeof waymark_js === 'undefined') {
@@ -6951,9 +7441,8 @@ function Waymark_Map() {
 		
 	this.init = function(user_config) {
 		Waymark = this;
-		Waymark.mode = 'view';
 		Waymark.jq_map_container = null;
-				
+
 		//Default config
 		Waymark.config = {
 			'map_div_id': 'waymark-map',
@@ -6990,7 +7479,8 @@ function Waymark_Map() {
 				"image_thumbnail_url": undefined,									
 				"image_medium_url": undefined,									
 				"image_large_url": undefined,				
-				"description": undefined				
+				"description": undefined,
+				"direction": undefined
 			},
 			"shape_data_defaults": {
 				"type": undefined,
@@ -7007,7 +7497,7 @@ function Waymark_Map() {
 			"handle_delete_callback" : undefined,
 			"handle_edit_callback" : undefined,
 			"handle_custom_type_callback" : undefined,
-			"media_library_sizes" : ['thumbnail', 'medium', 'large', 'full']			
+			"media_library_sizes" : ['thumbnail', 'medium', 'large', 'full'],	
 		};
 
 		//Load user config
@@ -7042,6 +7532,7 @@ function Waymark_Map() {
 		Waymark.shape_sub_groups = {};
 						
 		//Setup...
+		Waymark.pre_map_setup();			
 		Waymark.setup_map();		
 		Waymark.handle_resize();			
 		Waymark.init_done();			
@@ -7174,15 +7665,45 @@ function Waymark_Map() {
 		Waymark.config.map_width = Waymark.jq_map_container.width();
 		
 		//Create Map
-		Waymark.map = Waymark_L.map(Waymark.config.map_div_id, {
+		var map_options = {
 	    fullscreenControl: false,
 	    attributionControl: false,
 	    editable: true,
 	    zoomControl: false,
-      wakeTime: 2000,
-      sleepNote: false,
-	    sleepOpacity: 1      
-		});
+	    sleep: false
+		};
+
+		//Viewer
+		if(Waymark.mode == 'view') {
+//  			map_options.scrollWheelZoom = false;
+ 			//Let Sleep enable this on Wake
+ 			map_options.dragging = false;
+
+			//Sleep
+			map_options.sleep = true;
+			map_options.wakeTime = this.get_property(waymark_settings, 'misc', 'interaction_options', 'delay_seconds') * 1000;		
+
+			//If Sleep Note
+			var do_message = this.get_property(waymark_settings, 'misc', 'interaction_options', 'do_message');
+			if(do_message === '1') {
+				map_options.sleepNote = true;
+				map_options.wakeMessage = this.get_property(waymark_settings, 'misc', 'interaction_options', 'wake_message');
+			//No Sleep Note
+			} else {
+				map_options.sleepNote = false;
+				map_options.wakeMessage = false;
+			}
+
+// 	    hoverToWake: false,
+	    map_options.sleepOpacity = 1;
+	    
+		//Editor
+		} else {
+			//Sleep not used, enable
+ 			map_options.dragging = true;
+		}
+
+		Waymark.map = Waymark_L.map(Waymark.config.map_div_id, map_options);
 		Waymark_L.control.attribution({prefix: '<a href="https://wordpress.org/plugins/waymark" title="Share your way">Waymark</a> | <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>'}).addTo(Waymark.map);
 		
 		//Show scale?
@@ -7342,9 +7863,12 @@ function Waymark_Map() {
 						//Set title tooltip
 						Waymark.tooltip('line', feature, layer);
 
+						//Line direction
+						Waymark.draw_line_direction(layer);
+
 						//Add to group							
-						Waymark.add_to_group('line', layer);		
-						
+						Waymark.add_to_group('line', layer);
+
 						break;
 
 					// Polygon & Rectangle
@@ -7378,6 +7902,54 @@ function Waymark_Map() {
 				}
 			}
 		});		
+	}
+
+	this.draw_line_direction = function(layer) {
+		var feature = layer.feature;
+		var direction = feature.properties.direction;
+		var type = Waymark.get_type('line', feature.properties.type);		
+
+		if(typeof layer.direction_layer === 'object') {
+			Waymark.map.removeLayer(layer.direction_layer);
+		}
+
+		//Valid direction
+		if(
+			typeof direction === 'string'
+			&& (
+				direction == 'default'
+				||
+				direction == 'reverse'
+			)
+		) {
+			var head_angle = 45;
+			//Reverse
+			if(direction == 'reverse') {
+				head_angle = 360 - head_angle;							
+			}
+		
+			var decorator = Waymark_L.polylineDecorator(layer, {
+			patterns: [{
+// 	            	offset: 25,
+				repeat: 100,
+				symbol: L.Symbol.arrowHead({
+					pixelSize: 15,
+					headAngle: head_angle,								
+					polygon: true,																
+					pathOptions: {
+						color: '#fff',				
+						fillColor: type.line_colour,
+						opacity: '0.7',																
+						stroke: true,
+						fillOpacity: 0.7,
+						weight: 2
+					}
+				})
+			}]
+			}).addTo(Waymark.map);							
+	
+			layer.direction_layer = decorator;
+		}
 	}
 
 	this.setup_layers = function() {
@@ -7415,7 +7987,18 @@ function Waymark_Map() {
 			var basemap_key = Waymark.config.tile_layers[i].layer_name.replace(/ /g, '');
 			
 			//Create tile layer
-			var basemap = Waymark_L.tileLayer(Waymark.config.tile_layers[i].layer_url, {id: basemap_key, attribution: Waymark.config.tile_layers[i].layer_attribution});
+			var layer_options = {
+				id: basemap_key,
+				attribution: Waymark.config.tile_layers[i].layer_attribution
+			}
+			
+			//Max zoom?
+			var layer_max_zoom = parseInt(Waymark.config.tile_layers[i].layer_max_zoom);
+			if(layer_max_zoom) {
+				layer_options.maxZoom = layer_max_zoom;
+			}
+			
+			var basemap = Waymark_L.tileLayer(Waymark.config.tile_layers[i].layer_url, layer_options);
 			basemaps[Waymark.config.tile_layers[i].layer_name] = basemap;
 			
 			//Set initial basemap
@@ -7616,14 +8199,43 @@ function Waymark_Map() {
 						break;
 				}		
 			}				
-		}		
+		}	
+		
+		//Importing Overlay Properties?
+		var overlay_properties = this.get_property(waymark_settings, 'overlay', 'properties');
+		var properties_keys = Object.keys(overlay_properties);
+				
+ 		if(properties_keys.length) {
+ 			var properties_html = '';
+ 			
+			for(i in overlay_properties) {
+				var key = overlay_properties[i]['property_key'];
+
+				var title = overlay_properties[i]['property_title'];
+				var value = data_in[key];
+				
+				if(typeof value !== 'undefined') {
+					properties_html += '<p class="waymark-property waymark-property-' + key + '"><b>' + title + '</b><br />' + value + '</p>';		
+				
+					Waymark.debug('Importing ' + title + ' (' + key + ') ==> ' + value);				
+				}				
+			}
+			
+			if(properties_html) {
+				if(typeof data_out.description === 'undefined') {
+					data_out.description = '';
+				}
+				
+				data_out.description += properties_html;
+			}
+		}			
 
 		return data_out;
 	}
 
 	this.add_to_group = function(layer_type, layer) {
 		var feature = layer.feature;
-	
+		
 		//If we have a type
 		if(typeof feature.properties.type !== 'undefined') {
 			//Get Type							
@@ -7649,6 +8261,11 @@ function Waymark_Map() {
 		
 			//Add Layer to group
 			layer.addTo(Waymark[layer_type + '_sub_groups'][type.type_key]);
+
+			//Direction layer?
+			if(layer_type == 'line' && typeof layer.direction_layer === 'object') {
+				layer.direction_layer.addTo(Waymark[layer_type + '_sub_groups'][type.type_key]);
+			}
 
 			//If Overlay Filter is enabled
 			if(Waymark.config.show_filter && Waymark.mode == 'view') {
@@ -7910,6 +8527,7 @@ function Waymark_Map() {
 	==================================
 */
 	
+	this.pre_map_setup = function() {}		
 	this.init_done = function() {}		
 	this.info_window = function(layer_type, feature, layer) {}
 	this.build_content = function(layer_type, feature) {}
@@ -7922,6 +8540,12 @@ function Waymark_Map() {
 
 function Waymark_Map_Viewer() {	
 	this.gallery_images = [];
+
+	this.pre_map_setup =  function() {
+		Waymark = this;
+
+		Waymark.mode = 'view';		
+	}
 
 	this.init_done = function() {
 		Waymark = this;
@@ -7983,7 +8607,8 @@ function Waymark_Map_Viewer() {
 
 		var content = jQuery('<div />');
 		var list = jQuery('<ul />').addClass('waymark-info waymark-' + layer_type + '-info');
-
+		
+		//Expected Waymark properties
 		for(key in Waymark.config[layer_type + '_data_defaults']) {			
 			var ele = null;
 		
@@ -8054,7 +8679,8 @@ function Waymark_Map_Viewer() {
 							list.addClass('waymark-no-image');							
 						}
 																													
-					break;										
+					break;
+															
 			}
 			
 			if(ele) {
@@ -8204,6 +8830,34 @@ function Waymark_Map_Viewer() {
 			
 		//Create elevation control
 		Waymark.elevation_control = Waymark_L.control.elevation(config).addTo(Waymark.map);	
+
+		//Close elevation?	
+		Waymark.map.on('overlayremove', function(e) {
+			if(typeof Waymark.elevation_control.layer !== 'undefined') {	
+
+				var lat_lngs = null;
+		
+				//Active Elevation Line
+				Waymark.elevation_control.layer.eachLayer(function(layer) {
+					lat_lngs = JSON.stringify(layer.getLatLngs());
+				});
+		
+				//Valid Line to compare
+				if(lat_lngs) {
+					//Each layer being closed
+					e.layer.eachLayer(function(layer) {
+						if(typeof layer.getLatLngs !== 'undefined') {			
+							//Compare against active elevation
+							if(lat_lngs == JSON.stringify(layer.getLatLngs())) {
+								Waymark.elevation_control.clear();
+								Waymark.elevation_control.layer.removeFrom(Waymark.map);
+								Waymark.elevation_container.hide();					
+							}
+						}
+					});			
+				}
+			}
+		});
 	}
 
 	this.setup_gallery = function() {
@@ -8330,6 +8984,7 @@ function Waymark_Map_Viewer() {
 		}		
 	}		
 }
+
 /*
 	==================================
 	============= EDITOR =============
@@ -8343,11 +8998,16 @@ function Waymark_Map_Editor() {
 		==================================
 	*/
 
+	this.pre_map_setup =  function() {
+		Waymark = this;
+
+		Waymark.mode = 'edit';
+	}
+
 	this.init_done = function() {	
 		Waymark = this;
 
 		//This is the editor
-		Waymark.mode = 'edit';
 		jQuery(Waymark.map.getContainer()).addClass('waymark-is-editor');
 
 		//Add loading
@@ -8969,6 +9629,53 @@ function Waymark_Map_Editor() {
 		//Type
 		var config_types = Waymark.config[layer_type + '_types'];
 		var types_data = [];
+
+		// ================================
+		// ===== DIRECTION SELECTOR =======
+		// ================================
+
+		if(layer_type == 'line') {		
+			var jq_line_direction_select = jQuery('<select />');
+
+			//Options
+			jq_line_direction_select.append(
+				jQuery('<option />').val('').text(Waymark.title_case(waymark_js.lang.no_direction)),
+				jQuery('<option />').val('default').text(Waymark.title_case(waymark_js.lang.show_direction)),
+				jQuery('<option />').val('reverse').text(Waymark.title_case(waymark_js.lang.reverse_direction))
+			);			
+
+			//On change
+			jq_line_direction_select.change(function() {		
+				var selected_input = jQuery('option:selected', jQuery(this));
+
+				//Get direction value
+				var selected_direction = jQuery(this).val();
+			
+				//Update data layer
+				feature.properties.direction = selected_direction;
+				
+				//Redraw - layer Direction
+				Waymark.draw_line_direction(layer);
+
+				Waymark.save_data_layer();
+				Waymark.map_was_edited();			
+			});
+			
+			//Add item
+			list
+				.append(
+					jQuery('<li />')
+						.addClass('waymark-info-direction waymark-line-direction')
+						.append(jq_line_direction_select)
+			);
+
+			//Set selected
+			if(typeof feature.properties.direction === 'string') {
+				jQuery('option', jq_line_direction_select).filter(function() {
+					return jQuery(this).val() == Waymark.make_key(feature.properties.direction);
+				}).attr('selected', 'selected');			
+			}
+		}
 
 		// ================================
 		// ======== TYPE SELECTOR =========

@@ -11,7 +11,7 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',		
 			'custom_types' => array(),
-			'plugin_version' => '0.9.27',
+			'plugin_version' => '0.9.28',
 			'nonce_string' => 'Waymark_Nonce',
 			'site_url' => 'https://www.waymark.dev/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
@@ -94,6 +94,11 @@ class Waymark_Config {
 					'link_to_maps' => '1',
 					'link_from_maps' => '1'					
 				),
+				'interaction_options' => array(
+					'delay_seconds' => '2',
+					'do_message' => '0',
+					'wake_message' => esc_attr__('Click or Hover to Wake', 'waymark')
+				),				
 				'shortcode_options' => array(
 					'shortcode_header' => '1',
 					'header_override' => '0'
@@ -109,6 +114,10 @@ class Waymark_Config {
 					'elevation_colour' => '#b42714',
 					'elevation_initial' => '1'
 				),
+				'permalinks' => array(
+					'permalink_slug_map' => 'map',
+					'permalink_slug_collection' => 'collection'
+				),
 				'advanced' => array(
 					'debug_mode' => '0'
 				)
@@ -117,7 +126,8 @@ class Waymark_Config {
 				'layers' => array(
 			    'layer_name' => 'Open Street Map',
 			    'layer_url' => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
-			    'layer_attribution' => '© &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors'
+			    'layer_attribution' => '© &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors',
+ 			    'layer_max_zoom' => '18'
 				)
 			),
 			'markers' => array(
@@ -198,7 +208,7 @@ class Waymark_Config {
 		}
 	}	
 
-	public static function set_item($key = null, $value) {
+	public static function set_item($key = null, $value = null) {
 		if(array_key_exists($key, self::$data)) {
 			self::$data[$key] = $value;
 		}
@@ -369,6 +379,35 @@ class Waymark_Config {
 			$show_scale = '0';		
 		}
 		$settings_js['misc']['map_options']['show_scale'] = $show_scale;
+
+		//GeoJSON Properties
+		$overlay_properties = Waymark_Config::get_item('properties', 'props', true);
+		$overlay_properties = Waymark_Helper::multi_use_as_key($overlay_properties, 'property_key');			
+
+		if(sizeof($overlay_properties)) {
+			$settings_js['overlay']['properties'] = $overlay_properties;
+		} else {
+			$settings_js['overlay']['properties'] = [];
+		}
+		
+		//Interaction Options
+		if(isset($settings['misc']['interaction_options']['delay_seconds'])) {
+			$settings_js['misc']['interaction_options']['delay_seconds'] = $settings['misc']['interaction_options']['delay_seconds'];
+		} else {
+			$settings_js['misc']['interaction_options']['delay_seconds'] = 2;
+		}
+		
+		if(isset($settings['misc']['interaction_options']['do_message'])) {
+			$settings_js['misc']['interaction_options']['do_message'] = $settings['misc']['interaction_options']['do_message'];
+		} else {
+			$settings_js['misc']['interaction_options']['do_message'] = 0;		
+		}	
+		
+		if(isset($settings['misc']['interaction_options']['wake_message'])) {
+			$settings_js['misc']['interaction_options']['wake_message'] = $settings['misc']['interaction_options']['wake_message'];
+		} else {
+			$settings_js['misc']['interaction_options']['wake_message'] = 'Click or Hover to Wake';
+		}						
 		
 		//Debug mode
 		//Only admin

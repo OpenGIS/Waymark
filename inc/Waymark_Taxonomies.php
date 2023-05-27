@@ -34,7 +34,7 @@ class Waymark_Taxonomies {
 						'hierarchical' => true,
 						'public' => true,
 						'rewrite' => array(
-							'slug' => 'collection'
+							'slug' => Waymark_Config::get_setting('misc', 'permalinks', 'permalink_slug_collection')
 						),				
 						'show_ui' => true,
 						'show_admin_column' => true,

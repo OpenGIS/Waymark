@@ -1320,7 +1320,8 @@
     			L.DomEvent.on(container, 'click', L.DomEvent.stopPropagation);
     		}
 
-    		L.DomEvent.on(container, 'mousewheel', this._mousewheelHandler, this);
+				//Joe - Scroll Wheel quirk
+    		//L.DomEvent.on(container, 'mousewheel', this._mousewheelHandler, this);
 
     		if (!this.options.detached) {
     			let iconCssClass = "elevation-toggle " + this.options.controlButton.iconCssClass + (this.options.autohide ? "" : " close-button");
