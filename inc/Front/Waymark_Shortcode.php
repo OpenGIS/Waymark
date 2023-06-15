@@ -517,6 +517,27 @@ class Waymark_Shortcode {
 
 		// =========== END CALLBACK ============
 		
+		//Fix for weird glitch where *sometimes* the Map does not receive a
+		//"mouseenter" event if the mouse is hovering over that Map during
+		//initial page load, so the Map can not be woken.
+		$out .= '
+document.querySelectorAll( ":hover" ).forEach(function(node) {
+	var node = jQuery(node);
+
+	if(node.data("shortcode_hash") && node.data("shortcode_hash") == "' . $shortcode_hash . '") {
+		node.css("height", node.height() + "px");
+		
+		var map = jQuery(".waymark-map", node);
+
+		map.hide();
+		setTimeout(function() {
+			map.show();	
+		}, 50);				
+	}
+});
+		' . "\n";
+
+		
 		$out .= '});' . "\n";
 		$out .= '</script>' . "\n";
 		$out .= '<!-- END Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";

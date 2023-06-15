@@ -4,7 +4,7 @@ Tags: Create interactive Maps, Add custom Markers, Display geotagged photos, ele
 Requires at least: 4.6
 Tested up to: 6.2
 Requires PHP: 5.2
-Stable tag: 0.9.28
+Stable tag: 0.9.28.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,12 @@ A big thank you to the following projects and their contributors. Without their 
 9. Waymark was designed to be very flexible, with lots of Settings to choose from.
 
 == Changelog ==
+
+= 0.9.28.1 =
+
+* Fix for a weird glitch where *sometimes* the Map will not "wake" if the mouse is hovering over that Map during initial page load. Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for <a href="https://wordpress.org/support/topic/hovering-over-map-to-zoom/">reporting this</a>.
+
+* Fixed a bug where Line direction arrows were being shown for hidden Lines. Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for <a href="https://wordpress.org/support/topic/hiding-track-with-direction-arrows-sometimes-does-not-work/#post-16817555">reporting this</a>.
 
 = 0.9.28 =
 

@@ -7863,8 +7863,9 @@ function Waymark_Map() {
 						//Set title tooltip
 						Waymark.tooltip('line', feature, layer);
 
-						//Line direction
-						Waymark.draw_line_direction(layer);
+						//Line direction, shown initially?
+						var show_initially = parseInt(type.line_display);
+						Waymark.draw_line_direction(layer, show_initially);						
 
 						//Add to group							
 						Waymark.add_to_group('line', layer);
@@ -7904,7 +7905,7 @@ function Waymark_Map() {
 		});		
 	}
 
-	this.draw_line_direction = function(layer) {
+	this.draw_line_direction = function(layer, show_initially = true) {
 		var feature = layer.feature;
 		var direction = feature.properties.direction;
 		var type = Waymark.get_type('line', feature.properties.type);		
@@ -7946,7 +7947,11 @@ function Waymark_Map() {
 					}
 				})
 			}]
-			}).addTo(Waymark.map);							
+			});
+			
+			if(show_initially) {
+				decorator.addTo(Waymark.map);							
+			}
 	
 			layer.direction_layer = decorator;
 		}
@@ -8572,11 +8577,7 @@ function Waymark_Map_Viewer() {
 
 			//No view specified
 			if(Waymark.config.map_init_latlng === undefined && Waymark.config.map_init_zoom === undefined) {
-				//Use data layer bounds (if we have)
-				var bounds = Waymark.map_data.getBounds();
-				if(bounds.isValid()) {
-					Waymark.map.fitBounds(bounds);
-				}
+				Waymark.reset_data_view();
 			//Both zoom AND centre specified
 			} else if(Waymark.config.map_init_latlng !== undefined && Waymark.config.map_init_zoom !== undefined) {
 				//Use them
@@ -8599,6 +8600,16 @@ function Waymark_Map_Viewer() {
 					Waymark.map.setView(Waymark.map_data.getBounds().getCenter());								
 				}			
 			}
+		}
+	}
+	
+	this.reset_data_view = function() {
+		Waymark = this;
+
+		//Use data layer bounds (if we have)
+		var bounds = Waymark.map_data.getBounds();
+		if(typeof bounds === 'object' && bounds.isValid()) {
+			Waymark.map.fitBounds(bounds);
 		}
 	}
 	

@@ -499,8 +499,9 @@ function Waymark_Map() {
 						//Set title tooltip
 						Waymark.tooltip('line', feature, layer);
 
-						//Line direction
-						Waymark.draw_line_direction(layer);
+						//Line direction, shown initially?
+						var show_initially = parseInt(type.line_display);
+						Waymark.draw_line_direction(layer, show_initially);						
 
 						//Add to group							
 						Waymark.add_to_group('line', layer);
@@ -540,7 +541,7 @@ function Waymark_Map() {
 		});		
 	}
 
-	this.draw_line_direction = function(layer) {
+	this.draw_line_direction = function(layer, show_initially = true) {
 		var feature = layer.feature;
 		var direction = feature.properties.direction;
 		var type = Waymark.get_type('line', feature.properties.type);		
@@ -582,7 +583,11 @@ function Waymark_Map() {
 					}
 				})
 			}]
-			}).addTo(Waymark.map);							
+			});
+			
+			if(show_initially) {
+				decorator.addTo(Waymark.map);							
+			}
 	
 			layer.direction_layer = decorator;
 		}
