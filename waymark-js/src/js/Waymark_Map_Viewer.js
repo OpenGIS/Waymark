@@ -38,11 +38,7 @@ function Waymark_Map_Viewer() {
 
 			//No view specified
 			if(Waymark.config.map_init_latlng === undefined && Waymark.config.map_init_zoom === undefined) {
-				//Use data layer bounds (if we have)
-				var bounds = Waymark.map_data.getBounds();
-				if(bounds.isValid()) {
-					Waymark.map.fitBounds(bounds);
-				}
+				Waymark.reset_data_view();
 			//Both zoom AND centre specified
 			} else if(Waymark.config.map_init_latlng !== undefined && Waymark.config.map_init_zoom !== undefined) {
 				//Use them
@@ -65,6 +61,16 @@ function Waymark_Map_Viewer() {
 					Waymark.map.setView(Waymark.map_data.getBounds().getCenter());								
 				}			
 			}
+		}
+	}
+	
+	this.reset_data_view() {
+		Waymark = this;
+
+		//Use data layer bounds (if we have)
+		var bounds = Waymark.map_data.getBounds();
+		if(typeof bounds === 'object' && bounds.isValid()) {
+			Waymark.map.fitBounds(bounds);
 		}
 	}
 	
