@@ -23,7 +23,23 @@ function Waymark_Map_Viewer() {
 		Waymark.setup_elevation();
 
 		jQuery(Waymark.map.getContainer()).addClass('waymark-is-viewer');
+		
+		//Hidden? (i.e. display:none)
+		Waymark.setup_hidden_checker();		
 	}		
+	
+	//Initally hidden?
+	this.setup_hidden_checker = function() {
+		let hidden_checker = setInterval(function() {
+			is_hidden = Waymark.jq_map_container.is(":hidden");
+	
+			if(! is_hidden) {
+				Waymark.reset_data_view();
+		
+				clearInterval(hidden_checker);
+			}
+		}, 100);	
+	}
 		
 	this.create_buttons = function() {}
 
@@ -70,6 +86,8 @@ function Waymark_Map_Viewer() {
 		//Use data layer bounds (if we have)
 		var bounds = Waymark.map_data.getBounds();
 		if(typeof bounds === 'object' && bounds.isValid()) {
+			Waymark.map.invalidateSize();
+
 			Waymark.map.fitBounds(bounds);
 		}
 	}

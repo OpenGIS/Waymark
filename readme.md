@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.2  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.28.1  
+**Stable tag:** 0.9.28.2  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -110,6 +110,10 @@ A big thank you to the following projects and their contributors. Without their 
 
 
 ## Changelog ##
+
+### 0.9.28.2 ###
+
+* Fixed a bug where Maps initally hidden on page load are broken. Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for <a href="https://wordpress.org/support/topic/map-does-not-center-and-not-zoom-to-content-when-first-hidden/">reporting this</a>.
 
 ### 0.9.28.1 ###
 
