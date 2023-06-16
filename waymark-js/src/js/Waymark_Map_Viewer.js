@@ -16,6 +16,10 @@ function Waymark_Map_Viewer() {
 	this.init_done = function() {
 		Waymark = this;
 		
+		//Show!
+		Waymark.jq_map_container.show();
+		Waymark.config.map_width = Waymark.jq_map_container.width();
+		
 		//Gallery
 		Waymark.setup_gallery();		
 		

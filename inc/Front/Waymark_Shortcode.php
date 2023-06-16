@@ -191,9 +191,9 @@ class Waymark_Shortcode {
 			$out .= '	</header>' . "\n";		
 		}
 
-		//Map HTML Container
+		//Map HTML Container (Initially hidden)
 		$out .= '	<!-- Map -->' . "\n";
-		$out .= '	<div id="waymark-map-' . $shortcode_hash . '" class="' . $map_class . '" data-shortcode_hash="' . $shortcode_hash . '" style="height:' . $map_height . 'px"></div>' . "\n";
+		$out .= '	<div style="display:none;height:' . $map_height . 'px" id="waymark-map-' . $shortcode_hash . '" class="' . $map_class . '" data-shortcode_hash="' . $shortcode_hash . '"></div>' . "\n";
 
 		//Elevation?
 		if(array_key_exists('show_elevation', $shortcode_data)) {
@@ -516,28 +516,7 @@ class Waymark_Shortcode {
 		}
 
 		// =========== END CALLBACK ============
-		
-		//Fix for weird glitch where *sometimes* the Map does not receive a
-		//"mouseenter" event if the mouse is hovering over that Map during
-		//initial page load, so the Map can not be woken.
-		$out .= '
-document.querySelectorAll( ":hover" ).forEach(function(node) {
-	var node = jQuery(node);
-
-	if(node.data("shortcode_hash") && node.data("shortcode_hash") == "' . $shortcode_hash . '") {
-		node.css("height", node.height() + "px");
-		
-		var map = jQuery(".waymark-map", node);
-
-		map.hide();
-		setTimeout(function() {
-			map.show();	
-		}, 50);				
-	}
-});
-		' . "\n";
-
-		
+				
 		$out .= '});' . "\n";
 		$out .= '</script>' . "\n";
 		$out .= '<!-- END Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";

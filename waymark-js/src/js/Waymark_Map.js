@@ -298,7 +298,6 @@ function Waymark_Map() {
 		Waymark.jq_map_container = jQuery('#' + Waymark.config.map_div_id);
 		Waymark.jq_map_container.addClass('waymark-map-container');
 		Waymark.jq_map_container.css('height', Waymark.config.map_height + 'px');
-		Waymark.config.map_width = Waymark.jq_map_container.width();
 		
 		//Create Map
 		var map_options = {

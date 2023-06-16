@@ -115,9 +115,9 @@ A big thank you to the following projects and their contributors. Without their 
 
 * Fixed a bug where Maps initally hidden on page load are broken. Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for <a href="https://wordpress.org/support/topic/map-does-not-center-and-not-zoom-to-content-when-first-hidden/">reporting this</a>.
 
-### 0.9.28.1 ###
-
 * Fix for a weird glitch where *sometimes* the Map will not "wake" if the mouse is hovering over that Map during initial page load. Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for <a href="https://wordpress.org/support/topic/hovering-over-map-to-zoom/">reporting this</a>.
+
+### 0.9.28.1 ###
 
 * Fixed a bug where Line direction arrows were being shown for hidden Lines. Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for <a href="https://wordpress.org/support/topic/hiding-track-with-direction-arrows-sometimes-does-not-work/#post-16817555">reporting this</a>.
 
