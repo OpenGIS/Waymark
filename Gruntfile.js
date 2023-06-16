@@ -140,7 +140,8 @@ module.exports = function(grunt) {
 					domainPath: 'languages/',
 					include: ['inc/.*'],
 					mainFile: 'Waymark.php',
-					type: 'wp-plugin'
+					type: 'wp-plugin',
+          updateTimestamp: false
 				}
 			}
 		}
