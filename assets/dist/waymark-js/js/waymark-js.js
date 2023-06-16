@@ -8556,6 +8556,7 @@ function Waymark_Map_Viewer() {
 		
 		//Show!
 		Waymark.jq_map_container.show();
+		Waymark.map.invalidateSize();
 		Waymark.config.map_width = Waymark.jq_map_container.width();
 		
 		//Gallery
