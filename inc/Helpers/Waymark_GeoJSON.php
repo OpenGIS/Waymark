@@ -43,4 +43,23 @@ class Waymark_GeoJSON {
 
 		return $FeatureCollection;	
 	}	
+	
+	static public function clean_feature_descriptions($FeatureCollection = []) {
+		//Feature Collection
+		if($FeatureCollection && isset($FeatureCollection['features'])) {	
+
+			//Each Feature
+			foreach($FeatureCollection['features'] as &$Feature) {
+				if(isset($Feature['properties']['description'])) {
+					$bad  = ['"'];
+					$good = ['\"'];
+					$Feature['properties']['description'] = str_replace($bad, $good, $Feature['properties']['description']);
+					
+// 					Waymark_Helper::debug($description);					
+				}
+			}
+		}		
+
+		return $FeatureCollection;
+	}
 }

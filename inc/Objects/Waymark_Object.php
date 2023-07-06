@@ -300,9 +300,19 @@ class Waymark_Object {
 			//Delete WP specific post meta
 			if(strpos($meta_key, '_') === 0) {
 				unset($post_meta[$meta_key]);
-			//Flatten sub-array
+			//Waymark Meta
 			} else {
-				$post_meta[$meta_key] = $meta_value[0];
+				//Flatten sub-array
+				$meta_value = $meta_value[0];
+
+				//Fix quote escape bug
+				if($meta_key == 'waymark_map_data') {
+ 						$map_data = Waymark_GeoJSON::string_to_feature_collection($meta_value);
+ 						$map_data = Waymark_GeoJSON::clean_feature_descriptions($map_data);
+ 						$meta_value = json_encode($map_data);
+				}
+
+				$post_meta[$meta_key] = $meta_value;				
 			}
 		}
 

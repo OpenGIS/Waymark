@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.2  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.28.3  
+**Stable tag:** 0.9.28.4  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -110,6 +110,10 @@ A big thank you to the following projects and their contributors. Without their 
 
 
 ## Changelog ##
+
+### 0.9.28.4 ###
+
+* Fixed a Map duplication bug. Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for <a href="https://wordpress.org/support/topic/duplicating-a-map-ends-in-anempty-page/">reporting this</a>.
 
 ### 0.9.28.3 ###
 
