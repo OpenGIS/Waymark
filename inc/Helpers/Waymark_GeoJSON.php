@@ -54,8 +54,6 @@ class Waymark_GeoJSON {
 					$bad  = ['"'];
 					$good = ['\"'];
 					$Feature['properties']['description'] = str_replace($bad, $good, $Feature['properties']['description']);
-					
-// 					Waymark_Helper::debug($description);					
 				}
 			}
 		}		
