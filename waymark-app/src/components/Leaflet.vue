@@ -2,6 +2,8 @@
 import { onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
+import { typeData, iconData, overlayType } from '@/helpers/Overlay.js'
+import { makeKey } from '@/helpers/Common.js'
 
 onMounted(() => {
   const mapStore = useMapStore()
@@ -26,9 +28,12 @@ onMounted(() => {
 
   //Data Layer
   const dataLayer = L.geoJSON(geoJSON.value, {
-    // pointToLayer: function (feature, latlng) {
-    //   return L.divIcon(latlng)
-    // }
+    pointToLayer: function (feature, latlng) {
+      let tData = typeData(overlayType(feature), makeKey(feature.properties.type))
+      let iData = iconData(tData)
+
+      return L.marker(latlng, { icon: L.divIcon(iData) })
+    }
   }).addTo(map)
 
   //Set View

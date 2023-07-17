@@ -1,0 +1,13 @@
+export function makeKey(str) {
+  if (!str) {
+    return str
+  }
+
+  //No underscores
+  str = str.replace(/[^a-z0-9+]+/gi, '')
+
+  //Lower
+  str = str.toLowerCase()
+
+  return str
+}
