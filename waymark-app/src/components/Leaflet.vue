@@ -35,6 +35,7 @@ onMounted(() => {
       return L.marker(latlng, { icon: L.divIcon(iData) })
     }
   }).addTo(map)
+  mapStore.setLeafletData(dataLayer)
 
   //Set View
   map.fitBounds(dataLayer.getBounds())

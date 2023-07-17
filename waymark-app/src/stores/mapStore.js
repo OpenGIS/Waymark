@@ -8,15 +8,21 @@ export const useMapStore = defineStore('map', () => {
   let geoJSON = ref(mapData)
   let mapConfig = ref(waymarkConfig)
   let leafletMap = ref({})
+  let leafletData = ref({})
 
   function setLeafletMap(map) {
     leafletMap = map
+  }
+
+  function setLeafletData(dataLayer) {
+    leafletData = dataLayer
   }
 
   return {
     geoJSON,
     leafletMap,
     setLeafletMap,
-    mapConfig
+    mapConfig,
+    setLeafletData
   }
 })
