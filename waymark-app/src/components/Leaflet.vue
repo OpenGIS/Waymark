@@ -47,8 +47,7 @@ onMounted(() => {
 
 <style>
 #map {
-  width: 100%;
   height: 100%;
-  /*  background: red;*/
+  width: 50%;
 }
 </style>
