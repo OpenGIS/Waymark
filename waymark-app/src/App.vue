@@ -1,11 +1,10 @@
 <script setup>
-import { mapData, waymarkConfig } from '@/data/waymark.js'
+import Map from '@/components/Map.vue'
+import Bar from '@/components/Bar.vue'
 </script>
 
 <template>
-  <header>{{ JSON.stringify(waymarkConfig) }}</header>
+  <Map />
 
-  <main>{{ JSON.stringify(mapData) }}</main>
+  <Bar />
 </template>
-
-<style scoped></style>
