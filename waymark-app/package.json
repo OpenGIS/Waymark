@@ -11,6 +11,8 @@
     "prettier-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
+    "ionicons-npm": "^2.0.1",
     "leaflet": "^1.9.4",
     "onchange": "^7.1.0",
     "pinia": "^2.1.3",

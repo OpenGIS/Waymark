@@ -4,8 +4,6 @@ import { makeKey } from '@/helpers/Common.js'
 export function typeData(overlayType, typeKey) {
   var type = null
 
-  console.log(waymarkConfig[overlayType + '_types'])
-
   //Iterate over all types
   for (var i in waymarkConfig[overlayType + '_types']) {
     //Use first as default
@@ -26,7 +24,7 @@ export function typeData(overlayType, typeKey) {
   }
 
   //Set key
-  // type[overlayType + '_key'] = makeKey(type[overlayType + '_title'])
+  type[overlayType + '_key'] = makeKey(type[overlayType + '_title'])
 
   return type
 }

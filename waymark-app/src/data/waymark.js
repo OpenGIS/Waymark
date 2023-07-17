@@ -1903,7 +1903,7 @@ export const waymarkConfig = {
       marker_shape: 'marker',
       marker_size: 'medium',
       icon_type: 'icon',
-      marker_icon: 'ion-beer',
+      marker_icon: 'fa-beer',
       marker_colour: '#fbfbfb',
       icon_colour: '#754423',
       marker_display: '1',

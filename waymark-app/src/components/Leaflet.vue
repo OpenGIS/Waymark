@@ -5,10 +5,10 @@ import { useMapStore } from '@/stores/mapStore.js'
 import { typeData, iconData, overlayType } from '@/helpers/Overlay.js'
 import { makeKey } from '@/helpers/Common.js'
 
-onMounted(() => {
-  const mapStore = useMapStore()
-  const { geoJSON, mapConfig } = storeToRefs(mapStore)
+const mapStore = useMapStore()
+const { geoJSON, mapConfig } = storeToRefs(mapStore)
 
+onMounted(() => {
   //Create Map
   const map = L.map('map')
   mapStore.setLeafletMap(map)
