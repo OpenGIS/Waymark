@@ -1,6 +1,8 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { mapData, waymarkConfig } from '@/data/waymark.js'
+import L from 'leaflet'
+import { getTypeData, getFeatureType } from '@/helpers/Overlay.js'
 
 export const useMapStore = defineStore('map', () => {
   let geoJSON = ref(mapData)
@@ -17,7 +19,19 @@ export const useMapStore = defineStore('map', () => {
     leafletData.value = dataLayer
   }
 
-  function addOverlay(overlay) {
+  function addLayer(layer) {
+    let featureType = getFeatureType(layer.feature)
+    let typeKey = layer.feature.properties.type
+
+    let overlay = {
+      id: L.stamp(layer),
+      typeKey: typeKey,
+      typeData: getTypeData(featureType, typeKey),
+      feature: layer.feature,
+      layer: layer,
+      featureType: featureType
+    }
+
     overlays.value.push(overlay)
   }
 
@@ -28,6 +42,6 @@ export const useMapStore = defineStore('map', () => {
     setLeafletMap,
     mapConfig,
     setLeafletData,
-    addOverlay
+    addLayer
   }
 })

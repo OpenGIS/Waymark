@@ -19,7 +19,7 @@ const { overlays } = storeToRefs(mapStore)
 #bar {
   height: 100%;
   width: 50%;
-  background: green;
+  overflow-y: scroll;
 }
 </style>
 vue

@@ -1,7 +1,7 @@
 import { waymarkConfig } from '@/data/waymark.js'
 import { makeKey } from '@/helpers/Common.js'
 
-export function typeData(overlayType, typeKey) {
+export function getTypeData(overlayType, typeKey) {
   var type = null
 
   //Iterate over all types
@@ -23,13 +23,18 @@ export function typeData(overlayType, typeKey) {
     }
   }
 
+  //Add Icon Data
+  if (overlayType == 'marker') {
+    type['iconData'] = getIconData(type)
+  }
+
   //Set key
   type[overlayType + '_key'] = makeKey(type[overlayType + '_title'])
 
   return type
 }
 
-export function iconData(type) {
+export function getIconData(type) {
   var icon_data = {
     className: 'waymark-marker waymark-marker-' + type.typeKey
   }
@@ -143,4 +148,8 @@ export function getFeatureType(feature) {
     default:
       return 'shape'
   }
+}
+
+export function iconHtml(iconData) {
+  return '<div class="' + iconData.className + '">' + iconData.html + '</div>'
 }
