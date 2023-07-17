@@ -2,8 +2,10 @@
 import { onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
-import { typeData, iconData, overlayType } from '@/helpers/Overlay.js'
+import { typeData, iconData, getFeatureType } from '@/helpers/Overlay.js'
 import { makeKey } from '@/helpers/Common.js'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
 
 const mapStore = useMapStore()
 const { geoJSON, mapConfig } = storeToRefs(mapStore)
@@ -28,11 +30,22 @@ onMounted(() => {
 
   //Data Layer
   const dataLayer = L.geoJSON(geoJSON.value, {
+    //Create Markers
     pointToLayer: function (feature, latlng) {
-      let tData = typeData(overlayType(feature), makeKey(feature.properties.type))
+      let tData = typeData(getFeatureType(feature), makeKey(feature.properties.type))
       let iData = iconData(tData)
 
       return L.marker(latlng, { icon: L.divIcon(iData) })
+    },
+
+    //Add to store
+    onEachFeature(feature, layer) {
+      mapStore.addOverlay({
+        typeKey: feature.properties.type,
+        feature: feature,
+        layer: layer,
+        getFeatureType: getFeatureType(feature)
+      })
     }
   }).addTo(map)
   mapStore.setLeafletData(dataLayer)

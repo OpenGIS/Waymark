@@ -129,7 +129,7 @@ export function iconData(type) {
   return icon_data
 }
 
-export function overlayType(feature) {
+export function getFeatureType(feature) {
   if (typeof feature.geometry.type === 'undefined') {
     return null
   }

@@ -1,28 +1,33 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { mapData, waymarkConfig } from '@/data/waymark.js'
-import L from 'leaflet'
-import 'leaflet/dist/leaflet.css'
 
 export const useMapStore = defineStore('map', () => {
   let geoJSON = ref(mapData)
   let mapConfig = ref(waymarkConfig)
-  let leafletMap = ref({})
-  let leafletData = ref({})
+  let leafletMap = ref()
+  let leafletData = ref()
+  let overlays = ref([])
 
   function setLeafletMap(map) {
-    leafletMap = map
+    leafletMap.value = map
   }
 
   function setLeafletData(dataLayer) {
-    leafletData = dataLayer
+    leafletData.value = dataLayer
+  }
+
+  function addOverlay(overlay) {
+    overlays.value.push(overlay)
   }
 
   return {
+    overlays,
     geoJSON,
     leafletMap,
     setLeafletMap,
     mapConfig,
-    setLeafletData
+    setLeafletData,
+    addOverlay
   }
 })
