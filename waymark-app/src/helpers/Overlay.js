@@ -153,3 +153,19 @@ export function getFeatureType(feature) {
 export function iconHtml(iconData) {
   return '<div class="' + iconData.className + '">' + iconData.html + '</div>'
 }
+
+export function overlaysByType(overlays) {
+  const byType = {}
+
+  for (let i in overlays) {
+    let overlay = overlays[i]
+
+    if (typeof byType[overlay.typeKey] !== 'object') {
+      byType[overlay.typeKey] = []
+    }
+
+    byType[overlay.typeKey].push(overlay)
+  }
+
+  return byType
+}
