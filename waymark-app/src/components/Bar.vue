@@ -1,62 +1,49 @@
 <script setup>
 import { onMounted, computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import OverlayDetail from '@/components/OverlayDetail.vue'
+import OverlayList from '@/components/OverlayList.vue'
 import { useMapStore } from '@/stores/mapStore.js'
+import { overlaysByType } from '@/helpers/Overlay.js'
 
 const mapStore = useMapStore()
 const { overlays } = storeToRefs(mapStore)
 
-const byType = (overlays) => {
-  const byType = []
-
-  for (let i in overlays) {
-    let overlay = overlays[i]
-
-    if (typeof byType[overlay.typeKey] !== 'object') {
-      byType[overlay.typeKey] = []
-    }
-
-    byType[overlay.typeKey].push(overlay)
-  }
-
-  return byType
-}
-
-const markers = computed(() => {
-  return byType(
+const markersByType = computed(() => {
+  return overlaysByType(
     overlays.value.filter((o) => {
       return o.featureType === 'marker'
     })
   )
 })
 
-onMounted(() => {
-  console.log(markers.value)
-
-  // for (let i in overlays) {
-  //   let overlay = overlays[i]
-
-  //   // if (typeof overlaysByType[overlay.typeKey] === 'array') {
-  //   //   overlaysByType[overlay.typeKey].push(overlay)
-  //   // } else {
-  //   //   overlaysByType[overlay.typeKey] = [overlay]
-  //   // }
-  // }
+const linesByType = computed(() => {
+  return overlaysByType(
+    overlays.value.filter((o) => {
+      return o.featureType === 'line'
+    })
+  )
 })
 
-// setTimeout(() => {
-//   overlays.value = []
-// }, 2000)
+const shapesByType = computed(() => {
+  return overlaysByType(
+    overlays.value.filter((o) => {
+      return o.featureType === 'shape'
+    })
+  )
+})
 </script>
 
 <template>
   <div id="bar">
-    <div class="overlay-list">
+    <div class="overlay-lists">
       <!-- Markers -->
-      <div class="marker-list">
-        <OverlayDetail v-for="overlay in markers" :overlay="overlay" />
-      </div>
+      <OverlayList class="marker-list" :overlaysByType="markersByType" />
+
+      <!-- Lines -->
+      <OverlayList class="line-list" :overlaysByType="linesByType" />
+
+      <!-- Shapes -->
+      <OverlayList class="shape-list" :overlaysByType="shapesByType" />
     </div>
   </div>
 </template>
