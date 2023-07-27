@@ -287,8 +287,17 @@ class Waymark_Shortcode {
 		if($show_elevation) {
 	 		$out .= 'waymark_config.show_elevation = 1;' . "\n";
 	 		$out .= 'waymark_config.elevation_div_id = "waymark-elevation-' . $shortcode_hash . '";' . "\n";
-	 		$out .= 'waymark_config.elevation_units = "' . Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_units') . '";' . "\n";
 	 		$out .= 'waymark_config.elevation_initial = ' . Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_initial') . ';' . "\n";
+
+	 		//Units
+	 		//Shortcode
+	 		if(array_key_exists('elevation_units', $shortcode_data) && in_array($shortcode_data['elevation_units'], ['metric', 'imperial'])) {
+				$elevation_units = $shortcode_data['elevation_units'];
+			//Setting
+			} else {
+				$elevation_units = Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_units');
+			}	 		
+			$out .= 'waymark_config.elevation_units = "' . $elevation_units . '";' . "\n";
 		}
 		
 		//Initially Show / Hide Types

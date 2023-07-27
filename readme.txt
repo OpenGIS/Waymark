@@ -4,7 +4,7 @@ Tags: Map maker, Maps, Location, GPX, KML, GeoJSON, OpenStreetMap, Markers, Map 
 Requires at least: 4.6
 Tested up to: 6.2
 Requires PHP: 5.2
-Stable tag: 0.9.28.4
+Stable tag: 0.9.28.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,10 @@ A big thank you to the following projects and their contributors. Without their 
 9. Waymark was designed to be very flexible, with lots of Settings to choose from.
 
 == Changelog ==
+
+= 0.9.28.5 =
+
+Added `elevation_units` (metric/imperial) Shortcode option, which will override the Waymark > Elevation > Elevation Units option. Thanks to <a href="https://github.com/randombuffalo">randombuffalo</a> for the <a href="https://github.com/morehawes/waymark/issues/22">suggestion</a>.
 
 = 0.9.28.4 =
 
