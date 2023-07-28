@@ -84,7 +84,8 @@ function Waymark_Map() {
 			'map_div_id': 'waymark-map',
 			"map_options" : {
 				"show_type_labels": 1,
-				"button_position": 'bottomright'
+				"button_position": 'bottomright',
+				"max_zoom": 0
 			},
 			"map_height": 400,		
 			'map_width': null,
@@ -308,8 +309,10 @@ function Waymark_Map() {
 	    sleep: false
 		};
 
-		//Viewer
+		// === Viewer ===
+
 		if(Waymark.mode == 'view') {
+			//START Sleep
 //  			map_options.scrollWheelZoom = false;
  			//Let Sleep enable this on Wake
  			map_options.dragging = false;
@@ -331,8 +334,15 @@ function Waymark_Map() {
 
 // 	    hoverToWake: false,
 	    map_options.sleepOpacity = 1;
+	    //END Sleep
+
+	    //Max Zoom
+	    if(max_zoom = Waymark.config.map_options.max_zoom) {
+				map_options.maxZoom = max_zoom;
+	    }
 	    
-		//Editor
+		// === Editor ===
+
 		} else {
 			//Sleep not used, enable
  			map_options.dragging = true;

@@ -258,6 +258,12 @@ class Waymark_Shortcode {
 			}		
 		}		
 
+		//Max Zoom
+		if(array_key_exists('max_zoom', $shortcode_data) && is_numeric($shortcode_data['max_zoom'])) {
+			
+			$out .= 'waymark_config.map_options.max_zoom = ' . $shortcode_data['max_zoom'] . ";\n";								
+		}	
+
 		//Basemap?
 		if(array_key_exists('basemap', $shortcode_data)) {
 	 		$out .= 'waymark_config.map_init_basemap = "' . $shortcode_data['basemap'] . '";' . "\n";
