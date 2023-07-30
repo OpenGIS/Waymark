@@ -9,7 +9,14 @@ const props = defineProps({
 const feature_props = props.overlay.feature.properties
 
 let expanded = ref(false)
+let visible = ref(true)
 let hasBody = feature_props.description || feature_props.image_large_url
+
+const toggleVisible = (overlay) => {
+  const element = overlay.layer.getElement()
+
+  element.classList.toggle('overlay-hidden')
+}
 </script>
 
 <template>
@@ -33,6 +40,10 @@ let hasBody = feature_props.description || feature_props.image_large_url
       <div v-if="hasBody" class="expand-icon">
         <div v-if="expanded">[-]</div>
         <div v-else>[+]</div>
+      </div>
+
+      <div class="display-toggle">
+        <input type="checkbox" checked="visible" @change="toggleVisible(overlay)" />
       </div>
     </header>
 
