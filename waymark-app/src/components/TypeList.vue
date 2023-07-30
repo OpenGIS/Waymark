@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue'
 import OverlayList from '@/components/OverlayList.vue'
 
 const props = defineProps({

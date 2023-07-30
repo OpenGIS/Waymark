@@ -2,15 +2,18 @@
 import { ref } from 'vue'
 import { getTypeData } from '@/helpers/Overlay.js'
 
-defineProps({
+const props = defineProps({
   overlay: Object
 })
 
+const feature_props = props.overlay.feature.properties
+
 let expanded = ref(false)
+let hasBody = feature_props.description || feature_props.image_large_url
 </script>
 
 <template>
-  <article class="overlay-detail">
+  <article class="overlay-detail" :class="hasBody ? 'overlay-has-body' : ''">
     <!-- Header -->
     <header @click="expanded = !expanded">
       <!-- Icon -->
@@ -24,29 +27,29 @@ let expanded = ref(false)
 
       <!-- Title -->
       <div class="overlay-title">
-        {{ overlay.feature.properties.title }}
+        {{ feature_props.title }}
+      </div>
+
+      <div v-if="hasBody" class="expand-icon">
+        <div v-if="expanded">[-]</div>
+        <div v-else>[+]</div>
       </div>
     </header>
 
     <!-- Body -->
-    <main
-      v-show="
-        expanded &&
-        (overlay.feature.properties.description || overlay.feature.properties.image_large_url)
-      "
-    >
+    <main v-show="expanded && hasBody">
       <!-- Description -->
       <div
         class="overlay-description"
-        v-if="overlay.feature.properties.description"
-        v-html="overlay.feature.properties.description"
+        v-if="feature_props.description"
+        v-html="feature_props.description"
       />
 
       <!-- Image -->
       <img
         class="overlay-image"
-        v-if="overlay.feature.properties.image_large_url"
-        :src="overlay.feature.properties.image_large_url"
+        v-if="feature_props.image_large_url"
+        :src="feature_props.image_large_url"
       />
     </main>
   </article>
@@ -60,11 +63,20 @@ img {
 .overlay-detail {
   border-bottom: 1px solid #333;
 
+  &.overlay-has-body {
+    header {
+      cursor: pointer;
+    }
+  }
+
   header {
     display: flex;
     padding: 7px;
-    cursor: pointer;
     background: #999;
+
+    .expand-icon {
+      float: right;
+    }
 
     .overlay-icon {
       display: flex;
@@ -76,6 +88,7 @@ img {
       }
     }
     .overlay-title {
+      width: 100%;
       padding: 7px;
       font-weight: bold;
     }
