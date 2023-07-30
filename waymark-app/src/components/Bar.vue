@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import OverlayList from '@/components/OverlayList.vue'
+import TypeList from '@/components/TypeList.vue'
 import { useMapStore } from '@/stores/mapStore.js'
 import { overlaysByType } from '@/helpers/Overlay.js'
 
@@ -35,15 +35,15 @@ const shapesByType = computed(() => {
 
 <template>
   <div id="bar">
-    <div class="overlay-lists">
+    <div class="type-lists">
       <!-- Markers -->
-      <OverlayList class="marker-list" :overlaysByType="markersByType" />
+      <TypeList class="marker-list" :overlaysByType="markersByType" />
 
       <!-- Lines -->
-      <OverlayList class="line-list" :overlaysByType="linesByType" />
+      <TypeList class="line-list" :overlaysByType="linesByType" />
 
       <!-- Shapes -->
-      <OverlayList class="shape-list" :overlaysByType="shapesByType" />
+      <TypeList class="shape-list" :overlaysByType="shapesByType" />
     </div>
   </div>
 </template>
@@ -54,4 +54,3 @@ const shapesByType = computed(() => {
   overflow-y: scroll;
 }
 </style>
-vue

@@ -1,14 +1,18 @@
 <script setup>
+import { ref } from 'vue'
 import { getTypeData } from '@/helpers/Overlay.js'
+
 defineProps({
   overlay: Object
 })
+
+let expanded = ref(false)
 </script>
 
 <template>
   <article class="overlay-detail">
     <!-- Header -->
-    <header>
+    <header @click="expanded = !expanded">
       <!-- Icon -->
       <div class="overlay-icon">
         <div
@@ -26,16 +30,21 @@ defineProps({
 
     <!-- Body -->
     <main
-      v-if="overlay.feature.properties.description || overlay.feature.properties.image_large_url"
+      v-show="
+        expanded &&
+        (overlay.feature.properties.description || overlay.feature.properties.image_large_url)
+      "
     >
       <!-- Description -->
       <div
+        class="overlay-description"
         v-if="overlay.feature.properties.description"
         v-html="overlay.feature.properties.description"
       />
 
       <!-- Image -->
       <img
+        class="overlay-image"
         v-if="overlay.feature.properties.image_large_url"
         :src="overlay.feature.properties.image_large_url"
       />
@@ -49,11 +58,34 @@ img {
 }
 
 .overlay-detail {
-  border: 1px solid blue;
+  border-bottom: 1px solid #333;
+
   header {
-    border: 1px solid pink;
+    display: flex;
+    padding: 7px;
+    cursor: pointer;
+    background: #999;
+
     .overlay-icon {
-      border: 1px solid red;
+      display: flex;
+
+      .waymark-marker {
+        position: relative;
+        width: 25px;
+        height: 25px;
+      }
+    }
+    .overlay-title {
+      padding: 7px;
+      font-weight: bold;
+    }
+  }
+
+  main {
+    padding: 15px;
+
+    .overlay-description {
+      margin-bottom: 15px;
     }
   }
 }
