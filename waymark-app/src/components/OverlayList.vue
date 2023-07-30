@@ -7,6 +7,12 @@ const props = defineProps({
 })
 
 let expanded = ref(true)
+
+const toggleHighlight = (overlay) => {
+  const element = overlay.layer.getElement()
+
+  element.classList.toggle('overlay-highlight')
+}
 </script>
 
 <template>
@@ -18,12 +24,17 @@ let expanded = ref(true)
 
     <div v-show="expanded" class="list-content">
       <!-- List -->
-      <OverlayDetail v-for="overlay in byType.overlays" :overlay="overlay" />
+      <OverlayDetail
+        v-for="overlay in byType.overlays"
+        :overlay="overlay"
+        @mouseenter="toggleHighlight(overlay)"
+        @mouseleave="toggleHighlight(overlay)"
+      />
     </div>
   </div>
 </template>
 
-<style scoped lang="less">
+<style lang="less">
 .overlay-list {
   .list-header {
     padding: 15px;
