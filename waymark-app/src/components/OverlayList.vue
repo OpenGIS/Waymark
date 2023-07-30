@@ -8,9 +8,12 @@ const props = defineProps({
 
 <template>
   <div class="overlay-list">
-    <div v-for="(overlays, typeKey) in overlaysByType" :overlays="overlays">
-      <strong>{{ typeKey }}</strong>
-      <OverlayDetail v-for="overlay in overlays" :overlay="overlay" />
+    <div v-for="(byType, typeKey) in overlaysByType" :byType="byType">
+      <!-- Header -->
+      <strong>{{ byType.title }}</strong>
+
+      <!-- List -->
+      <OverlayDetail v-for="overlay in byType.overlays" :overlay="overlay" />
     </div>
   </div>
 </template>

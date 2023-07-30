@@ -160,11 +160,15 @@ export function overlaysByType(overlays) {
   for (let i in overlays) {
     let overlay = overlays[i]
 
+    //Not yet present?
     if (typeof byType[overlay.typeKey] !== 'object') {
-      byType[overlay.typeKey] = []
+      byType[overlay.typeKey] = {
+        title: overlay.typeData[getFeatureType(overlay.feature) + '_title'],
+        overlays: []
+      }
     }
 
-    byType[overlay.typeKey].push(overlay)
+    byType[overlay.typeKey]['overlays'].push(overlay)
   }
 
   return byType
