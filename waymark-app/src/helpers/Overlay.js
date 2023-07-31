@@ -1,35 +1,35 @@
 import { waymarkConfig } from '@/data/waymark.js'
 import { makeKey } from '@/helpers/Common.js'
 
-export function getTypeData(overlayType, typeKey) {
+export function getTypeData(featureType, typeKey) {
   var type = null
 
   //Iterate over all types
-  for (var i in waymarkConfig[overlayType + '_types']) {
+  for (var i in waymarkConfig[featureType + '_types']) {
     //Use first as default
     if (i == 0) {
-      type = waymarkConfig[overlayType + '_types'][i]
+      type = waymarkConfig[featureType + '_types'][i]
     }
 
     //Grab title
-    var type_title = waymarkConfig[overlayType + '_types'][i][overlayType + '_title']
+    var type_title = waymarkConfig[featureType + '_types'][i][featureType + '_title']
 
     //Has title
     if (type_title) {
       //Found (run both through make_key, just to be on safe side)
       if (makeKey(typeKey) == makeKey(type_title)) {
-        type = waymarkConfig[overlayType + '_types'][i]
+        type = waymarkConfig[featureType + '_types'][i]
       }
     }
   }
 
   //Add Icon Data
-  if (overlayType == 'marker') {
+  if (featureType == 'marker') {
     type['iconData'] = getIconData(type)
   }
 
   //Set key
-  type[overlayType + '_key'] = makeKey(type[overlayType + '_title'])
+  type[featureType + '_key'] = makeKey(type[featureType + '_title'])
 
   return type
 }
@@ -164,7 +164,9 @@ export function overlaysByType(overlays) {
     if (typeof byType[overlay.typeKey] !== 'object') {
       byType[overlay.typeKey] = {
         title: overlay.typeData[getFeatureType(overlay.feature) + '_title'],
-        overlays: []
+        typeData: getTypeData(getFeatureType(overlay.feature), overlay.typeKey),
+        overlays: [],
+        featureType: getFeatureType(overlay.feature)
       }
     }
 

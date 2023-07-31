@@ -1834,8 +1834,8 @@ export const waymarkConfig = {
   marker_types: [
     {
       marker_title: 'Photo',
-      marker_shape: 'marker',
-      marker_size: 'medium',
+      marker_shape: 'circle',
+      marker_size: 'small',
       icon_type: 'icon',
       marker_icon: 'ion-camera',
       marker_colour: '#70af00',
@@ -1944,8 +1944,8 @@ export const waymarkConfig = {
     },
     {
       marker_title: 'Camp',
-      marker_shape: 'marker',
-      marker_size: 'medium',
+      marker_shape: 'rectangle',
+      marker_size: 'large',
       icon_type: 'icon',
       marker_icon: 'ion-android-home',
       marker_colour: '#a43233',

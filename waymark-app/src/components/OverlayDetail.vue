@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-import { getTypeData } from '@/helpers/Overlay.js'
 
 const props = defineProps({
   overlay: Object
@@ -23,15 +22,6 @@ const toggleVisible = (overlay) => {
   <article class="overlay-detail" :class="hasBody ? 'overlay-has-body' : ''">
     <!-- Header -->
     <header @click="expanded = !expanded">
-      <!-- Icon -->
-      <div class="overlay-icon">
-        <div
-          v-if="overlay.featureType == 'marker'"
-          class="waymark-marker"
-          v-html="overlay.typeData.iconData.html"
-        />
-      </div>
-
       <!-- Title -->
       <div class="overlay-title">
         {{ feature_props.title }}
@@ -43,7 +33,7 @@ const toggleVisible = (overlay) => {
       </div>
 
       <div class="display-toggle">
-        <input type="checkbox" checked="visible" @change="toggleVisible(overlay)" />
+        <input type="checkbox" checked="visible" @click.stop="toggleVisible(overlay)" />
       </div>
     </header>
 

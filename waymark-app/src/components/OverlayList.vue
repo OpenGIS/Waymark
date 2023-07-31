@@ -6,8 +6,9 @@ const props = defineProps({
   byType: Object
 })
 
+console.log(props.byType.typeData.iconData)
+
 let expanded = ref(true)
-let visible = ref(true)
 
 const toggleHighlight = (overlay) => {
   const element = overlay.layer.getElement()
@@ -20,6 +21,8 @@ const toggleVisible = (overlays) => {
     const element = overlays[i].layer.getElement()
 
     element.classList.toggle('overlay-hidden')
+
+    expanded.value = !element.classList.contains('overlay-hidden')
   }
 }
 </script>
@@ -28,10 +31,20 @@ const toggleVisible = (overlays) => {
   <div class="overlay-list">
     <!-- Header -->
     <div class="list-header" @click="expanded = !expanded">
+      <!-- Icon -->
+      <div class="overlay-icon">
+        <div
+          v-if="byType.featureType == 'marker'"
+          :class="byType.typeData.iconData.className"
+          v-html="byType.typeData.iconData.html"
+          :style="`width:${byType.typeData.iconData.iconSize[0]}px;height:${byType.typeData.iconData.iconSize[1]}px`"
+        />
+      </div>
+
       <strong>{{ byType.title }} ({{ byType.overlays.length }})</strong>
 
       <div class="display-toggle">
-        <input type="checkbox" checked="visible" @change="toggleVisible(byType.overlays)" />
+        <input type="checkbox" checked="visible" @click.stop="toggleVisible(byType.overlays)" />
       </div>
     </div>
 
@@ -50,9 +63,17 @@ const toggleVisible = (overlays) => {
 <style lang="less">
 .overlay-list {
   .list-header {
+    position: relative;
     padding: 15px;
+    padding-left: 45px;
     color: #fff;
     background: #333;
+
+    .waymark-marker {
+      position: absolute;
+      top: 6px;
+      left: 10px;
+    }
 
     .display-toggle {
       float: right;
