@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import TypeList from '@/components/TypeList.vue'
 import { useMapStore } from '@/stores/mapStore.js'
@@ -8,49 +8,49 @@ import { overlaysByType } from '@/helpers/Overlay.js'
 const mapStore = useMapStore()
 const { overlays } = storeToRefs(mapStore)
 
-const markersByType = computed(() => {
+let activeType = ref('marker')
+
+const activeOverlays = computed(() => {
   return overlaysByType(
     overlays.value.filter((o) => {
-      return o.featureType === 'marker'
+      return o.featureType === activeType.value
     })
   )
 })
 
-const linesByType = computed(() => {
-  return overlaysByType(
-    overlays.value.filter((o) => {
-      return o.featureType === 'line'
-    })
-  )
-})
-
-const shapesByType = computed(() => {
-  return overlaysByType(
-    overlays.value.filter((o) => {
-      return o.featureType === 'shape'
-    })
-  )
+onMounted(() => {
+  console.log(activeOverlays)
 })
 </script>
 
 <template>
   <div id="bar">
+    <nav>
+      <div @click="activeType = 'marker'">Markers</div>
+      <div @click="activeType = 'line'">Lines</div>
+      <div @click="activeType = 'shape'">Shapes</div>
+    </nav>
+
     <div class="type-lists">
       <!-- Markers -->
-      <TypeList class="marker-list" :overlaysByType="markersByType" />
-
-      <!-- Lines -->
-      <TypeList class="line-list" :overlaysByType="linesByType" />
-
-      <!-- Shapes -->
-      <TypeList class="shape-list" :overlaysByType="shapesByType" />
+      <TypeList :overlaysByType="activeOverlays" />
     </div>
   </div>
 </template>
-<style>
+
+<style lang="less">
 #bar {
   height: 100%;
   width: 50%;
   overflow-y: scroll;
+
+  nav {
+    display: flex;
+    div {
+      width: 50px;
+      height: 50px;
+      background: blue;
+    }
+  }
 }
 </style>
