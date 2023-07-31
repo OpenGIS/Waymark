@@ -6,9 +6,8 @@ const props = defineProps({
   byType: Object
 })
 
-console.log(props.byType.typeData.iconData)
-
 let expanded = ref(true)
+let visible = ref(true)
 
 const toggleHighlight = (overlay) => {
   const element = overlay.layer.getElement()
@@ -16,11 +15,20 @@ const toggleHighlight = (overlay) => {
   element.classList.toggle('overlay-highlight')
 }
 
-const toggleVisible = (overlays) => {
+const toggleVisible = () => {
+  visible.value = !visible.value
+  expanded.value = visible
+
+  const overlays = props.byType.overlays
+
   for (let i in overlays) {
     const element = overlays[i].layer.getElement()
 
-    element.classList.toggle('overlay-hidden')
+    if (!visible.value) {
+      element.classList.add('overlay-hidden')
+    } else {
+      element.classList.remove('overlay-hidden')
+    }
 
     expanded.value = !element.classList.contains('overlay-hidden')
   }
@@ -44,7 +52,7 @@ const toggleVisible = (overlays) => {
       <strong>{{ byType.title }} ({{ byType.overlays.length }})</strong>
 
       <div class="display-toggle">
-        <input type="checkbox" checked="visible" @click.stop="toggleVisible(byType.overlays)" />
+        <input type="checkbox" checked="visible" @click.stop="toggleVisible()" />
       </div>
     </div>
 

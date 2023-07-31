@@ -11,10 +11,16 @@ let expanded = ref(false)
 let visible = ref(true)
 let hasBody = feature_props.description || feature_props.image_large_url
 
-const toggleVisible = (overlay) => {
-  const element = overlay.layer.getElement()
+const toggleVisible = () => {
+  visible.value = !visible.value
 
-  element.classList.toggle('overlay-hidden')
+  const element = props.overlay.layer.getElement()
+
+  if (!visible.value) {
+    element.classList.add('overlay-hidden')
+  } else {
+    element.classList.remove('overlay-hidden')
+  }
 }
 </script>
 
@@ -33,7 +39,7 @@ const toggleVisible = (overlay) => {
       </div>
 
       <div class="display-toggle">
-        <input type="checkbox" checked="visible" @click.stop="toggleVisible(overlay)" />
+        <input type="checkbox" checked="visible" @click.stop="toggleVisible()" />
       </div>
     </header>
 
