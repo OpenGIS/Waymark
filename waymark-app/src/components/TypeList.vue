@@ -7,21 +7,9 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="type-list">
-    <div v-for="(byType, typeKey) in overlaysByType">
-      <OverlayList :byType="byType" />
-    </div>
-  </div>
+  <ion-list v-for="(byType, typeKey) in overlaysByType">
+    <OverlayList :byType="byType" />
+  </ion-list>
 </template>
 
-<style scoped lang="less">
-.overlay-list {
-  .list-header {
-    padding: 15px;
-    color: #fff;
-    background: #333;
-  }
-  .list-content {
-  }
-}
-</style>
+<style scoped lang="less"></style>

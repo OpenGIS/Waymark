@@ -17,10 +17,6 @@ const activeOverlays = computed(() => {
     })
   )
 })
-
-onMounted(() => {
-  console.log(activeOverlays)
-})
 </script>
 
 <template>
@@ -40,10 +36,6 @@ onMounted(() => {
 
 <style lang="less">
 #bar {
-  height: 100%;
-  width: 50%;
-  overflow-y: scroll;
-
   nav {
     display: flex;
     div {

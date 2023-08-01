@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import OverlayDetail from '@/components/OverlayDetail.vue'
+import Marker from '@/components/Marker.vue'
 
 const props = defineProps({
   byType: Object
@@ -36,59 +37,47 @@ const toggleVisible = () => {
 </script>
 
 <template>
-  <div class="overlay-list">
-    <!-- Header -->
-    <div class="list-header" @click="expanded = !expanded">
-      <!-- Icon -->
-      <div class="overlay-icon">
-        <div
-          v-if="byType.featureType == 'marker'"
-          :class="byType.typeData.iconData.className"
-          v-html="byType.typeData.iconData.html"
-          :style="`width:${byType.typeData.iconData.iconSize[0]}px;height:${byType.typeData.iconData.iconSize[1]}px`"
-        />
-      </div>
+  <ion-list-header
+    v-if="byType.featureType == 'marker'"
+    @click="expanded = !expanded"
+    :style="`color:${byType.typeData.icon_colour};background-color:${byType.typeData.marker_colour}`"
+  >
+    <Marker :typeData="byType.typeData" :featureType="byType.featureType" />
 
-      <strong>{{ byType.title }} ({{ byType.overlays.length }})</strong>
+    <ion-label>{{ byType.title }}</ion-label>
 
-      <div class="display-toggle">
-        <input type="checkbox" checked="visible" @click.stop="toggleVisible()" />
-      </div>
+    <div class="display-toggle">
+      <input type="checkbox" checked="visible" @click.stop="toggleVisible()" />
     </div>
+  </ion-list-header>
 
-    <div v-show="expanded" class="list-content">
+  <ion-item>
+    <ion-accordion-group multiple="true">
       <!-- List -->
       <OverlayDetail
+        v-show="expanded"
         v-for="overlay in byType.overlays"
         :overlay="overlay"
         @mouseenter="toggleHighlight(overlay)"
         @mouseleave="toggleHighlight(overlay)"
       />
-    </div>
-  </div>
+    </ion-accordion-group>
+  </ion-item>
 </template>
 
 <style lang="less">
-.overlay-list {
-  .list-header {
-    position: relative;
-    padding: 15px;
-    padding-left: 45px;
-    color: #fff;
-    background: #333;
+ion-accordion-group {
+  margin: 0;
+}
+ion-list-header {
+  .waymark-marker {
+    position: absolute;
+    bottom: 6px;
+    right: 10px;
 
-    .waymark-marker {
-      position: absolute;
-      top: 6px;
-      left: 10px;
+    .waymark-marker-background {
+      display: none !important;
     }
-
-    .display-toggle {
-      float: right;
-      color: red;
-    }
-  }
-  .list-content {
   }
 }
 </style>

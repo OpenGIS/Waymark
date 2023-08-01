@@ -46,7 +46,9 @@ onMounted(() => {
   mapStore.setLeafletData(dataLayer)
 
   //Set View
-  map.fitBounds(dataLayer.getBounds())
+  setTimeout(() => {
+    map.fitBounds(dataLayer.getBounds())
+  }, 500)
 })
 </script>
 
@@ -57,6 +59,6 @@ onMounted(() => {
 <style>
 #map {
   height: 100%;
-  width: 50%;
+  /*  width: 50%;*/
 }
 </style>
