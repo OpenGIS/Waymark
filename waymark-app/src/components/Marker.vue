@@ -3,8 +3,6 @@ const props = defineProps({
   typeData: Object,
   featureType: String
 })
-
-console.log(props)
 </script>
 
 <template>

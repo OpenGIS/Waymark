@@ -12,7 +12,10 @@ const { geoJSON, mapConfig } = storeToRefs(mapStore)
 
 onMounted(() => {
   //Create Map
-  const map = L.map('map')
+  const map = L.map('map', {
+    centre: [40, 40],
+    zoom: 12
+  })
   mapStore.setLeafletMap(map)
 
   //Tile Layer
@@ -48,6 +51,7 @@ onMounted(() => {
   //Set View
   setTimeout(() => {
     map.fitBounds(dataLayer.getBounds())
+    mapStore.setLeafletReady(true)
   }, 500)
 })
 </script>
