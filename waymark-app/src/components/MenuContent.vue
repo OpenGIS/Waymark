@@ -32,10 +32,8 @@ const activeOverlays = computed(() => {
     <div @click="activeType = 'shape'">Shapes</div>
   </nav>
 
-  <div class="type-lists">
-    <!-- Markers -->
-    <TypeList :overlaysByType="activeOverlays" />
-  </div>
+  <!-- Markers -->
+  <TypeList :overlaysByType="activeOverlays" />
 </template>
 
 <style lang="less">
