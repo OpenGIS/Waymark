@@ -51,18 +51,14 @@ const toggleVisible = () => {
     </div>
   </ion-list-header>
 
-  <ion-item>
-    <ion-accordion-group multiple="true">
-      <!-- List -->
-      <OverlayDetail
-        v-show="expanded"
-        v-for="overlay in byType.overlays"
-        :overlay="overlay"
-        @mouseenter="toggleHighlight(overlay)"
-        @mouseleave="toggleHighlight(overlay)"
-      />
-    </ion-accordion-group>
-  </ion-item>
+  <!-- Detail -->
+  <OverlayDetail
+    v-show="expanded"
+    v-for="overlay in byType.overlays"
+    :overlay="overlay"
+    @mouseenter="toggleHighlight(overlay)"
+    @mouseleave="toggleHighlight(overlay)"
+  />
 </template>
 
 <style lang="less">
