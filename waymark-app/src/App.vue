@@ -8,7 +8,6 @@ let { visibleMarkers, leafletReady } = storeToRefs(mapStore)
 
 import {
   IonButton,
-  IonModal,
   IonHeader,
   IonContent,
   IonToolbar,
@@ -24,13 +23,7 @@ import {
 import { layersOutline } from 'ionicons/icons'
 
 import Map from '@/components/Map.vue'
-import MenuContent from '@/components/MenuContent.vue'
-
-onMounted(() => {
-  // setTimeout(() => {
-  //   visibleMarkers = { data: ['joe'] }
-  // }, 1000)
-})
+import Modal from '@/components/Modal.vue'
 </script>
 
 <template>
@@ -46,16 +39,8 @@ onMounted(() => {
   </ion-header>
   <ion-content>
     <ion-content>
+      <Modal />
       <Map />
-
-      <ion-modal
-        ref="modal"
-        trigger="open-modal"
-        :initial-breakpoint="0.25"
-        :breakpoints="[0, 0.25, 0.5, 0.75]"
-      >
-        <MenuContent />
-      </ion-modal>
     </ion-content>
   </ion-content>
 </template>
