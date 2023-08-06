@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import OverlayDetail from '@/components/OverlayDetail.vue'
+import ListDetail from '@/components/ListDetail.vue'
 import Marker from '@/components/Marker.vue'
 
 const props = defineProps({
@@ -51,8 +51,8 @@ const toggleVisible = () => {
     </div>
   </ion-list-header>
 
-  <!-- Detail -->
-  <OverlayDetail
+  <!-- List -->
+  <ListDetail
     v-show="expanded"
     v-for="overlay in byType.overlays"
     :overlay="overlay"
@@ -66,11 +66,19 @@ ion-accordion-group {
   margin: 0;
 }
 ion-list-header {
-  .waymark-marker {
-    position: absolute;
-    bottom: 6px;
-    right: 10px;
+  ion-label {
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: 120%;
+  }
 
+  .waymark-marker {
+    display: flex;
+    flex-direction: row;
+    .waymark-marker-icon::before {
+      padding-top: 0 !important;
+      font-size: 24px !important;
+    }
     .waymark-marker-background {
       display: none !important;
     }

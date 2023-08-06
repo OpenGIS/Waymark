@@ -13,6 +13,7 @@ export const useMapStore = defineStore('map', () => {
   const overlays = ref([])
   const leafletReady = ref(false)
   const visibleMarkers = ref([])
+  const activeOverlay = ref({})
 
   //Actions
   function setLeafletMap(map) {
@@ -39,6 +40,10 @@ export const useMapStore = defineStore('map', () => {
     leafletReady.value = ready
   }
 
+  function setActiveOverlay(overlay) {
+    activeOverlay.value = overlay
+  }
+
   function addLayer(layer) {
     let featureType = getFeatureType(layer.feature)
     let typeKey = layer.feature.properties.type
@@ -56,6 +61,9 @@ export const useMapStore = defineStore('map', () => {
   }
 
   //Getters
+  const getActiveOverlay = computed(() => {
+    return activeOverlay
+  })
   // const visibleMarkers = computed(() => {
   //   if (!leafletReady.value) {
   //     return []
@@ -83,6 +91,8 @@ export const useMapStore = defineStore('map', () => {
     addLayer,
     visibleMarkers,
     leafletReady,
-    setLeafletReady
+    setLeafletReady,
+    activeOverlay,
+    setActiveOverlay
   }
 })

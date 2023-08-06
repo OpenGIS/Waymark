@@ -1,6 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 
+import { useMapStore } from '@/stores/mapStore.js'
+
+const mapStore = useMapStore()
+
 const props = defineProps({
   overlay: Object
 })
@@ -8,7 +12,6 @@ const props = defineProps({
 const feature_props = props.overlay.feature.properties
 
 let visible = ref(true)
-let hasBody = feature_props.description || feature_props.image_large_url
 
 const toggleVisible = () => {
   visible.value = !visible.value
@@ -24,31 +27,12 @@ const toggleVisible = () => {
 </script>
 
 <template>
-  <ion-item>
+  <ion-item @click="mapStore.setActiveOverlay(props.overlay)">
     <ion-label
       ><h2>{{ feature_props.title }}</h2></ion-label
     >
     <div class="display-toggle">
       <input type="checkbox" checked="visible" @click.stop="toggleVisible()" />
     </div>
-    <!-- Description -->
-    <div
-      class="overlay-description"
-      v-if="feature_props.description"
-      v-html="feature_props.description"
-    />
-
-    <!-- Image -->
-    <img
-      class="overlay-image"
-      v-if="feature_props.image_large_url"
-      :src="feature_props.image_large_url"
-    />
   </ion-item>
 </template>
-
-<style lang="less">
-ion-label {
-  background: red !important;
-}
-</style>

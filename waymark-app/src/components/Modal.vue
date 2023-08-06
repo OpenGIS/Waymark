@@ -8,7 +8,7 @@ import { IonModal } from '@ionic/vue'
 import { close, funnel } from 'ionicons/icons'
 
 const mapStore = useMapStore()
-const { overlays, leafletMap, visibleMarkers } = storeToRefs(mapStore)
+const { overlays, leafletMap, visibleMarkers, activeOverlay } = storeToRefs(mapStore)
 
 let modalOpen = ref(true)
 let activeType = ref('marker')
@@ -51,6 +51,10 @@ const activeOverlays = computed(() => {
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
+
+    <ion-card>
+      <OverlayDetail :overlay="activeOverlay" />
+    </ion-card>
     <!--   <nav>
     <div @click="activeType = 'marker'">Markers</div>
     <div @click="activeType = 'line'">Lines</div>
