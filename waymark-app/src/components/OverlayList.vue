@@ -71,7 +71,7 @@ ion-list-header {
   ion-label {
     padding-left: 10px;
     font-weight: bold;
-    font-size: 120%;
+    // font-size: 120%;
   }
 
   .waymark-marker {
