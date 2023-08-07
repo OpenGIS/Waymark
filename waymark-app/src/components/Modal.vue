@@ -1,11 +1,21 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import TypeList from '@/components/TypeList.vue'
+import OverlayDetail from '@/components/OverlayDetail.vue'
 import { overlaysByType } from '@/helpers/Overlay.js'
+import {
+  IonModal,
+  IonContent,
+  IonHeader,
+  IonButtons,
+  IonButton,
+  IonIcon,
+  IonToolbar
+} from '@ionic/vue'
+import { close, funnel } from 'ionicons/icons'
+
 import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
-import { IonModal } from '@ionic/vue'
-import { close, funnel } from 'ionicons/icons'
 
 const mapStore = useMapStore()
 const { overlays, leafletMap, visibleMarkers, activeOverlay } = storeToRefs(mapStore)
@@ -33,7 +43,8 @@ const activeOverlays = computed(() => {
     ref="modal"
     trigger="open-modal"
     :is-open="modalOpen"
-    :initial-breakpoint="0.25"
+    backdrop-breakpoint="1"
+    :initial-breakpoint="0.5"
     :breakpoints="[0, 0.25, 0.5, 0.75]"
   >
     <ion-header>
@@ -52,17 +63,21 @@ const activeOverlays = computed(() => {
       </ion-toolbar>
     </ion-header>
 
-    <ion-card>
-      <OverlayDetail :overlay="activeOverlay" />
-    </ion-card>
-    <!--   <nav>
+    <OverlayDetail v-if="activeOverlay" :overlay="activeOverlay" />
+
+    <ion-content>
+      <!--     <ion-card v-if="getActiveOverlay">
+      <OverlayDetail :overlay="getActiveOverlay" />
+    </ion-card> -->
+      <!--   <nav>
     <div @click="activeType = 'marker'">Markers</div>
     <div @click="activeType = 'line'">Lines</div>
     <div @click="activeType = 'shape'">Shapes</div>
   </nav> -->
 
-    <!-- Markers -->
-    <TypeList :overlaysByType="activeOverlays" />
+      <!-- Markers -->
+      <TypeList :overlaysByType="activeOverlays" />
+    </ion-content>
   </ion-modal>
 </template>
 

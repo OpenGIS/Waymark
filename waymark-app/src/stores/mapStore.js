@@ -13,7 +13,7 @@ export const useMapStore = defineStore('map', () => {
   const overlays = ref([])
   const leafletReady = ref(false)
   const visibleMarkers = ref([])
-  const activeOverlay = ref({})
+  const activeOverlay = ref(null)
 
   //Actions
   function setLeafletMap(map) {
@@ -58,11 +58,15 @@ export const useMapStore = defineStore('map', () => {
     }
 
     overlays.value.push(overlay)
+
+    layer.on('click', () => {
+      activeOverlay.value = overlay
+    })
   }
 
   //Getters
   const getActiveOverlay = computed(() => {
-    return activeOverlay
+    return activeOverlay.value
   })
   // const visibleMarkers = computed(() => {
   //   if (!leafletReady.value) {

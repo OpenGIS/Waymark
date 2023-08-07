@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import ListDetail from '@/components/ListDetail.vue'
 import Marker from '@/components/Marker.vue'
+import { IonListHeader, IonLabel } from '@ionic/vue'
 
 const props = defineProps({
   byType: Object
@@ -66,6 +67,7 @@ ion-accordion-group {
   margin: 0;
 }
 ion-list-header {
+  padding-right: 16px;
   ion-label {
     padding-left: 10px;
     font-weight: bold;

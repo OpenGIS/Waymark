@@ -14,7 +14,8 @@ onMounted(() => {
   //Create Map
   const map = L.map('map', {
     centre: [40, 40],
-    zoom: 12
+    zoom: 12,
+    zoomControl: false
   })
   mapStore.setLeafletMap(map)
 

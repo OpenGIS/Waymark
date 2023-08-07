@@ -1,9 +1,10 @@
 <script setup>
 import { ref } from 'vue'
-
+import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
-
 const mapStore = useMapStore()
+
+import { IonItem, IonLabel } from '@ionic/vue'
 
 const props = defineProps({
   overlay: Object
@@ -24,10 +25,14 @@ const toggleVisible = () => {
     element.classList.remove('overlay-hidden')
   }
 }
+
+const setActive = () => {
+  mapStore.setActiveOverlay(props.overlay)
+}
 </script>
 
 <template>
-  <ion-item @click="mapStore.setActiveOverlay(props.overlay)">
+  <ion-item @click="setActive" class="ion-justify-content-start">
     <ion-label
       ><h2>{{ feature_props.title }}</h2></ion-label
     >
