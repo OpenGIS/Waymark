@@ -36,6 +36,10 @@ const activeOverlays = computed(() => {
     })
   )
 })
+
+onMounted(() => {
+  // console.log(modal.value.getCurrentBreakpoint())
+})
 </script>
 
 <template>
@@ -45,6 +49,8 @@ const activeOverlays = computed(() => {
     :is-open="modalOpen"
     backdrop-breakpoint="1"
     :initial-breakpoint="0.5"
+    @didPresent="modalOpen = true"
+    @didDismiss="modalOpen = false"
     :breakpoints="[0, 0.25, 0.5, 0.75]"
   >
     <ion-header>
