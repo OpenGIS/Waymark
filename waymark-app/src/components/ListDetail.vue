@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 const mapStore = useMapStore()
 
-import { IonItem, IonLabel } from '@ionic/vue'
+import { IonItem, IonLabel, IonThumbnail } from '@ionic/vue'
 
 const props = defineProps({
   overlay: Object
@@ -33,6 +33,14 @@ const setActive = () => {
 
 <template>
   <ion-item @click="setActive" class="ion-justify-content-start">
+    <ion-thumbnail slot="start">
+      <img
+        v-if="feature_props.image_thumbnail_url"
+        :alt="feature_props.title"
+        :src="feature_props.image_thumbnail_url"
+      />
+    </ion-thumbnail>
+
     <ion-label
       ><h2>{{ feature_props.title }}</h2></ion-label
     >
