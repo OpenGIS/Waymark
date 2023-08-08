@@ -15,9 +15,14 @@ export const useMapStore = defineStore('map', () => {
   const visibleMarkers = ref([])
   const activeOverlay = ref(null)
   const mapHeight = ref(50)
+  let modal = ref()
 
   function setMapHeight(heightPercent) {
     mapHeight.value = heightPercent
+  }
+
+  function setModal(m) {
+    modal = m
   }
 
   //Actions
@@ -46,6 +51,8 @@ export const useMapStore = defineStore('map', () => {
   }
 
   function setActiveOverlay(overlay) {
+    modal.value.$el.setCurrentBreakpoint(0.75)
+
     activeOverlay.value = overlay
   }
 
@@ -65,7 +72,7 @@ export const useMapStore = defineStore('map', () => {
     overlays.value.push(overlay)
 
     layer.on('click', () => {
-      activeOverlay.value = overlay
+      setActiveOverlay(overlay)
     })
   }
 
@@ -104,6 +111,7 @@ export const useMapStore = defineStore('map', () => {
     activeOverlay,
     setActiveOverlay,
     mapHeight,
-    setMapHeight
+    setMapHeight,
+    setModal
   }
 })

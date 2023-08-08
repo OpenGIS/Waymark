@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import TypeList from '@/components/TypeList.vue'
 import OverlayDetail from '@/components/OverlayDetail.vue'
 import { overlaysByType } from '@/helpers/Overlay.js'
@@ -21,7 +21,10 @@ const mapStore = useMapStore()
 const { overlays, leafletMap, visibleMarkers, activeOverlay } = storeToRefs(mapStore)
 
 const modal = ref()
+mapStore.setModal(modal)
 const modalOpen = ref(true)
+const modalBreakpoint = ref(0.5)
+
 const activeType = ref('marker')
 
 const activeOverlays = computed(() => {
@@ -42,6 +45,7 @@ const modalChange = (e) => {
   switch (e.type) {
     case 'did-dismiss':
       modalOpen.value = false
+      modalBreakpoint.value = 0
 
       mapStore.setMapHeight(100)
 
@@ -52,6 +56,8 @@ const modalChange = (e) => {
       modalOpen.value = true
 
       e.target.getCurrentBreakpoint().then((breakpoint) => {
+        modalBreakpoint.value = breakpoint
+
         mapStore.setMapHeight(100 - breakpoint * 100)
       })
       break
@@ -59,7 +65,11 @@ const modalChange = (e) => {
 }
 
 onMounted(() => {
-  // console.log(modal.value.getCurrentBreakpoint())
+  // console.log(modalBreakpoint.value)
+})
+
+watch(modalBreakpoint, () => {
+  console.log(modalBreakpoint.value)
 })
 </script>
 
@@ -69,11 +79,12 @@ onMounted(() => {
     trigger="open-modal"
     :is-open="modalOpen"
     backdrop-breakpoint="1"
-    :initial-breakpoint="0.5"
+    :initial-breakpoint="modalBreakpoint"
     @didPresent="modalChange"
     @didDismiss="modalChange"
     @ionBreakpointDidChange="modalChange"
     :breakpoints="[0, 0.25, 0.5, 0.75]"
+    keep-contents-mounted="true"
   >
     <ion-header mode="ios" translucent="true">
       <ion-toolbar>
@@ -91,7 +102,7 @@ onMounted(() => {
       </ion-toolbar>
     </ion-header>
 
-    <OverlayDetail v-if="activeOverlay" :overlay="activeOverlay" />
+    <OverlayDetail v-if="activeOverlay && modalBreakpoint > 0.5" :overlay="activeOverlay" />
 
     <ion-content>
       <!--     <ion-card v-if="getActiveOverlay">
