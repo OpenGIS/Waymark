@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 import { getTypeData, getFeatureType, getIconData } from '@/helpers/Overlay.js'
@@ -8,7 +8,7 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
 const mapStore = useMapStore()
-const { geoJSON, mapConfig } = storeToRefs(mapStore)
+const { geoJSON, mapConfig, mapHeight } = storeToRefs(mapStore)
 
 onMounted(() => {
   //Create Map
@@ -58,7 +58,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="map"></div>
+  <div id="map" :style="`height:${mapHeight}%`"></div>
 </template>
 
 <style>

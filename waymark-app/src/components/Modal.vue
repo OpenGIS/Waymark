@@ -20,8 +20,9 @@ import { useMapStore } from '@/stores/mapStore.js'
 const mapStore = useMapStore()
 const { overlays, leafletMap, visibleMarkers, activeOverlay } = storeToRefs(mapStore)
 
-let modalOpen = ref(true)
-let activeType = ref('marker')
+const modal = ref()
+const modalOpen = ref(true)
+const activeType = ref('marker')
 
 const activeOverlays = computed(() => {
   return overlaysByType(
@@ -37,6 +38,26 @@ const activeOverlays = computed(() => {
   )
 })
 
+const modalChange = (e) => {
+  switch (e.type) {
+    case 'did-dismiss':
+      modalOpen.value = false
+
+      mapStore.setMapHeight(100)
+
+      break
+    case 'ion-breakpoint-did-change':
+    case 'did-present':
+    default:
+      modalOpen.value = true
+
+      e.target.getCurrentBreakpoint().then((breakpoint) => {
+        mapStore.setMapHeight(100 - breakpoint * 100)
+      })
+      break
+  }
+}
+
 onMounted(() => {
   // console.log(modal.value.getCurrentBreakpoint())
 })
@@ -49,11 +70,12 @@ onMounted(() => {
     :is-open="modalOpen"
     backdrop-breakpoint="1"
     :initial-breakpoint="0.5"
-    @didPresent="modalOpen = true"
-    @didDismiss="modalOpen = false"
+    @didPresent="modalChange"
+    @didDismiss="modalChange"
+    @ionBreakpointDidChange="modalChange"
     :breakpoints="[0, 0.25, 0.5, 0.75]"
   >
-    <ion-header>
+    <ion-header mode="ios" translucent="true">
       <ion-toolbar>
         <ion-buttons slot="start">
           <ion-button>
@@ -87,15 +109,8 @@ onMounted(() => {
   </ion-modal>
 </template>
 
-<style lang="less">
-#bar {
-  nav {
-    display: flex;
-    div {
-      width: 50px;
-      height: 50px;
-      background: blue;
-    }
-  }
+<style>
+ion-toolbar {
+  --background: transparent;
 }
 </style>

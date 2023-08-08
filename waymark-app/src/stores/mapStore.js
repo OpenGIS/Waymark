@@ -14,6 +14,15 @@ export const useMapStore = defineStore('map', () => {
   const leafletReady = ref(false)
   const visibleMarkers = ref([])
   const activeOverlay = ref(null)
+  const mapHeight = ref(50)
+
+  function setMapHeight(heightPercent) {
+    mapHeight.value = heightPercent
+
+    setTimeout(() => {
+      leafletMap.value.invalidateSize()
+    }, 750)
+  }
 
   //Actions
   function setLeafletMap(map) {
@@ -97,6 +106,8 @@ export const useMapStore = defineStore('map', () => {
     leafletReady,
     setLeafletReady,
     activeOverlay,
-    setActiveOverlay
+    setActiveOverlay,
+    mapHeight,
+    setMapHeight
   }
 })
