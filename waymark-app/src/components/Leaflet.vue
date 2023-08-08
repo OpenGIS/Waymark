@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 import { getTypeData, getFeatureType, getIconData } from '@/helpers/Overlay.js'
@@ -10,14 +10,23 @@ import 'leaflet/dist/leaflet.css'
 const mapStore = useMapStore()
 const { geoJSON, mapConfig, mapHeight } = storeToRefs(mapStore)
 
+const map = ref()
+let leafletMap = null
+
+watch(mapHeight, () => {
+  setTimeout(() => {
+    leafletMap.invalidateSize(false)
+  }, 201)
+})
+
 onMounted(() => {
   //Create Map
-  const map = L.map('map', {
+  leafletMap = L.map('map', {
     centre: [40, 40],
     zoom: 12,
     zoomControl: false
   })
-  mapStore.setLeafletMap(map)
+  mapStore.setLeafletMap(leafletMap)
 
   //Tile Layer
   let tileURL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -30,7 +39,7 @@ onMounted(() => {
   L.tileLayer(tileURL, {
     maxZoom: 17,
     attribution: tileAttr
-  }).addTo(map)
+  }).addTo(leafletMap)
 
   //Data Layer
   const dataLayer = L.geoJSON(geoJSON.value, {
@@ -46,19 +55,19 @@ onMounted(() => {
     onEachFeature(feature, layer) {
       mapStore.addLayer(layer)
     }
-  }).addTo(map)
+  }).addTo(leafletMap)
   mapStore.setLeafletData(dataLayer)
 
   //Set View
   setTimeout(() => {
-    map.fitBounds(dataLayer.getBounds())
+    leafletMap.fitBounds(dataLayer.getBounds())
     mapStore.setLeafletReady(true)
   }, 500)
 })
 </script>
 
 <template>
-  <div id="map" :style="`height:${mapHeight}%`"></div>
+  <div id="map" ref="map" :style="`height:${mapHeight}%`"></div>
 </template>
 
 <style>

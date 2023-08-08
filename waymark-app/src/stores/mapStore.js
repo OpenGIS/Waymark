@@ -18,10 +18,6 @@ export const useMapStore = defineStore('map', () => {
 
   function setMapHeight(heightPercent) {
     mapHeight.value = heightPercent
-
-    setTimeout(() => {
-      leafletMap.value.invalidateSize()
-    }, 750)
   }
 
   //Actions
