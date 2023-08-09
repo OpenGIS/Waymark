@@ -53,7 +53,13 @@ export const useMapStore = defineStore('map', () => {
   function setActiveOverlay(overlay) {
     modal.value.$el.setCurrentBreakpoint(0.75)
 
-    activeOverlay.value = overlay
+    if (activeOverlay.value !== overlay) {
+      activeOverlay.value = overlay
+
+      leafletMap.value.setView(overlay.layer.getLatLng())
+    } else {
+      leafletMap.value.setView(overlay.layer.getLatLng(), 14)
+    }
   }
 
   function addLayer(layer) {
