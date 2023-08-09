@@ -29,15 +29,37 @@ export const useMapStore = defineStore('map', () => {
   function setLeafletMap(map) {
     leafletMap.value = map
 
+    //Whenever view changes
     map.on('zoomend moveend', () => {
+      const mapBounds = map.getBounds()
+
+      //Check if overlay is visible
       visibleOverlays.value = overlays.value.filter((overlay) => {
-        //Markers Only
-        if (overlay.featureType != 'marker') return true
+        let contains = false
 
-        // console.log(leafletMap.value.getBounds().contains(overlay.layer.getLatLng()))
+        switch (overlay.featureType) {
+          case 'marker':
+            //In view
+            contains = mapBounds.contains(overlay.layer.getLatLng())
+            break
+          case 'line':
+            if (contains) break
 
-        //In view
-        return map.getBounds().contains(overlay.layer.getLatLng())
+            overlay.layer.getLatLngs().forEach((element) => {
+              if (mapBounds.contains(element)) {
+                contains = true
+              }
+            })
+
+            break
+          //In view
+          // return mapBounds.contains()
+
+          case 'shape':
+          //In view
+          // return mapBounds.contains(overlay.layer.getLatLng())
+        }
+        return contains
       })
     })
   }
@@ -51,7 +73,7 @@ export const useMapStore = defineStore('map', () => {
   }
 
   function setActiveOverlay(overlay) {
-    modal.value.$el.setCurrentBreakpoint(0.75)
+    modal.value.$el.setCurrentBreakpoint(0.66)
 
     if (activeOverlay.value !== overlay) {
       activeOverlay.value = overlay

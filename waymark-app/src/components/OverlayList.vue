@@ -56,10 +56,11 @@ const toggleVisible = () => {
   <!-- List -->
   <ListDetail
     v-show="expanded"
-    v-for="overlay in byType.overlays"
+    v-for="(overlay, typeKey, index) in byType.overlays"
     :overlay="overlay"
     @mouseenter="toggleHighlight(overlay)"
     @mouseleave="toggleHighlight(overlay)"
+    :key="`${byType.featureType}-${typeKey}-${index}`"
   />
 </template>
 

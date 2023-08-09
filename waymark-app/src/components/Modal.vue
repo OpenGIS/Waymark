@@ -10,7 +10,9 @@ import {
   IonButtons,
   IonButton,
   IonIcon,
-  IonToolbar
+  IonToolbar,
+  IonSegmentButton,
+  IonSegment
 } from '@ionic/vue'
 import { close, funnel, locationOutline, analyticsOutline, shapesOutline } from 'ionicons/icons'
 
@@ -23,7 +25,7 @@ const { overlays, leafletMap, visibleOverlays, activeOverlay } = storeToRefs(map
 const modal = ref()
 mapStore.setModal(modal)
 const modalOpen = ref(true)
-const modalBreakpoint = ref(0.5)
+const modalBreakpoint = ref(0.33)
 
 const activeType = ref('marker')
 
@@ -103,9 +105,10 @@ watch(modalBreakpoint, () => {
       </ion-toolbar>
     </ion-header>
 
-    <OverlayDetail v-if="activeOverlay && modalBreakpoint > 0.5" :overlay="activeOverlay" />
+    <OverlayDetail v-if="activeOverlay && modalBreakpoint > 0.33" :overlay="activeOverlay" />
 
     <ion-content>
+      <!-- Type Nav -->
       <ion-segment :value="activeType">
         <ion-segment-button @click="activeType = 'marker'" value="marker">
           <ion-icon :icon="locationOutline"></ion-icon>
@@ -118,13 +121,7 @@ watch(modalBreakpoint, () => {
         </ion-segment-button>
       </ion-segment>
 
-      <!--       <nav>
-        <div @click="activeType = 'marker'">Markers</div>
-        <div @click="activeType = 'line'">Lines</div>
-        <div @click="activeType = 'shape'">Shapes</div>
-      </nav> -->
-
-      <!-- Markers -->
+      <!-- Overlays (by Type) -->
       <TypeList :overlaysByType="activeOverlays" />
     </ion-content>
   </ion-modal>
