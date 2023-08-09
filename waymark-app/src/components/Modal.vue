@@ -12,13 +12,13 @@ import {
   IonIcon,
   IonToolbar
 } from '@ionic/vue'
-import { close, funnel } from 'ionicons/icons'
+import { close, funnel, locationOutline, analyticsOutline, shapesOutline } from 'ionicons/icons'
 
 import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 
 const mapStore = useMapStore()
-const { overlays, leafletMap, visibleMarkers, activeOverlay } = storeToRefs(mapStore)
+const { overlays, leafletMap, visibleOverlays, activeOverlay } = storeToRefs(mapStore)
 
 const modal = ref()
 mapStore.setModal(modal)
@@ -29,7 +29,7 @@ const activeType = ref('marker')
 
 const activeOverlays = computed(() => {
   return overlaysByType(
-    visibleMarkers.value.filter((o) => {
+    visibleOverlays.value.filter((o) => {
       // if (o.featureType == 'marker') {
       //   if (!leafletMap.value.getBounds().contains(o.layer.getLatLng())) {
       //     return false
@@ -79,20 +79,21 @@ watch(modalBreakpoint, () => {
     trigger="open-modal"
     :is-open="modalOpen"
     backdrop-breakpoint="1"
-    :initial-breakpoint="0.25"
+    :initial-breakpoint="0.33"
+    handleBehavior="cycle"
     @didPresent="modalChange"
     @didDismiss="modalChange"
     @ionBreakpointDidChange="modalChange"
-    :breakpoints="[0, 0.25, 0.5, 0.75]"
+    :breakpoints="[0, 0.33, 0.66]"
     keep-contents-mounted="true"
   >
     <ion-header mode="ios" translucent="true">
       <ion-toolbar>
-        <ion-buttons slot="start">
+        <!--         <ion-buttons slot="start">
           <ion-button>
             <ion-icon :icon="funnel"></ion-icon>
           </ion-button>
-        </ion-buttons>
+        </ion-buttons> -->
 
         <ion-buttons slot="end">
           <ion-button @click="modalOpen = false">
@@ -105,14 +106,23 @@ watch(modalBreakpoint, () => {
     <OverlayDetail v-if="activeOverlay && modalBreakpoint > 0.5" :overlay="activeOverlay" />
 
     <ion-content>
-      <!--     <ion-card v-if="getActiveOverlay">
-      <OverlayDetail :overlay="getActiveOverlay" />
-    </ion-card> -->
-      <!--   <nav>
-    <div @click="activeType = 'marker'">Markers</div>
-    <div @click="activeType = 'line'">Lines</div>
-    <div @click="activeType = 'shape'">Shapes</div>
-  </nav> -->
+      <ion-segment :value="activeType">
+        <ion-segment-button @click="activeType = 'marker'" value="marker">
+          <ion-icon :icon="locationOutline"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button @click="activeType = 'line'" value="line">
+          <ion-icon :icon="analyticsOutline"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button @click="activeType = 'shape'" value="shape">
+          <ion-icon :icon="shapesOutline"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+
+      <!--       <nav>
+        <div @click="activeType = 'marker'">Markers</div>
+        <div @click="activeType = 'line'">Lines</div>
+        <div @click="activeType = 'shape'">Shapes</div>
+      </nav> -->
 
       <!-- Markers -->
       <TypeList :overlaysByType="activeOverlays" />

@@ -38,6 +38,7 @@ const toggleVisible = () => {
 </script>
 
 <template>
+  <!-- Heading -->
   <ion-list-header
     v-if="byType.featureType == 'marker'"
     @click="expanded = !expanded"

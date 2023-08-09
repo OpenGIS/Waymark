@@ -8,7 +8,10 @@ const props = defineProps({
 </script>
 
 <template>
-  <ion-list v-for="(byType, typeKey) in overlaysByType">
+  <ion-list
+    v-for="(byType, typeKey, index) in overlaysByType"
+    :key="`${byType.featureType}-${typeKey}-${index}`"
+  >
     <OverlayList :byType="byType" />
   </ion-list>
 </template>

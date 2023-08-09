@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 
 const mapStore = useMapStore()
-let { visibleMarkers, leafletReady } = storeToRefs(mapStore)
+let { visibleOverlays, leafletReady } = storeToRefs(mapStore)
 
 import {
   IonPage,
@@ -35,7 +35,7 @@ import Modal from '@/components/Modal.vue'
         <!-- <ion-title>App</ion-title> -->
         <ion-buttons slot="end">
           <ion-button id="open-modal" expand="block"
-            >{{ visibleMarkers.length }} <ion-icon :icon="layersOutline"></ion-icon
+            >{{ visibleOverlays.length }} <ion-icon :icon="layersOutline"></ion-icon
           ></ion-button>
         </ion-buttons>
       </ion-toolbar>

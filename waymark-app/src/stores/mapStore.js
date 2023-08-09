@@ -12,7 +12,7 @@ export const useMapStore = defineStore('map', () => {
   const leafletData = ref()
   const overlays = ref([])
   const leafletReady = ref(false)
-  const visibleMarkers = ref([])
+  const visibleOverlays = ref([])
   const activeOverlay = ref(null)
   const mapHeight = ref(50)
   let modal = ref()
@@ -30,9 +30,9 @@ export const useMapStore = defineStore('map', () => {
     leafletMap.value = map
 
     map.on('zoomend moveend', () => {
-      visibleMarkers.value = overlays.value.filter((overlay) => {
+      visibleOverlays.value = overlays.value.filter((overlay) => {
         //Markers Only
-        if (overlay.featureType != 'marker') return false
+        if (overlay.featureType != 'marker') return true
 
         // console.log(leafletMap.value.getBounds().contains(overlay.layer.getLatLng()))
 
@@ -86,7 +86,7 @@ export const useMapStore = defineStore('map', () => {
   const getActiveOverlay = computed(() => {
     return activeOverlay.value
   })
-  // const visibleMarkers = computed(() => {
+  // const visibleOverlays = computed(() => {
   //   if (!leafletReady.value) {
   //     return []
   //   }
@@ -111,7 +111,7 @@ export const useMapStore = defineStore('map', () => {
     mapConfig,
     setLeafletData,
     addLayer,
-    visibleMarkers,
+    visibleOverlays,
     leafletReady,
     setLeafletReady,
     activeOverlay,
