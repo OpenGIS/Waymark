@@ -1,6 +1,4 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-
 import { IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/vue'
 
 const props = defineProps({

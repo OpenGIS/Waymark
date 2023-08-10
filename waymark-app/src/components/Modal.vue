@@ -32,12 +32,6 @@ const activeType = ref('marker')
 const activeOverlays = computed(() => {
   return overlaysByType(
     visibleOverlays.value.filter((o) => {
-      // if (o.featureType == 'marker') {
-      //   if (!leafletMap.value.getBounds().contains(o.layer.getLatLng())) {
-      //     return false
-      //   }
-      // }
-
       return o.featureType === activeType.value
     })
   )
@@ -66,13 +60,9 @@ const modalChange = (e) => {
   }
 }
 
-onMounted(() => {
-  // console.log(modalBreakpoint.value)
-})
+// onMounted(() => {})
 
-watch(modalBreakpoint, () => {
-  console.log(modalBreakpoint.value)
-})
+// watch(modalBreakpoint, () => {})
 </script>
 
 <template>

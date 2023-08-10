@@ -15,5 +15,3 @@ const props = defineProps({
     <OverlayList :byType="byType" />
   </ion-list>
 </template>
-
-<style scoped lang="less"></style>
