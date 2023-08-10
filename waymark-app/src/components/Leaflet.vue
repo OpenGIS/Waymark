@@ -45,15 +45,23 @@ onMounted(() => {
   const dataLayer = L.geoJSON(geoJSON.value, {
     //Create Markers
     pointToLayer: function (feature, latlng) {
-      let tData = getTypeData(getFeatureType(feature), makeKey(feature.properties.type))
-      let iData = getIconData(tData)
+      let typeData = getTypeData(getFeatureType(feature), makeKey(feature.properties.type))
+      let iconData = getIconData(typeData)
 
-      return L.marker(latlng, { icon: L.divIcon(iData) })
+      return L.marker(latlng, { icon: L.divIcon(iconData) })
     },
 
     //Add to store
     onEachFeature(feature, layer) {
       mapStore.addLayer(layer)
+    },
+
+    //Line Style
+    style(feature) {
+      let typeData = getTypeData(getFeatureType(feature), makeKey(feature.properties.type))
+      return {
+        color: typeData.line_colour
+      }
     }
   }).addTo(leafletMap)
   mapStore.setLeafletData(dataLayer)

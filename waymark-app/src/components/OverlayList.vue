@@ -35,15 +35,26 @@ const toggleVisible = () => {
     expanded.value = !element.classList.contains('overlay-hidden')
   }
 }
+
+const overlayStyle = () => {
+  switch (props.byType.featureType) {
+    case 'marker':
+      return `color:${props.byType.typeData.icon_colour};background-color:${props.byType.typeData.marker_colour}`
+
+      break
+
+    case 'line':
+      console.log(props.byType.typeData)
+      return `color:#fff;background-color:${props.byType.typeData.line_colour}`
+
+      break
+  }
+}
 </script>
 
 <template>
   <!-- Heading -->
-  <ion-list-header
-    v-if="byType.featureType == 'marker'"
-    @click="expanded = !expanded"
-    :style="`color:${byType.typeData.icon_colour};background-color:${byType.typeData.marker_colour}`"
-  >
+  <ion-list-header @click="expanded = !expanded" :style="overlayStyle()">
     <Marker :typeData="byType.typeData" :featureType="byType.featureType" />
 
     <ion-label>{{ byType.title }}</ion-label>
