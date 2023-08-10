@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { mapData, waymarkConfig } from '@/data/waymark.js'
+import { mapData, waymarkConfig } from '@/data/eastcoasttrail.js'
+// import { mapData, waymarkConfig } from '@/data/waymark.js'
 import L from 'leaflet'
 import { getTypeData, getFeatureType } from '@/helpers/Overlay.js'
 
@@ -59,6 +60,7 @@ export const useMapStore = defineStore('map', () => {
           //In view
           // return mapBounds.contains(overlay.layer.getLatLng())
         }
+
         return contains
       })
     })
@@ -108,22 +110,6 @@ export const useMapStore = defineStore('map', () => {
   const getActiveOverlay = computed(() => {
     return activeOverlay.value
   })
-  // const visibleOverlays = computed(() => {
-  //   if (!leafletReady.value) {
-  //     return []
-  //   }
-  //   if (typeof leafletMap.value !== 'object') return []
-
-  //   return overlays.value.filter((overlay) => {
-  //     //Markers Only
-  //     if (overlay.featureType != 'marker') return false
-
-  //     // console.log(leafletMap.value.getBounds().contains(overlay.layer.getLatLng()))
-
-  //     //In view
-  //     return leafletMap.value.getBounds().contains(overlay.layer.getLatLng())
-  //   })
-  // })
 
   return {
     overlays,

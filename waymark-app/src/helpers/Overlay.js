@@ -1,8 +1,8 @@
-import { waymarkConfig } from '@/data/waymark.js'
+import { waymarkConfig } from '@/data/eastcoasttrail.js'
 import { makeKey } from '@/helpers/Common.js'
 
 export function getTypeData(featureType, typeKey) {
-  var type = null
+  var type = {}
 
   //Iterate over all types
   for (var i in waymarkConfig[featureType + '_types']) {
@@ -18,7 +18,10 @@ export function getTypeData(featureType, typeKey) {
     if (type_title) {
       //Found (run both through make_key, just to be on safe side)
       if (makeKey(typeKey) == makeKey(type_title)) {
+        console.log('Found=' + typeKey)
         type = waymarkConfig[featureType + '_types'][i]
+      } else {
+        console.log('Not found=' + typeKey)
       }
     }
   }
@@ -29,7 +32,7 @@ export function getTypeData(featureType, typeKey) {
   }
 
   //Set key
-  type[featureType + '_key'] = makeKey(type[featureType + '_title'])
+  type['typeKey'] = makeKey(type[featureType + '_title'])
 
   return type
 }
