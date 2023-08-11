@@ -4,8 +4,16 @@ import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 import { getTypeData, getFeatureType, getIconData } from '@/helpers/Overlay.js'
 import { makeKey } from '@/helpers/Common.js'
+
+//Leaflet
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+
+//Mapbox GL
+import 'mapbox-gl/dist/mapbox-gl.css'
+import 'mapbox-gl/dist/mapbox-gl.js'
+import 'mapbox-gl-leaflet/leaflet-mapbox-gl.js'
+import { mapboxStyle } from '@/assets/js/style.js'
 
 const mapStore = useMapStore()
 const { geoJSON, mapConfig, mapHeight } = storeToRefs(mapStore)
@@ -29,16 +37,21 @@ onMounted(() => {
   mapStore.setLeafletMap(leafletMap)
 
   //Tile Layer
-  let tileURL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
-  let tileAttr = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  if (typeof mapConfig.value.tile_layers[0] === 'object') {
-    let tileLayer = mapConfig.value.tile_layers[0]
-    tileURL = tileLayer['layer_url']
-    tileAttr = tileLayer['layer_attribution']
-  }
-  L.tileLayer(tileURL, {
-    maxZoom: 17,
-    attribution: tileAttr
+  // let tileURL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+  // let tileAttr = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  // if (typeof mapConfig.value.tile_layers[0] === 'object') {
+  //   let tileLayer = mapConfig.value.tile_layers[0]
+  //   tileURL = tileLayer['layer_url']
+  //   tileAttr = tileLayer['layer_attribution']
+  // }
+  // L.tileLayer(tileURL, {
+  //   maxZoom: 17,
+  //   attribution: tileAttr
+  // }).addTo(leafletMap)
+
+  const gl = L.mapboxGL({
+    accessToken: 'joetest',
+    style: mapboxStyle
   }).addTo(leafletMap)
 
   //Data Layer

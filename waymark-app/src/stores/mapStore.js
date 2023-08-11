@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { mapData, waymarkConfig } from '@/data/eastcoasttrail.js'
-// import { mapData, waymarkConfig } from '@/data/waymark.js'
+import { mapData, waymarkConfig } from '@/data/data.js'
+
 import L from 'leaflet'
 import { getTypeData, getFeatureType } from '@/helpers/Overlay.js'
 
