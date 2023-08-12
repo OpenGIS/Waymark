@@ -10,9 +10,10 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
 //Mapbox GL
-import 'mapbox-gl/dist/mapbox-gl.css'
-import 'mapbox-gl/dist/mapbox-gl.js'
-import 'mapbox-gl-leaflet/leaflet-mapbox-gl.js'
+import maplibregl from 'maplibre-gl/dist/maplibre-gl.js'
+// import 'mapbox-gl/dist/mapbox-gl.css'
+// import 'mapbox-gl/dist/mapbox-gl.js'
+// import 'mapbox-gl-leaflet/leaflet-mapbox-gl.js'
 import { mapboxStyle } from '@/assets/js/style.js'
 
 const mapStore = useMapStore()
@@ -23,19 +24,34 @@ let leafletMap = null
 
 watch(mapHeight, () => {
   setTimeout(() => {
-    leafletMap.invalidateSize(false)
+    // leafletMap.invalidateSize(false)
   }, 201)
 })
 
 onMounted(() => {
   //Create Map
-  leafletMap = L.map('map', {
-    centre: [40, 40],
-    zoom: 12,
-    zoomControl: false,
-    preferCanvas: true
+  // leafletMap = L.map('map', {
+  //   centre: [40, 40],
+  //   zoom: 12,
+  //   zoomControl: false,
+  //   preferCanvas: true
+  // })
+  // mapStore.setLeafletMap(leafletMap)
+
+  var map = new maplibregl.Map({
+    container: 'map',
+    style: mapboxStyle,
+    center: [
+      -52.75,47.3
+    
+    ], // starting position [lng, lat]
+    zoom: 9 // starting zoom
   })
-  mapStore.setLeafletMap(leafletMap)
+
+  map.addSource('geoJSON', {
+    type: 'geojson',
+    data: geoJSON.value
+  })
 
   //Tile Layer
   // let tileURL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -50,35 +66,35 @@ onMounted(() => {
   //   attribution: tileAttr
   // }).addTo(leafletMap)
 
-  const gl = L.mapboxGL({
-    accessToken: 'joetest',
-    style: mapboxStyle
-  }).addTo(leafletMap)
+  // const gl = L.mapboxGL({
+  //   accessToken: 'joetest',
+  //   style: mapboxStyle
+  // }).addTo(leafletMap)
 
   //Data Layer
-  const dataLayer = L.geoJSON(geoJSON.value, {
-    //Create Markers
-    pointToLayer: function (feature, latlng) {
-      let typeData = getTypeData(getFeatureType(feature), makeKey(feature.properties.type))
-      let iconData = getIconData(typeData)
+  // const dataLayer = L.geoJSON(geoJSON.value, {
+  //   //Create Markers
+  //   pointToLayer: function (feature, latlng) {
+  //     let typeData = getTypeData(getFeatureType(feature), makeKey(feature.properties.type))
+  //     let iconData = getIconData(typeData)
 
-      return L.marker(latlng, { icon: L.divIcon(iconData) })
-    },
+  //     return L.marker(latlng, { icon: L.divIcon(iconData) })
+  //   },
 
-    //Add to store
-    onEachFeature(feature, layer) {
-      mapStore.addLayer(layer)
-    },
+  //   //Add to store
+  //   onEachFeature(feature, layer) {
+  //     mapStore.addLayer(layer)
+  //   },
 
-    //Line Style
-    style(feature) {
-      let typeData = getTypeData(getFeatureType(feature), makeKey(feature.properties.type))
-      return {
-        color: typeData.line_colour
-      }
-    }
-  }).addTo(leafletMap)
-  mapStore.setLeafletData(dataLayer)
+  //   //Line Style
+  //   style(feature) {
+  //     let typeData = getTypeData(getFeatureType(feature), makeKey(feature.properties.type))
+  //     return {
+  //       color: typeData.line_colour
+  //     }
+  //   }
+  // }).addTo(leafletMap)
+  // mapStore.setLeafletData(dataLayer)
 
   //Set View
   setTimeout(() => {
