@@ -41,16 +41,27 @@ onMounted(() => {
   var map = new maplibregl.Map({
     container: 'map',
     style: mapboxStyle,
-    center: [
-      -52.75,47.3
-    
-    ], // starting position [lng, lat]
+    center: [-52.75, 47.3], // starting position [lng, lat]
     zoom: 9 // starting zoom
   })
 
-  map.addSource('geoJSON', {
-    type: 'geojson',
-    data: geoJSON.value
+  map.on('load', () => {
+    console.log('geojson')
+
+    map.addSource('geoJSON', {
+      type: 'geojson',
+      data: geoJSON.value
+    })
+
+    map.addLayer({
+      id: 'geoJSON',
+      type: 'line',
+      source: 'geoJSON',
+      paint: {
+        'line-color': '#088',
+        'line-width': 2
+      }
+    })
   })
 
   //Tile Layer
@@ -98,7 +109,7 @@ onMounted(() => {
 
   //Set View
   setTimeout(() => {
-    leafletMap.fitBounds(dataLayer.getBounds())
+    // leafletMap.fitBounds(dataLayer.getBounds())
     mapStore.setLeafletReady(true)
   }, 500)
 })

@@ -1,4 +1,4 @@
-import { waymarkConfig } from '@/data/eastcoasttrail.js'
+import { waymarkConfig } from '@/data/data.js'
 import { makeKey } from '@/helpers/Common.js'
 
 export function getTypeData(featureType, typeKey) {
