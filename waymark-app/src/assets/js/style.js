@@ -1,3 +1,5 @@
+console.log(location.href)
+
 export const mapboxStyle = {
   version: 8,
   name: 'Klokantech Terrain',
@@ -16,22 +18,22 @@ export const mapboxStyle = {
   sources: {
     openmaptiles: {
       type: 'vector',
-      tiles: ['http://127.0.0.1:5173/data/osm/{z}/{x}/{y}.pbf'],
+      tiles: [location.href + '/data/osm/{z}/{x}/{y}.pbf'],
       maxzoom: 14
-    },
+    }
     // hillshading: {
     //   type: 'raster',
-    //   tiles: ['http://127.0.0.1:5173/data/hillshading/{z}/{x}/{y}.png'],
+    //   tiles: [location.href + '/data/hillshading/{z}/{x}/{y}.png'],
     //   tileSize: 256,
     //   maxzoom: 14
     // },
     // contours: {
     //   type: 'vector',
-    //   tiles: ['http://127.0.0.1:5173/data/contours/{z}/{x}/{y}.pbf'],
+    //   tiles: [location.href + '/data/contours/{z}/{x}/{y}.pbf'],
     //   maxzoom: 14
     // }
   },
-  glyphs: 'http://127.0.0.1:5173/fonts/{fontstack}/{range}.pbf',
+  glyphs: location.href + '/fonts/{fontstack}/{range}.pbf',
   layers: [
     {
       id: 'background',
