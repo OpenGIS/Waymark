@@ -18,10 +18,10 @@ export function getTypeData(featureType, typeKey) {
     if (type_title) {
       //Found (run both through make_key, just to be on safe side)
       if (makeKey(typeKey) == makeKey(type_title)) {
-        console.log('Found=' + typeKey)
+        // console.log('Found=' + typeKey)
         type = waymarkConfig[featureType + '_types'][i]
       } else {
-        console.log('Not found=' + typeKey)
+        // console.log('Not found=' + typeKey)
       }
     }
   }

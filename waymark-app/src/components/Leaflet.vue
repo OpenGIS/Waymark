@@ -32,7 +32,8 @@ onMounted(() => {
   leafletMap = L.map('map', {
     centre: [40, 40],
     zoom: 12,
-    zoomControl: false
+    zoomControl: false,
+    preferCanvas: true
   })
   mapStore.setLeafletMap(leafletMap)
 
