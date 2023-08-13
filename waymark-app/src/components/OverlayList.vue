@@ -12,6 +12,7 @@ let expanded = ref(true)
 let visible = ref(true)
 
 const toggleHighlight = (overlay) => {
+  return
   const element = overlay.layer.getElement()
 
   element.classList.toggle('overlay-highlight')

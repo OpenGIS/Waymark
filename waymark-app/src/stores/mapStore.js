@@ -8,83 +8,56 @@ export const useMapStore = defineStore('map', () => {
   //State
   const geoJSON = ref(mapData)
   const mapConfig = ref(waymarkConfig)
-  const leafletMap = ref()
-  const leafletData = ref()
+  const map = ref({})
   const overlays = ref([])
-  const leafletReady = ref(false)
   const visibleOverlays = ref([])
   const activeOverlay = ref(null)
   const mapHeight = ref(50)
-  const modal = ref()
-
-  let overlayIndex = 0;
+  let modal = ref()
 
   function setMapHeight(heightPercent) {
     mapHeight.value = heightPercent
   }
 
   function setModal(m) {
-    modal.value = m
+    modal = m
   }
 
   //Actions
-  function setLeafletMap(map) {
-    leafletMap.value = map
-
-    //Whenever view changes
-    map.on('zoomend moveend', () => {
-      const mapBounds = map.getBounds()
-
-      //Check if overlay is visible
-      visibleOverlays.value = overlays.value.filter((overlay) => {
-        let contains = false
-
-        switch (overlay.featureType) {
-          case 'marker':
-            //In view
-            contains = mapBounds.contains(overlay.layer.getLatLng())
-            break
-          case 'line':
-            if (contains) break
-
-            overlay.layer.getLatLngs().forEach((element) => {
-              if (mapBounds.contains(element)) {
-                contains = true
-              }
-            })
-
-            break
-          //In view
-          // return mapBounds.contains()
-
-          case 'shape':
-          //In view
-          // return mapBounds.contains(overlay.layer.getLatLng())
-        }
-
-        return contains
-      })
-    })
-  }
-
-  function setLeafletData(dataLayer) {
-    leafletData.value = dataLayer
-  }
-
-  function setLeafletReady(ready) {
-    leafletReady.value = ready
+  function setMap(m) {
+    map.value = m
   }
 
   function setActiveOverlay(overlay) {
+    console.log(map.value)
     modal.value.$el.setCurrentBreakpoint(0.66)
 
     if (activeOverlay.value !== overlay) {
       activeOverlay.value = overlay
 
-      leafletMap.value.setView(overlay.layer.getLatLng())
+      map.value.setCenter(overlay.marker.getLngLat())
     } else {
-      leafletMap.value.setView(overlay.layer.getLatLng(), 14)
+      map.value.setZoom(14)
     }
+  }
+
+  function addMarker(marker, feature) {
+    let featureType = 'marker'
+    let typeKey = feature.properties.type
+
+    let overlay = {
+      id: overlays.value.length + 1,
+      typeKey: typeKey,
+      typeData: getTypeData('marker', typeKey),
+      feature: feature,
+      marker: marker,
+      featureType: featureType,
+      element: marker.getElement()
+    }
+
+    overlays.value.push(overlay)
+
+    return overlay
   }
 
   function addLayer(layer) {
@@ -117,18 +90,16 @@ export const useMapStore = defineStore('map', () => {
   return {
     overlays,
     geoJSON,
-    leafletMap,
-    setLeafletMap,
+    map,
+    setMap,
     mapConfig,
-    setLeafletData,
     addLayer,
     visibleOverlays,
-    leafletReady,
-    setLeafletReady,
     activeOverlay,
     setActiveOverlay,
     mapHeight,
     setMapHeight,
-    setModal
+    setModal,
+    addMarker
   }
 })

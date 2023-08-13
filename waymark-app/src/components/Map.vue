@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 import { getTypeData, getFeatureType, getIconData } from '@/helpers/Overlay.js'
 import { makeKey } from '@/helpers/Common.js'
+import Marker from '@/components/Marker.vue'
 
 //MapLibre GL
 import maplibregl from 'maplibre-gl/dist/maplibre-gl.js'
@@ -11,10 +12,9 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import { mapboxStyle } from '@/assets/js/style.js'
 
 const mapStore = useMapStore()
-const { geoJSON, mapConfig, mapHeight } = storeToRefs(mapStore)
+const { geoJSON, mapConfig, mapHeight, visibleOverlays, overlays } = storeToRefs(mapStore)
 
-const map = ref()
-let leafletMap = null
+let map = null
 
 // ==== Computed ====
 
@@ -23,6 +23,41 @@ const pointsFeatures = computed(() => {
     return feature.geometry.type === 'Point'
   })
 })
+
+const updateVisibleOverlays = () => {
+  const mapBounds = map.getBounds()
+
+  //Check if overlay is visible
+  visibleOverlays.value = overlays.value.filter((overlay) => {
+    let contains = false
+
+    switch (overlay.featureType) {
+      case 'marker':
+        //In view
+        contains = mapBounds.contains(overlay.marker.getLngLat())
+
+        break
+      // case 'line':
+      //   if (contains) break
+
+      //   overlay.layer.getLatLngs().forEach((element) => {
+      //     if (mapBounds.contains(element)) {
+      //       contains = true
+      //     }
+      //   })
+
+      //   break
+      //In view
+      // return mapBounds.contains()
+
+      // case 'shape':
+      //In view
+      // return mapBounds.contains(overlay.layer.getLatLng())
+    }
+
+    return contains
+  })
+}
 
 // ==== Watchers ====
 
@@ -35,43 +70,43 @@ watch(mapHeight, () => {
 // ==== Mounted ====
 
 onMounted(() => {
-  console.log(geoJSON.value)
   //Create Map
-  var map = new maplibregl.Map({
+  map = new maplibregl.Map({
     container: 'map',
     style: mapboxStyle,
     center: [-52.75, 47.3], // starting position [lng, lat]
     zoom: 9, // starting zoom,
     maxZoom: 16
-  })
+  }).on('load', () => {
+    //Markers
+    pointsFeatures.value.forEach((feature) => {
+      const typeData = getTypeData(getFeatureType(feature), makeKey(feature.properties.type))
+      const iconData = getIconData(typeData)
 
-  // mapStore.setLeafletMap(leafletMap)
+      // create a DOM element for the marker
+      const el = document.createElement('div')
+      el.className = iconData.className
+      el.innerHTML = iconData.html
+      el.style.width = `${iconData.iconSize[0]}px`
+      el.style.height = `${iconData.iconSize[1]}px`
 
-  pointsFeatures.value.forEach((feature) => {
-    const typeData = getTypeData(getFeatureType(feature), makeKey(feature.properties.type))
-    const iconData = getIconData(typeData)
+      // add marker to map
+      const marker = new maplibregl.Marker({
+        element: el,
+        offset: iconData.iconAnchor
+      })
 
-    // create a DOM element for the marker
-    const el = document.createElement('div')
-    el.className = iconData.className
-    el.innerHTML = iconData.html
-    el.style.width = `${iconData.iconSize[0]}px`
-    el.style.height = `${iconData.iconSize[1]}px`
+      marker.setLngLat(feature.geometry.coordinates)
+      marker.addTo(map)
 
-    el.addEventListener('click', () => {
-      console.log(feature)
+      const overlay = mapStore.addMarker(marker, feature)
+
+      el.addEventListener('click', () => {
+        mapStore.setActiveOverlay(overlay)
+      })
     })
 
-    // add marker to map
-    new maplibregl.Marker({
-      element: el,
-      offset: iconData.iconAnchor
-    })
-      .setLngLat(feature.geometry.coordinates)
-      .addTo(map)
-  })
-
-  map.on('load', () => {
+    //Lines
     map.addSource('geoJSON', {
       type: 'geojson',
       data: geoJSON.value
@@ -86,18 +121,17 @@ onMounted(() => {
         'line-width': 2
       }
     })
+
+    //Update Visible whenever view changes
+    map.on('zoomend', updateVisibleOverlays).on('moveend', updateVisibleOverlays)
   })
 
-  //Set View
-  setTimeout(() => {
-    // leafletMap.fitBounds(dataLayer.getBounds())
-    mapStore.setLeafletReady(true)
-  }, 500)
+  mapStore.setMap(map)
 })
 </script>
 
 <template>
-  <div id="map" ref="map" :style="`height:${mapHeight}%`"></div>
+  <div id="map" :style="`height:${mapHeight}%`"></div>
 </template>
 
 <style>

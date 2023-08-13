@@ -20,13 +20,13 @@ import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 
 const mapStore = useMapStore()
-const { overlays, leafletMap, visibleOverlays, activeOverlay } = storeToRefs(mapStore)
+const { visibleOverlays, activeOverlay } = storeToRefs(mapStore)
 
 const modal = ref()
 mapStore.setModal(modal)
+
 const modalOpen = ref(true)
 const modalBreakpoint = ref(0.33)
-
 const activeType = ref('marker')
 
 const activeOverlays = computed(() => {
