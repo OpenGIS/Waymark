@@ -74,10 +74,12 @@ export function getIconData(type) {
 
     //Marker only
     if (type.marker_shape == 'marker') {
-      icon_data.iconAnchor = [icon_data.iconSize[0] / 2, icon_data.iconSize[1] * 1.25]
+      icon_data.iconAnchor = [
+        Math.ceil(1 - icon_data.iconSize[0] / 2),
+        Math.ceil(1 - icon_data.iconSize[1] / 1.5)
+      ]
     }
   }
-
   //CSS Styles
   var background_css = 'background:' + type.marker_colour + ';'
   var icon_css = 'color:' + type.icon_colour + ';'
@@ -106,7 +108,7 @@ export function getIconData(type) {
       //Decode HTML entities using jQuery
       // var icon_html = jQuery('<div/>').html(type.marker_icon).text()
 
-      var icon_html = '<div>' + type.marker_icon + '</div>';
+      var icon_html = '<div>' + type.marker_icon + '</div>'
 
       icon_data.html += '<div class="' + icon_class + '">' + icon_html + '</div>'
 
