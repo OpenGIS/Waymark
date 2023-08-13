@@ -2,7 +2,7 @@
 import OverlayList from '@/components/OverlayList.vue'
 import { IonList } from '@ionic/vue'
 
-const props = defineProps({
+defineProps({
   overlaysByType: Object
 })
 </script>

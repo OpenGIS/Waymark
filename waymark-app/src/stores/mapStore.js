@@ -2,7 +2,6 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { mapData, waymarkConfig } from '@/data/data.js'
 
-import L from 'leaflet'
 import { getTypeData, getFeatureType } from '@/helpers/Overlay.js'
 
 export const useMapStore = defineStore('map', () => {
@@ -16,14 +15,16 @@ export const useMapStore = defineStore('map', () => {
   const visibleOverlays = ref([])
   const activeOverlay = ref(null)
   const mapHeight = ref(50)
-  let modal = ref()
+  const modal = ref()
+
+  let overlayIndex = 0;
 
   function setMapHeight(heightPercent) {
     mapHeight.value = heightPercent
   }
 
   function setModal(m) {
-    modal = m
+    modal.value = m
   }
 
   //Actions
@@ -91,7 +92,7 @@ export const useMapStore = defineStore('map', () => {
     let typeKey = layer.feature.properties.type
 
     let overlay = {
-      id: L.stamp(layer),
+      id: overlayIndex,
       typeKey: typeKey,
       typeData: getTypeData(featureType, typeKey),
       feature: layer.feature,
@@ -104,6 +105,8 @@ export const useMapStore = defineStore('map', () => {
     layer.on('click', () => {
       setActiveOverlay(overlay)
     })
+
+    overlayIndex++
   }
 
   //Getters

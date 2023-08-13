@@ -1,5 +1,3 @@
-console.log(location.href)
-
 export const mapboxStyle = {
   version: 8,
   name: 'Klokantech Terrain',

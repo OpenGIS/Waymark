@@ -1,10 +1,9 @@
 <script setup>
-import { onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 
 const mapStore = useMapStore()
-let { visibleOverlays, leafletReady } = storeToRefs(mapStore)
+let { visibleOverlays } = storeToRefs(mapStore)
 
 import {
   IonPage,
