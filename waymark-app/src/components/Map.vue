@@ -163,7 +163,7 @@ onMounted(() => {
 
 <style>
 #map {
-  height: 100%;
   width: 100%;
+  height: 33%;
 }
 </style>

@@ -3,11 +3,11 @@ import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 
 const mapStore = useMapStore()
-const { activeOverlay } = storeToRefs(mapStore)
+const { activeOverlay, detailHeight } = storeToRefs(mapStore)
 </script>
 
 <template>
-  <div id="detail">
+  <div id="detail" :style="`height:${detailHeight}%`">
     <div v-if="activeOverlay">
       <!-- Image -->
       <img
@@ -27,3 +27,9 @@ const { activeOverlay } = storeToRefs(mapStore)
     </div>
   </div>
 </template>
+
+<style lang="less">
+#detail {
+  overflow-y: scroll;
+}
+</style>

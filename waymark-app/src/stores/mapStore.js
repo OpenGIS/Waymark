@@ -12,18 +12,29 @@ export const useMapStore = defineStore('map', () => {
   const overlays = ref([])
   const visibleOverlays = ref([])
   const activeOverlay = ref(null)
-  const mapHeight = ref(50)
-
-  function setMapHeight(heightPercent) {
-    mapHeight.value = heightPercent
-  }
+  const uIStatus = ref({
+    detail: 0,
+    map: 6,
+    list: 0
+  })
 
   //Actions
   function setMap(m) {
     map.value = m
   }
 
+  function toggleList() {
+    uIStatus.value.list = uIStatus.value.list + 2
+    uIStatus.value.map = uIStatus.value.map - 2
+  }
+
   function setActiveOverlay(overlay) {
+    if (!uIStatus.value.detail) {
+      console.log(overlay)
+      uIStatus.value.detail = uIStatus.value.detail + 1
+      uIStatus.value.map = uIStatus.value.map - 1
+    }
+
     if (activeOverlay.value !== overlay) {
       activeOverlay.value = overlay
 
@@ -52,31 +63,39 @@ export const useMapStore = defineStore('map', () => {
     return overlay
   }
 
-  function addLayer(layer) {
-    let featureType = getFeatureType(layer.feature)
-    let typeKey = layer.feature.properties.type
+  // function addLayer(layer) {
+  //   let featureType = getFeatureType(layer.feature)
+  //   let typeKey = layer.feature.properties.type
 
-    let overlay = {
-      id: overlayIndex,
-      typeKey: typeKey,
-      typeData: getTypeData(featureType, typeKey),
-      feature: layer.feature,
-      layer: layer,
-      featureType: featureType
-    }
+  //   let overlay = {
+  //     id: overlayIndex,
+  //     typeKey: typeKey,
+  //     typeData: getTypeData(featureType, typeKey),
+  //     feature: layer.feature,
+  //     layer: layer,
+  //     featureType: featureType
+  //   }
 
-    overlays.value.push(overlay)
+  //   overlays.value.push(overlay)
 
-    layer.on('click', () => {
-      setActiveOverlay(overlay)
-    })
-
-    overlayIndex++
-  }
+  //   overlayIndex++
+  // }
 
   //Getters
   const getActiveOverlay = computed(() => {
     return activeOverlay.value
+  })
+
+  const detailHeight = computed(() => {
+    return (uIStatus.value.detail / 6) * 100
+  })
+
+  const mapHeight = computed(() => {
+    return (uIStatus.value.map / 6) * 100
+  })
+
+  const listHeight = computed(() => {
+    return (uIStatus.value.list / 6) * 100
   })
 
   return {
@@ -85,12 +104,14 @@ export const useMapStore = defineStore('map', () => {
     map,
     setMap,
     mapConfig,
-    addLayer,
+    // addLayer,
     visibleOverlays,
     activeOverlay,
     setActiveOverlay,
+    detailHeight,
     mapHeight,
-    setMapHeight,
-    addMarker
+    listHeight,
+    addMarker,
+    toggleList
   }
 })

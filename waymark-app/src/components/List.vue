@@ -7,7 +7,7 @@ import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 
 const mapStore = useMapStore()
-const { visibleOverlays } = storeToRefs(mapStore)
+const { visibleOverlays, listHeight } = storeToRefs(mapStore)
 
 const activeType = ref('marker')
 
@@ -21,7 +21,7 @@ const activeOverlays = computed(() => {
 </script>
 
 <template>
-  <div id="list">
+  <div id="list" :style="`height:${listHeight}%`">
     <!-- Type Nav -->
     <div :value="activeType">
       <div @click="activeType = 'marker'">
@@ -42,6 +42,7 @@ const activeOverlays = computed(() => {
 
 <style lang="less">
 #list {
+  overflow: hidden;
   overflow-y: scroll;
 }
 </style>
