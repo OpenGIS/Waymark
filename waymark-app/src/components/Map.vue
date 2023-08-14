@@ -7,20 +7,28 @@ import { makeKey } from '@/helpers/Common.js'
 import Marker from '@/components/Marker.vue'
 
 //MapLibre GL
-import maplibregl from 'maplibre-gl/dist/maplibre-gl.js'
+import MapLibreGL from 'maplibre-gl/dist/maplibre-gl.js'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { mapboxStyle } from '@/assets/js/style.js'
 
 const mapStore = useMapStore()
-const { geoJSON, mapConfig, mapHeight, visibleOverlays, overlays } = storeToRefs(mapStore)
+const { geoJSON, mapHeight, visibleOverlays, overlays } = storeToRefs(mapStore)
 
 let map = null
+
+const dataBounds = new MapLibreGL.LngLatBounds()
 
 // ==== Computed ====
 
 const pointsFeatures = computed(() => {
   return geoJSON.value.features.filter((feature) => {
     return feature.geometry.type === 'Point'
+  })
+})
+
+const linesFeatures = computed(() => {
+  return geoJSON.value.features.filter((feature) => {
+    return ['LineString', 'MultiLineString'].indexOf(feature.geometry.type) !== -1
   })
 })
 
@@ -61,17 +69,19 @@ const updateVisibleOverlays = () => {
 
 // ==== Watchers ====
 
-watch(mapHeight, () => {
-  setTimeout(() => {
-    // leafletMap.invalidateSize(false)
-  }, 201)
-})
+// watch(mapHeight, () => {
+//   setTimeout(() => {
+//     // leafletMap.invalidateSize(false)
+//   }, 201)
+// })
 
 // ==== Mounted ====
 
 onMounted(() => {
+  console.log(linesFeatures.value)
+
   //Create Map
-  map = new maplibregl.Map({
+  map = new MapLibreGL.Map({
     container: 'map',
     style: mapboxStyle,
     center: [-52.75, 47.3], // starting position [lng, lat]
@@ -91,13 +101,16 @@ onMounted(() => {
       el.style.height = `${iconData.iconSize[1]}px`
 
       // add marker to map
-      const marker = new maplibregl.Marker({
+      const marker = new MapLibreGL.Marker({
         element: el,
         offset: iconData.iconAnchor
       })
 
       marker.setLngLat(feature.geometry.coordinates)
       marker.addTo(map)
+
+      //Extend bounds
+      dataBounds.extend(feature.geometry.coordinates)
 
       const overlay = mapStore.addMarker(marker, feature)
 
@@ -107,12 +120,12 @@ onMounted(() => {
     })
 
     //Lines
-    map.addSource('geoJSON', {
+    const dataSource = map.addSource('geoJSON', {
       type: 'geojson',
       data: geoJSON.value
     })
 
-    map.addLayer({
+    const dataLayer = map.addLayer({
       id: 'geoJSON',
       type: 'line',
       source: 'geoJSON',
@@ -122,8 +135,18 @@ onMounted(() => {
       }
     })
 
+    //Extend bounds
+    linesFeatures.value.forEach((feature) => {
+      for (let i in feature.geometry.coordinates) {
+        dataBounds.extend(feature.geometry.coordinates[i])
+      }
+    })
+
     //Update Visible whenever view changes
     map.on('zoomend', updateVisibleOverlays).on('moveend', updateVisibleOverlays)
+
+    //Set initial view
+    map.fitBounds(dataBounds, { padding: 20 })
   })
 
   mapStore.setMap(map)
@@ -137,6 +160,6 @@ onMounted(() => {
 <style>
 #map {
   height: 100%;
-  /*  width: 50%;*/
+  width: 100%;
 }
 </style>

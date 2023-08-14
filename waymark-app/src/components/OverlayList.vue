@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import ListDetail from '@/components/ListDetail.vue'
+import ListItem from '@/components/ListItem.vue'
 import Marker from '@/components/Marker.vue'
 import { IonListHeader, IonLabel } from '@ionic/vue'
 
@@ -54,40 +54,32 @@ const overlayStyle = () => {
 </script>
 
 <template>
-  <!-- Heading -->
-  <ion-list-header @click="expanded = !expanded" :style="overlayStyle()">
-    <Marker :typeData="byType.typeData" :featureType="byType.featureType" />
+  <div class="type">
+    <!-- Heading -->
+    <div class="type-heading" @click="expanded = !expanded" :style="overlayStyle()">
+      <Marker :typeData="byType.typeData" :featureType="byType.featureType" />
 
-    <ion-label>{{ byType.title }}</ion-label>
+      <div class="type-title">{{ byType.title }}</div>
 
-    <div class="display-toggle">
-      <input type="checkbox" checked="visible" @click.stop="toggleVisible()" />
+      <div class="display-toggle">
+        <input type="checkbox" checked="visible" @click.stop="toggleVisible()" />
+      </div>
     </div>
-  </ion-list-header>
 
-  <!-- List -->
-  <ListDetail
-    v-show="expanded"
-    v-for="(overlay, typeKey, index) in byType.overlays"
-    :overlay="overlay"
-    @mouseenter="toggleHighlight(overlay)"
-    @mouseleave="toggleHighlight(overlay)"
-    :key="`${byType.featureType}-${typeKey}-${index}`"
-  />
+    <!-- List -->
+    <ListItem
+      v-show="expanded"
+      v-for="(overlay, typeKey, index) in byType.overlays"
+      :overlay="overlay"
+      @mouseenter="toggleHighlight(overlay)"
+      @mouseleave="toggleHighlight(overlay)"
+      :key="`${byType.featureType}-${typeKey}-${index}`"
+    />
+  </div>
 </template>
 
 <style lang="less">
-ion-accordion-group {
-  margin: 0;
-}
-ion-list-header {
-  padding-right: 16px;
-  ion-label {
-    padding-left: 10px;
-    font-weight: bold;
-    // font-size: 120%;
-  }
-
+.type-heading {
   .waymark-marker {
     display: flex;
     flex-direction: row;
