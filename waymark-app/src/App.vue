@@ -5,50 +5,26 @@ import { useMapStore } from '@/stores/mapStore.js'
 const mapStore = useMapStore()
 let { visibleOverlays } = storeToRefs(mapStore)
 
-import {
-  IonPage,
-  IonButtons,
-  IonButton,
-  IonFooter,
-  IonContent,
-  IonToolbar,
-  IonTitle,
-  IonIcon
-} from '@ionic/vue'
-
 import { layersOutline } from 'ionicons/icons'
 
+import Detail from '@/components/Detail.vue'
 import Map from '@/components/Map.vue'
-import Modal from '@/components/Modal.vue'
+import List from '@/components/List.vue'
+import Bar from '@/components/Bar.vue'
 </script>
 
 <template>
-  <ion-page>
-    <ion-content fullscreen="true">
-      <Modal />
-      <Map />
-    </ion-content>
+  <!-- Detail -->
+  <Detail />
 
-    <ion-footer mode="ios" translucent="true">
-      <ion-toolbar>
-        <!-- <ion-title>App</ion-title> -->
-        <ion-buttons slot="end">
-          <ion-button id="open-modal" expand="block"
-            >{{ visibleOverlays.length }} <ion-icon :icon="layersOutline"></ion-icon
-          ></ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-footer>
-  </ion-page>
+  <!-- Map -->
+  <Map />
+
+  <!-- List -->
+  <List />
+
+  <!-- Bar -->
+  <Bar />
 </template>
 
-<style>
-ion-footer {
-  position: absolute;
-  bottom: 0;
-  /*  background: rgba(255, 255, 255, 0.7);*/
-}
-ion-toolbar {
-  --background: transparent;
-}
-</style>
+<style></style>
