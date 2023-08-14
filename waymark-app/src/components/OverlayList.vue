@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import ListItem from '@/components/ListItem.vue'
 import Marker from '@/components/Marker.vue'
-import { IonListHeader, IonLabel } from '@ionic/vue'
 
 const props = defineProps({
   byType: Object

@@ -4,8 +4,6 @@ import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 const mapStore = useMapStore()
 
-import { IonItem, IonLabel, IonThumbnail } from '@ionic/vue'
-
 const props = defineProps({
   overlay: Object
 })

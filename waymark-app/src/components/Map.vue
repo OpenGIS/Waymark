@@ -78,8 +78,6 @@ const updateVisibleOverlays = () => {
 // ==== Mounted ====
 
 onMounted(() => {
-  console.log(linesFeatures.value)
-
   //Create Map
   map = new MapLibreGL.Map({
     container: 'map',
