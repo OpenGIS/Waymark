@@ -87,7 +87,7 @@ onMounted(() => {
     center: [-52.75, 47.3], // starting position [lng, lat]
     zoom: 9, // starting zoom,
     maxZoom: 16
-  }).on('load', () => {
+  }).once('load', () => {
     //Markers
     pointsFeatures.value.forEach((feature) => {
       const typeData = getTypeData(getFeatureType(feature), makeKey(feature.properties.type))
@@ -145,8 +145,14 @@ onMounted(() => {
     //Update Visible whenever view changes
     map.on('zoomend', updateVisibleOverlays).on('moveend', updateVisibleOverlays)
 
-    //Set initial view
+    //Set initial centre and zoom to it
+    map.setCenter(dataBounds.getCenter())
     map.fitBounds(dataBounds, { padding: 20 })
+
+    map.once('moveend', () => {
+      //Set Max bounds
+      map.setMaxBounds(map.getBounds())
+    })
   })
 
   mapStore.setMap(map)

@@ -32,20 +32,19 @@ const setActive = () => {
 </script>
 
 <template>
-  <ion-item @click="setActive" class="ion-justify-content-start">
-    <ion-thumbnail slot="start">
+  <div class="list-item" @click="setActive">
+    <div class="list-image">
       <img
         v-if="feature_props.image_thumbnail_url"
         :alt="feature_props.title"
         :src="feature_props.image_thumbnail_url"
       />
-    </ion-thumbnail>
+    </div>
 
-    <ion-label
-      ><h2>{{ feature_props.title }}</h2></ion-label
-    >
+    <div class="list-title">{{ feature_props.title }}</div>
+
     <div class="display-toggle">
       <input type="checkbox" checked="visible" @click.stop="toggleVisible()" />
     </div>
-  </ion-item>
+  </div>
 </template>

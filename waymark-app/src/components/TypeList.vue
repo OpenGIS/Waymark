@@ -1,6 +1,5 @@
 <script setup>
 import OverlayList from '@/components/OverlayList.vue'
-import { IonList } from '@ionic/vue'
 
 defineProps({
   overlaysByType: Object
@@ -8,10 +7,11 @@ defineProps({
 </script>
 
 <template>
-  <ion-list
+  <div
+    class="type-list"
     v-for="(byType, typeKey, index) in overlaysByType"
     :key="`${byType.featureType}-${typeKey}-${index}`"
   >
     <OverlayList :byType="byType" />
-  </ion-list>
+  </div>
 </template>

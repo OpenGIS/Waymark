@@ -39,3 +39,9 @@ const activeOverlays = computed(() => {
     <TypeList :overlaysByType="activeOverlays" />
   </div>
 </template>
+
+<style lang="less">
+#list {
+  overflow-y: scroll;
+}
+</style>
