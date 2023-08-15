@@ -7,6 +7,7 @@ const mapStore = useMapStore()
 const { visibleOverlays, barOpen } = storeToRefs(mapStore)
 import List from '@/components/List.vue'
 import Button from '@/components/Button.vue'
+import Content from '@/components/Content.vue'
 
 const barHeight = computed(() => {
   if (!barOpen.value) {
@@ -35,10 +36,10 @@ const barHeight = computed(() => {
     </nav>
 
     <!-- Content -->
-    <div class="bar-content">
+    <Content v-show="barOpen">
       <!-- List -->
       <List />
-    </div>
+    </Content>
   </div>
 </template>
 
@@ -47,10 +48,17 @@ const barHeight = computed(() => {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 98%;
+  padding: 1%;
   max-height: 100%;
   overflow: auto;
   background: rgba(249, 249, 249, 0.5);
   transition: height 0.1s jump-start;
+
+  .button {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+  }
 }
 </style>

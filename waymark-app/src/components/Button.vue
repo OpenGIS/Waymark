@@ -23,8 +23,9 @@ const iconClass = computed(() => {
 .button {
   display: block-inline;
   margin: 10px;
-  padding: 10px;
-  float: right;
+  padding: 12px;
+  width: 15px;
+  line-height: 1;
   color: white;
   background: blue;
   border: 1px solid red;
