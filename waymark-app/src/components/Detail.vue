@@ -6,6 +6,8 @@ import { useMapStore } from '@/stores/mapStore.js'
 const mapStore = useMapStore()
 const { activeOverlay, detailOpen, detailExpanded } = storeToRefs(mapStore)
 
+import Button from '@/components/Button.vue'
+
 const detailHeight = computed(() => {
   if (!detailOpen.value) {
     return '0px'
@@ -21,6 +23,10 @@ const detailHeight = computed(() => {
 
 <template>
   <div id="detail" :style="`height:${detailHeight}`">
+    <nav>
+      <Button icon="ion-close" @click="mapStore.toggleDetail()"></Button>
+    </nav>
+
     <div v-if="activeOverlay">
       <!-- Image -->
       <img
@@ -50,7 +56,6 @@ const detailHeight = computed(() => {
   overflow: hidden;
   overflow-y: scroll;
   background: rgba(249, 249, 249, 0.5);
-  transition: height 0.25s ease-in-out;
-  border: 1px solid red;
+  transition: all 0.1s;
 }
 </style>

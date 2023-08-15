@@ -93,7 +93,7 @@ export const useMapStore = defineStore('map', () => {
     map,
     setMap,
     mapConfig,
-    // addLayer,
+    toggleDetail,
     visibleOverlays,
     activeOverlay,
     setActiveOverlay,

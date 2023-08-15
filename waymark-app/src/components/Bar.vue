@@ -6,6 +6,7 @@ import { useMapStore } from '@/stores/mapStore.js'
 const mapStore = useMapStore()
 const { visibleOverlays, barOpen } = storeToRefs(mapStore)
 import List from '@/components/List.vue'
+import Button from '@/components/Button.vue'
 
 const barHeight = computed(() => {
   if (!barOpen.value) {
@@ -20,10 +21,17 @@ const barHeight = computed(() => {
   <div id="bar" :style="`height:${barHeight}`">
     <!-- Nav -->
     <nav id="bar-nav">
-      <div class="button" @click="mapStore.toggleBar()">
-        {{ visibleOverlays.length }}
-        <i class="ion ion-layers-outline"></i>
-      </div>
+      <!-- fa-compass -->
+      <!-- fa-crosshairs -->
+      <!-- fa-leanpub -->
+      <!-- fa-line-chart -->
+      <!-- fa-location-arrow -->
+      <!-- fa-map-o -->
+
+      <!-- Layers -->
+      <Button icon="fa-navicon" @click="mapStore.toggleBar()">
+        <!-- {{ visibleOverlays.length }} -->
+      </Button>
     </nav>
 
     <!-- Content -->
@@ -40,15 +48,9 @@ const barHeight = computed(() => {
   bottom: 0;
   left: 0;
   width: 100%;
-  overflow: hidden;
+  max-height: 100%;
+  overflow: auto;
   background: rgba(249, 249, 249, 0.5);
-  transition: height 0.25s ease-in-out;
-  .button {
-    margin: 10px;
-    padding: 10px;
-    float: right;
-    color: white;
-    background: blue;
-  }
+  transition: height 0.1s jump-start;
 }
 </style>
