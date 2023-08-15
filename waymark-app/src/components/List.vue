@@ -7,7 +7,7 @@ import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 
 const mapStore = useMapStore()
-const { visibleOverlays, listHeight } = storeToRefs(mapStore)
+const { overlays, visibleOverlays, listHeight } = storeToRefs(mapStore)
 
 const activeType = ref('marker')
 
@@ -36,12 +36,13 @@ const activeOverlays = computed(() => {
     </div>
 
     <!-- Overlays (by Type) -->
-    <TypeList :overlaysByType="activeOverlays" />
+    <TypeList :overlaysByType="overlaysByType(overlays)" />
   </div>
 </template>
 
 <style lang="less">
 #list {
+  clear: both;
   overflow: hidden;
   overflow-y: scroll;
 }

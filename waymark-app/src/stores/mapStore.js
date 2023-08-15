@@ -12,29 +12,21 @@ export const useMapStore = defineStore('map', () => {
   const overlays = ref([])
   const visibleOverlays = ref([])
   const activeOverlay = ref(null)
-  const uIStatus = ref({
-    detail: 0,
-    map: 6,
-    list: 0
-  })
+
+  const barOpen = ref(false)
+  const detailOpen = ref(false)
+  const detailExpanded = ref(false)
 
   //Actions
   function setMap(m) {
     map.value = m
   }
 
-  function toggleList() {
-    uIStatus.value.list = uIStatus.value.list + 2
-    uIStatus.value.map = uIStatus.value.map - 2
+  function toggleBar() {
+    barOpen.value = !barOpen.value
   }
 
   function setActiveOverlay(overlay) {
-    if (!uIStatus.value.detail) {
-      console.log(overlay)
-      uIStatus.value.detail = uIStatus.value.detail + 1
-      uIStatus.value.map = uIStatus.value.map - 1
-    }
-
     if (activeOverlay.value !== overlay) {
       activeOverlay.value = overlay
 
@@ -86,18 +78,6 @@ export const useMapStore = defineStore('map', () => {
     return activeOverlay.value
   })
 
-  const detailHeight = computed(() => {
-    return (uIStatus.value.detail / 6) * 100
-  })
-
-  const mapHeight = computed(() => {
-    return (uIStatus.value.map / 6) * 100
-  })
-
-  const listHeight = computed(() => {
-    return (uIStatus.value.list / 6) * 100
-  })
-
   return {
     overlays,
     geoJSON,
@@ -108,10 +88,10 @@ export const useMapStore = defineStore('map', () => {
     visibleOverlays,
     activeOverlay,
     setActiveOverlay,
-    detailHeight,
-    mapHeight,
-    listHeight,
+    detailOpen,
+    detailExpanded,
+    barOpen,
     addMarker,
-    toggleList
+    toggleBar
   }
 })

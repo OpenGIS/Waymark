@@ -12,7 +12,7 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import { mapboxStyle } from '@/assets/js/style.js'
 
 const mapStore = useMapStore()
-const { geoJSON, mapHeight, visibleOverlays, overlays } = storeToRefs(mapStore)
+const { geoJSON, visibleOverlays, overlays } = storeToRefs(mapStore)
 
 let map = null
 
@@ -141,7 +141,7 @@ onMounted(() => {
     })
 
     //Update Visible whenever view changes
-    map.on('zoomend', updateVisibleOverlays).on('moveend', updateVisibleOverlays)
+    //map.on('zoomend', updateVisibleOverlays).on('moveend', updateVisibleOverlays)
 
     //Set initial centre and zoom to it
     map.setCenter(dataBounds.getCenter())
@@ -158,12 +158,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="map" :style="`height:${mapHeight}%`"></div>
+  <div id="map"></div>
 </template>
 
 <style>
 #map {
+  position: absolute;
   width: 100%;
-  height: 33%;
+  height: 100%;
+  z-index: 0;
 }
 </style>

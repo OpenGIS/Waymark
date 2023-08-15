@@ -3,19 +3,24 @@ import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 
 const mapStore = useMapStore()
-const { visibleOverlays } = storeToRefs(mapStore)
-
-const toggleList = () => {
-  listOpen = !listOpen
-}
+const { visibleOverlays, barOpen } = storeToRefs(mapStore)
+import List from '@/components/List.vue'
 </script>
 
 <template>
-  <!-- Icon -->
-  <div id="bar">
-    <div class="button" @click="mapStore.toggleList()">
-      {{ visibleOverlays.length }}
-      <i class="ion ion-layers-outline"></i>
+  <div id="bar" :style="`height:${barOpen * 50}%`">
+    <!-- Nav -->
+    <nav id="bar-nav">
+      <div class="button" @click="mapStore.toggleBar()">
+        {{ visibleOverlays.length }}
+        <i class="ion ion-layers-outline"></i>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="bar-content">
+      <!-- List -->
+      <List />
     </div>
   </div>
 </template>
@@ -25,9 +30,9 @@ const toggleList = () => {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 60px;
+  min-height: 60px;
   width: 100%;
-  background: red;
+  background: rgba(249, 249, 249, 0.5);
   .button {
     margin: 10px;
     padding: 10px;

@@ -7,19 +7,15 @@ let { visibleOverlays } = storeToRefs(mapStore)
 
 import Detail from '@/components/Detail.vue'
 import Map from '@/components/Map.vue'
-import List from '@/components/List.vue'
 import Bar from '@/components/Bar.vue'
 </script>
 
 <template>
-  <!-- Detail -->
-  <Detail />
-
   <!-- Map -->
   <Map />
 
-  <!-- List -->
-  <List />
+  <!-- Detail -->
+  <Detail />
 
   <!-- Bar -->
   <Bar />
