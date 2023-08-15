@@ -1,14 +1,23 @@
 <script setup>
+import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 
 const mapStore = useMapStore()
 const { visibleOverlays, barOpen } = storeToRefs(mapStore)
 import List from '@/components/List.vue'
+
+const barHeight = computed(() => {
+  if (!barOpen.value) {
+    return '60px'
+  }
+
+  return '33.33%'
+})
 </script>
 
 <template>
-  <div id="bar" :style="`height:${barOpen * 50}%`">
+  <div id="bar" :style="`height:${barHeight}`">
     <!-- Nav -->
     <nav id="bar-nav">
       <div class="button" @click="mapStore.toggleBar()">
@@ -30,9 +39,10 @@ import List from '@/components/List.vue'
   position: absolute;
   bottom: 0;
   left: 0;
-  min-height: 60px;
   width: 100%;
+  overflow: hidden;
   background: rgba(249, 249, 249, 0.5);
+  transition: height 0.25s ease-in-out;
   .button {
     margin: 10px;
     padding: 10px;

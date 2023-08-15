@@ -26,14 +26,23 @@ export const useMapStore = defineStore('map', () => {
     barOpen.value = !barOpen.value
   }
 
-  function setActiveOverlay(overlay) {
-    if (activeOverlay.value !== overlay) {
-      activeOverlay.value = overlay
+  function toggleDetail() {
+    detailOpen.value = !detailOpen.value
+  }
 
-      map.value.setCenter(overlay.marker.getLngLat())
-    } else {
-      map.value.setZoom(14)
-    }
+  function setActiveOverlay(overlay) {
+    console.log('setActiveOverlay')
+    activeOverlay.value = overlay
+
+    detailOpen.value = true
+
+    // if (activeOverlay.value !== overlay) {
+    //   activeOverlay.value = overlay
+
+    //   map.value.setCenter(overlay.marker.getLngLat())
+    // } else {
+    //   map.value.setZoom(14)
+    // }
   }
 
   function addMarker(marker, feature) {

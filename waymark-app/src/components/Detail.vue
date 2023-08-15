@@ -1,13 +1,26 @@
 <script setup>
+import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 
 const mapStore = useMapStore()
-const { activeOverlay, detailHeight } = storeToRefs(mapStore)
+const { activeOverlay, detailOpen, detailExpanded } = storeToRefs(mapStore)
+
+const detailHeight = computed(() => {
+  if (!detailOpen.value) {
+    return '0px'
+  }
+
+  if (!detailExpanded.value) {
+    return '60px'
+  }
+
+  return '33.33%'
+})
 </script>
 
 <template>
-  <div id="detail" :style="`height:${detailHeight}%`">
+  <div id="detail" :style="`height:${detailHeight}`">
     <div v-if="activeOverlay">
       <!-- Image -->
       <img
@@ -30,6 +43,14 @@ const { activeOverlay, detailHeight } = storeToRefs(mapStore)
 
 <style lang="less">
 #detail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
   overflow-y: scroll;
+  background: rgba(249, 249, 249, 0.5);
+  transition: height 0.25s ease-in-out;
+  border: 1px solid red;
 }
 </style>
