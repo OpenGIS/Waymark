@@ -9,8 +9,6 @@ const props = defineProps({
 })
 
 const iconClass = computed(() => {
-  console.log(props.icon)
-
   if (typeof props.icon == 'string' && props.icon.indexOf('ion') === 0) {
     return `ion ${props.icon}`
   } else {
@@ -34,8 +32,9 @@ const iconClass = computed(() => {
   width: 15px;
   font-size: 160%;
   /*  line-height: 1;*/
-  color: white;
-  background: blue;
-  border: 1px solid red;
+  color: #000;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 </style>

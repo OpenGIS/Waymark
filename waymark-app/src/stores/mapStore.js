@@ -31,7 +31,6 @@ export const useMapStore = defineStore('map', () => {
   }
 
   function setActiveOverlay(overlay) {
-    console.log('setActiveOverlay')
     activeOverlay.value = overlay
 
     detailOpen.value = true
@@ -64,23 +63,10 @@ export const useMapStore = defineStore('map', () => {
     return overlay
   }
 
-  // function addLayer(layer) {
-  //   let featureType = getFeatureType(layer.feature)
-  //   let typeKey = layer.feature.properties.type
-
-  //   let overlay = {
-  //     id: overlayIndex,
-  //     typeKey: typeKey,
-  //     typeData: getTypeData(featureType, typeKey),
-  //     feature: layer.feature,
-  //     layer: layer,
-  //     featureType: featureType
-  //   }
-
-  //   overlays.value.push(overlay)
-
-  //   overlayIndex++
-  // }
+  function setCenter(coords) {
+    map.value.setCenter(coords)
+    map.value.setZoom(14)
+  }
 
   //Getters
   const getActiveOverlay = computed(() => {
@@ -101,6 +87,7 @@ export const useMapStore = defineStore('map', () => {
     detailExpanded,
     barOpen,
     addMarker,
-    toggleBar
+    toggleBar,
+    setCenter
   }
 })
