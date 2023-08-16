@@ -94,46 +94,27 @@ const overlayStyle = () => {
 
 <style lang="less">
 .heading {
-  .image {
-    .waymark-marker {
-      display: flex;
-      flex-direction: row;
-      .waymark-marker-icon::before {
-        padding-top: 0 !important;
-        font-size: 24px !important;
-      }
-      .waymark-marker-background {
-        display: none !important;
+  td {
+    background-color: inherit;
+    
+    &.image {
+      .waymark-marker {
+        display: flex;
+        flex-direction: row;
+        .waymark-marker-icon::before {
+          padding-top: 0 !important;
+          font-size: 24px !important;
+        }
+        .waymark-marker-background {
+          display: none !important;
+        }
       }
     }
-  }
 
-  .title {
-    color: #fff;
-    text-shadow: 1px 1px 1px black;
-  }
-}
-
-td {
-  padding: 1%;
-  vertical-align: middle;
-
-  &.image {
-    width: 60px;
-
-    img {
-      max-width: 50px;
+    &.title {
+      color: #fff;
+      text-shadow: 1px 1px 1px black;
     }
-  }
-
-  &.title {
-    font-weight: bold;
-  }
-
-  &.go,
-  &.visible {
-    padding: 0;
-    width: 60px;
   }
 }
 </style>

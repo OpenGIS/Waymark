@@ -15,7 +15,6 @@ export const useMapStore = defineStore('map', () => {
 
   const barOpen = ref(false)
   const detailOpen = ref(false)
-  const detailExpanded = ref(false)
 
   //Actions
   function setMap(m) {
@@ -84,7 +83,6 @@ export const useMapStore = defineStore('map', () => {
     activeOverlay,
     setActiveOverlay,
     detailOpen,
-    detailExpanded,
     barOpen,
     addMarker,
     toggleBar,

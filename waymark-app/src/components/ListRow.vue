@@ -52,12 +52,12 @@ const setActive = () => {
     <td class="title">{{ feature_props.title }}</td>
 
     <!-- Go To -->
-    <td class="go">
+    <td class="action go">
       <Button icon="ion-android-search" @click.stop="centerOn()" />
     </td>
 
     <!-- Visible -->
-    <td class="visible">
+    <td class="action visible">
       <Button :icon="visibleIcon(visible)" @click.stop="toggleVisible()" />
     </td>
   </tr>

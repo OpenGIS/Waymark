@@ -1,13 +1,20 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 
 const mapStore = useMapStore()
-const { activeOverlay, detailOpen, detailExpanded } = storeToRefs(mapStore)
+const { activeOverlay, detailOpen } = storeToRefs(mapStore)
 
 import Button from '@/components/Button.vue'
 import Content from '@/components/Content.vue'
+import Marker from '@/components/Marker.vue'
+
+const detailExpanded = ref(false)
+
+const toggleExpanded = () => {
+  detailExpanded.value = !detailExpanded.value
+}
 
 const detailHeight = computed(() => {
   if (!detailOpen.value) {
@@ -23,12 +30,30 @@ const detailHeight = computed(() => {
 </script>
 
 <template>
-  <div v-show="detailOpen" id="detail" :style="`height:${detailHeight}`">
-    <nav>
-      <Button icon="ion-close" @click="mapStore.toggleDetail()"></Button>
-    </nav>
+  <div id="detail" v-show="detailOpen" :style="`height:${detailHeight}`">
+    <table>
+      <tr class="item" v-if="activeOverlay" @click="setActive">
+        <!-- Image -->
+        <td class="image">
+          <Marker :typeData="activeOverlay.typeData" :featureType="activeOverlay.featureType" />
+        </td>
 
-    <Content
+        <!-- Title -->
+        <td class="title">{{ activeOverlay.feature.properties.title }}</td>
+
+        <!-- Expand -->
+        <td class="action expand">
+          <Button icon="ion-android-add" @click.stop="toggleExpanded()" />
+        </td>
+
+        <!-- Close -->
+        <td class="action close">
+          <Button icon="ion-close" @click.stop="mapStore.toggleDetail()" />
+        </td>
+      </tr>
+    </table>
+
+    <Content v-if="detailExpanded"
       ><div v-if="activeOverlay">
         <!-- Image -->
         <img
@@ -36,8 +61,6 @@ const detailHeight = computed(() => {
           v-if="activeOverlay.feature.properties.image_large_url"
           :src="activeOverlay.feature.properties.image_large_url"
         />
-        <!-- Title -->
-        <div class="overlay-title">{{ activeOverlay.feature.properties.title }}</div>
 
         <!-- Description -->
         <div
@@ -61,11 +84,5 @@ const detailHeight = computed(() => {
   background: rgba(249, 249, 249, 0.7);
   transition: all 0.1s;
   box-shadow: 0 0 0 3px #eee;
-
-  .button {
-    position: absolute;
-    top: 1%;
-    right: 1%;
-  }
 }
 </style>
