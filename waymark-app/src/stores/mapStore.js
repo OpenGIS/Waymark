@@ -30,17 +30,18 @@ export const useMapStore = defineStore('map', () => {
   }
 
   function setActiveOverlay(overlay) {
-    activeOverlay.value = overlay
-
     detailOpen.value = true
 
-    // if (activeOverlay.value !== overlay) {
-    //   activeOverlay.value = overlay
+    console.log(activeOverlay.value.id)
 
-    //   map.value.setCenter(overlay.marker.getLngLat())
-    // } else {
-    //   map.value.setZoom(14)
-    // }
+    //Change
+    if (activeOverlay.value.id !== overlay.id) {
+      activeOverlay.value = overlay
+      //Focus
+    } else {
+      map.value.setCenter(overlay.marker.getLngLat())
+      map.value.setZoom(14)
+    }
   }
 
   function addMarker(marker, feature) {

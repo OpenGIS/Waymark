@@ -25,7 +25,7 @@ const detailHeight = computed(() => {
     return '60px'
   }
 
-  return '33.33%'
+  return '16.67%'
 })
 </script>
 

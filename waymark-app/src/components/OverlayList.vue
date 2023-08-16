@@ -70,10 +70,10 @@ const overlayStyle = () => {
         <td class="title">{{ byType.title }}</td>
 
         <!-- Go To -->
-        <td class="go"></td>
+        <td class="action go"></td>
 
         <!-- Visible -->
-        <td class="visible">
+        <td class="action visible">
           <Button :icon="visibleIcon(visible)" @click.stop="toggleVisible()" />
         </td>
       </tr>
@@ -96,7 +96,7 @@ const overlayStyle = () => {
 .heading {
   td {
     background-color: inherit;
-    
+
     &.image {
       .waymark-marker {
         display: flex;
