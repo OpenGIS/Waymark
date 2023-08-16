@@ -11,7 +11,7 @@ import Content from '@/components/Content.vue'
 
 const barHeight = computed(() => {
   if (!barOpen.value) {
-    return '60px'
+    return '0'
   }
 
   return '33.33%'
@@ -50,15 +50,17 @@ const barHeight = computed(() => {
   left: 0;
   width: 98%;
   padding: 1%;
+  padding-top: 60px;
   max-height: 100%;
   overflow: auto;
   background: rgba(249, 249, 249, 0.5);
   transition: height 0.1s jump-start;
-
-  .button {
-    position: absolute;
-    top: 1%;
-    right: 1%;
+  nav {
+    .button {
+      position: absolute;
+      top: 1%;
+      right: 1%;
+    }
   }
 }
 </style>

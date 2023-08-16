@@ -11,3 +11,7 @@ export function makeKey(str) {
 
   return str
 }
+
+export function visibleIcon(isVisble) {
+  return isVisble ? 'ion-eye' : 'ion-eye-disabled'
+}

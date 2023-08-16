@@ -2,7 +2,7 @@
 import 'ionicons-npm/css/ionicons.css'
 import 'font-awesome/css/font-awesome.css'
 
-import './assets/main.less'
+import './assets/css/index.less'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

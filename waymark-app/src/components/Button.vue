@@ -1,10 +1,17 @@
 <script setup>
 import { computed } from 'vue'
 
-const props = defineProps({ icon: { type: String } })
+const props = defineProps({
+  icon: {
+    type: String,
+    default: null
+  }
+})
 
 const iconClass = computed(() => {
-  if (props.icon && props.icon.indexOf('ion') === 0) {
+  console.log(props.icon)
+
+  if (typeof props.icon == 'string' && props.icon.indexOf('ion') === 0) {
     return `ion ${props.icon}`
   } else {
     return `fa ${props.icon}`
@@ -25,7 +32,8 @@ const iconClass = computed(() => {
   margin: 10px;
   padding: 12px;
   width: 15px;
-  line-height: 1;
+  font-size: 160%;
+  /*  line-height: 1;*/
   color: white;
   background: blue;
   border: 1px solid red;

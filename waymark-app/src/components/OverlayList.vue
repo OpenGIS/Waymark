@@ -1,7 +1,11 @@
 <script setup>
 import { ref } from 'vue'
-import ListItem from '@/components/ListItem.vue'
+
+import { visibleIcon } from '@/helpers/Common.js'
+
+import ListRow from '@/components/ListRow.vue'
 import Marker from '@/components/Marker.vue'
+import Button from '@/components/Button.vue'
 
 const props = defineProps({
   byType: Object
@@ -54,41 +58,57 @@ const overlayStyle = () => {
 
 <template>
   <div class="type">
-    <!-- Heading -->
-    <div class="type-heading" @click="expanded = !expanded" :style="overlayStyle()">
-      <Marker :typeData="byType.typeData" :featureType="byType.featureType" />
+    <table>
+      <!-- Heading -->
+      <tr class="heading" @click="expanded = !expanded" :style="overlayStyle()">
+        <!-- Image -->
+        <td class="image">
+          <Marker :typeData="byType.typeData" :featureType="byType.featureType" />
+        </td>
 
-      <div class="type-title">{{ byType.title }}</div>
+        <!-- Title -->
+        <td class="title">{{ byType.title }}</td>
 
-      <div class="display-toggle">
-        <input type="checkbox" checked="visible" @click.stop="toggleVisible()" />
-      </div>
-    </div>
+        <!-- Go To -->
+        <td class="go"></td>
 
-    <!-- List -->
-    <ListItem
-      v-show="expanded"
-      v-for="(overlay, typeKey, index) in byType.overlays"
-      :overlay="overlay"
-      @mouseenter="toggleHighlight(overlay)"
-      @mouseleave="toggleHighlight(overlay)"
-      :key="`${byType.featureType}-${typeKey}-${index}`"
-    />
+        <!-- Visible -->
+        <td class="visible">
+          <Button :icon="visibleIcon(visible.value)" @click.stop="toggleVisible()" />
+        </td>
+      </tr>
+
+      <!-- List -->
+      <ListRow
+        class="content"
+        v-show="expanded"
+        v-for="(overlay, typeKey, index) in byType.overlays"
+        :overlay="overlay"
+        @mouseenter="toggleHighlight(overlay)"
+        @mouseleave="toggleHighlight(overlay)"
+        :key="`${byType.featureType}-${typeKey}-${index}`"
+      />
+    </table>
   </div>
 </template>
 
 <style lang="less">
-.type-heading {
-  .waymark-marker {
-    display: flex;
-    flex-direction: row;
-    .waymark-marker-icon::before {
-      padding-top: 0 !important;
-      font-size: 24px !important;
-    }
-    .waymark-marker-background {
-      display: none !important;
+.heading {
+  .image {
+    .waymark-marker {
+      display: flex;
+      flex-direction: row;
+      .waymark-marker-icon::before {
+        padding-top: 0 !important;
+        font-size: 24px !important;
+      }
+      .waymark-marker-background {
+        display: none !important;
+      }
     }
   }
+}
+
+.content {
 }
 </style>
