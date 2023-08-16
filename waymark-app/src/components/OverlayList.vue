@@ -116,5 +116,10 @@ const overlayStyle = () => {
       text-shadow: 1px 1px 1px black;
     }
   }
+
+  .title {
+    color: #fff;
+    text-shadow: 1px 1px 1px black;
+  }
 }
 </style>
