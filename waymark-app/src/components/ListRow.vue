@@ -18,7 +18,7 @@ let visible = ref(true)
 
 const toggleVisible = () => {
   visible.value = !visible.value
-  console.log(props.overlay)
+
   const element = props.overlay.element
 
   if (!visible.value) {
@@ -26,6 +26,10 @@ const toggleVisible = () => {
   } else {
     element.classList.remove('overlay-hidden')
   }
+}
+
+const centerOn = () => {
+  mapStore.setCenter(props.overlay.feature.geometry.coordinates)
 }
 
 const setActive = () => {
@@ -49,7 +53,7 @@ const setActive = () => {
 
     <!-- Go To -->
     <td class="go">
-      <Button icon="ion-android-search" />
+      <Button icon="ion-android-search" @click.stop="centerOn()" />
     </td>
 
     <!-- Visible -->
@@ -64,23 +68,6 @@ const setActive = () => {
   height: 60px;
   &:nth-of-type(odd) {
     background-color: #eee;
-  }
-
-  .image {
-    width: 60px;
-    img {
-      max-width: 100%;
-    }
-  }
-
-  .title {
-    font-weight: bold;
-  }
-
-  .go,
-  .visible {
-    padding: 0;
-    width: 60px;
   }
 }
 </style>

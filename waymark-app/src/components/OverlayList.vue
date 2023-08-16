@@ -28,7 +28,7 @@ const toggleVisible = () => {
   const overlays = props.byType.overlays
 
   for (let i in overlays) {
-    const element = overlays[i].layer.getElement()
+    const element = overlays[i].element
 
     if (!visible.value) {
       element.classList.add('overlay-hidden')
@@ -74,7 +74,7 @@ const overlayStyle = () => {
 
         <!-- Visible -->
         <td class="visible">
-          <Button :icon="visibleIcon(visible.value)" @click.stop="toggleVisible()" />
+          <Button :icon="visibleIcon(visible)" @click.stop="toggleVisible()" />
         </td>
       </tr>
 
@@ -107,8 +107,33 @@ const overlayStyle = () => {
       }
     }
   }
+
+  .title {
+    color: #fff;
+    text-shadow: 1px 1px 1px black;
+  }
 }
 
-.content {
+td {
+  padding: 1%;
+  vertical-align: middle;
+
+  &.image {
+    width: 60px;
+
+    img {
+      max-width: 50px;
+    }
+  }
+
+  &.title {
+    font-weight: bold;
+  }
+
+  &.go,
+  &.visible {
+    padding: 0;
+    width: 60px;
+  }
 }
 </style>
