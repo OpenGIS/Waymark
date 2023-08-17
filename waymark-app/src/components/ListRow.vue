@@ -67,7 +67,7 @@ const setActive = () => {
 .item {
   height: 60px;
   &:nth-of-type(odd) {
-    background-color: #eee;
+    background: rgba(255, 255, 255, 0.7);
   }
 }
 </style>

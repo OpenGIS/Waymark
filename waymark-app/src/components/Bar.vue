@@ -53,7 +53,7 @@ const barHeight = computed(() => {
   padding-top: 60px;
   max-height: 100%;
   overflow: auto;
-  background: rgba(249, 249, 249, 0.5);
+  background: rgba(249, 249, 249, 0.9);
   transition: height 0.1s jump-start;
   nav {
     .button {

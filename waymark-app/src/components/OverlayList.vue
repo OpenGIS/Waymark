@@ -43,12 +43,11 @@ const toggleVisible = () => {
 const overlayStyle = () => {
   switch (props.byType.featureType) {
     case 'marker':
-      return `color:${props.byType.typeData.icon_colour};background-color:${props.byType.typeData.marker_colour}`
+      return `color:${props.byType.typeData.icon_colour};border-color:${props.byType.typeData.marker_colour}`
 
       break
 
     case 'line':
-      console.log(props.byType.typeData)
       return `color:#fff;background-color:${props.byType.typeData.line_colour}`
 
       break
@@ -93,9 +92,12 @@ const overlayStyle = () => {
 </template>
 
 <style lang="less">
-.heading {
+tr.heading {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+
   td {
-    background-color: inherit;
+    background: rgba(255, 255, 255, 0.7);
 
     &.image {
       .waymark-marker {
@@ -105,21 +107,16 @@ const overlayStyle = () => {
           padding-top: 0 !important;
           font-size: 24px !important;
         }
-        .waymark-marker-background {
-          display: none !important;
-        }
+        // .waymark-marker-background {
+        //   display: none !important;
+        // }
       }
     }
 
     &.title {
-      color: #fff;
-      text-shadow: 1px 1px 1px black;
+      color: #000;
+      text-shadow: 1px 1px 1px #fff;
     }
-  }
-
-  .title {
-    color: #fff;
-    text-shadow: 1px 1px 1px black;
   }
 }
 </style>
