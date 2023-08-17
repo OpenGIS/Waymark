@@ -54,14 +54,14 @@ const detailHeight = computed(() => {
       ><div v-if="activeOverlay">
         <!-- Image -->
         <img
-          class="overlay-image"
+          class="image"
           v-if="activeOverlay.feature.properties.image_large_url"
           :src="activeOverlay.feature.properties.image_large_url"
         />
 
         <!-- Description -->
         <div
-          class="overlay-description"
+          class="description"
           v-if="activeOverlay.feature.properties.description"
           v-html="activeOverlay.feature.properties.description"
         /></div
@@ -81,5 +81,9 @@ const detailHeight = computed(() => {
   background: rgba(249, 249, 249, 0.9);
   transition: all 0.1s;
   box-shadow: 0 0 0 3px #eee;
+
+  .description {
+    padding-left: 45px;
+  }
 }
 </style>

@@ -33,6 +33,9 @@ export const useMapStore = defineStore('map', () => {
     //Overlay already open
     if (activeOverlay.value && activeOverlay.value.id == overlay.id) {
       //Zoom to
+
+      console.log(overlay.marker.getLngLat())
+
       map.value.setCenter(overlay.marker.getLngLat())
       map.value.setZoom(14)
 

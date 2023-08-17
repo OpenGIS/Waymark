@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-import { visibleIcon } from '@/helpers/Common.js'
+import { visibleIcon, expandedIcon } from '@/helpers/Common.js'
 
 import ListRow from '@/components/ListRow.vue'
 import Marker from '@/components/Marker.vue'
@@ -11,7 +11,7 @@ const props = defineProps({
   byType: Object
 })
 
-let expanded = ref(true)
+let expanded = ref(false)
 let visible = ref(true)
 
 const toggleHighlight = (overlay) => {
@@ -21,9 +21,17 @@ const toggleHighlight = (overlay) => {
   element.classList.toggle('overlay-highlight')
 }
 
+const toggleExpanded = () => {
+  expanded.value = !expanded.value
+}
+
 const toggleVisible = () => {
   visible.value = !visible.value
-  expanded.value = visible
+
+  //Close Type if hiding all
+  if (!visible.value) {
+    expanded.value = false
+  }
 
   const overlays = props.byType.overlays
 
@@ -36,7 +44,7 @@ const toggleVisible = () => {
       element.classList.remove('overlay-hidden')
     }
 
-    expanded.value = !element.classList.contains('overlay-hidden')
+    // expanded.value = !element.classList.contains('overlay-hidden')
   }
 }
 
@@ -59,7 +67,7 @@ const overlayStyle = () => {
   <div class="type">
     <table>
       <!-- Heading -->
-      <tr class="heading" @click="expanded = !expanded" :style="overlayStyle()">
+      <tr class="heading" :style="overlayStyle()">
         <!-- Image -->
         <td class="image">
           <Marker :typeData="byType.typeData" :featureType="byType.featureType" />
@@ -68,8 +76,10 @@ const overlayStyle = () => {
         <!-- Title -->
         <td class="title">{{ byType.title }}</td>
 
-        <!-- Go To -->
-        <td class="action go"></td>
+        <!-- Expand -->
+        <td class="action go">
+          <Button :icon="expandedIcon(expanded)" @click.stop="toggleExpanded()" />
+        </td>
 
         <!-- Visible -->
         <td class="action visible">
