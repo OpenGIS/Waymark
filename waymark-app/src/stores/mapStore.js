@@ -29,20 +29,20 @@ export const useMapStore = defineStore('map', () => {
     detailOpenness.value = openness
   }
 
+  function toggleHoverOverlay(overlay) {
+    overlay.element.classList.toggle('overlay-highlight')
+  }
+
   function setActiveOverlay(overlay) {
     //Overlay already open
     if (activeOverlay.value && activeOverlay.value.id == overlay.id) {
-      //Zoom to
-
-      console.log(overlay.marker.getLngLat())
-
-      map.value.setCenter(overlay.marker.getLngLat())
-      map.value.setZoom(14)
+      //Focus On
+      setFocus(overlay.marker.getLngLat())
 
       //Increase info
       detailOpenness.value++
 
-      //Update
+      //Switching Overlay
     } else {
       activeOverlay.value = overlay
 
@@ -51,27 +51,6 @@ export const useMapStore = defineStore('map', () => {
         detailOpenness.value = 1
       }
     }
-
-    // if (activeOverlay.value !== overlay) {
-    //   activeOverlay.value = overlay
-
-    //   map.value.setCenter(overlay.marker.getLngLat())
-    // } else {
-    //   map.value.setZoom(14)
-    // }
-
-    // detailOpenness.value = true
-
-    // console.log(activeOverlay.value.id)
-
-    // //Change
-    // if (activeOverlay.value.id !== overlay.id) {
-    //   activeOverlay.value = overlay
-    //   //Focus
-    // } else {
-    //   map.value.setCenter(overlay.marker.getLngLat())
-    //   map.value.setZoom(14)
-    // }
   }
 
   function addMarker(marker, feature) {
@@ -93,9 +72,9 @@ export const useMapStore = defineStore('map', () => {
     return overlay
   }
 
-  function setCenter(coords) {
-    map.value.setCenter(coords)
+  function setFocus(coords) {
     map.value.setZoom(14)
+    map.value.setCenter(coords)
   }
 
   //Getters
@@ -112,11 +91,12 @@ export const useMapStore = defineStore('map', () => {
     visibleOverlays,
     activeOverlay,
     setActiveOverlay,
+    toggleHoverOverlay,
     detailOpenness,
     changeDetailOpen,
     barOpen,
     addMarker,
     toggleBar,
-    setCenter
+    setFocus
   }
 })

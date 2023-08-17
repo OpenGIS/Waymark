@@ -67,7 +67,7 @@ const overlayStyle = () => {
   <div class="type">
     <table>
       <!-- Heading -->
-      <tr class="heading" :style="overlayStyle()">
+      <tr class="heading" :style="overlayStyle()" @click.stop="toggleExpanded()">
         <!-- Image -->
         <td class="image">
           <Marker :typeData="byType.typeData" :featureType="byType.featureType" />
@@ -78,7 +78,7 @@ const overlayStyle = () => {
 
         <!-- Expand -->
         <td class="action go">
-          <Button :icon="expandedIcon(expanded)" @click.stop="toggleExpanded()" />
+          <Button :icon="expandedIcon(expanded)" />
         </td>
 
         <!-- Visible -->

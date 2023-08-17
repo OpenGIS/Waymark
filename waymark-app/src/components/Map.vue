@@ -115,6 +115,14 @@ onMounted(() => {
       el.addEventListener('click', () => {
         mapStore.setActiveOverlay(overlay)
       })
+
+      el.addEventListener('mouseenter', () => {
+        mapStore.toggleHoverOverlay(overlay)
+      })
+
+      el.addEventListener('mouseleave', () => {
+        mapStore.toggleHoverOverlay(overlay)
+      })
     })
 
     //Lines
