@@ -11,7 +11,7 @@ export const useMapStore = defineStore('map', () => {
   const map = ref({})
   const overlays = ref([])
   const visibleOverlays = ref([])
-  const activeOverlay = ref(null)
+  const activeOverlay = ref({})
 
   const barOpen = ref(false)
   const detailOpen = ref(false)
@@ -30,18 +30,38 @@ export const useMapStore = defineStore('map', () => {
   }
 
   function setActiveOverlay(overlay) {
-    detailOpen.value = true
-
-    console.log(activeOverlay.value.id)
-
-    //Change
-    if (activeOverlay.value.id !== overlay.id) {
-      activeOverlay.value = overlay
-      //Focus
-    } else {
+    //Overlay already open
+    if (activeOverlay.value && activeOverlay.value.id == overlay.id) {
+      //Zoom to
       map.value.setCenter(overlay.marker.getLngLat())
       map.value.setZoom(14)
+      //Update
+    } else {
+      activeOverlay.value = overlay
     }
+
+    detailOpen.value = true
+
+    // if (activeOverlay.value !== overlay) {
+    //   activeOverlay.value = overlay
+
+    //   map.value.setCenter(overlay.marker.getLngLat())
+    // } else {
+    //   map.value.setZoom(14)
+    // }
+
+    // detailOpen.value = true
+
+    // console.log(activeOverlay.value.id)
+
+    // //Change
+    // if (activeOverlay.value.id !== overlay.id) {
+    //   activeOverlay.value = overlay
+    //   //Focus
+    // } else {
+    //   map.value.setCenter(overlay.marker.getLngLat())
+    //   map.value.setZoom(14)
+    // }
   }
 
   function addMarker(marker, feature) {

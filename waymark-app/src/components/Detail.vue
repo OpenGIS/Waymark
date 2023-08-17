@@ -32,7 +32,7 @@ const detailHeight = computed(() => {
 <template>
   <div id="detail" v-show="detailOpen" :style="`height:${detailHeight}`">
     <table>
-      <tr class="item" v-if="activeOverlay" @click="setActive">
+      <tr class="item" v-if="activeOverlay.feature" @click="setActive">
         <!-- Image -->
         <td class="image">
           <Marker :typeData="activeOverlay.typeData" :featureType="activeOverlay.featureType" />

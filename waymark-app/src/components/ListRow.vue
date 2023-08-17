@@ -52,11 +52,7 @@ const setActive = () => {
     <td class="title">{{ feature_props.title }}</td>
 
     <!-- Go To -->
-    <td class="go">
-    <<<<<<< HEAD
-    <td class="action go">=======</td>
-
-      >>>>>>> 1cf6c3bf53e008eee0a3f2151ddc6c0812c0ca01
+    <td class="action go">
       <Button icon="ion-android-search" @click.stop="centerOn()" />
     </td>
 
