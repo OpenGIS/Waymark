@@ -15,3 +15,7 @@ export function makeKey(str) {
 export function visibleIcon(isVisble) {
   return isVisble ? 'ion-eye' : 'ion-eye-disabled'
 }
+
+export function expandedIcon(isExpanded) {
+  return isExpanded ? 'ion-arrow-up-c' : 'ion-arrow-down-c'
+}

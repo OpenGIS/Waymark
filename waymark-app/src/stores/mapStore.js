@@ -11,10 +11,10 @@ export const useMapStore = defineStore('map', () => {
   const map = ref({})
   const overlays = ref([])
   const visibleOverlays = ref([])
-  const activeOverlay = ref(null)
+  const activeOverlay = ref({})
 
   const barOpen = ref(false)
-  const detailOpen = ref(false)
+  const detailExpanded = ref(false)
 
   //Actions
   function setMap(m) {
@@ -25,22 +25,27 @@ export const useMapStore = defineStore('map', () => {
     barOpen.value = !barOpen.value
   }
 
-  function toggleDetail() {
-    detailOpen.value = !detailOpen.value
+  function toggleDetailExpanded() {
+    detailExpanded.value = !detailExpanded.value
+  }
+
+  function toggleHoverOverlay(overlay) {
+    overlay.element.classList.toggle('overlay-highlight')
   }
 
   function setActiveOverlay(overlay) {
-    detailOpen.value = true
+    //Overlay already open
+    if (activeOverlay.value && activeOverlay.value.id == overlay.id) {
+      //Focus On
+      setFocus(overlay.marker.getLngLat())
 
     console.log(activeOverlay.value.id)
+      //Increase info
+      detailExpanded.value = true
 
-    //Change
-    if (activeOverlay.value.id !== overlay.id) {
-      activeOverlay.value = overlay
-      //Focus
+      //Switching Overlay
     } else {
-      map.value.setCenter(overlay.marker.getLngLat())
-      map.value.setZoom(14)
+      activeOverlay.value = overlay
     }
   }
 
@@ -63,9 +68,9 @@ export const useMapStore = defineStore('map', () => {
     return overlay
   }
 
-  function setCenter(coords) {
-    map.value.setCenter(coords)
+  function setFocus(coords) {
     map.value.setZoom(14)
+    map.value.setCenter(coords)
   }
 
   //Getters
@@ -79,14 +84,15 @@ export const useMapStore = defineStore('map', () => {
     map,
     setMap,
     mapConfig,
-    toggleDetail,
     visibleOverlays,
     activeOverlay,
     setActiveOverlay,
-    detailOpen,
+    toggleHoverOverlay,
+    toggleDetailExpanded,
+    detailExpanded,
     barOpen,
     addMarker,
     toggleBar,
-    setCenter
+    setFocus
   }
 })

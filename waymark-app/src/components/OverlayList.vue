@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-import { visibleIcon } from '@/helpers/Common.js'
+import { visibleIcon, expandedIcon } from '@/helpers/Common.js'
 
 import ListRow from '@/components/ListRow.vue'
 import Marker from '@/components/Marker.vue'
@@ -11,7 +11,7 @@ const props = defineProps({
   byType: Object
 })
 
-let expanded = ref(true)
+let expanded = ref(false)
 let visible = ref(true)
 
 const toggleHighlight = (overlay) => {
@@ -21,9 +21,17 @@ const toggleHighlight = (overlay) => {
   element.classList.toggle('overlay-highlight')
 }
 
+const toggleExpanded = () => {
+  expanded.value = !expanded.value
+}
+
 const toggleVisible = () => {
   visible.value = !visible.value
-  expanded.value = visible
+
+  //Close Type if hiding all
+  if (!visible.value) {
+    expanded.value = false
+  }
 
   const overlays = props.byType.overlays
 
@@ -36,19 +44,18 @@ const toggleVisible = () => {
       element.classList.remove('overlay-hidden')
     }
 
-    expanded.value = !element.classList.contains('overlay-hidden')
+    // expanded.value = !element.classList.contains('overlay-hidden')
   }
 }
 
 const overlayStyle = () => {
   switch (props.byType.featureType) {
     case 'marker':
-      return `color:${props.byType.typeData.icon_colour};background-color:${props.byType.typeData.marker_colour}`
+      return `color:${props.byType.typeData.icon_colour};border-color:${props.byType.typeData.marker_colour}`
 
       break
 
     case 'line':
-      console.log(props.byType.typeData)
       return `color:#fff;background-color:${props.byType.typeData.line_colour}`
 
       break
@@ -60,7 +67,7 @@ const overlayStyle = () => {
   <div class="type">
     <table>
       <!-- Heading -->
-      <tr class="heading" @click="expanded = !expanded" :style="overlayStyle()">
+      <tr class="heading" :style="overlayStyle()" @click.stop="toggleExpanded()">
         <!-- Image -->
         <td class="image">
           <Marker :typeData="byType.typeData" :featureType="byType.featureType" />
@@ -69,8 +76,10 @@ const overlayStyle = () => {
         <!-- Title -->
         <td class="title">{{ byType.title }}</td>
 
-        <!-- Go To -->
-        <td class="action go"></td>
+        <!-- Expand -->
+        <td class="action go">
+          <Button :icon="expandedIcon(expanded)" />
+        </td>
 
         <!-- Visible -->
         <td class="action visible">
@@ -93,9 +102,12 @@ const overlayStyle = () => {
 </template>
 
 <style lang="less">
-.heading {
+tr.heading {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+
   td {
-    background-color: inherit;
+    background: rgba(255, 255, 255, 0.7);
 
     &.image {
       .waymark-marker {
@@ -105,21 +117,17 @@ const overlayStyle = () => {
           padding-top: 0 !important;
           font-size: 24px !important;
         }
-        .waymark-marker-background {
-          display: none !important;
-        }
+        // .waymark-marker-background {
+        //   display: none !important;
+        // }
       }
     }
 
     &.title {
-      color: #fff;
-      text-shadow: 1px 1px 1px black;
+      font-size: 140%;
+      color: #000;
+      text-shadow: 1px 1px 1px #fff;
     }
-  }
-
-  .title {
-    color: #fff;
-    text-shadow: 1px 1px 1px black;
   }
 }
 </style>

@@ -29,16 +29,20 @@ const toggleVisible = () => {
 }
 
 const centerOn = () => {
-  mapStore.setCenter(props.overlay.feature.geometry.coordinates)
+  mapStore.setFocus(props.overlay.feature.geometry.coordinates)
 }
 
 const setActive = () => {
   mapStore.setActiveOverlay(props.overlay)
 }
+
+const toggleHover = () => {
+  mapStore.toggleHoverOverlay(props.overlay)
+}
 </script>
 
 <template>
-  <tr class="item" @click="setActive">
+  <tr class="item" @click="setActive" @mouseenter="toggleHover" @mouseleave="toggleHover">
     <!-- Image -->
     <td class="image">
       <img
@@ -67,7 +71,7 @@ const setActive = () => {
 .item {
   height: 60px;
   &:nth-of-type(odd) {
-    background-color: #eee;
+    background: rgba(255, 255, 255, 0.7);
   }
 }
 </style>

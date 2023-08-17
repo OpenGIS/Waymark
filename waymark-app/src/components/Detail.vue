@@ -4,35 +4,34 @@ import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 
 const mapStore = useMapStore()
-const { activeOverlay, detailOpen } = storeToRefs(mapStore)
+const { activeOverlay, detailExpanded } = storeToRefs(mapStore)
+
+import { expandedIcon } from '@/helpers/Common.js'
 
 import Button from '@/components/Button.vue'
 import Content from '@/components/Content.vue'
 import Marker from '@/components/Marker.vue'
 
-const detailExpanded = ref(false)
-
-const toggleExpanded = () => {
-  detailExpanded.value = !detailExpanded.value
-}
-
 const detailHeight = computed(() => {
-  if (!detailOpen.value) {
+  //Closed
+  if (!activeOverlay.value) {
     return '0px'
   }
 
+  //Open
   if (!detailExpanded.value) {
     return '60px'
   }
 
+  //Expanded
   return '16.67%'
 })
 </script>
 
 <template>
-  <div id="detail" v-show="detailOpen" :style="`height:${detailHeight}`">
+  <div id="detail" v-if="activeOverlay.feature" :style="`height:${detailHeight}`">
     <table>
-      <tr class="item" v-if="activeOverlay" @click="setActive">
+      <tr class="item" @click="setActive">
         <!-- Image -->
         <td class="image">
           <Marker :typeData="activeOverlay.typeData" :featureType="activeOverlay.featureType" />
@@ -43,32 +42,34 @@ const detailHeight = computed(() => {
 
         <!-- Expand -->
         <td class="action expand">
-          <Button icon="ion-android-add" @click.stop="toggleExpanded()" />
+          <Button
+            :icon="expandedIcon(detailExpanded)"
+            @click.stop="mapStore.toggleDetailExpanded()"
+          />
         </td>
 
         <!-- Close -->
         <td class="action close">
-          <Button icon="ion-close" @click.stop="mapStore.toggleDetail()" />
+          <Button icon="ion-close" @click.stop="activeOverlay = {}" />
         </td>
       </tr>
     </table>
 
-    <Content v-if="detailExpanded"
-      ><div v-if="activeOverlay">
-        <!-- Image -->
-        <img
-          class="overlay-image"
-          v-if="activeOverlay.feature.properties.image_large_url"
-          :src="activeOverlay.feature.properties.image_large_url"
-        />
+    <Content v-show="detailExpanded">
+      <!-- Image -->
+      <img
+        class="image"
+        v-if="activeOverlay.feature.properties.image_large_url"
+        :src="activeOverlay.feature.properties.image_large_url"
+      />
 
-        <!-- Description -->
-        <div
-          class="overlay-description"
-          v-if="activeOverlay.feature.properties.description"
-          v-html="activeOverlay.feature.properties.description"
-        /></div
-    ></Content>
+      <!-- Description -->
+      <div
+        class="description"
+        v-if="activeOverlay.feature.properties.description"
+        v-html="activeOverlay.feature.properties.description"
+      />
+    </Content>
   </div>
 </template>
 
@@ -81,8 +82,16 @@ const detailHeight = computed(() => {
   padding: 1%;
   overflow: hidden;
   overflow-y: scroll;
-  background: rgba(249, 249, 249, 0.7);
+  background: rgba(249, 249, 249, 0.9);
   transition: all 0.1s;
   box-shadow: 0 0 0 3px #eee;
+
+  .title {
+    font-size: 140%;
+  }
+
+  .description {
+    padding-left: 45px;
+  }
 }
 </style>
