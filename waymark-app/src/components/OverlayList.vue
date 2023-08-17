@@ -124,6 +124,7 @@ tr.heading {
     }
 
     &.title {
+      font-size: 140%;
       color: #000;
       text-shadow: 1px 1px 1px #fff;
     }

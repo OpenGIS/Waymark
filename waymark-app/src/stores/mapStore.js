@@ -14,7 +14,7 @@ export const useMapStore = defineStore('map', () => {
   const activeOverlay = ref({})
 
   const barOpen = ref(false)
-  const detailOpenness = ref(0)
+  const detailExpanded = ref(false)
 
   //Actions
   function setMap(m) {
@@ -25,8 +25,8 @@ export const useMapStore = defineStore('map', () => {
     barOpen.value = !barOpen.value
   }
 
-  function changeDetailOpen(openness) {
-    detailOpenness.value = openness
+  function toggleDetailExpanded() {
+    detailExpanded.value = !detailExpanded.value
   }
 
   function toggleHoverOverlay(overlay) {
@@ -40,16 +40,11 @@ export const useMapStore = defineStore('map', () => {
       setFocus(overlay.marker.getLngLat())
 
       //Increase info
-      detailOpenness.value++
+      detailExpanded.value = true
 
       //Switching Overlay
     } else {
       activeOverlay.value = overlay
-
-      //Ensure displayed
-      if (!detailOpenness.value) {
-        detailOpenness.value = 1
-      }
     }
   }
 
@@ -92,8 +87,8 @@ export const useMapStore = defineStore('map', () => {
     activeOverlay,
     setActiveOverlay,
     toggleHoverOverlay,
-    detailOpenness,
-    changeDetailOpen,
+    toggleDetailExpanded,
+    detailExpanded,
     barOpen,
     addMarker,
     toggleBar,
