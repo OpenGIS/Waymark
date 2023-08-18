@@ -74,11 +74,13 @@ const overlayStyle = () => {
         </td>
 
         <!-- Title -->
-        <td class="title">{{ byType.title }} ({{ byType.overlays.length }})</td>
+        <td class="title">
+          {{ byType.title }} <span class="count">{{ byType.overlays.length }}</span>
+        </td>
 
         <!-- Expand -->
-        <td class="action go">
-          <Button :icon="expandedIcon(expanded)" />
+        <td class="action expand">
+          <Button :icon="expandedIcon(expanded)"></Button>
         </td>
 
         <!-- Visible -->
@@ -102,37 +104,58 @@ const overlayStyle = () => {
 </template>
 
 <style lang="less">
-  .type {
-    table {
-      margin-bottom: 0;
-      tr.heading {
-        border-bottom-width: 2px;
-        border-bottom-style: solid;
+.type {
+  table {
+    margin-bottom: 0;
+    tr.heading {
+      border-bottom-width: 2px;
+      border-bottom-style: solid;
 
-        td {
-          background: rgba(255, 255, 255, 0.7);
+      td {
+        background: rgba(255, 255, 255, 0.7);
 
-          &.image {
-            .waymark-marker {
-              display: flex;
-              flex-direction: row;
-              .waymark-marker-icon::before {
-                padding-top: 0 !important;
-                font-size: 24px !important;
-              }
-              // .waymark-marker-background {
-              //   display: none !important;
-              // }
+        &.image {
+          position: relative;
+          .waymark-marker {
+            display: flex;
+            flex-direction: row;
+            .waymark-marker-icon::before {
+              padding-top: 0 !important;
+              font-size: 24px !important;
             }
+            // .waymark-marker-background {
+            //   display: none !important;
+            // }
           }
 
-          &.title {
-            font-size: 130%;
-            color: #000;
-            text-shadow: 1px 1px 1px #fff;
+          .count {
+            position: absolute;
+            top: 15px;
+            left: 5px;
+          }
+        }
+
+        &.title {
+          font-size: 130%;
+          color: #000;
+          text-shadow: 1px 1px 1px #fff;
+
+          .count {
+            float: right;
+            opacity: 0.5;
+            font-size: 80%;
+            &::before {
+              content: 'x';
+            }
+          }
+        }
+
+        &.action {
+          &.expand {
           }
         }
       }
     }
   }
+}
 </style>

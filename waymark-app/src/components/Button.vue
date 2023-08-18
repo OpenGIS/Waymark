@@ -34,7 +34,7 @@ const iconClass = computed(() => {
   margin: 10px auto;
   padding: 12px;
   width: 15px;
-  font-size: 160%;
+  font-size: 150%;
   /*  line-height: 1;*/
   color: #444;
   background: #fff;
