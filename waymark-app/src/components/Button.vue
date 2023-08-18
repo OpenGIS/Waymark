@@ -4,7 +4,11 @@ import { computed } from 'vue'
 const props = defineProps({
   icon: {
     type: String,
-    default: null
+    default: ''
+  },
+  active: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -18,23 +22,35 @@ const iconClass = computed(() => {
 </script>
 
 <template>
-  <div class="button">
+  <div class="button" :class="active ? 'active' : ''">
     <i v-if="icon" :class="`${iconClass}`"></i>
     <slot />
   </div>
 </template>
 
-<style>
+<style lang="less">
 .button {
-  display: block-inline;
-  margin: 10px;
+  display: flex;
+  margin: 10px auto;
   padding: 12px;
   width: 15px;
   font-size: 160%;
   /*  line-height: 1;*/
-  color: #000;
+  color: #444;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
+
+  &:hover,
+  &.active {
+    border-width: 2px;
+    border-color: #666;
+    background-color: #eee;
+  }
+
+  &.active&:hover {
+    color: #444;
+    background: #fff;
+  }
 }
 </style>
