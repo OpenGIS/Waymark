@@ -182,3 +182,15 @@ export function overlaysByType(overlays) {
 
   return byType
 }
+
+export function getImageURLs(featureProps) {
+  const urls = {}
+
+  for (const key of Object.keys(featureProps)) {
+    if (key.indexOf('image_') === 0) {
+      urls[key] = featureProps[key]
+    }
+  }
+
+  return urls
+}
