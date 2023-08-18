@@ -39,7 +39,7 @@ export const useMapStore = defineStore('map', () => {
       //Focus On
       setFocus(overlay.marker.getLngLat())
 
-    console.log(activeOverlay.value.id)
+      console.log(activeOverlay.value.id)
       //Increase info
       detailExpanded.value = true
 

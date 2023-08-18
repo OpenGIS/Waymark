@@ -74,7 +74,7 @@ const overlayStyle = () => {
         </td>
 
         <!-- Title -->
-        <td class="title">{{ byType.title }}</td>
+        <td class="title">{{ byType.title }} ({{ byType.overlays.length }})</td>
 
         <!-- Expand -->
         <td class="action go">
@@ -83,7 +83,7 @@ const overlayStyle = () => {
 
         <!-- Visible -->
         <td class="action visible">
-          <Button :icon="visibleIcon(visible)" @click.stop="toggleVisible()" />
+          <Button :icon="visibleIcon(visible)" @click.stop="toggleVisible()"></Button>
         </td>
       </tr>
 

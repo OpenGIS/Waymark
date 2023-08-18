@@ -21,12 +21,18 @@ const barHeight = computed(() => {
 <template>
   <div id="bar" :style="`height:${barHeight}`">
     <!-- Nav -->
-    <nav id="bar-nav">
+    <nav id="bar-nav" :style="`bottom:${barHeight}`">
       <!-- fa-compass -->
       <!-- fa-crosshairs -->
       <!-- fa-leanpub -->
       <!-- fa-line-chart -->
+
       <!-- fa-location-arrow -->
+      <!-- Layers -->
+      <Button icon="fa-location-arrow" @click="mapStore.toggleBar()">
+        <!-- {{ visibleOverlays.length }} -->
+      </Button>
+
       <!-- fa-map-o -->
 
       <!-- Layers -->
@@ -49,17 +55,24 @@ const barHeight = computed(() => {
   bottom: 0;
   left: 0;
   width: 98%;
-  padding: 1%;
-  padding-top: 60px;
+  padding: 0 1%;
+  // padding-top: 60px;
   max-height: 100%;
   overflow: auto;
   background: rgba(249, 249, 249, 0.9);
   transition: height 0.1s jump-start;
-  nav {
+  #bar-nav {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    background: rgba(249, 249, 249, 0.9);
+
     .button {
-      position: absolute;
-      top: 1%;
-      right: 1%;
+      // position: absolute;
+      // top: 1%;
+      // right: 1%;
     }
   }
 }
