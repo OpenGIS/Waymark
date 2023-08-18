@@ -17,5 +17,5 @@ export function visibleIcon(isVisble) {
 }
 
 export function expandedIcon(isExpanded) {
-  return isExpanded ? 'ion-arrow-up-c' : 'ion-arrow-down-c'
+  return isExpanded ? 'fa-angle-double-up' : 'fa-angle-double-down'
 }

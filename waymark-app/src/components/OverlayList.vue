@@ -102,32 +102,37 @@ const overlayStyle = () => {
 </template>
 
 <style lang="less">
-tr.heading {
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
+  .type {
+    table {
+      margin-bottom: 0;
+      tr.heading {
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
 
-  td {
-    background: rgba(255, 255, 255, 0.7);
+        td {
+          background: rgba(255, 255, 255, 0.7);
 
-    &.image {
-      .waymark-marker {
-        display: flex;
-        flex-direction: row;
-        .waymark-marker-icon::before {
-          padding-top: 0 !important;
-          font-size: 24px !important;
+          &.image {
+            .waymark-marker {
+              display: flex;
+              flex-direction: row;
+              .waymark-marker-icon::before {
+                padding-top: 0 !important;
+                font-size: 24px !important;
+              }
+              // .waymark-marker-background {
+              //   display: none !important;
+              // }
+            }
+          }
+
+          &.title {
+            font-size: 130%;
+            color: #000;
+            text-shadow: 1px 1px 1px #fff;
+          }
         }
-        // .waymark-marker-background {
-        //   display: none !important;
-        // }
       }
     }
-
-    &.title {
-      font-size: 140%;
-      color: #000;
-      text-shadow: 1px 1px 1px #fff;
-    }
   }
-}
 </style>
