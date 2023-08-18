@@ -29,16 +29,12 @@ const barHeight = computed(() => {
 
       <!-- fa-location-arrow -->
       <!-- Layers -->
-      <Button icon="fa-location-arrow" @click="mapStore.toggleBar()">
-        <!-- {{ visibleOverlays.length }} -->
-      </Button>
+      <Button icon="fa-location-arrow" @click="mapStore.toggleBar()" />
 
       <!-- fa-map-o -->
 
       <!-- Layers -->
-      <Button icon="fa-navicon" @click="mapStore.toggleBar()">
-        <!-- {{ visibleOverlays.length }} -->
-      </Button>
+      <Button icon="ion-social-buffer" @click="mapStore.toggleBar()" />
     </nav>
 
     <!-- Content -->
@@ -68,7 +64,7 @@ const barHeight = computed(() => {
     height: 60px;
     display: flex;
     background: rgba(249, 249, 249, 0.9);
-
+    border-bottom: 2px solid #eee;
     .button {
       // position: absolute;
       // top: 1%;

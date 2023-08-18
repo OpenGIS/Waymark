@@ -9,6 +9,8 @@ import { useMapStore } from '@/stores/mapStore.js'
 const mapStore = useMapStore()
 const { overlays, visibleOverlays } = storeToRefs(mapStore)
 
+import Button from '@/components/Button.vue'
+
 const activeType = ref('marker')
 
 const activeOverlays = computed(() => {
@@ -23,17 +25,11 @@ const activeOverlays = computed(() => {
 <template>
   <div id="list">
     <!-- Type Nav -->
-    <div :value="activeType">
-      <div @click="activeType = 'marker'">
-        <i class="ion ion-location-outline"></i>
-      </div>
-      <div @click="activeType = 'line'">
-        <i class="ion ion-analytic-outline"></i>
-      </div>
-      <div @click="activeType = 'shape'">
-        <i class="ion ion-shapes-outline"></i>
-      </div>
-    </div>
+    <!-- <nav id="type-nav" :value="activeType">
+      <Button icon="fa-location-arrow" @click="activeType = 'marker'" />
+      <Button icon="fa-location-arrow" @click="activeType = 'line'" />
+      <Button icon="fa-location-arrow" @click="activeType = 'shape'" />
+    </nav> -->
 
     <!-- Overlays (by Type) -->
     <TypeList :overlaysByType="overlaysByType(overlays)" />
@@ -45,5 +41,9 @@ const activeOverlays = computed(() => {
   clear: both;
   overflow: hidden;
   overflow-y: scroll;
+
+  #type-nav {
+    display: flex;
+  }
 }
 </style>
