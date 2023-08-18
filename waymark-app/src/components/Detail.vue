@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMapStore } from '@/stores/mapStore.js'
 
@@ -22,14 +22,24 @@ const detailHeight = computed(() => {
   if (!detailExpanded.value) {
     return '60px'
   }
-
-  //Expanded
-  return '16.67%'
 })
+
+const detailClass = computed(() => {
+  if (Object.keys(activeOverlay.value.imageURLs).length) {
+    return 'has-image'
+  }
+})
+
+watch(activeOverlay, () => {})
 </script>
 
 <template>
-  <div id="detail" v-if="activeOverlay.feature" :style="`height:${detailHeight}`">
+  <div
+    id="detail"
+    v-if="activeOverlay.feature"
+    :style="`height:${detailHeight}`"
+    :class="detailClass"
+  >
     <table>
       <tr class="item" @click="setActive">
         <!-- Image -->
@@ -55,13 +65,14 @@ const detailHeight = computed(() => {
       </tr>
     </table>
 
-    <Content v-show="detailExpanded">
+    <Content v-show="detailExpanded" :class="getImageUrls">
       <!-- Image -->
-      <img
-        class="image"
-        v-if="activeOverlay.feature.properties.image_large_url"
-        :src="activeOverlay.feature.properties.image_large_url"
-      />
+      <div class="image">
+        <img
+          v-if="activeOverlay.feature.properties.image_medium_url"
+          :src="activeOverlay.feature.properties.image_medium_url"
+        />
+      </div>
 
       <!-- Description -->
       <div
@@ -80,18 +91,36 @@ const detailHeight = computed(() => {
   left: 0;
   width: 98%;
   padding: 1%;
-  overflow: hidden;
+  max-height: 31.33%;
   overflow-y: scroll;
   background: rgba(249, 249, 249, 0.9);
   transition: all 0.1s;
   box-shadow: 0 0 0 3px #eee;
 
+  &.has-image {
+    .content {
+      display: flex;
+      flex-direction: row;
+      > div {
+        max-width: 48%;
+      }
+      .image {
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
   .title {
     font-size: 140%;
   }
 
-  .description {
-    padding-left: 45px;
+  .content {
+    .description {
+      padding: 0 2%;
+      font-size: 120%;
+    }
   }
 }
 </style>

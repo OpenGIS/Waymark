@@ -2,7 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { mapData, waymarkConfig } from '@/data/data.js'
 
-import { getTypeData, getFeatureType } from '@/helpers/Overlay.js'
+import { getTypeData, getFeatureType, getImageURLs } from '@/helpers/Overlay.js'
 
 export const useMapStore = defineStore('map', () => {
   //State
@@ -60,7 +60,8 @@ export const useMapStore = defineStore('map', () => {
       feature: feature,
       marker: marker,
       featureType: featureType,
-      element: marker.getElement()
+      element: marker.getElement(),
+      imageURLs: getImageURLs(feature.properties)
     }
 
     overlays.value.push(overlay)

@@ -153,7 +153,7 @@ onMounted(() => {
 
     //Set initial centre and zoom to it
     map.setCenter(dataBounds.getCenter())
-    map.fitBounds(dataBounds, { padding: 20 })
+    map.fitBounds(dataBounds, { padding: 80 })
 
     map.once('moveend', () => {
       //Set Max bounds
