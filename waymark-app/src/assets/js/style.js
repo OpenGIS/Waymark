@@ -16,7 +16,7 @@ export const mapboxStyle = {
   sources: {
     openmaptiles: {
       type: 'vector',
-      tiles: [location.href + '/data/osm/{z}/{x}/{y}.pbf'],
+      tiles: [location.href + 'data/osm/{z}/{x}/{y}.pbf'],
       maxzoom: 14
     }
     // hillshading: {
@@ -31,7 +31,7 @@ export const mapboxStyle = {
     //   maxzoom: 14
     // }
   },
-  glyphs: location.href + '/fonts/{fontstack}/{range}.pbf',
+  glyphs: location.href + 'fonts/{fontstack}/{range}.pbf',
   layers: [
     {
       id: 'background',
