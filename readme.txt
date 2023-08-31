@@ -99,6 +99,7 @@ A big thank you to the following projects and their contributors. Without their 
 
 = 0.9.28.7 =
 
+Added Leaflet Basemap examples URL to Settings > Basemaps.
 Minor bug fixes and improvements.
 
 = 0.9.28.6 =
