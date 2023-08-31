@@ -747,7 +747,7 @@ function Waymark_Map_Editor() {
 				case 'marker' :
 					//Create Icon								
 					layer.setIcon(
-						L.divIcon(Waymark.build_icon_data(type))
+						Waymark_L.divIcon(Waymark.build_icon_data(type))
 					);				
 
 					break;								
