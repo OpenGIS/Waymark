@@ -467,7 +467,7 @@ function Waymark_Map() {
 							
 							//Create Icon								
 							layer.setIcon(
-								L.divIcon(Waymark.build_icon_data(type))
+								Waymark_L.divIcon(Waymark.build_icon_data(type))
 							);		
 
 							//Add any photos to photo gallery
