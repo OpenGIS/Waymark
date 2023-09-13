@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.2  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.28.4  
+**Stable tag:** 0.9.28.7  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -110,6 +110,19 @@ A big thank you to the following projects and their contributors. Without their 
 
 
 ## Changelog ##
+
+### 0.9.28.7 ###
+
+Added Leaflet Basemap examples URL to Settings > Basemaps.
+Minor bug fixes and improvements.
+
+### 0.9.28.6 ###
+
+Added `max_zoom` Shortcode option, which will prevent the Map from being zoomed in further that this zoom level (usually ~1-20 range). Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for the <a href="https://wordpress.org/support/topic/shortcode-ma_zoom-request/">suggestion</a>.
+
+### 0.9.28.5 ###
+
+Added `elevation_units` (metric/imperial) Shortcode option, which will override the Waymark > Elevation > Elevation Units option. Thanks to <a href="https://github.com/randombuffalo">randombuffalo</a> for the <a href="https://github.com/morehawes/waymark/issues/22">suggestion</a>.
 
 ### 0.9.28.4 ###
 

@@ -258,6 +258,12 @@ class Waymark_Shortcode {
 			}		
 		}		
 
+		//Max Zoom
+		if(array_key_exists('max_zoom', $shortcode_data) && is_numeric($shortcode_data['max_zoom'])) {
+			
+			$out .= 'waymark_config.map_options.max_zoom = ' . $shortcode_data['max_zoom'] . ";\n";								
+		}	
+
 		//Basemap?
 		if(array_key_exists('basemap', $shortcode_data)) {
 	 		$out .= 'waymark_config.map_init_basemap = "' . $shortcode_data['basemap'] . '";' . "\n";
@@ -287,8 +293,17 @@ class Waymark_Shortcode {
 		if($show_elevation) {
 	 		$out .= 'waymark_config.show_elevation = 1;' . "\n";
 	 		$out .= 'waymark_config.elevation_div_id = "waymark-elevation-' . $shortcode_hash . '";' . "\n";
-	 		$out .= 'waymark_config.elevation_units = "' . Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_units') . '";' . "\n";
 	 		$out .= 'waymark_config.elevation_initial = ' . Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_initial') . ';' . "\n";
+
+	 		//Units
+	 		//Shortcode
+	 		if(array_key_exists('elevation_units', $shortcode_data) && in_array($shortcode_data['elevation_units'], ['metric', 'imperial'])) {
+				$elevation_units = $shortcode_data['elevation_units'];
+			//Setting
+			} else {
+				$elevation_units = Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_units');
+			}	 		
+			$out .= 'waymark_config.elevation_units = "' . $elevation_units . '";' . "\n";
 		}
 		
 		//Initially Show / Hide Types
