@@ -113,8 +113,11 @@ A big thank you to the following projects and their contributors. Without their 
 
 ### 0.9.28.7 ###
 
-Added Leaflet Basemap examples URL to Settings > Basemaps.
-Minor bug fixes and improvements.
+* Meta data is now preserved when the Map is trashed/restored. Thanks to <a href="https://wordpress.org/support/users/killiandev7/">killiandev7</a> for <a href="https://wordpress.org/support/topic/feature-request-recover-map-data-after-recovering-a-deleted-map/">bringing this to my attention</a>.
+* Fixed a bug where special characters in Description were being messed up. Thanks to <a href="https://github.com/killianweid">killianweid</a> for creating this <a href="https://github.com/morehawes/Waymark/issues/24">issue</a>.
+* Fixed a bug with some KML files when loading from URL using Shortcode. Thanks to <a href="https://wordpress.org/support/users/henkna/">henkna</a> for <a href="https://wordpress.org/support/topic/kml-fails-to-load/">letting me know about this</a>.
+* Added Leaflet Basemap examples URL to Settings > Basemaps.
+* Minor bug fixes and improvements.
 
 ### 0.9.28.6 ###
 

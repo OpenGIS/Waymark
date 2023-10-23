@@ -449,7 +449,8 @@ class Waymark_Shortcode {
 			//Accept multiple
 			foreach(explode(',', $shortcode_data['file_url']) as $file_url) {
 				$file_response = wp_remote_get($file_url);	
-				
+
+
 				//Success
 				if(wp_remote_retrieve_response_code($file_response) == '200') {
 					//Get file info
@@ -464,28 +465,38 @@ class Waymark_Shortcode {
 					}
 
 					//Is allowable file
-					if(Waymark_Helper::allowable_file($file_ext, $file_mime)) {
-
+					if(Waymark_Helper::allowable_file($file_ext)) {
 						$file_body = wp_remote_retrieve_body($file_response);
 						$file_string = preg_replace('/\s+/', ' ', $file_body);
 
+						//Escape single quotes
+						$file_string = str_replace("'", "\'", $file_string);
+
 						$out .= 'var file_geo_json = {}' . "\n";
-						$out .= 'var file_data = \'' . $file_string . '\';' . "\n";
 
 						switch($file_ext) {
 							case 'gpx' :
+								$out .= 'var file_data = \'' . $file_string . '\';' . "\n";
+
 								$out .= 'var file_data = (new DOMParser()).parseFromString(file_data, "text/xml");' . "\n";
 								$out .= 'file_geo_json = toGeoJSON.gpx(file_data);' . "\n";
 							
 								break;
 								
 							case 'kml' :
+								$file_string = simplexml_load_string($file_string, null, LIBXML_NOCDATA);
+								$file_string = $file_string->Document->asXML();
+		
+								$out .= 'var file_data = \'' . $file_string . '\';' . "\n";
+
 								$out .= 'var file_data = (new DOMParser()).parseFromString(file_data, "text/xml");' . "\n";
 								$out .= 'var file_geo_json = toGeoJSON.kml(file_data);' . "\n";
 
 								break;	
 								
 							default :
+								$out .= 'var file_data = \'' . $file_string . '\';' . "\n";
+
 								$out .= 'var file_geo_json = JSON.parse(file_data);' . "\n";
 
 								break;																
