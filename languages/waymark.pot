@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Waymark 0.9.28.7\n"
+"Project-Id-Version: Waymark 0.9.29\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/waymark\n"
-"POT-Creation-Date: 2023-08-31 18:48:04+00:00\n"
+"POT-Creation-Date: 2023-11-01 13:54:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -798,10 +798,9 @@ msgstr ""
 
 #: inc/Admin/Waymark_Settings.php:876
 msgid ""
-"Specify the desired height of the Map (in pixels). The Map will "
-"automatically adjust it’s width to fill the space available to it. Pro Tip! "
-"This will affect all Maps, but you can change the height of an individual "
-"Map through the shortcode: %s"
+"Specify the desired height of the Map (in pixels). Pro Tip! This will "
+"affect all Maps, but you can change the height of an individual Map through "
+"the Shortcode: %s"
 msgstr ""
 
 #: inc/Admin/Waymark_Settings.php:888
@@ -1161,11 +1160,11 @@ msgstr ""
 msgid "Action Complete"
 msgstr ""
 
-#: inc/Front/Waymark_Shortcode.php:174
+#: inc/Front/Waymark_Shortcode.php:186
 msgid "Details"
 msgstr ""
 
-#: inc/Front/Waymark_Shortcode.php:187
+#: inc/Front/Waymark_Shortcode.php:199
 msgid "More Details"
 msgstr ""
 

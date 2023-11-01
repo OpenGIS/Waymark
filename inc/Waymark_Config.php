@@ -11,7 +11,7 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',		
 			'custom_types' => array(),
-			'plugin_version' => '0.9.28.7',
+			'plugin_version' => '0.9.29',
 			'nonce_string' => 'Waymark_Nonce',
 			'site_url' => 'https://www.waymark.dev/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
@@ -148,6 +148,7 @@ class Waymark_Config {
 					'line_title' => esc_html__('Red', 'waymark') . $multi_value_seperator . esc_html__('Green', 'waymark') . $multi_value_seperator . esc_html__('Blue', 'waymark'),
 					'line_colour' => '#d84848' . $multi_value_seperator . '#3cbc47' . $multi_value_seperator . '#487bd9',
 					'line_weight' => '3' . $multi_value_seperator . '3' . $multi_value_seperator . '3',
+					'line_opacity' => '0.7' . $multi_value_seperator . '0.7' . $multi_value_seperator . '0.7',
 					'line_display' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',
 					'line_submission' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1'
 				)

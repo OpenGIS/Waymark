@@ -124,10 +124,22 @@ class Waymark_Shortcode {
 			$map_height = Waymark_Config::get_setting('misc', 'map_options', 'map_height');
 		}
 
+		//Width
+		if(array_key_exists('map_width', $shortcode_data)) {
+			$map_width = $shortcode_data['map_width'];
+		} else {
+			$map_width = false;
+		}
+
 		//Output HTML container
 		$out = '<!-- START Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";
-		$out .= '<div id="waymark-shortcode-' . $shortcode_hash . '" data-shortcode_hash="' . $shortcode_hash . '" class="waymark-shortcode waymark-container">' . "\n";
-
+		
+		$shortcode_style = '';
+		if($map_width) {
+			$shortcode_style .= 'width:' . $map_width . 'px';
+		}
+		
+		$out .= '<div style="' . $shortcode_style . '" id="waymark-shortcode-' . $shortcode_hash . '" data-shortcode_hash="' . $shortcode_hash . '" class="waymark-shortcode waymark-container">' . "\n";
 
 		//Header ?
 		$do_header = 0;
@@ -190,10 +202,13 @@ class Waymark_Shortcode {
 			
 			$out .= '	</header>' . "\n";		
 		}
-
-		//Map HTML Container (Initially hidden)
+		
+		//Map HTML Container (Initially hidden, made visible by JS)
 		$out .= '	<!-- Map -->' . "\n";
-		$out .= '	<div style="display:none;height:' . $map_height . 'px" id="waymark-map-' . $shortcode_hash . '" class="' . $map_class . '" data-shortcode_hash="' . $shortcode_hash . '"></div>' . "\n";
+
+		$map_style = 'display:none;';	
+ 		$map_style .= 'height:' . $map_height . 'px';
+		$out .= '	<div style="' . $map_style . '" id="waymark-map-' . $shortcode_hash . '" class="' . $map_class . '" data-shortcode_hash="' . $shortcode_hash . '"></div>' . "\n";
 
 		//Elevation?
 		if(array_key_exists('show_elevation', $shortcode_data)) {
@@ -236,6 +251,9 @@ class Waymark_Shortcode {
  		$out .= 'var waymark_config = jQuery.extend(true, {}, waymark_user_config);' . "\n";					
  		$out .= 'waymark_config.map_div_id = "waymark-map-' . $shortcode_hash . '";' . "\n";					
  		$out .= 'waymark_config.map_height = ' . $map_height . ";\n";
+ 		if($map_width) {
+			$out .= 'waymark_config.map_width = ' . $map_width . ";\n"; 		
+ 		}
 
 		// ===== Shortcode options (2/2) =====
 		
