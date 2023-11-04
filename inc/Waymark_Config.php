@@ -11,7 +11,7 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',		
 			'custom_types' => array(),
-			'plugin_version' => '0.9.29',
+			'plugin_version' => '0.9.29.1',
 			'nonce_string' => 'Waymark_Nonce',
 			'site_url' => 'https://www.waymark.dev/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
@@ -169,8 +169,6 @@ class Waymark_Config {
 	
 		//Read config options from DB
 		$settings_data = get_option('Waymark_Settings');
-
-		//Waymark_Helper::debug($settings_data);
 		
 		//Add settings to config data
 		if(is_array($settings_data)) {
@@ -189,12 +187,18 @@ class Waymark_Config {
 
 			//For each Overlay
 			foreach(['marker', 'line', 'shape'] as $overlay_name) {
+
 				//Existing Types set
 				if(is_array(self::$data[$overlay_name . 's'][$overlay_name . '_types'][$overlay_name . '_title'])) {
 					$line_count = sizeof(self::$data[$overlay_name . 's'][$overlay_name . '_types'][$overlay_name . '_title']);
 				
 					foreach(self::$data[$overlay_name . 's'][$overlay_name . '_types'] as &$value) {
 						if(! is_array($value) || sizeof($value) != $line_count) {
+							//Is string and contains multi-value seperator?
+							if(is_string($value) && strpos($value, $multi_value_seperator) !== false) {
+								$value = explode($multi_value_seperator, $value);
+							}
+
 							$default = $value[0];
 					
 							$value = array();
@@ -264,9 +268,16 @@ class Waymark_Config {
 		return self::$data;
 	}	
 
-	public static function get_default($tab, $group, $key) {	
+	public static function get_default($tab, $group, $key, $single = true) {	
 		if(array_key_exists($tab, self::$default) && array_key_exists($group, self::$default[$tab]) && array_key_exists($key, self::$default[$tab][$group])) {
-			return self::$default[$tab][$group][$key];
+
+			$value = self::$default[$tab][$group][$key];
+			
+			if($single && is_array($value)) {
+				$value = $value[0];
+			}
+
+			return $value;
 		} else {
 			return false;
 		}	

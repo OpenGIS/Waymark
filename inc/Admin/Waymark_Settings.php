@@ -322,7 +322,7 @@ class Waymark_Settings {
 							'type' => 'text',
 							'class' => 'waymark-short-input',				
 							'title' => '<span class="waymark-invisible">' . esc_html__('Line', 'waymark') . '</span> ' . esc_html__('Opacity', 'waymark'),
-							'default' => Waymark_Config::get_setting('lines', 'line_types', 'line_opacity'),
+							'default' => Waymark_Config::get_default('lines', 'line_types', 'line_opacity'),
 							'tip' => esc_attr__('The opacity of the Line, between 0.0 and 1.0 (e.g. "0.5").', 'waymark'),
 							'input_processing' => array(
 								'(is_numeric($param_value) && $param_value > 0 && $param_value <= 1) ? $param_value : 0.7;' //Fallback
