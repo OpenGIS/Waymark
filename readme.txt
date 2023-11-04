@@ -4,7 +4,7 @@ Tags: Map maker, Maps, Location, GPX, KML, GeoJSON, OpenStreetMap, Markers, Map 
 Requires at least: 4.6
 Tested up to: 6.2
 Requires PHP: 5.2
-Stable tag: 0.9.29
+Stable tag: 0.9.29.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,14 @@ A big thank you to the following projects and their contributors. Without their 
 9. Waymark was designed to be very flexible, with lots of Settings to choose from.
 
 == Changelog ==
+
+= 0.9.29.2 =
+
+* Fixed a bug where the Shortcode Zoom and Centre parameters were being ignored. Thanks to <a href="https://github.com/killianweid">killianweid</a> for creating <a href="https://github.com/morehawes/Waymark/issues/25">this issue</a>.
+
+= 0.9.29.1 =
+
+* Fixed a bug where the default line_opacity was being set to 0. Thanks to <a href="https://wordpress.org/support/users/digbymaass /">digbymaass</a> for <a href="https://wordpress.org/support/topic/update-sets-track-opacity-setting-to-0/">letting me know</a>.
 
 = 0.9.29 =
 
