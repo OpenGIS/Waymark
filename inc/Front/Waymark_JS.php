@@ -28,7 +28,8 @@ class Waymark_JS {
  		self::add_chunk("\n" . 'var waymark_user_config = ' . json_encode(Waymark_Config::get_map_config()));						
 
 		//AJAX
-		self::add_chunk('
+		if('fetch' === Waymark_Config::get_setting('misc', 'collection_options', 'load_method')) {
+			self::add_chunk('
 function waymark_load_map_data(map_instance, map_id, link_to_map = false) {
 	//Build request
 	var data = {
@@ -42,7 +43,8 @@ function waymark_load_map_data(map_instance, map_id, link_to_map = false) {
 	jQuery.post(waymark_http_endpoint, data, function(map_data) {	
 		map_instance.load_json(map_data);
 	});
-}');			
+}');
+		}
 	}
 
 	static function add_chunk($chunk) {	

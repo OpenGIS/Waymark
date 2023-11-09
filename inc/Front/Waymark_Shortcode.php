@@ -361,20 +361,19 @@ class Waymark_Shortcode {
 		// ================ MAPS ===============
 		// =====================================	
 		
- 		$map_count = 0;
+ 		$i = 0;
 		foreach($maps_output as $map_id => $map_output) {
-			//Load first map_data on-page
-			if($map_count == 0) {
+			//Embed (and first background... legacy)
+			if($i == 0 || 'embed' === Waymark_Config::get_setting('misc', 'collection_options', 'load_method')) {
 				//If map data exists
 				if(isset($map_output['map_data'])) {
 					$out .= 'waymark_viewer_' . $shortcode_hash . '.load_json(' . $map_output['map_data'] . ');' . "\n";														
 				}			
-			//Load everything else via HTPP
+			//Load via HTTP
 			} else {
 				$out .= 'waymark_load_map_data(waymark_viewer_' . $shortcode_hash . ', ' . $map_id . ', true);' . "\n";																
 			}
-
-			$map_count++;
+			$i++;
 		}
 
 		// =====================================

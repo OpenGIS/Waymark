@@ -92,7 +92,8 @@ class Waymark_Config {
 				),
 				'collection_options' => array(
 					'link_to_maps' => '1',
-					'link_from_maps' => '1'					
+					'link_from_maps' => '1',
+					'load_method' => 'fetch'										
 				),
 				'interaction_options' => array(
 					'delay_seconds' => '2',
