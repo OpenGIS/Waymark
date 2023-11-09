@@ -11,7 +11,7 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',		
 			'custom_types' => array(),
-			'plugin_version' => '0.9.29.2',
+			'plugin_version' => '0.9.29.3',
 			'nonce_string' => 'Waymark_Nonce',
 			'site_url' => 'https://www.waymark.dev/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
@@ -92,7 +92,8 @@ class Waymark_Config {
 				),
 				'collection_options' => array(
 					'link_to_maps' => '1',
-					'link_from_maps' => '1'					
+					'link_from_maps' => '1',
+					'load_method' => 'fetch'										
 				),
 				'interaction_options' => array(
 					'delay_seconds' => '2',

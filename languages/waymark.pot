@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Waymark 0.9.29\n"
+"Project-Id-Version: Waymark 0.9.29.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/waymark\n"
-"POT-Creation-Date: 2023-11-04 15:01:43+00:00\n"
+"POT-Creation-Date: 2023-11-09 21:23:41+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -358,7 +358,7 @@ msgstr ""
 msgid "Large"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:190
+#: inc/Admin/Waymark_Settings.php:190 inc/Admin/Waymark_Settings.php:1035
 msgid "Background"
 msgstr ""
 
@@ -827,12 +827,12 @@ msgid ""
 msgstr ""
 
 #: inc/Admin/Waymark_Settings.php:905 inc/Admin/Waymark_Settings.php:932
-#: inc/Admin/Waymark_Settings.php:944 inc/Admin/Waymark_Settings.php:1051
+#: inc/Admin/Waymark_Settings.php:944 inc/Admin/Waymark_Settings.php:1064
 msgid "Show"
 msgstr ""
 
 #: inc/Admin/Waymark_Settings.php:906 inc/Admin/Waymark_Settings.php:933
-#: inc/Admin/Waymark_Settings.php:945 inc/Admin/Waymark_Settings.php:1052
+#: inc/Admin/Waymark_Settings.php:945 inc/Admin/Waymark_Settings.php:1065
 msgid "Hide"
 msgstr ""
 
@@ -966,106 +966,124 @@ msgid ""
 msgstr ""
 
 #: inc/Admin/Waymark_Settings.php:1036
-msgid "Shortcode Options"
+msgid "Embed"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1037
-msgid "How Maps are embedded into your content using the shortcode."
+#: inc/Admin/Waymark_Settings.php:1039
+msgid "Shortcode Method"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1040
-msgid "Shortcode Docs &raquo;"
-msgstr ""
-
-#: inc/Admin/Waymark_Settings.php:1047
-msgid "Shortcode Header"
+#: inc/Admin/Waymark_Settings.php:1041
+msgid ""
+"Whether to load multiple Maps in the Background (uses AJAX to improve page "
+"load) when embedding with the Shortcode, or to Embed them within the page. "
+"Embedding may be a bad idea for LARGE COLLECTIONS, but can resolve some "
+"issues where Collections are not displaying correctly. Embedding may be a "
+"bad idea for LARGE COLLECTIONS, but can resolve some issues where "
+"Collections are not displaying correctly."
 msgstr ""
 
 #: inc/Admin/Waymark_Settings.php:1049
+msgid "Shortcode Options"
+msgstr ""
+
+#: inc/Admin/Waymark_Settings.php:1050
+msgid "How Maps are embedded into your content using the shortcode."
+msgstr ""
+
+#: inc/Admin/Waymark_Settings.php:1053
+msgid "Shortcode Docs &raquo;"
+msgstr ""
+
+#: inc/Admin/Waymark_Settings.php:1060
+msgid "Shortcode Header"
+msgstr ""
+
+#: inc/Admin/Waymark_Settings.php:1062
 msgid ""
 "The shortcode header displays the title and link to the Map or Collection. "
 "Pro Tip! This will affect all shortcodes, but you can override the setting "
 "through the shortcode: %s (the value must be either 0 or 1)."
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1059
+#: inc/Admin/Waymark_Settings.php:1072
 msgid "Header for Admin"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1061
+#: inc/Admin/Waymark_Settings.php:1074
 msgid ""
 "Use this Setting to always show the Shortcode Header when signed in as "
 "admin, useful for quickly navigating to embeded Maps."
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1063
+#: inc/Admin/Waymark_Settings.php:1076
 msgid "Use Setting"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1064
+#: inc/Admin/Waymark_Settings.php:1077
 msgid "Always Show"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1073
+#: inc/Admin/Waymark_Settings.php:1086
 msgid "Elevation Options"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1074
+#: inc/Admin/Waymark_Settings.php:1087
 msgid "Lines with elevation data."
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1080
+#: inc/Admin/Waymark_Settings.php:1093
 msgid "Elevation Profile"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1082
+#: inc/Admin/Waymark_Settings.php:1095
 msgid ""
 "Display an interactive elevation profile graph below the Map for Lines that "
 "have elevation data. Pro Tip! You can choose to show/hide the elevation "
 "graph of an individual Map through the shortcode: %s"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1084
+#: inc/Admin/Waymark_Settings.php:1097
 msgid "Show on Map Details"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1085
+#: inc/Admin/Waymark_Settings.php:1098
 msgid "Show everywhere"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1086
+#: inc/Admin/Waymark_Settings.php:1099
 msgid "Hide everywhere"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1093
+#: inc/Admin/Waymark_Settings.php:1106
 msgid "Elevation Units"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1095
+#: inc/Admin/Waymark_Settings.php:1108
 msgid "Display elevation data in metric (m/km) or imperial (ft/mi) units."
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1097
+#: inc/Admin/Waymark_Settings.php:1110
 msgid "Metric (m/km)"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1098
+#: inc/Admin/Waymark_Settings.php:1111
 msgid "Imperial (ft/mi)"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1106
+#: inc/Admin/Waymark_Settings.php:1119
 msgid "Elevation Colour"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1108
+#: inc/Admin/Waymark_Settings.php:1121
 msgid "The colour of the elevation graph and associated Line."
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1117
+#: inc/Admin/Waymark_Settings.php:1130
 msgid "Show Initially?"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1119
+#: inc/Admin/Waymark_Settings.php:1132
 msgid ""
 "Whether to show the elevation profile when the Map loads. If set to No, the "
 "user must click on a Line in order to display the elevation data. If there "
@@ -1073,79 +1091,79 @@ msgid ""
 "will be the one shown initially."
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1127
+#: inc/Admin/Waymark_Settings.php:1140
 msgid "Editor Options"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1128
+#: inc/Admin/Waymark_Settings.php:1141
 msgid "Customising the Map Editor."
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1134
+#: inc/Admin/Waymark_Settings.php:1147
 msgid "Confirm Delete?"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1136
+#: inc/Admin/Waymark_Settings.php:1149
 msgid ""
 "Whether to show a confirmation dialog before deleting Markers/Lines/Shapes "
 "from the Map. Pro Tip! Even if you accidentally delete something, changes "
 "are not saved until the \"Update\" button is clicked."
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1142
+#: inc/Admin/Waymark_Settings.php:1155
 msgid "Default Basemap"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1144
+#: inc/Admin/Waymark_Settings.php:1157
 msgid "Which Basemap to use as the editor default."
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1151
+#: inc/Admin/Waymark_Settings.php:1164
 msgid "Store Read Files"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1153
+#: inc/Admin/Waymark_Settings.php:1166
 msgid ""
 "By default Waymark does not store any files read using the Editor. Using "
 "this option you can use the Media Library to store the uploaded "
 "GPX/KML/GeoJSON file."
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1160
+#: inc/Admin/Waymark_Settings.php:1173
 msgid "Permalinks"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1169
+#: inc/Admin/Waymark_Settings.php:1182
 msgid "Map Slug"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1171
+#: inc/Admin/Waymark_Settings.php:1184
 msgid ""
 "The URL slug that will be used for links to your Maps, i.e. "
 "example.com/[map-slug]/example-map/. Only alpha-numeric characters and "
 "hyphens (-) are allowed."
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1183
+#: inc/Admin/Waymark_Settings.php:1196
 msgid "Collection Slug"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1185
+#: inc/Admin/Waymark_Settings.php:1198
 msgid ""
 "The URL slug that will be used for links to your Collections, i.e. "
 "example.com/[collection-slug]/example-collection/. Only alpha-numeric "
 "characters and hyphens (-) are allowed."
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1197
+#: inc/Admin/Waymark_Settings.php:1210
 msgid "Debug"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1204
+#: inc/Admin/Waymark_Settings.php:1217
 msgid "Debug Mode"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1206
+#: inc/Admin/Waymark_Settings.php:1219
 msgid ""
 "With debug mode enabled, the plugin will output Map and Settings data in "
 "Admin Dashboard. This may come in handy if you need to report a bug. Pro "
@@ -1153,23 +1171,23 @@ msgid ""
 "administrator."
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1209
+#: inc/Admin/Waymark_Settings.php:1222
 msgid "Disable"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1210
+#: inc/Admin/Waymark_Settings.php:1223
 msgid "Enable"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1225
+#: inc/Admin/Waymark_Settings.php:1238
 msgid "Settings Data"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1484
+#: inc/Admin/Waymark_Settings.php:1497
 msgid "Settings Updated"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1487
+#: inc/Admin/Waymark_Settings.php:1500
 msgid "Action Complete"
 msgstr ""
 
@@ -1500,59 +1518,59 @@ msgstr ""
 msgid "The Description you enter here will be displayed on the Map Details page."
 msgstr ""
 
-#: inc/Waymark_Config.php:100
+#: inc/Waymark_Config.php:101
 msgid "Click or Hover to Wake"
 msgstr ""
 
-#: inc/Waymark_Config.php:135
+#: inc/Waymark_Config.php:136
 msgid "Photo"
 msgstr ""
 
-#: inc/Waymark_Config.php:135
+#: inc/Waymark_Config.php:136
 msgid "Information"
 msgstr ""
 
-#: inc/Waymark_Config.php:135
+#: inc/Waymark_Config.php:136
 msgid "Alert"
 msgstr ""
 
-#: inc/Waymark_Config.php:135
+#: inc/Waymark_Config.php:136
 msgid "Trail Access"
 msgstr ""
 
-#: inc/Waymark_Config.php:135
+#: inc/Waymark_Config.php:136
 msgid "Food"
 msgstr ""
 
-#: inc/Waymark_Config.php:135
+#: inc/Waymark_Config.php:136
 msgid "Water"
 msgstr ""
 
-#: inc/Waymark_Config.php:135
+#: inc/Waymark_Config.php:136
 msgid "Shelter"
 msgstr ""
 
-#: inc/Waymark_Config.php:135
+#: inc/Waymark_Config.php:136
 msgid "Beer"
 msgstr ""
 
-#: inc/Waymark_Config.php:135
+#: inc/Waymark_Config.php:136
 msgid "Start"
 msgstr ""
 
-#: inc/Waymark_Config.php:135
+#: inc/Waymark_Config.php:136
 msgid "Finish"
 msgstr ""
 
-#: inc/Waymark_Config.php:148 inc/Waymark_Config.php:158
+#: inc/Waymark_Config.php:149 inc/Waymark_Config.php:159
 msgid "Red"
 msgstr ""
 
-#: inc/Waymark_Config.php:148 inc/Waymark_Config.php:158
+#: inc/Waymark_Config.php:149 inc/Waymark_Config.php:159
 msgid "Green"
 msgstr ""
 
-#: inc/Waymark_Config.php:148 inc/Waymark_Config.php:158
+#: inc/Waymark_Config.php:149 inc/Waymark_Config.php:159
 msgid "Blue"
 msgstr ""
 

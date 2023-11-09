@@ -1026,7 +1026,20 @@ class Waymark_Settings {
 							'title' => esc_html__('Link from Maps', 'waymark'),
 							'default' => Waymark_Config::get_setting('misc', 'collection_options', 'link_from_maps'),
 							'tip' => esc_attr__('Whether to display a link to the Collection(s) that a Map belongs to on the Map Details page.', 'waymark')
-						)											
+						),
+						'load_method' => array(
+							'name' => 'load_method',
+							'id' => 'load_method',
+							'type' => 'select',
+							'options' => [
+								'fetch' => esc_html__('Background', 'waymark'),
+								'embed' => esc_html__('Embed', 'waymark')
+							],
+							'class' => 'waymark-short-input',											
+							'title' => esc_html__('Shortcode Method', 'waymark'),
+							'default' => Waymark_Config::get_setting('misc', 'collection_options', 'load_method'),
+							'tip' => esc_attr__('Whether to load multiple Maps in the Background (uses AJAX to improve page load) when embedding with the Shortcode, or to Embed them within the page. Embedding may be a bad idea for LARGE COLLECTIONS, but can resolve some issues where Collections are not displaying correctly.', 'waymark')
+						)		
 					)											
 				),
 
