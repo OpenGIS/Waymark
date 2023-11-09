@@ -1036,9 +1036,9 @@ class Waymark_Settings {
 								'embed' => esc_html__('Embed', 'waymark')
 							],
 							'class' => 'waymark-short-input',											
-							'title' => esc_html__('Load Method', 'waymark'),
+							'title' => esc_html__('Shortcode Method', 'waymark'),
 							'default' => Waymark_Config::get_setting('misc', 'collection_options', 'load_method'),
-							'tip' => esc_attr__('Whether to load multiple Maps in the Background (uses AJAX to improve page load), or to Embed them within the page. Embedding may be a bad idea for LARGE COLLECTIONS, but can resolve some issues where Collections are not displaying correctly.', 'waymark')
+							'tip' => esc_attr__('Whether to load multiple Maps in the Background (uses AJAX to improve page load) when embedding with the Shortcode, or to Embed them within the page. Embedding may be a bad idea for LARGE COLLECTIONS, but can resolve some issues where Collections are not displaying correctly.', 'waymark')
 						)		
 					)											
 				),

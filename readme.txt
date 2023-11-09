@@ -4,7 +4,7 @@ Tags: Map maker, Maps, Location, GPX, KML, GeoJSON, OpenStreetMap, Markers, Map 
 Requires at least: 4.6
 Tested up to: 6.2
 Requires PHP: 5.2
-Stable tag: 0.9.29.2
+Stable tag: 0.9.29.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,10 @@ A big thank you to the following projects and their contributors. Without their 
 9. Waymark was designed to be very flexible, with lots of Settings to choose from.
 
 == Changelog ==
+
+= 0.9.29.3 =
+
+* Added a Collections > "Shortcode Method" Setting. This allows you to choose whether Map data is loaded in the Background (via AJAX), or Embedded in the page when embedding a Collection via the Shortcode. Embedding may be a bad idea for LARGE COLLECTIONS, but *may* resolve some (JavaScript) issues where Collections are not displaying correctly.
 
 = 0.9.29.2 =
 
