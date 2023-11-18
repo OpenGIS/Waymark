@@ -94,6 +94,7 @@ A big thank you to the following projects and their contributors. Without their 
 7. Add Maps to your content using the Waymark Shortcode. You can choose which Meta is displayed.
 8. Organise Maps with Collections and display multiple Maps at once using the Shortcode. Collections can be nested and Maps can be associated with multiple Collections.
 9. Waymark was designed to be very flexible, with lots of Settings to choose from.
+10. Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website.
 
 == Changelog ==
 

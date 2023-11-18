@@ -108,6 +108,9 @@ A big thank you to the following projects and their contributors. Without their 
 ### 9. Waymark was designed to be very flexible, with lots of Settings to choose from. ###
 ![Waymark was designed to be very flexible, with lots of Settings to choose from.](https://ps.w.org/waymark/assets/screenshot-9.jpg)
 
+### 10. Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website. ###
+![Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website.](https://ps.w.org/waymark/assets/screenshot-10.jpg)
+
 
 ## Changelog ##
 
