@@ -2,7 +2,7 @@
 **Contributors:** [morehawes](https://profiles.wordpress.org/morehawes/)  
 **Tags:** Map maker, Maps, Location, GPX, KML, GeoJSON, OpenStreetMap, Markers, Map markers  
 **Requires at least:** 4.6  
-**Tested up to:** 6.2  
+**Tested up to:** 6.4  
 **Requires PHP:** 5.2  
 **Stable tag:** 0.9.29.3  
 **License:** GPLv2 or later  
