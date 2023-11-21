@@ -13,6 +13,11 @@ class Waymark_Content {
 		if(post_password_required()) {
 			return $content;
 		}
+
+   //Ensure we have a post object and post type
+    if (is_null($post) || !isset($post->post_type)) {
+      return $content;
+    }
 		
 		//Only modify Map page		
 		if($post->post_type != 'waymark_map') {
