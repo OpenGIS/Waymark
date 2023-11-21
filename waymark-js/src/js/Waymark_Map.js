@@ -499,7 +499,7 @@ function Waymark_Map() {
 						layer.setStyle({
 							color: type.line_colour,
 							weight: type.line_weight,
-							opacity: '0.7'							
+							opacity: type.line_opacity							
 						});	
 
 						//Set info window
@@ -716,6 +716,10 @@ function Waymark_Map() {
 					{
 						'key': 'line_weight',
 						'default': '3'
+					},
+					{
+						'key': 'line_opacity',
+						'default': '0.7'
 					}										
 				];
 				

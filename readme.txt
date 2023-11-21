@@ -2,9 +2,9 @@
 Contributors: morehawes
 Tags: Map maker, Maps, Location, GPX, KML, GeoJSON, OpenStreetMap, Markers, Map markers
 Requires at least: 4.6
-Tested up to: 6.2
+Tested up to: 6.4
 Requires PHP: 5.2
-Stable tag: 0.9.28.7
+Stable tag: 0.9.29.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,13 +94,38 @@ A big thank you to the following projects and their contributors. Without their 
 7. Add Maps to your content using the Waymark Shortcode. You can choose which Meta is displayed.
 8. Organise Maps with Collections and display multiple Maps at once using the Shortcode. Collections can be nested and Maps can be associated with multiple Collections.
 9. Waymark was designed to be very flexible, with lots of Settings to choose from.
+10. Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website.
 
 == Changelog ==
 
+= 0.9.29.4 =
+
+* Minor bug fix.
+
+= 0.9.29.3 =
+
+* Added a Collections > "Shortcode Method" Setting. This allows you to choose whether Map data is loaded in the Background (via AJAX), or Embedded in the page when embedding a Collection via the Shortcode. Embedding may be a bad idea for LARGE COLLECTIONS, but *may* resolve some (JavaScript) issues where Collections are not displaying correctly.
+
+= 0.9.29.2 =
+
+* Fixed a bug where the Shortcode Zoom and Centre parameters were being ignored. Thanks to <a href="https://github.com/killianweid">killianweid</a> for creating <a href="https://github.com/morehawes/Waymark/issues/25">this issue</a>.
+
+= 0.9.29.1 =
+
+* Fixed a bug where the default line_opacity was being set to 0. Thanks to <a href="https://wordpress.org/support/users/digbymaass /">digbymaass</a> for <a href="https://wordpress.org/support/topic/update-sets-track-opacity-setting-to-0/">letting me know</a>.
+
+= 0.9.29 =
+
+* Added `map_width` Shortcode option, which has been requested a couple of times. Thanks for bugging me! :0)
+* Added Opacity Setting for Line Types (Lines > Opacity), thanks to <a href="https://wordpress.org/support/users/digbymaass/">digbymaass</a> for the <a href="https://wordpress.org/support/topic/feature-request-opacity-setting-for-lines/">suggestion</a>.
+
 = 0.9.28.7 =
 
-Added Leaflet Basemap examples URL to Settings > Basemaps.
-Minor bug fixes and improvements.
+* Meta data is now preserved when the Map is trashed/restored. Thanks to <a href="https://wordpress.org/support/users/killiandev7/">killiandev7</a> for <a href="https://wordpress.org/support/topic/feature-request-recover-map-data-after-recovering-a-deleted-map/">bringing this to my attention</a>.
+* Fixed a bug where special characters in Description were being messed up. Thanks to <a href="https://github.com/killianweid">killianweid</a> for creating this <a href="https://github.com/morehawes/Waymark/issues/24">issue</a>.
+* Fixed a bug with some KML files when loading from URL using Shortcode. Thanks to <a href="https://wordpress.org/support/users/henkna/">henkna</a> for <a href="https://wordpress.org/support/topic/kml-fails-to-load/">letting me know about this</a>.
+* Added Leaflet Basemap examples URL to Settings > Basemaps.
+* Minor bug fixes and improvements.
 
 = 0.9.28.6 =
 

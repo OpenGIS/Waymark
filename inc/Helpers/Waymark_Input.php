@@ -190,7 +190,7 @@ class Waymark_Input {
 			case 'textarea' :
 				$out .= '		<textarea class="waymark-input waymark-input-' . $field['id'] . '" name="' . $field['name'] . '" data-id="' . $field['id'] . '">';
 				//Do we have a value for this post?
-				if($value = htmlspecialchars($set_value)) {
+				if(! is_null($set_value) && $value = htmlspecialchars($set_value)) {
 					$out .= $value;
 				//Do we have a default?
 				}	elseif(array_key_exists('default', $field)) {

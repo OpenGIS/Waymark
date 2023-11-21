@@ -124,10 +124,22 @@ class Waymark_Shortcode {
 			$map_height = Waymark_Config::get_setting('misc', 'map_options', 'map_height');
 		}
 
+		//Width
+		if(array_key_exists('map_width', $shortcode_data)) {
+			$map_width = $shortcode_data['map_width'];
+		} else {
+			$map_width = false;
+		}
+
 		//Output HTML container
 		$out = '<!-- START Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";
-		$out .= '<div id="waymark-shortcode-' . $shortcode_hash . '" data-shortcode_hash="' . $shortcode_hash . '" class="waymark-shortcode waymark-container">' . "\n";
-
+		
+		$shortcode_style = '';
+		if($map_width) {
+			$shortcode_style .= 'width:' . $map_width . 'px';
+		}
+		
+		$out .= '<div style="' . $shortcode_style . '" id="waymark-shortcode-' . $shortcode_hash . '" data-shortcode_hash="' . $shortcode_hash . '" class="waymark-shortcode waymark-container">' . "\n";
 
 		//Header ?
 		$do_header = 0;
@@ -190,10 +202,13 @@ class Waymark_Shortcode {
 			
 			$out .= '	</header>' . "\n";		
 		}
-
-		//Map HTML Container (Initially hidden)
+		
+		//Map HTML Container (Initially hidden, made visible by JS)
 		$out .= '	<!-- Map -->' . "\n";
-		$out .= '	<div style="display:none;height:' . $map_height . 'px" id="waymark-map-' . $shortcode_hash . '" class="' . $map_class . '" data-shortcode_hash="' . $shortcode_hash . '"></div>' . "\n";
+
+		$map_style = 'display:none;';	
+ 		$map_style .= 'height:' . $map_height . 'px';
+		$out .= '	<div style="' . $map_style . '" id="waymark-map-' . $shortcode_hash . '" class="' . $map_class . '" data-shortcode_hash="' . $shortcode_hash . '"></div>' . "\n";
 
 		//Elevation?
 		if(array_key_exists('show_elevation', $shortcode_data)) {
@@ -236,6 +251,9 @@ class Waymark_Shortcode {
  		$out .= 'var waymark_config = jQuery.extend(true, {}, waymark_user_config);' . "\n";					
  		$out .= 'waymark_config.map_div_id = "waymark-map-' . $shortcode_hash . '";' . "\n";					
  		$out .= 'waymark_config.map_height = ' . $map_height . ";\n";
+ 		if($map_width) {
+			$out .= 'waymark_config.map_width = ' . $map_width . ";\n"; 		
+ 		}
 
 		// ===== Shortcode options (2/2) =====
 		
@@ -343,20 +361,19 @@ class Waymark_Shortcode {
 		// ================ MAPS ===============
 		// =====================================	
 		
- 		$map_count = 0;
+ 		$i = 0;
 		foreach($maps_output as $map_id => $map_output) {
-			//Load first map_data on-page
-			if($map_count == 0) {
+			//Embed (and first background... legacy)
+			if($i == 0 || 'embed' === Waymark_Config::get_setting('misc', 'collection_options', 'load_method')) {
 				//If map data exists
 				if(isset($map_output['map_data'])) {
 					$out .= 'waymark_viewer_' . $shortcode_hash . '.load_json(' . $map_output['map_data'] . ');' . "\n";														
 				}			
-			//Load everything else via HTPP
+			//Load via HTTP
 			} else {
 				$out .= 'waymark_load_map_data(waymark_viewer_' . $shortcode_hash . ', ' . $map_id . ', true);' . "\n";																
 			}
-
-			$map_count++;
+			$i++;
 		}
 
 		// =====================================
@@ -449,7 +466,8 @@ class Waymark_Shortcode {
 			//Accept multiple
 			foreach(explode(',', $shortcode_data['file_url']) as $file_url) {
 				$file_response = wp_remote_get($file_url);	
-				
+
+
 				//Success
 				if(wp_remote_retrieve_response_code($file_response) == '200') {
 					//Get file info
@@ -464,28 +482,38 @@ class Waymark_Shortcode {
 					}
 
 					//Is allowable file
-					if(Waymark_Helper::allowable_file($file_ext, $file_mime)) {
-
+					if(Waymark_Helper::allowable_file($file_ext)) {
 						$file_body = wp_remote_retrieve_body($file_response);
 						$file_string = preg_replace('/\s+/', ' ', $file_body);
 
+						//Escape single quotes
+						$file_string = str_replace("'", "\'", $file_string);
+
 						$out .= 'var file_geo_json = {}' . "\n";
-						$out .= 'var file_data = \'' . $file_string . '\';' . "\n";
 
 						switch($file_ext) {
 							case 'gpx' :
+								$out .= 'var file_data = \'' . $file_string . '\';' . "\n";
+
 								$out .= 'var file_data = (new DOMParser()).parseFromString(file_data, "text/xml");' . "\n";
 								$out .= 'file_geo_json = toGeoJSON.gpx(file_data);' . "\n";
 							
 								break;
 								
 							case 'kml' :
+								$file_string = simplexml_load_string($file_string, null, LIBXML_NOCDATA);
+								$file_string = $file_string->Document->asXML();
+		
+								$out .= 'var file_data = \'' . $file_string . '\';' . "\n";
+
 								$out .= 'var file_data = (new DOMParser()).parseFromString(file_data, "text/xml");' . "\n";
 								$out .= 'var file_geo_json = toGeoJSON.kml(file_data);' . "\n";
 
 								break;	
 								
 							default :
+								$out .= 'var file_data = \'' . $file_string . '\';' . "\n";
+
 								$out .= 'var file_geo_json = JSON.parse(file_data);' . "\n";
 
 								break;																

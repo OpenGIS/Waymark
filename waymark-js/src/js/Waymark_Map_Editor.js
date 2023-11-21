@@ -733,7 +733,8 @@ function Waymark_Map_Editor() {
 				case 'line' :
 					layer.setStyle({
 						color: type.line_colour,
-						weight: type.line_weight							
+						weight: type.line_weight,
+						opacity: type.line_opacity													
 					});				
 
 					break;

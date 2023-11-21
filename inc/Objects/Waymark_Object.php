@@ -134,27 +134,16 @@ class Waymark_Object {
 	function create_form() {
 		return Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups, $this->data, $this->input_name_format, 'waymark-parameters-' . $this->post_type);
 	}
-	
-// 	function get_fields($by_group = true, $by_type = false) {		
-// 		$fields = array();
-// 		
-// 		foreach($this->parameters as $parameter_key => $parameter_data) {
-// 			
-// 			if(! $by_type || ($by_type && array_key_exists('input_types', $parameter_data) && in_array($this->input_type, $parameter_data['input_types']))) {
-// 				if($by_group) {
-// 					$fields[$parameter_data['group']][$parameter_key] = $parameter_data;					
-// 				} else {
-// 					$fields[$parameter_key] = $parameter_data;
-// 				}
-// 			}
-// 		}
-// 		
-// 		return $fields;	
-// 	}	
-	
+
+	//This gets fired when the post is created, saved and *TRASHED*
 	function save_meta($post_id = null) {
 		if(! $post_id) {
 			$post_id = $this->post_id;
+		}
+
+		//Only if we are saving a post (i.e. not when trashing)
+		if(! isset($_POST['action']) || $_POST['action'] != 'editpost') {
+			return;
 		}
 		
 		//Iterate over each parameter
@@ -307,9 +296,14 @@ class Waymark_Object {
 
 				//Fix quote escape bug
 				if($meta_key == 'waymark_map_data') {
- 						$map_data = Waymark_GeoJSON::string_to_feature_collection($meta_value);
- 						$map_data = Waymark_GeoJSON::clean_feature_descriptions($map_data);
- 						$meta_value = json_encode($map_data);
+					//Remove newlines
+					$meta_value = str_replace('\n', '', $meta_value);
+
+					$map_data = Waymark_GeoJSON::string_to_feature_collection($meta_value);
+					$map_data = Waymark_GeoJSON::clean_feature_descriptions($map_data);
+					
+					//Keep Unicode
+					$meta_value = json_encode($map_data, JSON_UNESCAPED_UNICODE);
 				}
 
 				$post_meta[$meta_key] = $meta_value;				

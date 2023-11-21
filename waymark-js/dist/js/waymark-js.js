@@ -7863,7 +7863,7 @@ function Waymark_Map() {
 						layer.setStyle({
 							color: type.line_colour,
 							weight: type.line_weight,
-							opacity: '0.7'							
+							opacity: type.line_opacity							
 						});	
 
 						//Set info window
@@ -8080,6 +8080,10 @@ function Waymark_Map() {
 					{
 						'key': 'line_weight',
 						'default': '3'
+					},
+					{
+						'key': 'line_opacity',
+						'default': '0.7'
 					}										
 				];
 				
@@ -8587,7 +8591,7 @@ function Waymark_Map_Viewer() {
 			is_hidden = Waymark.jq_map_container.is(":hidden");
 	
 			if(! is_hidden) {
-				Waymark.reset_data_view();
+				Waymark.reset_map_view();
 		
 				clearInterval(hidden_checker);
 			}
@@ -8605,43 +8609,44 @@ function Waymark_Map_Viewer() {
 			//Add data
 			Waymark.map_data.addData(json);		 	
 
-			//No view specified
-			if(Waymark.config.map_init_latlng === undefined && Waymark.config.map_init_zoom === undefined) {
-				Waymark.reset_data_view();
-			//Both zoom AND centre specified
-			} else if(Waymark.config.map_init_latlng !== undefined && Waymark.config.map_init_zoom !== undefined) {
-				//Use them
-				Waymark.map.setView(Waymark.config.map_init_latlng, Waymark.config.map_init_zoom);			
-			//Either zoom or centre specified
-			} else {
-				//Centre specified
-				if(Waymark.config.map_init_latlng !== undefined) {
-					Waymark.map.setView(Waymark.config.map_init_latlng);
-
-					//Use data layer for zoom
-					Waymark.map.setZoom(Waymark.map.getBoundsZoom(Waymark.map_data.getBounds()));									
-				}
-		
-				//Zoom specified
-				if(Waymark.config.map_init_zoom !== undefined) {
-					Waymark.map.setZoom(Waymark.config.map_init_zoom);
-					
-					//Use data layer for centre
-					Waymark.map.setView(Waymark.map_data.getBounds().getCenter());								
-				}			
-			}
+			//Reset view
+			Waymark.reset_map_view();
 		}
 	}
 	
-	this.reset_data_view = function() {
+	this.reset_map_view = function() {
 		Waymark = this;
 
-		//Use data layer bounds (if we have)
-		var bounds = Waymark.map_data.getBounds();
-		if(typeof bounds === 'object' && bounds.isValid()) {
-			Waymark.map.invalidateSize();
+		//No view specified
+		if(Waymark.config.map_init_latlng === undefined && Waymark.config.map_init_zoom === undefined) {
+			//Use data layer bounds (if we have)
+			var bounds = Waymark.map_data.getBounds();
+			if(typeof bounds === 'object' && bounds.isValid()) {
+				Waymark.map.invalidateSize();
 
-			Waymark.map.fitBounds(bounds);
+				Waymark.map.fitBounds(bounds);
+			}
+		//Both zoom AND centre specified
+		} else if(Waymark.config.map_init_latlng !== undefined && Waymark.config.map_init_zoom !== undefined) {
+			//Use them
+			Waymark.map.setView(Waymark.config.map_init_latlng, Waymark.config.map_init_zoom);			
+		//Either zoom or centre specified
+		} else {
+			//Centre specified
+			if(Waymark.config.map_init_latlng !== undefined) {
+				Waymark.map.setView(Waymark.config.map_init_latlng);
+
+				//Use data layer for zoom
+				Waymark.map.setZoom(Waymark.map.getBoundsZoom(Waymark.map_data.getBounds()));									
+			}
+	
+			//Zoom specified
+			if(Waymark.config.map_init_zoom !== undefined) {
+				Waymark.map.setZoom(Waymark.config.map_init_zoom);
+				
+				//Use data layer for centre
+				Waymark.map.setView(Waymark.map_data.getBounds().getCenter());								
+			}			
 		}
 	}
 	
@@ -9763,7 +9768,8 @@ function Waymark_Map_Editor() {
 				case 'line' :
 					layer.setStyle({
 						color: type.line_colour,
-						weight: type.line_weight							
+						weight: type.line_weight,
+						opacity: type.line_opacity													
 					});				
 
 					break;
