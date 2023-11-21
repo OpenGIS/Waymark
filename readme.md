@@ -114,6 +114,10 @@ A big thank you to the following projects and their contributors. Without their 
 
 ## Changelog ##
 
+### 0.9.29.4 ###
+
+* Minor bug fix.
+
 ### 0.9.29.3 ###
 
 * Added a Collections > "Shortcode Method" Setting. This allows you to choose whether Map data is loaded in the Background (via AJAX), or Embedded in the page when embedding a Collection via the Shortcode. Embedding may be a bad idea for LARGE COLLECTIONS, but *may* resolve some (JavaScript) issues where Collections are not displaying correctly.
