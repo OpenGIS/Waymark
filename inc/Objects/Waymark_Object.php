@@ -141,9 +141,12 @@ class Waymark_Object {
 			$post_id = $this->post_id;
 		}
 
-		//Only if we are saving a post (i.e. not when trashing)
-		if(! isset($_POST['action']) || $_POST['action'] != 'editpost') {
-			return;
+		// Not Public Submission
+		if(! isset($_POST['waymark_action'])|| $_POST['waymark_action'] !== 'public_add_map') {
+			//Only if we are saving a post (i.e. not when trashing)
+			if(! isset($_POST['action']) || $_POST['action'] != 'editpost') {
+				return;
+			}
 		}
 		
 		//Iterate over each parameter

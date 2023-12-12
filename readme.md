@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.4  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.29.3  
+**Stable tag:** 0.9.29.5  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -113,6 +113,10 @@ A big thank you to the following projects and their contributors. Without their 
 
 
 ## Changelog ##
+
+### 0.9.29.5 ###
+
+* Fixed a bug where Submissions were not being saved.
 
 ### 0.9.29.4 ###
 
