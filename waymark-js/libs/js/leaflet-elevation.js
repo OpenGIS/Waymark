@@ -406,8 +406,14 @@
     		});
     		if (this._map) {
     			this._map.once('layeradd', function(e) {
-    				this.fitBounds(this.layer.getBounds());
-    				this._fireEvt("eledata_loaded", { data: data, layer: this.layer, name: this.track_info.name, track_info: this.track_info }, true);
+    				
+                    // Joe
+                    // Stop elevation plugin from adjusting map bounds
+                    // https://wordpress.org/support/topic/map_centre-and-map_zoom-shortcodes-cannot-be-used-at-the-same-time/
+
+                    // this.fitBounds(this.layer.getBounds());
+    				
+                    this._fireEvt("eledata_loaded", { data: data, layer: this.layer, name: this.track_info.name, track_info: this.track_info }, true);
     			}, this);
 
     			this.layer.addTo(this._map);

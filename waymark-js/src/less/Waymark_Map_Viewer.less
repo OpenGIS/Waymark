@@ -14,14 +14,14 @@
 			margin: 0;
 			position: relative;
 			width: 260px;
-			list-style-type: none;	
+			list-style-type: none;
 			/* No Title */
 			&.waymark-no-title {
 				.waymark-info-title {
-					display: none;	
+					display: none;
 				}
 			}
-			
+
 			/* No Image*/
 			&.waymark-no-image {
 				width: 200px;
@@ -34,13 +34,13 @@
 					height: auto;
 					float: none;
 					width: 100%;
-				}			
+				}
 			}
 			li {
 				width: 100%;
 				padding: 0;
 				margin: 0;
-				margin-bottom: 7px;				
+				margin-bottom: 7px;
 				list-style: none;
 				&.waymark-info-type {
 					margin-top: -8px;
@@ -49,7 +49,7 @@
 						padding: 2px 5px;
 						line-height: 0;
 						color: #666;
-// 						background: #ccc;						
+						// 						background: #ccc;
 					}
 				}
 				&.waymark-info-title {
@@ -59,7 +59,7 @@
 					max-height: 72px;
 					overflow: auto;
 					p {
-						margin: 0;	
+						margin: 0;
 					}
 				}
 				&.waymark-info-image_large_url {
@@ -72,14 +72,33 @@
 						height: inherit;
 						margin: 0;
 						padding: 0;
-					  border-bottom: none;
+						border-bottom: none;
 						background-size: 260px;
 						background-repeat: no-repeat;
-						background-position: left center;						  
+						background-position: left center;
+					}
+				}
+			}
+		}
+
+		&.waymark-has-cluster {
+			.waymark-cluster {
+				.waymark-marker {
+					position: absolute;
+
+					.waymark-cluster-count {
+						position: absolute;
+						top: -3px;
+						right: -3px;
+						padding: 1px 3px;
+						font-size: 8px;
+						color: black;
+						border: 1px solid #333;
+						border-radius: 3px;
+						background: rgba(255, 255, 255, 0.7);
 					}
 				}
 			}
 		}
 	}
 }
-

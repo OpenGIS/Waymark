@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.4  
 **Requires PHP:** 5.2  
-**Stable tag:** 0.9.29.5  
+**Stable tag:** 0.9.30  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -22,7 +22,8 @@ Features:
 * Easy to use, customisable and developer friendly.
 * Use the <a href="https://www.waymark.dev/docs/editor/">Editor</a> to create Maps containing Overlays (Markers, Lines and Shapes).
 * Every Overlay can be given a title, image and description; which is displayed once the Overlay is clicked.
-* Set styles and options once using <a href="https://www.waymark.dev/docs/types/">Types</a>, then simply select the appropriate Type when adding an Overlay. Lines can display arrows to indicate direction.
+* Set styles and options once using <a href="https://www.waymark.dev/docs/types/">Types</a>, then simply select the appropriate Type when adding an Overlay. 
+* <a href="https://www.waymark.dev/docs/marker-clustering/">Marker Clustering</a> and Line direction arrows supported.
 * Add Maps to your content using the Waymark <a href="https://www.waymark.dev/docs/shortcodes/">Shortcode</a>, or link to the <a href="https://www.waymark.dev/map/route-map/">Map Details</a> page. 
 * <a href="https://www.openstreetmap.org/fixthemap">OpenStreetMap</a> is the default <a href="https://www.waymark.dev/docs/basemaps/">Basemap</a>, with support for multiple Basemaps.
 * Images uploaded with location data (EXIF) will have a Marker placed where the photo was taken.
@@ -45,11 +46,22 @@ With Waymark enabled, click on the "Maps" link in the sidebar to create and edit
 
 ### Is There a Demo? ###
 
-Yes, <a href="https://www.waymark.dev/demo/">here</a>.
+Yes, <a href="https://www.waymark.dev/demo/">here</a>. You can also try the Editor <a href="https://www.waymark.dev/try/">here</a>.
 
 ### Can I Get More Help? ###
 
 Yes, please view the <a href="https://www.waymark.dev/docs/">Documentation</a>.
+
+### How Can I Contribute? ###
+
+* [Star the project on GitHub](https://github.com/morehawes/Waymark/)
+* [Report bugs](https://wordpress.org/support/plugin/waymark/#new-topic-0)
+* [Suggest new features](https://wordpress.org/support/plugin/waymark/#new-topic-0)
+* [Translate the plugin](https://translate.wordpress.org/projects/wp-plugins/waymark/)
+* [Rate the plugin](https://wordpress.org/support/plugin/waymark/reviews/#new-post)
+* Share with anyone that will listen how much you like Waymark :)
+
+If you have anything bad to say, please <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">get in touch</a> before leaving a review, so I can try to fix it.
 
 ### Does Waymark Support Google Maps? ###
 
@@ -113,6 +125,18 @@ A big thank you to the following projects and their contributors. Without their 
 
 
 ## Changelog ##
+
+### 0.9.30 ###
+
+* **<a href="https://www.waymark.dev/docs/marker-clustering/">Marker Clustering</a>**
+    * Once enabled, Markers will be stacked when they are close together. This can help to reduce clutter on the Map.
+    * You can enable this feature in Settings > Maps > Clustering, or using the `show_cluster="1"` Shortcode option. 
+    * There are also settings to adjust the cluster radius and what what zoom level to start clustering at.
+* Added `file_start_type` and `file_end_type` options to the <a href="https://www.waymark.dev/docs/shortcodes/#shortcode-files">Shortcode Files</a> feature, which allow you to automatically add a Marker of the specified type to the start and/or end of all Lines in the file. Thanks to <a href="https://wordpress.org/support/users/digbymaass/">digbymaass</a> for the <a href="https://wordpress.org/support/topic/shortcode-option-for-start-marker/">suggestion</a>.
+* Stop Elevation plugin from adjusting map bounds. Thanks to <a href="https://wordpress.org/support/users/ellocosolo/">ellocosolo</a> for the <a href="https://wordpress.org/support/topic/map_centre-and-map_zoom-shortcodes-cannot-be-used-at-the-same-time/">report</a>.
+* Improved KML error handling when loading from URL.
+* Improved rendering of multiple Maps through the Collection Shortcode.
+* Minor bug fixes
 
 ### 0.9.29.5 ###
 

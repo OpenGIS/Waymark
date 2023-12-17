@@ -3,18 +3,19 @@
 
 /**
  * ====================================
- * ============= SHORTCODE ============
+ * ============= SHORTCODE ============ 
  * ====================================
  */
- .waymark-shortcode {
+.waymark-shortcode {
 	overflow: hidden;
 	margin-bottom: 1.5em;
 	border: 1px solid #999;
 	.waymark-header {
 		position: relative;
 		padding: 10px;
+		min-height: 26px;
 		background: #f7f7f7;
-		border-bottom: 1px solid #ccc;			
+		border-bottom: 1px solid #ccc;
 		.ion {
 			margin-left: 3px;
 			font-size: 18px;
@@ -40,7 +41,7 @@
 			.waymark-link {
 				position: absolute;
 				top: 10px;
-				right: 10px;				
+				right: 10px;
 			}
 			.waymark-meta-close {
 				position: absolute;
@@ -75,7 +76,7 @@
 	&.waymark-error {
 		color: @error_colour;
 		border-color: @error_colour;
-	}	
+	}
 }
 
 /**
@@ -84,7 +85,6 @@
  * ====================================
  */
 .waymark-meta-map_thumbnail {
-
 }
 
 /**
@@ -93,39 +93,40 @@
  * ====================================
  */
 .waymark-map-meta {
- 	font-size: 0.85em;
- 	.waymark-map-meta-ungrouped {
- 		margin-bottom: 15px;
- 	}
- 	.waymark-map-meta-grouped {
-		.waymark-meta-item { 		
+	font-size: 0.85em;
+	.waymark-map-meta-ungrouped {
+		margin-bottom: 15px;
+	}
+	.waymark-map-meta-grouped {
+		.waymark-meta-item {
 			&:last-child {
 			}
 		}
- 	} 	
+	}
 	.waymark-meta-item {
-// 		position: relative;
+		// 		position: relative;
 		padding: 15px;
 		border-bottom: 1px solid #ddd;
-		&:first-child {}
+		&:first-child {
+		}
 		&:last-child {
 			border-bottom: 0;
-		}		
-		&:nth-child(even) {	
+		}
+		&:nth-child(even) {
 			background-color: #fafafa;
-		}		
+		}
 		.waymark-meta-title {
 			margin-bottom: 5px;
 			font-weight: bold;
 		}
 		.waymark-meta-content {
-			font-weight: normal;		
+			font-weight: normal;
 		}
 		.waymark-meta-info {
 			float: right;
-// 			position: absolute;
-// 			top: 15px;
-// 			right: 15px;
+			// 			position: absolute;
+			// 			top: 15px;
+			// 			right: 15px;
 		}
 
 		//Thumbnail
@@ -136,7 +137,7 @@
 				height: unset;
 			}
 		}
-	}	
+	}
 }
 
 /* Phone */
@@ -167,8 +168,8 @@
 
 .waymark-info-description {
 	.waymark-description-link {
-	 padding-top: 10px;
-	 margin-top: 10px;
-	 border-top: 1px solid #999;
+		padding-top: 10px;
+		margin-top: 10px;
+		border-top: 1px solid #999;
 	}
 }
