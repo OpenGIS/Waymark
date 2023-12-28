@@ -422,6 +422,8 @@ function Waymark_Map_Viewer() {
 			"Total Length: ": waymark_js.lang.label_total_length,
 			"Max Elevation: ": waymark_js.lang.label_max_elevation,
 			"Min Elevation: ": waymark_js.lang.label_min_elevation,
+			"Total Ascent: ": waymark_js.lang.label_ascent,
+			"Total Descent: ": waymark_js.lang.label_descent,
 		});
 		Waymark_L.setLocale("waymark");
 

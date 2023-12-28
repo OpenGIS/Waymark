@@ -14,6 +14,8 @@ var waymark_js_localize = {
 	label_total_length: "Total Length: ",
 	label_max_elevation: "Max. Elevation: ",
 	label_min_elevation: "Min. Elevation: ",
+	label_ascent: "Total Ascent: ",
+	label_descent: "Total Descent: ",
 	//Editor
 	add_line_title: "Draw a Line",
 	add_photo_title: "Upload an Image",
