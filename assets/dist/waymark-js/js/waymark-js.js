@@ -1962,7 +1962,9 @@ Copyright (c) 2016 Dominik Moritz */
     				this.track_info = L.extend({}, this.track_info, {
     					distance: this._distance,
     					elevation_max: this._maxElevation,
-    					elevation_min: this._minElevation
+    					elevation_min: this._minElevation,
+              ascent : this._ascent,
+              descent : this._descent
     				});
 
     				this._layers = this._layers || {};
@@ -2428,6 +2430,19 @@ Copyright (c) 2016 Dominik Moritz */
     		if (!isNaN(z)) {
     			eleMax = eleMax < z ? z : eleMax;
     			eleMin = eleMin > z ? z : eleMin;
+
+          // calculate new ascent or descent
+          let dz = z - this._lastValidZ ;
+          if (dz > 0){
+            this.track_info.ascent  = (this.track_info.ascent || 0) + dz;  // Total Ascent
+            this._ascent = this.track_info.ascent;
+          }
+          else if (dz < 0){
+            this.track_info.descent = (this.track_info.descent || 0) - dz; // Total Descent
+            this._descent = this.track_info.descent;
+          }
+
+          // set up last valid z value
     			this._lastValidZ = z;
     		}
 
@@ -3549,9 +3564,11 @@ Copyright (c) 2016 Dominik Moritz */
     		this.track_info.distance = this._distance || 0;
     		this.track_info.elevation_max = this._maxElevation || 0;
     		this.track_info.elevation_min = this._minElevation || 0;
+        this.track_info.ascent = this._ascent || 0;
+        this.track_info.descent = this._descent || 0;
 
     		if (this.options.summary) {
-    			this.summaryDiv.innerHTML += '<span class="totlen"><span class="summarylabel">' + L._("Total Length: ") + '</span><span class="summaryvalue">' + this.track_info.distance.toFixed(2) + ' ' + this._xLabel + '</span></span><span class="maxele"><span class="summarylabel">' + L._("Max Elevation: ") + '</span><span class="summaryvalue">' + this.track_info.elevation_max.toFixed(2) + ' ' + this._yLabel + '</span></span><span class="minele"><span class="summarylabel">' + L._("Min Elevation: ") + '</span><span class="summaryvalue">' + this.track_info.elevation_min.toFixed(2) + ' ' + this._yLabel + '</span></span>';
+    			this.summaryDiv.innerHTML += '<span class="totlen"><span class="summarylabel">' + L._("Total Length: ") + '</span><span class="summaryvalue">' + this.track_info.distance.toFixed(2) + ' ' + this._xLabel + '</span></span><span class="maxele"><span class="summarylabel">' + L._("Max Elevation: ") + '</span><span class="summaryvalue">' + this.track_info.elevation_max.toFixed(2) + ' ' + this._yLabel + '</span></span><span class="minele"><span class="summarylabel">' + L._("Min Elevation: ") + '</span><span class="summaryvalue">' + this.track_info.elevation_min.toFixed(2) + ' ' + this._yLabel + '</span></span><span class="totasc"><span class="summarylabel">' + L._("Total Ascent: ") + '</span><span class="summaryvalue">' + this.track_info.ascent.toFixed(0) + ' ' + this._yLabel + '</span></span><span class="totdesc"><span class="summarylabel">' + L._("Total Descent: ") + '</span><span class="summaryvalue">' + this.track_info.descent.toFixed(0) + ' ' + this._yLabel + '</span></span>';
     		}
     		if (this.options.downloadLink && this._downloadURL) { // TODO: generate dynamically file content instead of using static file urls.
     			this.summaryDiv.innerHTML += '<span class="download"><a href="#">' + L._('Download') + '</a></span>';
@@ -7387,6 +7404,8 @@ var waymark_js_localize = {
 	label_total_length: "Total Length: ",
 	label_max_elevation: "Max. Elevation: ",
 	label_min_elevation: "Min. Elevation: ",
+  label_ascent: "Total Ascent: ",
+  label_descent: "Total Descent: ",
 	//Editor
 	add_line_title: "Draw a Line",
 	add_photo_title: "Upload an Image",
@@ -9213,6 +9232,8 @@ function Waymark_Map_Viewer() {
 			"Total Length: ": waymark_js.lang.label_total_length,
 			"Max Elevation: ": waymark_js.lang.label_max_elevation,
 			"Min Elevation: ": waymark_js.lang.label_min_elevation,
+      "Total Ascent: ": waymark_js.lang.label_ascent,
+      "Total Descent: ": waymark_js.lang.label_descent,
 		});
 		Waymark_L.setLocale("waymark");
 
