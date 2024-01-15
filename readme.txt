@@ -64,6 +64,7 @@ For developers:
 
 - Most elements can be [styled using CSS](https://www.waymark.dev/docs/styling-with-css-selectors/) and have sensibly named `waymark-` classes.
 - Maps are stored using the custom post type `waymark_map`
+- Geographical data is stored in [GeoJSON](https://geojson.org/) format.
 - Meta is stored as Custom Fields (prefixed with `waymark_`)
 - Collections use the `waymark_collection` Taxonomy.
 - Use the [JavaScript callback function](https://www.waymark.dev/docs/callback-function/) to extend Waymark functionality.
