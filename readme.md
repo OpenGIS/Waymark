@@ -77,19 +77,19 @@ For developers:
 
 [Grunt](https://gruntjs.com/) is used to run the build script, which compiles the JavaScript and CSS and performs some other tasks.
 
-```
-# Clone the repository
-git clone https://github.com/opengis/waymark.git
 
-# Navigate to the Waymark directory
-cd waymark
+	# Clone the repository
+	git clone https://github.com/opengis/waymark.git
+	
+	# Navigate to the Waymark directory
+	cd waymark
+	
+	# Install the dependencies (or pnpm/yarn install)
+	npm install
+	
+	# Run the build script
+	grunt
 
-# Install the dependencies (or pnpm/yarn install)
-npm install
-
-# Run the build script
-grunt
-```
 
 The build script will watch for changes to the JavaScript and CSS files.
 
