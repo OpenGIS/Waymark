@@ -1962,7 +1962,9 @@ Copyright (c) 2016 Dominik Moritz */
     				this.track_info = L.extend({}, this.track_info, {
     					distance: this._distance,
     					elevation_max: this._maxElevation,
-    					elevation_min: this._minElevation
+    					elevation_min: this._minElevation,
+						ascent : this._ascent,
+						descent : this._descent
     				});
 
     				this._layers = this._layers || {};
@@ -2428,6 +2430,19 @@ Copyright (c) 2016 Dominik Moritz */
     		if (!isNaN(z)) {
     			eleMax = eleMax < z ? z : eleMax;
     			eleMin = eleMin > z ? z : eleMin;
+
+				// calculate new ascent or descent
+				let dz = z - this._lastValidZ ;
+				if (dz > 0){
+				  this.track_info.ascent  = (this.track_info.ascent || 0) + dz;  // Total Ascent
+				  this._ascent = this.track_info.ascent;
+				}
+				else if (dz < 0){
+				  this.track_info.descent = (this.track_info.descent || 0) - dz; // Total Descent
+				  this._descent = this.track_info.descent;
+				}
+	  
+				// set up last valid z value
     			this._lastValidZ = z;
     		}
 
@@ -3549,9 +3564,11 @@ Copyright (c) 2016 Dominik Moritz */
     		this.track_info.distance = this._distance || 0;
     		this.track_info.elevation_max = this._maxElevation || 0;
     		this.track_info.elevation_min = this._minElevation || 0;
+			this.track_info.ascent = this._ascent || 0;
+			this.track_info.descent = this._descent || 0;
 
     		if (this.options.summary) {
-    			this.summaryDiv.innerHTML += '<span class="totlen"><span class="summarylabel">' + L._("Total Length: ") + '</span><span class="summaryvalue">' + this.track_info.distance.toFixed(2) + ' ' + this._xLabel + '</span></span><span class="maxele"><span class="summarylabel">' + L._("Max Elevation: ") + '</span><span class="summaryvalue">' + this.track_info.elevation_max.toFixed(2) + ' ' + this._yLabel + '</span></span><span class="minele"><span class="summarylabel">' + L._("Min Elevation: ") + '</span><span class="summaryvalue">' + this.track_info.elevation_min.toFixed(2) + ' ' + this._yLabel + '</span></span>';
+    			this.summaryDiv.innerHTML += '<span class="totlen"><span class="summarylabel">' + L._("Total Length: ") + '</span><span class="summaryvalue">' + this.track_info.distance.toFixed(2) + ' ' + this._xLabel + '</span></span><span class="maxele"><span class="summarylabel">' + L._("Max Elevation: ") + '</span><span class="summaryvalue">' + this.track_info.elevation_max.toFixed(2) + ' ' + this._yLabel + '</span></span><span class="minele"><span class="summarylabel">' + L._("Min Elevation: ") + '</span><span class="summaryvalue">' + this.track_info.elevation_min.toFixed(2) + ' ' + this._yLabel + '</span></span><span class="totasc"><span class="summarylabel">' + L._("Total Ascent: ") + '</span><span class="summaryvalue">' + this.track_info.ascent.toFixed(0) + ' ' + this._yLabel + '</span></span><span class="totdesc"><span class="summarylabel">' + L._("Total Descent: ") + '</span><span class="summaryvalue">' + this.track_info.descent.toFixed(0) + ' ' + this._yLabel + '</span></span>';
     		}
     		if (this.options.downloadLink && this._downloadURL) { // TODO: generate dynamically file content instead of using static file urls.
     			this.summaryDiv.innerHTML += '<span class="download"><a href="#">' + L._('Download') + '</a></span>';
@@ -7387,6 +7404,8 @@ var waymark_js_localize = {
 	label_total_length: "Total Length: ",
 	label_max_elevation: "Max. Elevation: ",
 	label_min_elevation: "Min. Elevation: ",
+	label_ascent: "Total Ascent: ",
+	label_descent: "Total Descent: ",
 	//Editor
 	add_line_title: "Draw a Line",
 	add_photo_title: "Upload an Image",
@@ -7591,7 +7610,11 @@ function Waymark_Map() {
 			}
 
 			if (output == "console") {
-				console.log(prefix + text);
+				if (type == "error") {
+					console.error(prefix + text);
+				} else {
+					console.log(prefix + text);
+				}
 			} else {
 				alert(prefix + text);
 			}
@@ -7817,7 +7840,7 @@ function Waymark_Map() {
 		Waymark_L.control
 			.attribution({
 				prefix:
-					'<a href="https://wordpress.org/plugins/waymark" title="Share your way">Waymark</a> | <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>',
+					'<a href="https://www.waymark.dev/" title="Share your way">Waymark</a>',
 			})
 			.addTo(Waymark.map);
 
@@ -7873,10 +7896,7 @@ function Waymark_Map() {
 				},
 				locateOptions: {
 					enableHighAccuracy: true,
-				}, // ,
-				// 			'getLocationBounds': function(locationEvent) {
-				// 				return locationEvent.bounds;
-				// 			}
+				},
 			})
 			.addTo(Waymark.map);
 
@@ -8373,7 +8393,8 @@ function Waymark_Map() {
 		);
 		var properties_keys = Object.keys(overlay_properties);
 
-		if (properties_keys.length) {
+		// Valid properties?
+		if (properties_keys.length && properties_keys.pop()) {
 			var properties_html = "";
 
 			for (i in overlay_properties) {
@@ -8486,7 +8507,7 @@ function Waymark_Map() {
 	};
 
 	//Represent Type as text
-	this.type_to_text = function (layer_type, type, ele = "span") {
+	this.type_to_text = function (layer_type = "", type = {}, ele = "span") {
 		var preview_class = "waymark-type-text waymark-" + layer_type + "-type";
 		var preview_style = "";
 
@@ -8498,11 +8519,7 @@ function Waymark_Map() {
 
 				break;
 			case "line":
-				preview_style +=
-					"color:" +
-					type.line_colour +
-					";box-shadow:inset 0 0 0 1px " +
-					type.line_colour;
+				preview_style += "background:" + type.shape_colour;
 
 				break;
 			case "shape":
@@ -8649,6 +8666,83 @@ function Waymark_Map() {
 		return icon_data;
 	};
 
+	this.build_type_heading = function (
+		overlay_type = "marker",
+		type_key = "photo",
+	) {
+		//Get Type
+		const type = Waymark.get_type(overlay_type, type_key);
+
+		if (!type) {
+			Waymark.message("Type not found: " + type_key, "error");
+		}
+
+		// Defaults
+		let text_color = "inherit";
+		let background_color = type.shape_colour;
+
+		// Switch
+		switch (overlay_type) {
+			case "marker":
+				background_color = Waymark.get_marker_background(type.marker_colour);
+
+				break;
+			case "line":
+				background_color = type.line_colour;
+
+				break;
+
+			case "shape":
+				background_color = type.shape_colour;
+
+				break;
+		}
+
+		if (type) {
+			heading = `
+				<div class="waymark-type-heading" style="background:${background_color}">
+					${Waymark.type_preview(overlay_type, type)}
+					${Waymark.type_to_text(overlay_type, type)}
+				</div>
+			`;
+		}
+
+		return heading;
+	};
+
+	this.type_preview = function (
+		overlay_type = "marker",
+		type = {},
+		ele = "div",
+	) {
+		let out = `<${ele} class="waymark-type-preview waymark-${overlay_type}-type waymark-${overlay_type}-${type.type_key}">`;
+
+		// By overlay type
+		switch (overlay_type) {
+			case "marker":
+				// Get Icon Data
+				const icon_data = Waymark.build_icon_data(type);
+
+				// Add Icon
+				out += `<div class="${icon_data.className}">${icon_data.html}</div>`;
+
+				break;
+			case "line":
+				out += Waymark.type_to_text(overlay_type, type, "span");
+
+				break;
+
+			case "shape":
+				out += Waymark.type_to_text(overlay_type, type, "span");
+
+				break;
+		}
+
+		out += `</${ele}>`;
+
+		return out;
+	};
+
 	this.get_marker_background = function (colour) {
 		var old_background_options = [
 			"red",
@@ -8775,6 +8869,105 @@ function Waymark_Map() {
 		}
 
 		return image_sizes;
+	};
+
+	this.build_overlay_content = function (
+		feature = [],
+		feature_type = "",
+		type_data = [],
+	) {
+		Waymark = this;
+
+		const has_title = feature.properties.title
+			? "waymark-overlay-has-title"
+			: "";
+		const has_desc = feature.properties.description
+			? "waymark-overlay-has-desc"
+			: "";
+		const has_image = feature.properties.image_large_url
+			? "waymark-overlay-has-image"
+			: "";
+
+		var content = `<div class="waymark-overlay-content ${has_title} ${has_desc} ${has_image} waymark-overlay-${feature_type}">`;
+
+		//Expected Waymark properties
+		const property_keys = ["type", "title", "description", "image_large_url"];
+		//Iterate over each
+
+		for (index in property_keys) {
+			var property_key = property_keys[index];
+
+			//Wrap in div
+			content += `<div class="waymark-overlay-property waymark-overlay-property-${property_key}">`;
+
+			switch (property_key) {
+				//Type
+				case "type":
+					content += Waymark.type_to_text(feature_type, type_data);
+
+					break;
+
+				//Title
+				case "title":
+					content += feature.properties.title
+						? feature.properties.title
+						: "<em>Untitled " +
+							type_data[feature_type + "_title"] +
+							" " +
+							Waymark.title_case(feature_type) +
+							"</em>";
+
+					break;
+
+				//Description
+				case "description":
+					var description = feature.properties.description;
+
+					//We have a description
+					if (description) {
+						//HTML
+						if (description.indexOf("<") === 0) {
+							content += description;
+							//Plain text
+						} else {
+							content += `<p>${description}</p>`;
+						}
+					}
+
+					break;
+
+				//Image
+				case "image_large_url":
+					//We have an image
+					if (!feature.properties.image_large_url) {
+						break;
+					}
+
+					// Perform basic URL validation, must start with http:// or https://
+					if (!feature.properties.image_large_url.match(/^(https?:\/\/)/)) {
+						break;
+					}
+
+					//We have an image
+					if (feature.properties.image_large_url) {
+						//Use Medium if we have it
+						var thumb_url = feature.properties.image_large_url;
+						if (feature.properties.image_medium_url) {
+							thumb_url = feature.properties.image_medium_url;
+						}
+
+						content += `<a href="${feature.properties.image_large_url}" target="_blank" style="background-image:url(${thumb_url})"></a>`;
+					}
+
+					break;
+			}
+
+			content += "</div>";
+		}
+
+		content += "</div>";
+
+		return content;
 	};
 
 	/*
@@ -8952,7 +9145,7 @@ function Waymark_Map_Viewer() {
 	this.create_buttons = function () {};
 
 	//Add GeoJSON to map
-	this.load_json = function (json) {
+	this.load_json = function (json, reset_view = true) {
 		Waymark = this;
 
 		//Must be a vaid object with features
@@ -8960,8 +9153,10 @@ function Waymark_Map_Viewer() {
 			//Add data
 			Waymark.map_data.addData(json);
 
-			//Reset view
-			Waymark.reset_map_view();
+			//Reset view?
+			if (reset_view) {
+				Waymark.reset_map_view();
+			}
 		}
 	};
 
@@ -9213,6 +9408,8 @@ function Waymark_Map_Viewer() {
 			"Total Length: ": waymark_js.lang.label_total_length,
 			"Max Elevation: ": waymark_js.lang.label_max_elevation,
 			"Min Elevation: ": waymark_js.lang.label_min_elevation,
+			"Total Ascent: ": waymark_js.lang.label_ascent,
+			"Total Descent: ": waymark_js.lang.label_descent,
 		});
 		Waymark_L.setLocale("waymark");
 
@@ -9405,8 +9602,13 @@ function Waymark_Map_Viewer() {
 
 					var div = jQuery("<div />")
 						.addClass("waymark-image")
+
+						//When a gallery image is clicked
 						.on("click", { marker: image.marker }, function (e) {
 							var marker = e.data.marker;
+
+							//Zoom in
+							Waymark.map.setView(marker.getLatLng(), 16);
 
 							//Open popup at marker
 							marker.openPopup();

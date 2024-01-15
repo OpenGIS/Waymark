@@ -11,11 +11,12 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',
 			'custom_types' => array(),
-			'plugin_version' => '0.9.30',
+			'plugin_version' => '1.0.0',
 			'nonce_string' => 'Waymark_Nonce',
 			'site_url' => 'https://www.waymark.dev/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
 			'multi_value_seperator' => $multi_value_seperator,
+			'overlay_properties' => ['radius', 'type', 'title', 'description', 'image_thumbnail_url', 'image_medium_url', 'image_large_url'],
 			'shortcode' => 'Waymark',
 			'media_library_sizes' => ['thumbnail', 'medium', 'large', 'full'],
 			'mimes' => array(
@@ -345,9 +346,9 @@ class Waymark_Config {
 		$map_config['tile_layers'] = $tile_layers;
 
 		//Object Types
-		$map_config['marker_types'] = Waymark_Helper::get_object_types('marker');
-		$map_config['line_types'] = Waymark_Helper::get_object_types('line');
-		$map_config['shape_types'] = Waymark_Helper::get_object_types('shape');
+		$map_config['marker_types'] = Waymark_Helper::get_overlay_types('marker');
+		$map_config['line_types'] = Waymark_Helper::get_overlay_types('line');
+		$map_config['shape_types'] = Waymark_Helper::get_overlay_types('shape');
 
 		//Editor Options
 		$map_config['map_options'] = array(

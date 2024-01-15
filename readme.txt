@@ -1,42 +1,99 @@
 === Waymark ===
 Contributors: morehawes
-Tags: Map maker, Maps, Location, GPX, KML, GeoJSON, OpenStreetMap, Markers, Map markers
+Tags: GIS, Map maker, Maps, Leaflet, GPX, KML, GeoJSON, OpenStreetMap, EXIF, Map markers
 Requires at least: 4.6
 Tested up to: 6.4
 Requires PHP: 5.2
-Stable tag: 0.9.30
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create and share customisable interactive Maps. Embed OpenStreetMap, add Overlays like location aware Photos and Tracks with elevation profiles.
+Waymark adds powerful mapping features to WordPress that are easy to use. Create beautiful, interactive Maps that you can customise to suit your needs.
 
 == Description ==
 
-[vimeo https://vimeo.com/349571522]
+🗺 [View the Demo](https://www.ogis.app/yosemite/)
+🛠️ [Try the Editor](https://www.waymark.dev/try/)
+📼 [Watch the Video](https://www.waymark.dev/#footer)
+📖 [Read the Docs](https://www.waymark.dev/docs/)
+🌟 [Star on GitHub](https://github.com/opengis/waymark)
+❤️
 
-* <a href="https://www.waymark.dev/demo/">See the Demo &raquo;</a>
-* <a href="https://www.waymark.dev/try/">Try the Editor &raquo;</a>
-* <a href="https://www.waymark.dev/docs/">Read the Docs &raquo;</a>
-* <a href="https://github.com/morehawes/waymark">View on GitHub &raquo;</a>
+### Creating Maps
 
-Features:
+Use the intuitive [Editor](https://www.waymark.dev/docs/editor/) to create Maps with one, or thousands of interactive Overlays.
 
-* Easy to use, customisable and developer friendly.
-* Use the <a href="https://www.waymark.dev/docs/editor/">Editor</a> to create Maps containing Overlays (Markers, Lines and Shapes).
-* Every Overlay can be given a title, image and description; which is displayed once the Overlay is clicked.
-* Set styles and options once using <a href="https://www.waymark.dev/docs/types/">Types</a>, then simply select the appropriate Type when adding an Overlay. 
-* <a href="https://www.waymark.dev/docs/marker-clustering/">Marker Clustering</a> and Line direction arrows supported.
-* Add Maps to your content using the Waymark <a href="https://www.waymark.dev/docs/shortcodes/">Shortcode</a>, or link to the <a href="https://www.waymark.dev/map/route-map/">Map Details</a> page. 
-* <a href="https://www.openstreetmap.org/fixthemap">OpenStreetMap</a> is the default <a href="https://www.waymark.dev/docs/basemaps/">Basemap</a>, with support for multiple Basemaps.
-* Images uploaded with location data (EXIF) will have a Marker placed where the photo was taken.
-* Group Maps together using <a href="https://www.waymark.dev/docs/collections/">Collections</a> and display multiple Maps at once.
-* Import from GPX, KML and GeoJSON formats (GeoJSON properties can also be imported). You can export Maps and Collections in the same formats and let your visitors do it too.
-* An interactive profile chart can be displayed for Tracks uploaded with elevation data.
-* Add extra information to your Maps using <a href="https://www.waymark.dev/docs/meta/">Meta</a>; these are customisable form inputs that allow you to add additional data to your Maps. 
-* <a href="https://www.waymark.dev/docs/submissions/">Submissions</a> allow registered users, or guests to create Maps from the front-end of your site. You can control who can Submit Maps, what editor features are available and whether submissions should be approved before they are published.
-* For the developers: Maps are stored using the custom post type `waymark_map`, Meta is stored as Custom Fields and Collections use the `waymark_collection` Taxonomy. Most elements can be styled using CSS and have sensibly named `waymark-` classes.
+- **Overlays** - Create Markers, Lines and Shapes with a:
+  - Title
+  - Image (Media Library or link to external image)
+  - Description (Rich text editor, HTML supported)
+  - [Type](https://www.waymark.dev/docs/types/) (defined in Settings)
+- **Import**
+  - GPX
+  - KML
+  - GeoJSON (including [Properties](https://www.waymark.dev/docs/settings/#properties))
+  - EXIF (Image location metadata)
+  - [Elevation data](https://www.waymark.dev/map/track-with-elevation/) (adds an interactive profile chart for Lines with elevation data)
+- **[Meta](https://www.waymark.dev/docs/meta/)** - Add extra information to your Maps; these are customisable form inputs that allow you to add additional content to your Maps.
+- **[Types](https://www.waymark.dev/docs/types/)** - Set options to visually distinguish between Overlays (colours/icons etc.), then select it when using the Editor.
+- **[Collections](https://www.waymark.dev/docs/collections/)** - Group Maps together and display multiple Maps at once. Create complex Collection hierarchies to suit your needs and associate Maps with multiple Collections.
+- **[Submissions](https://www.waymark.dev/docs/submissions/)** - Allow registered users, or guests to create Maps from the front-end of your site. You can control who can Submit Maps, what editor features are available and whether submissions should be approved before they are published.
 
-Waymark is free, with no features to "unlock". I try to keep the plugin well supported, so please feel free to <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">reach out</a> with any questions or feedback.
+### Displaying Maps
+
+Embed your Maps using the `[Waymark]` Shortcode, or link to the [Map Details](https://www.waymark.dev/map/route-map/) page.
+
+- **[Shortcodes](https://www.waymark.dev/docs/shortcodes/)**
+  - Display a single Map, or a [Collection](https://www.waymark.dev/docs/collections/) of Maps anywhere that Shortcodes are supported.
+  - An optional Shortcode Header displays the Map/Collection title, a link to the Map Details page and any [Meta](https://www.waymark.dev/docs/meta/).
+  - Display a [Marker](https://www.waymark.dev/docs/shortcodes/#shortcode-markers) defined through the Shortcode.
+  - Display [Files](https://www.waymark.dev/docs/shortcodes/#shortcode-files) (GPX, KML & GeoJSON) from a URL without the need for a Map to be created.
+  - Display a Basemap only, without any Overlays by providing centre and zoom parameters.
+- **[Basemaps](https://www.waymark.dev/docs/basemaps/)** - Uses [OpenStreetMap](https://www.openstreetmap.org/fixthemap) by default, with support for multiple raster tiled/"slippy" Basemaps. You can switch Basemaps using the Overlay Filter.
+- **Overlay Filter** - Allow the user to filter which Overlays are currently visible on the Map. This works together with the Export feature, to select which Overlays are downloaded.
+- **[Export](https://www.waymark.dev/docs/shortcodes/#shortcode-export)**
+  - (Optionally) Let anyone Export Maps into GPX, KML and GeoJSON formats through the Shortcode Header or on the Map Details page.
+  - Works with the Overlay Filter to only include the currently visible Overlays.
+  - Works on mobile devices.
+
+### Customising
+
+Built to be flexible, Waymark has lots of [Settings]( https://www.waymark.dev/docs/settings/) to choose from. Be sure to check out [Map First](https://github.com/opengis/map-first), a minimal WordPress theme with an *obsession* for Maps (it's open-source too and contains lots of comments about customisations). As seen in the [demo](https://www.ogis.app/yosemite/).
+
+For developers:
+
+- Most elements can be [styled using CSS](https://www.waymark.dev/docs/styling-with-css-selectors/) and have sensibly named `waymark-` classes.
+- Maps are stored using the custom post type `waymark_map`
+- Meta is stored as Custom Fields (prefixed with `waymark_`)
+- Collections use the `waymark_collection` Taxonomy.
+- Use the [JavaScript callback function](https://www.waymark.dev/docs/callback-function/) to extend Waymark functionality.
+
+**Waymark is free, open-source ([GPL v2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)) and a labour of Love**. I try to keep the plugin well supported, so please feel free to <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">reach out</a> with any issues, questions or feedback.
+
+### Development
+
+> [!NOTE]
+> To develop locally you will need to have both Node.js and NPM [installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+[Grunt](https://gruntjs.com/) is used to run the build script, which compiles the JavaScript and CSS and performs some other tasks.
+
+```shell
+# Clone the repository
+git clone https://github.com/opengis/waymark.git
+
+# Navigate to the Waymark directory
+cd waymark
+
+# Install the dependencies (or pnpm/yarn install)
+npm install
+
+# Run the build script
+grunt
+```
+
+The build script will watch for changes to the JavaScript and CSS files.
+
+Pull requests are welcome!
 
 == Installation ==
 
@@ -50,26 +107,26 @@ With Waymark enabled, click on the "Maps" link in the sidebar to create and edit
 
 = Is There a Demo? =
 
-Yes, <a href="https://www.waymark.dev/demo/">here</a>. You can also try the Editor <a href="https://www.waymark.dev/try/">here</a>.
+Yes, <a href="https://www.waymark.dev/">here</a>. You can also try the Editor <a href="https://www.waymark.dev/try/">here</a>.
 
 = Can I Get More Help? =
 
-Yes, please view the <a href="https://www.waymark.dev/docs/">Documentation</a>.
+Yes, please view the <a href="https://www.waymark.dev/docs/">Documentation</a>. If you still need help, feel free to [reach out](https://wordpress.org/support/plugin/waymark/#new-topic-0).
 
 = How Can I Contribute? =
 
-* [Star the project on GitHub](https://github.com/morehawes/Waymark/)
+* [Star the project on GitHub](https://github.com/opengis/waymark/)
+* [Rate the plugin](https://wordpress.org/support/plugin/waymark/reviews/#new-post)
 * [Report bugs](https://wordpress.org/support/plugin/waymark/#new-topic-0)
 * [Suggest new features](https://wordpress.org/support/plugin/waymark/#new-topic-0)
 * [Translate the plugin](https://translate.wordpress.org/projects/wp-plugins/waymark/)
-* [Rate the plugin](https://wordpress.org/support/plugin/waymark/reviews/#new-post)
 * Share with anyone that will listen how much you like Waymark :)
 
-If you have anything bad to say, please <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">get in touch</a> before leaving a review, so I can try to fix it.
+If you have anything bad to say, please <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">get in touch</a> before leaving a review, this is how the plugin gets better!
 
 = Does Waymark Support Google Maps? =
 
-While Google Basemaps can be added to Waymark, Waymark does not use the Google Maps API (it uses <a href="https://leafletjs.com/">Leaflet</a>). There are other plugins available that are made specifically for Google Maps.
+Yes! While the Google Maps API is not used, <a href="https://gist.github.com/morehawes/f2982753074599363ca3a9f8582cd572">Google Basemaps can be added to Waymark</a> as raster tiles.  
 
 = Can I Translate the Plugin? =
 
@@ -79,21 +136,7 @@ Please! Waymark is localization ready, <a href="https://translate.wordpress.org/
 
 Waymark relies on input from it's users, thank you to everyone for providing feedback :)
 
-A big thank you to the following projects and their contributors. Without their work this plugin would not be possible:
-
-* <a href="https://wordpress.org/">WordPress</a>
-* <a href="https://www.openstreetmap.org/">OpenStreetMap</a>
-* <a href="https://leafletjs.com/">Leaflet</a>
-* <a href="https://jquery.com/">jQuery</a>
-* <a href="https://github.com/mapbox/togeojson">mapbox/togeojson</a>
-* <a href="https://ionic.io/ionicons/v2/cheatsheet.html">Ionicons</a>
-* <a href="https://fontawesome.com/v4.7.0/">Font Awesome</a>
-* <a href="https://github.com/Leaflet/Leaflet.Editable">Leaflet.Editable</a>
-* <a href="https://github.com/CliffCloud/Leaflet.Sleep">Leaflet.Sleep</a>
-* <a href="https://github.com/perliedman/leaflet-control-geocoder">leaflet-control-geocoder</a>
-* <a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>
-* <a href="https://github.com/maphubs/tokml">tokml</a>
-* <a href="https://github.com/tyrasd/togpx">togpx</a>
+Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thanks/)!
 
 == Screenshots ==
 
@@ -109,6 +152,16 @@ A big thank you to the following projects and their contributors. Without their 
 10. Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website.
 
 == Changelog ==
+
+= 1.0.0 =
+
+Thanks for helping Waymark get to Version 1! ❤️
+
+* [Map First](https://www.ogis.app/yosemite/) - A minimal WordPress theme with an *obsession* for Maps. It's open-source too and contains lots of comments about customisations. As seen in the [demo](https://www.ogis.app/yosemite/).
+* Added Total Ascent and Descent to Elevation Profile. Thanks to <a href="https://github.com/MaximeChallon">MaximeChallon</a> for the <a href="https://github.com/OpenGIS/Waymark/pull/29">Pull Request</a> :)
+* Improved rendering of multiple Maps through the Collection Shortcode, where the initial view would sometimes not be set correctly to view all Map data.
+* Updated documentation.
+* Lots of other bug fixes and improvements.
 
 = 0.9.30 =
 
@@ -136,7 +189,7 @@ A big thank you to the following projects and their contributors. Without their 
 
 = 0.9.29.2 =
 
-* Fixed a bug where the Shortcode Zoom and Centre parameters were being ignored. Thanks to <a href="https://github.com/killianweid">killianweid</a> for creating <a href="https://github.com/morehawes/Waymark/issues/25">this issue</a>.
+* Fixed a bug where the Shortcode Zoom and Centre parameters were being ignored. Thanks to <a href="https://github.com/killianweid">killianweid</a> for creating <a href="https://github.com/opengis/waymark/issues/25">this issue</a>.
 
 = 0.9.29.1 =
 
@@ -150,7 +203,7 @@ A big thank you to the following projects and their contributors. Without their 
 = 0.9.28.7 =
 
 * Meta data is now preserved when the Map is trashed/restored. Thanks to <a href="https://wordpress.org/support/users/killiandev7/">killiandev7</a> for <a href="https://wordpress.org/support/topic/feature-request-recover-map-data-after-recovering-a-deleted-map/">bringing this to my attention</a>.
-* Fixed a bug where special characters in Description were being messed up. Thanks to <a href="https://github.com/killianweid">killianweid</a> for creating this <a href="https://github.com/morehawes/Waymark/issues/24">issue</a>.
+* Fixed a bug where special characters in Description were being messed up. Thanks to <a href="https://github.com/killianweid">killianweid</a> for creating this <a href="https://github.com/opengis/waymark/issues/24">issue</a>.
 * Fixed a bug with some KML files when loading from URL using Shortcode. Thanks to <a href="https://wordpress.org/support/users/henkna/">henkna</a> for <a href="https://wordpress.org/support/topic/kml-fails-to-load/">letting me know about this</a>.
 * Added Leaflet Basemap examples URL to Settings > Basemaps.
 * Minor bug fixes and improvements.
@@ -161,7 +214,7 @@ Added `max_zoom` Shortcode option, which will prevent the Map from being zoomed 
 
 = 0.9.28.5 =
 
-Added `elevation_units` (metric/imperial) Shortcode option, which will override the Waymark > Elevation > Elevation Units option. Thanks to <a href="https://github.com/randombuffalo">randombuffalo</a> for the <a href="https://github.com/morehawes/waymark/issues/22">suggestion</a>.
+Added `elevation_units` (metric/imperial) Shortcode option, which will override the Waymark > Elevation > Elevation Units option. Thanks to <a href="https://github.com/randombuffalo">randombuffalo</a> for the <a href="https://github.com/opengis/waymark/issues/22">suggestion</a>.
 
 = 0.9.28.4 =
 
@@ -184,7 +237,7 @@ Added `elevation_units` (metric/imperial) Shortcode option, which will override 
 = 0.9.28 =
 
 * **Direction Arrows**
-  * Lines can now have a direction associated with them. To add a direction, click on a Line while editing a Map and select from the direction dropdown. Thanks <a href="https://wordpress.org/support/topic/feature-request-direction-of-travel/">for</a> <a href="https://wordpress.org/support/topic/direction-arrows-in-route/">the</a> <a href="https://github.com/morehawes/waymark/issues/4">suggestions</a>!
+  * Lines can now have a direction associated with them. To add a direction, click on a Line while editing a Map and select from the direction dropdown. Thanks <a href="https://wordpress.org/support/topic/feature-request-direction-of-travel/">for</a> <a href="https://wordpress.org/support/topic/direction-arrows-in-route/">the</a> <a href="https://github.com/opengis/waymark/issues/4">suggestions</a>!
 * **Interaction**
 	* By default, Waymark disables scroll zoom until the user hovers over the Map for 2 seconds. This behaviour can now be customised in Waymark Settings > Maps > Interaction. Settings allow you to adjust the delay and optionally display a message to the user while scroll zoom is disabled, for example "Click or Hover to Wake".
 	* Fixed an annoying glitch where mouse "wheeling" over the elevation chart caused the Map to zoom.
@@ -239,7 +292,7 @@ Credit to Werner for getting in touch and prompting these changes.
 
 = 0.9.21 =
 
-* Bug fix. Uncaught TypeError: Assignment to constant variable. Thanks to <a href="https://github.com/huubl">huubl</a> for the <a href="https://github.com/morehawes/waymark/pull/13">Pull Request</a>!
+* Bug fix. Uncaught TypeError: Assignment to constant variable. Thanks to <a href="https://github.com/huubl">huubl</a> for the <a href="https://github.com/opengis/waymark/pull/13">Pull Request</a>!
 
 = 0.9.20 = 
 
@@ -262,7 +315,7 @@ Credit to Werner for getting in touch and prompting these changes.
 
 = 0.9.17.1 =
 
-* Fixed a bug where the Export feature did not work correctly when embedding multiple Maps. Thanks to <a href="https://github.com/shenki">shenki</a> on <a href="https://github.com/morehawes/waymark/issues/3">GitHub</a>.
+* Fixed a bug where the Export feature did not work correctly when embedding multiple Maps. Thanks to <a href="https://github.com/shenki">shenki</a> on <a href="https://github.com/opengis/waymark/issues/3">GitHub</a>.
 * Waymark now has it's own <a href="https://www.waymark.dev/">website</a>! URLs updated.
 
 = 0.9.17 =
@@ -321,7 +374,7 @@ A <b>BIG</b> thank you to the following users for their help with testing:
     * Editor circle bug fix.
 * Gallery JavaScript bug fix.
 * Waymark is now localization ready! <a href="https://translate.wordpress.org/projects/wp-plugins/waymark/">Translation contributions</a> greatly appreciated :)
-* Waymark is now <a href="https://github.com/morehawes/waymark">on GitHub</a>.
+* Waymark is now <a href="https://github.com/opengis/waymark">on GitHub</a>.
 
 = 0.9.14 =
 

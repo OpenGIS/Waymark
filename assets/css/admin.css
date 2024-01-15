@@ -32,9 +32,9 @@ a.waymark-tooltip {
   margin-right: 0.5%;
   text-decoration: none !important;
   cursor: help !important;
-  background: #F9F9F9;
+  background: #f9f9f9;
   color: #444 !important;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   border-radius: 50%;
 }
 a.waymark-tooltip.waymark-link {
@@ -64,16 +64,13 @@ div.waymark-accordion-container .waymark-accordion-group {
   width: 100%;
   margin: 0 0 10px 0 !important;
 }
-div.waymark-accordion-container .waymark-accordion-group.waymark-first {
-  margin-top: 15px !important;
-}
 div.waymark-accordion-container .waymark-accordion-group legend {
   display: block;
   padding: 10px;
   width: -webkit-fill-available;
   font-weight: bold;
   font-size: 1.2em;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   background: #f1f1f1;
   border-radius: 5px;
   cursor: pointer;
@@ -346,6 +343,7 @@ div.widget-content div.waymark-parameters-container div.waymark-controls input[t
  * ============= SETTINGS =============
  * ====================================
  */
+body.waymark_page_waymark-settings #waymark-admin-container.waymark-active-waymark-settings-tab-misc .waymark-settings-section-cluster_options,
 body.waymark_page_waymark-settings #waymark-admin-container.waymark-active-waymark-settings-tab-misc .waymark-settings-section-interaction_options,
 body.waymark_page_waymark-settings #waymark-admin-container.waymark-active-waymark-settings-tab-misc .waymark-settings-section-elevation_options,
 body.waymark_page_waymark-settings #waymark-admin-container.waymark-active-waymark-settings-tab-misc .waymark-settings-section-shortcode_options,
@@ -515,6 +513,7 @@ div#waymark-admin-container {
   position: relative;
   padding-right: 210px;
   max-width: 600px;
+  background: #f7f7f7;
   /* About */
 }
 div#waymark-admin-container.waymark-top h2.promo {
@@ -625,11 +624,12 @@ div#waymark-admin-container #waymark-about {
   top: 0;
   right: 0;
   width: 180px;
-  max-height: 555px;
-  overflow-y: scroll;
   padding: 15px;
-  border: 1px solid #ccc;
   background: #f7f7f7;
+}
+div#waymark-admin-container #waymark-about p,
+div#waymark-admin-container #waymark-about li {
+  font-size: 16px;
 }
 div#waymark-admin-container #waymark-about ul {
   padding-left: 15px;
@@ -645,7 +645,7 @@ div#waymark-admin-container #waymark-about p {
 div#waymark-admin-container #waymark-about p.waymark-first {
   margin: 20px 0 40px 0;
   font-weight: bold;
-  font-size: 1.8em;
+  font-size: 23px;
   line-height: 1.1em;
 }
 div#waymark-admin-container #waymark-about img {

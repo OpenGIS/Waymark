@@ -32,9 +32,9 @@ a.waymark-tooltip {
   margin-right: 0.5%;
   text-decoration: none !important;
   cursor: help !important;
-  background: #F9F9F9;
+  background: #f9f9f9;
   color: #444 !important;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   border-radius: 50%;
 }
 a.waymark-tooltip.waymark-link {
@@ -64,16 +64,13 @@ div.waymark-accordion-container .waymark-accordion-group {
   width: 100%;
   margin: 0 0 10px 0 !important;
 }
-div.waymark-accordion-container .waymark-accordion-group.waymark-first {
-  margin-top: 15px !important;
-}
 div.waymark-accordion-container .waymark-accordion-group legend {
   display: block;
   padding: 10px;
   width: -webkit-fill-available;
   font-weight: bold;
   font-size: 1.2em;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   background: #f1f1f1;
   border-radius: 5px;
   cursor: pointer;
@@ -103,7 +100,7 @@ div.waymark-accordion-container .waymark-accordion-group .waymark-parameter-grou
 .waymark-shortcode .waymark-header {
   position: relative;
   padding: 10px;
-  min-height: 26px;
+  min-height: 40px;
   background: #f7f7f7;
   border-bottom: 1px solid #ccc;
 }

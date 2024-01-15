@@ -863,6 +863,10 @@ class Waymark_Settings {
 				'map_options' => array(
 					'title' => esc_html__('Map Options', 'waymark'),
 					'description' => esc_html__('Use these options to change how Maps are displayed.', 'waymark'),
+					'help' => array(
+						'url' => esc_attr(Waymark_Helper::site_url('docs-cat/examples')),
+						'text' => esc_attr__('See Examples &raquo;', 'waymark'),
+					),
 					'fields' => array(
 						'map_default_latlng' => array(
 							'name' => 'map_default_latlng',
@@ -1008,6 +1012,10 @@ class Waymark_Settings {
 				'cluster_options' => array(
 					'title' => esc_html__('Cluster Options', 'waymark'),
 					'description' => sprintf(__('With Clustering enabled, Markers will be grouped together when they are close together. This can help to reduce clutter on the Map.', 'waymark'), Waymark_Config::get_default('misc', 'cluster_options', 'cluster_threshold')),
+					'help' => array(
+						'url' => esc_attr(Waymark_Helper::site_url('docs/marker-clustering')),
+						'text' => esc_attr__('Clustering Docs &raquo;', 'waymark'),
+					),
 					'fields' => array(
 						'show_cluster' => array(
 							'name' => 'show_cluster',
@@ -1134,6 +1142,10 @@ class Waymark_Settings {
 				'elevation_options' => array(
 					'title' => esc_html__('Elevation Options', 'waymark'),
 					'description' => esc_html__('Lines with elevation data.', 'waymark'),
+					'help' => array(
+						'url' => esc_attr(Waymark_Helper::site_url('docs/elevation-profile-colours')),
+						'text' => esc_attr__('Elevation Styling &raquo;', 'waymark'),
+					),
 					'fields' => array(
 						'show_elevation' => array(
 							'name' => 'show_elevation',
@@ -1188,6 +1200,10 @@ class Waymark_Settings {
 				'editor_options' => array(
 					'title' => esc_html__('Editor Options', 'waymark'),
 					'description' => esc_html__('Customising the Map Editor.', 'waymark'),
+					'help' => array(
+						'url' => esc_attr(Waymark_Helper::site_url('docs/editor')),
+						'text' => esc_attr__('Editor Docs &raquo;', 'waymark'),
+					),
 					'fields' => array(
 						'confirm_delete' => array(
 							'name' => 'confirm_delete',

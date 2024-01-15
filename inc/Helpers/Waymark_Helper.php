@@ -15,61 +15,24 @@ class Waymark_Helper {
 		$out .= '		<img width="75" height="75" alt="Joe\'s mug" src="//www.morehawes.ca/assets/images/Joe1BW.jpg" />' . "\n";
 		$out .= '		<p class="waymark-first"><b>' . sprintf(esc_html__("Hi, I'm %s.", 'waymark'), "Joe") . '</b></p>' . "\n";
 
-		$out .= '		<p style="font-size:1.2em">' . __('🤩🤩🤩🤩🤩🤩🤩🤩🤩🤩🤩<br /><b>PLEASE STAR Waymark on <a href="https://github.com/morehawes/Waymark">GitHub</a>!</b> ... help me get to 16 stars<br />🤩🤩🤩🤩🤩🤩🤩🤩🤩🤩🤩', 'waymark') . '</p>' . "\n";
-		$out .= '		<p>' . __('Waymark is <strong><a href="https://github.com/morehawes/waymark">open source</a></strong> and a work in progress.', 'waymark') . '</p>' . "\n";
+		$out .= '		<p>' . __('Waymark is <strong><a href="https://github.com/opengis/waymark">open source</a></strong> and a work in progress.', 'waymark') . '</p>' . "\n";
 		$out .= '		<p>' . __('Feedback is very important, so please feel free to get in touch by either:', 'waymark') . '</p>' . "\n";
 
 		$out .= '		<ul>' . "\n";
 		$out .= '			<li>' . sprintf(__('Leaving a <strong><a href="%s">review</a></strong>, or creating a <a href="%s">support topic</a> on the WordPress plugin directory.', 'waymark'), 'https://wordpress.org/support/plugin/waymark/reviews/#new-post', 'https://wordpress.org/support/plugin/waymark/#new-topic-0') . '</li>' . "\n";
 		$out .= '			<li>' . sprintf(__('Posting in the <a href="%s">Forums</a>.', 'waymark'), 'https://www.waymark.dev/forums/') . '</li>' . "\n";
-		$out .= '			<li>' . sprintf(__('Creating a <a href="%s">GitHub issue</a>.', 'waymark'), 'https://github.com/morehawes/waymark/issues/new') . '</li>' . "\n";
+		$out .= '			<li>' . sprintf(__('Creating a <a href="%s">GitHub issue</a>.', 'waymark'), 'https://github.com/opengis/waymark/issues/new') . '</li>' . "\n";
 		$out .= '		</ul>' . "\n";
 
 		$out .= '		<p>' . esc_html__('Thanks', 'waymark') . '!</p>' . "\n";
 
 		$out .= '		<hr />' . "\n";
 
-		$out .= '		<p>' . esc_html__('A big thank you to the following. Without their work this plugin would not be possible:', 'waymark') . '</p>' . "\n";
+		$out .= '		<p>' . sprintf(__('Built on the shoulders of giants, <a href="%s">thank you</a>!', 'waymark'), 'https://www.waymark.dev/docs/thanks/') . '</p>' . "\n";
 
-		$out .= '		<ul>' . "\n";
-		$out .= '			<li><a href="https://wordpress.org/">WordPress</a></li>' . "\n";
-		$out .= '			<li><a href="https://www.openstreetmap.org/">OpenStreetMap</a></li>' . "\n";
-		$out .= '			<li><a href="https://leafletjs.com/">Leaflet</a></li>' . "\n";
-		$out .= '			<li><a href="https://jquery.com/">jQuery</a></li>' . "\n";
-		$out .= '			<li><a href="https://github.com/mapbox/togeojson">mapbox/togeojson</a></li>' . "\n";
-		$out .= '			<li><a href="https://ionic.io/ionicons/v2/cheatsheet.html">Ionicons</a></li>' . "\n";
-		$out .= '			<li><a href="https://fontawesome.com/v4.7.0/">Font Awesome</a></li>' . "\n";
-		$out .= '			<li><a href="https://github.com/Leaflet/Leaflet.Editable">Leaflet.Editable</a></li>' . "\n";
-		$out .= '			<li><a href="https://github.com/CliffCloud/Leaflet.Sleep">Leaflet.Sleep</a></li>' . "\n";
-		$out .= '			<li><a href="https://github.com/perliedman/leaflet-control-geocoder">leaflet-control-geocoder</a></li>' . "\n";
-		$out .= '			<li><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a></li>' . "\n";
-		$out .= '			<li><a href="https://github.com/maphubs/tokml">tokml</a></li>' . "\n";
-		$out .= '			<li><a href="https://github.com/tyrasd/togpx">togpx</a></li>' . "\n";
-		$out .= '			<li class="waymark-multi">' . "\n";
-		$out .= '				<a href="https://stackoverflow.com/questions/41522376/leaflet-open-popup-at-cursor-position-instead-of-linestring-center">S</a>' . "\n";
-		$out .= '				<a href="https://stackoverflow.com/questions/32106243/regex-to-remove-all-non-alpha-numeric-and-replace-spaces-with/32106277">t</a>' . "\n";
-		$out .= '				<a href="https://stackoverflow.com/questions/22278282/get-the-dom-element-associated-with-a-leaflet-class">a</a>' . "\n";
-		$out .= '				<a href="https://stackoverflow.com/questions/22948096/get-the-bounding-box-of-the-visible-leaflet-map">c</a>' . "\n";
-		$out .= '				<a href="https://stackoverflow.com/questions/20816173/close-all-popups-with-leaflet-js">k</a>' . "\n";
-		$out .= '				<a href="https://stackoverflow.com/questions/793014/jquery-trigger-file-input">o</a>' . "\n";
-		$out .= '				<a href="https://stackoverflow.com/questions/18382945/how-do-i-get-the-latlng-after-the-dragend-event-in-leaflet">v</a>' . "\n";
-		$out .= '				<a href="https://stackoverflow.com/questions/33759578/how-to-change-base-layer-using-js-and-leaflet-layers-control">e</a>' . "\n";
-		$out .= '				<a href="https://stackoverflow.com/questions/35125036/export-leaflet-map-to-geojson">r</a>' . "\n";
-		$out .= '				<a href="https://stackoverflow.com/questions/4817029/whats-the-best-way-to-detect-a-touch-screen-device-using-javascript/4819886#4819886">f</a>' . "\n";
-		$out .= '				<a href="https://stackoverflow.com/questions/2320069/jquery-ajax-file-upload/24939229#24939229">l</a>' . "\n";
-		$out .= '				<a href="https://stackoverflow.com/questions/44832150/how-to-append-the-leaflet-js-attribution-string">o</a>' . "\n";
-		$out .= '				<a href="https://stackoverflow.com/questions/22808065/how-to-make-all-links-in-an-iframe-open-in-new-tab/22808227#22808227">w</a>' . "\n";
-		$out .= '			</li>' . "\n";
-		$out .= '			<li class="waymark-multi">' . esc_html__('and', 'waymark') . " \n";
-		$out .= '				<a href="https://geojson.org/">o</a>' . "\n";
-		$out .= '				<a href="https://www.thunderforest.com/maps/opencyclemap/">t</a>' . "\n";
-		$out .= '				<a href="https://www.gaiagps.com/">h</a>' . "\n";
-		$out .= '				<a href="https://thewebsitedev.com/dynamic-content-tinymce/">e</a>' . "\n";
-		$out .= '				<a href="https://jamesdigioia.com/add-button-pop-wordpresss-tinymce-editor/">r</a>' . "\n";
-		$out .= '				<a href="http://www.jacquet80.eu/blog/post/2011/02/Display-GPX-tracks-using-Google-Maps-API">s</a>' . "\n";
-		$out .= '				<a href="https://kristarella.blog/2009/04/add-image-exif-metadata-to-wordpress/">!</a>' . "\n";
-		$out .= '			</li>' . "\n";
-		$out .= '		</ul>' . "\n";
+		// Debug Info
+		$debug = (self::is_debug()) ? '1' : '0';
+		$out .= '		Waymark v' . Waymark_Config::get_item('plugin_version') . ' | <a href="' . admin_url('edit.php?post_type=waymark_map&page=waymark-settings&content=waymark-settings-tab-misc#wpfooter') . '">' . __('Debug', 'waymark') . '</a>: ' . $debug . "\n";
 
 		$out .= '	</div>' . "\n";
 
@@ -178,7 +141,7 @@ class Waymark_Helper {
 
 				//Select
 				if (in_array($setting_meta['meta_type'], array('select')) && array_key_exists('meta_options', $setting_meta)) {
-					$options_array = Waymark_Helper::comma_string_to_array($setting_meta['meta_options']);
+					$options_array = self::comma_string_to_array($setting_meta['meta_options']);
 
 					//Only if option exists
 					if (isset($options_array[$Map->data[$meta_key]])) {
@@ -186,8 +149,8 @@ class Waymark_Helper {
 					}
 					//Multi-Select
 				} elseif (in_array($setting_meta['meta_type'], array('select_multi')) && array_key_exists('meta_options', $setting_meta)) {
-					$options_array = Waymark_Helper::comma_string_to_array($setting_meta['meta_options']);
-					$values_array = Waymark_Helper::array_string_to_array($Map->data[$meta_key]);
+					$options_array = self::comma_string_to_array($setting_meta['meta_options']);
+					$values_array = self::array_string_to_array($Map->data[$meta_key]);
 
 					//Build output
 					$data['meta_value'] = '';
@@ -236,13 +199,13 @@ class Waymark_Helper {
 			$map_meta['export_data'] = array(
 				'meta_key' => 'export_data',
 				'meta_title' => esc_html__('Export', 'waymark'),
-				'meta_value' => Waymark_Helper::map_export_html($Map),
+				'meta_value' => self::map_export_html($Map),
 				'meta_info' => '<a data-title="' . esc_attr__('This will download the Overlays currently displayed by the Map in the selected format.', 'waymark') . '" href="#" onclick="return false;" class="waymark-tooltip">?</a>',
 				'meta_group' => '',
 			);
 		}
 
-// 		Waymark_Helper::debug($map_meta);
+// 		self::debug($map_meta);
 
 		return $map_meta;
 	}
@@ -265,13 +228,13 @@ class Waymark_Helper {
 			$map_meta['export_data'] = array(
 				'meta_key' => 'export_data',
 				'meta_title' => esc_html__('Export', 'waymark'),
-				'meta_value' => Waymark_Helper::collection_export_html($Collection),
+				'meta_value' => self::collection_export_html($Collection),
 				'meta_info' => '<a data-title="' . esc_attr__('This will download the Overlays currently displayed by the Map in the selected format.', 'waymark') . '" href="#" onclick="return false;" class="waymark-tooltip">?</a>',
 				'meta_group' => '',
 			);
 		}
 
-// 		Waymark_Helper::debug($map_meta);
+// 		self::debug($map_meta);
 
 		return $map_meta;
 	}
@@ -287,7 +250,7 @@ class Waymark_Helper {
 	static public function group_meta($meta_array, $meta_groups = []) {
 		if (!$meta_groups) {
 			//Get Groups
-			$meta_groups = Waymark_Helper::get_meta_groups();
+			$meta_groups = self::get_meta_groups();
 		}
 
 		//Sort into groups
@@ -312,10 +275,10 @@ class Waymark_Helper {
 		//Do we have data?
 		if (is_array($meta_array) && sizeof($meta_array)) {
 			//Get Meta Groups
-			$meta_groups = Waymark_Helper::get_meta_groups();
+			$meta_groups = self::get_meta_groups();
 
 			//Sort into groups
-			$meta_grouped = Waymark_Helper::group_meta($meta_array, $meta_groups);
+			$meta_grouped = self::group_meta($meta_array, $meta_groups);
 
 			//Container
 			$out = '<!-- START Parameter Container -->' . "\n";
@@ -495,7 +458,11 @@ class Waymark_Helper {
 		return $obj;
 	}
 
-	static public function remove_unwanted_data_properties($data_in, $wanted = array('radius', 'type', 'title', 'description', 'image_thumbnail_url', 'image_medium_url', 'image_large_url')) {
+	static public function remove_unwanted_overlay_properties(Array $data_in = [], Array $wanted = []) {
+		if (!sizeof($wanted)) {
+			$wanted = Waymark_Config::get_item('overlay_properties');
+		}
+
 		$FeatureCollection = json_decode($data_in);
 
 		$FeatureCollection = self::stringify_numbers($FeatureCollection);
@@ -558,68 +525,30 @@ class Waymark_Helper {
 
 	static public function add_map_link_to_description($map_id = null, $map_title = false, $map_data = null) {
 		$desc_append = '<div class="waymark-description-link">';
-		$desc_append .= esc_html__('Part of', 'waymark') . ' <b>';
-		if ($map_title) {
-			$desc_append .= '<a href="' . get_permalink($map_id) . '">' . $map_title . '</a>';
-		} else {
-			$desc_append .= '<a href="' . get_permalink($map_id) . '">' . esc_html__('Map', 'waymark') . '</a>';
-		}
-		$desc_append .= '</b>.</div>';
 
-		return Waymark_Helper::set_map_data_property($map_data, 'description', $desc_append, true);
-	}
+		// Title?
+		$map_title = ($map_title) ? $map_title : esc_html__('Map', 'waymark');
 
-	static public function map_data_to_objects($map_data) {
-		$objects = array(
-			'markers' => array(),
-			'lines' => array(),
-			'shapes' => array(),
-		);
+		// Add link to Map
+		$desc_append .= '	<span class="waymark-map-link"><a href="' . get_permalink($map_id) . '">' . $map_title . '</a></span>';
 
-		$FeatureCollection = json_decode($map_data);
+		// Is Map part of the waymark_collection taxonomy?
+		$collections = wp_get_post_terms($map_id, 'waymark_collection');
 
-		//Ensure valid data
-		if ($FeatureCollection && sizeof($FeatureCollection->features)) {
-			foreach ($FeatureCollection->features as $feature) {
-				if (isset($feature->geometry->type)) {
-					switch ($feature->geometry->type) {
-					case 'Point':
-						//Waymark_Helper::debug($feature);
+		//If we have Collections
+		if (sizeof($collections)) {
+			//Sort by count ASC
+			usort($collections, function ($a, $b) {
+				return $a->count < $b->count;
+			});
 
-						//Circle
-						if (isset($feature->properties->radius)) {
-							$objects['shapes'][$feature->properties->type][] = $feature->properties;
-							//Marker
-						} else {
-							$objects['markers'][$feature->properties->type][] = $feature->properties;
-						}
-
-						break;
-
-					case 'LineString':
-					case 'MultiLineString':
-						$objects['lines'][$feature->properties->type][] = $feature->properties;
-
-						break;
-					case 'Polygon':
-						$objects['shapes'][$feature->properties->type][] = $feature->properties;
-
-						break;
-					}
-				}
-			}
-
-			//Sort by size of child array
-			foreach ($objects as $type => &$objs) {
-				//Thanks! https://stackoverflow.com/a/9455586/569788
-				uasort($objs, function ($a, $b) {
-					return (count($b) - count($a));
-				});
-			}
-
+			// Add link to first
+			$desc_append .= '	<span class="waymark-collection-link"><a href="' . get_term_link($collections[0]) . '">' . $collections[0]->name . '</a></span>';
 		}
 
-		return $objects;
+		$desc_append .= '</div>';
+
+		return self::set_map_data_property($map_data, 'description', $desc_append, true);
 	}
 
 	public static function convert_single_value_to_array($value_in) {
@@ -633,7 +562,7 @@ class Waymark_Helper {
 				$count = 0;
 				foreach ($multi as $m) {
 					$array_out[$count][$key] = $m;
-					//				Waymark_Helper::debug($m, false);
+					//				self::debug($m, false);
 
 					$count++;
 				}
@@ -689,8 +618,16 @@ class Waymark_Helper {
 		return $array_out;
 	}
 
-	public static function get_object_types($type = 'marker', $use_key = false, $as_options = false) {
-		$object_types = Waymark_Config::get_item($type . 's', $type . '_types', true);
+	/**
+	 * Get the overlay types
+	 *
+	 * @param  string  $feature_type      Feature type
+	 * @param  boolean $use_key           Build associative array using $use_key as key
+	 * @param  boolean $as_options        Build as options array ready for <select>
+	 * @return array                      Array of overlay types
+	 */
+	public static function get_overlay_types(String $feature_type = 'marker', String $use_key = '', Bool $as_options = false) {
+		$object_types = Waymark_Config::get_item($feature_type . 's', $feature_type . '_types', true);
 
 		//Use keys
 		if ($use_key) {
@@ -709,6 +646,23 @@ class Waymark_Helper {
 		}
 
 		return $object_types;
+	}
+
+	/**
+	 * Get the overlay type data
+	 *
+	 * @param  string  $feature_type      Feature type
+	 * @param  string  $type_key          Type key
+	 * @return array                      Array of overlay types
+	 */
+	public static function get_type_data(String $feature_type = 'marker', String $type_key = '') {
+		$marker_types = self::get_overlay_types($feature_type, $feature_type . '_title');
+
+		if (array_key_exists($type_key, $marker_types)) {
+			return $marker_types[$type_key];
+		} else {
+			return false;
+		}
 	}
 
 	public static function array_string_to_array($string) {
@@ -738,7 +692,7 @@ class Waymark_Helper {
 
 		$element = (is_admin()) ? 'div' : 'form';
 
-		$out = '<' . $element . ' action="' . Waymark_Helper::http_url() . '" method="post" id="waymark-map-export-' . $Map->post_id . '" class="waymark-map-export" data-map_id="' . $Map->post_id . '" data-map_slug="' . sanitize_title($Map->post_title) . '">' . "\n";
+		$out = '<' . $element . ' action="' . self::http_url() . '" method="post" id="waymark-map-export-' . $Map->post_id . '" class="waymark-map-export" data-map_id="' . $Map->post_id . '" data-map_slug="' . sanitize_title($Map->post_title) . '">' . "\n";
 		$out .= '	<select name="export_format">' . "\n";
 		$out .= '		<option value="gpx">GPX</option>' . "\n";
 		$out .= '		<option value="kml">KML</option>' . "\n";
@@ -755,7 +709,7 @@ class Waymark_Helper {
 	}
 
 	static public function collection_export_html($Collection) {
-// 		Waymark_Helper::debug($Collection);
+// 		self::debug($Collection);
 
 		if (!isset($Collection->collection_id)) {
 			return false;
@@ -763,7 +717,7 @@ class Waymark_Helper {
 
 		$element = (is_admin()) ? 'div' : 'form';
 
-		$out = '<' . $element . ' action="' . Waymark_Helper::http_url() . '" method="post" id="waymark-map-export-' . $Collection->collection_id . '" class="waymark-map-export" data-collection_id="' . $Collection->collection_id . '" data-collection_slug="' . $Collection->slug . '">' . "\n";
+		$out = '<' . $element . ' action="' . self::http_url() . '" method="post" id="waymark-map-export-' . $Collection->collection_id . '" class="waymark-map-export" data-collection_id="' . $Collection->collection_id . '" data-collection_slug="' . $Collection->slug . '">' . "\n";
 		$out .= '	<select name="export_format">' . "\n";
 		$out .= '		<option value="gpx">GPX</option>' . "\n";
 		$out .= '		<option value="kml">KML</option>' . "\n";
@@ -801,7 +755,7 @@ class Waymark_Helper {
 			//If exists
 			if (array_key_exists($key, $s)) {
 				//Add as option
-				$options_array[Waymark_Helper::make_key($s[$key])] = $s[$key];
+				$options_array[self::make_key($s[$key])] = $s[$key];
 			}
 		}
 
@@ -1032,5 +986,516 @@ class Waymark_Helper {
 		}
 
 		return false;
+	}
+
+	/**
+	 * build_icon_data
+	 *
+	 * Builds the data necessary to render an icon
+	 *
+	 * @param  array  $type Type data
+	 * @return array        Icon data
+	 * @since  2024.1
+	 * @access public
+	 * @static
+	 */
+	static public function build_icon_data(Array $type = []) {
+
+		// self::debug($type);
+
+		// If Type key not set
+		if (!isset($type['type_key'])) {
+			//Create Type Key
+			$type['type_key'] = self::make_key($type['marker_title']);
+
+		}
+
+		$icon_data = [
+			'className' => 'waymark-marker waymark-marker-' . $type['type_key'],
+		];
+
+		//Shape
+		if (isset($type['marker_shape']) && isset($type['marker_size'])) {
+			$icon_data['className'] .= ' waymark-marker-' . $type['marker_shape'];
+			$icon_data['className'] .= ' waymark-marker-' . $type['marker_size'];
+
+			switch ($type['marker_shape']) {
+			//Markers & Circles
+			case 'rectangle':
+			case 'circle':
+			case 'marker':
+				//Size
+				switch ($type['marker_size']) {
+				case 'small':
+					$icon_data['iconSize'] = [16, 16];
+
+					break;
+				case 'medium':
+					$icon_data['iconSize'] = [25, 25];
+
+					break;
+				default:
+				case 'large':
+					$icon_data['iconSize'] = [32, 32];
+
+					break;
+				}
+
+				break;
+			}
+
+			//Marker only
+			if ($type['marker_shape'] == 'marker') {
+				$icon_data['iconAnchor'] = [
+					$icon_data['iconSize'][0] / 2,
+					$icon_data['iconSize'][1] * 1.25,
+				];
+			}
+		}
+
+		//CSS Styles
+		$background_css = 'background:' . self::get_marker_background($type['marker_colour']) . ';';
+		$icon_css = 'color:' . $type['icon_colour'] . ';';
+
+		//HTML
+		$icon_data['html'] = '<div class="waymark-marker-background" style="' . $background_css . '"></div>';
+
+		//Classes
+		$icon_class = 'waymark-marker-icon';
+
+		//Text, HTML or Icon Name
+		switch ($type['icon_type']) {
+		//Text
+		case 'text':
+			$icon_class .= ' waymark-icon-text';
+
+			$icon_data['html'] .= '<div style="' . $icon_css . '" class="' . $icon_class . '">' . $type['marker_icon'] . '</div>';
+
+			break;
+
+		//HTML
+		case 'html':
+			$icon_class .= ' waymark-icon-html';
+
+			//Decode HTML entities
+			$icon_html = html_entity_decode($type['marker_icon']);
+
+			$icon_data['html'] .= '<div class="' . $icon_class . '">' . $icon_html . '</div>';
+
+			break;
+
+		//Icon Name
+		case 'icon':
+		default:
+			$icon_class .= ' waymark-icon-icon';
+
+			//If Ionic Icons
+			if (strpos($type['marker_icon'], 'ion-') === 0) {
+				$icon_class .= ' ion ';
+				$icon_class .= ' ' . $type['marker_icon'];
+				//Font Awesome
+			} elseif (strpos($type['marker_icon'], 'fa-') === 0) {
+				$icon_class .= ' fa';
+				$icon_class .= ' ' . $type['marker_icon'];
+				//Default to Ionic
+			} else {
+				$icon_class .= ' ion';
+				$icon_class .= ' ion-' . $type['marker_icon'];
+			}
+
+			$icon_data['html'] .= '<i style="' . $icon_css . '" class="' . $icon_class . '"></i>';
+
+			break;
+		}
+
+		return $icon_data;
+	}
+
+	/**
+	 * build_icon_html
+	 * Builds the HTML for an icon
+	 * @param  array  $icon_data Icon data
+	 * @return string            HTML
+	 * @since  2024.1
+	 * @access public
+	 * @static
+	 */
+	static public function build_icon_html(Array $icon_data = []) {
+
+		// self::debug($icon_data);
+
+		$icon_html = '<div class="' . $icon_data['className'] . '">';
+
+		//HTML
+		if (isset($icon_data['html'])) {
+			$icon_html .= $icon_data['html'];
+		}
+
+		$icon_html .= '</div>';
+
+		return $icon_html;
+
+	}
+
+	/**
+	 *
+	 * Converts old background options to new ones
+	 *
+	 * @param  string $colour Colour
+	 * @return string         Colour
+	 * @since  2024.1
+	 * @access public
+	 * @static
+	 *
+	 */
+	public static function get_marker_background(String $colour = '') {
+		$old_background_options = [
+			'red',
+			'darkred',
+			'orange',
+			'green',
+			'darkgreen',
+			'blue',
+			'purple',
+			'darkpurple',
+			'cadetblue',
+			'white',
+			'black',
+		];
+
+		//Convert
+		if (in_array($colour, $old_background_options)) {
+			switch ($colour) {
+			case 'red':
+				return '#da3d20';
+				break;
+			case 'darkred':
+				return '#a43233';
+				break;
+			case 'orange':
+				return '#f9960a';
+				break;
+			case 'green':
+				return '#70af00';
+				break;
+			case 'darkgreen':
+				return '#72820d';
+				break;
+			case 'blue':
+				return '#2aabe1';
+				break;
+			case 'purple':
+				return '#d553bd';
+				break;
+			case 'darkpurple':
+				return '#5c3a6e';
+				break;
+			case 'cadetblue':
+				return '#416979';
+				break;
+			case 'white':
+				return '#fbfbfb';
+				break;
+			case 'black':
+				return '#303030';
+				break;
+			}
+		}
+
+		return $colour;
+	}
+
+	/**
+	 *
+	 * Builds the HTML content for an overlay
+	 *
+	 * @param  array  $feature      Feature array
+	 * @param  string $feature_type Feature type
+	 * @param  array  $type_data    Type data
+	 * @return string               HTML content
+	 * @since  2024.1
+	 * @access public
+	 * @static
+	 *
+	 */
+	public static function build_overlay_content(Array $feature = [], String $feature_type = 'marker', Array $type_data = []) {
+
+		// Switch by feature_type
+		switch ($feature_type) {
+		case 'marker':
+			$content = '<div class="waymark-overlay-content waymark-overlay-marker" data-marker_latlng="' . $feature['geometry']['coordinates'][1] . ',' . $feature['geometry']['coordinates'][0] . '">' . "\n";
+
+			break;
+
+		default:
+			$content = '<div class="waymark-overlay-content waymark-overlay-' . $feature_type . '">' . "\n";
+
+			break;
+		}
+
+		// If we don't have type data
+		if (empty($type_data)) {
+			// Get Type Data
+			$type_data = self::get_type_data($feature_type, $feature['properties']['type_key']);
+
+			self::debug($type_data);
+
+		}
+
+		//Expected Waymark properties
+		// i.e. array('radius', 'type', 'title', 'description', 'image_thumbnail_url', 'image_medium_url', 'image_large_url')
+		foreach (Waymark_Config::get_item('overlay_properties') as $property_key) {
+			//Property not set
+			if (!isset($feature['properties'][$property_key])) {
+				continue;
+			}
+
+			//Wrap in div
+			$content .= '<div class="waymark-overlay-property waymark-overlay-property-' . $property_key . '">';
+
+			switch ($property_key) {
+
+			//Title
+			case 'title':
+				$title = $feature['properties']['title'];
+
+				//We have a title
+				if ($title) {
+					$content .= '<strong>' . $feature['properties']['title'] . '</strong>';
+					//No description
+				} else {
+					$content .= '<strong>' . $type_data['type_title'] . '</strong>';
+				}
+
+				break;
+
+			//Type
+			case 'type':
+				// if (Waymark_Config::get_item('map_options.show_type_labels') != '1') {
+				// 	break;
+				// }
+
+				$content .= self::type_to_text($feature_type, $type_data, 'small');
+
+				break;
+
+			//Description
+			case 'description':
+				$description = $feature['properties']['description'];
+
+				//We have a description
+				if ($description) {
+					//HTML
+					if (strpos($description, '<') === 0) {
+						$content .= $description;
+						//Plain text
+					} else {
+						$content .= '<p>' . $description . '</p>';
+					}
+					//No description
+				} else {
+					$content .= '<p>&nbsp;</p>';
+				}
+
+				break;
+
+			//Image
+			case 'image_large_url':
+				//We have an image
+				if (isset($feature['properties']['image_large_url'])) {
+					//Use Medium if we have it
+					$thumb_url = $feature['properties']['image_large_url'];
+					if (isset($feature['properties']['image_medium_url'])) {
+						$thumb_url = $feature['properties']['image_medium_url'];
+					}
+
+					$content .= '<a href="' . $feature['properties']['image_large_url'] . '" target="_blank" style="background-image:url(' . $thumb_url . ')"></a>';
+					//We don't have an image
+				} else {
+					$content .= '<p>&nbsp;</p>';
+				}
+
+				break;
+
+			}
+
+			$content .= '</div>';
+		}
+
+		$content .= '</div>';
+
+		return $content;
+	}
+
+	/**
+	 *
+	 * Represent Type as text
+	 *
+	 * Outputs a textual representation of a type, coloured according to the type's colour Settings
+	 * https://www.waymark.dev/docs/settings/
+	 *
+	 * @param string $feature_type - marker, line, shape
+	 * @param array $type_data - array of type data, must have these keys: type_key, type_title, marker_colour, icon_colour
+	 * @param string $ele - HTML element to use to wrap the output
+	 * @return string
+	 * @since  2024.1
+	 * @access public
+	 * @static
+	 */
+	public static function type_to_text(String $feature_type = '', Array $type_data = [], String $ele = 'span') {
+		$preview_class = 'waymark-type-text waymark-' . $feature_type . '-type';
+		$preview_style = '';
+
+		switch ($feature_type) {
+		case 'marker':
+			$preview_style .= 'color:' . $type_data['icon_colour'] . ';';
+			$preview_style .= 'background:' . self::get_marker_background($type_data['marker_colour']);
+
+			break;
+		case 'line':
+			$preview_style .= 'color:' . $type_data['line_colour'] . ';box-shadow:inset 0 0 0 1px ' . $type_data['line_colour'];
+
+			break;
+		case 'shape':
+			$preview_style .= 'background:' . $type_data['shape_colour'];
+
+			break;
+		}
+
+		return '<' . $ele . ' class="' . $preview_class . '" style="' . $preview_style . '">' . $type_data[$feature_type . '_title'] . '</' . $ele . '>';
+	}
+
+	/**
+	 *
+	 * Creates the HTML strucuture for the overlays list
+	 *
+	 * $overlays must have one of these keys: markers, lines, shapes containing an array of overlays
+	 * Waymark_GeoJSON::features_by_overlay_type() is a good way to get this data
+	 *
+	 * Markers/Lines/Shapes are displayed separately and divided into types
+	 * Types are displayed as a header with a count
+	 * Each overlay is displayed as a list item
+	 * Each overlay has a title, description and image
+	 *
+	 * @param  array $overlays	An array containing 'marker' => [ $markers ], 'line' => [ $lines ], 'shape' => [ $shapes ]
+	 * @return string			HTML
+	 * @since  2024.1
+	 * @access public
+	 * @static
+	 *
+	 */
+	public static function overlays_list_html(Array $overlays = []) {
+		$out = '';
+
+		if (!sizeof($overlays)) {
+			return $out;
+		}
+
+		// $overlays must have one of these keys: markers, lines, shapes
+		if (!array_key_exists('markers', $overlays) && !array_key_exists('lines', $overlays) && !array_key_exists('shapes', $overlays)) {
+			return $out;
+		}
+
+		// self::debug($overlays);
+
+		foreach ($overlays as $overlay_type => $overlay) {
+			// $overlay must be an array
+			if (!is_array($overlay)) {
+				continue;
+			}
+
+			$out .= '<div class="waymark-overlays-list">' . "\n";
+
+			switch ($overlay_type) {
+			case 'markers':
+				// Wrapper
+				$out .= '<div class="waymark-overlay-list waymark-overlay-markers">' . "\n";
+				$out .= '	<div class="waymark-title">' . __('Markers', 'waymark') . '</div>' . "\n";
+				$out .= '	<div class="waymark-overlays">' . "\n";
+
+				// Every marker type
+				foreach ($overlay as $marker_type => $markers) {
+					// Ensure we have markers
+					if (!sizeof($markers)) {
+						continue;
+					}
+
+					// Get type data
+					$type_data = self::get_type_data('marker', $marker_type);
+
+					if (!$type_data) {
+						continue;
+					}
+
+					// Wrapper for Type
+					$out .= '		<div class="waymark-type waymark-type-' . $marker_type . '" data-type_key="' . $marker_type . '">' . "\n";
+
+					//Output Title, Icon and count
+					$icon_data = self::build_icon_data($type_data);
+					$icon_html = self::build_icon_html($icon_data);
+
+					$out .= '		<div class="waymark-header" style="background-color:' . $type_data['marker_colour'] . ';color:' . $type_data['icon_colour'] . ';">' . "\n";
+					$out .= '			<div class="waymark-type-icon">' . $icon_html . '</div>' . "\n";
+					$out .= '			<div class="waymark-type-title">' . $type_data['marker_title'] . '</div>' . "\n";
+					$out .= '			<div class="waymark-type-count">' . sizeof($markers) . '</div>' . "\n";
+					$out .= '		</div>' . "\n";
+
+					// Iterate over markers
+					foreach ($markers as $marker) {
+						$out .= self::build_overlay_content($marker, 'marker', $type_data);
+					}
+
+					$out .= '		</div>' . "\n";
+				}
+
+				$out .= '	</div>' . "\n";
+				$out .= '</div>' . "\n";
+
+				break;
+			case 'lines':
+				// Get valid line types
+				$line_types = self::get_overlay_types('line', 'line_title');
+
+				// Wrapper
+				$out .= '<div class="waymark-overlays waymark-lines">' . "\n";
+
+				// Every line type
+				foreach ($overlay as $line_type => $lines) {
+					// Ensure is valid line type
+					if (!array_key_exists($line_type, $line_types)) {
+						continue;
+					}
+
+					$out .= '<li>' . $line_type . ' (' . sizeof($lines) . ')</li>' . "\n";
+				}
+				$out .= '</div>' . "\n";
+
+				break;
+			case 'shapes':
+				// Get valid shape types
+				$shape_types = self::get_overlay_types('shape', 'shape_title');
+
+				// Wrapper
+				$out .= '<div class="waymark-overlays waymark-shapes">' . "\n";
+
+				// Every shape type
+				foreach ($overlay as $shape_type => $shapes) {
+
+					// Ensure is valid shape type
+					if (!array_key_exists($shape_type, $shape_types)) {
+						continue;
+					}
+
+					$out .= '<li>' . $shape_type . ' (' . sizeof($shapes) . ')</li>' . "\n";
+				}
+				$out .= '</div>' . "\n";
+
+				break;
+			}
+		}
+
+		$out .= '</div>' . "\n";
+
+		return $out;
 	}
 }

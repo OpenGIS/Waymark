@@ -145,6 +145,11 @@ class Waymark_Shortcode {
 		//Height
 		if (array_key_exists('map_height', $shortcode_data)) {
 			$map_height = $shortcode_data['map_height'];
+
+			//Numeric only
+			if (!is_numeric($map_height)) {
+				$map_height = false;
+			}
 		} else {
 			$map_height = Waymark_Config::get_setting('misc', 'map_options', 'map_height');
 		}
@@ -152,6 +157,11 @@ class Waymark_Shortcode {
 		//Width
 		if (array_key_exists('map_width', $shortcode_data)) {
 			$map_width = $shortcode_data['map_width'];
+
+			//Numeric only
+			if (!is_numeric($map_width)) {
+				$map_width = false;
+			}
 		} else {
 			$map_width = false;
 		}
@@ -169,39 +179,40 @@ class Waymark_Shortcode {
 		//Header ?
 		$do_header = 0;
 
-		//Start with Setting
+		// Start with Setting
 		$setting = Waymark_Config::get_setting('misc', 'shortcode_options', 'shortcode_header');
 		if (is_numeric($setting)) {
 			$do_header = $setting;
 		}
 
-		// Waymark_Helper::debug($do_header);
+		// Shortcode option set?
+		if (array_key_exists('shortcode_header', $shortcode_data)) {
+			$param = $shortcode_data['shortcode_header'];
+
+			if (is_numeric($param)) {
+				$do_header = $param;
+			}
+		}
 
 		//Map Details Page
 		if (get_post_type() == 'waymark_map') {
 			//Map Details Page
 			if (is_single()) {
 				$do_header = 0;
-				//Archive
-			} else {
-				$do_header = 0;
 			}
+			//Archive
+			// } else {
+			// 	$do_header = 0;
+			// }
 			//I.e. Embedding using the Shortcode
 		} else {
 			//Always for Admin
 			if (current_user_can('administrator') && Waymark_Config::get_setting('misc', 'shortcode_options', 'header_override')) {
 				$do_header = 1;
-			} else {
-				//Shortcode
-				if (array_key_exists('shortcode_header', $shortcode_data)) {
-					$param = $shortcode_data['shortcode_header'];
-
-					if (is_numeric($param)) {
-						$do_header = $param;
-					}
-				}
 			}
 		}
+
+		// Waymark_Helper::debug($do_header);
 
 		//Header (non Map pages only)
 		if ($do_header && sizeof($shortcode_header)) {
@@ -275,6 +286,8 @@ class Waymark_Shortcode {
 		}
 
 		//Output Config
+		$out .= 'if(typeof waymark_user_config === "undefined") { waymark_viewer_' . $shortcode_hash . '.message("Configuration not found! Check for \"var waymark_user_config\" in your page HTML.", "error"); }' . "\n";
+
 		$out .= 'var waymark_config = jQuery.extend(true, {}, waymark_user_config);' . "\n";
 		$out .= 'waymark_config.map_div_id = "waymark-map-' . $shortcode_hash . '";' . "\n";
 		$out .= 'waymark_config.map_height = ' . $map_height . ";\n";
@@ -399,17 +412,25 @@ class Waymark_Shortcode {
 
 		$i = 0;
 		foreach ($maps_output as $map_id => $map_output) {
-			//Embed (and first background... legacy)
-			if ($i == 0 || 'embed' === Waymark_Config::get_setting('misc', 'collection_options', 'load_method')) {
+			$i++;
+
+			//Embed (always embed first map)
+			if ($i === 1 || 'embed' === Waymark_Config::get_setting('misc', 'collection_options', 'load_method')) {
 				//If map data exists
 				if (isset($map_output['map_data'])) {
 					$out .= 'waymark_viewer_' . $shortcode_hash . '.load_json(' . $map_output['map_data'] . ');' . "\n";
 				}
 				//Load via HTTP
 			} else {
-				$out .= 'waymark_load_map_data(waymark_viewer_' . $shortcode_hash . ', ' . $map_id . ', true);' . "\n";
+				//Reset view (last map only)
+				if ($i == sizeof($maps_output)) {
+					$reset_view = 'true';
+				} else {
+					$reset_view = 'false';
+				}
+
+				$out .= 'waymark_load_map_data(waymark_viewer_' . $shortcode_hash . ', ' . $map_id . ', true, ' . $reset_view . ');' . "\n";
 			}
-			$i++;
 		}
 
 		// =====================================
@@ -669,7 +690,10 @@ class Waymark_Shortcode {
 		if (array_key_exists('loaded_callback', $shortcode_data)) {
 			$out .= 'if(typeof ' . $shortcode_data['loaded_callback'] . ' === "function") {' . "\n";
 			$out .= '	' . $shortcode_data['loaded_callback'] . '(waymark_viewer_' . $shortcode_hash . ');' . "\n";
+			$out .= '} else {' . "\n";
+			$out .= '	waymark_viewer_' . $shortcode_hash . '.message("Callback function not found!", "error");' . "\n";
 			$out .= '}' . "\n";
+
 		}
 
 		// =========== END CALLBACK ============

@@ -161,7 +161,7 @@ function Waymark_Map_Viewer() {
 	this.create_buttons = function () {};
 
 	//Add GeoJSON to map
-	this.load_json = function (json) {
+	this.load_json = function (json, reset_view = true) {
 		Waymark = this;
 
 		//Must be a vaid object with features
@@ -169,8 +169,10 @@ function Waymark_Map_Viewer() {
 			//Add data
 			Waymark.map_data.addData(json);
 
-			//Reset view
-			Waymark.reset_map_view();
+			//Reset view?
+			if (reset_view) {
+				Waymark.reset_map_view();
+			}
 		}
 	};
 
@@ -422,6 +424,8 @@ function Waymark_Map_Viewer() {
 			"Total Length: ": waymark_js.lang.label_total_length,
 			"Max Elevation: ": waymark_js.lang.label_max_elevation,
 			"Min Elevation: ": waymark_js.lang.label_min_elevation,
+			"Total Ascent: ": waymark_js.lang.label_ascent,
+			"Total Descent: ": waymark_js.lang.label_descent,
 		});
 		Waymark_L.setLocale("waymark");
 
@@ -614,8 +618,13 @@ function Waymark_Map_Viewer() {
 
 					var div = jQuery("<div />")
 						.addClass("waymark-image")
+
+						//When a gallery image is clicked
 						.on("click", { marker: image.marker }, function (e) {
 							var marker = e.data.marker;
+
+							//Zoom in
+							Waymark.map.setView(marker.getLatLng(), 16);
 
 							//Open popup at marker
 							marker.openPopup();

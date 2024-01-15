@@ -308,6 +308,7 @@ body.waymark_page_waymark-settings {
 	#waymark-admin-container {
 		&.waymark-active-waymark-settings-tab-misc {
 			//Remove from Misc.
+			.waymark-settings-section-cluster_options,
 			.waymark-settings-section-interaction_options,
 			.waymark-settings-section-elevation_options,
 			.waymark-settings-section-shortcode_options,
@@ -544,6 +545,9 @@ div#waymark-admin-container {
 	position: relative;
 	padding-right: 210px;
 	max-width: 600px;
+
+	background: #f7f7f7;
+
 	&.waymark-top {
 		h2 {
 			&.promo {
@@ -680,11 +684,15 @@ div#waymark-admin-container {
 		top: 0;
 		right: 0;
 		width: 180px;
-		max-height: 555px;
-		overflow-y: scroll;
 		padding: 15px;
-		border: 1px solid #ccc;
+		// border: 1px solid #ccc;
 		background: #f7f7f7;
+
+		p,
+		li {
+			font-size: 16px;
+		}
+
 		ul {
 			padding-left: 15px;
 			list-style: circle;
@@ -698,11 +706,13 @@ div#waymark-admin-container {
 		}
 		p {
 			margin-top: 0;
+
 			line-height: 1.5em;
+
 			&.waymark-first {
 				margin: 20px 0 40px 0;
 				font-weight: bold;
-				font-size: 1.8em;
+				font-size: 23px;
 				line-height: 1.1em;
 			}
 		}
