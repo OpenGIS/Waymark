@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Waymark 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/waymark\n"
-"POT-Creation-Date: 2024-01-15 01:33:31+00:00\n"
+"POT-Creation-Date: 2024-01-15 14:18:49+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -199,7 +199,7 @@ msgid "Overlays"
 msgstr ""
 
 #: inc/Admin/Waymark_Settings.php:44 inc/Admin/Waymark_Settings.php:133
-#: inc/Helpers/Waymark_Helper.php:1398 inc/Helpers/Waymark_Lang.php:39
+#: inc/Helpers/Waymark_Helper.php:1413 inc/Helpers/Waymark_Lang.php:39
 msgid "Markers"
 msgstr ""
 
@@ -1347,16 +1347,12 @@ msgid ""
 "selected format."
 msgstr ""
 
-#: inc/Helpers/Waymark_Helper.php:528
-msgid "Part of"
-msgstr ""
-
-#: inc/Helpers/Waymark_Helper.php:532 inc/Waymark_Types.php:10
+#: inc/Helpers/Waymark_Helper.php:530 inc/Waymark_Types.php:10
 #: inc/Waymark_Types.php:14 inc/Waymark_Types.php:16
 msgid "Map"
 msgstr ""
 
-#: inc/Helpers/Waymark_Helper.php:690 inc/Helpers/Waymark_Helper.php:715
+#: inc/Helpers/Waymark_Helper.php:705 inc/Helpers/Waymark_Helper.php:730
 msgid "Download"
 msgstr ""
 
