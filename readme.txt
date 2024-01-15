@@ -77,7 +77,7 @@ For developers:
 
 [Grunt](https://gruntjs.com/) is used to run the build script, which compiles the JavaScript and CSS and performs some other tasks.
 
-```shell
+```
 # Clone the repository
 git clone https://github.com/opengis/waymark.git
 
