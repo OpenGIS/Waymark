@@ -4,7 +4,7 @@ Tags: GIS, Map maker, Maps, Leaflet, GPX, KML, GeoJSON, OpenStreetMap, EXIF, Map
 Requires at least: 4.6
 Tested up to: 6.4
 Requires PHP: 5.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,6 +153,10 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 10. Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website.
 
 == Changelog ==
+
+= 1.0.1 =
+
+Fixed a bug with Map Exporting. Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for <a href="https://wordpress.org/support/topic/error-when-downloading-gpx-or-kml/">reporting this</a>.
 
 = 1.0.0 =
 

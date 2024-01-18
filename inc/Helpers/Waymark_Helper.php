@@ -458,7 +458,7 @@ class Waymark_Helper {
 		return $obj;
 	}
 
-	static public function remove_unwanted_overlay_properties(Array $data_in = [], Array $wanted = []) {
+	static public function remove_unwanted_overlay_properties($data_in = [], $wanted = []) {
 		if (!sizeof($wanted)) {
 			$wanted = Waymark_Config::get_item('overlay_properties');
 		}
@@ -626,7 +626,7 @@ class Waymark_Helper {
 	 * @param  boolean $as_options        Build as options array ready for <select>
 	 * @return array                      Array of overlay types
 	 */
-	public static function get_overlay_types(String $feature_type = 'marker', String $use_key = '', Bool $as_options = false) {
+	public static function get_overlay_types($feature_type = 'marker', $use_key = '', $as_options = false) {
 		$object_types = Waymark_Config::get_item($feature_type . 's', $feature_type . '_types', true);
 
 		//Use keys
@@ -655,7 +655,7 @@ class Waymark_Helper {
 	 * @param  string  $type_key          Type key
 	 * @return array                      Array of overlay types
 	 */
-	public static function get_type_data(String $feature_type = 'marker', String $type_key = '') {
+	public static function get_type_data($feature_type = 'marker', $type_key = '') {
 		$marker_types = self::get_overlay_types($feature_type, $feature_type . '_title');
 
 		if (array_key_exists($type_key, $marker_types)) {
@@ -999,7 +999,7 @@ class Waymark_Helper {
 	 * @access public
 	 * @static
 	 */
-	static public function build_icon_data(Array $type = []) {
+	static public function build_icon_data($type = []) {
 
 		// self::debug($type);
 
@@ -1120,7 +1120,7 @@ class Waymark_Helper {
 	 * @access public
 	 * @static
 	 */
-	static public function build_icon_html(Array $icon_data = []) {
+	static public function build_icon_html($icon_data = []) {
 
 		// self::debug($icon_data);
 
@@ -1148,7 +1148,7 @@ class Waymark_Helper {
 	 * @static
 	 *
 	 */
-	public static function get_marker_background(String $colour = '') {
+	public static function get_marker_background($colour = '') {
 		$old_background_options = [
 			'red',
 			'darkred',
@@ -1218,7 +1218,7 @@ class Waymark_Helper {
 	 * @static
 	 *
 	 */
-	public static function build_overlay_content(Array $feature = [], String $feature_type = 'marker', Array $type_data = []) {
+	public static function build_overlay_content($feature = [], $feature_type = 'marker', $type_data = []) {
 
 		// Switch by feature_type
 		switch ($feature_type) {
@@ -1342,7 +1342,7 @@ class Waymark_Helper {
 	 * @access public
 	 * @static
 	 */
-	public static function type_to_text(String $feature_type = '', Array $type_data = [], String $ele = 'span') {
+	public static function type_to_text($feature_type = '', $type_data = [], $ele = 'span') {
 		$preview_class = 'waymark-type-text waymark-' . $feature_type . '-type';
 		$preview_style = '';
 
@@ -1384,7 +1384,7 @@ class Waymark_Helper {
 	 * @static
 	 *
 	 */
-	public static function overlays_list_html(Array $overlays = []) {
+	public static function overlays_list_html($overlays = []) {
 		$out = '';
 
 		if (!sizeof($overlays)) {
