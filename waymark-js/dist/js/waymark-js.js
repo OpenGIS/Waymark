@@ -8519,7 +8519,7 @@ function Waymark_Map() {
 
 				break;
 			case "line":
-				preview_style += "background:" + type.shape_colour;
+				preview_style += "background:" + type.line_colour;
 
 				break;
 			case "shape":

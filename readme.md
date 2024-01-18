@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.4  
 **Requires PHP:** 5.2  
-**Stable tag:** 1.0.1  
+**Stable tag:** 1.0.2  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -171,6 +171,10 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 
 ## Changelog ##
+
+### 1.0.2 ###
+
+Fix for colours not appearing correctly in the Overlay Filter. Thanks to [geomfranzo](https://wordpress.org/support/users/geomfranzo/) for [raising this](https://wordpress.org/support/topic/sort-line-markers-by-name-bug-line-color/).
 
 ### 1.0.1 ###
 
