@@ -63,68 +63,60 @@ function waymark_setup_map_export() {
 
 			//When clicked
 			export_container.on("submit", function (e) {
-				// 				var count = 1;
-				// 				for(key in window.Waymark_Map_Factory.instances) {
-				// 					if(window.Waymark_Map_Factory.instances[key] === Waymark_Instance) {
-				// 						console.log('Export Map #' + count);
-				//
-				// 						return false;
-				// 					}
-				//
-				// 					count++;
-				// 				}
-
 				var export_select = jQuery("select", export_container);
 				var export_format = export_select.val()
 					? export_select.val()
 					: "geojson";
 
-				//Get data layer from Leaflet
+				// Layer Group to hold download data
 				var map_export_layers = Waymark_L.layerGroup();
 
+				// Get Waymark instance
 				Waymark_Instance = map_container.data("Waymark");
+
+				// Iterate through each layer
 				Waymark_Instance.map_data.eachLayer(function (layer) {
-					//If visible
-					if (Waymark_Instance.map.hasLayer(layer)) {
-						for (key in layer.feature.properties) {
-							//If we have something
-							if (typeof layer.feature.properties[key] != "undefined") {
-								if (key == "title" && export_format == "kml") {
-									layer.feature.properties["name"] =
-										layer.feature.properties[key];
-									delete layer.feature.properties[key];
-								}
-								//Nothing here
-							} else {
-								//Get rid of it
+					// Modify layer data
+					for (key in layer.feature.properties) {
+						//If we have something
+						if (typeof layer.feature.properties[key] != "undefined") {
+							if (key == "title" && export_format == "kml") {
+								layer.feature.properties["name"] =
+									layer.feature.properties[key];
+
 								delete layer.feature.properties[key];
 							}
-
-							//Clean up description
-							if (
-								key == "description" &&
-								typeof layer.feature.properties["description"] !== "undefined"
-							) {
-								//Remove HTML
-								var description = layer.feature.properties["description"];
-								var link_pos = description.indexOf(
-									'<div class="waymark-description-link',
-								);
-
-								if (link_pos !== -1) {
-									description = description.substring(0, link_pos);
-								}
-
-								//Single quotes
-								description = description.replace("'", "&apos;");
-
-								layer.feature.properties["description"] = description;
-							}
+							//Nothing here
+						} else {
+							//Get rid of it
+							delete layer.feature.properties[key];
 						}
 
-						map_export_layers.addLayer(layer);
+						//Clean up description
+						if (
+							key == "description" &&
+							typeof layer.feature.properties["description"] !== "undefined"
+						) {
+							//Remove HTML
+							var description = layer.feature.properties["description"];
+							var link_pos = description.indexOf(
+								'<div class="waymark-description-link',
+							);
+
+							if (link_pos !== -1) {
+								description = description.substring(0, link_pos);
+							}
+
+							//Single quotes
+							description = description.replace("'", "&apos;");
+
+							layer.feature.properties["description"] = description;
+						}
 					}
+
+					map_export_layers.addLayer(layer);
 				});
+
 				var map_data_geojson = map_export_layers.toGeoJSON();
 
 				switch (export_select.val()) {
@@ -163,8 +155,6 @@ function waymark_setup_map_export() {
 				input_map_data.val(encodeURIComponent(map_data));
 
 				//Form gets submitted...
-
-				//return false;
 			});
 		}
 	});

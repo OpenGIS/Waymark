@@ -651,11 +651,6 @@ function Waymark_Map_Editor() {
 
 							//Change icon
 							icon.attr("class", "ion-edit");
-
-							//Callback?
-							if (typeof Waymark.config.handle_edit_callback == "function") {
-								Waymark.config.handle_edit_callback(false);
-							}
 							//Start
 						} else {
 							//Enable edit
@@ -669,11 +664,6 @@ function Waymark_Map_Editor() {
 
 							//Change icon
 							icon.attr("class", "ion-android-done");
-
-							//Callback?
-							if (typeof Waymark.config.handle_edit_callback == "function") {
-								Waymark.config.handle_edit_callback(true);
-							}
 						}
 
 						return false;
@@ -755,11 +745,6 @@ function Waymark_Map_Editor() {
 
 					Waymark.save_data_layer();
 					Waymark.map_was_edited();
-
-					//Callback?
-					if (typeof Waymark.config.handle_delete_callback == "function") {
-						Waymark.config.handle_delete_callback(feature);
-					}
 
 					return false;
 				});
@@ -1301,34 +1286,20 @@ function Waymark_Map_Editor() {
 			waymark_js.lang.action_edit + " " + layer_type,
 		);
 
-		//Custom handle content
-		if (typeof Waymark.config.handle_content_callback == "function") {
-			//Bind content to info window
-			layer.on("click", function () {
-				var content = Waymark.build_content(layer_type, feature, layer);
-				Waymark.config.handle_content_callback(
-					content.get(0),
-					title,
-					Waymark.mode,
-				);
+		var content = Waymark.build_content(layer_type, feature, layer);
+		var content_html = content.get(0);
+
+		var popup_options = {
+			//				maxWidth: 400
+		};
+
+		//Bind content to info window
+		layer
+			.bindPopup(content_html, popup_options)
+			.openPopup()
+			.on("click", function () {
+				//marker.getLatLng();
 			});
-			//Default handle content
-		} else {
-			var content = Waymark.build_content(layer_type, feature, layer);
-			var content_html = content.get(0);
-
-			var popup_options = {
-				//				maxWidth: 400
-			};
-
-			//Bind content to info window
-			layer
-				.bindPopup(content_html, popup_options)
-				.openPopup()
-				.on("click", function () {
-					//marker.getLatLng();
-				});
-		}
 	};
 
 	this.load_file_contents = function (file_contents, file_type) {

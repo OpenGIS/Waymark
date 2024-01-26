@@ -7435,6 +7435,7 @@ var waymark_js_localize = {
 	object_label_shape_plural: "Shapes",
 	error_message_prefix: "Waymark Error",
 	info_message_prefix: "Waymark Info",
+	debug_message_prefix: "Waymark Debug",
 	error_file_type: "This file type is not supported.",
 	error_file_conversion: "Could not convert this file to GeoJSON.",
 	error_file_upload: "File upload error.",
@@ -7470,6 +7471,10 @@ function Waymark_Map() {
 
 	this.init = function (user_config) {
 		Waymark = this;
+
+		//Start timer
+		Waymark.start_time = new Date().getTime();
+
 		Waymark.jq_map_container = null;
 
 		//Default config
@@ -7524,10 +7529,6 @@ function Waymark_Map() {
 			editor_options: {
 				confirm_delete: 1,
 			},
-			handle_content_callback: undefined,
-			handle_delete_callback: undefined,
-			handle_edit_callback: undefined,
-			handle_custom_type_callback: undefined,
 			media_library_sizes: ["thumbnail", "medium", "large", "full"],
 		};
 
@@ -7535,6 +7536,8 @@ function Waymark_Map() {
 		for (config_key in Waymark.config) {
 			if (typeof user_config[config_key] !== "undefined") {
 				Waymark.config[config_key] = user_config[config_key];
+			} else {
+				Waymark.debug("No config for " + config_key);
 			}
 		}
 
@@ -7575,16 +7578,47 @@ function Waymark_Map() {
 		return args.reduce((obj, level) => obj && obj[level], obj);
 	};
 
-	this.debug = function (thing) {
+	/**
+	 *
+	 * Output debugging content
+	 * 	- Only if debug_mode is enabled (Settings > Misc > Advanced)
+	 *
+	 * @param  {string} thing  Thing to debug
+	 * @param  {string} output Output method (console|alert)
+	 * @return {void}
+	 * @since  0.9
+	 *
+	 * @example
+	 * Waymark.debug('Hello World');
+	 * Waymark.debug({foo: 'bar'});
+	 * Waymark.debug({foo: 'bar'}, 'alert');
+	 *
+	 */
+	this.debug = function (thing, output = "console") {
 		if (
 			this.get_property(waymark_settings, "misc", "advanced", "debug_mode") ==
 			true
 		) {
-			if (typeof thing == "string") {
-				console.log("[" + waymark_js.lang.info_message_prefix + "] " + thing);
+			//String
+
+			if (typeof thing === "string") {
+				this.message(thing, "debug", output);
+
+				//Object
 			} else {
-				console.log("[" + waymark_js.lang.info_message_prefix + "] ...");
-				console.log(thing);
+				// Ensure if plain object
+				if (typeof thing === "object" && thing !== null) {
+					thing = JSON.parse(JSON.stringify(thing));
+				}
+
+				// Console
+				if (output == "console") {
+					console.debug(thing);
+
+					//Alert
+				} else {
+					this.message(JSON.stringify(thing), "debug", output);
+				}
 			}
 		}
 	};
@@ -7594,8 +7628,9 @@ function Waymark_Map() {
 			var prefix = "";
 
 			switch (type) {
+				case "debug":
 				case "error":
-					prefix = waymark_js.lang.error_message_prefix;
+					prefix = waymark_js.lang[type + "_message_prefix"];
 
 					break;
 				default:
@@ -7612,6 +7647,8 @@ function Waymark_Map() {
 			if (output == "console") {
 				if (type == "error") {
 					console.error(prefix + text);
+				} else if (type == "debug") {
+					console.debug(prefix + text);
 				} else {
 					console.log(prefix + text);
 				}
@@ -8228,11 +8265,11 @@ function Waymark_Map() {
 	};
 
 	//Checks for types
-	this.parse_type = function (type, layer_type) {
+	this.parse_type = function (type = {}, layer_type = "marker") {
 		Waymark = this;
 
-		if (typeof type !== "object") {
-			return type;
+		if (typeof type === "undefined" || type === null) {
+			type = {};
 		}
 
 		switch (layer_type) {
@@ -8970,6 +9007,31 @@ function Waymark_Map() {
 		return content;
 	};
 
+	this.load_done = function () {
+		Waymark = this;
+
+		// Calculate execution time
+		let end_time = new Date().getTime();
+		let execution_time = (end_time - Waymark.start_time) / 1000;
+
+		Waymark.debug(
+			"Waymark Loaded in " + execution_time.toFixed(3) + " seconds",
+		);
+		Waymark.debug(this);
+
+		// Check for callback waymark_loaded_callback
+		if (typeof waymark_loaded_callback === "function") {
+			Waymark.debug(
+				"Global Callback detected! waymark_loaded_callback(waymark_instance)",
+			);
+
+			// Call it
+			waymark_loaded_callback(Waymark);
+		} else {
+			Waymark.debug("No Global Callback detected.");
+		}
+	};
+
 	/*
 	==================================
 	======== ABSTRACT METHODS ========
@@ -9354,21 +9416,8 @@ function Waymark_Map_Viewer() {
 		var content = Waymark.build_content(layer_type, feature, layer);
 		var title = feature.properties.title;
 
-		//Custom handle content
-		if (typeof Waymark.config.handle_content_callback == "function") {
-			//Bind content to info window
-			layer.on("click", function () {
-				Waymark.config.handle_content_callback(
-					content.get(0),
-					title,
-					Waymark.mode,
-				);
-			});
-			//Default handle content
-		} else {
-			//Bind content to info window
-			layer.bindPopup(content.get(0)).openPopup();
-		}
+		//Bind content to info window
+		layer.bindPopup(content.get(0)).openPopup();
 	};
 
 	this.line_has_elevation_data = function (feature) {
@@ -10285,11 +10334,6 @@ function Waymark_Map_Editor() {
 
 							//Change icon
 							icon.attr("class", "ion-edit");
-
-							//Callback?
-							if (typeof Waymark.config.handle_edit_callback == "function") {
-								Waymark.config.handle_edit_callback(false);
-							}
 							//Start
 						} else {
 							//Enable edit
@@ -10303,11 +10347,6 @@ function Waymark_Map_Editor() {
 
 							//Change icon
 							icon.attr("class", "ion-android-done");
-
-							//Callback?
-							if (typeof Waymark.config.handle_edit_callback == "function") {
-								Waymark.config.handle_edit_callback(true);
-							}
 						}
 
 						return false;
@@ -10389,11 +10428,6 @@ function Waymark_Map_Editor() {
 
 					Waymark.save_data_layer();
 					Waymark.map_was_edited();
-
-					//Callback?
-					if (typeof Waymark.config.handle_delete_callback == "function") {
-						Waymark.config.handle_delete_callback(feature);
-					}
 
 					return false;
 				});
@@ -10935,34 +10969,20 @@ function Waymark_Map_Editor() {
 			waymark_js.lang.action_edit + " " + layer_type,
 		);
 
-		//Custom handle content
-		if (typeof Waymark.config.handle_content_callback == "function") {
-			//Bind content to info window
-			layer.on("click", function () {
-				var content = Waymark.build_content(layer_type, feature, layer);
-				Waymark.config.handle_content_callback(
-					content.get(0),
-					title,
-					Waymark.mode,
-				);
+		var content = Waymark.build_content(layer_type, feature, layer);
+		var content_html = content.get(0);
+
+		var popup_options = {
+			//				maxWidth: 400
+		};
+
+		//Bind content to info window
+		layer
+			.bindPopup(content_html, popup_options)
+			.openPopup()
+			.on("click", function () {
+				//marker.getLatLng();
 			});
-			//Default handle content
-		} else {
-			var content = Waymark.build_content(layer_type, feature, layer);
-			var content_html = content.get(0);
-
-			var popup_options = {
-				//				maxWidth: 400
-			};
-
-			//Bind content to info window
-			layer
-				.bindPopup(content_html, popup_options)
-				.openPopup()
-				.on("click", function () {
-					//marker.getLatLng();
-				});
-		}
 	};
 
 	this.load_file_contents = function (file_contents, file_type) {

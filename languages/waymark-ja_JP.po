@@ -1,0 +1,2260 @@
+# Copyright (C) 2024 Joe Hawes
+# This file is distributed under the GPLv2.
+msgid ""
+msgstr ""
+"Project-Id-Version: Waymark 1.0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/waymark\n"
+"POT-Creation-Date: 2024-01-23 14:32:30+00:00\n"
+"PO-Revision-Date: 2024-01-23 10:42-0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: inc/Admin/Waymark_AJAX.php:32
+#, fuzzy
+msgid "No image metadata available."
+msgstr "画像メタデータがありません。"
+
+#: inc/Admin/Waymark_AJAX.php:109 inc/Admin/Waymark_AJAX.php:119
+#: inc/Admin/Waymark_AJAX.php:127
+#, fuzzy
+msgid "Operation not allowed."
+msgstr "操作は許可されていません。"
+
+#: inc/Admin/Waymark_AJAX.php:173
+#, fuzzy
+msgid "Could not read the file."
+msgstr "ファイルを読み取れませんでした。"
+
+#: inc/Admin/Waymark_AJAX.php:238
+msgid "Unknown file upload error."
+msgstr "不明なファイルのアップロードエラーです."
+
+#: inc/Admin/Waymark_JS.php:18
+#, fuzzy
+msgid "Remove!"
+msgstr "取り去る！"
+
+#: inc/Admin/Waymark_JS.php:19 inc/Admin/Waymark_Settings.php:79
+#: inc/Admin/Waymark_Settings.php:240
+msgid "Name"
+msgstr "名前"
+
+#: inc/Admin/Waymark_JS.php:20 inc/Admin/Waymark_Settings.php:506
+msgid "Text"
+msgstr "テキスト"
+
+#: inc/Admin/Waymark_JS.php:21 inc/Admin/Waymark_Settings.php:232
+msgid "HTML"
+msgstr "HTML"
+
+#: inc/Admin/Waymark_Menu.php:15 inc/Admin/Waymark_Menu.php:98
+#: inc/Admin/Waymark_Settings.php:34 inc/Waymark_Admin.php:182
+#: inc/Waymark_Install.php:61 inc/Waymark_Types.php:13 inc/Waymark_Types.php:15
+msgid "Maps"
+msgstr "地図"
+
+#: inc/Admin/Waymark_Menu.php:16 inc/Admin/Waymark_Menu.php:92
+#: inc/Waymark_Admin.php:204 inc/Waymark_Types.php:23
+msgid "New Map"
+msgstr "新しいマップ"
+
+#: inc/Admin/Waymark_Menu.php:19 inc/Admin/Waymark_Menu.php:100
+#: inc/Admin/Waymark_Settings.php:39 inc/Waymark_Admin.php:176
+#: inc/Waymark_Taxonomies.php:13
+msgid "Collections"
+msgstr "コレクション"
+
+#: inc/Admin/Waymark_Menu.php:22
+msgid "Documentation"
+msgstr "ドキュメント"
+
+#: inc/Admin/Waymark_Menu.php:22
+msgid "Docs"
+msgstr "ドキュメント"
+
+#: inc/Admin/Waymark_Menu.php:25 inc/Waymark_Install.php:62
+msgid "Settings"
+msgstr "設定"
+
+#: inc/Admin/Waymark_Meta.php:9
+#, fuzzy
+msgid "Map Editor"
+msgstr "マップエディター"
+
+#: inc/Admin/Waymark_Meta.php:12 inc/Waymark_Admin.php:124
+msgid "Shortcode"
+msgstr "ショートコード"
+
+#: inc/Admin/Waymark_Meta.php:13 inc/Helpers/Waymark_Helper.php:201
+#: inc/Helpers/Waymark_Helper.php:230
+msgid "Export"
+msgstr "エクスポート"
+
+#: inc/Admin/Waymark_Meta.php:14
+msgid "Help"
+msgstr "ヘルプ"
+
+#: inc/Admin/Waymark_Meta.php:64
+#, fuzzy
+msgid "Download the Overlays added to this Map in the selected format."
+msgstr ""
+"このマップに追加されたオーバーレイを、選択した形式でダウンロードします。"
+
+#: inc/Admin/Waymark_Meta.php:73
+#, fuzzy
+msgid ""
+"Add this Map to your content with this Shortcode. Click here for more "
+"details."
+msgstr ""
+"このショートコードを使用して、このマップをコンテンツに追加します。詳細につい"
+"ては、ここをクリックしてください。"
+
+#: inc/Admin/Waymark_Meta.php:81
+#, fuzzy
+msgid "Image Location Detection Not Supported!"
+msgstr "画像位置検出はサポートされていません。"
+
+#: inc/Admin/Waymark_Meta.php:82
+#, fuzzy
+msgid ""
+"Your hosting environment does not currently have the <a href=\"%s\">PHP EXIF "
+"Extension</a> enabled, which is required to read Image location metadata. "
+"Try asking your host to enable it."
+msgstr ""
+"ホスティング環境では現在、画像の場所のメタデータを読み取るために必要な <a "
+"href=\"%s\">PHP EXIF拡張機能</a> が有効になっていません。ホストに有効にするよ"
+"うに依頼してみてください。"
+
+#: inc/Admin/Waymark_Meta.php:85 inc/Admin/Waymark_Settings.php:670
+#: inc/Admin/Waymark_Settings.php:731
+#, fuzzy
+msgid "Read from File"
+msgstr "ファイルから読み取る"
+
+#: inc/Admin/Waymark_Meta.php:86
+#, fuzzy
+msgid ""
+"You can read Lines and Markers from GPX, KML and GeoJSON files (most mapping "
+"apps will be able to export to one of these)."
+msgstr ""
+"GPX、KML、GeoJSONファイルからラインとマーカーを読み取ることができます(ほとん"
+"どのマッピングアプリはこれらのいずれかにエクスポートできます)。"
+
+#: inc/Admin/Waymark_Meta.php:88 inc/Admin/Waymark_Settings.php:138
+#: inc/Admin/Waymark_Settings.php:277 inc/Admin/Waymark_Settings.php:372
+msgid "Types"
+msgstr "タイプ"
+
+#: inc/Admin/Waymark_Meta.php:89
+#, fuzzy
+msgid ""
+"Types allow you to control how Overlays (Markers, Lines and Shapes) are "
+"displayed on the Map. Types can be customised in <a href=\"%s\" "
+"target=\"_blank\">Waymark &gt; Settings</a>."
+msgstr ""
+"タイプを使用すると、オーバーレイ(マーカー、ライン、シェイプ)をマップ上でどの"
+"ように表示するかを制御できます。タイプは、 <a href=\"%s\" "
+"target=\"_blank\">Waymark &gt; Settings</a> でカスタマイズできます。"
+
+#: inc/Admin/Waymark_Meta.php:91 inc/Admin/Waymark_Settings.php:79
+#: inc/Admin/Waymark_Settings.php:83 inc/Admin/Waymark_Settings.php:91
+#: inc/Admin/Waymark_Settings.php:101 inc/Admin/Waymark_Settings.php:114
+#, fuzzy
+msgid "Basemap"
+msgstr "ベースマップ"
+
+#: inc/Admin/Waymark_Meta.php:92
+#, fuzzy
+msgid ""
+"Add and edit Basemaps in <a href=\"%s\" target=\"_blank\">Waymark &gt; "
+"Settings</a>. The first listed will be used as the default, unless specified "
+"in the shortcode like this: %s"
+msgstr ""
+"<a href=\"%s\" target=\"_blank\">[Waymark &gt; Settings</a>] でベースマップを"
+"追加および編集します。最初にリストされたものは、次のようにショートコードで指"
+"定されていない限り、デフォルトとして使用されます。%s"
+
+#: inc/Admin/Waymark_Meta.php:94
+msgid "Read the Docs"
+msgstr "ドキュメントを読む"
+
+#: inc/Admin/Waymark_Meta.php:161
+#, fuzzy
+msgid "You can manage Meta fields in <a href=\"%s\">Settings</a>."
+msgstr "メタフィールドは <a href=\"%s\">[設定]</a>で管理できます。"
+
+#: inc/Admin/Waymark_Settings.php:35 inc/Admin/Waymark_Settings.php:61
+#: inc/Admin/Waymark_Settings.php:66
+#, fuzzy
+msgid "Basemaps"
+msgstr "ベースマップ"
+
+#: inc/Admin/Waymark_Settings.php:36
+msgid "Shortcodes"
+msgstr "ショートコード"
+
+#: inc/Admin/Waymark_Settings.php:37
+#, fuzzy
+msgid "Elevation"
+msgstr "標高"
+
+#: inc/Admin/Waymark_Settings.php:38 inc/Admin/Waymark_Settings.php:453
+#: inc/Admin/Waymark_Settings.php:458 inc/Admin/Waymark_Settings.php:471
+#: inc/Admin/Waymark_Settings.php:476 inc/Admin/Waymark_Settings.php:484
+#: inc/Admin/Waymark_Settings.php:493 inc/Admin/Waymark_Settings.php:502
+#: inc/Admin/Waymark_Settings.php:518 inc/Admin/Waymark_Settings.php:528
+#: inc/Admin/Waymark_Settings.php:537 inc/Admin/Waymark_Settings.php:546
+#: inc/Admin/Waymark_Settings.php:672 inc/Admin/Waymark_Settings.php:733
+msgid "Meta"
+msgstr "メタ"
+
+#: inc/Admin/Waymark_Settings.php:40
+msgid "Sleep"
+msgstr "スリープ"
+
+#: inc/Admin/Waymark_Settings.php:41
+msgid "Clustering"
+msgstr "クラスタリング"
+
+#: inc/Admin/Waymark_Settings.php:42 inc/Admin/Waymark_Settings.php:861
+msgid "Misc."
+msgstr "その他."
+
+#: inc/Admin/Waymark_Settings.php:43
+msgid "Overlays"
+msgstr "Overlays"
+
+#: inc/Admin/Waymark_Settings.php:44 inc/Admin/Waymark_Settings.php:133
+#: inc/Helpers/Waymark_Helper.php:1413 inc/Helpers/Waymark_Lang.php:39
+msgid "Markers"
+msgstr "マーカー"
+
+#: inc/Admin/Waymark_Settings.php:45 inc/Admin/Waymark_Settings.php:272
+#: inc/Helpers/Waymark_Lang.php:40
+msgid "Lines"
+msgstr "直線"
+
+#: inc/Admin/Waymark_Settings.php:46 inc/Admin/Waymark_Settings.php:367
+#: inc/Helpers/Waymark_Lang.php:41
+#, fuzzy
+msgid "Shapes"
+msgstr "図形"
+
+#: inc/Admin/Waymark_Settings.php:47 inc/Admin/Waymark_Settings.php:812
+#: inc/Admin/Waymark_Settings.php:817
+msgid "Properties"
+msgstr "プロパティ"
+
+#: inc/Admin/Waymark_Settings.php:48
+msgid "Sources"
+msgstr "ソース"
+
+#: inc/Admin/Waymark_Settings.php:49 inc/Admin/Waymark_Settings.php:623
+msgid "Submissions"
+msgstr "送信"
+
+#: inc/Admin/Waymark_Settings.php:51
+msgid "Advanced"
+msgstr "高度な設定"
+
+#: inc/Admin/Waymark_Settings.php:67
+#, fuzzy
+msgid ""
+"<span class=\"waymark-lead\">Waymark uses the excellent <a "
+"href=\"%s\">OpenStreetMap</a> as it’s default Basemap and supports many <a "
+"href=\"%s\">other providers</a>.<br /><br /><a href=\"%s\">Thunderforest</a> "
+"and <a href=\"%s\">Mapbox</a> are examples of providers that offer easy "
+"access to beautiful Basemaps (including satellite imagery). They require "
+"registration, but have a free usage tier."
+msgstr ""
+"<span class=\"waymark-lead\">Waymarkは、優れた <a href=\"%s\">OpenStreetMap</"
+"a> をデフォルトのベースマップとして使用し、 <a href=\"%s\">他の多くのプロバイ"
+"ダー</a>をサポートしています。<br /><br /><a href=\"%s\">Thunderforest</a> "
+"と <a href=\"%s\">Mapbox</a> は、美しいベースマップ(衛星画像を含む)への簡単な"
+"アクセスを提供するプロバイダーの例です。登録が必要ですが、無料の使用レベルが"
+"あります。</span>"
+
+#: inc/Admin/Waymark_Settings.php:68
+#, fuzzy
+msgid ""
+"<small><b>Pro Tip!</b> If you have more than one Basemap, you can switch "
+"between them when viewing the Map. The first listed will be used as the "
+"default, unless specified in the shortcode like this: %s. Drag to re-order, "
+"remove all to restore defaults.</small>"
+msgstr ""
+"<small><b>プロのヒント!</b> ベースマップが複数ある場合は、マップを表示すると"
+"きにベースマップを切り替えることができます。最初にリストされたものは、ショー"
+"トコードで次のように指定されていない限り、デフォルトとして使用されます。 %sド"
+"ラッグして並べ替え、すべて削除してデフォルトに戻します。</small>"
+
+#: inc/Admin/Waymark_Settings.php:71
+#, fuzzy
+msgid "Basemap Docs &raquo;"
+msgstr "ベースマップ ドキュメント »"
+
+#: inc/Admin/Waymark_Settings.php:81
+#, fuzzy
+msgid ""
+"The Layer Name will appear in a dropdown list shown by the Map when multiple "
+"Basemaps have been entered. You can change the default basemap in the "
+"shortcode: %s"
+msgstr ""
+"[レイヤー名] は、複数のベースマップが入力されている場合にマップに表示されるド"
+"ロップダウン リストに表示されます。ショートコードでデフォルトのベースマップを"
+"変更できます。 %s"
+
+#: inc/Admin/Waymark_Settings.php:93
+#, fuzzy
+msgid ""
+"Many mapping services support the Slippy Map format. Waymark requires URLs "
+"that contain {z} (zoom level) and {x}/{y} (tile coordinates). For example "
+"the OpenCycleMap URL is %s."
+msgstr ""
+"多くのマッピング サービスは、スリッピー マップ形式をサポートしています。"
+"Waymark には、{z} (ズーム レベル) と {x}/{y} (タイル座標) を含む URL が必要で"
+"す。たとえば、OpenCycleMap の URL は %s です。"
+
+#: inc/Admin/Waymark_Settings.php:103
+#, fuzzy
+msgid ""
+"Mapping services often have the requirement that attribution is displayed by "
+"the map. Text and HTML links are supported."
+msgstr ""
+"多くの場合、マッピング サービスには、属性がマップによって表示されるという要件"
+"があります。テキストリンクとHTMLリンクがサポートされています。"
+
+#: inc/Admin/Waymark_Settings.php:114
+#, fuzzy
+msgid "Max Zoom"
+msgstr "最大ズーム(Max Zoom)"
+
+#: inc/Admin/Waymark_Settings.php:116
+#, fuzzy
+msgid "Set a maximum zoom level for this Basemap, the default is 18."
+msgstr "このベースマップの最大ズーム レベルを設定します (デフォルトは 18)。"
+
+#: inc/Admin/Waymark_Settings.php:138 inc/Admin/Waymark_Settings.php:151
+#: inc/Admin/Waymark_Settings.php:155 inc/Admin/Waymark_Settings.php:163
+#: inc/Admin/Waymark_Settings.php:167 inc/Admin/Waymark_Settings.php:177
+#: inc/Admin/Waymark_Settings.php:191 inc/Admin/Waymark_Settings.php:202
+#: inc/Admin/Waymark_Settings.php:213 inc/Helpers/Waymark_Lang.php:36
+msgid "Marker"
+msgstr "マーカー"
+
+#: inc/Admin/Waymark_Settings.php:139
+#, fuzzy
+msgid ""
+"Customise how Markers are displayed on the Map. Set these styles once, then "
+"select the appropriate Type when you add to the Map."
+msgstr ""
+"マップ上でのマーカーの表示方法をカスタマイズします。これらのスタイルを一度設"
+"定し、マップに追加するときに適切なタイプを選択します。"
+
+#: inc/Admin/Waymark_Settings.php:140 inc/Admin/Waymark_Settings.php:283
+#: inc/Admin/Waymark_Settings.php:378 inc/Admin/Waymark_Settings.php:464
+#, fuzzy
+msgid ""
+"<b>Pro Tip!</b> The first listed will be used as the default. Drag to re-"
+"order, remove all to restore defaults."
+msgstr ""
+"<b>プロのヒント!</b> 最初にリストされたものがデフォルトとして使用されます。ド"
+"ラッグして並べ替え、すべて削除してデフォルトに戻します。"
+
+#: inc/Admin/Waymark_Settings.php:143 inc/Admin/Waymark_Settings.php:281
+#: inc/Admin/Waymark_Settings.php:376
+#, fuzzy
+msgid "Type Docs &raquo;"
+msgstr "タイプドキュメント »"
+
+#: inc/Admin/Waymark_Settings.php:151 inc/Admin/Waymark_Settings.php:290
+#: inc/Admin/Waymark_Settings.php:385
+msgid "Label"
+msgstr "ラベル"
+
+#: inc/Admin/Waymark_Settings.php:153
+#, fuzzy
+msgid ""
+"What kind of Marker is this? E.g. \"Photo\", \"Grocery Store\", \"Warning!"
+"\". Once saved, Marker labels can not be edited. The Marker Label is "
+"displayed in the Tooltip (when hovering over the Marker) and in the Info "
+"Window (once the Marker is clicked). Hide in Settings > Map > Misc. > Type "
+"Labels."
+msgstr ""
+"これはどんなマーカーですか?例:「写真」、「食料品店」、「警告!」。一度保存する"
+"と、マーカーラベルは編集できません。マーカーラベルは、ツールチップ(マーカーに"
+"カーソルを合わせた場合)と情報ウィンドウ(マーカーがクリックされた場合)に表示さ"
+"れます。[設定] > [その他のラベル] > [マップ] >で非表示にします。"
+
+#: inc/Admin/Waymark_Settings.php:163 inc/Admin/Waymark_Settings.php:372
+#: inc/Admin/Waymark_Settings.php:385 inc/Admin/Waymark_Settings.php:389
+#: inc/Admin/Waymark_Settings.php:397 inc/Admin/Waymark_Settings.php:409
+#: inc/Admin/Waymark_Settings.php:420 inc/Admin/Waymark_Settings.php:431
+#: inc/Helpers/Waymark_Lang.php:38
+msgid "Shape"
+msgstr "形状"
+
+#: inc/Admin/Waymark_Settings.php:165
+#, fuzzy
+msgid ""
+"Which shape of Marker to use. Circles and Squares are centered at the "
+"specified location, Markers point down to that location."
+msgstr ""
+"使用するマーカーの形状。円と正方形は指定された位置を中心とし、マーカーはその"
+"位置を指します。"
+
+#: inc/Admin/Waymark_Settings.php:168
+msgid "Circle"
+msgstr "円形"
+
+#: inc/Admin/Waymark_Settings.php:169
+msgid "Square"
+msgstr "正方形"
+
+#: inc/Admin/Waymark_Settings.php:177
+msgid "Size"
+msgstr "サイズ"
+
+#: inc/Admin/Waymark_Settings.php:179
+#, fuzzy
+msgid "Which size of Marker to use."
+msgstr "使用するマーカーのサイズ。"
+
+#: inc/Admin/Waymark_Settings.php:181
+msgid "Small"
+msgstr "小"
+
+#: inc/Admin/Waymark_Settings.php:182
+msgid "Medium"
+msgstr "中"
+
+#: inc/Admin/Waymark_Settings.php:183
+msgid "Large"
+msgstr "大"
+
+#: inc/Admin/Waymark_Settings.php:191 inc/Admin/Waymark_Settings.php:1093
+msgid "Background"
+msgstr "背景"
+
+#: inc/Admin/Waymark_Settings.php:193
+#, fuzzy
+msgid "The Marker background colour. Click \"Select Colour\" to select."
+msgstr "マーカーの背景色。「色を選択」をクリックして選択します。"
+
+#: inc/Admin/Waymark_Settings.php:202 inc/Admin/Waymark_Settings.php:337
+#: inc/Admin/Waymark_Settings.php:420
+#, fuzzy
+msgid "Show Initially"
+msgstr "初期表示(Show Initially)"
+
+#: inc/Admin/Waymark_Settings.php:204 inc/Admin/Waymark_Settings.php:339
+#: inc/Admin/Waymark_Settings.php:422
+#, fuzzy
+msgid ""
+"When using the Overlay Filter you can choose to show/hide certain Types when "
+"the Map initially loads."
+msgstr ""
+"オーバーレイ フィルターを使用する場合、マップが最初に読み込まれるときに特定の"
+"タイプを表示/非表示にすることを選択できます。"
+
+#: inc/Admin/Waymark_Settings.php:213 inc/Admin/Waymark_Settings.php:348
+#: inc/Admin/Waymark_Settings.php:431
+#, fuzzy
+msgid "Submissions?"
+msgstr "提出。"
+
+#: inc/Admin/Waymark_Settings.php:215 inc/Admin/Waymark_Settings.php:350
+#: inc/Admin/Waymark_Settings.php:433
+#, fuzzy
+msgid "Make this Type available in front-end Submissions?"
+msgstr "このタイプをフロントエンドの提出物で使用できるようにしますか?"
+
+#: inc/Admin/Waymark_Settings.php:225 inc/Admin/Waymark_Settings.php:240
+#: inc/Admin/Waymark_Settings.php:253
+msgid "Icon"
+msgstr "アイコン"
+
+#: inc/Admin/Waymark_Settings.php:225 inc/Admin/Waymark_Settings.php:502
+#: inc/Helpers/Waymark_Lang.php:32
+msgid "Type"
+msgstr "タイプ"
+
+#: inc/Admin/Waymark_Settings.php:227
+#, fuzzy
+msgid ""
+"Font Icons are available from Font Awesome and Ionic Icons. Simple Text or "
+"Emojis are supported, as well as custom HTML. So you can pretty much use "
+"anything you like!"
+msgstr ""
+"フォントアイコンは、FontAwesomeおよびIonicIconsから入手できます。シンプルなテ"
+"キストや絵文字、カスタムHTMLがサポートされています。だから、好きなものをほと"
+"んど使うことができます!"
+
+#: inc/Admin/Waymark_Settings.php:230
+msgid "Font Icon"
+msgstr "アイコンフォント"
+
+#: inc/Admin/Waymark_Settings.php:231
+#, fuzzy
+msgid "Text (or Emoji!)"
+msgstr "テキスト(または絵文字!"
+
+#: inc/Admin/Waymark_Settings.php:242
+#, fuzzy
+msgid ""
+"The desired icon name from Ionicons or Font Awesome, e.g. \"ion-camera\", or "
+"\"fa-camera\". Click the links to see the full list of icons available.|Text "
+"to display inside the Marker, in the chosen colour. Space is very limited! "
+"Pro Tip: adjust text size using CSS; for all Markers: .waymark-icon-"
+"text{font-size: 18px}, or by Type: .waymark-marker-photo .waymark-icon-"
+"text{...}. Use your browser's inspector to dig for Type class names.|The "
+"HTML entered will be added inside each Marker. Pro Tip! HTML Entities "
+"supported (e.g. &amp;cross; as well as Unicode and Emojis!), or provide HTML "
+"to integrate with other Icon providers."
+msgstr ""
+"IoniconsまたはFont Awesomeから目的のアイコン名(例:「ion-camera」または「fa-"
+"camera」)。リンクをクリックすると、使用可能なアイコンの完全なリストが表示され"
+"ます。|マーカー内に選択した色で表示するテキスト。スペースは非常に限られていま"
+"す!プロのヒント:CSSを使用してテキストサイズを調整します。すべてのマーカー: ."
+"waymark-icon-text{font-size: 18px}、またはタイプ別: .waymark-marker-photo ."
+"waymark-icon-text{...}。ブラウザーのインスペクターを使用して、Type クラス名を"
+"掘り下げます。|入力したHTMLは、各マーカー内に追加されます。プロのヒント!サ"
+"ポートされているHTMLエンティティ(例:&amp;cross;、Unicode、絵文字など)、または"
+"他のアイコンプロバイダーと統合するためのHTMLを提供します。"
+
+#: inc/Admin/Waymark_Settings.php:253 inc/Admin/Waymark_Settings.php:302
+#: inc/Admin/Waymark_Settings.php:397
+msgid "Colour"
+msgstr "色"
+
+#: inc/Admin/Waymark_Settings.php:255
+#, fuzzy
+msgid "The colour of the icon. Click \"Select Colour\" to select."
+msgstr "アイコンの色。「色を選択」をクリックして選択します。"
+
+#: inc/Admin/Waymark_Settings.php:277 inc/Admin/Waymark_Settings.php:290
+#: inc/Admin/Waymark_Settings.php:294 inc/Admin/Waymark_Settings.php:302
+#: inc/Admin/Waymark_Settings.php:314 inc/Admin/Waymark_Settings.php:326
+#: inc/Admin/Waymark_Settings.php:337 inc/Admin/Waymark_Settings.php:348
+#: inc/Helpers/Waymark_Lang.php:37
+msgid "Line"
+msgstr "ライン"
+
+#: inc/Admin/Waymark_Settings.php:278
+#, fuzzy
+msgid ""
+"Customise how Lines are displayed on the Map. Set these styles once, then "
+"select the appropriate Type when you add to the Map."
+msgstr ""
+"マップ上でのラインの表示方法をカスタマイズします。これらのスタイルを一度設定"
+"し、マップに追加するときに適切なタイプを選択します。"
+
+#: inc/Admin/Waymark_Settings.php:292
+#, fuzzy
+msgid ""
+"What kind of Line is this? E.g. \"Easy\", \"Walking Only\", \"Dark Red\". "
+"The Line Label is displayed in the Tooltip (when hovering over the Line) and "
+"in the Line Info Window. Once saved, Line labels can not be edited."
+msgstr ""
+"これはどんなラインですか?例:「Easy」、「Walking Only」、「Dark Red」など。ラ"
+"インラベルは、ツールチップ(ラインにカーソルを合わせた場合)とライン情報ウィン"
+"ドウに表示されます。一度保存すると、ラインラベルは編集できません。"
+
+#: inc/Admin/Waymark_Settings.php:304
+#, fuzzy
+msgid "The colour of the Line. Click \"Select Colour\" to select."
+msgstr "ラインの色。「色を選択」をクリックして選択します。"
+
+#: inc/Admin/Waymark_Settings.php:314
+msgid "Weight"
+msgstr "重量"
+
+#: inc/Admin/Waymark_Settings.php:316
+#, fuzzy
+msgid "The width of the Line, in pixels."
+msgstr "Line の幅 (ピクセル単位)。"
+
+#: inc/Admin/Waymark_Settings.php:326
+msgid "Opacity"
+msgstr "不透明度"
+
+#: inc/Admin/Waymark_Settings.php:328
+#, fuzzy
+msgid "The opacity of the Line, between 0.0 and 1.0 (e.g. \"0.5\")."
+msgstr "0.0 から 1.0 の間のラインの不透明度 (例: \"0.5\")。"
+
+#: inc/Admin/Waymark_Settings.php:373
+#, fuzzy
+msgid ""
+"Customise how Shapes are displayed on the Map. Set these styles once, then "
+"select the appropriate Type when you add to the Map."
+msgstr ""
+"マップ上での図形の表示方法をカスタマイズします。これらのスタイルを一度設定"
+"し、マップに追加するときに適切なタイプを選択します。"
+
+#: inc/Admin/Waymark_Settings.php:387
+#, fuzzy
+msgid ""
+"What kind of Shape is this? E.g. \"Park\", \"Danger!\", \"Light Blue\". The "
+"Shape Label is displayed in the Tooltip (when hovering over the Shape) and "
+"in the Shape Info Window. Once saved, Shape labels can not be edited."
+msgstr ""
+"これはどんな形ですか?例:「公園」、「危険!」、「水色」。図形ラベルは、ツール"
+"チップ (図形にカーソルを合わせた場合) と図形情報ウィンドウに表示されます。一"
+"度保存すると、図形ラベルは編集できません。"
+
+#: inc/Admin/Waymark_Settings.php:399
+#, fuzzy
+msgid "The colour of the Shape. Click \"Select Colour\" to select."
+msgstr "シェイプの色。「色を選択」をクリックして選択します。"
+
+#: inc/Admin/Waymark_Settings.php:409
+#, fuzzy
+msgid "Fill Opacity"
+msgstr "塗りつぶしの不透明度(Fill Opacity)"
+
+#: inc/Admin/Waymark_Settings.php:411
+#, fuzzy
+msgid ""
+"The opacity of the inside of the shape, between 0.0 and 1.0 (e.g. \"0.5\")."
+msgstr "図形の内側の不透明度 (0.0 から 1.0 の間) (例: \"0.5\")。"
+
+#: inc/Admin/Waymark_Settings.php:459
+#, fuzzy
+msgid ""
+"Create additional input fields that appear underneath the Map Editor. Any "
+"Meta that has been input is displayed on the <a href=\"%s\">Map Details</a> "
+"page, and can also be displayed by the Shortcode."
+msgstr ""
+"[Map Editor] (マップエディター)の下に表示される追加の入力フィールドを作成しま"
+"す。入力されたメタはマップ <a href=\"%s\">の詳細</a> ページに表示され、ショー"
+"トコードで表示することもできます。"
+
+#: inc/Admin/Waymark_Settings.php:462
+#, fuzzy
+msgid "Meta Docs &raquo;"
+msgstr "メタドキュメント »"
+
+#: inc/Admin/Waymark_Settings.php:471 inc/Admin/Waymark_Settings.php:563
+#: inc/Admin/Waymark_Settings.php:671 inc/Admin/Waymark_Settings.php:732
+#: inc/Admin/Waymark_Settings.php:844 inc/Front/Waymark_Submission.php:284
+#: inc/Helpers/Waymark_Lang.php:29
+msgid "Title"
+msgstr "タイトル"
+
+#: inc/Admin/Waymark_Settings.php:473
+#, fuzzy
+msgid "The title appears next to the input field."
+msgstr "タイトルは入力フィールドの横に表示されます。"
+
+#: inc/Admin/Waymark_Settings.php:484
+msgid "Default"
+msgstr "デフォルト"
+
+#: inc/Admin/Waymark_Settings.php:486
+#, fuzzy
+msgid ""
+"The default value for the input field. For Select and Multi-Select enter the "
+"option/comma-separated options to be selected by default."
+msgstr ""
+"入力フィールドのデフォルト値。「選択」および「複数選択」に、デフォルトで選択"
+"されるオプション/カンマ区切りオプションを入力します。"
+
+#: inc/Admin/Waymark_Settings.php:493
+msgid "Tip"
+msgstr "ヒント"
+
+#: inc/Admin/Waymark_Settings.php:495
+#, fuzzy
+msgid ""
+"A tip provides additional information about an input field... just like this!"
+msgstr "ヒントは、入力フィールドに関する追加情報を提供します...こんな感じ!"
+
+#: inc/Admin/Waymark_Settings.php:504
+#, fuzzy
+msgid "The type of input field to use."
+msgstr "使用する入力フィールドのタイプ。"
+
+#: inc/Admin/Waymark_Settings.php:507
+msgid "Textarea"
+msgstr "テキストエリア"
+
+#: inc/Admin/Waymark_Settings.php:508
+msgid "Rich Text"
+msgstr "リッチテキスト"
+
+#: inc/Admin/Waymark_Settings.php:509
+msgid "Select"
+msgstr "選択"
+
+#: inc/Admin/Waymark_Settings.php:510
+msgid "Multi-Select"
+msgstr "複数選択"
+
+#: inc/Admin/Waymark_Settings.php:518
+msgid "Options"
+msgstr "オプション"
+
+#: inc/Admin/Waymark_Settings.php:520
+#, fuzzy
+msgid "A comma-separated list of options for the input."
+msgstr "入力のオプションのコンマ区切りリスト。"
+
+#: inc/Admin/Waymark_Settings.php:528 inc/Admin/Waymark_Settings.php:563
+msgid "Group"
+msgstr "グループ"
+
+#: inc/Admin/Waymark_Settings.php:530
+#, fuzzy
+msgid ""
+"Which group this Meta belongs to (if any). Meta in the same group will be "
+"displayed together when editing and viewing Maps. Meta not in a group will "
+"be displayed above any groups."
+msgstr ""
+"このメタが属するグループ(存在する場合)。同じグループ内のメタは、マップの編集"
+"や閲覧時に一緒に表示されます。グループに属していないメタは、どのグループより"
+"も上に表示されます。"
+
+#: inc/Admin/Waymark_Settings.php:537
+#, fuzzy
+msgid "In Shortcode?"
+msgstr "ショートコードで?"
+
+#: inc/Admin/Waymark_Settings.php:539
+#, fuzzy
+msgid ""
+"Whether this content should be displayed when embedding a Map using the "
+"Shortcode."
+msgstr ""
+"ショートコードを使用してマップを埋め込むときに、このコンテンツを表示するかど"
+"うか。"
+
+#: inc/Admin/Waymark_Settings.php:546
+#, fuzzy
+msgid "In Submissions?"
+msgstr "提出物では?"
+
+#: inc/Admin/Waymark_Settings.php:548
+#, fuzzy
+msgid "Make this Meta available in front-end Submissions?"
+msgstr "このメタをフロントエンドの投稿で利用できるようにしますか?"
+
+#: inc/Admin/Waymark_Settings.php:554
+msgid "Groups"
+msgstr "グループ"
+
+#: inc/Admin/Waymark_Settings.php:555
+#, fuzzy
+msgid ""
+"Create groups to organise your Map Meta. Meta in the same group will be "
+"displayed together when editing and viewing Maps."
+msgstr ""
+"グループを作成して、マップメタを整理します。同じグループ内のメタは、マップの"
+"編集や閲覧時に一緒に表示されます。"
+
+#: inc/Admin/Waymark_Settings.php:556
+#, fuzzy
+msgid "<b>Pro Tip!</b> Drag to re-order, remove all to disable groups."
+msgstr ""
+"<b>プロのヒント!</b> ドラッグして並べ替え、すべて削除してグループを無効にしま"
+"す。"
+
+#: inc/Admin/Waymark_Settings.php:565
+#, fuzzy
+msgid "The title appears above the Meta in that group."
+msgstr "タイトルは、そのグループのメタの上に表示されます。"
+
+#: inc/Admin/Waymark_Settings.php:627
+#, fuzzy
+msgid "Front-End Submissions"
+msgstr "フロントエンドの提出"
+
+#: inc/Admin/Waymark_Settings.php:628
+#, fuzzy
+msgid ""
+"Use the %s Shortcode to allow Map submissions from the front-end of your "
+"site."
+msgstr ""
+"%sショートコードを使用して、サイトのフロントエンドからのマップ送信を許可しま"
+"す。"
+
+#: inc/Admin/Waymark_Settings.php:631
+#, fuzzy
+msgid "Submission Docs &raquo;"
+msgstr "提出ドキュメント »"
+
+#: inc/Admin/Waymark_Settings.php:638
+#, fuzzy
+msgid "Allow Submissions"
+msgstr "送信を許可する"
+
+#: inc/Admin/Waymark_Settings.php:640
+#, fuzzy
+msgid ""
+"Submissions will be available only to site administrators by default, but "
+"can also be allowed for registered users or even to guests without "
+"registration."
+msgstr ""
+"提出物はデフォルトではサイト管理者のみが利用できますが、登録ユーザーや登録し"
+"ていないゲストにも許可できます。"
+
+#: inc/Admin/Waymark_Settings.php:646
+#, fuzzy
+msgid "User Submissions"
+msgstr "ユーザー提出物"
+
+#: inc/Admin/Waymark_Settings.php:647
+#, fuzzy
+msgid "Allow registered users to create Maps from the front-end."
+msgstr "登録ユーザーがフロントエンドからマップを作成できるようにします。"
+
+#: inc/Admin/Waymark_Settings.php:654
+#, fuzzy
+msgid "Allow From"
+msgstr "許可元"
+
+#: inc/Admin/Waymark_Settings.php:656
+#, fuzzy
+msgid ""
+"Users with the selected roles will be able to make Submissions through the "
+"front-end"
+msgstr ""
+"選択した役割を持つユーザーは、フロントエンドからサブミッションを行うことがで"
+"きます"
+
+#: inc/Admin/Waymark_Settings.php:664 inc/Admin/Waymark_Settings.php:725
+#, fuzzy
+msgid "Editor Features"
+msgstr "エディタの機能"
+
+#: inc/Admin/Waymark_Settings.php:666
+#, fuzzy
+msgid ""
+"What features to offer in the Editor. Important! Uploaded images are added "
+"to the Media Library, reading from file does not keep a copy of the file on "
+"the server. Whether an individual Meta input is displayed can be set in the "
+"Settings > Map > Meta."
+msgstr ""
+"エディターで提供する機能。大事な！アップロードされた画像はメディアライブラリ"
+"に追加され、ファイルから読み込んでもファイルのコピーはサーバーに保持されませ"
+"ん。個々のメタ入力を表示するかどうかは、[設定] > [マップ] > [メタ] で設定でき"
+"ます。"
+
+#: inc/Admin/Waymark_Settings.php:668 inc/Admin/Waymark_Settings.php:729
+#, fuzzy
+msgid "Drawing"
+msgstr "ドローイング"
+
+#: inc/Admin/Waymark_Settings.php:669 inc/Admin/Waymark_Settings.php:730
+msgid "Image upload"
+msgstr "画像のアップロード"
+
+#: inc/Admin/Waymark_Settings.php:679 inc/Admin/Waymark_Settings.php:753
+msgid "Default Status"
+msgstr "デフォルトステータス"
+
+#: inc/Admin/Waymark_Settings.php:681 inc/Admin/Waymark_Settings.php:755
+#, fuzzy
+msgid ""
+"This is the initial status of the submitted Map. Note! Publish means that "
+"the Map (including any images added) will be *immediately* visible on your "
+"site."
+msgstr ""
+"これは、提出されたマップの初期状態です。手記！公開とは、マップ(追加された画像"
+"を含む)がサイトに*すぐに*表示されることを意味します。"
+
+#: inc/Admin/Waymark_Settings.php:683
+msgid "Publish"
+msgstr "公開"
+
+#: inc/Admin/Waymark_Settings.php:684 inc/Admin/Waymark_Settings.php:757
+msgid "Draft"
+msgstr "下書き"
+
+#: inc/Admin/Waymark_Settings.php:691 inc/Admin/Waymark_Settings.php:766
+msgid "Default Collection"
+msgstr "お気に入り記事"
+
+#: inc/Admin/Waymark_Settings.php:692 inc/Admin/Waymark_Settings.php:767
+#, fuzzy
+msgid ""
+"If specified, user submissions will be automatically added to this "
+"Collection."
+msgstr ""
+"指定した場合、ユーザーの提出物はこのコレクションに自動的に追加されます。"
+
+#: inc/Admin/Waymark_Settings.php:709 inc/Admin/Waymark_Settings.php:716
+#, fuzzy
+msgid "Public Submissions"
+msgstr "公開投稿"
+
+#: inc/Admin/Waymark_Settings.php:710
+#, fuzzy
+msgid ""
+"This will allow Submissions from <b>any visitor</b>, without registration."
+"<!--<br /><br /><b>Important!</b>-->"
+msgstr ""
+"これにより、登録なしで <b>、任意の訪問者</b>からの提出が可能になります。<!--"
+"<br /><br /><b>Important!</b>-->"
+
+#: inc/Admin/Waymark_Settings.php:718
+#, fuzzy
+msgid "Allow *anyone* to submit Maps to your site, without registration."
+msgstr "「誰でも」登録なしでマップをサイトに送信できるようにします。"
+
+#: inc/Admin/Waymark_Settings.php:727
+#, fuzzy
+msgid ""
+"What features to offer in the Editor. Important! Uploaded images are added "
+"to the Media Library (see Upload Location below), reading from file does not "
+"keep a copy of the file on the server. Whether an individual Meta input is "
+"displayed can be set in the Settings > Map > Meta."
+msgstr ""
+"エディターで提供する機能。大事な！アップロードされた画像はメディアライブラリ"
+"に追加され(以下のアップロード場所を参照)、ファイルから読み取ってもファイルの"
+"コピーはサーバーに保持されません。個々のメタ入力を表示するかどうかは、[設定] "
+"> [マップ] > [メタ] で設定できます。"
+
+#: inc/Admin/Waymark_Settings.php:740
+#, fuzzy
+msgid "Upload Location"
+msgstr "アップロード場所"
+
+#: inc/Admin/Waymark_Settings.php:742
+#, fuzzy
+msgid ""
+"Images upload by non-registered users can be stored seperately from other "
+"Media Library uploads, to aid with moderation. All uploaded images will be "
+"stored in a single directory (/waymark_submission) found in the upload root."
+msgstr ""
+"未登録ユーザーがアップロードした画像は、モデレーションを支援するために、他の"
+"メディアライブラリのアップロードとは別に保存できます。アップロードされたすべ"
+"ての画像は、アップロードルートにある単一のディレクトリ(/waymark_submission)に"
+"保存されます。"
+
+#: inc/Admin/Waymark_Settings.php:745
+#, fuzzy
+msgid "Seperated (/waymark_submission)"
+msgstr "分離 (/waymark_submission)"
+
+#: inc/Admin/Waymark_Settings.php:746
+#, fuzzy
+msgid "Media Library Default (%s)"
+msgstr "メディアライブラリのデフォルト(%s)"
+
+#: inc/Admin/Waymark_Settings.php:758
+#, fuzzy
+msgid "Publish (not recommended!)"
+msgstr "公開 (推奨されません)"
+
+#: inc/Admin/Waymark_Settings.php:818
+#, fuzzy
+msgid ""
+"Read <b><a href=\"https://geojson.org/\">GeoJSON</a></b> feature properties "
+"when importing."
+msgstr ""
+"インポート時に <b><a href=\"https://geojson.org/\">GeoJSON</a></b> フィーチャ"
+"のプロパティを読み取ります。"
+
+#: inc/Admin/Waymark_Settings.php:819
+#, fuzzy
+msgid ""
+"<small><b>Pro Tip!</b> Properties are added to the Overlay Description with "
+"class names that can be used to target them, e.g. %s.</small>"
+msgstr ""
+"<small><b>プロのヒント!</b> プロパティは、オーバーレイの説明に追加され、ター"
+"ゲット %sに使用できるクラス名が表示されます。</small>"
+
+#: inc/Admin/Waymark_Settings.php:831 inc/Admin/Waymark_Settings.php:844
+msgid "Property"
+msgstr "プロパティ"
+
+#: inc/Admin/Waymark_Settings.php:831
+msgid "Key"
+msgstr "キー"
+
+#: inc/Admin/Waymark_Settings.php:833
+#, fuzzy
+msgid ""
+"This is the key associated with the data you are trying to access, i.e. "
+"\"properties\": {\"property_key\": \"Some content here\"}"
+msgstr ""
+"これは、アクセスしようとしているデータに関連付けられているキーです(例: "
+"\"properties\": {\"property_key\": \"Some content here\"}"
+
+#: inc/Admin/Waymark_Settings.php:846
+#, fuzzy
+msgid ""
+"The value for this property will be added to the Overlay Description under "
+"this title."
+msgstr ""
+"このプロパティの値は、このタイトルの下の [オーバーレイの説明] に追加されま"
+"す。"
+
+#: inc/Admin/Waymark_Settings.php:865
+msgid "Map Options"
+msgstr "マップ オプション"
+
+#: inc/Admin/Waymark_Settings.php:866
+#, fuzzy
+msgid "Use these options to change how Maps are displayed."
+msgstr "これらのオプションを使用して、マップの表示方法を変更します。"
+
+#: inc/Admin/Waymark_Settings.php:869
+#, fuzzy
+msgid "See Examples &raquo;"
+msgstr "例を見る »"
+
+#: inc/Admin/Waymark_Settings.php:877
+#, fuzzy
+msgid "Default Centre"
+msgstr "デフォルト中心"
+
+#: inc/Admin/Waymark_Settings.php:879
+#, fuzzy
+msgid ""
+"Waymark centres the Map automatically when displaying data. These "
+"coordinates (Latitude,Longitude) will be used when there is no data "
+"available."
+msgstr ""
+"Waymarkは、データを表示するときにマップを自動的に中央に配置します。これらの座"
+"標(緯度、経度)は、利用可能なデータがない場合に使用されます。"
+
+#: inc/Admin/Waymark_Settings.php:892
+msgid "Map Height"
+msgstr "地図の高さ"
+
+#: inc/Admin/Waymark_Settings.php:894
+#, fuzzy
+msgid "Or set in Shortcode: %s"
+msgstr "またはショートコードで設定:%s"
+
+#: inc/Admin/Waymark_Settings.php:895
+#, fuzzy
+msgid ""
+"Specify the desired height of the Map (in pixels). Pro Tip! This will affect "
+"all Maps, but you can change the height (and width) of an individual Map "
+"through the Shortcode: %s"
+msgstr ""
+"マップの高さをピクセル単位で指定します。プロのヒント!これはすべてのマップに影"
+"響しますが、ショートコードを使用して個々のマップの高さ(および幅)を変更できま"
+"す%s"
+
+#: inc/Admin/Waymark_Settings.php:907
+#, fuzzy
+msgid "Type Labels"
+msgstr "タイプ ラベル"
+
+#: inc/Admin/Waymark_Settings.php:909
+#, fuzzy
+msgid ""
+"Whether to display the Marker/Line/Shape Type Label in the tooltip and Info "
+"Window."
+msgstr ""
+"マーカー/ライン/シェイプタイプのラベルをツールチップと情報ウィンドウに表示す"
+"るかどうか。"
+
+#: inc/Admin/Waymark_Settings.php:911 inc/Admin/Waymark_Settings.php:938
+#: inc/Admin/Waymark_Settings.php:950 inc/Admin/Waymark_Settings.php:1122
+msgid "Show"
+msgstr "表示"
+
+#: inc/Admin/Waymark_Settings.php:912 inc/Admin/Waymark_Settings.php:939
+#: inc/Admin/Waymark_Settings.php:951 inc/Admin/Waymark_Settings.php:1123
+msgid "Hide"
+msgstr "非表示"
+
+#: inc/Admin/Waymark_Settings.php:920
+#, fuzzy
+msgid "Default Zoom"
+msgstr "デフォルトズーム"
+
+#: inc/Admin/Waymark_Settings.php:922
+#, fuzzy
+msgid ""
+"Waymark zooms the Map automatically when displaying data. This zoom level "
+"(0-18) will be used when there is no data available."
+msgstr ""
+"Waymarkは、データを表示するときにマップを自動的にズームします。このズームレベ"
+"ル(0〜18)は、利用可能なデータがない場合に使用されます。"
+
+#: inc/Admin/Waymark_Settings.php:934
+msgid "Image Gallery"
+msgstr "画像ギャラリー"
+
+#: inc/Admin/Waymark_Settings.php:936
+#, fuzzy
+msgid ""
+"Whether to display an image gallery for Markers that have images associated "
+"with them. Pro Tip! This will affect all Maps, but you can choose to show/"
+"hide the gallery of an individual Map through the shortcode: %s"
+msgstr ""
+"画像が関連付けられているマーカーの画像ギャラリーを表示するかどうか。プロのヒ"
+"ント!これはすべてのマップに影響しますが、ショートコードを使用して個々のマップ"
+"のギャラリーを表示/非表示にすることを選択できます%s"
+
+#: inc/Admin/Waymark_Settings.php:946
+#, fuzzy
+msgid "Overlay Filter"
+msgstr "オーバーレイ フィルター"
+
+#: inc/Admin/Waymark_Settings.php:948
+#, fuzzy
+msgid ""
+"Allow the user to filter which Markers, Lines and Shapes are currently "
+"visible on the Map. Pro Tip! This will affect all Maps, but you can choose "
+"to show/hide the filter for individual Maps through the shortcode: %s"
+msgstr ""
+"ユーザーがマップ上に現在表示されているマーカー、線、形状をフィルタリングでき"
+"るようにします。プロのヒント!これはすべてのマップに影響しますが、ショートコー"
+"ドを使用して個々のマップのフィルターを表示/非表示にすることを選択できます%s"
+
+#: inc/Admin/Waymark_Settings.php:958
+#, fuzzy
+msgid "Public Export"
+msgstr "パブリックエクスポート"
+
+#: inc/Admin/Waymark_Settings.php:960
+#, fuzzy
+msgid ""
+"Offer visitors the ability to Download all Collection/Map Overlays in the "
+"Shortcode Header and on the Map Details page. GeoJSON, GPX and KML formats "
+"supported."
+msgstr ""
+"訪問者がショートコードヘッダーとマップの詳細ページですべてのコレクション/マッ"
+"プオーバーレイをダウンロードする機能を提供します。GeoJSON、GPX、KML形式がサ"
+"ポートされています。"
+
+#: inc/Admin/Waymark_Settings.php:966
+msgid "Show Scale"
+msgstr "スケール表示"
+
+#: inc/Admin/Waymark_Settings.php:968
+#, fuzzy
+msgid "Show a distance scale (km and miles) on the Map."
+msgstr "距離スケール (km とマイル) をマップに表示します。"
+
+#: inc/Admin/Waymark_Settings.php:977
+#, fuzzy
+msgid "Sleep Options"
+msgstr "睡眠オプション"
+
+#: inc/Admin/Waymark_Settings.php:978
+#, fuzzy
+msgid ""
+"Waymark Maps will zoom when the user scrolls. This can cause some unexpected/"
+"annoying behaviour when scrolling a page.<br /><br /><b>Sleeping</b> the Map "
+"initially and <b>Waking</b> upon user interaction (i.e. hovering/clicking/"
+"tapping) may create a better experience."
+msgstr ""
+"Waymark Maps は、ユーザーがスクロールするとズームします。これにより、ページを"
+"スクロールするときに予期しない/迷惑な動作が発生する可能性があります。<br /"
+"><br />最初にマップを<b>スリープ</b>させ、ユーザーの操作(ホバー/クリック/タッ"
+"プなど)で<b>ウェイクアップ</b>すると、エクスペリエンスが向上する可能性があり"
+"ます。"
+
+#: inc/Admin/Waymark_Settings.php:985
+#, fuzzy
+msgid "Hover Wake Time"
+msgstr "ホバー ウェイク タイム(Hover Wake Time)"
+
+#: inc/Admin/Waymark_Settings.php:986
+msgid "Seconds"
+msgstr "秒"
+
+#: inc/Admin/Waymark_Settings.php:988
+#, fuzzy
+msgid ""
+"How many seconds before scroll zoom is enabled. 0 seconds will mean no delay "
+"(disabling this feature). A large number of seconds like 3600 (an hour) will "
+"esentially *disable hover to wake*, meaning the user will need to *click* to "
+"wake."
+msgstr ""
+"スクロールズームが有効になるまでの秒数。0 秒は遅延がないことを意味します (こ"
+"の機能は無効になります)。3600 (1 時間) のような長い秒数は、本質的に *ホバーし"
+"てウェイクアップを無効化*し、ユーザーがウェイクアップするために *クリック* す"
+"る必要があることを意味します。"
+
+#: inc/Admin/Waymark_Settings.php:997
+msgid "Display Message"
+msgstr "メッセージを表示"
+
+#: inc/Admin/Waymark_Settings.php:999
+#, fuzzy
+msgid ""
+"This message will be displayed by the Map while scroll zoom is disabled."
+msgstr ""
+"このメッセージは、スクロールズームが無効になっている間、マップに表示されま"
+"す。"
+
+#: inc/Admin/Waymark_Settings.php:1005
+msgid "Display"
+msgstr "表示"
+
+#: inc/Admin/Waymark_Settings.php:1005
+msgid "Message Text"
+msgstr "メッセージテキスト"
+
+#: inc/Admin/Waymark_Settings.php:1014
+#, fuzzy
+msgid "Cluster Options"
+msgstr "クラスタ オプション"
+
+#: inc/Admin/Waymark_Settings.php:1015
+#, fuzzy
+msgid ""
+"With Clustering enabled, Markers will be grouped together when they are "
+"close together. This can help to reduce clutter on the Map."
+msgstr ""
+"クラスタリングを有効にすると、マーカーが近くにあるとグループ化されます。これ"
+"により、マップの煩雑さが軽減されます。"
+
+#: inc/Admin/Waymark_Settings.php:1018
+#, fuzzy
+msgid "Clustering Docs &raquo;"
+msgstr "クラスタリングに関するドキュメント »"
+
+#: inc/Admin/Waymark_Settings.php:1026
+msgid "Enabled"
+msgstr "有効"
+
+#: inc/Admin/Waymark_Settings.php:1027
+msgid "Disabled"
+msgstr "無効"
+
+#: inc/Admin/Waymark_Settings.php:1030
+msgid "Marker Clustering"
+msgstr "マーカークラスタリング"
+
+#: inc/Admin/Waymark_Settings.php:1032
+#, fuzzy
+msgid ""
+"Whether to cluster (stack) Markers that are close together. Pro Tip! This "
+"will affect all Maps, but you can also enable/disable clustering through the "
+"Shortcode: [Waymark show_cluster=\"0\"]"
+msgstr ""
+"近接しているマーカーをクラスタリング(スタック)するかどうか。プロのヒント!これ"
+"はすべてのマップに影響しますが、ショートコードを使用してクラスタリングを有効/"
+"無効にすることもできます:[Waymark show_cluster=\"0\"]"
+
+#: inc/Admin/Waymark_Settings.php:1039
+#, fuzzy
+msgid "Cluster Threshold"
+msgstr "クラスタしきい値(Cluster Threshold)"
+
+#: inc/Admin/Waymark_Settings.php:1041
+#, fuzzy
+msgid "Markers will not be clustered above this zoom level."
+msgstr "マーカーは、このズームレベルより上にはクラスタ化されません。"
+
+#: inc/Admin/Waymark_Settings.php:1051
+msgid "Cluster"
+msgstr "クラスター"
+
+#: inc/Admin/Waymark_Settings.php:1051
+msgid "Radius"
+msgstr "半径"
+
+#: inc/Admin/Waymark_Settings.php:1053
+#, fuzzy
+msgid ""
+"The maximum radius that a cluster will cover from the central marker (in "
+"pixels). Decreasing will make more, smaller clusters.\tDefault 80."
+msgstr ""
+"クラスターが中心マーカーからカバーする最大半径 (ピクセル単位)。減少すると、よ"
+"り小さなクラスターが作成されます。\t既定値は 80 です。"
+
+#: inc/Admin/Waymark_Settings.php:1065
+#, fuzzy
+msgid "Collection Options"
+msgstr "コレクション オプション"
+
+#: inc/Admin/Waymark_Settings.php:1066
+#, fuzzy
+msgid "How Collections are displayed."
+msgstr "コレクションの表示方法。"
+
+#: inc/Admin/Waymark_Settings.php:1069
+#, fuzzy
+msgid "Collection Docs &raquo;"
+msgstr "コレクションドキュメント »"
+
+#: inc/Admin/Waymark_Settings.php:1076
+#, fuzzy
+msgid "Link to Maps"
+msgstr "マップへのリンク"
+
+#: inc/Admin/Waymark_Settings.php:1078
+#, fuzzy
+msgid ""
+"Whether to display a link to the individual Map Details page when clicking "
+"on a Marker/Line/Shape displayed by the Collection."
+msgstr ""
+"コレクションによって表示されるマーカー/線/形状をクリックしたときに、個々の"
+"マップの詳細ページへのリンクを表示するかどうか。"
+
+#: inc/Admin/Waymark_Settings.php:1084
+#, fuzzy
+msgid "Link from Maps"
+msgstr "マップからのリンク"
+
+#: inc/Admin/Waymark_Settings.php:1086
+#, fuzzy
+msgid ""
+"Whether to display a link to the Collection(s) that a Map belongs to on the "
+"Map Details page."
+msgstr ""
+"マップが属するコレクションへのリンクを「マップの詳細」ページに表示するかどう"
+"か。"
+
+#: inc/Admin/Waymark_Settings.php:1094
+msgid "Embed"
+msgstr "埋め込み"
+
+#: inc/Admin/Waymark_Settings.php:1097
+#, fuzzy
+msgid "Shortcode Method"
+msgstr "ショートコード方式"
+
+#: inc/Admin/Waymark_Settings.php:1099
+#, fuzzy
+msgid ""
+"Whether to load multiple Maps in the Background (uses AJAX to improve page "
+"load) when embedding with the Shortcode, or to Embed them within the page. "
+"Embedding may be a bad idea for LARGE COLLECTIONS, but can resolve some "
+"issues where Collections are not displaying correctly."
+msgstr ""
+"ショートコードで埋め込むときにバックグラウンドで複数のマップをロードするか"
+"(AJAXを使用してページの読み込みを改善するか)、ページ内に埋め込むか。埋め込み"
+"は LARGE COLLECTIONS には適さないかもしれませんが、Collections が正しく表示さ"
+"れない問題を解決できます。"
+
+#: inc/Admin/Waymark_Settings.php:1107
+msgid "Shortcode Options"
+msgstr "ショートコードオプション"
+
+#: inc/Admin/Waymark_Settings.php:1108
+#, fuzzy
+msgid "How Maps are embedded into your content using the shortcode."
+msgstr "ショートコードを使用してマップをコンテンツに埋め込む方法。"
+
+#: inc/Admin/Waymark_Settings.php:1111
+#, fuzzy
+msgid "Shortcode Docs &raquo;"
+msgstr "ショートコードドキュメント »"
+
+#: inc/Admin/Waymark_Settings.php:1118
+#, fuzzy
+msgid "Shortcode Header"
+msgstr "ショートコードヘッダー"
+
+#: inc/Admin/Waymark_Settings.php:1120
+#, fuzzy
+msgid ""
+"The shortcode header displays the title and link to the Map or Collection. "
+"Pro Tip! This will affect all shortcodes, but you can override the setting "
+"through the shortcode: %s (the value must be either 0 or 1)."
+msgstr ""
+"ショートコードヘッダーには、タイトルとマップまたはコレクションへのリンクが表"
+"示されます。プロのヒント!これはすべてのショートコードに影響しますが、ショート"
+"コードで設定を上書きできます:%s(値は0または1である必要があります)。"
+
+#: inc/Admin/Waymark_Settings.php:1130
+#, fuzzy
+msgid "Header for Admin"
+msgstr "管理者のヘッダー"
+
+#: inc/Admin/Waymark_Settings.php:1132
+#, fuzzy
+msgid ""
+"Use this Setting to always show the Shortcode Header when signed in as "
+"admin, useful for quickly navigating to embeded Maps."
+msgstr ""
+"この設定を使用すると、管理者としてサインインしたときに常にショートコードヘッ"
+"ダーが表示され、埋め込まれたマップにすばやく移動するのに役立ちます。"
+
+#: inc/Admin/Waymark_Settings.php:1134
+#, fuzzy
+msgid "Use Setting"
+msgstr "設定を使用"
+
+#: inc/Admin/Waymark_Settings.php:1135
+msgid "Always Show"
+msgstr "常に表示"
+
+#: inc/Admin/Waymark_Settings.php:1144
+#, fuzzy
+msgid "Elevation Options"
+msgstr "エレベーション オプション"
+
+#: inc/Admin/Waymark_Settings.php:1145
+#, fuzzy
+msgid "Lines with elevation data."
+msgstr "標高データを含むライン。"
+
+#: inc/Admin/Waymark_Settings.php:1148
+#, fuzzy
+msgid "Elevation Styling &raquo;"
+msgstr "立面図のスタイル設定 »"
+
+#: inc/Admin/Waymark_Settings.php:1155
+#, fuzzy
+msgid "Elevation Profile"
+msgstr "標高プロファイル"
+
+#: inc/Admin/Waymark_Settings.php:1157
+#, fuzzy
+msgid ""
+"Display an interactive elevation profile graph below the Map for Lines that "
+"have elevation data. Pro Tip! You can choose to show/hide the elevation "
+"graph of an individual Map through the shortcode: %s"
+msgstr ""
+"標高データを持つラインのマップの下に、対話型の標高断面グラフを表示します。プ"
+"ロのヒント!ショートコードを使用して、個々のマップの標高グラフを表示/非表示に"
+"することを選択できます%s。"
+
+#: inc/Admin/Waymark_Settings.php:1159
+#, fuzzy
+msgid "Show on Map Details"
+msgstr "地図の詳細に表示"
+
+#: inc/Admin/Waymark_Settings.php:1160
+msgid "Show everywhere"
+msgstr "どこでも表示"
+
+#: inc/Admin/Waymark_Settings.php:1161
+msgid "Hide everywhere"
+msgstr "どこにでも隠します"
+
+#: inc/Admin/Waymark_Settings.php:1168
+#, fuzzy
+msgid "Elevation Units"
+msgstr "標高単位"
+
+#: inc/Admin/Waymark_Settings.php:1170
+#, fuzzy
+msgid "Display elevation data in metric (m/km) or imperial (ft/mi) units."
+msgstr ""
+"標高データをメートル法(m/km)またはインペリアル法(ft/mi)単位で表示します。"
+
+#: inc/Admin/Waymark_Settings.php:1172
+#, fuzzy
+msgid "Metric (m/km)"
+msgstr "メートル法 (m/km)"
+
+#: inc/Admin/Waymark_Settings.php:1173
+#, fuzzy
+msgid "Imperial (ft/mi)"
+msgstr "インペリアル (ft/mi)"
+
+#: inc/Admin/Waymark_Settings.php:1181
+#, fuzzy
+msgid "Elevation Colour"
+msgstr "エレベーション カラー"
+
+#: inc/Admin/Waymark_Settings.php:1183
+#, fuzzy
+msgid "The colour of the elevation graph and associated Line."
+msgstr "標高グラフと関連する線の色。"
+
+#: inc/Admin/Waymark_Settings.php:1192
+#, fuzzy
+msgid "Show Initially?"
+msgstr "最初に表示しますか?"
+
+#: inc/Admin/Waymark_Settings.php:1194
+#, fuzzy
+msgid ""
+"Whether to show the elevation profile when the Map loads. If set to No, the "
+"user must click on a Line in order to display the elevation data. If there "
+"are multiple Lines with elevation data, the one added to the editor first "
+"will be the one shown initially."
+msgstr ""
+"マップの読み込み時に標高断面を表示するかどうか。[いいえ] に設定した場合、標高"
+"データを表示するには、ラインをクリックする必要があります。標高データを含むラ"
+"インが複数ある場合は、最初にエディターに追加されるものが最初に表示されます。"
+
+#: inc/Admin/Waymark_Settings.php:1202
+#, fuzzy
+msgid "Editor Options"
+msgstr "エディタ オプション"
+
+#: inc/Admin/Waymark_Settings.php:1203
+#, fuzzy
+msgid "Customising the Map Editor."
+msgstr "マップエディターのカスタマイズ。"
+
+#: inc/Admin/Waymark_Settings.php:1206
+#, fuzzy
+msgid "Editor Docs &raquo;"
+msgstr "エディタドキュメント »"
+
+#: inc/Admin/Waymark_Settings.php:1213
+#, fuzzy
+msgid "Confirm Delete?"
+msgstr "削除を確認しますか?"
+
+#: inc/Admin/Waymark_Settings.php:1215
+#, fuzzy
+msgid ""
+"Whether to show a confirmation dialog before deleting Markers/Lines/Shapes "
+"from the Map. Pro Tip! Even if you accidentally delete something, changes "
+"are not saved until the \"Update\" button is clicked."
+msgstr ""
+"地図からマーカー/線/図形を削除する前に確認ダイアログを表示するかどうか。プロ"
+"のヒント!誤って削除してしまった場合でも、「更新」ボタンをクリックするまで変更"
+"は保存されません。"
+
+#: inc/Admin/Waymark_Settings.php:1221
+#, fuzzy
+msgid "Default Basemap"
+msgstr "デフォルト ベースマップ"
+
+#: inc/Admin/Waymark_Settings.php:1223
+#, fuzzy
+msgid "Which Basemap to use as the editor default."
+msgstr "エディターのデフォルトとして使用するベースマップ。"
+
+#: inc/Admin/Waymark_Settings.php:1230
+#, fuzzy
+msgid "Store Read Files"
+msgstr "読み取りファイルの保存"
+
+#: inc/Admin/Waymark_Settings.php:1232
+#, fuzzy
+msgid ""
+"By default Waymark does not store any files read using the Editor. Using "
+"this option you can use the Media Library to store the uploaded GPX/KML/"
+"GeoJSON file."
+msgstr ""
+"デフォルトでは、Waymark はエディターを使用して読み取ったファイルを保存しませ"
+"ん。このオプションを使用すると、メディアライブラリを使用して、アップロードさ"
+"れたGPX/KML/GeoJSONファイルを保存できます。"
+
+#: inc/Admin/Waymark_Settings.php:1239
+msgid "Permalinks"
+msgstr "パーマリンク"
+
+#: inc/Admin/Waymark_Settings.php:1248
+#, fuzzy
+msgid "Map Slug"
+msgstr "マップスラッグ"
+
+#: inc/Admin/Waymark_Settings.php:1250
+#, fuzzy
+msgid ""
+"The URL slug that will be used for links to your Maps, i.e. example.com/[map-"
+"slug]/example-map/. Only alpha-numeric characters and hyphens (-) are "
+"allowed."
+msgstr ""
+"マップへのリンクに使用されるURLスラッグ(例:example.com/[map-slug]/example-"
+"map/)。使用できるのは、英数字とハイフン (-) のみです。"
+
+#: inc/Admin/Waymark_Settings.php:1262
+msgid "Collection Slug"
+msgstr "コレクションURL"
+
+#: inc/Admin/Waymark_Settings.php:1264
+#, fuzzy
+msgid ""
+"The URL slug that will be used for links to your Collections, i.e. example."
+"com/[collection-slug]/example-collection/. Only alpha-numeric characters and "
+"hyphens (-) are allowed."
+msgstr ""
+"コレクションへのリンクに使用されるURLスラッグ(例:example.com/[collection-"
+"slug]/example-collection/)。使用できるのは、英数字とハイフン (-) のみです。"
+
+#: inc/Admin/Waymark_Settings.php:1276 inc/Helpers/Waymark_Helper.php:35
+msgid "Debug"
+msgstr "デバッグ"
+
+#: inc/Admin/Waymark_Settings.php:1283
+msgid "Debug Mode"
+msgstr "デバッグモード"
+
+#: inc/Admin/Waymark_Settings.php:1285
+#, fuzzy
+msgid ""
+"With debug mode enabled, the plugin will output Map and Settings data in "
+"Admin Dashboard. This may come in handy if you need to report a bug. Pro "
+"Tip! Check the browser console for Waymark output when signed in as an "
+"administrator."
+msgstr ""
+"デバッグモードを有効にすると、プラグインは管理ダッシュボードにマップと設定の"
+"データを出力します。これは、バグを報告する必要がある場合に便利です。プロのヒ"
+"ント!管理者としてサインインしたときに、ブラウザー コンソールで Waymark 出力を"
+"確認します。"
+
+#: inc/Admin/Waymark_Settings.php:1288
+msgid "Disable"
+msgstr "無効"
+
+#: inc/Admin/Waymark_Settings.php:1289
+msgid "Enable"
+msgstr "有効"
+
+#: inc/Admin/Waymark_Settings.php:1304
+#, fuzzy
+msgid "Settings Data"
+msgstr "設定データ"
+
+#: inc/Admin/Waymark_Settings.php:1563
+msgid "Settings Updated"
+msgstr "設定を更新"
+
+#: inc/Admin/Waymark_Settings.php:1566
+#, fuzzy
+msgid "Action Complete"
+msgstr "アクション完了"
+
+#: inc/Front/Waymark_Shortcode.php:224
+msgid "Details"
+msgstr "詳細"
+
+#: inc/Front/Waymark_Shortcode.php:240
+msgid "More Details"
+msgstr "さらに詳細を表示"
+
+#: inc/Front/Waymark_Submission.php:164
+#, fuzzy
+msgid "There was an error with your submission."
+msgstr "送信に誤りがありました。"
+
+#: inc/Front/Waymark_Submission.php:172
+#, fuzzy
+msgid "Your submission has been received and is awaiting moderation."
+msgstr "提出物は受理され、モデレートを待っています。"
+
+#: inc/Front/Waymark_Submission.php:181
+#, fuzzy
+msgid "Your submission has been <a href=\"%s\">published</a>."
+msgstr "提出物が <a href=\"%s\">公開</a>されました。"
+
+#: inc/Front/Waymark_Submission.php:183
+#, fuzzy
+msgid "Your submission has been published."
+msgstr "提出物が公開されました。"
+
+#: inc/Front/Waymark_Submission.php:295
+msgid "Submit"
+msgstr "送信"
+
+#: inc/Front/Waymark_Submission.php:314
+#, fuzzy
+msgid "Your Map was empty."
+msgstr "マップは空でした。"
+
+#: inc/Front/Waymark_Submission.php:323
+#, fuzzy
+msgid "Your Map did not contain valid features."
+msgstr "マップに有効なフィーチャが含まれていませんでした。"
+
+#: inc/Front/Waymark_Submission.php:330
+msgid "Submission"
+msgstr "送信"
+
+#: inc/Helpers/Waymark_Helper.php:16
+#, fuzzy
+msgid "Hi, I'm %s."
+msgstr "こんにちは、%sです。"
+
+#: inc/Helpers/Waymark_Helper.php:18
+#, fuzzy
+msgid ""
+"Waymark is <strong><a href=\"https://github.com/opengis/waymark\">open "
+"source</a></strong> and a work in progress."
+msgstr ""
+"Waymarkは <strong><a href=\"https://github.com/opengis/waymark\">オープンソー"
+"ス</a></strong> であり、開発中です。"
+
+#: inc/Helpers/Waymark_Helper.php:19
+#, fuzzy
+msgid ""
+"Feedback is very important, so please feel free to get in touch by either:"
+msgstr ""
+"フィードバックは非常に重要ですので、次のいずれかの方法でお気軽にお問い合わせ"
+"ください。"
+
+#: inc/Helpers/Waymark_Helper.php:22
+#, fuzzy
+msgid ""
+"Leaving a <strong><a href=\"%s\">review</a></strong>, or creating a <a "
+"href=\"%s\">support topic</a> on the WordPress plugin directory."
+msgstr ""
+"<strong><a href=\"%s\">レビュー</a></strong>を残すか、WordPressプラグインディ"
+"レクトリに<a href=\"%s\">サポートトピック</a>を作成します。"
+
+#: inc/Helpers/Waymark_Helper.php:23
+#, fuzzy
+msgid "Posting in the <a href=\"%s\">Forums</a>."
+msgstr "<a href=\"%s\">フォーラム</a>への投稿。"
+
+#: inc/Helpers/Waymark_Helper.php:24
+#, fuzzy
+msgid "Creating a <a href=\"%s\">GitHub issue</a>."
+msgstr "<a href=\"%s\">GitHub の問題</a>を作成する。"
+
+#: inc/Helpers/Waymark_Helper.php:27
+msgid "Thanks"
+msgstr "ありがとう"
+
+#: inc/Helpers/Waymark_Helper.php:31
+#, fuzzy
+msgid "Built on the shoulders of giants, <a href=\"%s\">thank you</a>!"
+msgstr "巨人の肩の上に建てられました、 <a href=\"%s\">ありがとう</a>!"
+
+#: inc/Helpers/Waymark_Helper.php:182 inc/Waymark_Taxonomies.php:14
+#: inc/Waymark_Taxonomies.php:15
+msgid "Collection"
+msgstr "コレクション"
+
+#: inc/Helpers/Waymark_Helper.php:203 inc/Helpers/Waymark_Helper.php:232
+#, fuzzy
+msgid ""
+"This will download the Overlays currently displayed by the Map in the "
+"selected format."
+msgstr ""
+"これにより、マップに現在表示されているオーバーレイが選択した形式でダウンロー"
+"ドされます。"
+
+#: inc/Helpers/Waymark_Helper.php:530 inc/Waymark_Types.php:10
+#: inc/Waymark_Types.php:14 inc/Waymark_Types.php:16
+msgid "Map"
+msgstr "マップ"
+
+#: inc/Helpers/Waymark_Helper.php:705 inc/Helpers/Waymark_Helper.php:730
+msgid "Download"
+msgstr "ダウンロード"
+
+#: inc/Helpers/Waymark_Input.php:36
+msgid "Yes"
+msgstr "はい"
+
+#: inc/Helpers/Waymark_Input.php:37
+msgid "No"
+msgstr "いいえ"
+
+#: inc/Helpers/Waymark_Input.php:78
+#, fuzzy
+msgid "Click here for more details."
+msgstr "詳細については、ここをクリックしてください。"
+
+#: inc/Helpers/Waymark_Input.php:473
+#, fuzzy
+msgid "The file extension uploaded is not supported."
+msgstr "アップロードされたファイル拡張子はサポートされていません。"
+
+#: inc/Helpers/Waymark_Lang.php:7
+#, fuzzy
+msgid "View Fullscreen"
+msgstr "全画面表示"
+
+#: inc/Helpers/Waymark_Lang.php:8
+msgid "Exit Fullscreen"
+msgstr "フルスクリーン終了"
+
+#: inc/Helpers/Waymark_Lang.php:9
+#, fuzzy
+msgid "Show me where I am"
+msgstr "私の居場所を見せて"
+
+#: inc/Helpers/Waymark_Lang.php:10
+msgid "Zoom in"
+msgstr "ズームイン"
+
+#: inc/Helpers/Waymark_Lang.php:11
+msgid "Zoom out"
+msgstr "ズームアウト"
+
+#: inc/Helpers/Waymark_Lang.php:12
+#, fuzzy
+msgid "Total Length: "
+msgstr "全長："
+
+#: inc/Helpers/Waymark_Lang.php:13
+#, fuzzy
+msgid "Max. Elevation: "
+msgstr "最大標高:"
+
+#: inc/Helpers/Waymark_Lang.php:14
+#, fuzzy
+msgid "Min. Elevation: "
+msgstr "最小標高:"
+
+#: inc/Helpers/Waymark_Lang.php:17
+#, fuzzy
+msgid "Draw a Line"
+msgstr "線を引く"
+
+#: inc/Helpers/Waymark_Lang.php:18
+msgid "Upload an Image"
+msgstr "画像ファイルをアップロード"
+
+#: inc/Helpers/Waymark_Lang.php:19
+#, fuzzy
+msgid "Place a Marker"
+msgstr "マーカーを配置する"
+
+#: inc/Helpers/Waymark_Lang.php:20
+#, fuzzy
+msgid "Draw a Rectangle"
+msgstr "矩形を描く"
+
+#: inc/Helpers/Waymark_Lang.php:21
+#, fuzzy
+msgid "Draw a Polygon"
+msgstr "多角形の描画"
+
+#: inc/Helpers/Waymark_Lang.php:22
+#, fuzzy
+msgid "Draw a Circle"
+msgstr "円を描く"
+
+#: inc/Helpers/Waymark_Lang.php:23
+#, fuzzy
+msgid ""
+"Read Lines and Markers from file (GPX/KML/GeoJSON supported, which most apps "
+"should Export to)"
+msgstr ""
+"ファイルから線とマーカーを読み取る(GPX / KML / GeoJSONがサポートされており、"
+"ほとんどのアプリはエクスポートする必要があります)"
+
+#: inc/Helpers/Waymark_Lang.php:24 inc/Waymark_Admin.php:111
+msgid "Duplicate"
+msgstr "複製"
+
+#: inc/Helpers/Waymark_Lang.php:25
+msgid "Delete"
+msgstr "削除"
+
+#: inc/Helpers/Waymark_Lang.php:26
+msgid "Edit"
+msgstr "編集"
+
+#: inc/Helpers/Waymark_Lang.php:27
+#, fuzzy
+msgid "Finish editing"
+msgstr "編集の完了"
+
+#: inc/Helpers/Waymark_Lang.php:28
+msgid "Upload Image"
+msgstr "画像をアップロード"
+
+#: inc/Helpers/Waymark_Lang.php:30
+msgid "Image URL"
+msgstr "画像 URL"
+
+#: inc/Helpers/Waymark_Lang.php:31 inc/Waymark_Config.php:54
+msgid "Description"
+msgstr "説明"
+
+#: inc/Helpers/Waymark_Lang.php:33
+#, fuzzy
+msgid "Lat,Lng"
+msgstr "緯度、経度"
+
+#: inc/Helpers/Waymark_Lang.php:34
+msgid "Are you sure you want to delete this"
+msgstr "これを本当に削除しますか"
+
+#: inc/Helpers/Waymark_Lang.php:35
+msgid "Search..."
+msgstr "検索…"
+
+#: inc/Helpers/Waymark_Lang.php:42
+#, fuzzy
+msgid "Waymark Error"
+msgstr "Waymark エラー"
+
+#: inc/Helpers/Waymark_Lang.php:43
+#, fuzzy
+msgid "Waymark Info"
+msgstr "ウェイマーク情報"
+
+#: inc/Helpers/Waymark_Lang.php:44
+#, fuzzy
+msgid "This file type is not supported."
+msgstr "このファイルの種類はサポートされていません。"
+
+#: inc/Helpers/Waymark_Lang.php:45
+#, fuzzy
+msgid "Could not convert this file to GeoJSON."
+msgstr "このファイルをGeoJSONに変換できませんでした。"
+
+#: inc/Helpers/Waymark_Lang.php:46
+msgid "File upload error."
+msgstr "ファイルのアップロードエラー。"
+
+#: inc/Helpers/Waymark_Lang.php:47
+#, fuzzy
+msgid "Could not retrieve Image metadata."
+msgstr "イメージのメタデータを取得できませんでした。"
+
+#: inc/Helpers/Waymark_Lang.php:48
+#, fuzzy
+msgid "Image location metadata (EXIF) detected!"
+msgstr "画像の場所のメタデータ (EXIF) が検出されました。"
+
+#: inc/Helpers/Waymark_Lang.php:49
+#, fuzzy
+msgid "Image location metadata (EXIF) NOT detected."
+msgstr "画像の場所のメタデータ (EXIF) が検出されませんでした。"
+
+#: inc/Helpers/Waymark_Lang.php:50
+#, fuzzy
+msgid "No Direction"
+msgstr "方向なし"
+
+#: inc/Helpers/Waymark_Lang.php:51
+#, fuzzy
+msgid "Show Direction"
+msgstr "方向を表示"
+
+#: inc/Helpers/Waymark_Lang.php:52
+#, fuzzy
+msgid "Reverse Direction"
+msgstr "方向を反転(Reverse Direction)"
+
+#: inc/Waymark_Admin.php:93
+#, fuzzy
+msgid "Can not duplicate, no post to supplied!"
+msgstr "複製できません、提供への投稿はありません!"
+
+#: inc/Waymark_Admin.php:98
+#, fuzzy
+msgid "Security verification error!"
+msgstr "セキュリティ検証エラー!"
+
+#: inc/Waymark_Admin.php:111
+#, fuzzy
+msgid "Duplicate this post"
+msgstr "この投稿を複製する"
+
+#: inc/Waymark_Admin.php:144
+msgid "Date"
+msgstr "日付"
+
+#: inc/Waymark_Admin.php:177
+#, fuzzy
+msgid ""
+"Collections allow you to organise your Maps. Use the <a "
+"href=\"%s\">Shortcode</a> to display all Maps in a Collection at once. <a "
+"href=\"%s\" class=\"button waymark-right\">Read the Docs &raquo;</a>"
+msgstr ""
+"コレクションを使用すると、マップを整理できます。 <a href=\"%s\">ショートコー"
+"ド</a> を使用して、コレクション内のすべてのマップを一度に表示します。 <a "
+"href=\"%s\" class=\"button waymark-right\">ドキュメントを読む »</a>"
+
+#: inc/Waymark_Admin.php:183
+#, fuzzy
+msgid ""
+"Create Maps here, then add them to your content using the <a "
+"href=\"%s\">Shortcode</a>. <a href=\"%s\" class=\"button waymark-"
+"right\">Watch the Video &raquo;</a>"
+msgstr ""
+"ここでマップを作成し、 <a href=\"%s\">ショートコード</a>を使用してコンテンツ"
+"に追加します。 <a href=\"%s\" class=\"button waymark-right\">ビデオを見る »</"
+"a>"
+
+#: inc/Waymark_Admin.php:201
+msgid "Creating a Map"
+msgstr "マップの作成"
+
+#: inc/Waymark_Admin.php:202
+#, fuzzy
+msgid ""
+"<span class=\"waymark-lead\">Use the Map <a href=\"%s\">Editor</a> to place "
+"Markers, draw Lines/Shapes and display Photos. Each can be given a <a "
+"target=\"_blank\" href=\"%s\">Type</a>, title, description and an image.</"
+"span><br /><br />You can add the Map to your content using the %s <a "
+"href=\"%s\">Shortcode</a>. <a class=\"button waymark-right\" "
+"href=\"%s\">Watch the Video &raquo;</a>"
+msgstr ""
+"<span class=\"waymark-lead\">マップ <a href=\"%s\">エディター</a> を使用し"
+"て、マーカーを配置し、線/形状を描画し、写真を表示します。それぞれに <a "
+"target=\"_blank\" href=\"%s\">タイプ</a>、タイトル、説明、画像を付けることが"
+"できます。</span><br /><br /><a href=\"%s\">ショートコード</a>を使用して%s、"
+"マップをコンテンツに追加できます。<a class=\"button waymark-right\" "
+"href=\"%s\">ビデオを見る »</a>"
+
+#: inc/Waymark_Admin.php:205 inc/Waymark_Admin.php:209
+#, fuzzy
+msgid ""
+"You can add the Map to your content using the %s <a href=\"%s\">Shortcode</"
+"a>. <a class=\"button waymark-right\" href=\"%s\">Watch the Video &raquo;</a>"
+msgstr ""
+"<a href=\"%s\">ショートコード</a>を使用して%s、マップをコンテンツに追加できま"
+"す。<a class=\"button waymark-right\" href=\"%s\">ビデオを見る »</a>"
+
+#: inc/Waymark_Admin.php:208 inc/Waymark_Types.php:24
+#, fuzzy
+msgid "Edit Map"
+msgstr "マップの編集"
+
+#: inc/Waymark_Config.php:56
+#, fuzzy
+msgid ""
+"The Description you enter here will be displayed on the Map Details page."
+msgstr "ここに入力した説明は、マップの詳細ページに表示されます。"
+
+#: inc/Waymark_Config.php:102
+#, fuzzy
+msgid "Click or Hover to Wake"
+msgstr "クリックまたはカーソルを合わせるとウェイクアップ"
+
+#: inc/Waymark_Config.php:142
+msgid "Photo"
+msgstr "写真"
+
+#: inc/Waymark_Config.php:142
+msgid "Information"
+msgstr "インフォメーション"
+
+#: inc/Waymark_Config.php:142
+msgid "Alert"
+msgstr "アラート"
+
+#: inc/Waymark_Config.php:142
+#, fuzzy
+msgid "Trail Access"
+msgstr "登山道へのアクセス"
+
+#: inc/Waymark_Config.php:142
+msgid "Food"
+msgstr "食べ物"
+
+#: inc/Waymark_Config.php:142
+msgid "Water"
+msgstr "ウォーター"
+
+#: inc/Waymark_Config.php:142
+msgid "Shelter"
+msgstr "シェルター"
+
+#: inc/Waymark_Config.php:142
+msgid "Beer"
+msgstr "ビール"
+
+#: inc/Waymark_Config.php:142
+msgid "Start"
+msgstr "開始"
+
+#: inc/Waymark_Config.php:142
+msgid "Finish"
+msgstr "終了"
+
+#: inc/Waymark_Config.php:155 inc/Waymark_Config.php:165
+msgid "Red"
+msgstr "赤"
+
+#: inc/Waymark_Config.php:155 inc/Waymark_Config.php:165
+msgid "Green"
+msgstr "緑"
+
+#: inc/Waymark_Config.php:155 inc/Waymark_Config.php:165
+msgid "Blue"
+msgstr "青"
+
+#: inc/Waymark_Taxonomies.php:16
+#, fuzzy
+msgid "All Collections"
+msgstr "すべてのコレクション"
+
+#: inc/Waymark_Taxonomies.php:17
+msgid "Parent"
+msgstr "親"
+
+#: inc/Waymark_Taxonomies.php:18
+#, fuzzy
+msgid "Parent Collection:"
+msgstr "親コレクション:"
+
+#: inc/Waymark_Taxonomies.php:19
+#, fuzzy
+msgid "New Collection Name"
+msgstr "新しいコレクション名"
+
+#: inc/Waymark_Taxonomies.php:20
+#, fuzzy
+msgid "Create Collection"
+msgstr "コレクションを作成"
+
+#: inc/Waymark_Taxonomies.php:21
+msgid "Edit Collection"
+msgstr "コレクションの編集"
+
+#: inc/Waymark_Taxonomies.php:22
+msgid "Update Collection"
+msgstr "コレクションの更新"
+
+#: inc/Waymark_Taxonomies.php:23
+msgid "View Collection"
+msgstr "コレクションを表示"
+
+#: inc/Waymark_Taxonomies.php:24
+#, fuzzy
+msgid "Separate Collections with commas"
+msgstr "コレクションをカンマで区切る"
+
+#: inc/Waymark_Taxonomies.php:25
+#, fuzzy
+msgid "Add or remove Collections"
+msgstr "コレクションを追加または削除する"
+
+#: inc/Waymark_Taxonomies.php:26
+msgid "Choose from the most used"
+msgstr "最も使用されるものから選択"
+
+#: inc/Waymark_Taxonomies.php:27
+#, fuzzy
+msgid "Popular Collections"
+msgstr "人気コレクション"
+
+#: inc/Waymark_Taxonomies.php:28
+msgid "Search Collections"
+msgstr "コレクションを検索"
+
+#: inc/Waymark_Taxonomies.php:29
+msgid "Not Found"
+msgstr "みつかりません"
+
+#: inc/Waymark_Taxonomies.php:30
+#, fuzzy
+msgid "No Collections"
+msgstr "コレクションなし"
+
+#: inc/Waymark_Taxonomies.php:31
+#, fuzzy
+msgid "Collection list"
+msgstr "コレクション一覧"
+
+#: inc/Waymark_Taxonomies.php:32
+#, fuzzy
+msgid "Collection list navigation"
+msgstr "コレクション・リスト・ナビゲーション"
+
+#: inc/Waymark_Types.php:17
+#, fuzzy
+msgid "Map Archives"
+msgstr "マップアーカイブ"
+
+#: inc/Waymark_Types.php:18
+#, fuzzy
+msgid "Map Attributes"
+msgstr "マップ属性"
+
+#: inc/Waymark_Types.php:19
+msgid "Parent Map:"
+msgstr "親マップ:"
+
+#: inc/Waymark_Types.php:20
+msgid "All Maps"
+msgstr "全ての地図"
+
+#: inc/Waymark_Types.php:21
+#, fuzzy
+msgid "Add New Map"
+msgstr "新しいマップを追加"
+
+#: inc/Waymark_Types.php:22
+msgid "Add New"
+msgstr "新規追加"
+
+#: inc/Waymark_Types.php:25
+#, fuzzy
+msgid "Update Map"
+msgstr "マップの更新"
+
+#: inc/Waymark_Types.php:26
+msgid "View Map"
+msgstr "地図を見る"
+
+#: inc/Waymark_Types.php:27
+#, fuzzy
+msgid "View Maps"
+msgstr "マップの表示"
+
+#: inc/Waymark_Types.php:28
+#, fuzzy
+msgid "Search Map"
+msgstr "地図検索"
+
+#: inc/Waymark_Types.php:29
+msgid "Not found"
+msgstr "見つかりません"
+
+#: inc/Waymark_Types.php:30
+msgid "Not found in Trash"
+msgstr "ゴミ箱には何もありません"
+
+#: inc/Waymark_Types.php:31
+msgid "Featured Image"
+msgstr "アイキャッチ画像"
+
+#: inc/Waymark_Types.php:32
+msgid "Set featured image"
+msgstr "おすすめ画像を設定"
+
+#: inc/Waymark_Types.php:33
+msgid "Remove featured image"
+msgstr "おすすめ画像を削除する"
+
+#: inc/Waymark_Types.php:34
+msgid "Use as featured image"
+msgstr "おすすめ画像として使用"
+
+#: inc/Waymark_Types.php:35
+#, fuzzy
+msgid "Insert into Map"
+msgstr "マップに挿入"
+
+#: inc/Waymark_Types.php:36
+#, fuzzy
+msgid "Uploaded to this Map"
+msgstr "このマップにアップロードしました"
+
+#: inc/Waymark_Types.php:37
+#, fuzzy
+msgid "Map list"
+msgstr "マップ一覧"
+
+#: inc/Waymark_Types.php:38
+#, fuzzy
+msgid "Maps list navigation"
+msgstr "マップ リスト ナビゲーション"
+
+#: inc/Waymark_Types.php:39
+#, fuzzy
+msgid "Filter Map list"
+msgstr "[マップのフィルター] リスト"
+
+#. Plugin Name of the plugin/theme
+msgid "Waymark"
+msgstr "Waymark"
+
+#. Plugin URI of the plugin/theme
+msgid "https://www.waymark.dev/"
+msgstr "https://www.waymark.dev/"
+
+#. Description of the plugin/theme
+#, fuzzy
+msgid ""
+"Mapping with WordPress made easy. With Waymark enabled, click on the "
+"\"Maps\" link in the sidebar to create and edit Maps. Once you are happy "
+"with your Map, copy the Waymark shortcode and add it to your content."
+msgstr ""
+"WordPressでのマッピングが簡単に。Waymarkを有効にした状態で、サイドバーの"
+"「マップ」リンクをクリックして、マップを作成および編集します。マップに満足し"
+"たら、Waymarkショートコードをコピーしてコンテンツに追加します。"
+
+#. Author of the plugin/theme
+msgid "Joe Hawes"
+msgstr "Joe Hawes"
+
+#. Author URI of the plugin/theme
+msgid "https://www.morehawes.ca/"
+msgstr "https://www.morehawes.ca/"

@@ -148,12 +148,14 @@ class Waymark_Input {
 
 			break;
 		case 'select_multi':
-			//Decode if JSON
-			$set_value = (json_decode($set_value)) ? json_decode($set_value) : $set_value;
+			//Decode if *VALID* JSON
+			$set_value = ($set_value && json_decode($set_value)) ? json_decode($set_value) : $set_value;
+
 			//Use default if no set value
 			if (!$set_value && isset($field['default'])) {
 				$set_value = $field['default'];
 			}
+
 			//Is multi?
 			if (is_string($set_value) && strpos($set_value, ',')) {
 				$set_value = explode(',', $field['default']);

@@ -11,7 +11,7 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',
 			'custom_types' => array(),
-			'plugin_version' => '1.0.2',
+			'plugin_version' => '1.0.3',
 			'nonce_string' => 'Waymark_Nonce',
 			'site_url' => 'https://www.waymark.dev/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
@@ -378,7 +378,7 @@ class Waymark_Config {
 		return in_array($type, self::$data['custom_types']) || in_array('waymark_' . $type, self::$data['custom_types']);
 	}
 
-	public static function get_settings_js() {
+	public static function get_settings_js($encode = true) {
 		$settings = get_option('Waymark_Settings');
 
 		$settings_js = [];
@@ -445,7 +445,20 @@ class Waymark_Config {
 		}
 		$settings_js['misc']['advanced']['debug_mode'] = $debug_mode;
 
-		return json_encode($settings_js);
+		if ($encode) {
+			return json_encode($settings_js);
+		} else {
+			return $settings_js;
+		}
+	}
+
+	public static function get_user_config_js($encode = true) {
+
+		if ($encode) {
+			return json_encode(self::get_map_config());
+		} else {
+			return self::get_map_config();
+		}
 	}
 }
 

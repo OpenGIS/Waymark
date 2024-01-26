@@ -1,0 +1,2269 @@
+# Copyright (C) 2024 Joe Hawes
+# This file is distributed under the GPLv2.
+msgid ""
+msgstr ""
+"Project-Id-Version: Waymark 1.0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/waymark\n"
+"POT-Creation-Date: 2024-01-18 00:24:31+00:00\n"
+"PO-Revision-Date: 2024-01-23 10:18-0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: inc/Admin/Waymark_AJAX.php:33
+#, fuzzy
+msgid "No image metadata available."
+msgstr "Inga bildmetadata är tillgängliga."
+
+#: inc/Admin/Waymark_AJAX.php:110 inc/Admin/Waymark_AJAX.php:120
+#: inc/Admin/Waymark_AJAX.php:128
+#, fuzzy
+msgid "Operation not allowed."
+msgstr "Drift ej tillåten."
+
+#: inc/Admin/Waymark_AJAX.php:174
+#, fuzzy
+msgid "Could not read the file."
+msgstr "Det gick inte att läsa filen."
+
+#: inc/Admin/Waymark_AJAX.php:239
+#, fuzzy
+msgid "Unknown file upload error."
+msgstr "Okänt filuppladdningsfel."
+
+#: inc/Admin/Waymark_JS.php:18
+#, fuzzy
+msgid "Remove!"
+msgstr "Avlägsna!"
+
+#: inc/Admin/Waymark_JS.php:19 inc/Admin/Waymark_Settings.php:79
+#: inc/Admin/Waymark_Settings.php:239
+msgid "Name"
+msgstr "Namn"
+
+#: inc/Admin/Waymark_JS.php:20 inc/Admin/Waymark_Settings.php:230
+#: inc/Admin/Waymark_Settings.php:505
+msgid "Text"
+msgstr "Text"
+
+#: inc/Admin/Waymark_JS.php:21 inc/Admin/Waymark_Settings.php:231
+msgid "HTML"
+msgstr "HTML"
+
+#: inc/Admin/Waymark_Menu.php:15 inc/Admin/Waymark_Menu.php:98
+#: inc/Admin/Waymark_Settings.php:34 inc/Waymark_Admin.php:182
+#: inc/Waymark_Install.php:61 inc/Waymark_Types.php:13 inc/Waymark_Types.php:15
+msgid "Maps"
+msgstr "Kartor"
+
+#: inc/Admin/Waymark_Menu.php:16 inc/Admin/Waymark_Menu.php:92
+#: inc/Waymark_Admin.php:204 inc/Waymark_Types.php:23
+#, fuzzy
+msgid "New Map"
+msgstr "Ny karta"
+
+#: inc/Admin/Waymark_Menu.php:19 inc/Admin/Waymark_Menu.php:100
+#: inc/Admin/Waymark_Settings.php:39 inc/Waymark_Admin.php:176
+#: inc/Waymark_Taxonomies.php:13
+msgid "Collections"
+msgstr "Samlingar"
+
+#: inc/Admin/Waymark_Menu.php:22
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: inc/Admin/Waymark_Menu.php:22
+msgid "Docs"
+msgstr "Dokumentation"
+
+#: inc/Admin/Waymark_Menu.php:25 inc/Waymark_Install.php:62
+msgid "Settings"
+msgstr "Inställningar"
+
+#: inc/Admin/Waymark_Meta.php:9
+#, fuzzy
+msgid "Map Editor"
+msgstr "Kartredigerare"
+
+#: inc/Admin/Waymark_Meta.php:12 inc/Waymark_Admin.php:124
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: inc/Admin/Waymark_Meta.php:13 inc/Helpers/Waymark_Helper.php:201
+#: inc/Helpers/Waymark_Helper.php:230
+msgid "Export"
+msgstr "Exportera"
+
+#: inc/Admin/Waymark_Meta.php:14
+msgid "Help"
+msgstr "Hjälp"
+
+#: inc/Admin/Waymark_Meta.php:65
+#, fuzzy
+msgid "Download the Overlays added to this Map in the selected format."
+msgstr ""
+"Ladda ner de överlägg som lagts till på den här kartan i det valda formatet."
+
+#: inc/Admin/Waymark_Meta.php:74
+#, fuzzy
+msgid ""
+"Add this Map to your content with this Shortcode. Click here for more "
+"details."
+msgstr ""
+"Lägg till den här kartan till ditt innehåll med den här kortkoden. Klicka "
+"här för mer information."
+
+#: inc/Admin/Waymark_Meta.php:82
+#, fuzzy
+msgid "Image Location Detection Not Supported!"
+msgstr "Bildplatsidentifiering stöds inte!"
+
+#: inc/Admin/Waymark_Meta.php:83
+#, fuzzy
+msgid ""
+"Your hosting environment does not currently have the <a href=\"%s\">PHP EXIF "
+"Extension</a> enabled, which is required to read Image location metadata. "
+"Try asking your host to enable it."
+msgstr ""
+"Din värdmiljö har för närvarande inte <a href=\"%s\">PHP EXIF-tillägget</a> "
+"aktiverat, vilket krävs för att läsa metadata för bildplats. Försök att be "
+"din värd att aktivera det."
+
+#: inc/Admin/Waymark_Meta.php:86 inc/Admin/Waymark_Settings.php:669
+#: inc/Admin/Waymark_Settings.php:730
+#, fuzzy
+msgid "Read from File"
+msgstr "Läs från fil"
+
+#: inc/Admin/Waymark_Meta.php:87
+#, fuzzy
+msgid ""
+"You can read Lines and Markers from GPX, KML and GeoJSON files (most mapping "
+"apps will be able to export to one of these)."
+msgstr ""
+"Du kan läsa linjer och markörer från GPX-, KML- och GeoJSON-filer (de flesta "
+"kartappar kommer att kunna exportera till en av dessa)."
+
+#: inc/Admin/Waymark_Meta.php:89 inc/Admin/Waymark_Settings.php:138
+#: inc/Admin/Waymark_Settings.php:276 inc/Admin/Waymark_Settings.php:371
+msgid "Types"
+msgstr "Typer"
+
+#: inc/Admin/Waymark_Meta.php:90
+#, fuzzy
+msgid ""
+"Types allow you to control how Overlays (Markers, Lines and Shapes) are "
+"displayed on the Map. Types can be customised in <a href=\"%s\" "
+"target=\"_blank\">Waymark &gt; Settings</a>."
+msgstr ""
+"Med typer kan du styra hur övertäckningar (markörer, linjer och former) "
+"visas på kartan. Typer kan anpassas i <a href=\"%s\" "
+"target=\"_blank\">Waymark &gt; Inställningar</a>."
+
+#: inc/Admin/Waymark_Meta.php:92 inc/Admin/Waymark_Settings.php:79
+#: inc/Admin/Waymark_Settings.php:83 inc/Admin/Waymark_Settings.php:91
+#: inc/Admin/Waymark_Settings.php:101 inc/Admin/Waymark_Settings.php:114
+#, fuzzy
+msgid "Basemap"
+msgstr "Baskarta"
+
+#: inc/Admin/Waymark_Meta.php:93
+#, fuzzy
+msgid ""
+"Add and edit Basemaps in <a href=\"%s\" target=\"_blank\">Waymark &gt; "
+"Settings</a>. The first listed will be used as the default, unless specified "
+"in the shortcode like this: %s"
+msgstr ""
+"Lägg till och redigera baskartor i <a href=\"%s\" target=\"_blank\">Waymark "
+"&gt; Inställningar</a>. Den första listade kommer att användas som standard, "
+"om det inte anges i kortkoden så här: %s"
+
+#: inc/Admin/Waymark_Meta.php:95
+msgid "Read the Docs"
+msgstr "Läs dokumentationen"
+
+#: inc/Admin/Waymark_Meta.php:161
+#, fuzzy
+msgid "You can manage Meta fields in <a href=\"%s\">Settings</a>."
+msgstr "Du kan hantera metafält i <a href=\"%s\">Inställningar</a>."
+
+#: inc/Admin/Waymark_Settings.php:35 inc/Admin/Waymark_Settings.php:61
+#: inc/Admin/Waymark_Settings.php:66
+#, fuzzy
+msgid "Basemaps"
+msgstr "Baskartor"
+
+#: inc/Admin/Waymark_Settings.php:36
+msgid "Shortcodes"
+msgstr "Kortkoder"
+
+#: inc/Admin/Waymark_Settings.php:37
+msgid "Elevation"
+msgstr "Höjd"
+
+#: inc/Admin/Waymark_Settings.php:38 inc/Admin/Waymark_Settings.php:452
+#: inc/Admin/Waymark_Settings.php:457 inc/Admin/Waymark_Settings.php:470
+#: inc/Admin/Waymark_Settings.php:475 inc/Admin/Waymark_Settings.php:483
+#: inc/Admin/Waymark_Settings.php:492 inc/Admin/Waymark_Settings.php:501
+#: inc/Admin/Waymark_Settings.php:517 inc/Admin/Waymark_Settings.php:527
+#: inc/Admin/Waymark_Settings.php:536 inc/Admin/Waymark_Settings.php:545
+#: inc/Admin/Waymark_Settings.php:671 inc/Admin/Waymark_Settings.php:732
+msgid "Meta"
+msgstr "Meta"
+
+#: inc/Admin/Waymark_Settings.php:40
+msgid "Sleep"
+msgstr "Sömn"
+
+#: inc/Admin/Waymark_Settings.php:41
+msgid "Clustering"
+msgstr "Gruppering"
+
+#: inc/Admin/Waymark_Settings.php:42 inc/Admin/Waymark_Settings.php:860
+msgid "Misc."
+msgstr "Övrigt"
+
+#: inc/Admin/Waymark_Settings.php:43
+msgid "Overlays"
+msgstr "Överlägg"
+
+#: inc/Admin/Waymark_Settings.php:44 inc/Admin/Waymark_Settings.php:133
+#: inc/Helpers/Waymark_Helper.php:1413 inc/Helpers/Waymark_Lang.php:39
+msgid "Markers"
+msgstr "Markörer"
+
+#: inc/Admin/Waymark_Settings.php:45 inc/Admin/Waymark_Settings.php:271
+#: inc/Helpers/Waymark_Lang.php:40
+msgid "Lines"
+msgstr "Linjer"
+
+#: inc/Admin/Waymark_Settings.php:46 inc/Admin/Waymark_Settings.php:366
+#: inc/Helpers/Waymark_Lang.php:41
+msgid "Shapes"
+msgstr "Former"
+
+#: inc/Admin/Waymark_Settings.php:47 inc/Admin/Waymark_Settings.php:811
+#: inc/Admin/Waymark_Settings.php:816
+msgid "Properties"
+msgstr "Egenskaper"
+
+#: inc/Admin/Waymark_Settings.php:48
+msgid "Sources"
+msgstr "Källor"
+
+#: inc/Admin/Waymark_Settings.php:49 inc/Admin/Waymark_Settings.php:622
+msgid "Submissions"
+msgstr "Inskickade"
+
+#: inc/Admin/Waymark_Settings.php:51
+msgid "Advanced"
+msgstr "Avancerat"
+
+#: inc/Admin/Waymark_Settings.php:67
+#, fuzzy
+msgid ""
+"<span class=\"waymark-lead\">Waymark uses the excellent <a "
+"href=\"%s\">OpenStreetMap</a> as it’s default Basemap and supports many <a "
+"href=\"%s\">other providers</a>.<br /><br /><a href=\"%s\">Thunderforest</a> "
+"and <a href=\"%s\">Mapbox</a> are examples of providers that offer easy "
+"access to beautiful Basemaps (including satellite imagery). They require "
+"registration, but have a free usage tier."
+msgstr ""
+"<span class=\"waymark-lead\">Waymark använder den utmärkta <a "
+"href=\"%s\">OpenStreetMap</a> som standardbaskarta och stöder många <a "
+"href=\"%s\">andra leverantörer</a>.<br /><br /><a href=\"%s\">Thunderforest</"
+"a> och <a href=\"%s\">Mapbox</a> är exempel på leverantörer som erbjuder "
+"enkel tillgång till vackra baskartor (inklusive satellitbilder). De kräver "
+"registrering, men har en kostnadsfri användningsnivå.</span>"
+
+#: inc/Admin/Waymark_Settings.php:68
+#, fuzzy
+msgid ""
+"<small><b>Pro Tip!</b> If you have more than one Basemap, you can switch "
+"between them when viewing the Map. The first listed will be used as the "
+"default, unless specified in the shortcode like this: %s. Drag to re-order, "
+"remove all to restore defaults.</small>"
+msgstr ""
+"<small><b>Proffstips!</b> Om du har mer än en baskarta kan du växla mellan "
+"dem när du visar kartan. Den första listade kommer att användas som "
+"standard, om det inte anges i kortkoden så här: %s. Dra för att ändra "
+"ordning, ta bort alla för att återställa standardinställningarna.</small>"
+
+#: inc/Admin/Waymark_Settings.php:71
+#, fuzzy
+msgid "Basemap Docs &raquo;"
+msgstr "Baskarta Dokument »"
+
+#: inc/Admin/Waymark_Settings.php:81
+#, fuzzy
+msgid ""
+"The Layer Name will appear in a dropdown list shown by the Map when multiple "
+"Basemaps have been entered. You can change the default basemap in the "
+"shortcode: %s"
+msgstr ""
+"Lagernamnet visas i en rullgardinslista som visas av kartan när flera "
+"baskartor har angetts. Du kan ändra standardbaskartan i kortkoden: %s"
+
+#: inc/Admin/Waymark_Settings.php:93
+#, fuzzy
+msgid ""
+"Many mapping services support the Slippy Map format. Waymark requires URLs "
+"that contain {z} (zoom level) and {x}/{y} (tile coordinates). For example "
+"the OpenCycleMap URL is %s."
+msgstr ""
+"Många karttjänster har stöd för Slippy Map-formatet. Waymark kräver URL:er "
+"som innehåller {z} (zoomnivå) och {x}/{y} (panelkoordinater). Till exempel "
+"är OpenCycleMap-URL:en %s."
+
+#: inc/Admin/Waymark_Settings.php:103
+#, fuzzy
+msgid ""
+"Mapping services often have the requirement that attribution is displayed by "
+"the map. Text and HTML links are supported."
+msgstr ""
+"Karttjänster har ofta kravet att attribuering visas av kartan. Text- och "
+"HTML-länkar stöds."
+
+#: inc/Admin/Waymark_Settings.php:114
+msgid "Max Zoom"
+msgstr "Max zoom"
+
+#: inc/Admin/Waymark_Settings.php:116
+#, fuzzy
+msgid "Set a maximum zoom level for this Basemap, the default is 18."
+msgstr "Ställ in en maximal zoomnivå för den här baskartan, standard är 18."
+
+#: inc/Admin/Waymark_Settings.php:138 inc/Admin/Waymark_Settings.php:151
+#: inc/Admin/Waymark_Settings.php:155 inc/Admin/Waymark_Settings.php:163
+#: inc/Admin/Waymark_Settings.php:167 inc/Admin/Waymark_Settings.php:177
+#: inc/Admin/Waymark_Settings.php:191 inc/Admin/Waymark_Settings.php:202
+#: inc/Admin/Waymark_Settings.php:213 inc/Helpers/Waymark_Lang.php:36
+msgid "Marker"
+msgstr "Markör"
+
+#: inc/Admin/Waymark_Settings.php:139
+#, fuzzy
+msgid ""
+"Customise how Markers are displayed on the Map. Set these styles once, then "
+"select the appropriate Type when you add to the Map."
+msgstr ""
+"Anpassa hur markörer visas på kartan. Ställ in dessa format en gång och välj "
+"sedan lämplig typ när du lägger till på kartan."
+
+#: inc/Admin/Waymark_Settings.php:140 inc/Admin/Waymark_Settings.php:282
+#: inc/Admin/Waymark_Settings.php:377 inc/Admin/Waymark_Settings.php:463
+#, fuzzy
+msgid ""
+"<b>Pro Tip!</b> The first listed will be used as the default. Drag to re-"
+"order, remove all to restore defaults."
+msgstr ""
+"<b>Proffstips!</b> Den första listan kommer att användas som standard. Dra "
+"för att ändra ordning, ta bort alla för att återställa "
+"standardinställningarna."
+
+#: inc/Admin/Waymark_Settings.php:143 inc/Admin/Waymark_Settings.php:280
+#: inc/Admin/Waymark_Settings.php:375
+#, fuzzy
+msgid "Type Docs &raquo;"
+msgstr "Typ Dokument »"
+
+#: inc/Admin/Waymark_Settings.php:151 inc/Admin/Waymark_Settings.php:289
+#: inc/Admin/Waymark_Settings.php:384
+msgid "Label"
+msgstr "Etikett"
+
+#: inc/Admin/Waymark_Settings.php:153
+#, fuzzy
+msgid ""
+"What kind of Marker is this? E.g. \"Photo\", \"Grocery Store\", \"Warning!"
+"\". Once saved, Marker labels can not be edited. The Marker Label is "
+"displayed in the Tooltip (when hovering over the Marker) and in the Info "
+"Window (once the Marker is clicked). Hide in Settings > Map > Misc. > Type "
+"Labels."
+msgstr ""
+"Vad är det här för markör? T.ex. \"Foto\", \"Livsmedelsbutik\", \"Varning!"
+"\". När marköretiketterna har sparats kan de inte redigeras. Marköretiketten "
+"visas i verktygstipset (när du håller muspekaren över markören) och i "
+"informationsfönstret (när du klickar på markören). Dölj i Inställningar > "
+"Karta > Diverse > typetiketter."
+
+#: inc/Admin/Waymark_Settings.php:163 inc/Admin/Waymark_Settings.php:371
+#: inc/Admin/Waymark_Settings.php:384 inc/Admin/Waymark_Settings.php:388
+#: inc/Admin/Waymark_Settings.php:396 inc/Admin/Waymark_Settings.php:408
+#: inc/Admin/Waymark_Settings.php:419 inc/Admin/Waymark_Settings.php:430
+#: inc/Helpers/Waymark_Lang.php:38
+msgid "Shape"
+msgstr "Form"
+
+#: inc/Admin/Waymark_Settings.php:165
+#, fuzzy
+msgid ""
+"Which shape of Marker to use. Circles and Squares are centered at the "
+"specified location, Markers point down to that location."
+msgstr ""
+"Vilken form av markör som ska användas. Cirklar och fyrkanter centreras på "
+"den angivna platsen, markörer pekar nedåt mot den platsen."
+
+#: inc/Admin/Waymark_Settings.php:168
+msgid "Circle"
+msgstr "Cirkel"
+
+#: inc/Admin/Waymark_Settings.php:169
+msgid "Square"
+msgstr "Fyrkant"
+
+#: inc/Admin/Waymark_Settings.php:177
+msgid "Size"
+msgstr "Storlek"
+
+#: inc/Admin/Waymark_Settings.php:179
+#, fuzzy
+msgid "Which size of Marker to use."
+msgstr "Vilken storlek på markören som ska användas."
+
+#: inc/Admin/Waymark_Settings.php:181
+msgid "Small"
+msgstr "Liten"
+
+#: inc/Admin/Waymark_Settings.php:182
+msgid "Medium"
+msgstr "Medium"
+
+#: inc/Admin/Waymark_Settings.php:183
+msgid "Large"
+msgstr "Stor"
+
+#: inc/Admin/Waymark_Settings.php:191 inc/Admin/Waymark_Settings.php:1092
+msgid "Background"
+msgstr "Bakgrund"
+
+#: inc/Admin/Waymark_Settings.php:193
+#, fuzzy
+msgid "The Marker background colour. Click \"Select Colour\" to select."
+msgstr "Markörens bakgrundsfärg. Klicka på \"Välj färg\" för att välja."
+
+#: inc/Admin/Waymark_Settings.php:202 inc/Admin/Waymark_Settings.php:336
+#: inc/Admin/Waymark_Settings.php:419
+#, fuzzy
+msgid "Show Initially"
+msgstr "Visa initialt"
+
+#: inc/Admin/Waymark_Settings.php:204 inc/Admin/Waymark_Settings.php:338
+#: inc/Admin/Waymark_Settings.php:421
+#, fuzzy
+msgid ""
+"When using the Overlay Filter you can choose to show/hide certain Types when "
+"the Map initially loads."
+msgstr ""
+"När du använder överlagringsfiltret kan du välja att visa/dölja vissa typer "
+"när kartan först laddas."
+
+#: inc/Admin/Waymark_Settings.php:213 inc/Admin/Waymark_Settings.php:347
+#: inc/Admin/Waymark_Settings.php:430
+#, fuzzy
+msgid "Submissions?"
+msgstr "Inlagor?"
+
+#: inc/Admin/Waymark_Settings.php:215 inc/Admin/Waymark_Settings.php:349
+#: inc/Admin/Waymark_Settings.php:432
+#, fuzzy
+msgid "Make this Type available in front-end Submissions?"
+msgstr "Vill du göra den här typen tillgänglig i front-end-inlämningar?"
+
+#: inc/Admin/Waymark_Settings.php:225 inc/Admin/Waymark_Settings.php:239
+#: inc/Admin/Waymark_Settings.php:252
+msgid "Icon"
+msgstr "Ikon"
+
+#: inc/Admin/Waymark_Settings.php:225 inc/Admin/Waymark_Settings.php:501
+#: inc/Helpers/Waymark_Lang.php:32
+msgid "Type"
+msgstr "Typ"
+
+#: inc/Admin/Waymark_Settings.php:227
+#, fuzzy
+msgid ""
+"Marker Icons are available from Font Awesome and Ionic Icons, you can also "
+"specify your own text, or provide custom HTML."
+msgstr ""
+"Markörikoner är tillgängliga från Font Awesome och Ionic Icons, du kan också "
+"ange din egen text eller tillhandahålla anpassad HTML."
+
+#: inc/Admin/Waymark_Settings.php:229
+msgid "Font"
+msgstr "Typsnitt"
+
+#: inc/Admin/Waymark_Settings.php:241
+#, fuzzy
+msgid ""
+"The desired icon name from Ionicons or Font Awesome, e.g. \"ion-camera\", or "
+"\"fa-camera\". Click the links to see the full list of icons available.|Text "
+"to display inside the Marker, in the chosen colour. Space is very limited! "
+"Pro Tip: adjust text size using CSS; for all Markers: .waymark-icon-"
+"text{font-size: 18px}, or by Type: .waymark-marker-photo .waymark-icon-"
+"text{...}. Use your browser's inspector to dig for Type class names.|The "
+"HTML entered will be added inside each Marker. Pro Tip! HTML Entities "
+"supported (e.g. &amp;cross; as well as Unicode characters), or provide HTML "
+"to integrate with other Icon providers."
+msgstr ""
+"Det önskade ikonnamnet från Ionicons eller Font Awesome, t.ex. \"ion-"
+"camera\" eller \"fa-camera\". Klicka på länkarna för att se hela listan över "
+"tillgängliga ikoner.Text som ska visas inuti markören, i den valda färgen. "
+"Utrymmet är mycket begränsat! Proffstips: justera textstorleken med CSS; för "
+"alla markörer: .waymark-icon-text{font-size: 18px}, eller efter Type: ."
+"waymark-marker-photo .waymark-icon-text{...}. Använd webbläsarens inspektör "
+"för att söka efter typklassnamn.|HTML-koden som anges kommer att läggas till "
+"i varje markör. Proffstips! HTML-entiteter som stöds (t.ex. &amp;cross; samt "
+"Unicode-tecken), eller tillhandahåll HTML för att integrera med andra "
+"ikonleverantörer."
+
+#: inc/Admin/Waymark_Settings.php:252 inc/Admin/Waymark_Settings.php:301
+#: inc/Admin/Waymark_Settings.php:396
+msgid "Colour"
+msgstr "Färg"
+
+#: inc/Admin/Waymark_Settings.php:254
+#, fuzzy
+msgid "The colour of the icon. Click \"Select Colour\" to select."
+msgstr "Färgen på ikonen. Klicka på \"Välj färg\" för att välja."
+
+#: inc/Admin/Waymark_Settings.php:276 inc/Admin/Waymark_Settings.php:289
+#: inc/Admin/Waymark_Settings.php:293 inc/Admin/Waymark_Settings.php:301
+#: inc/Admin/Waymark_Settings.php:313 inc/Admin/Waymark_Settings.php:325
+#: inc/Admin/Waymark_Settings.php:336 inc/Admin/Waymark_Settings.php:347
+#: inc/Helpers/Waymark_Lang.php:37
+msgid "Line"
+msgstr "Rad"
+
+#: inc/Admin/Waymark_Settings.php:277
+#, fuzzy
+msgid ""
+"Customise how Lines are displayed on the Map. Set these styles once, then "
+"select the appropriate Type when you add to the Map."
+msgstr ""
+"Anpassa hur linjer visas på kartan. Ställ in dessa format en gång och välj "
+"sedan lämplig typ när du lägger till på kartan."
+
+#: inc/Admin/Waymark_Settings.php:291
+#, fuzzy
+msgid ""
+"What kind of Line is this? E.g. \"Easy\", \"Walking Only\", \"Dark Red\". "
+"The Line Label is displayed in the Tooltip (when hovering over the Line) and "
+"in the Line Info Window. Once saved, Line labels can not be edited."
+msgstr ""
+"Vad är det här för linje? T.ex. \"Easy\", \"Walking Only\", \"Dark Red\". "
+"Linjeetiketten visas i verktygstipset (när du håller muspekaren över linjen) "
+"och i fönstret Radinformation. När linjeetiketterna har sparats kan de inte "
+"redigeras."
+
+#: inc/Admin/Waymark_Settings.php:303
+#, fuzzy
+msgid "The colour of the Line. Click \"Select Colour\" to select."
+msgstr "Linjens färg. Klicka på \"Välj färg\" för att välja."
+
+#: inc/Admin/Waymark_Settings.php:313
+msgid "Weight"
+msgstr "Vikt"
+
+#: inc/Admin/Waymark_Settings.php:315
+#, fuzzy
+msgid "The width of the Line, in pixels."
+msgstr "Linjens bredd i pixlar."
+
+#: inc/Admin/Waymark_Settings.php:325
+msgid "Opacity"
+msgstr "Opacitet"
+
+#: inc/Admin/Waymark_Settings.php:327
+#, fuzzy
+msgid "The opacity of the Line, between 0.0 and 1.0 (e.g. \"0.5\")."
+msgstr "Linjens opacitet, mellan 0,0 och 1,0 (t.ex. \"0,5\")."
+
+#: inc/Admin/Waymark_Settings.php:372
+#, fuzzy
+msgid ""
+"Customise how Shapes are displayed on the Map. Set these styles once, then "
+"select the appropriate Type when you add to the Map."
+msgstr ""
+"Anpassa hur former visas på kartan. Ställ in dessa format en gång och välj "
+"sedan lämplig typ när du lägger till på kartan."
+
+#: inc/Admin/Waymark_Settings.php:386
+#, fuzzy
+msgid ""
+"What kind of Shape is this? E.g. \"Park\", \"Danger!\", \"Light Blue\". The "
+"Shape Label is displayed in the Tooltip (when hovering over the Shape) and "
+"in the Shape Info Window. Once saved, Shape labels can not be edited."
+msgstr ""
+"Vad är det här för form? T.ex. \"Park\", \"Danger!\", \"Light Blue\". "
+"Formetiketten visas i verktygstipset (när du håller muspekaren över formen) "
+"och i fönstret Forminformation. När du har sparat formetiketter kan de inte "
+"redigeras."
+
+#: inc/Admin/Waymark_Settings.php:398
+#, fuzzy
+msgid "The colour of the Shape. Click \"Select Colour\" to select."
+msgstr "Färgen på formen. Klicka på \"Välj färg\" för att välja."
+
+#: inc/Admin/Waymark_Settings.php:408
+msgid "Fill Opacity"
+msgstr "Opacitet på fyllning"
+
+#: inc/Admin/Waymark_Settings.php:410
+#, fuzzy
+msgid ""
+"The opacity of the inside of the shape, between 0.0 and 1.0 (e.g. \"0.5\")."
+msgstr "Opaciteten på formens insida, mellan 0,0 och 1,0 (t.ex. \"0,5\")."
+
+#: inc/Admin/Waymark_Settings.php:458
+#, fuzzy
+msgid ""
+"Create additional input fields that appear underneath the Map Editor. Any "
+"Meta that has been input is displayed on the <a href=\"%s\">Map Details</a> "
+"page, and can also be displayed by the Shortcode."
+msgstr ""
+"Skapa ytterligare inmatningsfält som visas under kartredigeraren. Alla "
+"metadata som har matats in visas på <a href=\"%s\">sidan Kartinformation</a> "
+"och kan också visas med kortkoden."
+
+#: inc/Admin/Waymark_Settings.php:461
+#, fuzzy
+msgid "Meta Docs &raquo;"
+msgstr "Meta Docs »"
+
+#: inc/Admin/Waymark_Settings.php:470 inc/Admin/Waymark_Settings.php:562
+#: inc/Admin/Waymark_Settings.php:670 inc/Admin/Waymark_Settings.php:731
+#: inc/Admin/Waymark_Settings.php:843 inc/Front/Waymark_Submission.php:281
+#: inc/Helpers/Waymark_Lang.php:29
+msgid "Title"
+msgstr "Titel"
+
+#: inc/Admin/Waymark_Settings.php:472
+#, fuzzy
+msgid "The title appears next to the input field."
+msgstr "Titeln visas bredvid inmatningsfältet."
+
+#: inc/Admin/Waymark_Settings.php:483
+msgid "Default"
+msgstr "Standard"
+
+#: inc/Admin/Waymark_Settings.php:485
+#, fuzzy
+msgid ""
+"The default value for the input field. For Select and Multi-Select enter the "
+"option/comma-separated options to be selected by default."
+msgstr ""
+"Standardvärdet för inmatningsfältet. För Välj och Flerval anger du de "
+"alternativ/kommaseparerade alternativ som ska väljas som standard."
+
+#: inc/Admin/Waymark_Settings.php:492
+msgid "Tip"
+msgstr "Tips"
+
+#: inc/Admin/Waymark_Settings.php:494
+#, fuzzy
+msgid ""
+"A tip provides additional information about an input field... just like this!"
+msgstr ""
+"Ett tips ger ytterligare information om ett inmatningsfält... precis så här!"
+
+#: inc/Admin/Waymark_Settings.php:503
+#, fuzzy
+msgid "The type of input field to use."
+msgstr "Vilken typ av inmatningsfält som ska användas."
+
+#: inc/Admin/Waymark_Settings.php:506
+msgid "Textarea"
+msgstr "Textområde"
+
+#: inc/Admin/Waymark_Settings.php:507
+msgid "Rich Text"
+msgstr "Redigera RTF"
+
+#: inc/Admin/Waymark_Settings.php:508
+msgid "Select"
+msgstr "Välj"
+
+#: inc/Admin/Waymark_Settings.php:509
+msgid "Multi-Select"
+msgstr "Flerval"
+
+#: inc/Admin/Waymark_Settings.php:517
+msgid "Options"
+msgstr "Alternativ"
+
+#: inc/Admin/Waymark_Settings.php:519
+#, fuzzy
+msgid "A comma-separated list of options for the input."
+msgstr "En kommaavgränsad lista med alternativ för indata."
+
+#: inc/Admin/Waymark_Settings.php:527 inc/Admin/Waymark_Settings.php:562
+msgid "Group"
+msgstr "Grupp"
+
+#: inc/Admin/Waymark_Settings.php:529
+#, fuzzy
+msgid ""
+"Which group this Meta belongs to (if any). Meta in the same group will be "
+"displayed together when editing and viewing Maps. Meta not in a group will "
+"be displayed above any groups."
+msgstr ""
+"Vilken grupp denna Meta tillhör (om någon). Meta i samma grupp kommer att "
+"visas tillsammans när du redigerar och visar Maps. Meta som inte är i en "
+"grupp kommer att visas ovanför alla grupper."
+
+#: inc/Admin/Waymark_Settings.php:536
+#, fuzzy
+msgid "In Shortcode?"
+msgstr "I kortkod?"
+
+#: inc/Admin/Waymark_Settings.php:538
+#, fuzzy
+msgid ""
+"Whether this content should be displayed when embedding a Map using the "
+"Shortcode."
+msgstr "Om detta innehåll ska visas när du bäddar in en karta med kortkoden."
+
+#: inc/Admin/Waymark_Settings.php:545
+#, fuzzy
+msgid "In Submissions?"
+msgstr "I inlagor?"
+
+#: inc/Admin/Waymark_Settings.php:547
+#, fuzzy
+msgid "Make this Meta available in front-end Submissions?"
+msgstr "Vill du göra denna meta tillgänglig i front-end-inlämningar?"
+
+#: inc/Admin/Waymark_Settings.php:553
+msgid "Groups"
+msgstr "Grupper"
+
+#: inc/Admin/Waymark_Settings.php:554
+#, fuzzy
+msgid ""
+"Create groups to organise your Map Meta. Meta in the same group will be "
+"displayed together when editing and viewing Maps."
+msgstr ""
+"Skapa grupper för att organisera din kartmeta. Meta i samma grupp kommer att "
+"visas tillsammans när du redigerar och visar Maps."
+
+#: inc/Admin/Waymark_Settings.php:555
+#, fuzzy
+msgid "<b>Pro Tip!</b> Drag to re-order, remove all to disable groups."
+msgstr ""
+"<b>Proffstips!</b> Dra för att ändra ordning, ta bort alla för att "
+"inaktivera grupper."
+
+#: inc/Admin/Waymark_Settings.php:564
+#, fuzzy
+msgid "The title appears above the Meta in that group."
+msgstr "Titeln visas ovanför Meta i den gruppen."
+
+#: inc/Admin/Waymark_Settings.php:626
+#, fuzzy
+msgid "Front-End Submissions"
+msgstr "Front-End-inlämningar"
+
+#: inc/Admin/Waymark_Settings.php:627
+#, fuzzy
+msgid ""
+"Use the %s Shortcode to allow Map submissions from the front-end of your "
+"site."
+msgstr ""
+"Använd %s-kortkoden för att tillåta kartinlämningar från framsidan av din "
+"webbplats."
+
+#: inc/Admin/Waymark_Settings.php:630
+#, fuzzy
+msgid "Submission Docs &raquo;"
+msgstr "Inlämning Dokument »"
+
+#: inc/Admin/Waymark_Settings.php:637
+#, fuzzy
+msgid "Allow Submissions"
+msgstr "Tillåt inlämningar"
+
+#: inc/Admin/Waymark_Settings.php:639
+#, fuzzy
+msgid ""
+"Submissions will be available only to site administrators by default, but "
+"can also be allowed for registered users or even to guests without "
+"registration."
+msgstr ""
+"Inlämningar kommer endast att vara tillgängliga för webbplatsadministratörer "
+"som standard, men kan också tillåtas för registrerade användare eller till "
+"och med för gäster utan registrering."
+
+#: inc/Admin/Waymark_Settings.php:645
+#, fuzzy
+msgid "User Submissions"
+msgstr "Bidrag från användare"
+
+#: inc/Admin/Waymark_Settings.php:646
+#, fuzzy
+msgid "Allow registered users to create Maps from the front-end."
+msgstr "Tillåt registrerade användare att skapa Maps från frontend."
+
+#: inc/Admin/Waymark_Settings.php:653
+#, fuzzy
+msgid "Allow From"
+msgstr "Tillåt från"
+
+#: inc/Admin/Waymark_Settings.php:655
+#, fuzzy
+msgid ""
+"Users with the selected roles will be able to make Submissions through the "
+"front-end"
+msgstr ""
+"Användare med de valda rollerna kommer att kunna skicka in via front-end"
+
+#: inc/Admin/Waymark_Settings.php:663 inc/Admin/Waymark_Settings.php:724
+msgid "Editor Features"
+msgstr "Redaktörsfunktioner"
+
+#: inc/Admin/Waymark_Settings.php:665
+#, fuzzy
+msgid ""
+"What features to offer in the Editor. Important! Uploaded images are added "
+"to the Media Library, reading from file does not keep a copy of the file on "
+"the server. Whether an individual Meta input is displayed can be set in the "
+"Settings > Map > Meta."
+msgstr ""
+"Vilka funktioner som ska erbjudas i redigeraren. Viktig! Uppladdade bilder "
+"läggs till i mediebiblioteket, läsning från fil behåller inte en kopia av "
+"filen på servern. Huruvida en enskild Meta-inmatning visas kan ställas in i "
+"Inställningar > Karta > Meta."
+
+#: inc/Admin/Waymark_Settings.php:667 inc/Admin/Waymark_Settings.php:728
+msgid "Drawing"
+msgstr "Ritning"
+
+#: inc/Admin/Waymark_Settings.php:668 inc/Admin/Waymark_Settings.php:729
+msgid "Image upload"
+msgstr "Bilduppladdning"
+
+#: inc/Admin/Waymark_Settings.php:678 inc/Admin/Waymark_Settings.php:752
+msgid "Default Status"
+msgstr "Standard status"
+
+#: inc/Admin/Waymark_Settings.php:680 inc/Admin/Waymark_Settings.php:754
+#, fuzzy
+msgid ""
+"This is the initial status of the submitted Map. Note! Publish means that "
+"the Map (including any images added) will be *immediately* visible on your "
+"site."
+msgstr ""
+"Detta är den ursprungliga statusen för den inskickade kartan. Not! Publicera "
+"innebär att kartan (inklusive eventuella bilder som lagts till) kommer att "
+"vara *omedelbart* synlig på din webbplats."
+
+#: inc/Admin/Waymark_Settings.php:682
+msgid "Publish"
+msgstr "Publicera"
+
+#: inc/Admin/Waymark_Settings.php:683 inc/Admin/Waymark_Settings.php:756
+msgid "Draft"
+msgstr "Utkast"
+
+#: inc/Admin/Waymark_Settings.php:690 inc/Admin/Waymark_Settings.php:765
+msgid "Default Collection"
+msgstr "Min samling"
+
+#: inc/Admin/Waymark_Settings.php:691 inc/Admin/Waymark_Settings.php:766
+#, fuzzy
+msgid ""
+"If specified, user submissions will be automatically added to this "
+"Collection."
+msgstr ""
+"Om det anges kommer användarbidrag automatiskt att läggas till i den här "
+"samlingen."
+
+#: inc/Admin/Waymark_Settings.php:708 inc/Admin/Waymark_Settings.php:715
+msgid "Public Submissions"
+msgstr "Publikt inskickade uppgifter"
+
+#: inc/Admin/Waymark_Settings.php:709
+#, fuzzy
+msgid ""
+"This will allow Submissions from <b>any visitor</b>, without registration."
+"<!--<br /><br /><b>Important!</b>-->"
+msgstr ""
+"Detta gör det möjligt att skicka in bidrag från <b>alla besökare</b>, utan "
+"registrering.<!--<br /><br /><b>Important!</b>-->"
+
+#: inc/Admin/Waymark_Settings.php:717
+#, fuzzy
+msgid "Allow *anyone* to submit Maps to your site, without registration."
+msgstr ""
+"Tillåt *vem som helst* att skicka in Maps till din webbplats utan "
+"registrering."
+
+#: inc/Admin/Waymark_Settings.php:726
+#, fuzzy
+msgid ""
+"What features to offer in the Editor. Important! Uploaded images are added "
+"to the Media Library (see Upload Location below), reading from file does not "
+"keep a copy of the file on the server. Whether an individual Meta input is "
+"displayed can be set in the Settings > Map > Meta."
+msgstr ""
+"Vilka funktioner som ska erbjudas i redigeraren. Viktig! Uppladdade bilder "
+"läggs till i mediebiblioteket (se Uppladdningsplats nedan), läsning från fil "
+"behåller inte en kopia av filen på servern. Huruvida en enskild Meta-"
+"inmatning visas kan ställas in i Inställningar > Karta > Meta."
+
+#: inc/Admin/Waymark_Settings.php:739
+#, fuzzy
+msgid "Upload Location"
+msgstr "Ladda upp plats"
+
+#: inc/Admin/Waymark_Settings.php:741
+#, fuzzy
+msgid ""
+"Images upload by non-registered users can be stored seperately from other "
+"Media Library uploads, to aid with moderation. All uploaded images will be "
+"stored in a single directory (/waymark_submission) found in the upload root."
+msgstr ""
+"Bilder som laddas upp av icke-registrerade användare kan lagras separat från "
+"andra uppladdningar av mediebibliotek för att underlätta modereringen. Alla "
+"uppladdade bilder kommer att lagras i en enda katalog (/waymark_submission) "
+"som finns i uppladdningsroten."
+
+#: inc/Admin/Waymark_Settings.php:744
+#, fuzzy
+msgid "Seperated (/waymark_submission)"
+msgstr "Sepererad (/waymark_submission)"
+
+#: inc/Admin/Waymark_Settings.php:745
+#, fuzzy
+msgid "Media Library Default (%s)"
+msgstr "Standard för mediebibliotek (%s)"
+
+#: inc/Admin/Waymark_Settings.php:757
+#, fuzzy
+msgid "Publish (not recommended!)"
+msgstr "Publicera (rekommenderas inte!)"
+
+#: inc/Admin/Waymark_Settings.php:817
+#, fuzzy
+msgid ""
+"Read <b><a href=\"https://geojson.org/\">GeoJSON</a></b> feature properties "
+"when importing."
+msgstr ""
+"Läs <b><a href=\"https://geojson.org/\">GeoJSON-funktionsegenskaper</a></b> "
+"när du importerar."
+
+#: inc/Admin/Waymark_Settings.php:818
+#, fuzzy
+msgid ""
+"<small><b>Pro Tip!</b> Properties are added to the Overlay Description with "
+"class names that can be used to target them, e.g. %s.</small>"
+msgstr ""
+"<small><b>Proffstips!</b> Egenskaper läggs till i överläggsbeskrivningen med "
+"klassnamn som kan användas för att rikta in sig på dem, t.ex. . %s</small>"
+
+#: inc/Admin/Waymark_Settings.php:830 inc/Admin/Waymark_Settings.php:843
+msgid "Property"
+msgstr "Fastighet"
+
+#: inc/Admin/Waymark_Settings.php:830
+msgid "Key"
+msgstr "Nyckel"
+
+#: inc/Admin/Waymark_Settings.php:832
+#, fuzzy
+msgid ""
+"This is the key associated with the data you are trying to access, i.e. "
+"\"properties\": {\"property_key\": \"Some content here\"}"
+msgstr ""
+"Detta är nyckeln som är associerad med de data du försöker komma åt, dvs. "
+"\"properties\": {\"property_key\": \"Visst innehåll här\"}"
+
+#: inc/Admin/Waymark_Settings.php:845
+#, fuzzy
+msgid ""
+"The value for this property will be added to the Overlay Description under "
+"this title."
+msgstr ""
+"Värdet för den här egenskapen läggs till i överläggsbeskrivningen under den "
+"här rubriken."
+
+#: inc/Admin/Waymark_Settings.php:864
+msgid "Map Options"
+msgstr "Kart alternativ"
+
+#: inc/Admin/Waymark_Settings.php:865
+#, fuzzy
+msgid "Use these options to change how Maps are displayed."
+msgstr "Använd de här alternativen för att ändra hur kartor visas."
+
+#: inc/Admin/Waymark_Settings.php:868
+#, fuzzy
+msgid "See Examples &raquo;"
+msgstr "Se exempel »"
+
+#: inc/Admin/Waymark_Settings.php:876
+#, fuzzy
+msgid "Default Centre"
+msgstr "Standardcenter"
+
+#: inc/Admin/Waymark_Settings.php:878
+#, fuzzy
+msgid ""
+"Waymark centres the Map automatically when displaying data. These "
+"coordinates (Latitude,Longitude) will be used when there is no data "
+"available."
+msgstr ""
+"Waymark centrerar kartan automatiskt när data visas. Dessa koordinater "
+"(latitud, longitud) kommer att användas när det inte finns några "
+"tillgängliga data."
+
+#: inc/Admin/Waymark_Settings.php:891
+msgid "Map Height"
+msgstr "Karthöjd"
+
+#: inc/Admin/Waymark_Settings.php:893
+#, fuzzy
+msgid "Or set in Shortcode: %s"
+msgstr "Eller ställ in i kortkod: %s"
+
+#: inc/Admin/Waymark_Settings.php:894
+#, fuzzy
+msgid ""
+"Specify the desired height of the Map (in pixels). Pro Tip! This will affect "
+"all Maps, but you can change the height (and width) of an individual Map "
+"through the Shortcode: %s"
+msgstr ""
+"Ange önskad höjd på kartan (i pixlar). Proffstips! Detta kommer att påverka "
+"alla kartor, men du kan ändra höjden (och bredden) på en enskild karta genom "
+"kortkoden: %s"
+
+#: inc/Admin/Waymark_Settings.php:906
+#, fuzzy
+msgid "Type Labels"
+msgstr "Typetiketter"
+
+#: inc/Admin/Waymark_Settings.php:908
+#, fuzzy
+msgid ""
+"Whether to display the Marker/Line/Shape Type Label in the tooltip and Info "
+"Window."
+msgstr ""
+"Om markören/linjen/formtypsetiketten ska visas i verktygstipset och "
+"informationsfönstret."
+
+#: inc/Admin/Waymark_Settings.php:910 inc/Admin/Waymark_Settings.php:937
+#: inc/Admin/Waymark_Settings.php:949 inc/Admin/Waymark_Settings.php:1121
+msgid "Show"
+msgstr "Visa"
+
+#: inc/Admin/Waymark_Settings.php:911 inc/Admin/Waymark_Settings.php:938
+#: inc/Admin/Waymark_Settings.php:950 inc/Admin/Waymark_Settings.php:1122
+msgid "Hide"
+msgstr "Dölj"
+
+#: inc/Admin/Waymark_Settings.php:919
+msgid "Default Zoom"
+msgstr "Standard Zoom"
+
+#: inc/Admin/Waymark_Settings.php:921
+#, fuzzy
+msgid ""
+"Waymark zooms the Map automatically when displaying data. This zoom level "
+"(0-18) will be used when there is no data available."
+msgstr ""
+"Waymark zoomar kartan automatiskt när data visas. Denna zoomnivå (0-18) "
+"kommer att användas när det inte finns några tillgängliga data."
+
+#: inc/Admin/Waymark_Settings.php:933
+msgid "Image Gallery"
+msgstr "Bildgalleri"
+
+#: inc/Admin/Waymark_Settings.php:935
+#, fuzzy
+msgid ""
+"Whether to display an image gallery for Markers that have images associated "
+"with them. Pro Tip! This will affect all Maps, but you can choose to show/"
+"hide the gallery of an individual Map through the shortcode: %s"
+msgstr ""
+"Om du vill visa ett bildgalleri för markörer som har associerade bilder. "
+"Proffstips! Detta kommer att påverka alla kartor, men du kan välja att visa/"
+"dölja galleriet för en enskild karta genom kortkoden: %s"
+
+#: inc/Admin/Waymark_Settings.php:945
+#, fuzzy
+msgid "Overlay Filter"
+msgstr "Överlägg, filter"
+
+#: inc/Admin/Waymark_Settings.php:947
+#, fuzzy
+msgid ""
+"Allow the user to filter which Markers, Lines and Shapes are currently "
+"visible on the Map. Pro Tip! This will affect all Maps, but you can choose "
+"to show/hide the filter for individual Maps through the shortcode: %s"
+msgstr ""
+"Tillåt användaren att filtrera vilka markörer, linjer och former som för "
+"närvarande är synliga på kartan. Proffstips! Detta kommer att påverka alla "
+"kartor, men du kan välja att visa/dölja filtret för enskilda kartor genom "
+"kortkoden: %s"
+
+#: inc/Admin/Waymark_Settings.php:957
+#, fuzzy
+msgid "Public Export"
+msgstr "Offentlig export"
+
+#: inc/Admin/Waymark_Settings.php:959
+#, fuzzy
+msgid ""
+"Enable visitors to download the Overlays (Markers, Lines and Shapes) "
+"currently displayed on the Map Details page. An Export option is also "
+"displayed in the Details section of the Shortcode Header when embedding a "
+"Map or Collection. Can be used in conjunction with the Overlay Filter to "
+"select which Overlays to download. GeoJSON, GPX and KML formats supported."
+msgstr ""
+"Gör det möjligt för besökare att ladda ner de överlägg (markörer, linjer och "
+"former) som för närvarande visas på sidan Kartinformation. Ett "
+"exportalternativ visas också i avsnittet Detaljer i kortkodshuvudet när du "
+"bäddar in en karta eller samling. Kan användas tillsammans med "
+"överläggsfiltret för att välja vilka överlägg som ska hämtas. GeoJSON-, GPX- "
+"och KML-format stöds."
+
+#: inc/Admin/Waymark_Settings.php:965
+#, fuzzy
+msgid "Show Scale"
+msgstr "Visa skala"
+
+#: inc/Admin/Waymark_Settings.php:967
+#, fuzzy
+msgid "Show a distance scale (km and miles) on the Map."
+msgstr "Visa en avståndsskala (km och miles) på kartan."
+
+#: inc/Admin/Waymark_Settings.php:976
+#, fuzzy
+msgid "Sleep Options"
+msgstr "Alternativ för sömn"
+
+#: inc/Admin/Waymark_Settings.php:977
+#, fuzzy
+msgid ""
+"Waymark Maps will zoom when the user scrolls. This can cause some unexpected/"
+"annoying behaviour when scrolling a page.<br /><br /><b>Sleeping</b> the Map "
+"initially and <b>Waking</b> upon user interaction (i.e. hovering/clicking/"
+"tapping) may create a better experience."
+msgstr ""
+"Waymark Maps zoomar när användaren rullar. Detta kan orsaka ett oväntat/"
+"irriterande beteende när du bläddrar på en sida.<br /><br /><b>Att sova</b> "
+"kartan initialt och <b>vakna</b> vid användarinteraktion (dvs. sväva/klicka/"
+"trycka) kan skapa en bättre upplevelse."
+
+#: inc/Admin/Waymark_Settings.php:984
+#, fuzzy
+msgid "Hover Wake Time"
+msgstr "Håll muspekaren över väckningstiden"
+
+#: inc/Admin/Waymark_Settings.php:985
+msgid "Seconds"
+msgstr "Sekunder"
+
+#: inc/Admin/Waymark_Settings.php:987
+#, fuzzy
+msgid ""
+"How many seconds before scroll zoom is enabled. 0 seconds will mean no delay "
+"(disabling this feature). A large number of seconds like 3600 (an hour) will "
+"esentially *disable hover to wake*, meaning the user will need to *click* to "
+"wake."
+msgstr ""
+"Hur många sekunder innan rullningszoom aktiveras. 0 sekunder betyder ingen "
+"fördröjning (inaktiverar den här funktionen). Ett stort antal sekunder som "
+"3600 (en timme) kommer esentiellt *inaktivera hovring för att väcka*, vilket "
+"innebär att användaren måste *klicka* för att vakna."
+
+#: inc/Admin/Waymark_Settings.php:996
+msgid "Display Message"
+msgstr "Visa meddelande"
+
+#: inc/Admin/Waymark_Settings.php:998
+#, fuzzy
+msgid ""
+"This message will be displayed by the Map while scroll zoom is disabled."
+msgstr ""
+"Detta meddelande kommer att visas av kartan när rullningszoom är inaktiverad."
+
+#: inc/Admin/Waymark_Settings.php:1004
+msgid "Display"
+msgstr "Visa"
+
+#: inc/Admin/Waymark_Settings.php:1004
+#, fuzzy
+msgid "Message Text"
+msgstr "Text i meddelandet"
+
+#: inc/Admin/Waymark_Settings.php:1013
+#, fuzzy
+msgid "Cluster Options"
+msgstr "Alternativ för kluster"
+
+#: inc/Admin/Waymark_Settings.php:1014
+#, fuzzy
+msgid ""
+"With Clustering enabled, Markers will be grouped together when they are "
+"close together. This can help to reduce clutter on the Map."
+msgstr ""
+"När klustring är aktiverat grupperas markörer tillsammans när de är nära "
+"varandra. Detta kan bidra till att minska röran på kartan."
+
+#: inc/Admin/Waymark_Settings.php:1017
+#, fuzzy
+msgid "Clustering Docs &raquo;"
+msgstr "Klustring av dokument »"
+
+#: inc/Admin/Waymark_Settings.php:1025
+msgid "Enabled"
+msgstr "Aktiverad"
+
+#: inc/Admin/Waymark_Settings.php:1026
+msgid "Disabled"
+msgstr "Inaktiverad"
+
+#: inc/Admin/Waymark_Settings.php:1029
+msgid "Marker Clustering"
+msgstr "Markörskluster"
+
+#: inc/Admin/Waymark_Settings.php:1031
+#, fuzzy
+msgid ""
+"Whether to cluster (stack) Markers that are close together. Pro Tip! This "
+"will affect all Maps, but you can also enable/disable clustering through the "
+"Shortcode: [Waymark show_cluster=\"0\"]"
+msgstr ""
+"Om du vill gruppera (stapla) markörer som ligger nära varandra. Proffstips! "
+"Detta kommer att påverka alla kartor, men du kan också aktivera/inaktivera "
+"klustring via kortkoden: [Waymark show_cluster=\"0\"]"
+
+#: inc/Admin/Waymark_Settings.php:1038
+#, fuzzy
+msgid "Cluster Threshold"
+msgstr "Tröskelvärde för kluster"
+
+#: inc/Admin/Waymark_Settings.php:1040
+#, fuzzy
+msgid "Markers will not be clustered above this zoom level."
+msgstr "Markörer kommer inte att grupperas över den här zoomnivån."
+
+#: inc/Admin/Waymark_Settings.php:1050
+msgid "Cluster"
+msgstr "Kluster"
+
+#: inc/Admin/Waymark_Settings.php:1050
+msgid "Radius"
+msgstr "Radie"
+
+#: inc/Admin/Waymark_Settings.php:1052
+#, fuzzy
+msgid ""
+"The maximum radius that a cluster will cover from the central marker (in "
+"pixels). Decreasing will make more, smaller clusters.\tDefault 80."
+msgstr ""
+"Den maximala radie som ett kluster kommer att täcka från den centrala "
+"markören (i pixlar). Om du minskar skapas fler, mindre kluster.\tStandard 80."
+
+#: inc/Admin/Waymark_Settings.php:1064
+#, fuzzy
+msgid "Collection Options"
+msgstr "Alternativ för insamling"
+
+#: inc/Admin/Waymark_Settings.php:1065
+#, fuzzy
+msgid "How Collections are displayed."
+msgstr "Hur samlingar visas."
+
+#: inc/Admin/Waymark_Settings.php:1068
+#, fuzzy
+msgid "Collection Docs &raquo;"
+msgstr "Samling Docs »"
+
+#: inc/Admin/Waymark_Settings.php:1075
+#, fuzzy
+msgid "Link to Maps"
+msgstr "Länk till kartor"
+
+#: inc/Admin/Waymark_Settings.php:1077
+#, fuzzy
+msgid ""
+"Whether to display a link to the individual Map Details page when clicking "
+"on a Marker/Line/Shape displayed by the Collection."
+msgstr ""
+"Om du vill visa en länk till den enskilda sidan med kartinformation när du "
+"klickar på en markör/linje/form som visas av samlingen."
+
+#: inc/Admin/Waymark_Settings.php:1083
+#, fuzzy
+msgid "Link from Maps"
+msgstr "Länk från Maps"
+
+#: inc/Admin/Waymark_Settings.php:1085
+#, fuzzy
+msgid ""
+"Whether to display a link to the Collection(s) that a Map belongs to on the "
+"Map Details page."
+msgstr ""
+"Om du vill visa en länk till den eller de samlingar som en karta tillhör på "
+"sidan Kartinformation."
+
+#: inc/Admin/Waymark_Settings.php:1093
+msgid "Embed"
+msgstr "Bädda in"
+
+#: inc/Admin/Waymark_Settings.php:1096
+#, fuzzy
+msgid "Shortcode Method"
+msgstr "Kortkodsmetod"
+
+#: inc/Admin/Waymark_Settings.php:1098
+#, fuzzy
+msgid ""
+"Whether to load multiple Maps in the Background (uses AJAX to improve page "
+"load) when embedding with the Shortcode, or to Embed them within the page. "
+"Embedding may be a bad idea for LARGE COLLECTIONS, but can resolve some "
+"issues where Collections are not displaying correctly."
+msgstr ""
+"Om du vill ladda flera kartor i bakgrunden (använder AJAX för att förbättra "
+"sidladdningen) när du bäddar in med kortkoden, eller om du vill bädda in dem "
+"på sidan. Inbäddning kan vara en dålig idé för STORA SAMLINGAR, men kan lösa "
+"vissa problem där samlingar inte visas korrekt."
+
+#: inc/Admin/Waymark_Settings.php:1106
+msgid "Shortcode Options"
+msgstr "Kortkodsalternativ"
+
+#: inc/Admin/Waymark_Settings.php:1107
+#, fuzzy
+msgid "How Maps are embedded into your content using the shortcode."
+msgstr "Hur kartor bäddas in i ditt innehåll med hjälp av kortkoden."
+
+#: inc/Admin/Waymark_Settings.php:1110
+#, fuzzy
+msgid "Shortcode Docs &raquo;"
+msgstr "Kortkod Docs »"
+
+#: inc/Admin/Waymark_Settings.php:1117
+#, fuzzy
+msgid "Shortcode Header"
+msgstr "Kortkod rubrik"
+
+#: inc/Admin/Waymark_Settings.php:1119
+#, fuzzy
+msgid ""
+"The shortcode header displays the title and link to the Map or Collection. "
+"Pro Tip! This will affect all shortcodes, but you can override the setting "
+"through the shortcode: %s (the value must be either 0 or 1)."
+msgstr ""
+"Kortkodshuvudet visar titeln och länken till kartan eller samlingen. "
+"Proffstips! Detta kommer att påverka alla kortkoder, men du kan åsidosätta "
+"inställningen genom kortkoden: %s (värdet måste vara antingen 0 eller 1)."
+
+#: inc/Admin/Waymark_Settings.php:1129
+#, fuzzy
+msgid "Header for Admin"
+msgstr "Rubrik för administratör"
+
+#: inc/Admin/Waymark_Settings.php:1131
+#, fuzzy
+msgid ""
+"Use this Setting to always show the Shortcode Header when signed in as "
+"admin, useful for quickly navigating to embeded Maps."
+msgstr ""
+"Använd den här inställningen för att alltid visa kortkodshuvudet när du är "
+"inloggad som administratör, vilket är användbart för att snabbt navigera "
+"till inbäddade kartor."
+
+#: inc/Admin/Waymark_Settings.php:1133
+#, fuzzy
+msgid "Use Setting"
+msgstr "Använd inställning"
+
+#: inc/Admin/Waymark_Settings.php:1134
+#, fuzzy
+msgid "Always Show"
+msgstr "Visa alltid"
+
+#: inc/Admin/Waymark_Settings.php:1143
+#, fuzzy
+msgid "Elevation Options"
+msgstr "Alternativ för utökade privilegier"
+
+#: inc/Admin/Waymark_Settings.php:1144
+#, fuzzy
+msgid "Lines with elevation data."
+msgstr "Linjer med höjddata."
+
+#: inc/Admin/Waymark_Settings.php:1147
+#, fuzzy
+msgid "Elevation Styling &raquo;"
+msgstr "Elevation Styling »"
+
+#: inc/Admin/Waymark_Settings.php:1154
+#, fuzzy
+msgid "Elevation Profile"
+msgstr "Höjdprofil"
+
+#: inc/Admin/Waymark_Settings.php:1156
+#, fuzzy
+msgid ""
+"Display an interactive elevation profile graph below the Map for Lines that "
+"have elevation data. Pro Tip! You can choose to show/hide the elevation "
+"graph of an individual Map through the shortcode: %s"
+msgstr ""
+"Visa ett interaktivt diagram över höjdprofil under kartan för linjer som har "
+"höjddata. Proffstips! Du kan välja att visa/dölja höjdgrafen för en enskild "
+"karta genom kortkoden: %s"
+
+#: inc/Admin/Waymark_Settings.php:1158
+#, fuzzy
+msgid "Show on Map Details"
+msgstr "Visa på karta Detaljer"
+
+#: inc/Admin/Waymark_Settings.php:1159
+#, fuzzy
+msgid "Show everywhere"
+msgstr "Visa överallt"
+
+#: inc/Admin/Waymark_Settings.php:1160
+msgid "Hide everywhere"
+msgstr "Dölj överallt"
+
+#: inc/Admin/Waymark_Settings.php:1167
+#, fuzzy
+msgid "Elevation Units"
+msgstr "Enheter för höjning"
+
+#: inc/Admin/Waymark_Settings.php:1169
+#, fuzzy
+msgid "Display elevation data in metric (m/km) or imperial (ft/mi) units."
+msgstr "Visa höjddata i metriska (m/km) eller brittiska (ft/mi) enheter."
+
+#: inc/Admin/Waymark_Settings.php:1171
+#, fuzzy
+msgid "Metric (m/km)"
+msgstr "Metrisk (m/km)"
+
+#: inc/Admin/Waymark_Settings.php:1172
+#, fuzzy
+msgid "Imperial (ft/mi)"
+msgstr "Imperial (ft/mi)"
+
+#: inc/Admin/Waymark_Settings.php:1180
+#, fuzzy
+msgid "Elevation Colour"
+msgstr "Höjd Färg"
+
+#: inc/Admin/Waymark_Settings.php:1182
+#, fuzzy
+msgid "The colour of the elevation graph and associated Line."
+msgstr "Färgen på höjdgrafen och tillhörande linje."
+
+#: inc/Admin/Waymark_Settings.php:1191
+#, fuzzy
+msgid "Show Initially?"
+msgstr "Visa från början?"
+
+#: inc/Admin/Waymark_Settings.php:1193
+#, fuzzy
+msgid ""
+"Whether to show the elevation profile when the Map loads. If set to No, the "
+"user must click on a Line in order to display the elevation data. If there "
+"are multiple Lines with elevation data, the one added to the editor first "
+"will be the one shown initially."
+msgstr ""
+"Om höjdprofilen ska visas när kartan läses in. Om värdet är Nej måste "
+"användaren klicka på en linje för att visa höjddata. Om det finns flera "
+"linjer med höjddata kommer den som läggs till i redigeraren först att vara "
+"den som visas från början."
+
+#: inc/Admin/Waymark_Settings.php:1201
+#, fuzzy
+msgid "Editor Options"
+msgstr "Alternativ för redigerare"
+
+#: inc/Admin/Waymark_Settings.php:1202
+#, fuzzy
+msgid "Customising the Map Editor."
+msgstr "Anpassa kartredigeraren."
+
+#: inc/Admin/Waymark_Settings.php:1205
+#, fuzzy
+msgid "Editor Docs &raquo;"
+msgstr "Redaktör Docs »"
+
+#: inc/Admin/Waymark_Settings.php:1212
+msgid "Confirm Delete?"
+msgstr "Bekräfta radering ?"
+
+#: inc/Admin/Waymark_Settings.php:1214
+#, fuzzy
+msgid ""
+"Whether to show a confirmation dialog before deleting Markers/Lines/Shapes "
+"from the Map. Pro Tip! Even if you accidentally delete something, changes "
+"are not saved until the \"Update\" button is clicked."
+msgstr ""
+"Om en bekräftelsedialogruta ska visas innan markörer/linjer/former tas bort "
+"från kartan. Proffstips! Även om du av misstag tar bort något sparas inte "
+"ändringarna förrän du klickar på knappen \"Uppdatera\"."
+
+#: inc/Admin/Waymark_Settings.php:1220
+#, fuzzy
+msgid "Default Basemap"
+msgstr "Standardbaskarta"
+
+#: inc/Admin/Waymark_Settings.php:1222
+#, fuzzy
+msgid "Which Basemap to use as the editor default."
+msgstr "Vilken baskarta som ska användas som standardredigerare."
+
+#: inc/Admin/Waymark_Settings.php:1229
+#, fuzzy
+msgid "Store Read Files"
+msgstr "Lagra lästa filer"
+
+#: inc/Admin/Waymark_Settings.php:1231
+#, fuzzy
+msgid ""
+"By default Waymark does not store any files read using the Editor. Using "
+"this option you can use the Media Library to store the uploaded GPX/KML/"
+"GeoJSON file."
+msgstr ""
+"Som standard lagrar Waymark inte några filer som läses med hjälp av "
+"redigeraren. Med det här alternativet kan du använda mediebiblioteket för "
+"att lagra den uppladdade GPX/KML/GeoJSON-filen."
+
+#: inc/Admin/Waymark_Settings.php:1238
+msgid "Permalinks"
+msgstr "Permalänkar"
+
+#: inc/Admin/Waymark_Settings.php:1247
+#, fuzzy
+msgid "Map Slug"
+msgstr "Karta Slug"
+
+#: inc/Admin/Waymark_Settings.php:1249
+#, fuzzy
+msgid ""
+"The URL slug that will be used for links to your Maps, i.e. example.com/[map-"
+"slug]/example-map/. Only alpha-numeric characters and hyphens (-) are "
+"allowed."
+msgstr ""
+"URL-sluggen som kommer att användas för länkar till dina kartor, dvs. "
+"example.com/[map-slug]/example-map/. Endast alfanumeriska tecken och "
+"bindestreck (-) tillåts."
+
+#: inc/Admin/Waymark_Settings.php:1261
+msgid "Collection Slug"
+msgstr "Samling Slug"
+
+#: inc/Admin/Waymark_Settings.php:1263
+#, fuzzy
+msgid ""
+"The URL slug that will be used for links to your Collections, i.e. example."
+"com/[collection-slug]/example-collection/. Only alpha-numeric characters and "
+"hyphens (-) are allowed."
+msgstr ""
+"URL-sluggen som kommer att användas för länkar till dina samlingar, dvs. "
+"example.com/[collection-slug]/example-collection/. Endast alfanumeriska "
+"tecken och bindestreck (-) tillåts."
+
+#: inc/Admin/Waymark_Settings.php:1275 inc/Helpers/Waymark_Helper.php:35
+msgid "Debug"
+msgstr "Debugg"
+
+#: inc/Admin/Waymark_Settings.php:1282
+msgid "Debug Mode"
+msgstr "Felsökningsläge"
+
+#: inc/Admin/Waymark_Settings.php:1284
+#, fuzzy
+msgid ""
+"With debug mode enabled, the plugin will output Map and Settings data in "
+"Admin Dashboard. This may come in handy if you need to report a bug. Pro "
+"Tip! Check the browser console for Waymark output when signed in as an "
+"administrator."
+msgstr ""
+"Med felsökningsläget aktiverat kommer plugin-programmet att mata ut kart- "
+"och inställningsdata i Admin Dashboard. Detta kan vara praktiskt om du "
+"behöver rapportera ett fel. Proffstips! Kontrollera webbläsarkonsolen för "
+"Waymark-utdata när du är inloggad som administratör."
+
+#: inc/Admin/Waymark_Settings.php:1287
+msgid "Disable"
+msgstr "Inaktivera"
+
+#: inc/Admin/Waymark_Settings.php:1288
+msgid "Enable"
+msgstr "Aktivera"
+
+#: inc/Admin/Waymark_Settings.php:1303
+#, fuzzy
+msgid "Settings Data"
+msgstr "Inställningar Data"
+
+#: inc/Admin/Waymark_Settings.php:1562
+msgid "Settings Updated"
+msgstr "Inställningarna sparades"
+
+#: inc/Admin/Waymark_Settings.php:1565
+#, fuzzy
+msgid "Action Complete"
+msgstr "Åtgärden är slutförd"
+
+#: inc/Front/Waymark_Shortcode.php:224
+msgid "Details"
+msgstr "Detaljer"
+
+#: inc/Front/Waymark_Shortcode.php:237
+msgid "More Details"
+msgstr "Mer detaljer"
+
+#: inc/Front/Waymark_Submission.php:164
+#, fuzzy
+msgid "There was an error with your submission."
+msgstr "Det uppstod ett fel med din inlämning."
+
+#: inc/Front/Waymark_Submission.php:172
+#, fuzzy
+msgid "Your submission has been received and is awaiting moderation."
+msgstr "Ditt bidrag har tagits emot och väntar på moderering."
+
+#: inc/Front/Waymark_Submission.php:181
+#, fuzzy
+msgid "Your submission has been <a href=\"%s\">published</a>."
+msgstr "Ditt bidrag har <a href=\"%s\">publicerats</a>."
+
+#: inc/Front/Waymark_Submission.php:183
+#, fuzzy
+msgid "Your submission has been published."
+msgstr "Ditt bidrag har publicerats."
+
+#: inc/Front/Waymark_Submission.php:292
+msgid "Submit"
+msgstr "Skicka"
+
+#: inc/Front/Waymark_Submission.php:311
+#, fuzzy
+msgid "Your Map was empty."
+msgstr "Din karta var tom."
+
+#: inc/Front/Waymark_Submission.php:320
+#, fuzzy
+msgid "Your Map did not contain valid features."
+msgstr "Din karta innehöll inte giltiga funktioner."
+
+#: inc/Front/Waymark_Submission.php:327
+msgid "Submission"
+msgstr "Inlämning"
+
+#: inc/Helpers/Waymark_Helper.php:16
+#, fuzzy
+msgid "Hi, I'm %s."
+msgstr "Hej, jag är %s."
+
+#: inc/Helpers/Waymark_Helper.php:18
+#, fuzzy
+msgid ""
+"Waymark is <strong><a href=\"https://github.com/opengis/waymark\">open "
+"source</a></strong> and a work in progress."
+msgstr ""
+"Waymark är <strong><a href=\"https://github.com/opengis/waymark\">öppen "
+"källkod</a></strong> och ett pågående arbete."
+
+#: inc/Helpers/Waymark_Helper.php:19
+#, fuzzy
+msgid ""
+"Feedback is very important, so please feel free to get in touch by either:"
+msgstr ""
+"Feedback är mycket viktigt, så du är välkommen att kontakta oss genom att "
+"antingen:"
+
+#: inc/Helpers/Waymark_Helper.php:22
+#, fuzzy
+msgid ""
+"Leaving a <strong><a href=\"%s\">review</a></strong>, or creating a <a "
+"href=\"%s\">support topic</a> on the WordPress plugin directory."
+msgstr ""
+"Lämna en <strong><a href=\"%s\">recension</a></strong> eller skapa ett <a "
+"href=\"%s\">supportämne</a> i WordPress-plugin-katalogen."
+
+#: inc/Helpers/Waymark_Helper.php:23
+#, fuzzy
+msgid "Posting in the <a href=\"%s\">Forums</a>."
+msgstr "Inlägg i <a href=\"%s\">forumet</a>."
+
+#: inc/Helpers/Waymark_Helper.php:24
+#, fuzzy
+msgid "Creating a <a href=\"%s\">GitHub issue</a>."
+msgstr "Skapa ett <a href=\"%s\">GitHub-problem</a>."
+
+#: inc/Helpers/Waymark_Helper.php:27
+msgid "Thanks"
+msgstr "Tack"
+
+#: inc/Helpers/Waymark_Helper.php:31
+#, fuzzy
+msgid "Built on the shoulders of giants, <a href=\"%s\">thank you</a>!"
+msgstr "Byggd på jättars axlar, <a href=\"%s\">tack</a>!"
+
+#: inc/Helpers/Waymark_Helper.php:182 inc/Waymark_Taxonomies.php:14
+#: inc/Waymark_Taxonomies.php:15
+msgid "Collection"
+msgstr "Samling"
+
+#: inc/Helpers/Waymark_Helper.php:203 inc/Helpers/Waymark_Helper.php:232
+#, fuzzy
+msgid ""
+"This will download the Overlays currently displayed by the Map in the "
+"selected format."
+msgstr ""
+"Detta kommer att ladda ner de överlägg som för närvarande visas av kartan i "
+"det valda formatet."
+
+#: inc/Helpers/Waymark_Helper.php:530 inc/Waymark_Types.php:10
+#: inc/Waymark_Types.php:14 inc/Waymark_Types.php:16
+msgid "Map"
+msgstr "Karta"
+
+#: inc/Helpers/Waymark_Helper.php:705 inc/Helpers/Waymark_Helper.php:730
+msgid "Download"
+msgstr "Ladda ner"
+
+#: inc/Helpers/Waymark_Input.php:36
+msgid "Yes"
+msgstr "Ja"
+
+#: inc/Helpers/Waymark_Input.php:37
+msgid "No"
+msgstr "Nej"
+
+#: inc/Helpers/Waymark_Input.php:78
+#, fuzzy
+msgid "Click here for more details."
+msgstr "Klicka här för mer information."
+
+#: inc/Helpers/Waymark_Input.php:471
+#, fuzzy
+msgid "The file extension uploaded is not supported."
+msgstr "Filnamnstillägget som laddats upp stöds inte."
+
+#: inc/Helpers/Waymark_Lang.php:7
+msgid "View Fullscreen"
+msgstr "Visa i fullskärmsläge"
+
+#: inc/Helpers/Waymark_Lang.php:8
+#, fuzzy
+msgid "Exit Fullscreen"
+msgstr "Avsluta helskärm"
+
+#: inc/Helpers/Waymark_Lang.php:9
+#, fuzzy
+msgid "Show me where I am"
+msgstr "Visa mig var jag är"
+
+#: inc/Helpers/Waymark_Lang.php:10
+msgid "Zoom in"
+msgstr "Zooma in"
+
+#: inc/Helpers/Waymark_Lang.php:11
+msgid "Zoom out"
+msgstr "Zooma ut"
+
+#: inc/Helpers/Waymark_Lang.php:12
+#, fuzzy
+msgid "Total Length: "
+msgstr "Total längd: "
+
+#: inc/Helpers/Waymark_Lang.php:13
+#, fuzzy
+msgid "Max. Elevation: "
+msgstr "Max. Höjd: "
+
+#: inc/Helpers/Waymark_Lang.php:14
+#, fuzzy
+msgid "Min. Elevation: "
+msgstr "Min. Höjd: "
+
+#: inc/Helpers/Waymark_Lang.php:17
+#, fuzzy
+msgid "Draw a Line"
+msgstr "Rita en linje"
+
+#: inc/Helpers/Waymark_Lang.php:18
+msgid "Upload an Image"
+msgstr "Ladda upp en bild"
+
+#: inc/Helpers/Waymark_Lang.php:19
+#, fuzzy
+msgid "Place a Marker"
+msgstr "Placera en markör"
+
+#: inc/Helpers/Waymark_Lang.php:20
+#, fuzzy
+msgid "Draw a Rectangle"
+msgstr "Rita en rektangel"
+
+#: inc/Helpers/Waymark_Lang.php:21
+#, fuzzy
+msgid "Draw a Polygon"
+msgstr "Rita en polygon"
+
+#: inc/Helpers/Waymark_Lang.php:22
+#, fuzzy
+msgid "Draw a Circle"
+msgstr "Rita en cirkel"
+
+#: inc/Helpers/Waymark_Lang.php:23
+#, fuzzy
+msgid ""
+"Read Lines and Markers from file (GPX/KML/GeoJSON supported, which most apps "
+"should Export to)"
+msgstr ""
+"Läs linjer och markörer från fil (GPX/KML/GeoJSON stöds, vilket de flesta "
+"appar bör exportera till)"
+
+#: inc/Helpers/Waymark_Lang.php:24 inc/Waymark_Admin.php:111
+msgid "Duplicate"
+msgstr "Duplicera"
+
+#: inc/Helpers/Waymark_Lang.php:25
+#, fuzzy
+msgid "Delete"
+msgstr "Radera"
+
+#: inc/Helpers/Waymark_Lang.php:26
+msgid "Edit"
+msgstr "Redigera"
+
+#: inc/Helpers/Waymark_Lang.php:27
+#, fuzzy
+msgid "Finish editing"
+msgstr "Slutför redigeringen"
+
+#: inc/Helpers/Waymark_Lang.php:28
+msgid "Upload Image"
+msgstr "Ladda upp bild"
+
+#: inc/Helpers/Waymark_Lang.php:30
+msgid "Image URL"
+msgstr "Bild-URL"
+
+#: inc/Helpers/Waymark_Lang.php:31 inc/Waymark_Config.php:54
+msgid "Description"
+msgstr "Beskrivning"
+
+#: inc/Helpers/Waymark_Lang.php:33
+#, fuzzy
+msgid "Lat,Lng"
+msgstr "Lat,Lng"
+
+#: inc/Helpers/Waymark_Lang.php:34
+#, fuzzy
+msgid "Are you sure you want to delete this"
+msgstr "Är du säker på att du vill ta bort detta"
+
+#: inc/Helpers/Waymark_Lang.php:35
+msgid "Search..."
+msgstr "Sök…"
+
+#: inc/Helpers/Waymark_Lang.php:42
+#, fuzzy
+msgid "Waymark Error"
+msgstr "Waymark Fel"
+
+#: inc/Helpers/Waymark_Lang.php:43
+#, fuzzy
+msgid "Waymark Info"
+msgstr "Information om markering"
+
+#: inc/Helpers/Waymark_Lang.php:44
+msgid "This file type is not supported."
+msgstr "Filtypen stöds inte."
+
+#: inc/Helpers/Waymark_Lang.php:45
+#, fuzzy
+msgid "Could not convert this file to GeoJSON."
+msgstr "Det gick inte att konvertera den här filen till GeoJSON."
+
+#: inc/Helpers/Waymark_Lang.php:46
+msgid "File upload error."
+msgstr "Filuppladdningsfel."
+
+#: inc/Helpers/Waymark_Lang.php:47
+#, fuzzy
+msgid "Could not retrieve Image metadata."
+msgstr "Det gick inte att hämta bildmetadata."
+
+#: inc/Helpers/Waymark_Lang.php:48
+#, fuzzy
+msgid "Image location metadata (EXIF) detected!"
+msgstr "Metadata för bildplats (EXIF) har upptäckts!"
+
+#: inc/Helpers/Waymark_Lang.php:49
+#, fuzzy
+msgid "Image location metadata (EXIF) NOT detected."
+msgstr "Metadata för bildplats (EXIF) har INTE identifierats."
+
+#: inc/Helpers/Waymark_Lang.php:50
+#, fuzzy
+msgid "No Direction"
+msgstr "Ingen riktning"
+
+#: inc/Helpers/Waymark_Lang.php:51
+#, fuzzy
+msgid "Show Direction"
+msgstr "Visa riktning"
+
+#: inc/Helpers/Waymark_Lang.php:52
+msgid "Reverse Direction"
+msgstr "Omvänd riktning"
+
+#: inc/Waymark_Admin.php:93
+#, fuzzy
+msgid "Can not duplicate, no post to supplied!"
+msgstr "Kan inte duplicera, inget inlägg att leverera!"
+
+#: inc/Waymark_Admin.php:98
+#, fuzzy
+msgid "Security verification error!"
+msgstr "Fel vid säkerhetsverifiering!"
+
+#: inc/Waymark_Admin.php:111
+#, fuzzy
+msgid "Duplicate this post"
+msgstr "Duplicera det här inlägget"
+
+#: inc/Waymark_Admin.php:144
+msgid "Date"
+msgstr "Datum"
+
+#: inc/Waymark_Admin.php:177
+#, fuzzy
+msgid ""
+"Collections allow you to organise your Maps. Use the <a "
+"href=\"%s\">Shortcode</a> to display all Maps in a Collection at once. <a "
+"href=\"%s\" class=\"button waymark-right\">Read the Docs &raquo;</a>"
+msgstr ""
+"Med samlingar kan du ordna dina kartor. Använd <a href=\"%s\">kortkoden</a> "
+"för att visa alla kartor i en samling på en gång. <a href=\"%s\" "
+"class=\"button waymark-right\">Läs dokumenten »</a>"
+
+#: inc/Waymark_Admin.php:183
+#, fuzzy
+msgid ""
+"Create Maps here, then add them to your content using the <a "
+"href=\"%s\">Shortcode</a>. <a href=\"%s\" class=\"button waymark-"
+"right\">Watch the Video &raquo;</a>"
+msgstr ""
+"Skapa kartor här och lägg sedan till dem i ditt innehåll med hjälp av <a "
+"href=\"%s\">kortkoden</a>. <a href=\"%s\" class=\"button waymark-"
+"right\">Titta på videon »</a>"
+
+#: inc/Waymark_Admin.php:201
+#, fuzzy
+msgid "Creating a Map"
+msgstr "Skapa en karta"
+
+#: inc/Waymark_Admin.php:202
+#, fuzzy
+msgid ""
+"<span class=\"waymark-lead\">Use the Map <a href=\"%s\">Editor</a> to place "
+"Markers, draw Lines/Shapes and display Photos. Each can be given a <a "
+"target=\"_blank\" href=\"%s\">Type</a>, title, description and an image.</"
+"span><br /><br />You can add the Map to your content using the %s <a "
+"href=\"%s\">Shortcode</a>. <a class=\"button waymark-right\" "
+"href=\"%s\">Watch the Video &raquo;</a>"
+msgstr ""
+"<span class=\"waymark-lead\">Använd <a href=\"%s\">kartredigeraren</a> för "
+"att placera markörer, rita linjer/former och visa foton. Var och en kan ges "
+"en <a target=\"_blank\" href=\"%s\">typ</a>, titel, beskrivning och en bild."
+"</span><br /><br />Du kan lägga till kartan till ditt innehåll med hjälp av "
+"<a href=\"%s\">kortkoden</a>%s. <a class=\"button waymark-right\" "
+"href=\"%s\">Titta på videon »</a>"
+
+#: inc/Waymark_Admin.php:205 inc/Waymark_Admin.php:209
+#, fuzzy
+msgid ""
+"You can add the Map to your content using the %s <a href=\"%s\">Shortcode</"
+"a>. <a class=\"button waymark-right\" href=\"%s\">Watch the Video &raquo;</a>"
+msgstr ""
+"Du kan lägga till kartan till ditt innehåll med hjälp av <a "
+"href=\"%s\">kortkoden</a>%s. <a class=\"button waymark-right\" "
+"href=\"%s\">Titta på videon »</a>"
+
+#: inc/Waymark_Admin.php:208 inc/Waymark_Types.php:24
+msgid "Edit Map"
+msgstr "Redigera Karta"
+
+#: inc/Waymark_Config.php:56
+#, fuzzy
+msgid ""
+"The Description you enter here will be displayed on the Map Details page."
+msgstr "Beskrivningen du anger här kommer att visas på sidan Kartinformation."
+
+#: inc/Waymark_Config.php:102
+#, fuzzy
+msgid "Click or Hover to Wake"
+msgstr "Klicka eller håll muspekaren för att vakna"
+
+#: inc/Waymark_Config.php:142
+msgid "Photo"
+msgstr "Foto"
+
+#: inc/Waymark_Config.php:142
+msgid "Information"
+msgstr "Information"
+
+#: inc/Waymark_Config.php:142
+msgid "Alert"
+msgstr "Varning"
+
+#: inc/Waymark_Config.php:142
+#, fuzzy
+msgid "Trail Access"
+msgstr "Tillgång till leden"
+
+#: inc/Waymark_Config.php:142
+msgid "Food"
+msgstr "Mat"
+
+#: inc/Waymark_Config.php:142
+msgid "Water"
+msgstr "Vatten"
+
+#: inc/Waymark_Config.php:142
+msgid "Shelter"
+msgstr "Skydd"
+
+#: inc/Waymark_Config.php:142
+msgid "Beer"
+msgstr "Öl"
+
+#: inc/Waymark_Config.php:142
+msgid "Start"
+msgstr "Start"
+
+#: inc/Waymark_Config.php:142
+msgid "Finish"
+msgstr "Slutför"
+
+#: inc/Waymark_Config.php:155 inc/Waymark_Config.php:165
+msgid "Red"
+msgstr "Röd"
+
+#: inc/Waymark_Config.php:155 inc/Waymark_Config.php:165
+msgid "Green"
+msgstr "Grön"
+
+#: inc/Waymark_Config.php:155 inc/Waymark_Config.php:165
+msgid "Blue"
+msgstr "Blå"
+
+#: inc/Waymark_Taxonomies.php:16
+msgid "All Collections"
+msgstr "Alla Samlingar"
+
+#: inc/Waymark_Taxonomies.php:17
+msgid "Parent"
+msgstr "Överordnad"
+
+#: inc/Waymark_Taxonomies.php:18
+msgid "Parent Collection:"
+msgstr "Föräldersamling:"
+
+#: inc/Waymark_Taxonomies.php:19
+#, fuzzy
+msgid "New Collection Name"
+msgstr "Nytt samlingsnamn"
+
+#: inc/Waymark_Taxonomies.php:20
+msgid "Create Collection"
+msgstr "Skapa samling"
+
+#: inc/Waymark_Taxonomies.php:21
+msgid "Edit Collection"
+msgstr "Redigera samling"
+
+#: inc/Waymark_Taxonomies.php:22
+#, fuzzy
+msgid "Update Collection"
+msgstr "Uppdatera samling"
+
+#: inc/Waymark_Taxonomies.php:23
+msgid "View Collection"
+msgstr "Visa samling"
+
+#: inc/Waymark_Taxonomies.php:24
+#, fuzzy
+msgid "Separate Collections with commas"
+msgstr "Avgränsa samlingar med kommatecken"
+
+#: inc/Waymark_Taxonomies.php:25
+#, fuzzy
+msgid "Add or remove Collections"
+msgstr "Lägga till eller ta bort samlingar"
+
+#: inc/Waymark_Taxonomies.php:26
+msgid "Choose from the most used"
+msgstr "Välj bland de mest använda"
+
+#: inc/Waymark_Taxonomies.php:27
+#, fuzzy
+msgid "Popular Collections"
+msgstr "Populära samlingar"
+
+#: inc/Waymark_Taxonomies.php:28
+msgid "Search Collections"
+msgstr "Sök samlingar"
+
+#: inc/Waymark_Taxonomies.php:29
+msgid "Not Found"
+msgstr "Hittades inte"
+
+#: inc/Waymark_Taxonomies.php:30
+#, fuzzy
+msgid "No Collections"
+msgstr "Inga samlingar"
+
+#: inc/Waymark_Taxonomies.php:31
+#, fuzzy
+msgid "Collection list"
+msgstr "Lista över samlingar"
+
+#: inc/Waymark_Taxonomies.php:32
+#, fuzzy
+msgid "Collection list navigation"
+msgstr "Navigering i samlingslista"
+
+#: inc/Waymark_Types.php:17
+#, fuzzy
+msgid "Map Archives"
+msgstr "Karta Arkiv"
+
+#: inc/Waymark_Types.php:18
+#, fuzzy
+msgid "Map Attributes"
+msgstr "Kartattribut"
+
+#: inc/Waymark_Types.php:19
+#, fuzzy
+msgid "Parent Map:"
+msgstr "Överordnad karta:"
+
+#: inc/Waymark_Types.php:20
+#, fuzzy
+msgid "All Maps"
+msgstr "Alla kartor"
+
+#: inc/Waymark_Types.php:21
+#, fuzzy
+msgid "Add New Map"
+msgstr "Lägg till ny karta"
+
+#: inc/Waymark_Types.php:22
+msgid "Add New"
+msgstr "Lägg till ny"
+
+#: inc/Waymark_Types.php:25
+#, fuzzy
+msgid "Update Map"
+msgstr "Uppdatera karta"
+
+#: inc/Waymark_Types.php:26
+#, fuzzy
+msgid "View Map"
+msgstr "Granska karta"
+
+#: inc/Waymark_Types.php:27
+#, fuzzy
+msgid "View Maps"
+msgstr "Visa kartor"
+
+#: inc/Waymark_Types.php:28
+#, fuzzy
+msgid "Search Map"
+msgstr "Sök Karta"
+
+#: inc/Waymark_Types.php:29
+msgid "Not found"
+msgstr "Hittades inte"
+
+#: inc/Waymark_Types.php:30
+msgid "Not found in Trash"
+msgstr "Hittades inte i papperskorgen"
+
+#: inc/Waymark_Types.php:31
+msgid "Featured Image"
+msgstr "Utvald bild"
+
+#: inc/Waymark_Types.php:32
+msgid "Set featured image"
+msgstr "Ange utvald bild"
+
+#: inc/Waymark_Types.php:33
+msgid "Remove featured image"
+msgstr "Ta bort utvald bild"
+
+#: inc/Waymark_Types.php:34
+msgid "Use as featured image"
+msgstr "Använd som utvald bild"
+
+#: inc/Waymark_Types.php:35
+#, fuzzy
+msgid "Insert into Map"
+msgstr "Infoga i karta"
+
+#: inc/Waymark_Types.php:36
+#, fuzzy
+msgid "Uploaded to this Map"
+msgstr "Uppladdad till denna karta"
+
+#: inc/Waymark_Types.php:37
+#, fuzzy
+msgid "Map list"
+msgstr "Karta lista"
+
+#: inc/Waymark_Types.php:38
+#, fuzzy
+msgid "Maps list navigation"
+msgstr "Navigering i kartlistan"
+
+#: inc/Waymark_Types.php:39
+#, fuzzy
+msgid "Filter Map list"
+msgstr "Filtrera kartlista"
+
+#. Plugin Name of the plugin/theme
+msgid "Waymark"
+msgstr "Waymark"
+
+#. Plugin URI of the plugin/theme
+msgid "https://www.waymark.dev/"
+msgstr "https://www.waymark.dev/"
+
+#. Description of the plugin/theme
+#, fuzzy
+msgid ""
+"Mapping with WordPress made easy. With Waymark enabled, click on the "
+"\"Maps\" link in the sidebar to create and edit Maps. Once you are happy "
+"with your Map, copy the Waymark shortcode and add it to your content."
+msgstr ""
+"Kartläggning med WordPress på ett enkelt sätt. När Waymark är aktiverat "
+"klickar du på länken \"Kartor\" i sidofältet för att skapa och redigera "
+"kartor. När du är nöjd med din karta, kopiera Waymark-kortkoden och lägg "
+"till den i ditt innehåll."
+
+#. Author of the plugin/theme
+msgid "Joe Hawes"
+msgstr "Joe Hawes"
+
+#. Author URI of the plugin/theme
+msgid "https://www.morehawes.ca/"
+msgstr "https://www.morehawes.ca/"

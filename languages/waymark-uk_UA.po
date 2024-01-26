@@ -1,0 +1,2308 @@
+# Copyright (C) 2024 Joe Hawes
+# This file is distributed under the GPLv2.
+msgid ""
+msgstr ""
+"Project-Id-Version: Waymark 1.0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/waymark\n"
+"POT-Creation-Date: 2024-01-18 00:24:31+00:00\n"
+"PO-Revision-Date: 2024-01-23 10:18-0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: uk_UA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: inc/Admin/Waymark_AJAX.php:33
+#, fuzzy
+msgid "No image metadata available."
+msgstr "Метадані зображення недоступні."
+
+#: inc/Admin/Waymark_AJAX.php:110 inc/Admin/Waymark_AJAX.php:120
+#: inc/Admin/Waymark_AJAX.php:128
+#, fuzzy
+msgid "Operation not allowed."
+msgstr "Експлуатація не допускається."
+
+#: inc/Admin/Waymark_AJAX.php:174
+#, fuzzy
+msgid "Could not read the file."
+msgstr "Не вдалося прочитати файл."
+
+#: inc/Admin/Waymark_AJAX.php:239
+#, fuzzy
+msgid "Unknown file upload error."
+msgstr "Помилка завантаження невідомого файлу."
+
+#: inc/Admin/Waymark_JS.php:18
+#, fuzzy
+msgid "Remove!"
+msgstr "Видалити!"
+
+#: inc/Admin/Waymark_JS.php:19 inc/Admin/Waymark_Settings.php:79
+#: inc/Admin/Waymark_Settings.php:239
+msgid "Name"
+msgstr "Ім'я"
+
+#: inc/Admin/Waymark_JS.php:20 inc/Admin/Waymark_Settings.php:230
+#: inc/Admin/Waymark_Settings.php:505
+msgid "Text"
+msgstr "Текст"
+
+#: inc/Admin/Waymark_JS.php:21 inc/Admin/Waymark_Settings.php:231
+msgid "HTML"
+msgstr "HTML"
+
+#: inc/Admin/Waymark_Menu.php:15 inc/Admin/Waymark_Menu.php:98
+#: inc/Admin/Waymark_Settings.php:34 inc/Waymark_Admin.php:182
+#: inc/Waymark_Install.php:61 inc/Waymark_Types.php:13 inc/Waymark_Types.php:15
+msgid "Maps"
+msgstr "Карти"
+
+#: inc/Admin/Waymark_Menu.php:16 inc/Admin/Waymark_Menu.php:92
+#: inc/Waymark_Admin.php:204 inc/Waymark_Types.php:23
+#, fuzzy
+msgid "New Map"
+msgstr "Нова карта"
+
+#: inc/Admin/Waymark_Menu.php:19 inc/Admin/Waymark_Menu.php:100
+#: inc/Admin/Waymark_Settings.php:39 inc/Waymark_Admin.php:176
+#: inc/Waymark_Taxonomies.php:13
+#, fuzzy
+msgid "Collections"
+msgstr "Колекції"
+
+#: inc/Admin/Waymark_Menu.php:22
+msgid "Documentation"
+msgstr "Документація"
+
+#: inc/Admin/Waymark_Menu.php:22
+msgid "Docs"
+msgstr "Документи"
+
+#: inc/Admin/Waymark_Menu.php:25 inc/Waymark_Install.php:62
+msgid "Settings"
+msgstr "Налаштування"
+
+#: inc/Admin/Waymark_Meta.php:9
+#, fuzzy
+msgid "Map Editor"
+msgstr "Редактор карт"
+
+#: inc/Admin/Waymark_Meta.php:12 inc/Waymark_Admin.php:124
+msgid "Shortcode"
+msgstr "Шорткод"
+
+#: inc/Admin/Waymark_Meta.php:13 inc/Helpers/Waymark_Helper.php:201
+#: inc/Helpers/Waymark_Helper.php:230
+msgid "Export"
+msgstr "Експорт"
+
+#: inc/Admin/Waymark_Meta.php:14
+msgid "Help"
+msgstr "Допомога"
+
+#: inc/Admin/Waymark_Meta.php:65
+#, fuzzy
+msgid "Download the Overlays added to this Map in the selected format."
+msgstr "Завантажте накладки, додані до цієї мапи, у вибраному форматі."
+
+#: inc/Admin/Waymark_Meta.php:74
+#, fuzzy
+msgid ""
+"Add this Map to your content with this Shortcode. Click here for more "
+"details."
+msgstr ""
+"Додайте цю карту до свого контенту за допомогою цього шорткоду. Натисніть "
+"тут, щоб дізнатися більше."
+
+#: inc/Admin/Waymark_Meta.php:82
+#, fuzzy
+msgid "Image Location Detection Not Supported!"
+msgstr "Визначення місцезнаходження зображення не підтримується!"
+
+#: inc/Admin/Waymark_Meta.php:83
+#, fuzzy
+msgid ""
+"Your hosting environment does not currently have the <a href=\"%s\">PHP EXIF "
+"Extension</a> enabled, which is required to read Image location metadata. "
+"Try asking your host to enable it."
+msgstr ""
+"У вашому середовищі хостингу наразі не ввімкнено <a href=\"%s\">розширення "
+"PHP EXIF</a> , яке необхідне для зчитування метаданих розташування "
+"зображення. Спробуйте попросити господаря ввімкнути його."
+
+#: inc/Admin/Waymark_Meta.php:86 inc/Admin/Waymark_Settings.php:669
+#: inc/Admin/Waymark_Settings.php:730
+#, fuzzy
+msgid "Read from File"
+msgstr "Читання з файлу"
+
+#: inc/Admin/Waymark_Meta.php:87
+#, fuzzy
+msgid ""
+"You can read Lines and Markers from GPX, KML and GeoJSON files (most mapping "
+"apps will be able to export to one of these)."
+msgstr ""
+"Ви можете читати лінії та маркери з файлів GPX, KML та GeoJSON (більшість "
+"картографічних програм зможуть експортувати їх до одного з них)."
+
+#: inc/Admin/Waymark_Meta.php:89 inc/Admin/Waymark_Settings.php:138
+#: inc/Admin/Waymark_Settings.php:276 inc/Admin/Waymark_Settings.php:371
+msgid "Types"
+msgstr "Типи"
+
+#: inc/Admin/Waymark_Meta.php:90
+#, fuzzy
+msgid ""
+"Types allow you to control how Overlays (Markers, Lines and Shapes) are "
+"displayed on the Map. Types can be customised in <a href=\"%s\" "
+"target=\"_blank\">Waymark &gt; Settings</a>."
+msgstr ""
+"Типи дозволяють керувати тим, як накладання (маркери, лінії та фігури) "
+"відображаються на карті. Типи можна налаштувати в <a href=\"%s\" "
+"target=\"_blank\">Waymark &gt; Settings</a>."
+
+#: inc/Admin/Waymark_Meta.php:92 inc/Admin/Waymark_Settings.php:79
+#: inc/Admin/Waymark_Settings.php:83 inc/Admin/Waymark_Settings.php:91
+#: inc/Admin/Waymark_Settings.php:101 inc/Admin/Waymark_Settings.php:114
+#, fuzzy
+msgid "Basemap"
+msgstr "Базова карта"
+
+#: inc/Admin/Waymark_Meta.php:93
+#, fuzzy
+msgid ""
+"Add and edit Basemaps in <a href=\"%s\" target=\"_blank\">Waymark &gt; "
+"Settings</a>. The first listed will be used as the default, unless specified "
+"in the shortcode like this: %s"
+msgstr ""
+"Додавайте та редагуйте базові карти у <a href=\"%s\" "
+"target=\"_blank\">Waymark &gt; Settings</a>. Перший зі списку буде "
+"використовуватися як типовий, якщо він не вказаний у шорткоді таким чином: %s"
+
+#: inc/Admin/Waymark_Meta.php:95
+#, fuzzy
+msgid "Read the Docs"
+msgstr "Прочитайте документацію"
+
+#: inc/Admin/Waymark_Meta.php:161
+#, fuzzy
+msgid "You can manage Meta fields in <a href=\"%s\">Settings</a>."
+msgstr "Ви можете керувати метаполями в <a href=\"%s\">налаштуваннях</a>."
+
+#: inc/Admin/Waymark_Settings.php:35 inc/Admin/Waymark_Settings.php:61
+#: inc/Admin/Waymark_Settings.php:66
+#, fuzzy
+msgid "Basemaps"
+msgstr "Базові карти"
+
+#: inc/Admin/Waymark_Settings.php:36
+msgid "Shortcodes"
+msgstr "Шорткоди"
+
+#: inc/Admin/Waymark_Settings.php:37
+msgid "Elevation"
+msgstr "Висота"
+
+#: inc/Admin/Waymark_Settings.php:38 inc/Admin/Waymark_Settings.php:452
+#: inc/Admin/Waymark_Settings.php:457 inc/Admin/Waymark_Settings.php:470
+#: inc/Admin/Waymark_Settings.php:475 inc/Admin/Waymark_Settings.php:483
+#: inc/Admin/Waymark_Settings.php:492 inc/Admin/Waymark_Settings.php:501
+#: inc/Admin/Waymark_Settings.php:517 inc/Admin/Waymark_Settings.php:527
+#: inc/Admin/Waymark_Settings.php:536 inc/Admin/Waymark_Settings.php:545
+#: inc/Admin/Waymark_Settings.php:671 inc/Admin/Waymark_Settings.php:732
+msgid "Meta"
+msgstr "Мета"
+
+#: inc/Admin/Waymark_Settings.php:40
+msgid "Sleep"
+msgstr "Спати"
+
+#: inc/Admin/Waymark_Settings.php:41
+#, fuzzy
+msgid "Clustering"
+msgstr "Кластеризація"
+
+#: inc/Admin/Waymark_Settings.php:42 inc/Admin/Waymark_Settings.php:860
+msgid "Misc."
+msgstr "Різне."
+
+#: inc/Admin/Waymark_Settings.php:43
+#, fuzzy
+msgid "Overlays"
+msgstr "Накладень"
+
+#: inc/Admin/Waymark_Settings.php:44 inc/Admin/Waymark_Settings.php:133
+#: inc/Helpers/Waymark_Helper.php:1413 inc/Helpers/Waymark_Lang.php:39
+msgid "Markers"
+msgstr "Маркери"
+
+#: inc/Admin/Waymark_Settings.php:45 inc/Admin/Waymark_Settings.php:271
+#: inc/Helpers/Waymark_Lang.php:40
+msgid "Lines"
+msgstr "Позиції"
+
+#: inc/Admin/Waymark_Settings.php:46 inc/Admin/Waymark_Settings.php:366
+#: inc/Helpers/Waymark_Lang.php:41
+msgid "Shapes"
+msgstr "Форми"
+
+#: inc/Admin/Waymark_Settings.php:47 inc/Admin/Waymark_Settings.php:811
+#: inc/Admin/Waymark_Settings.php:816
+msgid "Properties"
+msgstr "Властивості"
+
+#: inc/Admin/Waymark_Settings.php:48
+msgid "Sources"
+msgstr "Джерела"
+
+#: inc/Admin/Waymark_Settings.php:49 inc/Admin/Waymark_Settings.php:622
+msgid "Submissions"
+msgstr "Відправлені"
+
+#: inc/Admin/Waymark_Settings.php:51
+msgid "Advanced"
+msgstr "Розширені"
+
+#: inc/Admin/Waymark_Settings.php:67
+#, fuzzy
+msgid ""
+"<span class=\"waymark-lead\">Waymark uses the excellent <a "
+"href=\"%s\">OpenStreetMap</a> as it’s default Basemap and supports many <a "
+"href=\"%s\">other providers</a>.<br /><br /><a href=\"%s\">Thunderforest</a> "
+"and <a href=\"%s\">Mapbox</a> are examples of providers that offer easy "
+"access to beautiful Basemaps (including satellite imagery). They require "
+"registration, but have a free usage tier."
+msgstr ""
+"<span class=\"waymark-lead\">Waymark використовує чудову <a "
+"href=\"%s\">OpenStreetMap</a> як типову Basemap та підтримує багатьох <a "
+"href=\"%s\">інших провайдерів</a>.<br /><br /><a href=\"%s\">Thunderforest</"
+"a> і <a href=\"%s\">Mapbox</a> є прикладами провайдерів, які пропонують "
+"легкий доступ до красивих базових карт (включаючи супутникові знімки). Вони "
+"вимагають реєстрації, але мають безкоштовний рівень використання.</span>"
+
+#: inc/Admin/Waymark_Settings.php:68
+#, fuzzy
+msgid ""
+"<small><b>Pro Tip!</b> If you have more than one Basemap, you can switch "
+"between them when viewing the Map. The first listed will be used as the "
+"default, unless specified in the shortcode like this: %s. Drag to re-order, "
+"remove all to restore defaults.</small>"
+msgstr ""
+"<small><b>Професійна порада!</b> Якщо у вас більше однієї базової карти, ви "
+"можете перемикатися між ними під час перегляду карти. Перший зі списку буде "
+"використовуватися за замовчуванням, якщо він не вказаний у шорткоді таким "
+"чином: %s. Перетягніть, щоб змінити порядок, видаліть усі, щоб відновити "
+"значення за замовчуванням.</small>"
+
+#: inc/Admin/Waymark_Settings.php:71
+#, fuzzy
+msgid "Basemap Docs &raquo;"
+msgstr "Документація базової карти »"
+
+#: inc/Admin/Waymark_Settings.php:81
+#, fuzzy
+msgid ""
+"The Layer Name will appear in a dropdown list shown by the Map when multiple "
+"Basemaps have been entered. You can change the default basemap in the "
+"shortcode: %s"
+msgstr ""
+"Ім'я шару з'явиться у випадаючому списку, який показує Карта, коли буде "
+"введено кілька базових карт. Ви можете змінити базову карту за замовчуванням "
+"у шорткоді: %s"
+
+#: inc/Admin/Waymark_Settings.php:93
+#, fuzzy
+msgid ""
+"Many mapping services support the Slippy Map format. Waymark requires URLs "
+"that contain {z} (zoom level) and {x}/{y} (tile coordinates). For example "
+"the OpenCycleMap URL is %s."
+msgstr ""
+"Багато картографічних сервісів підтримують формат Slippy Map. Для "
+"використання маршрутних знаків потрібні URL-адреси, які містять {z} (рівень "
+"масштабування) і {x}/{y} (координати плиток). Наприклад, URL-адреса "
+"OpenCycleMap – %s."
+
+#: inc/Admin/Waymark_Settings.php:103
+#, fuzzy
+msgid ""
+"Mapping services often have the requirement that attribution is displayed by "
+"the map. Text and HTML links are supported."
+msgstr ""
+"Картографічні сервіси часто мають вимогу, щоб атрибуція відображалася на "
+"карті. Підтримуються текстові та HTML-посилання."
+
+#: inc/Admin/Waymark_Settings.php:114
+#, fuzzy
+msgid "Max Zoom"
+msgstr "Максимальне збільшення"
+
+#: inc/Admin/Waymark_Settings.php:116
+#, fuzzy
+msgid "Set a maximum zoom level for this Basemap, the default is 18."
+msgstr ""
+"Встановіть максимальний рівень масштабування для цієї базової карти, за "
+"замовчуванням 18."
+
+#: inc/Admin/Waymark_Settings.php:138 inc/Admin/Waymark_Settings.php:151
+#: inc/Admin/Waymark_Settings.php:155 inc/Admin/Waymark_Settings.php:163
+#: inc/Admin/Waymark_Settings.php:167 inc/Admin/Waymark_Settings.php:177
+#: inc/Admin/Waymark_Settings.php:191 inc/Admin/Waymark_Settings.php:202
+#: inc/Admin/Waymark_Settings.php:213 inc/Helpers/Waymark_Lang.php:36
+msgid "Marker"
+msgstr "Маркер"
+
+#: inc/Admin/Waymark_Settings.php:139
+#, fuzzy
+msgid ""
+"Customise how Markers are displayed on the Map. Set these styles once, then "
+"select the appropriate Type when you add to the Map."
+msgstr ""
+"Налаштуйте спосіб відображення маркерів на карті. Встановіть ці стилі один "
+"раз, а потім виберіть відповідний Тип під час додавання на Карту."
+
+#: inc/Admin/Waymark_Settings.php:140 inc/Admin/Waymark_Settings.php:282
+#: inc/Admin/Waymark_Settings.php:377 inc/Admin/Waymark_Settings.php:463
+#, fuzzy
+msgid ""
+"<b>Pro Tip!</b> The first listed will be used as the default. Drag to re-"
+"order, remove all to restore defaults."
+msgstr ""
+"<b>Професійна порада!</b> Перший зі списку буде використовуватися як "
+"типовий. Перетягніть, щоб змінити порядок, видаліть усі, щоб відновити "
+"значення за замовчуванням."
+
+#: inc/Admin/Waymark_Settings.php:143 inc/Admin/Waymark_Settings.php:280
+#: inc/Admin/Waymark_Settings.php:375
+#, fuzzy
+msgid "Type Docs &raquo;"
+msgstr "Type Docs »"
+
+#: inc/Admin/Waymark_Settings.php:151 inc/Admin/Waymark_Settings.php:289
+#: inc/Admin/Waymark_Settings.php:384
+msgid "Label"
+msgstr "Мітка"
+
+#: inc/Admin/Waymark_Settings.php:153
+#, fuzzy
+msgid ""
+"What kind of Marker is this? E.g. \"Photo\", \"Grocery Store\", \"Warning!"
+"\". Once saved, Marker labels can not be edited. The Marker Label is "
+"displayed in the Tooltip (when hovering over the Marker) and in the Info "
+"Window (once the Marker is clicked). Hide in Settings > Map > Misc. > Type "
+"Labels."
+msgstr ""
+"Що це за маркер такий? Наприклад, «Фото», «Продуктовий магазин», «Увага!». "
+"Після збереження мітки маркерів не можна редагувати. Мітка маркера "
+"відображається у спливаючій підказці (при наведенні курсору на маркер) та у "
+"інформаційному вікні (після клацання на маркері). Сховати в налаштуваннях > "
+"Map > Misc. > Type Labels."
+
+#: inc/Admin/Waymark_Settings.php:163 inc/Admin/Waymark_Settings.php:371
+#: inc/Admin/Waymark_Settings.php:384 inc/Admin/Waymark_Settings.php:388
+#: inc/Admin/Waymark_Settings.php:396 inc/Admin/Waymark_Settings.php:408
+#: inc/Admin/Waymark_Settings.php:419 inc/Admin/Waymark_Settings.php:430
+#: inc/Helpers/Waymark_Lang.php:38
+msgid "Shape"
+msgstr "Форма"
+
+#: inc/Admin/Waymark_Settings.php:165
+#, fuzzy
+msgid ""
+"Which shape of Marker to use. Circles and Squares are centered at the "
+"specified location, Markers point down to that location."
+msgstr ""
+"Яку форму маркера використовувати. Кола та квадрати центруються у вказаному "
+"місці, маркери вказують вниз на це місце."
+
+#: inc/Admin/Waymark_Settings.php:168
+msgid "Circle"
+msgstr "Коло"
+
+#: inc/Admin/Waymark_Settings.php:169
+msgid "Square"
+msgstr "Квадратна форма"
+
+#: inc/Admin/Waymark_Settings.php:177
+msgid "Size"
+msgstr "Розмір"
+
+#: inc/Admin/Waymark_Settings.php:179
+#, fuzzy
+msgid "Which size of Marker to use."
+msgstr "Який розмір маркера використовувати."
+
+#: inc/Admin/Waymark_Settings.php:181
+msgid "Small"
+msgstr "Маленький"
+
+#: inc/Admin/Waymark_Settings.php:182
+msgid "Medium"
+msgstr "Середній"
+
+#: inc/Admin/Waymark_Settings.php:183
+msgid "Large"
+msgstr "Великий"
+
+#: inc/Admin/Waymark_Settings.php:191 inc/Admin/Waymark_Settings.php:1092
+msgid "Background"
+msgstr "Фон"
+
+#: inc/Admin/Waymark_Settings.php:193
+#, fuzzy
+msgid "The Marker background colour. Click \"Select Colour\" to select."
+msgstr "Колір фону маркера. Натисніть «Вибрати колір», щоб вибрати."
+
+#: inc/Admin/Waymark_Settings.php:202 inc/Admin/Waymark_Settings.php:336
+#: inc/Admin/Waymark_Settings.php:419
+#, fuzzy
+msgid "Show Initially"
+msgstr "Показати спочатку"
+
+#: inc/Admin/Waymark_Settings.php:204 inc/Admin/Waymark_Settings.php:338
+#: inc/Admin/Waymark_Settings.php:421
+#, fuzzy
+msgid ""
+"When using the Overlay Filter you can choose to show/hide certain Types when "
+"the Map initially loads."
+msgstr ""
+"Під час використання фільтра накладання ви можете вибрати, щоб показати/"
+"приховати певні типи під час початкового завантаження карти."
+
+#: inc/Admin/Waymark_Settings.php:213 inc/Admin/Waymark_Settings.php:347
+#: inc/Admin/Waymark_Settings.php:430
+#, fuzzy
+msgid "Submissions?"
+msgstr "Уявлень?"
+
+#: inc/Admin/Waymark_Settings.php:215 inc/Admin/Waymark_Settings.php:349
+#: inc/Admin/Waymark_Settings.php:432
+#, fuzzy
+msgid "Make this Type available in front-end Submissions?"
+msgstr "Зробити цей тип доступним у зовнішніх поданнях?"
+
+#: inc/Admin/Waymark_Settings.php:225 inc/Admin/Waymark_Settings.php:239
+#: inc/Admin/Waymark_Settings.php:252
+msgid "Icon"
+msgstr "Іконка"
+
+#: inc/Admin/Waymark_Settings.php:225 inc/Admin/Waymark_Settings.php:501
+#: inc/Helpers/Waymark_Lang.php:32
+msgid "Type"
+msgstr "Тип"
+
+#: inc/Admin/Waymark_Settings.php:227
+#, fuzzy
+msgid ""
+"Marker Icons are available from Font Awesome and Ionic Icons, you can also "
+"specify your own text, or provide custom HTML."
+msgstr ""
+"Значки маркерів доступні в Font Awesome та Ionic Icons, ви також можете "
+"вказати власний текст або надати власний HTML."
+
+#: inc/Admin/Waymark_Settings.php:229
+msgid "Font"
+msgstr "Шрифт"
+
+#: inc/Admin/Waymark_Settings.php:241
+#, fuzzy
+msgid ""
+"The desired icon name from Ionicons or Font Awesome, e.g. \"ion-camera\", or "
+"\"fa-camera\". Click the links to see the full list of icons available.|Text "
+"to display inside the Marker, in the chosen colour. Space is very limited! "
+"Pro Tip: adjust text size using CSS; for all Markers: .waymark-icon-"
+"text{font-size: 18px}, or by Type: .waymark-marker-photo .waymark-icon-"
+"text{...}. Use your browser's inspector to dig for Type class names.|The "
+"HTML entered will be added inside each Marker. Pro Tip! HTML Entities "
+"supported (e.g. &amp;cross; as well as Unicode characters), or provide HTML "
+"to integrate with other Icon providers."
+msgstr ""
+"Бажана назва піктограми з Ionicons або Font Awesome, наприклад, \"ion-"
+"camera\" або \"fa-camera\". Натисніть на посилання, щоб переглянути повний "
+"список доступних піктограм.|Текст для відображення всередині маркера у "
+"вибраному кольорі. Простір дуже обмежений! Порада від професіонала: "
+"налаштуйте розмір тексту за допомогою CSS; для всіх маркерів: .waymark-icon-"
+"text{font-size: 18px}, або за типом: .waymark-marker-photo .waymark-icon-"
+"text{...}. Використовуйте інспектор вашого браузера, щоб знайти назви класів "
+"Type.|Введений HTML-код буде додано до кожного маркера. Професійна порада! "
+"Підтримуються HTML-сутності (наприклад, &amp;cross;, а також символи "
+"Unicode), або надають HTML для інтеграції з іншими постачальниками піктограм."
+
+#: inc/Admin/Waymark_Settings.php:252 inc/Admin/Waymark_Settings.php:301
+#: inc/Admin/Waymark_Settings.php:396
+msgid "Colour"
+msgstr "Колір"
+
+#: inc/Admin/Waymark_Settings.php:254
+#, fuzzy
+msgid "The colour of the icon. Click \"Select Colour\" to select."
+msgstr "Колір ікони. Натисніть «Вибрати колір», щоб вибрати."
+
+#: inc/Admin/Waymark_Settings.php:276 inc/Admin/Waymark_Settings.php:289
+#: inc/Admin/Waymark_Settings.php:293 inc/Admin/Waymark_Settings.php:301
+#: inc/Admin/Waymark_Settings.php:313 inc/Admin/Waymark_Settings.php:325
+#: inc/Admin/Waymark_Settings.php:336 inc/Admin/Waymark_Settings.php:347
+#: inc/Helpers/Waymark_Lang.php:37
+msgid "Line"
+msgstr "Рядок"
+
+#: inc/Admin/Waymark_Settings.php:277
+#, fuzzy
+msgid ""
+"Customise how Lines are displayed on the Map. Set these styles once, then "
+"select the appropriate Type when you add to the Map."
+msgstr ""
+"Налаштуйте спосіб відображення ліній на карті. Встановіть ці стилі один раз, "
+"а потім виберіть відповідний Тип під час додавання на Карту."
+
+#: inc/Admin/Waymark_Settings.php:291
+#, fuzzy
+msgid ""
+"What kind of Line is this? E.g. \"Easy\", \"Walking Only\", \"Dark Red\". "
+"The Line Label is displayed in the Tooltip (when hovering over the Line) and "
+"in the Line Info Window. Once saved, Line labels can not be edited."
+msgstr ""
+"Що це за лінія? Наприклад, «Легкий», «Тільки для ходьби», «Темно-червоний». "
+"Підпис лінії відображається у спливаючій підказці (при наведенні курсору на "
+"лінію) та у вікні інформації про лінію. Після збереження мітки ліній не "
+"можна редагувати."
+
+#: inc/Admin/Waymark_Settings.php:303
+#, fuzzy
+msgid "The colour of the Line. Click \"Select Colour\" to select."
+msgstr "Колір лінії. Натисніть «Вибрати колір», щоб вибрати."
+
+#: inc/Admin/Waymark_Settings.php:313
+msgid "Weight"
+msgstr "Вага"
+
+#: inc/Admin/Waymark_Settings.php:315
+#, fuzzy
+msgid "The width of the Line, in pixels."
+msgstr "Ширина лінії, у пікселях."
+
+#: inc/Admin/Waymark_Settings.php:325
+msgid "Opacity"
+msgstr "Прозорість"
+
+#: inc/Admin/Waymark_Settings.php:327
+#, fuzzy
+msgid "The opacity of the Line, between 0.0 and 1.0 (e.g. \"0.5\")."
+msgstr "Непрозорість лінії від 0,0 до 1,0 (наприклад, «0,5»)."
+
+#: inc/Admin/Waymark_Settings.php:372
+#, fuzzy
+msgid ""
+"Customise how Shapes are displayed on the Map. Set these styles once, then "
+"select the appropriate Type when you add to the Map."
+msgstr ""
+"Налаштуйте спосіб відображення фігур на карті. Встановіть ці стилі один раз, "
+"а потім виберіть відповідний Тип під час додавання на Карту."
+
+#: inc/Admin/Waymark_Settings.php:386
+#, fuzzy
+msgid ""
+"What kind of Shape is this? E.g. \"Park\", \"Danger!\", \"Light Blue\". The "
+"Shape Label is displayed in the Tooltip (when hovering over the Shape) and "
+"in the Shape Info Window. Once saved, Shape labels can not be edited."
+msgstr ""
+"Що це за фігура? Наприклад, «Парк», «Небезпека!», «Світло-блакитний». Мітка "
+"фігури відображається у спливаючій підказці (при наведенні курсору на "
+"фігуру) та у вікні інформації про фігуру. Після збереження мітки фігур не "
+"можна редагувати."
+
+#: inc/Admin/Waymark_Settings.php:398
+#, fuzzy
+msgid "The colour of the Shape. Click \"Select Colour\" to select."
+msgstr "Колір фігури. Натисніть «Вибрати колір», щоб вибрати."
+
+#: inc/Admin/Waymark_Settings.php:408
+#, fuzzy
+msgid "Fill Opacity"
+msgstr "Непрозорість заливки"
+
+#: inc/Admin/Waymark_Settings.php:410
+#, fuzzy
+msgid ""
+"The opacity of the inside of the shape, between 0.0 and 1.0 (e.g. \"0.5\")."
+msgstr ""
+"Непрозорість внутрішньої частини фігури від 0,0 до 1,0 (наприклад, \"0,5\")."
+
+#: inc/Admin/Waymark_Settings.php:458
+#, fuzzy
+msgid ""
+"Create additional input fields that appear underneath the Map Editor. Any "
+"Meta that has been input is displayed on the <a href=\"%s\">Map Details</a> "
+"page, and can also be displayed by the Shortcode."
+msgstr ""
+"Створіть додаткові поля введення, які з'являться під редактором карт. Будь-"
+"яка введена мета-відповідь відображається на сторінці <a "
+"href=\"%s\">відомостей про карту</a> , а також може бути відображена за "
+"допомогою шорткоду."
+
+#: inc/Admin/Waymark_Settings.php:461
+#, fuzzy
+msgid "Meta Docs &raquo;"
+msgstr "Meta Docs »"
+
+#: inc/Admin/Waymark_Settings.php:470 inc/Admin/Waymark_Settings.php:562
+#: inc/Admin/Waymark_Settings.php:670 inc/Admin/Waymark_Settings.php:731
+#: inc/Admin/Waymark_Settings.php:843 inc/Front/Waymark_Submission.php:281
+#: inc/Helpers/Waymark_Lang.php:29
+msgid "Title"
+msgstr "Назва"
+
+#: inc/Admin/Waymark_Settings.php:472
+#, fuzzy
+msgid "The title appears next to the input field."
+msgstr "Заголовок з'явиться поруч із полем введення."
+
+#: inc/Admin/Waymark_Settings.php:483
+msgid "Default"
+msgstr "За замовчуванням"
+
+#: inc/Admin/Waymark_Settings.php:485
+#, fuzzy
+msgid ""
+"The default value for the input field. For Select and Multi-Select enter the "
+"option/comma-separated options to be selected by default."
+msgstr ""
+"Значення за замовчуванням для поля введення. У полях «Виділити» та «Вибрати "
+"кілька варіантів» введіть параметри, розділені комами, які буде вибрано за "
+"замовчуванням."
+
+#: inc/Admin/Waymark_Settings.php:492
+msgid "Tip"
+msgstr "Порада"
+
+#: inc/Admin/Waymark_Settings.php:494
+#, fuzzy
+msgid ""
+"A tip provides additional information about an input field... just like this!"
+msgstr "Підказка надає додаткову інформацію про поле введення... Ось так!"
+
+#: inc/Admin/Waymark_Settings.php:503
+#, fuzzy
+msgid "The type of input field to use."
+msgstr "Тип поля введення, яке слід використовувати."
+
+#: inc/Admin/Waymark_Settings.php:506
+msgid "Textarea"
+msgstr "Текстове поле"
+
+#: inc/Admin/Waymark_Settings.php:507
+#, fuzzy
+msgid "Rich Text"
+msgstr "Форматований текст"
+
+#: inc/Admin/Waymark_Settings.php:508
+msgid "Select"
+msgstr "Вибрати"
+
+#: inc/Admin/Waymark_Settings.php:509
+#, fuzzy
+msgid "Multi-Select"
+msgstr "Багатофункціональний вибір"
+
+#: inc/Admin/Waymark_Settings.php:517
+msgid "Options"
+msgstr "Опції"
+
+#: inc/Admin/Waymark_Settings.php:519
+#, fuzzy
+msgid "A comma-separated list of options for the input."
+msgstr "Список параметрів, відокремлених комами, для вхідних даних."
+
+#: inc/Admin/Waymark_Settings.php:527 inc/Admin/Waymark_Settings.php:562
+msgid "Group"
+msgstr "Група"
+
+#: inc/Admin/Waymark_Settings.php:529
+#, fuzzy
+msgid ""
+"Which group this Meta belongs to (if any). Meta in the same group will be "
+"displayed together when editing and viewing Maps. Meta not in a group will "
+"be displayed above any groups."
+msgstr ""
+"До якої групи належить ця Мета (якщо така є). Мета в одній групі буде "
+"відображатися разом під час редагування та перегляду Карт. Мета, яка не "
+"належить до групи, буде показано над будь-якими групами."
+
+#: inc/Admin/Waymark_Settings.php:536
+#, fuzzy
+msgid "In Shortcode?"
+msgstr "У шорткоді?"
+
+#: inc/Admin/Waymark_Settings.php:538
+#, fuzzy
+msgid ""
+"Whether this content should be displayed when embedding a Map using the "
+"Shortcode."
+msgstr ""
+"Чи повинен цей контент відображатися при вбудовуванні карти за допомогою "
+"шорткоду."
+
+#: inc/Admin/Waymark_Settings.php:545
+#, fuzzy
+msgid "In Submissions?"
+msgstr "У поданнях?"
+
+#: inc/Admin/Waymark_Settings.php:547
+#, fuzzy
+msgid "Make this Meta available in front-end Submissions?"
+msgstr "Зробити цю Мету доступною у зовнішніх поданнях?"
+
+#: inc/Admin/Waymark_Settings.php:553
+msgid "Groups"
+msgstr "Групи"
+
+#: inc/Admin/Waymark_Settings.php:554
+#, fuzzy
+msgid ""
+"Create groups to organise your Map Meta. Meta in the same group will be "
+"displayed together when editing and viewing Maps."
+msgstr ""
+"Створюйте групи для впорядкування мета-карти карти. Мета в одній групі буде "
+"відображатися разом під час редагування та перегляду Карт."
+
+#: inc/Admin/Waymark_Settings.php:555
+#, fuzzy
+msgid "<b>Pro Tip!</b> Drag to re-order, remove all to disable groups."
+msgstr ""
+"<b>Професійна порада!</b> Перетягніть, щоб змінити порядок, видаліть усі, "
+"щоб вимкнути групи."
+
+#: inc/Admin/Waymark_Settings.php:564
+#, fuzzy
+msgid "The title appears above the Meta in that group."
+msgstr "Заголовок з'являється над Метою в цій групі."
+
+#: inc/Admin/Waymark_Settings.php:626
+#, fuzzy
+msgid "Front-End Submissions"
+msgstr "Зовнішнє подання"
+
+#: inc/Admin/Waymark_Settings.php:627
+#, fuzzy
+msgid ""
+"Use the %s Shortcode to allow Map submissions from the front-end of your "
+"site."
+msgstr ""
+"Використовуйте шорткод %s, щоб дозволити надсилання карт із зовнішнього "
+"вигляду вашого сайту."
+
+#: inc/Admin/Waymark_Settings.php:630
+#, fuzzy
+msgid "Submission Docs &raquo;"
+msgstr "Документи для подання »"
+
+#: inc/Admin/Waymark_Settings.php:637
+#, fuzzy
+msgid "Allow Submissions"
+msgstr "Дозволити подання матеріалів"
+
+#: inc/Admin/Waymark_Settings.php:639
+#, fuzzy
+msgid ""
+"Submissions will be available only to site administrators by default, but "
+"can also be allowed for registered users or even to guests without "
+"registration."
+msgstr ""
+"За замовчуванням матеріали будуть доступні тільки адміністраторам сайту, але "
+"також можуть бути дозволені для зареєстрованих користувачів або навіть для "
+"гостей без реєстрації."
+
+#: inc/Admin/Waymark_Settings.php:645
+#, fuzzy
+msgid "User Submissions"
+msgstr "Матеріали користувача"
+
+#: inc/Admin/Waymark_Settings.php:646
+#, fuzzy
+msgid "Allow registered users to create Maps from the front-end."
+msgstr "Дозвольте зареєстрованим користувачам створювати Карти з інтерфейсу."
+
+#: inc/Admin/Waymark_Settings.php:653
+#, fuzzy
+msgid "Allow From"
+msgstr "Дозволити від"
+
+#: inc/Admin/Waymark_Settings.php:655
+#, fuzzy
+msgid ""
+"Users with the selected roles will be able to make Submissions through the "
+"front-end"
+msgstr "Користувачі з обраними ролями зможуть подавати заявки через інтерфейс"
+
+#: inc/Admin/Waymark_Settings.php:663 inc/Admin/Waymark_Settings.php:724
+#, fuzzy
+msgid "Editor Features"
+msgstr "Можливості редактора"
+
+#: inc/Admin/Waymark_Settings.php:665
+#, fuzzy
+msgid ""
+"What features to offer in the Editor. Important! Uploaded images are added "
+"to the Media Library, reading from file does not keep a copy of the file on "
+"the server. Whether an individual Meta input is displayed can be set in the "
+"Settings > Map > Meta."
+msgstr ""
+"Які функції пропонувати в редакторі. Важливий! Завантажені зображення "
+"додаються до Медіатеки, читання з файлу не зберігає копію файлу на сервері. "
+"Чи відображатиметься окреме мета-введення, можна встановити в налаштуваннях "
+"> Мапа > Мета."
+
+#: inc/Admin/Waymark_Settings.php:667 inc/Admin/Waymark_Settings.php:728
+#, fuzzy
+msgid "Drawing"
+msgstr "Креслення"
+
+#: inc/Admin/Waymark_Settings.php:668 inc/Admin/Waymark_Settings.php:729
+#, fuzzy
+msgid "Image upload"
+msgstr "Завантаження зображень"
+
+#: inc/Admin/Waymark_Settings.php:678 inc/Admin/Waymark_Settings.php:752
+msgid "Default Status"
+msgstr "Стан за замовчуванням"
+
+#: inc/Admin/Waymark_Settings.php:680 inc/Admin/Waymark_Settings.php:754
+#, fuzzy
+msgid ""
+"This is the initial status of the submitted Map. Note! Publish means that "
+"the Map (including any images added) will be *immediately* visible on your "
+"site."
+msgstr ""
+"Це початковий статус поданої Карти. Примітка! Публікація означає, що Мапа "
+"(включно з будь-якими доданими зображеннями) буде *негайно* видимою на "
+"вашому сайті."
+
+#: inc/Admin/Waymark_Settings.php:682
+msgid "Publish"
+msgstr "Опублікувати"
+
+#: inc/Admin/Waymark_Settings.php:683 inc/Admin/Waymark_Settings.php:756
+msgid "Draft"
+msgstr "Чернетка"
+
+#: inc/Admin/Waymark_Settings.php:690 inc/Admin/Waymark_Settings.php:765
+#, fuzzy
+msgid "Default Collection"
+msgstr "Збірка за замовчуванням"
+
+#: inc/Admin/Waymark_Settings.php:691 inc/Admin/Waymark_Settings.php:766
+#, fuzzy
+msgid ""
+"If specified, user submissions will be automatically added to this "
+"Collection."
+msgstr ""
+"Якщо вказано, матеріали користувачів будуть автоматично додані до цієї "
+"колекції."
+
+#: inc/Admin/Waymark_Settings.php:708 inc/Admin/Waymark_Settings.php:715
+#, fuzzy
+msgid "Public Submissions"
+msgstr "Публічні заявки"
+
+#: inc/Admin/Waymark_Settings.php:709
+#, fuzzy
+msgid ""
+"This will allow Submissions from <b>any visitor</b>, without registration."
+"<!--<br /><br /><b>Important!</b>-->"
+msgstr ""
+"Це дозволить подавати заявки від <b>будь-якого відвідувача</b>, без "
+"реєстрації.<!--<br /><br /><b>Important!</b>-->"
+
+#: inc/Admin/Waymark_Settings.php:717
+#, fuzzy
+msgid "Allow *anyone* to submit Maps to your site, without registration."
+msgstr "Дозвольте *будь-кому* надсилати Карти на ваш сайт без реєстрації."
+
+#: inc/Admin/Waymark_Settings.php:726
+#, fuzzy
+msgid ""
+"What features to offer in the Editor. Important! Uploaded images are added "
+"to the Media Library (see Upload Location below), reading from file does not "
+"keep a copy of the file on the server. Whether an individual Meta input is "
+"displayed can be set in the Settings > Map > Meta."
+msgstr ""
+"Які функції пропонувати в редакторі. Важливий! Завантажені зображення "
+"додаються до медіатеки (див. Розташування завантаження нижче), при читанні з "
+"файлу копія файлу не зберігається на сервері. Чи відображатиметься окреме "
+"мета-введення, можна встановити в налаштуваннях > Мапа > Мета."
+
+#: inc/Admin/Waymark_Settings.php:739
+#, fuzzy
+msgid "Upload Location"
+msgstr "Місце завантаження"
+
+#: inc/Admin/Waymark_Settings.php:741
+#, fuzzy
+msgid ""
+"Images upload by non-registered users can be stored seperately from other "
+"Media Library uploads, to aid with moderation. All uploaded images will be "
+"stored in a single directory (/waymark_submission) found in the upload root."
+msgstr ""
+"Зображення, завантажені незареєстрованими користувачами, можна зберігати "
+"окремо від інших завантажень у медіатеці, щоб допомогти з модерацією. Всі "
+"завантажені зображення будуть зберігатися в єдиному каталозі (/"
+"waymark_submission), який знаходиться в корені завантаження."
+
+#: inc/Admin/Waymark_Settings.php:744
+#, fuzzy
+msgid "Seperated (/waymark_submission)"
+msgstr "Відокремлені (/waymark_submission)"
+
+#: inc/Admin/Waymark_Settings.php:745
+#, fuzzy
+msgid "Media Library Default (%s)"
+msgstr "Медіатека за замовчуванням (%s)"
+
+#: inc/Admin/Waymark_Settings.php:757
+#, fuzzy
+msgid "Publish (not recommended!)"
+msgstr "Опублікувати (не рекомендується!)"
+
+#: inc/Admin/Waymark_Settings.php:817
+#, fuzzy
+msgid ""
+"Read <b><a href=\"https://geojson.org/\">GeoJSON</a></b> feature properties "
+"when importing."
+msgstr ""
+"<b><a href=\"https://geojson.org/\">Прочитайте властивості функцій GeoJSON</"
+"a></b> під час імпорту."
+
+#: inc/Admin/Waymark_Settings.php:818
+#, fuzzy
+msgid ""
+"<small><b>Pro Tip!</b> Properties are added to the Overlay Description with "
+"class names that can be used to target them, e.g. %s.</small>"
+msgstr ""
+"<small><b>Професійна порада!</b> До опису накладання додаються властивості з "
+"іменами класів, які можуть бути використані для націлювання на них, "
+"наприклад %s.</small>"
+
+#: inc/Admin/Waymark_Settings.php:830 inc/Admin/Waymark_Settings.php:843
+msgid "Property"
+msgstr "Об’єкт"
+
+#: inc/Admin/Waymark_Settings.php:830
+msgid "Key"
+msgstr "Ключ"
+
+#: inc/Admin/Waymark_Settings.php:832
+#, fuzzy
+msgid ""
+"This is the key associated with the data you are trying to access, i.e. "
+"\"properties\": {\"property_key\": \"Some content here\"}"
+msgstr ""
+"Це ключ, пов'язаний з даними, до яких ви намагаєтеся отримати доступ, тобто "
+"\"properties\": {\"property_key\": \"Деякий вміст тут\"}"
+
+#: inc/Admin/Waymark_Settings.php:845
+#, fuzzy
+msgid ""
+"The value for this property will be added to the Overlay Description under "
+"this title."
+msgstr ""
+"Значення цієї властивості буде додано до опису накладання під цим заголовком."
+
+#: inc/Admin/Waymark_Settings.php:864
+msgid "Map Options"
+msgstr "Параметри карти"
+
+#: inc/Admin/Waymark_Settings.php:865
+#, fuzzy
+msgid "Use these options to change how Maps are displayed."
+msgstr "Використовуйте ці параметри, щоб змінити спосіб відображення Карт."
+
+#: inc/Admin/Waymark_Settings.php:868
+#, fuzzy
+msgid "See Examples &raquo;"
+msgstr "Переглянути приклади »"
+
+#: inc/Admin/Waymark_Settings.php:876
+#, fuzzy
+msgid "Default Centre"
+msgstr "Центр за замовчуванням"
+
+#: inc/Admin/Waymark_Settings.php:878
+#, fuzzy
+msgid ""
+"Waymark centres the Map automatically when displaying data. These "
+"coordinates (Latitude,Longitude) will be used when there is no data "
+"available."
+msgstr ""
+"Дорожня марка автоматично центрує карту під час відображення даних. Ці "
+"координати (Широта, Довгота) будуть використовуватися, коли немає доступних "
+"даних."
+
+#: inc/Admin/Waymark_Settings.php:891
+msgid "Map Height"
+msgstr "Висота мапи"
+
+#: inc/Admin/Waymark_Settings.php:893
+#, fuzzy
+msgid "Or set in Shortcode: %s"
+msgstr "Або встановіть у шорткоді: %s"
+
+#: inc/Admin/Waymark_Settings.php:894
+#, fuzzy
+msgid ""
+"Specify the desired height of the Map (in pixels). Pro Tip! This will affect "
+"all Maps, but you can change the height (and width) of an individual Map "
+"through the Shortcode: %s"
+msgstr ""
+"Вкажіть бажану висоту Карти (у пікселях). Професійна порада! Це вплине на "
+"всі Карти, але ви можете змінити висоту (і ширину) окремої Карти за "
+"допомогою Шорткоду: %s"
+
+#: inc/Admin/Waymark_Settings.php:906
+#, fuzzy
+msgid "Type Labels"
+msgstr "Мітки типів"
+
+#: inc/Admin/Waymark_Settings.php:908
+#, fuzzy
+msgid ""
+"Whether to display the Marker/Line/Shape Type Label in the tooltip and Info "
+"Window."
+msgstr ""
+"Визначає, чи слід відображати мітку Маркер/Лінія/Тип фігури у спливаючій "
+"підказці та інформаційному вікні."
+
+#: inc/Admin/Waymark_Settings.php:910 inc/Admin/Waymark_Settings.php:937
+#: inc/Admin/Waymark_Settings.php:949 inc/Admin/Waymark_Settings.php:1121
+msgid "Show"
+msgstr "Показати"
+
+#: inc/Admin/Waymark_Settings.php:911 inc/Admin/Waymark_Settings.php:938
+#: inc/Admin/Waymark_Settings.php:950 inc/Admin/Waymark_Settings.php:1122
+msgid "Hide"
+msgstr "Сховати"
+
+#: inc/Admin/Waymark_Settings.php:919
+#, fuzzy
+msgid "Default Zoom"
+msgstr "Масштабування за замовчуванням"
+
+#: inc/Admin/Waymark_Settings.php:921
+#, fuzzy
+msgid ""
+"Waymark zooms the Map automatically when displaying data. This zoom level "
+"(0-18) will be used when there is no data available."
+msgstr ""
+"Waymark автоматично масштабує карту під час відображення даних. Цей рівень "
+"масштабування (0–18) використовуватиметься, якщо немає доступних даних."
+
+#: inc/Admin/Waymark_Settings.php:933
+msgid "Image Gallery"
+msgstr "Галерея зображень"
+
+#: inc/Admin/Waymark_Settings.php:935
+#, fuzzy
+msgid ""
+"Whether to display an image gallery for Markers that have images associated "
+"with them. Pro Tip! This will affect all Maps, but you can choose to show/"
+"hide the gallery of an individual Map through the shortcode: %s"
+msgstr ""
+"Визначає, чи відображати галерею зображень для маркерів, із якими пов'язані "
+"зображення. Професійна порада! Це вплине на всі Карти, але ви можете "
+"показати/приховати галерею окремої Карти за допомогою короткого коду: %s"
+
+#: inc/Admin/Waymark_Settings.php:945
+#, fuzzy
+msgid "Overlay Filter"
+msgstr "Фільтр накладання"
+
+#: inc/Admin/Waymark_Settings.php:947
+#, fuzzy
+msgid ""
+"Allow the user to filter which Markers, Lines and Shapes are currently "
+"visible on the Map. Pro Tip! This will affect all Maps, but you can choose "
+"to show/hide the filter for individual Maps through the shortcode: %s"
+msgstr ""
+"Дозвольте користувачеві фільтрувати, які маркери, лінії та фігури наразі "
+"видно на карті. Професійна порада! Це вплине на всі Карти, але ви можете "
+"показати/приховати фільтр для окремих Карт за допомогою короткого коду: %s"
+
+#: inc/Admin/Waymark_Settings.php:957
+#, fuzzy
+msgid "Public Export"
+msgstr "Публічний експорт"
+
+#: inc/Admin/Waymark_Settings.php:959
+#, fuzzy
+msgid ""
+"Enable visitors to download the Overlays (Markers, Lines and Shapes) "
+"currently displayed on the Map Details page. An Export option is also "
+"displayed in the Details section of the Shortcode Header when embedding a "
+"Map or Collection. Can be used in conjunction with the Overlay Filter to "
+"select which Overlays to download. GeoJSON, GPX and KML formats supported."
+msgstr ""
+"Дозвольте відвідувачам завантажувати накладання (маркери, лінії та фігури), "
+"які наразі відображаються на сторінці «Деталі карти». Опція «Експорт» також "
+"відображається в розділі «Подробиці» заголовка шорткоду під час вбудовування "
+"карти або колекції. Можна використовувати разом із фільтром накладання, щоб "
+"вибрати, які накладання завантажити. Підтримуються формати GeoJSON, GPX і "
+"KML."
+
+#: inc/Admin/Waymark_Settings.php:965
+#, fuzzy
+msgid "Show Scale"
+msgstr "Показати масштаб"
+
+#: inc/Admin/Waymark_Settings.php:967
+#, fuzzy
+msgid "Show a distance scale (km and miles) on the Map."
+msgstr "Покажіть на Карті шкалу відстаней (км і милі)."
+
+#: inc/Admin/Waymark_Settings.php:976
+#, fuzzy
+msgid "Sleep Options"
+msgstr "Варіанти сну"
+
+#: inc/Admin/Waymark_Settings.php:977
+#, fuzzy
+msgid ""
+"Waymark Maps will zoom when the user scrolls. This can cause some unexpected/"
+"annoying behaviour when scrolling a page.<br /><br /><b>Sleeping</b> the Map "
+"initially and <b>Waking</b> upon user interaction (i.e. hovering/clicking/"
+"tapping) may create a better experience."
+msgstr ""
+"Waymark Maps буде збільшуватися, коли користувач прокручуватиме сторінку. Це "
+"може спричинити деяку несподівану/дратівливу поведінку під час прокручування "
+"сторінки.<br /><br /><b>Початковий сон</b> на Карті та <b>пробудження</b> "
+"після взаємодії з користувачем (тобто наведення курсору/клацання/торкання) "
+"може покращити взаємодію."
+
+#: inc/Admin/Waymark_Settings.php:984
+#, fuzzy
+msgid "Hover Wake Time"
+msgstr "Час пробудження при наведенні курсора"
+
+#: inc/Admin/Waymark_Settings.php:985
+msgid "Seconds"
+msgstr "Секунди"
+
+#: inc/Admin/Waymark_Settings.php:987
+#, fuzzy
+msgid ""
+"How many seconds before scroll zoom is enabled. 0 seconds will mean no delay "
+"(disabling this feature). A large number of seconds like 3600 (an hour) will "
+"esentially *disable hover to wake*, meaning the user will need to *click* to "
+"wake."
+msgstr ""
+"За скільки секунд до ввімкнення масштабування прокручування. 0 секунд "
+"означатиме відсутність затримки (вимкнення цієї функції). Велика кількість "
+"секунд, як-от 3600 (година), поступово *вимкне наведення курсору для "
+"пробудження*, тобто користувачеві потрібно буде *натиснути*, щоб прокинутися."
+
+#: inc/Admin/Waymark_Settings.php:996
+#, fuzzy
+msgid "Display Message"
+msgstr "Відобразити повідомлення"
+
+#: inc/Admin/Waymark_Settings.php:998
+#, fuzzy
+msgid ""
+"This message will be displayed by the Map while scroll zoom is disabled."
+msgstr ""
+"Це повідомлення буде відображатися на карті, коли масштаб прокрутки вимкнено."
+
+#: inc/Admin/Waymark_Settings.php:1004
+msgid "Display"
+msgstr "Дисплей"
+
+#: inc/Admin/Waymark_Settings.php:1004
+#, fuzzy
+msgid "Message Text"
+msgstr "Текст повідомлення"
+
+#: inc/Admin/Waymark_Settings.php:1013
+#, fuzzy
+msgid "Cluster Options"
+msgstr "Параметри кластера"
+
+#: inc/Admin/Waymark_Settings.php:1014
+#, fuzzy
+msgid ""
+"With Clustering enabled, Markers will be grouped together when they are "
+"close together. This can help to reduce clutter on the Map."
+msgstr ""
+"Якщо ввімкнено кластеризацію, маркери будуть згруповані разом, коли вони "
+"будуть близько один до одного. Це може допомогти зменшити безлад на карті."
+
+#: inc/Admin/Waymark_Settings.php:1017
+#, fuzzy
+msgid "Clustering Docs &raquo;"
+msgstr "Документація кластеризації »"
+
+#: inc/Admin/Waymark_Settings.php:1025
+msgid "Enabled"
+msgstr "Увімкнути"
+
+#: inc/Admin/Waymark_Settings.php:1026
+msgid "Disabled"
+msgstr "Вимкнено"
+
+#: inc/Admin/Waymark_Settings.php:1029
+#, fuzzy
+msgid "Marker Clustering"
+msgstr "Кластеризація маркерів"
+
+#: inc/Admin/Waymark_Settings.php:1031
+#, fuzzy
+msgid ""
+"Whether to cluster (stack) Markers that are close together. Pro Tip! This "
+"will affect all Maps, but you can also enable/disable clustering through the "
+"Shortcode: [Waymark show_cluster=\"0\"]"
+msgstr ""
+"Чи потрібно кластеризувати (складати) маркери, які розташовані близько один "
+"до одного. Професійна порада! Це вплине на всі Карти, але ви також можете "
+"ввімкнути/вимкнути кластеризацію за допомогою шорткоду: [Waymark "
+"show_cluster=\"0\"]"
+
+#: inc/Admin/Waymark_Settings.php:1038
+#, fuzzy
+msgid "Cluster Threshold"
+msgstr "Поріг кластера"
+
+#: inc/Admin/Waymark_Settings.php:1040
+#, fuzzy
+msgid "Markers will not be clustered above this zoom level."
+msgstr "Маркери не будуть скупчені вище цього рівня масштабування."
+
+#: inc/Admin/Waymark_Settings.php:1050
+msgid "Cluster"
+msgstr "Кластер"
+
+#: inc/Admin/Waymark_Settings.php:1050
+msgid "Radius"
+msgstr "Радіус"
+
+#: inc/Admin/Waymark_Settings.php:1052
+#, fuzzy
+msgid ""
+"The maximum radius that a cluster will cover from the central marker (in "
+"pixels). Decreasing will make more, smaller clusters.\tDefault 80."
+msgstr ""
+"Максимальний радіус, який кластер покриє від центрального маркера (у "
+"пікселях). Зменшення призведе до утворення більших, менших кластерів.\tЗа "
+"замовчуванням 80."
+
+#: inc/Admin/Waymark_Settings.php:1064
+#, fuzzy
+msgid "Collection Options"
+msgstr "Варіанти колекції"
+
+#: inc/Admin/Waymark_Settings.php:1065
+#, fuzzy
+msgid "How Collections are displayed."
+msgstr "Як відображаються колекції."
+
+#: inc/Admin/Waymark_Settings.php:1068
+#, fuzzy
+msgid "Collection Docs &raquo;"
+msgstr "Документація колекції »"
+
+#: inc/Admin/Waymark_Settings.php:1075
+#, fuzzy
+msgid "Link to Maps"
+msgstr "Посилання на Карти"
+
+#: inc/Admin/Waymark_Settings.php:1077
+#, fuzzy
+msgid ""
+"Whether to display a link to the individual Map Details page when clicking "
+"on a Marker/Line/Shape displayed by the Collection."
+msgstr ""
+"Визначає, чи показувати посилання на окрему сторінку подробиць мапи при "
+"натисканні на Маркер/Лінію/Фігуру, показану Колекцією."
+
+#: inc/Admin/Waymark_Settings.php:1083
+#, fuzzy
+msgid "Link from Maps"
+msgstr "Посилання з Карт"
+
+#: inc/Admin/Waymark_Settings.php:1085
+#, fuzzy
+msgid ""
+"Whether to display a link to the Collection(s) that a Map belongs to on the "
+"Map Details page."
+msgstr ""
+"Чи відображати посилання на колекцію(и), до якої належить Мапа, на сторінці "
+"Деталі мапи."
+
+#: inc/Admin/Waymark_Settings.php:1093
+msgid "Embed"
+msgstr "Вставити"
+
+#: inc/Admin/Waymark_Settings.php:1096
+#, fuzzy
+msgid "Shortcode Method"
+msgstr "Метод шорткоду"
+
+#: inc/Admin/Waymark_Settings.php:1098
+#, fuzzy
+msgid ""
+"Whether to load multiple Maps in the Background (uses AJAX to improve page "
+"load) when embedding with the Shortcode, or to Embed them within the page. "
+"Embedding may be a bad idea for LARGE COLLECTIONS, but can resolve some "
+"issues where Collections are not displaying correctly."
+msgstr ""
+"Чи потрібно завантажувати кілька карт у фоновому режимі (використовує AJAX "
+"для покращення завантаження сторінки) під час вбудовування за допомогою "
+"шорткоду, чи вбудовувати їх у сторінку. Вбудовування може бути поганою ідеєю "
+"для ВЕЛИКИХ КОЛЕКЦІЙ, але може вирішити деякі проблеми, через які колекції "
+"не показуються належним чином."
+
+#: inc/Admin/Waymark_Settings.php:1106
+#, fuzzy
+msgid "Shortcode Options"
+msgstr "Параметри шорткоду"
+
+#: inc/Admin/Waymark_Settings.php:1107
+#, fuzzy
+msgid "How Maps are embedded into your content using the shortcode."
+msgstr "Як Карти вбудовуються у ваш контент за допомогою шорткоду."
+
+#: inc/Admin/Waymark_Settings.php:1110
+#, fuzzy
+msgid "Shortcode Docs &raquo;"
+msgstr "Короткі коди »"
+
+#: inc/Admin/Waymark_Settings.php:1117
+#, fuzzy
+msgid "Shortcode Header"
+msgstr "Заголовок шорткоду"
+
+#: inc/Admin/Waymark_Settings.php:1119
+#, fuzzy
+msgid ""
+"The shortcode header displays the title and link to the Map or Collection. "
+"Pro Tip! This will affect all shortcodes, but you can override the setting "
+"through the shortcode: %s (the value must be either 0 or 1)."
+msgstr ""
+"Заголовок шорткоду відображає заголовок і посилання на мапу або колекцію. "
+"Професійна порада! Це вплине на всі шорткоди, але ви можете змінити "
+"налаштування за допомогою шорткоду: %s (значення має бути або 0, або 1)."
+
+#: inc/Admin/Waymark_Settings.php:1129
+#, fuzzy
+msgid "Header for Admin"
+msgstr "Шапка для адміністратора"
+
+#: inc/Admin/Waymark_Settings.php:1131
+#, fuzzy
+msgid ""
+"Use this Setting to always show the Shortcode Header when signed in as "
+"admin, useful for quickly navigating to embeded Maps."
+msgstr ""
+"Використовуйте цей параметр, щоб завжди показувати заголовок шорткоду під "
+"час входу як адміністратор, що корисно для швидкої навігації до вбудованих "
+"карт."
+
+#: inc/Admin/Waymark_Settings.php:1133
+#, fuzzy
+msgid "Use Setting"
+msgstr "Використовуйте налаштування"
+
+#: inc/Admin/Waymark_Settings.php:1134
+msgid "Always Show"
+msgstr "Always Show"
+
+#: inc/Admin/Waymark_Settings.php:1143
+#, fuzzy
+msgid "Elevation Options"
+msgstr "Варіанти висоти"
+
+#: inc/Admin/Waymark_Settings.php:1144
+#, fuzzy
+msgid "Lines with elevation data."
+msgstr "Лінії з даними про висоту."
+
+#: inc/Admin/Waymark_Settings.php:1147
+#, fuzzy
+msgid "Elevation Styling &raquo;"
+msgstr "Стилізація фасаду »"
+
+#: inc/Admin/Waymark_Settings.php:1154
+#, fuzzy
+msgid "Elevation Profile"
+msgstr "Профіль висоти"
+
+#: inc/Admin/Waymark_Settings.php:1156
+#, fuzzy
+msgid ""
+"Display an interactive elevation profile graph below the Map for Lines that "
+"have elevation data. Pro Tip! You can choose to show/hide the elevation "
+"graph of an individual Map through the shortcode: %s"
+msgstr ""
+"Відобразіть інтерактивний графік профілю висот під картою ліній, які містять "
+"дані про висоту. Професійна порада! Ви можете показати/приховати графік "
+"висот окремої карти за допомогою короткого коду: %s"
+
+#: inc/Admin/Waymark_Settings.php:1158
+#, fuzzy
+msgid "Show on Map Details"
+msgstr "Показати на мапі Деталі"
+
+#: inc/Admin/Waymark_Settings.php:1159
+#, fuzzy
+msgid "Show everywhere"
+msgstr "Показувати будь-де"
+
+#: inc/Admin/Waymark_Settings.php:1160
+#, fuzzy
+msgid "Hide everywhere"
+msgstr "Сховатися всюди"
+
+#: inc/Admin/Waymark_Settings.php:1167
+#, fuzzy
+msgid "Elevation Units"
+msgstr "Одиниці виміру висоти"
+
+#: inc/Admin/Waymark_Settings.php:1169
+#, fuzzy
+msgid "Display elevation data in metric (m/km) or imperial (ft/mi) units."
+msgstr ""
+"Відображайте дані про висоту в метричних (м/км) або імперських (футів/миль) "
+"одиницях."
+
+#: inc/Admin/Waymark_Settings.php:1171
+#, fuzzy
+msgid "Metric (m/km)"
+msgstr "Метричні показники (м/км)"
+
+#: inc/Admin/Waymark_Settings.php:1172
+#, fuzzy
+msgid "Imperial (ft/mi)"
+msgstr "Імперський (футів/миль)"
+
+#: inc/Admin/Waymark_Settings.php:1180
+#, fuzzy
+msgid "Elevation Colour"
+msgstr "Колір висоти"
+
+#: inc/Admin/Waymark_Settings.php:1182
+#, fuzzy
+msgid "The colour of the elevation graph and associated Line."
+msgstr "Колір діаграми висот і пов'язаної з ним лінії."
+
+#: inc/Admin/Waymark_Settings.php:1191
+#, fuzzy
+msgid "Show Initially?"
+msgstr "Показати спочатку?"
+
+#: inc/Admin/Waymark_Settings.php:1193
+#, fuzzy
+msgid ""
+"Whether to show the elevation profile when the Map loads. If set to No, the "
+"user must click on a Line in order to display the elevation data. If there "
+"are multiple Lines with elevation data, the one added to the editor first "
+"will be the one shown initially."
+msgstr ""
+"Визначає, чи показувати профіль висоти під час завантаження карти. Якщо "
+"встановлено значення Ні, користувач повинен натиснути на Лінію, щоб "
+"відобразити дані про висоту. Якщо є декілька рядків з даними про висоту, "
+"той, який буде додано до редактора першим, буде показаний спочатку."
+
+#: inc/Admin/Waymark_Settings.php:1201
+#, fuzzy
+msgid "Editor Options"
+msgstr "Параметри редактора"
+
+#: inc/Admin/Waymark_Settings.php:1202
+#, fuzzy
+msgid "Customising the Map Editor."
+msgstr "Налаштування редактора карт."
+
+#: inc/Admin/Waymark_Settings.php:1205
+#, fuzzy
+msgid "Editor Docs &raquo;"
+msgstr "Документація редактора »"
+
+#: inc/Admin/Waymark_Settings.php:1212
+#, fuzzy
+msgid "Confirm Delete?"
+msgstr "Підтвердити видалення?"
+
+#: inc/Admin/Waymark_Settings.php:1214
+#, fuzzy
+msgid ""
+"Whether to show a confirmation dialog before deleting Markers/Lines/Shapes "
+"from the Map. Pro Tip! Even if you accidentally delete something, changes "
+"are not saved until the \"Update\" button is clicked."
+msgstr ""
+"Визначає, чи показувати діалогове вікно підтвердження перед видаленням "
+"Маркерів/Ліній/Фігур з Карти. Професійна порада! Навіть якщо ви випадково "
+"щось видалили, зміни не збережуться, поки не буде натиснута кнопка «Оновити»."
+
+#: inc/Admin/Waymark_Settings.php:1220
+#, fuzzy
+msgid "Default Basemap"
+msgstr "Базова карта за замовчуванням"
+
+#: inc/Admin/Waymark_Settings.php:1222
+#, fuzzy
+msgid "Which Basemap to use as the editor default."
+msgstr "Яку базову карту використовувати як редактор за замовчуванням."
+
+#: inc/Admin/Waymark_Settings.php:1229
+#, fuzzy
+msgid "Store Read Files"
+msgstr "Зберігання прочитаних файлів"
+
+#: inc/Admin/Waymark_Settings.php:1231
+#, fuzzy
+msgid ""
+"By default Waymark does not store any files read using the Editor. Using "
+"this option you can use the Media Library to store the uploaded GPX/KML/"
+"GeoJSON file."
+msgstr ""
+"Типово, Waymark не зберігає жодних файлів, прочитаних за допомогою "
+"редактора. За допомогою цієї опції ви можете використовувати медіатеку для "
+"зберігання завантаженого файлу GPX/KML/GeoJSON."
+
+#: inc/Admin/Waymark_Settings.php:1238
+msgid "Permalinks"
+msgstr "Постійні посилання"
+
+#: inc/Admin/Waymark_Settings.php:1247
+#, fuzzy
+msgid "Map Slug"
+msgstr "Карта Слимак"
+
+#: inc/Admin/Waymark_Settings.php:1249
+#, fuzzy
+msgid ""
+"The URL slug that will be used for links to your Maps, i.e. example.com/[map-"
+"slug]/example-map/. Only alpha-numeric characters and hyphens (-) are "
+"allowed."
+msgstr ""
+"Службове поле URL-адреси, яке буде використано для посилань на ваші Карти, "
+"тобто example.com/[map-slug]/example-map/. Допускаються лише буквено-цифрові "
+"символи та дефіси (-)."
+
+#: inc/Admin/Waymark_Settings.php:1261
+#, fuzzy
+msgid "Collection Slug"
+msgstr "Колекція Слимак"
+
+#: inc/Admin/Waymark_Settings.php:1263
+#, fuzzy
+msgid ""
+"The URL slug that will be used for links to your Collections, i.e. example."
+"com/[collection-slug]/example-collection/. Only alpha-numeric characters and "
+"hyphens (-) are allowed."
+msgstr ""
+"Slug URL, який буде використовуватися для посилань на ваші колекції, тобто "
+"example.com/[collection-slug]/example-collection/. Допускаються лише буквено-"
+"цифрові символи та дефіси (-)."
+
+#: inc/Admin/Waymark_Settings.php:1275 inc/Helpers/Waymark_Helper.php:35
+msgid "Debug"
+msgstr "Налагодження"
+
+#: inc/Admin/Waymark_Settings.php:1282
+msgid "Debug Mode"
+msgstr "Режим налагодження"
+
+#: inc/Admin/Waymark_Settings.php:1284
+#, fuzzy
+msgid ""
+"With debug mode enabled, the plugin will output Map and Settings data in "
+"Admin Dashboard. This may come in handy if you need to report a bug. Pro "
+"Tip! Check the browser console for Waymark output when signed in as an "
+"administrator."
+msgstr ""
+"Якщо ввімкнено режим налагодження, плагін виводитиме дані карт і налаштувань "
+"на інформаційній панелі адміністратора. Це може стати в нагоді, якщо вам "
+"потрібно повідомити про помилку. Професійна порада! Перевірте консоль "
+"браузера на наявність виводу Waymark під час входу з правами адміністратора."
+
+#: inc/Admin/Waymark_Settings.php:1287
+msgid "Disable"
+msgstr "Вимкнути"
+
+#: inc/Admin/Waymark_Settings.php:1288
+msgid "Enable"
+msgstr "Увімкнути"
+
+#: inc/Admin/Waymark_Settings.php:1303
+#, fuzzy
+msgid "Settings Data"
+msgstr "Дані налаштувань"
+
+#: inc/Admin/Waymark_Settings.php:1562
+msgid "Settings Updated"
+msgstr "Налаштування оновлені"
+
+#: inc/Admin/Waymark_Settings.php:1565
+#, fuzzy
+msgid "Action Complete"
+msgstr "Дію завершено"
+
+#: inc/Front/Waymark_Shortcode.php:224
+msgid "Details"
+msgstr "Подробиці"
+
+#: inc/Front/Waymark_Shortcode.php:237
+msgid "More Details"
+msgstr "Детально"
+
+#: inc/Front/Waymark_Submission.php:164
+#, fuzzy
+msgid "There was an error with your submission."
+msgstr "Сталася помилка з вашим поданням."
+
+#: inc/Front/Waymark_Submission.php:172
+#, fuzzy
+msgid "Your submission has been received and is awaiting moderation."
+msgstr "Ваша заявка отримана і очікує на модерацію."
+
+#: inc/Front/Waymark_Submission.php:181
+#, fuzzy
+msgid "Your submission has been <a href=\"%s\">published</a>."
+msgstr "Ваше <a href=\"%s\">подання опубліковано.</a>"
+
+#: inc/Front/Waymark_Submission.php:183
+#, fuzzy
+msgid "Your submission has been published."
+msgstr "Ваше подання опубліковано."
+
+#: inc/Front/Waymark_Submission.php:292
+msgid "Submit"
+msgstr "Відправити"
+
+#: inc/Front/Waymark_Submission.php:311
+#, fuzzy
+msgid "Your Map was empty."
+msgstr "Ваша карта була порожньою."
+
+#: inc/Front/Waymark_Submission.php:320
+#, fuzzy
+msgid "Your Map did not contain valid features."
+msgstr "Ваша карта не містить дійсних об'єктів."
+
+#: inc/Front/Waymark_Submission.php:327
+msgid "Submission"
+msgstr "Подання"
+
+#: inc/Helpers/Waymark_Helper.php:16
+#, fuzzy
+msgid "Hi, I'm %s."
+msgstr "Привіт, мені %s."
+
+#: inc/Helpers/Waymark_Helper.php:18
+#, fuzzy
+msgid ""
+"Waymark is <strong><a href=\"https://github.com/opengis/waymark\">open "
+"source</a></strong> and a work in progress."
+msgstr ""
+"Waymark є <strong><a href=\"https://github.com/opengis/waymark\">відкритим "
+"вихідним кодом</a></strong> і знаходиться в процесі розробки."
+
+#: inc/Helpers/Waymark_Helper.php:19
+#, fuzzy
+msgid ""
+"Feedback is very important, so please feel free to get in touch by either:"
+msgstr ""
+"Зворотній зв'язок дуже важливий, тому, будь ласка, не соромтеся зв'язатися з "
+"нами:"
+
+#: inc/Helpers/Waymark_Helper.php:22
+#, fuzzy
+msgid ""
+"Leaving a <strong><a href=\"%s\">review</a></strong>, or creating a <a "
+"href=\"%s\">support topic</a> on the WordPress plugin directory."
+msgstr ""
+"Залишити <strong><a href=\"%s\">відгук</a></strong> або створити <a "
+"href=\"%s\">тему підтримки</a> в каталозі плагінів WordPress."
+
+#: inc/Helpers/Waymark_Helper.php:23
+#, fuzzy
+msgid "Posting in the <a href=\"%s\">Forums</a>."
+msgstr "<a href=\"%s\">Розміщення на форумах</a>."
+
+#: inc/Helpers/Waymark_Helper.php:24
+#, fuzzy
+msgid "Creating a <a href=\"%s\">GitHub issue</a>."
+msgstr "Створення <a href=\"%s\">проблеми на GitHub</a>."
+
+#: inc/Helpers/Waymark_Helper.php:27
+msgid "Thanks"
+msgstr "Дякуємо"
+
+#: inc/Helpers/Waymark_Helper.php:31
+#, fuzzy
+msgid "Built on the shoulders of giants, <a href=\"%s\">thank you</a>!"
+msgstr "Побудований на плечах велетнів, <a href=\"%s\">спасибі</a>!"
+
+#: inc/Helpers/Waymark_Helper.php:182 inc/Waymark_Taxonomies.php:14
+#: inc/Waymark_Taxonomies.php:15
+msgid "Collection"
+msgstr "Колекція"
+
+#: inc/Helpers/Waymark_Helper.php:203 inc/Helpers/Waymark_Helper.php:232
+#, fuzzy
+msgid ""
+"This will download the Overlays currently displayed by the Map in the "
+"selected format."
+msgstr ""
+"Це призведе до завантаження накладок, які наразі відображається на Карті у "
+"вибраному форматі."
+
+#: inc/Helpers/Waymark_Helper.php:530 inc/Waymark_Types.php:10
+#: inc/Waymark_Types.php:14 inc/Waymark_Types.php:16
+msgid "Map"
+msgstr "Мапа"
+
+#: inc/Helpers/Waymark_Helper.php:705 inc/Helpers/Waymark_Helper.php:730
+msgid "Download"
+msgstr "Завантажити"
+
+#: inc/Helpers/Waymark_Input.php:36
+msgid "Yes"
+msgstr "Так"
+
+#: inc/Helpers/Waymark_Input.php:37
+msgid "No"
+msgstr "Ні"
+
+#: inc/Helpers/Waymark_Input.php:78
+#, fuzzy
+msgid "Click here for more details."
+msgstr "Натисніть тут, щоб дізнатися більше."
+
+#: inc/Helpers/Waymark_Input.php:471
+#, fuzzy
+msgid "The file extension uploaded is not supported."
+msgstr "Розширення файлу, що завантажується, не підтримується."
+
+#: inc/Helpers/Waymark_Lang.php:7
+#, fuzzy
+msgid "View Fullscreen"
+msgstr "Повноекранний режим"
+
+#: inc/Helpers/Waymark_Lang.php:8
+#, fuzzy
+msgid "Exit Fullscreen"
+msgstr "Вихід із повноекранного режиму"
+
+#: inc/Helpers/Waymark_Lang.php:9
+#, fuzzy
+msgid "Show me where I am"
+msgstr "Покажи мені, де я"
+
+#: inc/Helpers/Waymark_Lang.php:10
+msgid "Zoom in"
+msgstr "Збільшити"
+
+#: inc/Helpers/Waymark_Lang.php:11
+msgid "Zoom out"
+msgstr "Зменшити"
+
+#: inc/Helpers/Waymark_Lang.php:12
+#, fuzzy
+msgid "Total Length: "
+msgstr "Загальна довжина: "
+
+#: inc/Helpers/Waymark_Lang.php:13
+#, fuzzy
+msgid "Max. Elevation: "
+msgstr "Максимальна висота над рівнем моря: "
+
+#: inc/Helpers/Waymark_Lang.php:14
+#, fuzzy
+msgid "Min. Elevation: "
+msgstr "Мінімальна висота над рівнем моря: "
+
+#: inc/Helpers/Waymark_Lang.php:17
+#, fuzzy
+msgid "Draw a Line"
+msgstr "Намалюйте лінію"
+
+#: inc/Helpers/Waymark_Lang.php:18
+msgid "Upload an Image"
+msgstr "Завантажити/додати зображення"
+
+#: inc/Helpers/Waymark_Lang.php:19
+#, fuzzy
+msgid "Place a Marker"
+msgstr "Розмістіть маркер"
+
+#: inc/Helpers/Waymark_Lang.php:20
+#, fuzzy
+msgid "Draw a Rectangle"
+msgstr "Намалюйте прямокутник"
+
+#: inc/Helpers/Waymark_Lang.php:21
+#, fuzzy
+msgid "Draw a Polygon"
+msgstr "Малюємо багатокутник"
+
+#: inc/Helpers/Waymark_Lang.php:22
+#, fuzzy
+msgid "Draw a Circle"
+msgstr "Малюємо коло"
+
+#: inc/Helpers/Waymark_Lang.php:23
+#, fuzzy
+msgid ""
+"Read Lines and Markers from file (GPX/KML/GeoJSON supported, which most apps "
+"should Export to)"
+msgstr ""
+"Читання ліній та маркерів з файлу (підтримується GPX/KML/GeoJSON, у який "
+"більшість програм мають експортувати)"
+
+#: inc/Helpers/Waymark_Lang.php:24 inc/Waymark_Admin.php:111
+msgid "Duplicate"
+msgstr "Дублювати"
+
+#: inc/Helpers/Waymark_Lang.php:25
+msgid "Delete"
+msgstr "Видалити"
+
+#: inc/Helpers/Waymark_Lang.php:26
+msgid "Edit"
+msgstr "Редагувати"
+
+#: inc/Helpers/Waymark_Lang.php:27
+#, fuzzy
+msgid "Finish editing"
+msgstr "Завершіть редагування"
+
+#: inc/Helpers/Waymark_Lang.php:28
+msgid "Upload Image"
+msgstr "Завантажити зображення"
+
+#: inc/Helpers/Waymark_Lang.php:30
+msgid "Image URL"
+msgstr "URL-адреса зображення"
+
+#: inc/Helpers/Waymark_Lang.php:31 inc/Waymark_Config.php:54
+msgid "Description"
+msgstr "Опис"
+
+#: inc/Helpers/Waymark_Lang.php:33
+#, fuzzy
+msgid "Lat,Lng"
+msgstr "Широта,Зріджений природний газ"
+
+#: inc/Helpers/Waymark_Lang.php:34
+#, fuzzy
+msgid "Are you sure you want to delete this"
+msgstr "Ви впевнені, що хочете це видалити?"
+
+#: inc/Helpers/Waymark_Lang.php:35
+msgid "Search..."
+msgstr "Пошук..."
+
+#: inc/Helpers/Waymark_Lang.php:42
+#, fuzzy
+msgid "Waymark Error"
+msgstr "Помилка дорожнього знака"
+
+#: inc/Helpers/Waymark_Lang.php:43
+#, fuzzy
+msgid "Waymark Info"
+msgstr "Інформація про дорожній знак"
+
+#: inc/Helpers/Waymark_Lang.php:44
+msgid "This file type is not supported."
+msgstr "Цей тип файлу не підтримується."
+
+#: inc/Helpers/Waymark_Lang.php:45
+#, fuzzy
+msgid "Could not convert this file to GeoJSON."
+msgstr "Не вдалося конвертувати цей файл в GeoJSON."
+
+#: inc/Helpers/Waymark_Lang.php:46
+#, fuzzy
+msgid "File upload error."
+msgstr "Помилка завантаження файлу."
+
+#: inc/Helpers/Waymark_Lang.php:47
+#, fuzzy
+msgid "Could not retrieve Image metadata."
+msgstr "Не вдалося отримати метадані зображення."
+
+#: inc/Helpers/Waymark_Lang.php:48
+#, fuzzy
+msgid "Image location metadata (EXIF) detected!"
+msgstr "Виявлено метадані розташування зображення (EXIF)!"
+
+#: inc/Helpers/Waymark_Lang.php:49
+#, fuzzy
+msgid "Image location metadata (EXIF) NOT detected."
+msgstr "Метадані розташування зображення (EXIF) НЕ виявлено."
+
+#: inc/Helpers/Waymark_Lang.php:50
+#, fuzzy
+msgid "No Direction"
+msgstr "Немає напрямку"
+
+#: inc/Helpers/Waymark_Lang.php:51
+#, fuzzy
+msgid "Show Direction"
+msgstr "Показати напрямок"
+
+#: inc/Helpers/Waymark_Lang.php:52
+#, fuzzy
+msgid "Reverse Direction"
+msgstr "Зворотний напрямок"
+
+#: inc/Waymark_Admin.php:93
+#, fuzzy
+msgid "Can not duplicate, no post to supplied!"
+msgstr "Не можна дублювати, немає поста в комплекті!"
+
+#: inc/Waymark_Admin.php:98
+#, fuzzy
+msgid "Security verification error!"
+msgstr "Помилка перевірки безпеки!"
+
+#: inc/Waymark_Admin.php:111
+#, fuzzy
+msgid "Duplicate this post"
+msgstr "Продублюйте цю публікацію"
+
+#: inc/Waymark_Admin.php:144
+msgid "Date"
+msgstr "Дата"
+
+#: inc/Waymark_Admin.php:177
+#, fuzzy
+msgid ""
+"Collections allow you to organise your Maps. Use the <a "
+"href=\"%s\">Shortcode</a> to display all Maps in a Collection at once. <a "
+"href=\"%s\" class=\"button waymark-right\">Read the Docs &raquo;</a>"
+msgstr ""
+"Колекції дають змогу впорядковувати Карти. <a href=\"%s\">Використовуйте "
+"шорткод,</a> щоб відобразити всі карти в колекції одночасно. <a href=\"%s\" "
+"class=\"button waymark-right\">Читати документацію »</a>"
+
+#: inc/Waymark_Admin.php:183
+#, fuzzy
+msgid ""
+"Create Maps here, then add them to your content using the <a "
+"href=\"%s\">Shortcode</a>. <a href=\"%s\" class=\"button waymark-"
+"right\">Watch the Video &raquo;</a>"
+msgstr ""
+"Створіть карти тут, а потім додайте їх до свого контенту за допомогою <a "
+"href=\"%s\">шорткоду</a>. <a href=\"%s\" class=\"button waymark-"
+"right\">Переглянути відео »</a>"
+
+#: inc/Waymark_Admin.php:201
+#, fuzzy
+msgid "Creating a Map"
+msgstr "Створення карти"
+
+#: inc/Waymark_Admin.php:202
+#, fuzzy
+msgid ""
+"<span class=\"waymark-lead\">Use the Map <a href=\"%s\">Editor</a> to place "
+"Markers, draw Lines/Shapes and display Photos. Each can be given a <a "
+"target=\"_blank\" href=\"%s\">Type</a>, title, description and an image.</"
+"span><br /><br />You can add the Map to your content using the %s <a "
+"href=\"%s\">Shortcode</a>. <a class=\"button waymark-right\" "
+"href=\"%s\">Watch the Video &raquo;</a>"
+msgstr ""
+"<span class=\"waymark-lead\">Використовуйте <a href=\"%s\">редактор карт</a> "
+"для розміщення маркерів, малювання ліній/фігур та відображення фотографій. "
+"Кожному з них можна присвоїти <a target=\"_blank\" href=\"%s\">тип,</a> "
+"назву, опис та зображення.</span><br /><br />Ви можете додати карту до свого "
+"контенту за допомогою %s <a href=\"%s\">шорткоду</a>. <a class=\"button "
+"waymark-right\" href=\"%s\">Переглянути відео »</a>"
+
+#: inc/Waymark_Admin.php:205 inc/Waymark_Admin.php:209
+#, fuzzy
+msgid ""
+"You can add the Map to your content using the %s <a href=\"%s\">Shortcode</"
+"a>. <a class=\"button waymark-right\" href=\"%s\">Watch the Video &raquo;</a>"
+msgstr ""
+"Ви можете додати карту до свого контенту за допомогою %s <a "
+"href=\"%s\">шорткоду</a>. <a class=\"button waymark-right\" "
+"href=\"%s\">Переглянути відео »</a>"
+
+#: inc/Waymark_Admin.php:208 inc/Waymark_Types.php:24
+#, fuzzy
+msgid "Edit Map"
+msgstr "Редагувати мапу"
+
+#: inc/Waymark_Config.php:56
+#, fuzzy
+msgid ""
+"The Description you enter here will be displayed on the Map Details page."
+msgstr "Опис, який ви введете тут, буде показано на сторінці Деталі мапи."
+
+#: inc/Waymark_Config.php:102
+#, fuzzy
+msgid "Click or Hover to Wake"
+msgstr "Клацніть або наведіть курсор, щоб розбудити"
+
+#: inc/Waymark_Config.php:142
+msgid "Photo"
+msgstr "Фото"
+
+#: inc/Waymark_Config.php:142
+msgid "Information"
+msgstr "Інформація"
+
+#: inc/Waymark_Config.php:142
+msgid "Alert"
+msgstr "Сповіщення"
+
+#: inc/Waymark_Config.php:142
+#, fuzzy
+msgid "Trail Access"
+msgstr "Доступ до стежки"
+
+#: inc/Waymark_Config.php:142
+msgid "Food"
+msgstr "Їжа"
+
+#: inc/Waymark_Config.php:142
+msgid "Water"
+msgstr "Вода"
+
+#: inc/Waymark_Config.php:142
+#, fuzzy
+msgid "Shelter"
+msgstr "Притулок"
+
+#: inc/Waymark_Config.php:142
+#, fuzzy
+msgid "Beer"
+msgstr "Пиво"
+
+#: inc/Waymark_Config.php:142
+msgid "Start"
+msgstr "Початок"
+
+#: inc/Waymark_Config.php:142
+msgid "Finish"
+msgstr "Завершити"
+
+#: inc/Waymark_Config.php:155 inc/Waymark_Config.php:165
+msgid "Red"
+msgstr "Червоний"
+
+#: inc/Waymark_Config.php:155 inc/Waymark_Config.php:165
+msgid "Green"
+msgstr "Зелений"
+
+#: inc/Waymark_Config.php:155 inc/Waymark_Config.php:165
+msgid "Blue"
+msgstr "Синій"
+
+#: inc/Waymark_Taxonomies.php:16
+#, fuzzy
+msgid "All Collections"
+msgstr "Всі колекції"
+
+#: inc/Waymark_Taxonomies.php:17
+msgid "Parent"
+msgstr "Батьківський"
+
+#: inc/Waymark_Taxonomies.php:18
+#, fuzzy
+msgid "Parent Collection:"
+msgstr "Батьківська колекція:"
+
+#: inc/Waymark_Taxonomies.php:19
+#, fuzzy
+msgid "New Collection Name"
+msgstr "Нова назва колекції"
+
+#: inc/Waymark_Taxonomies.php:20
+#, fuzzy
+msgid "Create Collection"
+msgstr "Створити колекцію"
+
+#: inc/Waymark_Taxonomies.php:21
+#, fuzzy
+msgid "Edit Collection"
+msgstr "Редагувати колекцію"
+
+#: inc/Waymark_Taxonomies.php:22
+msgid "Update Collection"
+msgstr "Оновити Колекцію"
+
+#: inc/Waymark_Taxonomies.php:23
+#, fuzzy
+msgid "View Collection"
+msgstr "Переглянути колекцію"
+
+#: inc/Waymark_Taxonomies.php:24
+#, fuzzy
+msgid "Separate Collections with commas"
+msgstr "Окремі колекції комами"
+
+#: inc/Waymark_Taxonomies.php:25
+#, fuzzy
+msgid "Add or remove Collections"
+msgstr "Додавання або видалення колекцій"
+
+#: inc/Waymark_Taxonomies.php:26
+msgid "Choose from the most used"
+msgstr "Виберіть один із найбільш використовуваних тегів"
+
+#: inc/Waymark_Taxonomies.php:27
+#, fuzzy
+msgid "Popular Collections"
+msgstr "Популярні Колекції"
+
+#: inc/Waymark_Taxonomies.php:28
+#, fuzzy
+msgid "Search Collections"
+msgstr "Пошук у колекціях"
+
+#: inc/Waymark_Taxonomies.php:29
+msgid "Not Found"
+msgstr "Не знайдено"
+
+#: inc/Waymark_Taxonomies.php:30
+#, fuzzy
+msgid "No Collections"
+msgstr "Без колекцій"
+
+#: inc/Waymark_Taxonomies.php:31
+#, fuzzy
+msgid "Collection list"
+msgstr "Список колекцій"
+
+#: inc/Waymark_Taxonomies.php:32
+#, fuzzy
+msgid "Collection list navigation"
+msgstr "Навігація списком колекцій"
+
+#: inc/Waymark_Types.php:17
+#, fuzzy
+msgid "Map Archives"
+msgstr "Архів мап"
+
+#: inc/Waymark_Types.php:18
+#, fuzzy
+msgid "Map Attributes"
+msgstr "Атрибути мапи"
+
+#: inc/Waymark_Types.php:19
+#, fuzzy
+msgid "Parent Map:"
+msgstr "Батьківська карта:"
+
+#: inc/Waymark_Types.php:20
+#, fuzzy
+msgid "All Maps"
+msgstr "Всі мапи"
+
+#: inc/Waymark_Types.php:21
+#, fuzzy
+msgid "Add New Map"
+msgstr "Додати нову карту"
+
+#: inc/Waymark_Types.php:22
+msgid "Add New"
+msgstr "Додати новий"
+
+#: inc/Waymark_Types.php:25
+#, fuzzy
+msgid "Update Map"
+msgstr "Оновити карту"
+
+#: inc/Waymark_Types.php:26
+#, fuzzy
+msgid "View Map"
+msgstr "Дивитись мапу"
+
+#: inc/Waymark_Types.php:27
+#, fuzzy
+msgid "View Maps"
+msgstr "Переглянути мапи"
+
+#: inc/Waymark_Types.php:28
+#, fuzzy
+msgid "Search Map"
+msgstr "Пошук на мапі"
+
+#: inc/Waymark_Types.php:29
+msgid "Not found"
+msgstr "Не знайдено"
+
+#: inc/Waymark_Types.php:30
+msgid "Not found in Trash"
+msgstr "Не знайдено у кошику"
+
+#: inc/Waymark_Types.php:31
+msgid "Featured Image"
+msgstr "Популярні зображення"
+
+#: inc/Waymark_Types.php:32
+msgid "Set featured image"
+msgstr "Встановити рекомендоване зображення"
+
+#: inc/Waymark_Types.php:33
+msgid "Remove featured image"
+msgstr "Видалити рекомендоване зображення"
+
+#: inc/Waymark_Types.php:34
+msgid "Use as featured image"
+msgstr "Використати  рекомендоване зображення"
+
+#: inc/Waymark_Types.php:35
+#, fuzzy
+msgid "Insert into Map"
+msgstr "Вставити в карту"
+
+#: inc/Waymark_Types.php:36
+#, fuzzy
+msgid "Uploaded to this Map"
+msgstr "Завантажено на цю карту"
+
+#: inc/Waymark_Types.php:37
+#, fuzzy
+msgid "Map list"
+msgstr "Список мап"
+
+#: inc/Waymark_Types.php:38
+#, fuzzy
+msgid "Maps list navigation"
+msgstr "Навігація списком карт"
+
+#: inc/Waymark_Types.php:39
+#, fuzzy
+msgid "Filter Map list"
+msgstr "Список карт фільтрів"
+
+#. Plugin Name of the plugin/theme
+msgid "Waymark"
+msgstr "Waymark"
+
+#. Plugin URI of the plugin/theme
+msgid "https://www.waymark.dev/"
+msgstr "https://www.waymark.dev/"
+
+#. Description of the plugin/theme
+#, fuzzy
+msgid ""
+"Mapping with WordPress made easy. With Waymark enabled, click on the "
+"\"Maps\" link in the sidebar to create and edit Maps. Once you are happy "
+"with your Map, copy the Waymark shortcode and add it to your content."
+msgstr ""
+"Картографування за допомогою WordPress стало простішим. Увімкнувши Waymark, "
+"натисніть на посилання «Карти» на бічній панелі, щоб створити та "
+"відредагувати Карти. Після того, як ви будете задоволені своєю картою, "
+"скопіюйте короткий код Waymark і додайте його до свого вмісту."
+
+#. Author of the plugin/theme
+msgid "Joe Hawes"
+msgstr "Joe Hawes"
+
+#. Author URI of the plugin/theme
+msgid "https://www.morehawes.ca/"
+msgstr "https://www.morehawes.ca/"

@@ -2,7 +2,7 @@
 
 class Waymark_Helper {
 
-	static public function require($path = '') {
+	static public function inc($path = '') {
 		$path = plugin_dir_path(__DIR__) . $path;
 
 		require_once $path;

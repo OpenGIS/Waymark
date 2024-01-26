@@ -4,7 +4,7 @@ Tags: GIS, Map maker, Maps, Leaflet, GPX, KML, GeoJSON, OpenStreetMap, EXIF, Map
 Requires at least: 4.6
 Tested up to: 6.4
 Requires PHP: 5.2
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,26 +50,34 @@ Embed your Maps using the `[Waymark]` Shortcode, or link to the [Map Details](ht
   - Display [Files](https://www.waymark.dev/docs/shortcodes/#shortcode-files) (GPX, KML & GeoJSON) from a URL without the need for a Map to be created.
   - Display a Basemap only, without any Overlays by providing centre and zoom parameters.
 - **[Basemaps](https://www.waymark.dev/docs/basemaps/)** - Uses [OpenStreetMap](https://www.openstreetmap.org/fixthemap) by default, with support for multiple raster tiled/"slippy" Basemaps. You can switch Basemaps using the Overlay Filter.
-- **Overlay Filter** - Allow the user to filter which Overlays are currently visible on the Map. This works together with the Export feature, to select which Overlays are downloaded.
+- **Overlay Filter** - Allow the user to filter which Overlays are currently visible on the Map.
 - **[Export](https://www.waymark.dev/docs/shortcodes/#shortcode-export)**
   - (Optionally) Let anyone Export Maps into GPX, KML and GeoJSON formats through the Shortcode Header or on the Map Details page.
-  - Works with the Overlay Filter to only include the currently visible Overlays.
   - Works on mobile devices.
 
 ### Customising
 
-Built to be flexible, Waymark has lots of [Settings]( https://www.waymark.dev/docs/settings/) to choose from. Be sure to check out [Map First](https://github.com/opengis/map-first), a minimal WordPress theme with an *obsession* for Maps (it's open-source too and contains lots of comments about customisations). As seen in the [demo](https://www.ogis.app/yosemite/).
+Built to be flexible, Waymark has lots of [Settings](https://www.waymark.dev/docs/settings/) and [Types](https://www.waymark.dev/docs/types/) provide one place to control how Overlays (Markers/Lines/Shapes) are displayed.
+
+Marker Icons can be provided as:
+  - Font Icons ([Ionic Icons v2](https://ionic.io/ionicons/v2/cheatsheet.html)/[Font Awesome v4](https://fontawesome.com/v4.7.0/cheatsheet/))
+  - Simple Text, or [Emojis](https://emojifinder.com/) (i.e. 🏕️, 🚩, 📸).
+  - Custom HTML (good ol' `<img src="https://example.com/icon.svg">`, or a more complex structure). So you can pretty much create any kind of Icon you want.
 
 For developers:
 
 - Most elements can be [styled using CSS](https://www.waymark.dev/docs/styling-with-css-selectors/) and have sensibly named `waymark-` classes.
-- Maps are stored using the custom post type `waymark_map`
-- Geographical data is stored in [GeoJSON](https://geojson.org/) format.
-- Meta is stored as Custom Fields (prefixed with `waymark_`)
-- Collections use the `waymark_collection` Taxonomy.
-- Use the [JavaScript callback function](https://www.waymark.dev/docs/callback-function/) to extend Waymark functionality.
+- WordPress integration:
+  - Maps are stored using the custom post type `waymark_map`.
+  - Collections use the `waymark_collection` Taxonomy.
+  - Embed Maps using the `[Waymark]` [Shortcode](https://www.waymark.dev/docs/shortcodes/) anywhere they are supported, or dynamically using the `do_shortcode([Waymark])` [function](https://developer.wordpress.org/reference/functions/do_shortcode/).
+- Geographical data is stored in [GeoJSON](https://geojson.org/) format. [Types](https://www.waymark.dev/docs/types/) are specified using the `type` Property, i.e. `{feature: { geometry: { type: 'Point', coordinates: [0, 0] } }, properties: { type: 'marker' }`.
+- Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the callback function.
+- Use the [JavaScript callback functions](https://www.waymark.dev/docs/callback-function/) to extend Waymark functionality client-side, provided either globally (for integration with *all* Waymark Maps) or provided as a [Shortcode parameter](https://www.waymark.dev/docs/shortcodes/#callback-function).
 
-**Waymark is free, open-source ([GPL v2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)) and a labour of Love**. I try to keep the plugin well supported, so please feel free to <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">reach out</a> with any issues, questions or feedback.
+Be sure to check out [Map First](https://github.com/opengis/map-first), a minimal WordPress theme with an *obsession* for Maps (it's open-source too and contains lots of comments about customisations). As seen in the [demo](https://www.ogis.app/yosemite/).
+
+**Waymark is free, open-source ([GPL v2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)) and a labour of Love**. I try to keep the plugin well supported, so please feel free to <a href="https://forms.gle/mthqAgSsMoTPM8SR9">reach out</a> with any issues, questions or feedback.
 
 ### Development
 
@@ -116,14 +124,17 @@ Yes, please view the <a href="https://www.waymark.dev/docs/">Documentation</a>. 
 
 = How Can I Contribute? =
 
-* [Star the project on GitHub](https://github.com/opengis/waymark/)
-* [Rate the plugin](https://wordpress.org/support/plugin/waymark/reviews/#new-post)
-* [Report bugs](https://wordpress.org/support/plugin/waymark/#new-topic-0)
-* [Suggest new features](https://wordpress.org/support/plugin/waymark/#new-topic-0)
-* [Translate the plugin](https://translate.wordpress.org/projects/wp-plugins/waymark/)
-* Share with anyone that will listen how much you like Waymark :)
+**Please help [translate the plugin](https://translate.wordpress.org/projects/wp-plugins/waymark/)! If you like the plugin and speak multiple languages, **please** consider becoming a [Translation Editor (PTE)](https://make.wordpress.org/polyglots/handbook/about/roles-and-capabilities/#project-translation-editor) for the plugin.**
 
-If you have anything bad to say, please <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">get in touch</a> before leaving a review, this is how the plugin gets better!
+You could also:
+
+* **Star**, create an Issue or Fork the project on [GitHub](https://github.com/opengis/waymark/).
+* [Rate the plugin](https://wordpress.org/support/plugin/waymark/reviews/#new-post).
+* [Report bugs or suggest new features](https://wordpress.org/support/plugin/waymark/#new-topic-0).
+* [Provide Feedback](https://forms.gle/mthqAgSsMoTPM8SR9).
+* Share with *anyone that will listen* how much you like Waymark and what you have built with it 🗺
+
+If you have anything bad to say, please <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">create an issue</a> before leaving a review, this is how the plugin gets better!
 
 = Does Waymark Support Google Maps? =
 
@@ -153,6 +164,12 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 10. Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website.
 
 == Changelog ==
+
+= 1.0.3 =
+
+- **Global Callback** - If the function `waymark_loaded_callback` is defined globally, it will be called when Waymark has loaded. This allows you to extend Waymark functionality similar to the [Shortcode Callback](https://www.waymark.dev/docs/shortcodes/#callback-function), however it will apply to *all* Waymark Maps.
+- Fix for Export/Overlay Filter [bug](https://github.com/OpenGIS/Waymark/issues/32).
+- Other fixes and improvements.
 
 = 1.0.2 =
 

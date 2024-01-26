@@ -8,7 +8,7 @@ class Waymark_GeoJSON {
 	 * @param  string $string GeoJSON string
 	 * @return array          GeoJSON array
 	 */
-	static public function string_to_feature_collection(String $string = '') {
+	static public function string_to_feature_collection($string = '') {
 		if (is_string($string)) {
 			return json_decode($string, true, 512, JSON_OBJECT_AS_ARRAY);
 		}
@@ -43,7 +43,7 @@ class Waymark_GeoJSON {
 	 * @param  string $property_value    Property value
 	 * @return array                     Updated GeoJSON array
 	 */
-	static public function update_feature_property(Array $FeatureCollection = [], String $property_key = '', String $property_value = '') {
+	static public function update_feature_property($FeatureCollection = [], $property_key = '', $property_value = '') {
 		if (is_string($FeatureCollection)) {
 			$FeatureCollection = self::string_to_feature_collection($FeatureCollection);
 		}
@@ -70,7 +70,7 @@ class Waymark_GeoJSON {
 	 * @param  array  $FeatureCollection GeoJSON array
 	 * @return array                     Updated GeoJSON array
 	 */
-	static public function clean_feature_descriptions(Array $FeatureCollection = []) {
+	static public function clean_feature_descriptions($FeatureCollection = []) {
 		//Feature Collection
 		if ($FeatureCollection && isset($FeatureCollection['features'])) {
 
@@ -93,7 +93,7 @@ class Waymark_GeoJSON {
 	 * @param  array  $FeatureCollection GeoJSON array
 	 * @return array                     Sorted GeoJSON array
 	 */
-	static public function features_by_overlay_type(Array $FeatureCollection = []) {
+	static public function features_by_overlay_type($FeatureCollection = []) {
 
 		// Waymark_Helper::debug($FeatureCollection);
 

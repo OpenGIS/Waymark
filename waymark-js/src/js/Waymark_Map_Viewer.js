@@ -370,21 +370,8 @@ function Waymark_Map_Viewer() {
 		var content = Waymark.build_content(layer_type, feature, layer);
 		var title = feature.properties.title;
 
-		//Custom handle content
-		if (typeof Waymark.config.handle_content_callback == "function") {
-			//Bind content to info window
-			layer.on("click", function () {
-				Waymark.config.handle_content_callback(
-					content.get(0),
-					title,
-					Waymark.mode,
-				);
-			});
-			//Default handle content
-		} else {
-			//Bind content to info window
-			layer.bindPopup(content.get(0)).openPopup();
-		}
+		//Bind content to info window
+		layer.bindPopup(content.get(0)).openPopup();
 	};
 
 	this.line_has_elevation_data = function (feature) {

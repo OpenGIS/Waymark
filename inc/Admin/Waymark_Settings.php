@@ -224,10 +224,11 @@ class Waymark_Settings {
 							'class' => '',
 							'title' => '<span style="display:inline-block;min-width:50px">' . esc_html__('Icon', 'waymark') . '</span>' . esc_html__('Type', 'waymark'),
 							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'icon_type'),
-							'tip' => esc_attr__('Marker Icons are available from Font Awesome and Ionic Icons, you can also specify your own text, or provide custom HTML.', 'waymark'),
+							'tip' => esc_attr__('Font Icons are available from Font Awesome and Ionic Icons. Simple Text or Emojis are supported, as well as custom HTML. So you can pretty much use anything you like!', 'waymark'),
+							'tip_link' => 'https://emojifinder.com/',
 							'options' => array(
-								'icon' => esc_html__('Font', 'waymark'),
-								'text' => esc_html__('Text', 'waymark'),
+								'icon' => esc_html__('Font Icon', 'waymark'),
+								'text' => esc_html__('Text (or Emoji!)', 'waymark'),
 								'html' => esc_html__('HTML', 'waymark'),
 							),
 						),
@@ -238,7 +239,7 @@ class Waymark_Settings {
 							'class' => 'waymark-short-input',
 							'title' => '<span class="waymark-invisible" style="display:inline-block;min-width:50px">' . esc_html__('Icon', 'waymark') . '</span><span class="waymark-icon-type">' . esc_html__('Name', 'waymark') . '</span>',
 							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'marker_icon'),
-							'tip' => esc_attr__('The desired icon name from Ionicons or Font Awesome, e.g. "ion-camera", or "fa-camera". Click the links to see the full list of icons available.|Text to display inside the Marker, in the chosen colour. Space is very limited! Pro Tip: adjust text size using CSS; for all Markers: .waymark-icon-text{font-size: 18px}, or by Type: .waymark-marker-photo .waymark-icon-text{...}. Use your browser\'s inspector to dig for Type class names.|The HTML entered will be added inside each Marker. Pro Tip! HTML Entities supported (e.g. &amp;cross; as well as Unicode characters), or provide HTML to integrate with other Icon providers.', 'waymark'),
+							'tip' => esc_attr__('The desired icon name from Ionicons or Font Awesome, e.g. "ion-camera", or "fa-camera". Click the links to see the full list of icons available.|Text to display inside the Marker, in the chosen colour. Space is very limited! Pro Tip: adjust text size using CSS; for all Markers: .waymark-icon-text{font-size: 18px}, or by Type: .waymark-marker-photo .waymark-icon-text{...}. Use your browser\'s inspector to dig for Type class names.|The HTML entered will be added inside each Marker. Pro Tip! HTML Entities supported (e.g. &amp;cross; as well as Unicode and Emojis!), or provide HTML to integrate with other Icon providers.', 'waymark'),
 							'input_processing' => array(
 								'(strpbrk($param_value, "\">")) ? htmlspecialchars($param_value) : $param_value',
 							),
@@ -956,7 +957,7 @@ class Waymark_Settings {
 							'type' => 'boolean',
 							'title' => esc_html__('Public Export', 'waymark'),
 							'default' => Waymark_Config::get_setting('misc', 'map_options', 'allow_export'),
-							'tip' => sprintf(esc_attr__('Enable visitors to download the Overlays (Markers, Lines and Shapes) currently displayed on the Map Details page. An Export option is also displayed in the Details section of the Shortcode Header when embedding a Map or Collection. Can be used in conjunction with the Overlay Filter to select which Overlays to download. GeoJSON, GPX and KML formats supported.', 'waymark')),
+							'tip' => sprintf(esc_attr__('Offer visitors the ability to Download all Collection/Map Overlays in the Shortcode Header and on the Map Details page. GeoJSON, GPX and KML formats supported.', 'waymark')),
 						),
 						'show_scale' => array(
 							'name' => 'show_scale',
@@ -1282,7 +1283,7 @@ class Waymark_Settings {
 							'title' => esc_html__('Debug Mode', 'waymark'),
 							'default' => Waymark_Config::get_setting('misc', 'advanced', 'debug_mode'),
 							'tip' => esc_attr__('With debug mode enabled, the plugin will output Map and Settings data in Admin Dashboard. This may come in handy if you need to report a bug. Pro Tip! Check the browser console for Waymark output when signed in as an administrator.', 'waymark'),
-							'tip_link' => 'https://developer.mozilla.org/en-US/docs/Tools/Browser_Console',
+							'tip_link' => 'https://www.waymark.dev/docs/debug-mode/',
 							'options' => array(
 								'0' => esc_html__('Disable', 'waymark'),
 								'1' => esc_html__('Enable', 'waymark'),
