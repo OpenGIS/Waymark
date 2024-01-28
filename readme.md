@@ -70,7 +70,7 @@ For developers:
 - WordPress integration:
   - Maps are stored using the custom post type `waymark_map`.
   - Collections use the `waymark_collection` Taxonomy.
-  - Embed Maps using the `[Waymark]` [Shortcode](https://www.waymark.dev/docs/shortcodes/) anywhere they are supported, or dynamically using the `do_shortcode([Waymark])` [function](https://developer.wordpress.org/reference/functions/do_shortcode/).
+  - Embed Maps using the `[Waymark]` [Shortcode](https://www.waymark.dev/docs/shortcodes/) anywhere they are supported, or dynamically using the `do_shortcode(["Waymark"])` [function](https://developer.wordpress.org/reference/functions/do_shortcode/).
 - Geographical data is stored in [GeoJSON](https://geojson.org/) format. [Types](https://www.waymark.dev/docs/types/) are specified using the `type` Property, i.e. `{feature: { geometry: { type: 'Point', coordinates: [0, 0] } }, properties: { type: 'marker' }`.
 - Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the callback function.
 - Use the [JavaScript callback functions](https://www.waymark.dev/docs/callback-function/) to extend Waymark functionality client-side, provided either globally (for integration with *all* Waymark Maps) or provided as a [Shortcode parameter](https://www.waymark.dev/docs/shortcodes/#callback-function).
