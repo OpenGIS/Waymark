@@ -110,58 +110,17 @@ class Waymark_Meta {
 
 		global $post;
 
-		$data = Waymark_Helper::flatten_meta(get_post_meta($post->ID));
+		// Create new Map object
+		$Map = new Waymark_Map($post->ID);
 
-		//Create new Map object
-		Waymark_JS::add_call('const waymark_editor = window.Waymark_Map_Factory.editor()');
+		// TODO - add configutation for this
+		// Waymark_JS::add_editor($data, $config);
 
-		//Warn user about navigating away from page before Publish/Update
-		//I'm not sure why, but we have to return something here to get the desired behaviour :-/
-		Waymark_JS::add_call('waymark_editor.map_was_edited = function() {
-			jQuery(window).on(\'beforeunload.edit-post\', function() {
-				return null;
-			});
-	 	}');
+		Waymark_JS::add_editor($Map->get_geojson());
 
-		//Default view
-		if ($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
-			//We have a valid LatLng
-			if ($default_latlng_array = Waymark_Helper::latlng_string_to_array($default_latlng)) {
-				Waymark_JS::add_call('waymark_editor.fallback_latlng = [' . $default_latlng_array[0] . ',' . $default_latlng_array[1] . ']');
-			}
-		}
-		if ($default_zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
-			Waymark_JS::add_call('waymark_editor.fallback_zoom = ' . $default_zoom);
-		}
-
-		//Map Div
-		echo '<div id="waymark-map" class="waymark-map"></div>' . "\n";
-
-		//Output Config
-		Waymark_JS::add_call('var waymark_user_config = ' . json_encode(Waymark_Config::get_map_config()) . ';');
-		Waymark_JS::add_call('waymark_user_config.map_height = 600;');
-
-		//Set basemap
-		if ($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
-			Waymark_JS::add_call('waymark_user_config.map_init_basemap = "' . $editor_basemap . '"');
-		}
-
-		//Go!
-		Waymark_JS::add_call('waymark_editor.init(waymark_user_config)');
-
-		//GeoJSON set?
-		if (array_key_exists('waymark_map_data', $data)) {
-			Waymark_JS::add_call('waymark_editor.load_json(' . $data['waymark_map_data'] . ');');
-		}
-
-		// Done loading
-		Waymark_JS::add_call('waymark_editor.load_done()');
+		echo $Map->create_form();
 
 		//Create Feed meta input
-		$Map = new Waymark_Map;
-		$Map->set_data($data);
-		$Map->set_input_type('meta');
-		echo $Map->create_form();
 
 		echo '<p>' . sprintf(__('You can manage Meta fields in <a href="%s">Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')) . '</p>';
 	}

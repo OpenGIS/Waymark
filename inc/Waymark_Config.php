@@ -11,7 +11,7 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',
 			'custom_types' => array(),
-			'plugin_version' => '1.0.3',
+			'plugin_version' => '1.0.4',
 			'nonce_string' => 'Waymark_Nonce',
 			'site_url' => 'https://www.waymark.dev/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
@@ -113,7 +113,6 @@ class Waymark_Config {
 				'editor_options' => array(
 					'confirm_delete' => '1',
 					'editor_basemap' => 'Open Street Map',
-					'media_library_uploads' => '0',
 				),
 				'elevation_options' => array(
 					'show_elevation' => '2',
@@ -382,14 +381,6 @@ class Waymark_Config {
 		$settings = get_option('Waymark_Settings');
 
 		$settings_js = [];
-
-		//Media library uploads
-		if (isset($settings['misc']['editor_options']['media_library_uploads'])) {
-			$media_library_uploads = $settings['misc']['editor_options']['media_library_uploads'];
-		} else {
-			$media_library_uploads = '0';
-		}
-		$settings_js['misc']['editor_options']['media_library_uploads'] = $media_library_uploads;
 
 		//Scale
 		if (isset($settings['misc']['map_options']['show_scale'])) {

@@ -146,8 +146,6 @@ function Waymark_Map() {
 		for (config_key in Waymark.config) {
 			if (typeof user_config[config_key] !== "undefined") {
 				Waymark.config[config_key] = user_config[config_key];
-			} else {
-				Waymark.debug("No config for " + config_key);
 			}
 		}
 
@@ -1453,8 +1451,6 @@ function Waymark_Map() {
 	};
 
 	this.create_marker_json = function (lat_lng, properties = {}) {
-		Waymark.debug(Waymark.config.marker_data_defaults);
-
 		var marker_properties = Object.assign(
 			{},
 			Waymark.config.marker_data_defaults,
@@ -1469,8 +1465,6 @@ function Waymark_Map() {
 			type: "Feature",
 			properties: marker_properties,
 		};
-
-		Waymark.debug(marker_json);
 
 		return marker_json;
 	};
@@ -1627,7 +1621,7 @@ function Waymark_Map() {
 		Waymark.debug(
 			"Waymark Loaded in " + execution_time.toFixed(3) + " seconds",
 		);
-		Waymark.debug(this);
+		// Waymark.debug(this);
 
 		// Check for callback waymark_loaded_callback
 		if (typeof waymark_loaded_callback === "function") {

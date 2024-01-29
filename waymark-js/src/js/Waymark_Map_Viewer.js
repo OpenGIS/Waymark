@@ -438,7 +438,10 @@ function Waymark_Map_Viewer() {
 					var W = e.data.W;
 
 					W.elevation_control.clear();
-					W.elevation_control.layer.removeFrom(W.map);
+					if (typeof W.elevation_control.layer !== "undefined") {
+						W.elevation_control.layer.removeFrom(W.map);
+					}
+
 					W.elevation_container.hide();
 				});
 			Waymark.elevation_container.append(elevation_close);

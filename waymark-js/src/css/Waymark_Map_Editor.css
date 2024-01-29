@@ -67,7 +67,7 @@
 }
 .waymark-map-container.waymark-is-editor div.waymark-edit-toolbar a.waymark-edit-button.waymark-edit-line.waymark-icon {
   background-size: 20px 20px;
-  background-image: url('../images/waymark-icon-red.png');
+  background-image: url("../images/waymark-icon-red.png");
 }
 .waymark-map-container.waymark-is-editor div.waymark-edit-toolbar a.waymark-edit-button.waymark-edit-marker i {
   margin-top: 3px;
@@ -176,14 +176,15 @@
   border: none;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url input,
-.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url button {
-  display: block;
+.waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url .button {
+  display: inline-block;
   margin-left: 65px;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-image_large_url input {
   border-radius: 4px;
   padding: 5px;
   margin-bottom: 6px;
+  max-width: 167px;
 }
 .waymark-map-container.waymark-is-editor ul.waymark-info li.waymark-info-button {
   position: absolute;
@@ -226,9 +227,9 @@
 .waymark-map-container.waymark-is-editor ul.waymark-info .waymark-overlay-preview {
   position: absolute;
   top: 0;
-  left: 0;
+  left: -5px;
   margin-bottom: 10px;
-  width: 60px;
+  width: 70px;
   max-height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -283,6 +284,7 @@
 }
 .waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info {
   margin: 0 !important;
+  padding-left: 70px;
 }
 .waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info .waymark-info-title input {
   padding: 5px;
@@ -297,7 +299,7 @@
   width: 155px !important;
   border-radius: 4px;
 }
-.waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info .waymark-info-image_large_url button {
+.waymark-map-container.waymark-submission .leaflet-popup-content ul.waymark-info .waymark-info-image_large_url .button {
   min-width: 85px;
   padding: 3px 5px;
   font-size: 11px;

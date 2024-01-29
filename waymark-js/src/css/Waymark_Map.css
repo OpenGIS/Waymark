@@ -3,23 +3,29 @@
 	============= GLOBAL =============
 	==================================
 */
+.waymark-invisible {
+  visibility: hidden;
+}
+.waymark-hidden {
+  display: none !important;
+}
 .waymark-icon {
-  background-image: url('../img/waymark-icon-primary.png');
+  background-image: url("../img/waymark-icon-primary.png");
   background-size: 20px 20px;
   background-position: left center;
   background-repeat: no-repeat;
 }
 .waymark-icon.waymark-icon-dark {
-  background-image: url('../../img/waymark-icon-dark.png');
+  background-image: url("../../img/waymark-icon-dark.png");
 }
 .waymark-icon.waymark-icon-blue {
-  background-image: url('../../img/waymark-icon-blue.png');
+  background-image: url("../../img/waymark-icon-blue.png");
 }
 .waymark-icon.waymark-icon-light {
-  background-image: url('../../img/waymark-icon-light.png');
+  background-image: url("../../img/waymark-icon-light.png");
 }
 .waymark-icon.waymark-icon-white {
-  background-image: url('../../img/waymark-icon-white.png');
+  background-image: url("../../img/waymark-icon-white.png");
 }
 .waymark-swatch.waymark-swatch-white {
   background-color: #fbfbfb;
@@ -194,7 +200,10 @@
 }
 .waymark-marker .waymark-marker-icon.waymark-icon-text {
   font-weight: bold;
-  font-family: monaco, Consolas, Lucida Console, monospace;
+  font-family: monaco,
+				Consolas,
+				Lucida Console,
+				monospace;
 }
 /*
 	==================================

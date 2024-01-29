@@ -4,7 +4,7 @@ Tags: GIS, Map maker, Maps, Leaflet, GPX, KML, GeoJSON, OpenStreetMap, EXIF, Map
 Requires at least: 4.6
 Tested up to: 6.4
 Requires PHP: 5.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,7 +71,7 @@ For developers:
   - Maps are stored using the custom post type `waymark_map`.
   - Collections use the `waymark_collection` Taxonomy.
   - Embed Maps using the `[Waymark]` [Shortcode](https://www.waymark.dev/docs/shortcodes/) anywhere they are supported, or dynamically using the `do_shortcode([Waymark])` [function](https://developer.wordpress.org/reference/functions/do_shortcode/).
-- Geographical data is stored in [GeoJSON](https://geojson.org/) format. [Types](https://www.waymark.dev/docs/types/) are specified using the `type` Property, i.e. `{feature: { geometry: { type: 'Point', coordinates: [0, 0] } }, properties: { type: 'marker' }`.
+- Geographical data is stored in [GeoJSON](https://geojson.org/) format. [Types](https://www.waymark.dev/docs/types/) are specified using the `type` Property, i.e. `{feature: { geometry: { type: 'Point', coordinates: [0, 0] } }, properties: { type: 'Alert', title: 'Bridge Removed!' }`.
 - Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the callback function.
 - Use the [JavaScript callback functions](https://www.waymark.dev/docs/callback-function/) to extend Waymark functionality client-side, provided either globally (for integration with *all* Waymark Maps) or provided as a [Shortcode parameter](https://www.waymark.dev/docs/shortcodes/#callback-function).
 
@@ -154,7 +154,7 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 1. Add Overlays (Markers, Lines and Shapes) to create detailed interactive Maps. You can import/export from GPX/KML/GeoJSON.
 2. Every Overlay can be given a title, image and description. Marker images can be displayed as a gallery.
-3. Waymark features a clean, intuative Editor for creating and editing your Maps. Overlays are customisable using Types, which allow you set styles once (colours/icons etc.), so you can simply select it when you are adding to the Map. 
+3. Waymark features a clean, intuitive Editor for creating and editing your Maps. Overlays are customisable using Types, which allow you set styles once (colours/icons etc.), so you can simply select it when you are adding to the Map. 
 4. If you have more than one Basemap, you can switch between them when viewing the Map. Overlays can be shown/hidden by Type.
 5. Use Meta to provide extra information about your Maps. Meta inputs are customisable and can be grouped. 
 6. The Map Details page displays an image gallery, elevation profile, export options, featured image and all Meta provided for the Map.
@@ -164,6 +164,12 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 10. Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website.
 
 == Changelog ==
+
+= 1.0.4 =
+
+- Removed "Store Read Files" Setting, which was disabled by default and did not work reliably.
+- Waymark JS refactoring, preparing for spin-off.
+- Other fixes and improvements.
 
 = 1.0.3 =
 

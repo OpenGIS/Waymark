@@ -1,3 +1,202 @@
+// After Waymark JS has loaded, but not yet fired the waymark_loaded_callback()
+// Link in to some WordPress functionality
+function waymark_setup_map_editor(waymark_editor = {}) {
+	// Ensure both waymark_editor.map and wp.editor exist
+	if (!waymark_editor.map || !wp.editor || !wp.media) {
+		waymark_editor.message(
+			"waymark_editor.map/wp.editor/wp.media not available",
+			"error",
+		);
+
+		return;
+	}
+
+	waymark_editor.debug("Adding WordPress Integrations");
+
+	// TODO - Add unsaved changes warning
+
+	//Warn user about navigating away from page before Publish/Update
+	//I'm not sure why, but we have to return something here to get the desired behaviour :-/
+	// self::add_call('waymark_editor.map_was_edited = function() {
+	// 	jQuery(window).on(\'beforeunload.edit-post\', function() {
+	// 		return null;
+	// 	});
+	// }');
+
+	// Add Image upload to toolbar
+
+	const image_button = jQuery(".waymark-edit-toolbar a.waymark-edit-image");
+
+	if (image_button.length && typeof wp.media !== "undefined") {
+		waymark_editor.debug("Enabling Media Library for Image Uploads");
+
+		image_button.removeClass("waymark-hidden");
+
+		// On click
+		image_button.on("click", function (e) {
+			e.preventDefault();
+
+			//Thanks to: https://mycyberuniverse.com/integration-wordpress-media-uploader-plugin-options-page.html
+			wp.media.editor.send.attachment = function (props, attachment) {
+				//Ensure we have the data we want
+				if (typeof attachment.url === "undefined") {
+					return false;
+				}
+
+				//Get Image EXIF
+				var form_data = new FormData();
+				form_data.append("waymark_security", waymark_security);
+				form_data.append("action", "waymark_get_attatchment_meta");
+				form_data.append("attachment_id", attachment.id);
+
+				jQuery.ajax({
+					type: "POST",
+					url: waymark_js.ajaxurl,
+					data: form_data,
+					dataType: "json",
+					processData: false,
+					contentType: false,
+					success: function (response) {
+						Waymark.debug("waymark_get_attatchment_meta");
+
+						if (response === null) {
+							Waymark.message(waymark_js.lang.error_photo_meta, "error");
+
+							return;
+						}
+
+						//Default centre
+						var marker_latlng = Waymark.map.getCenter();
+
+						//Extract EXIF location
+						if ((latlng = Waymark.get_exif_latlng(response))) {
+							marker_latlng = latlng;
+
+							//Center on it
+							Waymark.map.setView(marker_latlng);
+						}
+
+						//Get Image URLs
+						var image_sizes = Waymark.get_image_sizes(
+							attachment.sizes,
+							attachment.url,
+						);
+
+						//Create JSON
+						var marker_json = Waymark.create_marker_json(
+							marker_latlng,
+							image_sizes,
+						);
+
+						//Add Marker
+						Waymark.map_data.addData(marker_json);
+
+						//Save
+						Waymark.map_was_edited();
+					},
+				});
+			};
+			wp.media.editor.open();
+
+			return false;
+		});
+	}
+
+	// Editor Popup Integration
+
+	waymark_editor.map.on("popupopen", function (e) {
+		const feature = e.popup._source.feature;
+		const info_container = jQuery(".waymark-map .waymark-info").first();
+
+		// Add Overlay "Image Upload" button to info window
+
+		const image_button = jQuery(
+			".waymark-info-image_large_url .button",
+			info_container,
+		);
+
+		if (image_button.length) {
+			waymark_editor.debug("Popup Media Library Integration");
+
+			image_button.removeClass("waymark-hidden");
+
+			image_button.on("click", function (e) {
+				e.preventDefault();
+
+				//Thanks to: https://mycyberuniverse.com/integration-wordpress-media-uploader-plugin-options-page.html
+				wp.media.editor.send.attachment = function (props, attachment) {
+					//Ensure we have the data we want
+					if (typeof attachment.url === "undefined") {
+						return false;
+					}
+
+					//Get Image URLs
+					var image_sizes = Waymark.get_image_sizes(
+						attachment.sizes,
+						attachment.url,
+					);
+
+					//Update data
+					feature.properties = Object.assign(
+						{},
+						feature.properties,
+						image_sizes,
+					);
+
+					//Update preview
+					jQuery(".waymark-info-image_large_url", info_container)
+						.find("a")
+						.attr("href", feature.properties.image_large_url)
+						.end()
+						.find("img")
+						.attr("src", feature.properties.image_thumbnail_url)
+						.end()
+						.find("input")
+						.val(feature.properties.image_large_url);
+					// .end();
+
+					//Save
+					waymark_editor.map_was_edited();
+				};
+				wp.media.editor.open();
+
+				return false;
+			}); // End click
+		}
+
+		// Rich Text Editor Integration (TinyMCE)
+
+		// Convert desc textarea to rich text editor (delay required)
+		setTimeout(function () {
+			waymark_editor.debug("Popup Rich Text Editor Integration");
+
+			// Rich text editor
+			wp.editor.initialize("waymark-info-description", {
+				tinymce: {
+					toolbar1: "styleselect | bullist numlist | link image",
+					setup: function (editor) {
+						editor.on("change", function (e) {
+							//Update properties
+							feature.properties.description = wp.editor.getContent(
+								"waymark-info-description",
+							);
+
+							waymark_editor.map_was_edited();
+						});
+					},
+				},
+			});
+		}, 200);
+	});
+
+	//Remove rich text editor
+
+	waymark_editor.map.on("popupclose", function (e) {
+		wp.editor.remove("waymark-info-description");
+		jQuery("#waymark-info-description").show();
+	});
+}
+
 function waymark_setup_colour_pickers() {
 	jQuery(".waymark-colour-picker .waymark-input").wpColorPicker();
 }
@@ -612,9 +811,7 @@ function waymark_admin_message(
 jQuery(document).ready(function () {
 	waymark_setup_settings_nav();
 	waymark_setup_repeatable_settings();
-	// 	waymark_setup_repeatable_parameters();
 	waymark_setup_marker_tab();
-	// 	setTimeout(waymark_setup_settings_maps, 100);
 	waymark_setup_colour_pickers();
 	waymark_setup_external_links();
 	waymark_setup_select_meta_type();

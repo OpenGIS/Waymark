@@ -204,7 +204,7 @@ class Waymark_Submission {
 		}
 
 		//Map Div
-		$content .= '	<div id="waymark-map" class="waymark-submission"></div>' . "\n";
+		$content .= '	<div id="waymark-map" class="waymark-submission waymark-map"></div>' . "\n";
 
 		//Output Config
 		Waymark_JS::add_chunk('var waymark_settings  = ' . Waymark_Config::get_settings_js());
@@ -269,6 +269,9 @@ class Waymark_Submission {
 				waymark_editor.jq_map_container.addClass('waymark-disable-$disable');
 			");
 		}
+
+		// Handle Front-End Upload Integration
+		Waymark_JS::add_call('if(typeof waymark_setup_map_editor === "function") waymark_setup_map_editor(waymark_editor)');
 
 		// Done loading
 		Waymark_JS::add_call('waymark_editor.load_done()');

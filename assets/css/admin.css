@@ -89,22 +89,11 @@ div.waymark-accordion-container .waymark-accordion-group .waymark-parameter-grou
 
 /**
  * ====================================
- * ============ VARIABLES =============
- * ====================================
- */
-/**
- * ====================================
  * ============== GLOBAL ==============
  * ====================================
  */
 .waymark-primary {
   color: #b42714;
-}
-.waymark-invisible {
-  visibility: hidden;
-}
-.waymark-hidden {
-  display: none !important;
 }
 .waymark-icon {
   background-image: url("../img/waymark-icon-primary.png");
