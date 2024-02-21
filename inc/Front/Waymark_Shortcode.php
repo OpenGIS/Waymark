@@ -247,19 +247,22 @@ class Waymark_Shortcode {
 		//Map HTML Container (Initially hidden, made visible by JS)
 		$out .= '	<!-- Map -->' . "\n";
 
+		// TODO - refactor - add/remove "loading" class instead of inline style
+
 		$map_style = 'display:none;';
 		$map_style .= 'height:' . $map_height . 'px';
 		$out .= '	<div style="' . $map_style . '" id="waymark-map-' . $shortcode_hash . '" class="' . $map_class . '" data-shortcode_hash="' . $shortcode_hash . '"></div>' . "\n";
 
 		//Elevation?
-		if (array_key_exists('show_elevation', $shortcode_data)) {
-			$show_elevation = $shortcode_data['show_elevation'];
+		if (array_key_exists('show_elevation', $shortcode_data) && $shortcode_data['show_elevation'] == '1') {
+			$show_elevation = true;
+
+			$out .= '	<div id="waymark-elevation-' . $shortcode_hash . '"></div>' . "\n";
 		} else {
-			$show_elevation = Waymark_Config::get_setting('misc', 'elevation_options', 'show_elevation') == '1';
+			$show_elevation = false;
 		}
-		if ($show_elevation) {
-			$out .= '	<div id="waymark-elevation-' . $shortcode_hash . '" class="waymark-elevation"></div>' . "\n";
-		}
+
+		// Waymark_Helper::debug($show_elevation);
 
 		//Close container
 		$out .= '</div>' . "\n";
@@ -270,35 +273,17 @@ class Waymark_Shortcode {
 
 		//Create viewer
 		$out .= '<script>' . "\n";
-		$out .= 'var waymark_settings  = ' . Waymark_Config::get_settings_js() . ';' . "\n";
-
 		$out .= 'jQuery(document).ready(function() {' . "\n";
 		$out .= '	let waymark_viewer = window.Waymark_Map_Factory.viewer();' . "\n";
 
-		//Default view
-		if ($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
-			$default_latlng_array = Waymark_Helper::latlng_string_to_array($default_latlng);
-
-			//We have a valid LatLng
-			if ($default_latlng_array) {
-				$out .= '	waymark_viewer.fallback_latlng = [' . $default_latlng_array[0] . ',' . $default_latlng_array[1] . '];' . "\n";
-			}
-		}
-		if ($default_zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
-			$out .= '	waymark_viewer.fallback_zoom = ' . $default_zoom . ";\n";
-		}
-
-		$out .= 'var waymark_config = jQuery.extend(true, {}, waymark_user_config);' . "\n";
-		$out .= 'waymark_config.map_div_id = "waymark-map-' . $shortcode_hash . '";' . "\n";
-		$out .= 'waymark_config.map_height = ' . $map_height . ";\n";
 		//Output Config
 		$out .= '	if(typeof waymark_user_config === "undefined") { waymark_viewer.message("Configuration not found! Check for \"var waymark_user_config\" in your page HTML.", "error"); }' . "\n";
 
 		$out .= '	var waymark_config = jQuery.extend(true, {}, waymark_user_config);' . "\n";
-		$out .= '	waymark_config.map_div_id = "waymark-map-' . $shortcode_hash . '";' . "\n";
-		$out .= '	waymark_config.map_height = ' . $map_height . ";\n";
+		$out .= '	waymark_config.map_options.map_div_id = "waymark-map-' . $shortcode_hash . '";' . "\n";
+		$out .= '	waymark_config.map_options.map_height = ' . $map_height . ";\n";
 		if ($map_width) {
-			$out .= '	waymark_config.map_width = ' . $map_width . ";\n";
+			$out .= '	waymark_config.map_options.map_width = ' . $map_width . ";\n";
 		}
 
 		// ===== Shortcode options (2/2) =====
@@ -309,8 +294,13 @@ class Waymark_Shortcode {
 			$map_latlng_array = Waymark_Helper::latlng_string_to_array($latlng_string);
 
 			if (is_array($map_latlng_array)) {
-				$out .= '	waymark_config.map_init_latlng = [' . $map_latlng_array[0] . ',' . $map_latlng_array[1] . '];' . "\n";
+				$out .= '	waymark_config.map_options.map_init_latlng = [' . $map_latlng_array[0] . ',' . $map_latlng_array[1] . '];' . "\n";
 			}
+			// } else if ($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
+			// 	// We have a valid LatLng
+			// 	if ($default_latlng_array = Waymark_Helper::latlng_string_to_array($default_latlng)) {
+			// 		$out .= '	waymark_config.map_options.map_init_latlng = [' . $default_latlng_array[0] . ', ' . $default_latlng_array[1] . '];' . "\n";
+			// 	}
 		}
 
 		//Map Zoom
@@ -318,68 +308,51 @@ class Waymark_Shortcode {
 			$map_init_zoom = $shortcode_data['map_zoom'];
 
 			if (is_numeric($map_init_zoom)) {
-				$out .= '	waymark_config.map_init_zoom = ' . $map_init_zoom . ";\n";
+				$out .= '	waymark_config.map_options.map_init_zoom = ' . $map_init_zoom . ";\n";
 			}
+			// Default Zoom
+			// } elseif ($default_zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
+			// 	$out .= '	waymark_config.map_options.map_init_zoom = ' . $default_zoom . ";\n";
 		}
 
 		//Max Zoom
 		if (array_key_exists('max_zoom', $shortcode_data) && is_numeric($shortcode_data['max_zoom'])) {
-
-			$out .= '	waymark_config.map_options.max_zoom = ' . $shortcode_data['max_zoom'] . ";\n";
+			$out .= '	waymark_config.map_options.map_max_zoom = ' . $shortcode_data['max_zoom'] . ";\n";
 		}
 
 		//Basemap?
 		if (array_key_exists('basemap', $shortcode_data)) {
-			$out .= '	waymark_config.map_init_basemap = "' . $shortcode_data['basemap'] . '";' . "\n";
+			$out .= '	waymark_config.map_options.map_init_basemap = "' . $shortcode_data['basemap'] . '";' . "\n";
 		}
 
 		//Gallery?
-		if (array_key_exists('show_gallery', $shortcode_data)) {
-			$show_gallery = $shortcode_data['show_gallery'];
-		} else {
-			$show_gallery = Waymark_Config::get_setting('misc', 'map_options', 'show_gallery');
-		}
-		if ($show_gallery) {
-			$out .= '	waymark_config.show_gallery = 1;' . "\n";
+		if (array_key_exists('show_gallery', $shortcode_data) && in_array($shortcode_data['show_gallery'], ['1', '0'])) {
+			$out .= '	waymark_config.viewer_options.show_gallery = ' . $shortcode_data['show_gallery'] . ';' . "\n";
 		}
 
 		//Overlay filter?
-		if (array_key_exists('show_filter', $shortcode_data)) {
-			$show_filter = $shortcode_data['show_filter'];
-		} else {
-			$show_filter = Waymark_Config::get_setting('misc', 'map_options', 'show_filter');
-		}
-		if ($show_filter) {
-			$out .= '	waymark_config.show_filter = 1;' . "\n";
+		if (array_key_exists('show_filter', $shortcode_data) && in_array($shortcode_data['show_filter'], ['1', '0'])) {
+			$out .= '	waymark_config.viewer_options.show_filter = ' . $shortcode_data['show_filter'] . ';' . "\n";
 		}
 
 		//Elevation?
 		if ($show_elevation) {
-			$out .= '	waymark_config.show_elevation = 1;' . "\n";
-			$out .= '	waymark_config.elevation_div_id = "waymark-elevation-' . $shortcode_hash . '";' . "\n";
-			$out .= '	waymark_config.elevation_initial = ' . Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_initial') . ';' . "\n";
+			$out .= '	waymark_config.viewer_options.show_elevation = "1";' . "\n";
+			$out .= '	waymark_config.viewer_options.elevation_div_id = "waymark-elevation-' . $shortcode_hash . '";' . "\n";
 
 			//Units
 			//Shortcode
 			if (array_key_exists('elevation_units', $shortcode_data) && in_array($shortcode_data['elevation_units'], ['metric', 'imperial'])) {
-				$elevation_units = $shortcode_data['elevation_units'];
-				//Setting
-			} else {
-				$elevation_units = Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_units');
+				$out .= '	waymark_config.viewer_options.elevation_units = "' . $elevation_units . '";' . "\n";
 			}
-			$out .= '	waymark_config.elevation_units = "' . $elevation_units . '";' . "\n";
 		}
 
 		// === Clustering ===
 
 		// Shortcode option set?
-		if (array_key_exists('show_cluster', $shortcode_data)) {
-			$show_cluster = ($shortcode_data['show_cluster']) ? '1' : '0';
-			// Use Setting
-		} else {
-			$show_cluster = (Waymark_Config::get_setting('misc', 'cluster_options', 'show_cluster')) ? '1' : '0';
+		if (array_key_exists('show_cluster', $shortcode_data) && in_array($shortcode_data['show_cluster'], ['1', '0'])) {
+			$out .= '	waymark_config.viewer_options.show_cluster = ' . $shortcode_data['show_cluster'] . ';' . "\n";
 		}
-		$out .= '	waymark_config.show_cluster = ' . $show_cluster . ';' . "\n";
 
 		//Initially Show / Hide Types
 		foreach (['hide_marker', 'show_marker', 'hide_line', 'show_line', 'hide_shape', 'show_shape'] as $show_hide_type) {

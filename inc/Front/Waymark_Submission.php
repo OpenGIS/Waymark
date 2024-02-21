@@ -189,80 +189,13 @@ class Waymark_Submission {
 			}
 		}
 
-		//Create new Map object
-		Waymark_JS::add_call('const waymark_editor = window.Waymark_Map_Factory.editor()');
-
-		//Default view
-		if ($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
-			//We have a valid LatLng
-			if ($default_latlng_array = Waymark_Helper::latlng_string_to_array($default_latlng)) {
-				Waymark_JS::add_call('waymark_editor.fallback_latlng = [' . $default_latlng_array[0] . ',' . $default_latlng_array[1] . ']');
-			}
-		}
-		if ($default_zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
-			Waymark_JS::add_call('waymark_editor.fallback_zoom = ' . $default_zoom);
-		}
-
-		//Map Div
+		// Submission Map Div
 		$content .= '	<div id="waymark-map" class="waymark-submission waymark-map"></div>' . "\n";
 
-		//Output Config
-		Waymark_JS::add_chunk('var waymark_settings  = ' . Waymark_Config::get_settings_js());
+		// Add Editor
+		Waymark_JS::add_editor();
 
-		//Get Map config
-		$map_config = Waymark_Config::get_map_config();
-
-		//Each Overlay Type
-		foreach (['marker', 'line', 'shape'] as $overlay_name) {
-			$submission_types = [];
-			//Only include Types set for Submissions
-			foreach ($map_config[$overlay_name . '_types'] as $type) {
-				if ($type[$overlay_name . '_submission']) {
-					$submission_types[] = $type;
-				}
-			}
-
-			//If none (i.e. no Types set to Submission in Settings)
-			if (!sizeof($submission_types)) {
-				//Create blank
-				$blank = [];
-				foreach (array_keys($type) as $key) {
-					switch ($key) {
-					case 'fill_opacity':
-						$value = '0.5';
-
-						break;
-					case 'line_colour':
-					case 'marker_colour':
-						$value = '#000';
-
-						break;
-					default:
-						$value = '';
-
-						break;
-					}
-					$blank[$key] = $value;
-				}
-				$submission_types[] = $blank;
-			}
-
-			//Update Config
-			$map_config[$overlay_name . '_types'] = $submission_types;
-		}
-
-		Waymark_JS::add_call('var waymark_user_config = ' . json_encode($map_config) . ';');
-		Waymark_JS::add_call('waymark_user_config.map_height = 600;');
-
-		//Set basemap
-		if ($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
-			Waymark_JS::add_call('waymark_user_config.map_init_basemap = "' . $editor_basemap . '"');
-		}
-
-		//Go!
-		Waymark_JS::add_call('waymark_editor.init(waymark_user_config)');
-
-		//Disable certain featureS?
+		//Disable certain features?
 		$disable_features = array_diff($this->all_features, $this->features);
 		foreach ($disable_features as $disable) {
 			Waymark_JS::add_call("
@@ -270,12 +203,7 @@ class Waymark_Submission {
 			");
 		}
 
-		// Handle Front-End Upload Integration
-		Waymark_JS::add_call('if(typeof waymark_setup_map_editor === "function") waymark_setup_map_editor(waymark_editor)');
-
-		// Done loading
-		Waymark_JS::add_call('waymark_editor.load_done()');
-
+		// Submission Form
 		$content .= '	<form action="' . Waymark_Helper::http_url() . '" method="post" id="waymark-map-add" class="waymark-map-add">' . "\n";
 		$content .= '		<input type="hidden" name="waymark_action" value="public_add_map" />' . "\n";
 		$content .= '		<input type="hidden" name="waymark_security" value="' . wp_create_nonce(Waymark_Config::get_item('nonce_string')) . '" />' . "\n";

@@ -11,12 +11,12 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',
 			'custom_types' => array(),
-			'plugin_version' => '1.0.4',
+			'plugin_version' => '1.1.0',
 			'nonce_string' => 'Waymark_Nonce',
 			'site_url' => 'https://www.waymark.dev/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
 			'multi_value_seperator' => $multi_value_seperator,
-			'overlay_properties' => ['radius', 'type', 'title', 'description', 'image_thumbnail_url', 'image_medium_url', 'image_large_url'],
+			'overlay_properties' => ['radius', 'type', 'title', 'description', 'image_thumbnail_url', 'image_medium_url', 'image_large_url', 'direction'],
 			'shortcode' => 'Waymark',
 			'media_library_sizes' => ['thumbnail', 'medium', 'large', 'full'],
 			'mimes' => array(
@@ -84,8 +84,6 @@ class Waymark_Config {
 					'map_default_latlng' => '51.38436,-68.74923',
 					'map_default_zoom' => '9',
 					'map_height' => '450',
-					'show_type_labels' => '1',
-					'button_position' => 'topleft',
 					'show_gallery' => '1',
 					'show_filter' => '1',
 					'allow_export' => '0',
@@ -317,7 +315,7 @@ class Waymark_Config {
 	public static function get_settings_parameters($tab_id = null, $group_id = null) {
 		$settings = array();
 
-		//If only getting a secific section
+		//If only getting a specific section
 		if (array_key_exists($tab_id, self::$parameters) && array_key_exists($group_id, self::$parameters[$tab_id])) {
 			$group_data = self::$parameters[$tab_id][$group_id];
 			//Iterate over each parameter
@@ -331,7 +329,7 @@ class Waymark_Config {
 		return $settings;
 	}
 
-	public static function get_map_config() {
+	public static function get_map_config($encode = false) {
 		$map_config = array();
 
 		//Basemaps
@@ -342,25 +340,62 @@ class Waymark_Config {
 			$tl = htmlspecialchars_decode($tl);
 		}
 		$tile_layers = Waymark_Helper::convert_single_value_to_array($tile_layers);
-		$map_config['tile_layers'] = $tile_layers;
 
-		//Object Types
-		$map_config['marker_types'] = Waymark_Helper::get_overlay_types('marker');
-		$map_config['line_types'] = Waymark_Helper::get_overlay_types('line');
-		$map_config['shape_types'] = Waymark_Helper::get_overlay_types('shape');
+		//Map Options
+		$map_config['map_options'] = [
+			'map_height' => Waymark_Config::get_setting('misc', 'map_options', 'map_height'),
 
-		//Editor Options
-		$map_config['map_options'] = array(
-			'show_type_labels' => Waymark_Config::get_setting('misc', 'map_options', 'show_type_labels'),
-			'button_position' => 'topleft',
-		);
+			//Basemaps
+			'tile_layers' => $tile_layers,
+			'marker_types' => Waymark_Helper::get_overlay_types('marker'),
+			'line_types' => Waymark_Helper::get_overlay_types('line'),
+			'shape_types' => Waymark_Helper::get_overlay_types('shape'),
+
+			'show_scale' => Waymark_Config::get_setting('misc', 'map_options', 'show_scale'),
+
+			// Admin only
+			'debug_mode' => current_user_can('administrator') && Waymark_Config::get_setting('misc', 'advanced', 'debug_mode'),
+		];
+
+		//Viewer Options
+		$map_config['viewer_options'] = [
+			// Features
+			'show_gallery' => Waymark_Config::get_setting('misc', 'map_options', 'show_gallery'),
+			'show_filter' => Waymark_Config::get_setting('misc', 'map_options', 'show_filter'),
+			'show_cluster' => Waymark_Config::get_setting('misc', 'cluster_options', 'show_cluster'),
+			'show_elevation' => Waymark_Config::get_setting('misc', 'elevation_options', 'show_elevation') == '1',
+
+			// Cluster options
+			'cluster_radius' => Waymark_Config::get_setting('misc', 'cluster_options', 'cluster_radius'),
+			'cluster_threshold' => Waymark_Config::get_setting('misc', 'cluster_options', 'cluster_threshold'),
+
+			// Elevation options
+			'elevation_units' => Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_units'),
+			'elevation_initial' => Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_initial'),
+			'elevation_colour' => Waymark_Config::get_setting('misc', 'elevation_options', 'elevation_colour'),
+
+			// Sleep options
+			'sleep_delay_seconds' => Waymark_Config::get_setting('misc', 'interaction_options', 'delay_seconds'),
+			'sleep_do_message' => Waymark_Config::get_setting('misc', 'interaction_options', 'do_message'),
+			'sleep_wake_message' => Waymark_Config::get_setting('misc', 'interaction_options', 'wake_message'),
+		];
 
 		//Editor Options
 		$map_config['editor_options'] = array(
 			'confirm_delete' => Waymark_Config::get_setting('misc', 'editor_options', 'confirm_delete'),
 		);
 
-		return $map_config;
+		// Localisation
+
+		$map_config['language'] = Waymark_Lang::get_js_lang();
+
+		// Waymark_Helper::debug($map_config);
+
+		if ($encode) {
+			return json_encode($map_config);
+		} else {
+			return $map_config;
+		}
 	}
 
 	public static function is_custom_type($type = null) {
@@ -377,80 +412,6 @@ class Waymark_Config {
 		return in_array($type, self::$data['custom_types']) || in_array('waymark_' . $type, self::$data['custom_types']);
 	}
 
-	public static function get_settings_js($encode = true) {
-		$settings = get_option('Waymark_Settings');
-
-		$settings_js = [];
-
-		//Scale
-		if (isset($settings['misc']['map_options']['show_scale'])) {
-			$show_scale = $settings['misc']['map_options']['show_scale'];
-		} else {
-			$show_scale = '0';
-		}
-		$settings_js['misc']['map_options']['show_scale'] = $show_scale;
-
-		//GeoJSON Properties
-		$overlay_properties = Waymark_Config::get_item('properties', 'props', true);
-		$overlay_properties = Waymark_Helper::multi_use_as_key($overlay_properties, 'property_key');
-
-		if (sizeof($overlay_properties)) {
-			$settings_js['overlay']['properties'] = $overlay_properties;
-		} else {
-			$settings_js['overlay']['properties'] = [];
-		}
-
-		// Sleep Options
-		if (isset($settings['misc']['interaction_options']['delay_seconds'])) {
-			$settings_js['misc']['interaction_options']['delay_seconds'] = $settings['misc']['interaction_options']['delay_seconds'];
-		} else {
-			$settings_js['misc']['interaction_options']['delay_seconds'] = 2;
-		}
-
-		// Cluster Options
-		if (isset($settings['misc']['cluster_options']['show_cluster'])) {
-			$settings_js['misc']['cluster_options'] = $settings['misc']['cluster_options'];
-		}
-
-		if (isset($settings['misc']['interaction_options']['do_message'])) {
-			$settings_js['misc']['interaction_options']['do_message'] = $settings['misc']['interaction_options']['do_message'];
-		} else {
-			$settings_js['misc']['interaction_options']['do_message'] = 0;
-		}
-
-		if (isset($settings['misc']['interaction_options']['wake_message'])) {
-			$settings_js['misc']['interaction_options']['wake_message'] = $settings['misc']['interaction_options']['wake_message'];
-		} else {
-			$settings_js['misc']['interaction_options']['wake_message'] = 'Click or Hover to Wake';
-		}
-
-		//Debug mode
-		//Only admin
-		if (!current_user_can('administrator')) {
-			$debug_mode = '0';
-			//Setting
-		} elseif (isset($settings['misc']['advanced']['debug_mode'])) {
-			$debug_mode = $settings['misc']['advanced']['debug_mode'];
-		} else {
-			$debug_mode = '0';
-		}
-		$settings_js['misc']['advanced']['debug_mode'] = $debug_mode;
-
-		if ($encode) {
-			return json_encode($settings_js);
-		} else {
-			return $settings_js;
-		}
-	}
-
-	public static function get_user_config_js($encode = true) {
-
-		if ($encode) {
-			return json_encode(self::get_map_config());
-		} else {
-			return self::get_map_config();
-		}
-	}
 }
 
 Waymark_Config::init();

@@ -54,8 +54,8 @@ class Waymark_Helper {
 		return plugin_dir_url('') . 'waymark/assets/' . $file_path;
 	}
 
-	static public function plugin_path($append = '') {
-		return Waymark_Config::get_item('site_url') . $url_path;
+	static public function plugin_url($file_path = '') {
+		return plugin_dir_url('') . 'waymark/' . $file_path;
 	}
 
 	static public function http_url($data = array()) {
@@ -1271,10 +1271,6 @@ class Waymark_Helper {
 
 			//Type
 			case 'type':
-				// if (Waymark_Config::get_item('map_options.show_type_labels') != '1') {
-				// 	break;
-				// }
-
 				$content .= self::type_to_text($feature_type, $type_data, 'small');
 
 				break;

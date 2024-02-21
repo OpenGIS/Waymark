@@ -11,13 +11,12 @@ class Waymark_JS {
 	}
 
 	static function enqueue_scripts() {
-		wp_register_style('waymark-js', Waymark_Helper::asset_url('dist/waymark-js/css/waymark-js.min.css'), array(), Waymark_Config::get_version());
+		wp_register_style('waymark-js', Waymark_Helper::plugin_url('waymark-js/dist/css/waymark-js.min.css'), array(), Waymark_Config::get_version());
 		wp_enqueue_style('waymark-js');
-		wp_register_script('waymark-js', Waymark_Helper::asset_url('dist/waymark-js/js/waymark-js.min.js'), array('jquery'), Waymark_Config::get_version(), true);
+		wp_register_script('waymark-js', Waymark_Helper::plugin_url('waymark-js/dist/js/waymark-js.min.js'), array('jquery'), Waymark_Config::get_version(), true);
 		wp_localize_script('waymark-js', 'waymark_js', array(
 			//AJAX
 			'ajaxurl' => admin_url('admin-ajax.php'),
-			'lang' => Waymark_Lang::get_js_lang(),
 		));
 		wp_enqueue_script('waymark-js');
 
@@ -25,7 +24,7 @@ class Waymark_JS {
 		wp_enqueue_script('waymark_front_js');
 
 		//Config
-		self::add_chunk("\n" . 'var waymark_user_config = ' . json_encode(Waymark_Config::get_map_config()));
+		self::add_chunk("\n" . 'var waymark_user_config = ' . Waymark_Config::get_map_config(true));
 
 		//AJAX
 		if ('fetch' === Waymark_Config::get_setting('misc', 'collection_options', 'load_method')) {
@@ -81,6 +80,91 @@ function waymark_load_map_data(map_instance, map_id, link_to_map = false, reset_
 		}
 		echo '</script>' . "\n";
 		echo '<!-- END ' . Waymark_Config::get_name(true, true) . ' Footer JS -->' . "\n\n";
+	}
+
+	static function add_editor($map_data = []) {
+
+		// Ensure we have a valid map_data array
+		if (!is_array($map_data)) {
+			$map_data = [];
+		}
+
+		//Create new Map object
+		self::add_call('const waymark_editor = window.Waymark_Map_Factory.editor()');
+
+		//Get Map config
+		$map_config = Waymark_Config::get_map_config();
+
+		//Each Overlay Type
+		foreach (['marker', 'line', 'shape'] as $overlay_name) {
+			$submission_types = [];
+			//Only include Types set for Submissions
+			foreach ($map_config['map_options'][$overlay_name . '_types'] as $type) {
+				if ($type[$overlay_name . '_submission']) {
+					$submission_types[] = $type;
+				}
+			}
+
+			//If none (i.e. no Types set to Submission in Settings)
+			if (!sizeof($submission_types)) {
+				//Create blank
+				$blank = [];
+				foreach (array_keys($type) as $key) {
+					switch ($key) {
+					case 'fill_opacity':
+						$value = '0.5';
+
+						break;
+					case 'line_colour':
+					case 'marker_colour':
+						$value = '#000';
+
+						break;
+					default:
+						$value = '';
+
+						break;
+					}
+					$blank[$key] = $value;
+				}
+				$submission_types[] = $blank;
+			}
+
+			//Update Config
+			$map_config['map_options'][$overlay_name . '_types'] = $submission_types;
+		}
+
+		self::add_call('var waymark_user_config = ' . json_encode($map_config) . ';');
+
+		//Set basemap
+		if ($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
+			self::add_call('waymark_user_config.map_options.map_init_basemap = "' . $editor_basemap . '"');
+		}
+
+		//Default view
+		if ($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
+			// We have a valid LatLng
+			if ($default_latlng_array = Waymark_Helper::latlng_string_to_array($default_latlng)) {
+				self::add_call('waymark_user_config.map_options.map_init_latlng = [' . $default_latlng_array[0] . ', ' . $default_latlng_array[1] . ']');
+			}
+		}
+		if ($default_zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
+			self::add_call('waymark_user_config.map_options.map_init_zoom = ' . $default_zoom);
+		}
+
+		// Set up data container by adding ID
+		self::add_call('
+			jQuery(".waymark-input.waymark-input-map_data").attr("id", "waymark-data");
+		');
+
+		//Go!
+		self::add_call('waymark_editor.init(waymark_user_config)');
+
+		// Handle Front-End Upload Integration
+		self::add_call('if(typeof waymark_setup_map_editor === "function") waymark_setup_map_editor(waymark_editor)');
+
+		// Done loading
+		self::add_call('waymark_editor.load_done()');
 	}
 }
 

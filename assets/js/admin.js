@@ -11,7 +11,7 @@ function waymark_setup_map_editor(waymark_editor = {}) {
 		return;
 	}
 
-	waymark_editor.debug("Adding WordPress Integrations");
+	waymark_editor.debug("Admin Editor Integrations");
 
 	// TODO - Add unsaved changes warning
 
@@ -22,6 +22,10 @@ function waymark_setup_map_editor(waymark_editor = {}) {
 	// 		return null;
 	// 	});
 	// }');
+
+	// Show File upload button in toolbar
+	jQuery(".waymark-edit-toolbar a.waymark-edit-upload").removeClass("waymark-hidden");
+
 
 	// Add Image upload to toolbar
 

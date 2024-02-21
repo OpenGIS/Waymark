@@ -1,6 +1,6 @@
 {
   "name": "Waymark",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Waymark for WordPress",
   "author": "Joe Hawes",
   "main": "Gruntfile.js",
@@ -14,7 +14,7 @@
     "grunt-contrib-watch": "^1.1.0",
     "grunt-css-url-replace": "^0.2.7",
     "grunt-terser": "^1.0.0",
-    "grunt-wp-i18n": "^1.0.4",
+    "grunt-wp-i18n": "^1.0.3",
     "grunt-wp-readme-to-markdown": "^2.1.0",
     "prettier": "^3.1.1"
   }

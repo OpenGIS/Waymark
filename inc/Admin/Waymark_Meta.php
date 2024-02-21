@@ -18,7 +18,7 @@ class Waymark_Meta {
 
 		//Waymark JS
 		//CSS
-		wp_register_style('waymark-js', Waymark_Helper::asset_url('dist/waymark-js/css/waymark-js.min.css'), array(), Waymark_Config::get_version());
+		wp_register_style('waymark-js', Waymark_Helper::plugin_url('waymark-js/dist/css/waymark-js.min.css'), array(), Waymark_Config::get_version());
 		wp_enqueue_style('waymark-js');
 
 		//JS
@@ -26,7 +26,7 @@ class Waymark_Meta {
 		// Use human readble version of Waymark JS if debug is on :)
 		$waymark_js_filename = (Waymark_Helper::is_debug()) ? 'waymark-js.js' : 'waymark-js.min.js';
 
-		wp_register_script('waymark-js', Waymark_Helper::asset_url('dist/waymark-js/js/' . $waymark_js_filename), array('jquery'), Waymark_Config::get_version());
+		wp_register_script('waymark-js', Waymark_Helper::plugin_url('waymark-js/dist/js/' . $waymark_js_filename), array('jquery'), Waymark_Config::get_version());
 		//Localize
 		wp_localize_script('waymark-js', 'waymark_js', array(
 			'ajaxurl' => admin_url('admin-ajax.php'),
@@ -113,14 +113,11 @@ class Waymark_Meta {
 		// Create new Map object
 		$Map = new Waymark_Map($post->ID);
 
-		// TODO - add configutation for this
-		// Waymark_JS::add_editor($data, $config);
-
+		// Add Editor
 		Waymark_JS::add_editor($Map->get_geojson());
 
+		// Map Form (inc. Meta)
 		echo $Map->create_form();
-
-		//Create Feed meta input
 
 		echo '<p>' . sprintf(__('You can manage Meta fields in <a href="%s">Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta')) . '</p>';
 	}

@@ -66,37 +66,39 @@ class Waymark_JS {
 		//Create new Map object
 		self::add_call('const waymark_editor = window.Waymark_Map_Factory.editor()');
 
-		//Default view
-		if ($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
-			//We have a valid LatLng
-			if ($default_latlng_array = Waymark_Helper::latlng_string_to_array($default_latlng)) {
-				self::add_call('waymark_editor.fallback_latlng = [' . $default_latlng_array[0] . ',' . $default_latlng_array[1] . ']');
-			}
-		}
-		if ($default_zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
-			self::add_call('waymark_editor.fallback_zoom = ' . $default_zoom);
-		}
-
 		//Map Div
-
-		// TODO - allow ID config
-
 		echo '<div id="waymark-map" class="waymark-map"></div>' . "\n";
 
 		//Output Config
-		self::add_call('var waymark_user_config = ' . json_encode(Waymark_Config::get_map_config()) . ';');
-		self::add_call('waymark_user_config.map_height = 600;');
+		self::add_call('var waymark_user_config = ' . Waymark_Config::get_map_config(true) . ';');
+		self::add_call('waymark_user_config.map_options.map_height = 600;');
+
+		if ($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
+			// We have a valid LatLng
+			if ($default_latlng_array = Waymark_Helper::latlng_string_to_array($default_latlng)) {
+				self::add_call('waymark_user_config.map_options.map_init_latlng = [' . $default_latlng_array[0] . ', ' . $default_latlng_array[1] . ']');
+
+			}
+		}
+		if ($default_zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
+			self::add_call('waymark_user_config.map_options.map_init_zoom = ' . $default_zoom);
+		}
 
 		//Set basemap
 		if ($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {
-			self::add_call('waymark_user_config.map_init_basemap = "' . $editor_basemap . '"');
+			self::add_call('waymark_user_config.map_options.map_init_basemap = "' . $editor_basemap . '"');
 		}
+
+		// Set up data container by adding ID
+		self::add_call('
+			jQuery(".waymark-input.waymark-input-map_data").attr("id", "waymark-data");
+		');
 
 		// Initialise Editor
 		self::add_call('waymark_editor.init(waymark_user_config)');
 
-		// Add GeoJSON
-		self::add_call('waymark_editor.load_json(' . json_encode($map_data) . ');');
+		// // Add GeoJSON
+		// self::add_call('waymark_editor.load_json(' . json_encode($map_data) . ');');
 
 		// Handle WordPress Editor integrations
 		self::add_call('if(typeof waymark_setup_map_editor === "function") waymark_setup_map_editor(waymark_editor)');
