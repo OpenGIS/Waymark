@@ -12,12 +12,13 @@ Waymark adds powerful mapping features to WordPress that are easy to use. Create
 
 ## Description ##
 
-🗺 [View the Demo](https://www.ogis.app/yosemite/)
-🛠️ [Try the Editor](https://www.waymark.dev/try/)
-📼 [Watch the Video](https://www.waymark.dev/#footer)
-📖 [Read the Docs](https://www.waymark.dev/docs/)
-🌟 [Star on GitHub](https://github.com/opengis/waymark)
-❤️
+🗺 [Demo](https://www.ogis.app/yosemite/)
+🛠️ [Try](https://www.waymark.dev/try/)
+📼 [Watch](https://www.waymark.dev/#footer)
+📖 [Docs](https://www.waymark.dev/docs/)
+🌟 [GitHub](https://github.com/opengis/waymark)
+❤️ [WordPress](https://wordpress.org/plugins/waymark/)
+☕️ [Waymark JS](https://www.waymark.dev/js)
 
 ### Creating Maps
 
@@ -104,7 +105,7 @@ The build script will watch for changes to the JavaScript and CSS files.
 
 Pull requests are welcome!
 
-> [!NOTE]
+> [!IMPORTANT]
 > [Waymark JS](https://www.waymark.dev/js) is responsible for the Viewer and Editor and is included as a Git submodule (`/waymark-js` directory). View on [GitHub](https://github.com/OpenGIS/Waymark-JS/).
 
 
@@ -218,7 +219,7 @@ Fixed a bug with Map Exporting. Thanks to <a href="https://wordpress.org/support
 
 Thanks for helping Waymark get to Version 1! ❤️
 
-* [Map First](https://www.ogis.app/yosemite/) - A minimal WordPress theme with an *obsession* for Maps. It's open-source too and contains lots of comments about customisations. As seen in the [demo](https://www.ogis.app/yosemite/).
+* [Map First](https://github.com/opengis/map-first) - A minimal WordPress theme with an *obsession* for Maps. It's open-source too and contains lots of comments about customisations. As seen in the [demo](https://www.ogis.app/yosemite/).
 * Added Total Ascent and Descent to Elevation Profile. Thanks to <a href="https://github.com/MaximeChallon">MaximeChallon</a> for the <a href="https://github.com/OpenGIS/Waymark/pull/29">Pull Request</a> :)
 * Improved rendering of multiple Maps through the Collection Shortcode, where the initial view would sometimes not be set correctly to view all Map data.
 * Updated documentation.
