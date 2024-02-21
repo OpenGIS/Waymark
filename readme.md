@@ -52,7 +52,7 @@ Embed your Maps using the `[Waymark]` Shortcode, or link to the [Map Details](ht
   - Display a Basemap only, without any Overlays by providing centre and zoom parameters.
 - **[Basemaps](https://www.waymark.dev/docs/basemaps/)** - Uses [OpenStreetMap](https://www.openstreetmap.org/fixthemap) by default, with support for multiple raster tiled/"slippy" Basemaps. You can switch Basemaps using the Overlay Filter.
 - **Overlay Filter** - Allow the user to filter which Overlays are currently visible on the Map.
-- **[Export](https://www.waymark.dev/docs/shortcodes/#shortcode-export)**
+- **Export**
   - (Optionally) Let anyone Export Maps into GPX, KML and GeoJSON formats through the Shortcode Header or on the Map Details page.
   - Works on mobile devices.
 
