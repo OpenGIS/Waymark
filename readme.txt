@@ -4,7 +4,7 @@ Tags: GIS, Map maker, Maps, Leaflet, GPX, KML, GeoJSON, OpenStreetMap, EXIF, Map
 Requires at least: 4.6
 Tested up to: 6.4
 Requires PHP: 5.2
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,10 +170,13 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 == Changelog ==
 
+= 1.1.2 =
+
+- Adding missing localisations.
+
 = 1.1.1 =
 
 - Elevation display bug fix. Thanks to [hsmeets](https://wordpress.org/support/users/hsmeets/) for [reporting this](https://wordpress.org/support/topic/height-map-no-longer-shown/).
-
 
 = 1.1.0 =
 

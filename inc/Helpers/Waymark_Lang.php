@@ -12,6 +12,8 @@ class Waymark_Lang {
 			'label_total_length' => esc_attr__('Total Length: ', 'waymark'),
 			'label_max_elevation' => esc_attr__('Max. Elevation: ', 'waymark'),
 			'label_min_elevation' => esc_attr__('Min. Elevation: ', 'waymark'),
+			'label_ascent' => esc_attr__('Total Ascent: ', 'waymark'),
+			'label_descent' => esc_attr__('Total Descent: ', 'waymark'),
 
 			//Editor
 			'add_line_title' => esc_attr__('Draw a Line', 'waymark'),
