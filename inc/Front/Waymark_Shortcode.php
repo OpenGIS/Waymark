@@ -254,12 +254,17 @@ class Waymark_Shortcode {
 		$out .= '	<div style="' . $map_style . '" id="waymark-map-' . $shortcode_hash . '" class="' . $map_class . '" data-shortcode_hash="' . $shortcode_hash . '"></div>' . "\n";
 
 		//Elevation?
-		if (array_key_exists('show_elevation', $shortcode_data) && $shortcode_data['show_elevation'] == '1') {
-			$show_elevation = true;
 
-			$out .= '	<div id="waymark-elevation-' . $shortcode_hash . '"></div>' . "\n";
+		// Shortcode
+		if (array_key_exists('show_elevation', $shortcode_data)) {
+			$show_elevation = $shortcode_data['show_elevation'] == '1';
+			// Use Setting
 		} else {
-			$show_elevation = false;
+			$show_elevation = Waymark_Config::get_setting('misc', 'elevation_options', 'show_elevation') == '1';
+		}
+
+		if ($show_elevation) {
+			$out .= '	<div id="waymark-elevation-' . $shortcode_hash . '"></div>' . "\n";
 		}
 
 		// Waymark_Helper::debug($show_elevation);
