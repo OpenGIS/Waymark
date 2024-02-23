@@ -8,6 +8,9 @@ function waymark_setup_map_editor(waymark_editor = {}) {
 		return;
 	}
 
+	// Show File upload button in toolbar
+	jQuery(".waymark-edit-toolbar a.waymark-edit-upload").removeClass("waymark-hidden");
+
 	// Add Image upload to toolbar
 
 	const image_button = jQuery(".waymark-edit-toolbar a.waymark-edit-image");
@@ -56,8 +59,6 @@ function waymark_setup_map_editor(waymark_editor = {}) {
 		);
 
 		if (image_button.length) {
-			waymark_editor.debug("Popup Front-End Image Uploads.", "alert");
-
 			image_button.removeClass("waymark-hidden");
 
 			image_button.on("click", function (e) {
