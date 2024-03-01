@@ -250,7 +250,7 @@ class Waymark_Shortcode {
 		// TODO - refactor - add/remove "loading" class instead of inline style
 
 		$map_style = 'display:none;';
-		$map_style .= 'height:' . $map_height . 'px';
+		$map_style .= 'height:' . $map_height . 'px;min-height:' . $map_height . 'px;';
 		$out .= '	<div style="' . $map_style . '" id="waymark-map-' . $shortcode_hash . '" class="' . $map_class . '" data-shortcode_hash="' . $shortcode_hash . '"></div>' . "\n";
 
 		//Elevation?

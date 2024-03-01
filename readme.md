@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.4  
 **Requires PHP:** 5.2  
-**Stable tag:** 1.1.3  
+**Stable tag:** 1.1.4  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -188,7 +188,11 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 ## Changelog ##
 
-### 1.1.3 ###
+### 1.1.4 ###
+
+- Map height bug fix.
+
+### 1.1.4 ###
 
 - Submission File Upload bug fix.
 
