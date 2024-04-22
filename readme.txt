@@ -12,7 +12,7 @@ Waymark adds powerful mapping features to WordPress that are easy to use. Create
 
 == Description ==
 
-🗺 [Demo](https://www.ogis.app/yosemite/)
+🗺 [Demo](https://www.waymark.dev/)
 🛠️ [Try](https://www.waymark.dev/try/)
 📼 [Watch](https://www.waymark.dev/#footer)
 📖 [Docs](https://www.waymark.dev/docs/)
