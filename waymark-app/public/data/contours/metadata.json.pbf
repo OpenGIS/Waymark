@@ -1,0 +1,18 @@
+{
+    "attribution": "<a href=\"https://www.maptiler.com/copyright/\" target=\"_blank\">&copy; MapTiler</a> <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>", 
+    "center": "-179.6484375,-85.0206144800207,11", 
+    "format": "pbf", 
+    "basename": "cv.mbtiles", 
+    "json": "{\"vector_layers\":[{\"id\":\"contour\",\"description\":\"Contour lines with height and additional information for index line styling.\",\"minzoom\":9,\"maxzoom\":14,\"fields\":{}}]}", 
+    "bounds": "-180,-85.05112877980659,-179.296875,-84.9901001802348", 
+    "name": "cv.mbtiles", 
+    "minzoom": "9", 
+    "version": "v1.3", 
+    "filesize": "38526976", 
+    "mtime": "1515427200000", 
+    "maxzoom": "14", 
+    "scheme": "tms", 
+    "type": "overlay", 
+    "id": "contours", 
+    "description": "cv.mbtiles"
+}

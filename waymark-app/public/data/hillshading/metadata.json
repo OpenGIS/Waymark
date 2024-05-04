@@ -1,0 +1,17 @@
+{
+  "profile": "mercator",
+  "scale": "1",
+  "attribution": "<a href=\"https://www.maptiler.com/copyright/\" target=\"_blank\">&copy; MapTiler</a> <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>",
+  "name": "Hillshades",
+  "format": "png",
+  "center": "-124.45121,49.76705,12",
+  "bounds": "-125.58694,49.41025,-123.31548,50.12385",
+  "format_arguments": "",
+  "maskLevel": "5",
+  "minzoom": "0",
+  "version": "1.0",
+  "maxzoom": "12",
+  "type": "overlay",
+  "id": "openmaptiles_hillshades",
+  "description": "Custom extract from https://openmaptiles.com"
+}

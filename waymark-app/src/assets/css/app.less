@@ -1,0 +1,173 @@
+@import './reset.css';
+@import './typography.css';
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+/*
+  ==================================
+  ============= ROWS ============
+  ==================================
+*/
+
+td {
+  padding: 1%;
+  vertical-align: middle;
+
+  &.image {
+    width: 60px;
+
+    img {
+      max-width: 50px;
+    }
+  }
+
+  &.title {
+    font-size: 120%;
+    // font-weight: bold;
+  }
+
+  &.action {
+    padding: 0;
+    width: 60px;
+  }
+}
+
+/*
+  ==================================
+  ============= MARKERS ============
+  ==================================
+*/
+.waymark-marker {
+  display: table !important;
+  margin: 0 auto;
+  //    overflow: hidden;
+  text-align: center;
+
+  .waymark-marker-background {
+    width: inherit;
+    height: inherit;
+    max-width: inherit;
+    max-height: inherit;
+    position: absolute;
+    //      z-index: 0;
+    //      border: 1px solid rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+  }
+
+  /* ============= MARKER TYPES ============= */
+
+  //Circle
+  &.waymark-marker-circle {
+    .waymark-marker-background {
+      border-radius: 50%;
+    }
+  }
+
+  //Marker
+  &.waymark-marker-marker {
+    .waymark-marker-background {
+      transform: rotate(-45deg);
+      border-radius: 50% 50% 50% 0;
+    }
+  }
+
+  //Small
+  &.waymark-marker-small {
+    //Icon
+    .waymark-icon-icon {
+      &::before {
+        font-size: 10px;
+      }
+    }
+    //Text
+    .waymark-icon-text {
+      font-size: 8px;
+    }
+  }
+
+  //Medium
+  &.waymark-marker-medium {
+    //Icon
+    .waymark-icon-icon {
+      &::before {
+        font-size: 13px;
+      }
+    }
+    //Text
+    .waymark-icon-text {
+      font-size: 11px;
+    }
+  }
+
+  //Large
+  &.waymark-marker-large {
+    //Icon
+    .waymark-icon-icon {
+      &::before {
+        font-size: 20px;
+      }
+    }
+    //Text
+    .waymark-icon-text {
+      font-size: 14px;
+    }
+  }
+
+  /* ============= ICON TYPES ============= */
+
+  //Text & Icon
+  .waymark-marker-icon {
+    width: inherit;
+    height: inherit;
+    max-width: inherit;
+    max-height: inherit;
+    position: relative;
+    display: table-cell !important;
+    vertical-align: middle;
+    padding: 0;
+    text-align: center;
+    &::before {
+      display: unset;
+      width: inherit;
+      height: inherit;
+      max-width: inherit;
+      max-height: inherit;
+      vertical-align: middle;
+      margin-left: 1px;
+      line-height: 0;
+    }
+
+    //Icon Only
+    &.waymark-icon-icon {
+      line-height: 0;
+    }
+
+    //Text Only
+    &.waymark-icon-text {
+      font-weight: bold;
+      font-family: monaco, Consolas, Lucida Console, monospace;
+    }
+  }
+
+  /* ============= INTERACTION ============= */
+
+  &.overlay-hidden {
+    display: none !important;
+  }
+
+  &.overlay-highlight {
+    .waymark-marker-background {
+      margin-top: -4px;
+      margin-left: -4px;
+      padding: 4px !important;
+    }
+  }
+}
