@@ -1,4 +1,4 @@
-=== Waymark - Create an Interactive Map, or entire GIS. Embed OpenStreetMap, OSM, MapBox & Google Maps with Leaflet | Import + Export GPX, KML & GeoJSON | Elevation, EXIF & Geo Location ===
+=== Waymark  ===
 Contributors: morehawes
 Tags: GIS, Map maker, Maps, Leaflet, GPX, KML, GeoJSON, OpenStreetMap, EXIF, Map markers
 Requires at least: 4.6

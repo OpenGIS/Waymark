@@ -1,4 +1,4 @@
-# Waymark - Create an Interactive Map, or entire GIS. Embed OpenStreetMap, OSM, MapBox & Google Maps with Leaflet | Import + Export GPX, KML & GeoJSON | Elevation, EXIF & Geo Location #
+# Waymark  #
 **Contributors:** [morehawes](https://profiles.wordpress.org/morehawes/)  
 **Tags:** GIS, Map maker, Maps, Leaflet, GPX, KML, GeoJSON, OpenStreetMap, EXIF, Map markers  
 **Requires at least:** 4.6  
@@ -156,34 +156,34 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 ## Screenshots ##
 
 ### 1. Add Overlays (Markers, Lines and Shapes) to create detailed interactive Maps. You can import/export from GPX/KML/GeoJSON. ###
-![Add Overlays (Markers, Lines and Shapes) to create detailed interactive Maps. You can import/export from GPX/KML/GeoJSON.](https://ps.w.org/waymark---create-an-interactive-map,-or-entire-gis.-embed-openstreetmap,-osm,-mapbox-&-google-maps-with-leaflet-|-import-+-export-gpx,-kml-&-geojson-|-elevation,-exif-&-geo-location/assets/screenshot-1.jpg)
+![Add Overlays (Markers, Lines and Shapes) to create detailed interactive Maps. You can import/export from GPX/KML/GeoJSON.](https://ps.w.org/waymark/assets/screenshot-1.jpg)
 
 ### 2. Every Overlay can be given a title, image and description. Marker images can be displayed as a gallery. ###
-![Every Overlay can be given a title, image and description. Marker images can be displayed as a gallery.](https://ps.w.org/waymark---create-an-interactive-map,-or-entire-gis.-embed-openstreetmap,-osm,-mapbox-&-google-maps-with-leaflet-|-import-+-export-gpx,-kml-&-geojson-|-elevation,-exif-&-geo-location/assets/screenshot-2.jpg)
+![Every Overlay can be given a title, image and description. Marker images can be displayed as a gallery.](https://ps.w.org/waymark/assets/screenshot-2.jpg)
 
 ### 3. Waymark features a clean, intuitive Editor for creating and editing your Maps. Overlays are customisable using Types, which allow you set styles once (colours/icons etc.), so you can simply select it when you are adding to the Map.  ###
-![Waymark features a clean, intuitive Editor for creating and editing your Maps. Overlays are customisable using Types, which allow you set styles once (colours/icons etc.), so you can simply select it when you are adding to the Map. ](https://ps.w.org/waymark---create-an-interactive-map,-or-entire-gis.-embed-openstreetmap,-osm,-mapbox-&-google-maps-with-leaflet-|-import-+-export-gpx,-kml-&-geojson-|-elevation,-exif-&-geo-location/assets/screenshot-3.jpg)
+![Waymark features a clean, intuitive Editor for creating and editing your Maps. Overlays are customisable using Types, which allow you set styles once (colours/icons etc.), so you can simply select it when you are adding to the Map. ](https://ps.w.org/waymark/assets/screenshot-3.jpg)
 
 ### 4. If you have more than one Basemap, you can switch between them when viewing the Map. Overlays can be shown/hidden by Type. ###
-![If you have more than one Basemap, you can switch between them when viewing the Map. Overlays can be shown/hidden by Type.](https://ps.w.org/waymark---create-an-interactive-map,-or-entire-gis.-embed-openstreetmap,-osm,-mapbox-&-google-maps-with-leaflet-|-import-+-export-gpx,-kml-&-geojson-|-elevation,-exif-&-geo-location/assets/screenshot-4.jpg)
+![If you have more than one Basemap, you can switch between them when viewing the Map. Overlays can be shown/hidden by Type.](https://ps.w.org/waymark/assets/screenshot-4.jpg)
 
 ### 5. Use Meta to provide extra information about your Maps. Meta inputs are customisable and can be grouped.  ###
-![Use Meta to provide extra information about your Maps. Meta inputs are customisable and can be grouped. ](https://ps.w.org/waymark---create-an-interactive-map,-or-entire-gis.-embed-openstreetmap,-osm,-mapbox-&-google-maps-with-leaflet-|-import-+-export-gpx,-kml-&-geojson-|-elevation,-exif-&-geo-location/assets/screenshot-5.jpg)
+![Use Meta to provide extra information about your Maps. Meta inputs are customisable and can be grouped. ](https://ps.w.org/waymark/assets/screenshot-5.jpg)
 
 ### 6. The Map Details page displays an image gallery, elevation profile, export options, featured image and all Meta provided for the Map. ###
-![The Map Details page displays an image gallery, elevation profile, export options, featured image and all Meta provided for the Map.](https://ps.w.org/waymark---create-an-interactive-map,-or-entire-gis.-embed-openstreetmap,-osm,-mapbox-&-google-maps-with-leaflet-|-import-+-export-gpx,-kml-&-geojson-|-elevation,-exif-&-geo-location/assets/screenshot-6.jpg)
+![The Map Details page displays an image gallery, elevation profile, export options, featured image and all Meta provided for the Map.](https://ps.w.org/waymark/assets/screenshot-6.jpg)
 
 ### 7. Add Maps to your content using the Waymark Shortcode. You can choose which Meta is displayed. ###
-![Add Maps to your content using the Waymark Shortcode. You can choose which Meta is displayed.](https://ps.w.org/waymark---create-an-interactive-map,-or-entire-gis.-embed-openstreetmap,-osm,-mapbox-&-google-maps-with-leaflet-|-import-+-export-gpx,-kml-&-geojson-|-elevation,-exif-&-geo-location/assets/screenshot-7.jpg)
+![Add Maps to your content using the Waymark Shortcode. You can choose which Meta is displayed.](https://ps.w.org/waymark/assets/screenshot-7.jpg)
 
 ### 8. Organise Maps with Collections and display multiple Maps at once using the Shortcode. Collections can be nested and Maps can be associated with multiple Collections. ###
-![Organise Maps with Collections and display multiple Maps at once using the Shortcode. Collections can be nested and Maps can be associated with multiple Collections.](https://ps.w.org/waymark---create-an-interactive-map,-or-entire-gis.-embed-openstreetmap,-osm,-mapbox-&-google-maps-with-leaflet-|-import-+-export-gpx,-kml-&-geojson-|-elevation,-exif-&-geo-location/assets/screenshot-8.jpg)
+![Organise Maps with Collections and display multiple Maps at once using the Shortcode. Collections can be nested and Maps can be associated with multiple Collections.](https://ps.w.org/waymark/assets/screenshot-8.jpg)
 
 ### 9. Waymark was designed to be very flexible, with lots of Settings to choose from. ###
-![Waymark was designed to be very flexible, with lots of Settings to choose from.](https://ps.w.org/waymark---create-an-interactive-map,-or-entire-gis.-embed-openstreetmap,-osm,-mapbox-&-google-maps-with-leaflet-|-import-+-export-gpx,-kml-&-geojson-|-elevation,-exif-&-geo-location/assets/screenshot-9.jpg)
+![Waymark was designed to be very flexible, with lots of Settings to choose from.](https://ps.w.org/waymark/assets/screenshot-9.jpg)
 
 ### 10. Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website. ###
-![Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website.](https://ps.w.org/waymark---create-an-interactive-map,-or-entire-gis.-embed-openstreetmap,-osm,-mapbox-&-google-maps-with-leaflet-|-import-+-export-gpx,-kml-&-geojson-|-elevation,-exif-&-geo-location/assets/screenshot-10.jpg)
+![Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website.](https://ps.w.org/waymark/assets/screenshot-10.jpg)
 
 
 ## Changelog ##
