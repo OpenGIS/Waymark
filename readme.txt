@@ -4,7 +4,7 @@ Tags: GIS, Map maker, Maps, Leaflet, GPX, KML, GeoJSON, OpenStreetMap, EXIF, Map
 Requires at least: 4.6
 Tested up to: 6.4
 Requires PHP: 5.2
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,11 +170,15 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 == Changelog ==
 
+= 1.1.5 =
+
+- Chinese character fix. Thanks to [hlv008](https://wordpress.org/support/users/hlv008/) for [reporting this](https://wordpress.org/support/topic/the-icon-cannot-be-replaced-or-changed/).
+
 = 1.1.4 =
 
 - Map height bug fix.
 
-= 1.1.4 =
+= 1.1.3 =
 
 - Submission File Upload bug fix.
 
