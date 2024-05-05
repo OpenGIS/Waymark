@@ -1,6 +1,6 @@
 # Waymark  #
 **Contributors:** [morehawes](https://profiles.wordpress.org/morehawes/)  
-**Tags:** GIS, Map maker, Maps, Leaflet, GPX, KML, GeoJSON, OpenStreetMap, EXIF, Map markers  
+**Tags:** GIS, Map maker, GPX, Track, Elevation  
 **Requires at least:** 4.6  
 **Tested up to:** 6.4  
 **Requires PHP:** 5.2  
@@ -8,7 +8,7 @@
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
-Waymark adds powerful mapping features to WordPress that are easy to use. Create beautiful, interactive Maps that you can customise to suit your needs.
+Waymark adds powerful mapping features to WordPress that are easy to use. Create beautiful, interactive Maps customised to suit your needs.
 
 ## Description ##
 
