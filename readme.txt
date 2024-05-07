@@ -2,7 +2,7 @@
 Contributors: morehawes
 Tags: GIS, Map maker, GPX, Track, Elevation
 Requires at least: 4.6
-Tested up to: 6.4
+Tested up to: 6.5
 Requires PHP: 5.2
 Stable tag: 1.1.6
 License: GPLv2 or later
