@@ -36,7 +36,6 @@ class Waymark_Settings {
 			'waymark-settings-section-shortcode_options' => '-- ' . esc_html__('Shortcodes', 'waymark'),
 			'waymark-settings-section-elevation_options' => '-- ' . esc_html__('Elevation', 'waymark'),
 			'waymark-settings-tab-meta' => '-- ' . esc_html__('Meta', 'waymark'),
-			'waymark-settings-section-collection_options' => '-- ' . esc_html__('Collections', 'waymark'),
 			'waymark-settings-section-interaction_options' => '-- ' . esc_html__('Sleep', 'waymark'),
 			'waymark-settings-section-cluster_options' => '-- ' . esc_html__('Clustering', 'waymark'),
 			'waymark-settings-section-map_options' => '-- ' . esc_html__('Misc.', 'waymark'),
@@ -46,7 +45,6 @@ class Waymark_Settings {
 			'waymark-settings-tab-shapes' => '-- ' . esc_html__('Shapes', 'waymark'),
 			'label_sources' => esc_html__('Sources'),
 			'waymark-settings-tab-submission' => '-- ' . esc_html__('Submissions', 'waymark'),
-// 			'waymark-settings-tab-query' => '-- ' . esc_html__('Queries', 'waymark'),
 			'waymark-settings-tab-misc' => esc_html__('Advanced', 'waymark'),
 		];
 
@@ -1007,22 +1005,6 @@ class Waymark_Settings {
 						'text' => esc_attr__('Collection Docs &raquo;', 'waymark'),
 					),
 					'fields' => array(
-						'link_to_maps' => array(
-							'name' => 'link_to_maps',
-							'id' => 'link_to_maps',
-							'type' => 'boolean',
-							'title' => esc_html__('Link to Maps', 'waymark'),
-							'default' => Waymark_Config::get_setting('misc', 'collection_options', 'link_to_maps'),
-							'tip' => esc_attr__('Whether to display a link to the individual Map Details page when clicking on a Marker/Line/Shape displayed by the Collection.', 'waymark'),
-						),
-						'link_from_maps' => array(
-							'name' => 'link_from_maps',
-							'id' => 'link_from_maps',
-							'type' => 'boolean',
-							'title' => esc_html__('Link from Maps', 'waymark'),
-							'default' => Waymark_Config::get_setting('misc', 'collection_options', 'link_from_maps'),
-							'tip' => esc_attr__('Whether to display a link to the Collection(s) that a Map belongs to on the Map Details page.', 'waymark'),
-						),
 						'load_method' => array(
 							'name' => 'load_method',
 							'id' => 'load_method',
@@ -1139,10 +1121,6 @@ class Waymark_Settings {
 				'editor_options' => array(
 					'title' => esc_html__('Editor Options', 'waymark'),
 					'description' => esc_html__('Customising the Map Editor.', 'waymark'),
-					'help' => array(
-						'url' => esc_attr(Waymark_Helper::site_url('docs/editor')),
-						'text' => esc_attr__('Editor Docs &raquo;', 'waymark'),
-					),
 					'fields' => array(
 						'confirm_delete' => array(
 							'name' => 'confirm_delete',
@@ -1243,28 +1221,6 @@ class Waymark_Settings {
 				),
 			];
 		}
-
-		/**
-		 * ===========================================
-		 * ============== MAP INSTANCES ==============
-		 * ===========================================
-		 */
-
-		//Default centre
-// 		$this->waymark_instances['latlng_selector'] = new Waymark_Instance([
-// 			'hash' => 'latlng_selector',
-// 			'add_class' => 'waymark-hidden'
-// 		]);
-// 		$this->waymark_instances['latlng_selector']->add_js();
-// 		$this->tabs['misc']['sections']['map_options']['fields']['map_default_latlng']['prepend'] = $this->waymark_instances['latlng_selector']->get_html();
-//
-// 		//Query bounds
-// 		$this->waymark_instances['bounds_selector'] = new Waymark_Instance([
-// 			'hash' => 'bounds_selector',
-// 			'add_class' => 'waymark-hidden'
-// 		]);
-// 		$this->waymark_instances['bounds_selector']->add_js();
-// 		$this->tabs['query']['sections']['defaults']['fields']['query_area_bounds']['prepend'] = $this->waymark_instances['bounds_selector']->get_html();
 
 		add_action('admin_notices', array($this, 'admin_notices'));
 		add_action('admin_init', array($this, 'register_settings'));

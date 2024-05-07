@@ -29,13 +29,12 @@ class Waymark_JS {
 		//AJAX
 		if ('fetch' === Waymark_Config::get_setting('misc', 'collection_options', 'load_method')) {
 			self::add_chunk('
-function waymark_load_map_data(map_instance, map_id, link_to_map = false, reset_map = true) {
+function waymark_load_map_data(map_instance, map_id, reset_map = true) {
 	//Build request
 	var data = {
 		"waymark_action": "get_map_data",
 		"waymark_security": "' . wp_create_nonce(Waymark_Config::get_item('nonce_string')) . '",
-		"map_id": map_id,
-		"link_to_map": link_to_map === true
+		"map_id": map_id
 	};
 
 	//Do request

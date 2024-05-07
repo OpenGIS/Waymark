@@ -174,23 +174,19 @@ class Waymark_Helper {
 
 		// =============== APPEND ===============
 
-		//Display Collections?
-		if (Waymark_Config::get_setting('misc', 'collection_options', 'link_from_maps')) {
-			$collection_list = get_the_term_list($Map->post_id, 'waymark_collection', '', '<!--,-->, ');
-			if ($collection_list) {
+		//Collection List
+		$collection_list = get_the_term_list($Map->post_id, 'waymark_collection', '', '<!--,-->, ');
 
-				$meta_title = esc_html__('Collection', 'waymark');
-// 					if(strpos($collection_list, '<!--,-->')) {
-// 						$meta_title .= 's';
-// 					}
+		if ($collection_list) {
 
-				$map_meta['collection_list'] = array(
-					'meta_key' => 'collection_list',
-					'meta_title' => $meta_title,
-					'meta_value' => $collection_list,
-					'meta_group' => '',
-				);
-			}
+			$meta_title = esc_html__('Collection', 'waymark');
+
+			$map_meta['collection_list'] = array(
+				'meta_key' => 'collection_list',
+				'meta_title' => $meta_title,
+				'meta_value' => $collection_list,
+				'meta_group' => '',
+			);
 		}
 
 		//Add Export dropdown/link

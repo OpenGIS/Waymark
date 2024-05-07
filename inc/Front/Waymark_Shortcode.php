@@ -95,12 +95,8 @@ class Waymark_Shortcode {
 							continue;
 						}
 
-						//Link to Map page?
-						if (Waymark_Config::get_setting('misc', 'collection_options', 'link_to_maps') == true) {
-							//Modify map data
-							$Map->data['map_data'] = Waymark_Helper::add_map_link_to_description($Map->post_id, $Map->post_title, $Map->data['map_data']);
-
-						}
+						//Modify map data
+						$Map->data['map_data'] = Waymark_Helper::add_map_link_to_description($Map->post_id, $Map->post_title, $Map->data['map_data']);
 
 						//Add to GeoJSON
 						$collectionMaps['features'] = array_merge($collectionMaps['features'], json_decode($Map->data['map_data'], true)['features']);
@@ -422,7 +418,7 @@ class Waymark_Shortcode {
 					$reset_view = 'false';
 				}
 
-				$out .= '	waymark_load_map_data(waymark_viewer, ' . $map_id . ', true, ' . $reset_view . ');' . "\n";
+				$out .= '	waymark_load_map_data(waymark_viewer, ' . $map_id . ', ' . $reset_view . ');' . "\n";
 
 				$out .= '	waymark_viewer.debug("Shortcode #' . $shortcode_hash . ' Map Loaded via HTTP (' . $i . '/' . sizeof($maps_output) . ')");' . "\n";
 				$out .= '	waymark_viewer.debug(' . $map_id . ');' . "\n";

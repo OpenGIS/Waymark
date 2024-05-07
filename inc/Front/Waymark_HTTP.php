@@ -83,9 +83,7 @@ class Waymark_HTTP {
 					}
 
 					//Modify
-					if (Waymark_Config::get_setting('misc', 'collection_options', 'link_to_maps') == true && $_REQUEST['link_to_map'] == true) {
-						$map_data = Waymark_Helper::add_map_link_to_description($Map->post_id, $Map->post_title, $map_data);
-					}
+					$map_data = Waymark_Helper::add_map_link_to_description($Map->post_id, $Map->post_title, $map_data);
 
 					//Type
 					header('Content-Type: application/geo+json');
