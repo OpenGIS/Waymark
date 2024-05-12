@@ -170,11 +170,15 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 == Changelog ==
 
+= 1.1.7 = 
+
+Another Collection Map link fix.
+
 = 1.1.6 =
 
 Removed Link to/from Maps Setting in [Collection options](https://www.waymark.dev/docs/settings/#misc-collection_options). Links to/from Collections and Maps will now be displayed by default, but can be hidden using CSS if desired. Thanks to [wkndwlk](https://wordpress.org/support/users/wkndwlk/) for [reporting this](https://wordpress.org/support/topic/links-within-waymarks-on-collection-maps/).
 
-= 1.1.6 =
+= 1.1.5 =
 
 - Chinese character fix. Thanks to [hlv008](https://wordpress.org/support/users/hlv008/) for [reporting this](https://wordpress.org/support/topic/the-icon-cannot-be-replaced-or-changed/).
 

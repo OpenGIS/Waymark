@@ -118,6 +118,9 @@ class Waymark_Shortcode {
 							continue;
 						}
 
+						//Modify map data
+						$Map->data['map_data'] = Waymark_Helper::add_map_link_to_description($Map->post_id, $Map->post_title, $Map->data['map_data']);
+
 						//Output
 						$maps_output[$Map->post_id] = array(
 							'map_id' => $Map->post_id,
