@@ -373,10 +373,10 @@ class Waymark_Shortcode {
 				$overlay_type_explode = explode(',', $shortcode_data[$show_hide_type]);
 
 				foreach ($overlay_type_explode as $overlay_type) {
-					$out .= '	for(i in waymark_config.' . $overlay_kind . '_types) {' . "\n";
-					$out .= '		var this_key = waymark_viewer.make_key(waymark_config.' . $overlay_kind . '_types[i]["' . $overlay_kind . '_title"]);' . "\n";
+					$out .= '	for(i in waymark_config.map_options.' . $overlay_kind . '_types) {' . "\n";
+					$out .= '		var this_key = waymark_viewer.make_key(waymark_config.map_options.' . $overlay_kind . '_types[i]["' . $overlay_kind . '_title"]);' . "\n";
 					$out .= '		if(this_key == "' . $overlay_type . '") {' . "\n";
-					$out .= '			waymark_config.' . $overlay_kind . '_types[i]["' . $overlay_kind . '_display"] = ' . $overlay_display . ';' . "\n";
+					$out .= '			waymark_config.map_options.' . $overlay_kind . '_types[i]["' . $overlay_kind . '_display"] = ' . $overlay_display . ';' . "\n";
 					$out .= '		}' . "\n";
 					$out .= '	}' . "\n";
 				}

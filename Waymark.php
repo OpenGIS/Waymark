@@ -4,7 +4,7 @@
 Plugin Name: Waymark
 Plugin URI: https://www.waymark.dev/
 Description: Mapping with WordPress made easy. With Waymark enabled, click on the "Maps" link in the sidebar to create and edit Maps. Once you are happy with your Map, copy the Waymark shortcode and add it to your content.
-Version: 1.1.7
+Version: 1.1.8
 Text Domain: waymark
 Author: Joe Hawes
 Author URI: https://www.morehawes.ca/

@@ -4,7 +4,7 @@ Tags: GIS, Map maker, GPX, Track, Elevation
 Requires at least: 4.6
 Tested up to: 6.5
 Requires PHP: 5.2
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,6 +169,10 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 10. Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website.
 
 == Changelog ==
+
+= 1.1.8 = 
+
+Show/Hide Overlay Types bug fix. Thanks to [YosoraLife](https://github.com/YosoraLife) for raising this [issue](https://github.com/OpenGIS/Waymark/issues/41).
 
 = 1.1.7 = 
 
