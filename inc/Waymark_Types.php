@@ -38,7 +38,7 @@ class Waymark_Types {
 					'items_list_navigation' => esc_html__('Maps list navigation', 'waymark'),
 					'filter_items_list' => esc_html__('Filter Map list', 'waymark'),
 				),
-				'supports' => array('title', 'author', 'revisions', 'thumbnail'),
+				'supports' => array('title', 'author', 'revisions', 'thumbnail', 'comments'),
 				'hierarchical' => false,
 				'public' => true,
 				'show_ui' => true,
