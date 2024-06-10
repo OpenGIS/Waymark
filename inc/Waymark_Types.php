@@ -38,7 +38,8 @@ class Waymark_Types {
 					'items_list_navigation' => esc_html__('Maps list navigation', 'waymark'),
 					'filter_items_list' => esc_html__('Filter Map list', 'waymark'),
 				),
-				'supports' => array('title', 'author', 'revisions', 'thumbnail'),
+				// Default - overridden below
+				'supports' => array('title'),
 				'hierarchical' => false,
 				'public' => true,
 				'show_ui' => true,
@@ -59,6 +60,17 @@ class Waymark_Types {
 				'capability_type' => 'post',
 			),
 		);
+
+		// Custom post support
+		$supports = Waymark_Config::get_setting('misc', 'post', 'supports');
+		if (is_array($supports) && sizeof($supports)) {
+			// Override default supports
+			$this->types['waymark_map']['supports'] = [];
+
+			foreach ($supports as $support) {
+				$this->types['waymark_map']['supports'][] = $support;
+			}
+		}
 
 		//Show if debug
 		if (Waymark_Config::get_setting('misc', 'advanced', 'debug_mode') == true) {

@@ -995,32 +995,6 @@ class Waymark_Settings {
 					),
 				),
 
-				//Collections
-
-				'collection_options' => array(
-					'title' => esc_html__('Collection Options', 'waymark'),
-					'description' => esc_html__('How Collections are displayed.', 'waymark'),
-					'help' => array(
-						'url' => esc_attr(Waymark_Helper::site_url('docs/collections')),
-						'text' => esc_attr__('Collection Docs &raquo;', 'waymark'),
-					),
-					'fields' => array(
-						'load_method' => array(
-							'name' => 'load_method',
-							'id' => 'load_method',
-							'type' => 'select',
-							'options' => [
-								'fetch' => esc_html__('Background', 'waymark'),
-								'embed' => esc_html__('Embed', 'waymark'),
-							],
-							'class' => 'waymark-short-input',
-							'title' => esc_html__('Shortcode Method', 'waymark'),
-							'default' => Waymark_Config::get_setting('misc', 'collection_options', 'load_method'),
-							'tip' => esc_attr__('Whether to load multiple Maps in the Background (uses AJAX to improve page load) when embedding with the Shortcode, or to Embed them within the page. Embedding may be a bad idea for LARGE COLLECTIONS, but can resolve some issues where Collections are not displaying correctly.', 'waymark'),
-						),
-					),
-				),
-
 				//Shortcode
 
 				'shortcode_options' => array(
@@ -1116,6 +1090,38 @@ class Waymark_Settings {
 					),
 				),
 
+				/**
+				 * ===========================================
+				 * ================= ADVANCED ================
+				 * ===========================================
+				 */
+
+				//Collections
+
+				'collection_options' => array(
+					'title' => esc_html__('Collection Options', 'waymark'),
+					'description' => esc_html__('How Collections are displayed.', 'waymark'),
+					'help' => array(
+						'url' => esc_attr(Waymark_Helper::site_url('docs/collections')),
+						'text' => esc_attr__('Collection Docs &raquo;', 'waymark'),
+					),
+					'fields' => array(
+						'load_method' => array(
+							'name' => 'load_method',
+							'id' => 'load_method',
+							'type' => 'select',
+							'options' => [
+								'fetch' => esc_html__('Background', 'waymark'),
+								'embed' => esc_html__('Embed', 'waymark'),
+							],
+							'class' => 'waymark-short-input',
+							'title' => esc_html__('Shortcode Method', 'waymark'),
+							'default' => Waymark_Config::get_setting('misc', 'collection_options', 'load_method'),
+							'tip' => esc_attr__('Whether to load multiple Maps in the Background (uses AJAX to improve page load) when embedding with the Shortcode, or to Embed them within the page. Embedding may be a bad idea for LARGE COLLECTIONS, but can resolve some issues where Collections are not displaying correctly.', 'waymark'),
+						),
+					),
+				),
+
 				//Editor
 
 				'editor_options' => array(
@@ -1142,7 +1148,8 @@ class Waymark_Settings {
 					),
 				),
 
-				//Advanced
+				//Permalinks
+
 				'permalinks' => array(
 					'title' => esc_html__('Permalinks', 'waymark'),
 					'description' => 'Customise your Map and Collection URLs.',
@@ -1179,7 +1186,34 @@ class Waymark_Settings {
 					),
 				),
 
-				//Advanced
+				// Custom Post Type Supports
+
+				'post' => [
+					'title' => esc_html__('Post Type', 'waymark'),
+					'description' => 'Enable Custom Post Type features.',
+					'fields' => [
+						'supports' => [
+							'name' => 'supports',
+							'id' => 'supports',
+							'type' => 'select_multi',
+							'title' => esc_html__('Supports', 'waymark'),
+							'default' => Waymark_Config::get_setting('misc', 'post', 'supports'),
+							'tip' => esc_attr__('Enable or disable various WordPress features of the Map Custom Post Type.', 'waymark'),
+							'tip_link' => 'https://developer.wordpress.org/reference/functions/add_post_type_support/',
+							'options' => [
+								'title' => esc_html__('Title', 'waymark'),
+								'author' => esc_html__('Author', 'waymark'),
+								'revisions' => esc_html__('Revisions', 'waymark'),
+								'thumbnail' => esc_html__('Thumbnail', 'waymark'),
+								'comments' => esc_html__('Comments', 'waymark'),
+								'excerpt' => esc_html__('Excerpt', 'waymark'),
+							],
+						],
+					],
+				],
+
+				//Debug
+
 				'advanced' => array(
 					'title' => esc_html__('Debug', 'waymark'),
 					'description' => '',

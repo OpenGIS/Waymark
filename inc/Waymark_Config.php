@@ -11,7 +11,7 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',
 			'custom_types' => array(),
-			'plugin_version' => '1.1.8',
+			'plugin_version' => '1.2.0',
 			'nonce_string' => 'Waymark_Nonce',
 			'site_url' => 'https://www.waymark.dev/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
@@ -120,6 +120,10 @@ class Waymark_Config {
 					'permalink_slug_map' => 'map',
 					'permalink_slug_collection' => 'collection',
 				),
+				'post' => [
+					'supports' => 'title' . $multi_value_seperator . 'author' . $multi_value_seperator . 'revisions' . $multi_value_seperator . 'thumbnail',
+
+				],
 				'advanced' => array(
 					'debug_mode' => '0',
 				),

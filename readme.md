@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.5  
 **Requires PHP:** 5.2  
-**Stable tag:** 1.1.8  
+**Stable tag:** 1.2.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -187,6 +187,10 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 
 ## Changelog ##
+
+### 1.2.0 ###
+
+Enable or disable various WordPress features of the Map Custom Post Type, including the new ability to enable comments and excerpt integration. This Setting is Available in Settings > Advanced > Post Type. Thanks to [YosoraLife](https://github.com/YosoraLife) for requesting this ([here](https://github.com/OpenGIS/Waymark/pull/42) and [here](https://github.com/OpenGIS/Waymark/issues/44)).
 
 ### 1.1.8 ###
 
