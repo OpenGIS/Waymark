@@ -4,7 +4,7 @@ Tags: GIS, Map maker, GPX, Track, Elevation
 Requires at least: 4.6
 Tested up to: 6.5
 Requires PHP: 5.2
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -171,7 +171,7 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 == Changelog ==
 
-= 1.3.0 = 
+= 1.3.1 = 
 
 - **Overlay Properties** - Read GeoJSON feature properties when importing (Settings > Overlays > Properties). If Waymark finds data for the specified property keys they will stored upon import. These can be automatically appended to the Overlay Description, or accessed programatically via the `layer.feature.properties` Object. Thanks to [dariospace](https://github.com/dariospace) for the [requesting](https://github.com/OpenGIS/Waymark/issues/45) the return of this feature.
 
