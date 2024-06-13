@@ -454,40 +454,6 @@ class Waymark_Helper {
 		return $obj;
 	}
 
-	static public function remove_unwanted_overlay_properties($data_in = [], $wanted = []) {
-		if (!sizeof($wanted)) {
-			$wanted = Waymark_Config::get_item('overlay_properties');
-		}
-
-		$FeatureCollection = json_decode($data_in);
-
-		$FeatureCollection = self::stringify_numbers($FeatureCollection);
-
-		//self::debug($FeatureCollection);
-
-		if ($FeatureCollection && sizeof($FeatureCollection->features)) {
-			foreach ($FeatureCollection->features as &$feature) {
-				//No existing properties
-				if (!property_exists($feature, 'properties')) {
-					return json_encode($FeatureCollection);
-				}
-
-				$properties_out = new stdClass();
-				foreach ($wanted as $key) {
-					if (property_exists($feature->properties, $key)) {
-						$properties_out->{$key} = (string) $feature->properties->{$key};
-					}
-				}
-				//Update
-				$feature->properties = $properties_out;
-			}
-		}
-
-		$data_out = json_encode($FeatureCollection);
-
-		return $data_out;
-	}
-
 	static public function set_map_data_property($map_data, $key = false, $value = false, $append = false) {
 		$FeatureCollection = json_decode($map_data);
 
@@ -1240,7 +1206,7 @@ class Waymark_Helper {
 
 		//Expected Waymark properties
 		// i.e. array('radius', 'type', 'title', 'description', 'image_thumbnail_url', 'image_medium_url', 'image_large_url')
-		foreach (Waymark_Config::get_item('overlay_properties') as $property_key) {
+		foreach (Waymark_Helper::get_overlay_properties() as $property_key) {
 			//Property not set
 			if (!isset($feature['properties'][$property_key])) {
 				continue;
@@ -1489,5 +1455,20 @@ class Waymark_Helper {
 		$out .= '</div>' . "\n";
 
 		return $out;
+	}
+
+	public static function get_overlay_properties() {
+		$default = Waymark_Config::get_item('overlay_properties');
+
+		// Additional GeoJSON Properties
+		$extra = Waymark_Config::get_item('properties', 'props', true);
+		$extra = Waymark_Helper::multi_use_as_key($extra, 'property_key');
+
+		if (sizeof($extra)) {
+			// Key an array of property keys
+			$extra = array_keys($extra);
+		}
+
+		return array_merge($default, $extra);
 	}
 }

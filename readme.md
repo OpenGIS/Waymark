@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.5  
 **Requires PHP:** 5.2  
-**Stable tag:** 1.2.0  
+**Stable tag:** 1.3.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -73,6 +73,7 @@ For developers:
   - Collections use the `waymark_collection` Taxonomy.
   - Embed Maps using the `[Waymark]` [Shortcode](https://www.waymark.dev/docs/shortcodes/) anywhere they are supported, or dynamically using the `do_shortcode(["Waymark"])` [function](https://developer.wordpress.org/reference/functions/do_shortcode/).
 - Geographical data is stored in [GeoJSON](https://geojson.org/) format. [Types](https://www.waymark.dev/docs/types/) are specified using the `type` Property, i.e. `{feature: { geometry: { type: 'Point', coordinates: [0, 0] } }, properties: { type: 'Alert', title: 'Bridge Removed!' }`.
+- Specify which GeoJSON feature properties to store when importing (Settings > Overlays > Properties). These can be automatically appended to the Overlay Description, or accessed programatically via the `layer.feature.properties` Object.
 - Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the callback function.
 - Use the [JavaScript callback functions](https://www.waymark.dev/docs/callback-function/) to extend Waymark functionality client-side, provided either globally (for integration with *all* Waymark Maps) or provided as a [Shortcode parameter](https://www.waymark.dev/docs/shortcodes/#callback-function).
 
@@ -88,8 +89,8 @@ Be sure to check out [Map First](https://github.com/opengis/map-first), a minima
 [Grunt](https://gruntjs.com/) is used to run the build script, which compiles the JavaScript and CSS and performs some other tasks.
 
 
-	# Clone the repository
-	git clone https://github.com/opengis/waymark.git
+	# Clone the repository (and the Waymark JS submodule)
+	git clone --recurse-submodules https://github.com/opengis/waymark.git
 	
 	# Navigate to the Waymark directory
 	cd waymark
@@ -187,6 +188,10 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 
 ## Changelog ##
+
+### 1.3.0 ###
+
+- **Overlay Properties** - Read GeoJSON feature properties when importing (Settings > Overlays > Properties). If Waymark finds data for the specified property keys they will stored upon import. These can be automatically appended to the Overlay Description, or accessed programatically via the `layer.feature.properties` Object. Thanks to [dariospace](https://github.com/dariospace) for the [requesting](https://github.com/OpenGIS/Waymark/issues/45) the return of this feature.
 
 ### 1.2.0 ###
 

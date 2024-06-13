@@ -839,6 +839,18 @@ body.wp-admin.post-type-waymark_map.post-php #waymark-admin-container {
 }
 /**
  * ====================================
- * ============== DEBUG ===============
+ * ============ PROPERTIES ============
  * ====================================
  */
+.waymark-settings-tab.waymark-settings-tab-properties pre {
+  border: 1px solid #f1f1f1;
+  background: #f9f9f9;
+  line-height: 90%;
+}
+.waymark-settings-tab.waymark-settings-tab-properties pre code {
+  background: none;
+  font-size: 10px;
+}
+.waymark-settings-tab.waymark-settings-tab-properties small code {
+  font-size: 10px;
+}

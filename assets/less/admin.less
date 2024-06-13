@@ -961,27 +961,24 @@ body.wp-admin {
 
 /**
  * ====================================
- * ============== DEBUG ===============
+ * ============ PROPERTIES ============
  * ====================================
  */
-//  body {
-// 	 div.waymark-settings-section-advanced {
-// 			.form-table {
-// 				tr:last-child {
-// 					display: none;
-// 					th {
-// 						vertical-align: top !important;
-// 					}
-// 				}
-// 			}
-// 		}
-// 	 &.waymark-debug {
-// 		 div.waymark-settings-section-advanced {
-// 				.form-table {
-// 					tr:last-child {
-// 						display: table-row;
-// 					}
-// 				}
-// 			}
-// 	 }
-//  }
+
+.waymark-settings-tab.waymark-settings-tab-properties {
+	pre {
+		border: 1px solid @waymark-grey;
+		background: #f9f9f9;
+		line-height: 90%;
+		code {
+			background: none;
+			font-size: 10px;
+		}
+	}
+
+	small {
+		code {
+			font-size: 10px;
+		}
+	}
+}

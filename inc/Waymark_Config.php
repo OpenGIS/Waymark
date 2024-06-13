@@ -11,7 +11,7 @@ class Waymark_Config {
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',
 			'custom_types' => array(),
-			'plugin_version' => '1.2.0',
+			'plugin_version' => '1.3.0',
 			'nonce_string' => 'Waymark_Nonce',
 			'site_url' => 'https://www.waymark.dev/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
@@ -168,6 +168,11 @@ class Waymark_Config {
 					'shape_submission' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',
 				),
 			),
+			'properties' => [
+				'options' => [
+					'description_append' => '0',
+				],
+			],
 		);
 
 		//Keep a copy of the original values
@@ -337,6 +342,7 @@ class Waymark_Config {
 		//Basemaps
 		$tile_layers = Waymark_Config::get_item('tiles', 'layers');
 		$tile_layers = Waymark_Helper::convert_values_to_single_value($tile_layers);
+
 		//Process for output
 		foreach ($tile_layers as &$tl) {
 			$tl = htmlspecialchars_decode($tl);
@@ -347,8 +353,9 @@ class Waymark_Config {
 		$map_config['map_options'] = [
 			'map_height' => Waymark_Config::get_setting('misc', 'map_options', 'map_height'),
 
-			//Basemaps
+			// Basemaps
 			'tile_layers' => $tile_layers,
+
 			'marker_types' => Waymark_Helper::get_overlay_types('marker'),
 			'line_types' => Waymark_Helper::get_overlay_types('line'),
 			'shape_types' => Waymark_Helper::get_overlay_types('shape'),

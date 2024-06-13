@@ -44,7 +44,7 @@ class Waymark_HTTP {
 					if ($Map = new Waymark_Map($_REQUEST['map_id'])) {
 						if (isset($Map->data['map_data']) && !empty($Map->data['map_data'])) {
 							//Clean
-							$map_data = Waymark_Helper::remove_unwanted_overlay_properties($Map->data['map_data']);
+							$map_data = Waymark_GeoJSON::remove_unwanted_overlay_properties($Map->data['map_data']);
 							//Invalid Map data
 						} else {
 							die("-1");

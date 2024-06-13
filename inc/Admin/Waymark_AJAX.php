@@ -167,7 +167,21 @@ class Waymark_AJAX {
 
 						//Good to proceed
 						if ($file_contents) {
+
+							// If GeoJSON
+							if ($file_contents['file_type'] == 'geojson' || $file_contents['file_type'] == 'json') {
+								// Valid, with features
+								$feature_collection = Waymark_GeoJSON::string_to_feature_collection($file_contents['file_contents']);
+								if ($feature_collection && Waymark_GeoJSON::get_feature_count($feature_collection)) {
+									// Process Import
+									$feature_collection = Waymark_GeoJSON::process_import($feature_collection);
+									$file_contents['file_contents'] = Waymark_GeoJSON::feature_collection_to_string($feature_collection);
+								}
+							}
+
+							// Add to response
 							$response = array_merge($response, $file_contents);
+
 							//Unknown error
 						} else {
 							$response['error'] = esc_html__('Could not read the file.', 'waymark');

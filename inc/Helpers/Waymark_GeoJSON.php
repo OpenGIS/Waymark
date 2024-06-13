@@ -17,6 +17,21 @@ class Waymark_GeoJSON {
 	}
 
 	/**
+	 * Convert a GeoJSON array to a string
+	 *
+	 * @param  array $FeatureCollection GeoJSON array
+	 * @return string                   GeoJSON string
+	 */
+
+	static public function feature_collection_to_string($FeatureCollection = []) {
+		if (is_array($FeatureCollection)) {
+			return json_encode($FeatureCollection);
+		}
+
+		return false;
+	}
+
+	/**
 	 * Get count of features in a GeoJSON array
 	 *
 	 * @param		array|string 			$FeatureCollection GeoJSON array or string
@@ -149,5 +164,71 @@ class Waymark_GeoJSON {
 		}
 
 		return $overlays;
+	}
+
+	static public function remove_unwanted_overlay_properties($FeatureCollection = [], $wanted = []) {
+		if (is_string($FeatureCollection)) {
+			$FeatureCollection = self::string_to_feature_collection($FeatureCollection);
+		}
+
+		if (!sizeof($wanted)) {
+			$wanted = Waymark_Helper::get_overlay_properties();
+		}
+
+		$FeatureCollection = Waymark_Helper::stringify_numbers($FeatureCollection);
+
+		//Feature Collection
+		if ($FeatureCollection && isset($FeatureCollection['features'])) {
+			foreach ($FeatureCollection['features'] as &$feature) {
+				// Include only wanted properties
+				$properties_out = [];
+				foreach ($wanted as $key) {
+					if (isset($feature['properties'][$key])) {
+						$properties_out[$key] = (string) $feature['properties'][$key];
+					}
+				}
+
+				//Update
+				$feature['properties'] = $properties_out;
+			}
+		}
+
+		return $FeatureCollection;
+	}
+
+	static public function process_import($FeatureCollection = []) {
+		// Clean
+		$FeatureCollection = self::remove_unwanted_overlay_properties($FeatureCollection);
+
+		// Append to description?
+		if (Waymark_Config::get_setting('properties', 'options', 'description_append') == '1') {
+			// Iterate over features
+			foreach ($FeatureCollection['features'] as &$feature) {
+
+				// Modify description
+
+				// Ensure there is a description
+				if (!array_key_exists('description', $feature['properties'])) {
+					$feature['properties']['description'] = '';
+				}
+
+				// Additional GeoJSON Properties
+				$custom_props = Waymark_Config::get_item('properties', 'props', true);
+				$custom_props = Waymark_Helper::multi_use_as_key($custom_props, 'property_key');
+
+				if (sizeof($custom_props)) {
+					foreach ($custom_props as $custom_prop) {
+						// Ensure property exists
+						if (array_key_exists($custom_prop['property_key'], $feature['properties'])) {
+
+							// Format
+							$feature['properties']['description'] .= '<p class="waymark-property waymark-property-' . $custom_prop['property_key'] . '"><b>' . $custom_prop['property_title'] . '</b><br>' . $feature['properties'][$custom_prop['property_key']] . '</p>';
+						}
+					}
+				}
+			}
+		}
+
+		return $FeatureCollection;
 	}
 }
