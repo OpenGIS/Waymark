@@ -77,7 +77,7 @@ For developers:
 - Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the callback function.
 - Use the [JavaScript callback functions](https://www.waymark.dev/docs/callback-function/) to extend Waymark functionality client-side, provided either globally (for integration with *all* Waymark Maps) or provided as a [Shortcode parameter](https://www.waymark.dev/docs/shortcodes/#callback-function).
 
-Be sure to check out [Map First](https://github.com/opengis/map-first), a minimal WordPress theme with an *obsession* for Maps (it's open-source too and contains lots of comments about customisations). As seen in the [demo](https://www.ogis.app/yosemite/).
+Be sure to check out [Map First](https://github.com/opengis/map-first), a minimal WordPress theme with an *obsession* for Maps (it's open-source too and contains lots of comments about customisations).
 
 **Waymark is free, open-source ([GPL v2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)) and a labour of Love**. I try to keep the plugin well supported, so please feel free to <a href="https://forms.gle/mthqAgSsMoTPM8SR9">reach out</a> with any issues, questions or feedback.
 
@@ -242,7 +242,7 @@ Fixed a bug with Map Exporting. Thanks to <a href="https://wordpress.org/support
 
 Thanks for helping Waymark get to Version 1! ❤️
 
-* [Map First](https://github.com/opengis/map-first) - A minimal WordPress theme with an *obsession* for Maps. It's open-source too and contains lots of comments about customisations. As seen in the [demo](https://www.ogis.app/yosemite/).
+* [Map First](https://github.com/opengis/map-first) - A minimal WordPress theme with an *obsession* for Maps. It's open-source too and contains lots of comments about customisations.
 * Added Total Ascent and Descent to Elevation Profile. Thanks to <a href="https://github.com/MaximeChallon">MaximeChallon</a> for the <a href="https://github.com/OpenGIS/Waymark/pull/29">Pull Request</a> :)
 * Improved rendering of multiple Maps through the Collection Shortcode, where the initial view would sometimes not be set correctly to view all Map data.
 * Updated documentation.
