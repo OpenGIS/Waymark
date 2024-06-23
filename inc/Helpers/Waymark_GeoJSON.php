@@ -169,6 +169,8 @@ class Waymark_GeoJSON {
 	static public function remove_unwanted_overlay_properties($FeatureCollection = [], $wanted = []) {
 		if (is_string($FeatureCollection)) {
 			$FeatureCollection = self::string_to_feature_collection($FeatureCollection);
+
+			$do_stringify = true;
 		}
 
 		if (!sizeof($wanted)) {
@@ -191,6 +193,10 @@ class Waymark_GeoJSON {
 				//Update
 				$feature['properties'] = $properties_out;
 			}
+		}
+
+		if ($do_stringify) {
+			$FeatureCollection = self::feature_collection_to_string($FeatureCollection);
 		}
 
 		return $FeatureCollection;
