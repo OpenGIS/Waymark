@@ -358,24 +358,30 @@ class Waymark_Shortcode {
 			$out .= '	waymark_config.viewer_options.show_cluster = ' . $shortcode_data['show_cluster'] . ';' . "\n";
 		}
 
-		//Initially Show / Hide Types
+		// === Initially Show / Hide ===
+
 		foreach (['hide_marker', 'show_marker', 'hide_line', 'show_line', 'hide_shape', 'show_shape'] as $show_hide_type) {
+			// If option exists
 			if (array_key_exists($show_hide_type, $shortcode_data)) {
 				$show_hide_explode = explode('_', $show_hide_type);
 				$overlay_kind = $show_hide_explode[1];
 
+				// Show / Hide
 				if ($show_hide_explode[0] == 'show') {
 					$overlay_display = 1;
 				} elseif ($show_hide_explode[0] == 'hide') {
 					$overlay_display = 0;
 				}
 
+				// Marker / Line / Shape
 				$overlay_type_explode = explode(',', $shortcode_data[$show_hide_type]);
 
 				foreach ($overlay_type_explode as $overlay_type) {
 					$out .= '	for(i in waymark_config.map_options.' . $overlay_kind . '_types) {' . "\n";
+
 					$out .= '		var this_key = waymark_viewer.make_key(waymark_config.map_options.' . $overlay_kind . '_types[i]["' . $overlay_kind . '_title"]);' . "\n";
-					$out .= '		if(this_key == "' . $overlay_type . '") {' . "\n";
+
+					$out .= '		if("' . $overlay_type . '" == "*" || this_key == "' . $overlay_type . '") {' . "\n";
 					$out .= '			waymark_config.map_options.' . $overlay_kind . '_types[i]["' . $overlay_kind . '_display"] = ' . $overlay_display . ';' . "\n";
 					$out .= '		}' . "\n";
 					$out .= '	}' . "\n";
