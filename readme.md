@@ -192,6 +192,7 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 ### 1.4.0 ###
 
 - Added the ability to show/hide all Types initially when using the Shortcode by specifying "*" as the Type key. For example, to initially hide all Marker Types, except "photo" and "alert", use `[Waymark map_id="1234" hide_marker="*" show_marker="photo,alert"]`. Thanks to [Association Franc-Comtoise du Chemin de Compostelle](https://www.af-ccc.fr) for requesting this.
+- Improved debugging output.
 
 ### 1.3.2 ###
 
