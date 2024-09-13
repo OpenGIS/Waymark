@@ -20,6 +20,8 @@ Waymark adds powerful mapping features to WordPress that are easy to use. Create
 ❤️ [WordPress](https://wordpress.org/plugins/waymark/)
 ☕️ [Waymark JS](https://www.waymark.dev/js)
 
+**If you find value in Waymark please consider supporting it's continued development through [sponsorship](https://github.com/sponsors/OpenGIS). Any amount is appreciated.**
+
 ### Creating Maps
 
 Use the intuitive [Editor](https://www.waymark.dev/docs/editor/) to create Maps with one, or thousands of interactive Overlays.
