@@ -1,17 +1,17 @@
 <?php
 class Waymark_Config {
 	//Set defaults
-	private static $data = array();
-	private static $default = array();
+	private static $data    = [];
+	private static $default = [];
 
 	public static function init() {
 		$multi_value_seperator = '__multi__';
 
-		self::$data = array(
+		self::$data = [
 			'plugin_name' => 'Waymark',
 			'plugin_name_short' => 'Waymark',
-			'custom_types' => array(),
-			'plugin_version' => '1.4.0',
+			'custom_types' => [],
+			'plugin_version' => '1.4.1',
 			'nonce_string' => 'Waymark_Nonce',
 			'site_url' => 'https://www.waymark.dev/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
@@ -19,38 +19,38 @@ class Waymark_Config {
 			'overlay_properties' => ['radius', 'type', 'title', 'description', 'image_thumbnail_url', 'image_medium_url', 'image_large_url', 'direction'],
 			'shortcode' => 'Waymark',
 			'media_library_sizes' => ['thumbnail', 'medium', 'large', 'full'],
-			'mimes' => array(
+			'mimes' => [
 // 				'image' => array(
 //
-				'file' => array(
-					'gpx' => array(
+				'file' => [
+					'gpx' => [
 						'application/gpx+xml',
 						'application/xml',
 						'text/xml',
 						'text/plain',
-					),
-					'kml' => array(
+					],
+					'kml' => [
 						'application/vnd.google-earth.kml+xml',
 						'application/xml',
 						'text/html',
 						'text/xml',
 						'text/plain',
-					),
+					],
 //					'kmz' => 'application/vnd.google-earth.kmz',
-					'json' => array(
+					'json' => [
 						'application/geo+json',
 						'application/json',
 						'text/plain',
-					),
-					'geojson' => array(
+					],
+					'geojson' => [
 						'application/geo+json',
 						'application/json',
 						'text/plain',
-					),
-				),
-			),
-			'meta' => array(
-				'inputs' => array(
+					],
+				],
+			],
+			'meta' => [
+				'inputs' => [
 					'meta_title' => esc_html__('Description', 'waymark'),
 					'meta_default' => '',
 					'meta_tip' => esc_html__('The Description you enter here will be displayed on the Map Details page.', 'waymark'),
@@ -59,28 +59,28 @@ class Waymark_Config {
 					'meta_options' => '',
 					'meta_shortcode' => '0',
 					'meta_submission' => '0',
-				),
-			),
-			'submission' => array(
-				'global' => array(
+				],
+			],
+			'submission' => [
+				'global' => [
 					'submission_enable' => '0',
-				),
-				'from_users' => array(
+				],
+				'from_users' => [
 					'submission_roles' => '',
 					'submission_features' => 'draw' . $multi_value_seperator . 'photo' . $multi_value_seperator . 'file' . $multi_value_seperator . 'title' . $multi_value_seperator . 'meta',
 					'submission_status' => 'publish',
 					'submission_alert' => '0',
-				),
-				'from_public' => array(
+				],
+				'from_public' => [
 					'submission_public' => '0',
 					'submission_features' => 'draw' . $multi_value_seperator . 'photo' . $multi_value_seperator . 'file' . $multi_value_seperator . 'title',
 					'submission_upload_dir' => 'waymark_submission',
 					'submission_status' => 'draft',
 					'submission_alert' => '1',
-				),
-			),
-			'misc' => array(
-				'map_options' => array(
+				],
+			],
+			'misc' => [
+				'map_options' => [
 					'map_default_latlng' => '51.38436,-68.74923',
 					'map_default_zoom' => '9',
 					'map_height' => '450',
@@ -88,56 +88,56 @@ class Waymark_Config {
 					'show_filter' => '1',
 					'allow_export' => '0',
 					'show_scale' => '0',
-				),
-				'collection_options' => array(
+				],
+				'collection_options' => [
 					'load_method' => 'fetch',
-				),
-				'interaction_options' => array(
+				],
+				'interaction_options' => [
 					'delay_seconds' => '2',
 					'do_message' => '0',
 					'wake_message' => esc_attr__('Click or Hover to Wake', 'waymark'),
-				),
-				'cluster_options' => array(
+				],
+				'cluster_options' => [
 					'show_cluster' => '0',
 					'cluster_threshold' => '14',
 					'cluster_radius' => '80',
-				),
-				'shortcode_options' => array(
+				],
+				'shortcode_options' => [
 					'shortcode_header' => '1',
 					'header_override' => '0',
-				),
-				'editor_options' => array(
+				],
+				'editor_options' => [
 					'confirm_delete' => '1',
 					'editor_basemap' => 'Open Street Map',
-				),
-				'elevation_options' => array(
+				],
+				'elevation_options' => [
 					'show_elevation' => '2',
 					'elevation_units' => 'metric',
 					'elevation_colour' => '#b42714',
 					'elevation_initial' => '1',
-				),
-				'permalinks' => array(
+				],
+				'permalinks' => [
 					'permalink_slug_map' => 'map',
 					'permalink_slug_collection' => 'collection',
-				),
+				],
 				'post' => [
 					'supports' => 'title' . $multi_value_seperator . 'author' . $multi_value_seperator . 'revisions' . $multi_value_seperator . 'thumbnail',
 
 				],
-				'advanced' => array(
+				'advanced' => [
 					'debug_mode' => '0',
-				),
-			),
-			'tiles' => array(
-				'layers' => array(
+				],
+			],
+			'tiles' => [
+				'layers' => [
 					'layer_name' => 'Open Street Map',
 					'layer_url' => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 					'layer_attribution' => '© &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors',
 					'layer_max_zoom' => '18',
-				),
-			),
-			'markers' => array(
-				'marker_types' => array(
+				],
+			],
+			'markers' => [
+				'marker_types' => [
 					'marker_title' => esc_html__('Photo', 'waymark') . $multi_value_seperator . esc_html__('Information', 'waymark') . $multi_value_seperator . esc_html__('Alert', 'waymark') . $multi_value_seperator . esc_html__('Trail Access', 'waymark') . $multi_value_seperator . esc_html__('Food', 'waymark') . $multi_value_seperator . esc_html__('Water', 'waymark') . $multi_value_seperator . esc_html__('Shelter', 'waymark') . $multi_value_seperator . esc_html__('Beer', 'waymark') . $multi_value_seperator . esc_html__('Start', 'waymark') . $multi_value_seperator . esc_html__('Finish', 'waymark'),
 					'marker_shape' => 'marker' . $multi_value_seperator . 'marker' . $multi_value_seperator . 'marker' . $multi_value_seperator . 'marker' . $multi_value_seperator . 'marker' . $multi_value_seperator . 'marker' . $multi_value_seperator . 'marker' . $multi_value_seperator . 'marker' . $multi_value_seperator . 'marker' . $multi_value_seperator . 'marker',
 					'marker_size' => 'large' . $multi_value_seperator . 'large' . $multi_value_seperator . 'large' . $multi_value_seperator . 'large' . $multi_value_seperator . 'large' . $multi_value_seperator . 'large' . $multi_value_seperator . 'large' . $multi_value_seperator . 'large' . $multi_value_seperator . 'large' . $multi_value_seperator . 'large',
@@ -147,33 +147,33 @@ class Waymark_Config {
 					'icon_colour' => '#475260' . $multi_value_seperator . '#0069a5' . $multi_value_seperator . 'white' . $multi_value_seperator . 'white' . $multi_value_seperator . '#ffba00' . $multi_value_seperator . '#fff' . $multi_value_seperator . 'white' . $multi_value_seperator . '#754423' . $multi_value_seperator . 'white' . $multi_value_seperator . 'white',
 					'marker_display' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',
 					'marker_submission' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',
-				),
-			),
-			'lines' => array(
-				'line_types' => array(
+				],
+			],
+			'lines' => [
+				'line_types' => [
 					'line_title' => esc_html__('Red', 'waymark') . $multi_value_seperator . esc_html__('Green', 'waymark') . $multi_value_seperator . esc_html__('Blue', 'waymark'),
 					'line_colour' => '#d84848' . $multi_value_seperator . '#3cbc47' . $multi_value_seperator . '#487bd9',
 					'line_weight' => '3' . $multi_value_seperator . '3' . $multi_value_seperator . '3',
 					'line_opacity' => '0.7' . $multi_value_seperator . '0.7' . $multi_value_seperator . '0.7',
 					'line_display' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',
 					'line_submission' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',
-				),
-			),
-			'shapes' => array(
-				'shape_types' => array(
+				],
+			],
+			'shapes' => [
+				'shape_types' => [
 					'shape_title' => esc_html__('Red', 'waymark') . $multi_value_seperator . esc_html__('Green', 'waymark') . $multi_value_seperator . esc_html__('Blue', 'waymark'),
 					'shape_colour' => '#d84848' . $multi_value_seperator . '#3cbc47' . $multi_value_seperator . '#487bd9',
 					'fill_opacity' => '0.5' . $multi_value_seperator . '0.5' . $multi_value_seperator . '0.5',
 					'shape_display' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',
 					'shape_submission' => '1' . $multi_value_seperator . '1' . $multi_value_seperator . '1',
-				),
-			),
+				],
+			],
 			'properties' => [
 				'options' => [
 					'description_append' => '0',
 				],
 			],
-		);
+		];
 
 		//Keep a copy of the original values
 		self::$default = self::$data;
@@ -204,7 +204,7 @@ class Waymark_Config {
 					$line_count = sizeof(self::$data[$overlay_name . 's'][$overlay_name . '_types'][$overlay_name . '_title']);
 
 					foreach (self::$data[$overlay_name . 's'][$overlay_name . '_types'] as &$value) {
-						if (!is_array($value) || sizeof($value) != $line_count) {
+						if (! is_array($value) || sizeof($value) != $line_count) {
 							//Is string and contains multi-value seperator?
 							if (is_string($value) && strpos($value, $multi_value_seperator) !== false) {
 								$value = explode($multi_value_seperator, $value);
@@ -212,7 +212,7 @@ class Waymark_Config {
 
 							$default = $value[0];
 
-							$value = array();
+							$value = [];
 							for ($i = 0; $i < $line_count; $i++) {
 								$value[$i] = $default;
 							}
@@ -236,7 +236,7 @@ class Waymark_Config {
 		if (array_key_exists($key, self::$data)) {
 			if (is_array(self::$data[$key]) && array_key_exists($key_2, self::$data[$key])) {
 				//Single value
-				if (!$is_repeatable) {
+				if (! $is_repeatable) {
 					return self::$data[$key][$key_2];
 					//Multi-value
 				} else {
@@ -247,12 +247,12 @@ class Waymark_Config {
 					$max_size = null;
 					foreach ($values as $key => &$value) {
 						//Must be an array
-						if (!is_array($value)) {
+						if (! is_array($value)) {
 							continue;
 						}
 
 						if ($max_size !== null && sizeof($value) != $max_size) {
-							$value = array_pad(array(), $max_size, $value);
+							$value = array_pad([], $max_size, $value);
 						} else {
 							$max_size = sizeof($value);
 						}
@@ -264,7 +264,7 @@ class Waymark_Config {
 					return $values;
 				}
 			} else {
-				if (!$is_repeatable) {
+				if (! $is_repeatable) {
 					return self::$data[$key];
 				} else {
 					return [];
@@ -304,10 +304,10 @@ class Waymark_Config {
 
 	//Helpers
 	public static function get_name($short = false, $really_short = false) {
-		if (!$short) {
+		if (! $short) {
 			return self::get_item('plugin_name');
 		} else {
-			if (!$really_short) {
+			if (! $really_short) {
 				return self::get_item('plugin_name_short');
 			} else {
 				return strip_tags(self::get_item('plugin_name_short'));
@@ -320,7 +320,7 @@ class Waymark_Config {
 	}
 
 	public static function get_settings_parameters($tab_id = null, $group_id = null) {
-		$settings = array();
+		$settings = [];
 
 		//If only getting a specific section
 		if (array_key_exists($tab_id, self::$parameters) && array_key_exists($group_id, self::$parameters[$tab_id])) {
@@ -337,7 +337,7 @@ class Waymark_Config {
 	}
 
 	public static function get_map_config($encode = false) {
-		$map_config = array();
+		$map_config = [];
 
 		//Basemaps
 		$tile_layers = Waymark_Config::get_item('tiles', 'layers');
@@ -390,9 +390,9 @@ class Waymark_Config {
 		];
 
 		//Editor Options
-		$map_config['editor_options'] = array(
+		$map_config['editor_options'] = [
 			'confirm_delete' => Waymark_Config::get_setting('misc', 'editor_options', 'confirm_delete'),
-		);
+		];
 
 		// Localisation
 

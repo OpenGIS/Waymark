@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.5  
 **Requires PHP:** 5.2  
-**Stable tag:** 1.4.0  
+**Stable tag:** 1.4.1  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -190,6 +190,10 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 
 ## Changelog ##
+
+### 1.4.1 ###
+
+- Sleep message fix, thanks to [jiem31](https://wordpress.org/support/users/jiem31/) for [reporting this](https://wordpress.org/support/topic/a-few-ways-for-improvement/).
 
 ### 1.4.0 ###
 

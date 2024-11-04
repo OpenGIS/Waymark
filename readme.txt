@@ -4,7 +4,7 @@ Tags: GIS, Map maker, GPX, Track, Elevation
 Requires at least: 4.6
 Tested up to: 6.5
 Requires PHP: 5.2
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -173,7 +173,11 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 == Changelog ==
 
-= 1.4.0 = 
+= 1.4.1 =
+
+- Sleep message fix, thanks to [jiem31](https://wordpress.org/support/users/jiem31/) for [reporting this](https://wordpress.org/support/topic/a-few-ways-for-improvement/).
+
+= 1.4.0 =
 
 - Added the ability to show/hide all Types initially when using the Shortcode by specifying "*" as the Type key. For example, to initially hide all Marker Types, except "photo" and "alert", use `[Waymark map_id="1234" hide_marker="*" show_marker="photo,alert"]`. Thanks to [Association Franc-Comtoise du Chemin de Compostelle](https://www.af-ccc.fr) for requesting this.
 - Improved debugging output.
