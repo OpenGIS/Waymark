@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.7  
 **Requires PHP:** 5.2  
-**Stable tag:** 1.4.1  
+**Stable tag:** 1.4.2  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -190,6 +190,10 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 
 ## Changelog ##
+
+### 1.4.2 ###
+
+Fixed a vulnerability where content output to the browser was not being escaped. Thanks to vgo0 for reporting this via Wordfence.
 
 ### 1.4.1 ###
 

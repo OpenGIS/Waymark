@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Waymark 1.4.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/waymark\n"
-"POT-Creation-Date: 2024-06-13 18:49:59+00:00\n"
+"POT-Creation-Date: 2024-12-09 20:02:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1256,11 +1256,11 @@ msgstr ""
 msgid "Settings Data"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1565
+#: inc/Admin/Waymark_Settings.php:1561
 msgid "Settings Updated"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1568
+#: inc/Admin/Waymark_Settings.php:1564
 msgid "Action Complete"
 msgstr ""
 
