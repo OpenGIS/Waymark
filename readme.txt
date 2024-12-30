@@ -173,6 +173,10 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 == Changelog ==
 
+= 1.? = 
+
+- [Taxonomy label fix](https://github.com/OpenGIS/Waymark/issues/47).
+
 = 1.4.2 =
 
 Fixed a vulnerability where content output to the browser was not being escaped. Thanks to vgo0 for reporting this via Wordfence.
