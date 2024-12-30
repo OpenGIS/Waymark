@@ -122,9 +122,23 @@ function waymark_setup_map_export() {
 				switch (export_select.val()) {
 					//GPX
 					case "gpx":
+						const options = {
+							metadata: {},
+						};
+
+						// Name Metadata
+						var map_title = jQuery(
+							'input[name="map_title"]',
+							export_container,
+						).val();
+
+						if (map_title) {
+							options.metadata.name = map_title;
+						}
+
 						//Convert to GPX
 						//Thanks! https://github.com/tyrasd/togpx
-						var map_data = togpx(map_data_geojson);
+						var map_data = togpx(map_data_geojson, options);
 						var map_data_type = "application/gpx+xml;charset=utf-8";
 						var map_data_extension = "gpx";
 

@@ -697,6 +697,7 @@ class Waymark_Helper
         $out .= '	<input type="hidden" name="waymark_security" value="' . wp_create_nonce(Waymark_Config::get_item('nonce_string')) . '" />' . "\n";
         $out .= '	<input type="hidden" name="map_data" value="" />' . "\n";
         $out .= '	<input type="hidden" name="map_id" value="' . $Map->post_id . '" />' . "\n";
+        $out .= '	<input type="hidden" name="map_title" value="' . esc_attr($Map->post_title) . '" />' . "\n";
         $out .= '	<input type="submit" value="' . __('Download', 'waymark') . '" class="button" />' . "\n";
         $out .= '</' . $element . '>' . "\n";
 
