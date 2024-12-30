@@ -176,6 +176,7 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 = 1.? = 
 
 - [Taxonomy label fix](https://github.com/OpenGIS/Waymark/issues/47).
+- [Added Name to GPX metadata on Export](https://github.com/OpenGIS/Waymark/issues/48).
 
 = 1.4.2 =
 
