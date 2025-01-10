@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.7  
 **Requires PHP:** 5.2  
-**Stable tag:** 1.4.2  
+**Stable tag:** 1.4.3  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -190,6 +190,12 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 
 ## Changelog ##
+
+### 1.4.3 ###
+
+- Add missing MultiPolygon support. Raised [here](https://wordpress.org/support/topic/large-kml-display-issue/) and [here](https://github.com/OpenGIS/Waymark/issues/55).
+- [Taxonomy label fix](https://github.com/OpenGIS/Waymark/issues/47).
+- [Added Name to GPX metadata on Export](https://github.com/OpenGIS/Waymark/issues/48).
 
 ### 1.4.2 ###
 
