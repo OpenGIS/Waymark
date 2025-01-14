@@ -164,7 +164,7 @@ class Waymark_Object {
 				//Process input
 				$param_value = Waymark_Input::process_input($param_definition, $param_value);
 
-				$param_value = apply_filters('Waymark_generate_geojson_params', $param_definition, $param_value);
+				$param_value = apply_filters('Waymark_generate_geojson_params', $param_definition['id'], $param_value);
 				
 				update_post_meta($post_id, $this->prefix($param_definition['name']), $param_value);
 			//No value exists
