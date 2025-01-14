@@ -150,24 +150,26 @@ class Waymark_Object {
 		}
 		
 		//Iterate over each parameter
-		foreach($this->parameters as $param_defition) {
+		foreach($this->parameters as $param_definition) {
 			
 			//Only inputs
-			if(! array_key_exists('input_types', $param_defition)) {
+			if(! array_key_exists('input_types', $param_definition)) {
 				continue;
 			}
 						
 			//Ensure value exists and is not blank EXCEPT where blank values are allowed
-			if(isset($this->data[$param_defition['name']]) && (trim($this->data[$param_defition['name']]) !== '' || (array_key_exists('allow_blank', $param_defition) && $param_defition['allow_blank'] == true))) {
-				$param_value = $this->data[$param_defition['name']];
+			if(isset($this->data[$param_definition['name']]) && (trim($this->data[$param_definition['name']]) !== '' || (array_key_exists('allow_blank', $param_definition) && $param_definition['allow_blank'] == true))) {
+				$param_value = $this->data[$param_definition['name']];
 				
 				//Process input
-				$param_value = Waymark_Input::process_input($param_defition, $param_value);
+				$param_value = Waymark_Input::process_input($param_definition, $param_value);
+
+				$param_value = apply_filters('Waymark_generate_geojson_params', $param_definition['id'], $param_value);
 				
-				update_post_meta($post_id, $this->prefix($param_defition['name']), $param_value);
+				update_post_meta($post_id, $this->prefix($param_definition['name']), $param_value);
 			//No value exists
 			} else {
-				delete_post_meta($post_id, $this->prefix($param_defition['name']));
+				delete_post_meta($post_id, $this->prefix($param_definition['name']));
 			}
 		}
 	}
