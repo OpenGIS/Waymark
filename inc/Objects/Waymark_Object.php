@@ -166,6 +166,9 @@ class Waymark_Object {
 
 				$param_value = apply_filters('Waymark_generate_geojson_params', $param_definition['id'], $param_value);
 				
+				// Filter before update
+				$param_value = apply_filters('waymark_pre_update_post_meta', $param_value, $param_definition);
+
 				update_post_meta($post_id, $this->prefix($param_definition['name']), $param_value);
 			//No value exists
 			} else {
