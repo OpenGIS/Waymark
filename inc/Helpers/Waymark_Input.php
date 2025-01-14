@@ -75,9 +75,9 @@ class Waymark_Input {
 
 			$out .= ' <a data-title="' . esc_attr__($field['tip']) . '"';
 			if (array_key_exists('tip_link', $field)) {
-				$out .= ' ' . esc_attr__('Click here for more details.', 'waymark') . '" href="' . $field['tip_link'] . '" target="_blank" class="waymark-tooltip waymark-link"';
+				$out .= ' ' . esc_attr__('Click here for more details.', 'waymark') . ' href="' . $field['tip_link'] . '" target="_blank" class="waymark-tooltip waymark-link"';
 			} else {
-				$out .= '" href="#" onclick="return false;" class="waymark-tooltip"';
+				$out .= ' href="#" onclick="return false;" class="waymark-tooltip"';
 			}
 			$out .= '>?</a>';
 		}
