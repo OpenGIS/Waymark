@@ -148,40 +148,7 @@ class Waymark_Meta {
 		Waymark_JS::add_editor($Map->get_geojson());
 
 		// Map Form (inc. Meta)
-		echo wp_kses($Map->create_form(), [
-			'div' => [
-				'id' => [],
-				'class' => [],
-			],
-			'legend' => [
-				'title' => [],
-			],
-			'link' => [
-				'rel' => [],
-				'href' => [],
-				'media' => [],
-				'id' => [],
-			],
-			'textarea' => [
-				'class' => [],
-				'name' => [],
-				'data-id' => [],
-				'rows' => [],
-				'cols' => [],
-				'autocomplete' => [],
-				'id' => [],
-			],
-			'a' => [
-				'data-title' => [],
-				'href' => [],
-				'onclick' => [],
-				'class' => [],
-			],
-			'label' => [
-				'for' => [],
-				'class' => [],
-			],
-		]);
+		echo wp_kses($Map->create_form(), Waymark_Helper::parameter_allowed_html());
 
 		echo '<p>' . sprintf(wp_kses(__('You can manage Meta fields in <a href="%s">Settings</a>.', 'waymark'), ['a' => ['href' => []]]), esc_url(admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=meta'))) . '</p>';
 	}

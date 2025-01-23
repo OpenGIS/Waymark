@@ -1405,7 +1405,7 @@ class Waymark_Settings {
 			$set_value = null;
 		}
 
-		echo Waymark_Input::create_field($field, $set_value, false);
+		echo wp_kses(Waymark_Input::create_field($field, $set_value, false), Waymark_Helper::parameter_allowed_html());
 	}
 
 	function section_text($args) {
@@ -1448,7 +1448,26 @@ class Waymark_Settings {
 	function content_admin_page() {
 		echo '<div id="waymark-admin-container">' . "\n";
 
-		echo Waymark_Helper::plugin_about();
+		// About
+		echo wp_kses(Waymark_Helper::plugin_about(), [
+			'div' => [
+				'id' => [],
+			],
+			'img' => [
+				'alt' => [],
+				'src' => [],
+				'width' => [],
+				'height' => [],
+			],
+			'p' => [],
+			'strong' => [],
+			'a' => [
+				'href' => [],
+			],
+			'ul' => [],
+			'li' => [],
+			'hr' => [],
+		]);
 
 		echo '	<div class="card">' . "\n";
 
@@ -1457,39 +1476,48 @@ class Waymark_Settings {
 		$this->settings_nav($active_content);
 
 		//Open form
-		echo '		<form action="' . admin_url('options.php') . '" method="post">' . "\n";
+		echo '		<form action="' . esc_url(admin_url('options.php')) . '" method="post">' . "\n";
 		settings_fields($this->page_slug);
 
 		//For each tab
 		foreach ($this->tabs as $tab_key => $tab_data) {
-			$style = '';
-			echo '	<div class="waymark-settings-tab waymark-settings-tab-' . $tab_key . '"' . $style . '>' . "\n";
+			echo '	<div class="waymark-settings-tab waymark-settings-tab-' . esc_attr($tab_key) . '">' . "\n";
 
 			//Tab description?
 			if (array_key_exists('description', $tab_data)) {
-				echo '	<div class="waymark-settings-tab-description">' . $tab_data['description'] . '</div>' . "\n";
+				echo '	<div class="waymark-settings-tab-description">' . esc_html($tab_data['description']) . '</div>' . "\n";
 			}
 
 			//For each section
 			foreach ($tab_data['sections'] as $section_key => $section_data) {
 				$class = (isset($section_data['class'])) ? ' ' . $section_data['class'] : '';
-				echo '		<div class="waymark-settings-section waymark-settings-section-' . $section_key . $class . '">' . "\n";
+				echo '		<div class="waymark-settings-section waymark-settings-section-' . esc_attr($section_key . $class) . '">' . "\n";
 
 				//Help
 				if (array_key_exists('help', $section_data) && isset($section_data['help']['url'])) {
 					$help_text = (isset($section_data['help']['text'])) ? $section_data['help']['text'] : 'View Help &raquo;';
 
-					echo '		<a class="waymark-docs-link button" href="' . $section_data['help']['url'] . '" target="_blank">' . $help_text . '</a>' . "\n";
+					echo '		<a class="waymark-docs-link button" href="' . esc_url($section_data['help']['url']) . '" target="_blank">' . esc_html($help_text) . '</a>' . "\n";
 				}
 
 				//Title
 				if (isset($section_data['title'])) {
-					echo '		<h2>' . $section_data['title'] . '</h2>' . "\n";
+					echo '		<h2>' . esc_html($section_data['title']) . '</h2>' . "\n";
 				}
 
 				//Description
 				if (array_key_exists('description', $section_data)) {
-					echo '		<div class="waymark-settings-section-description">' . $section_data['description'] . '</div>' . "\n";
+					echo '		<div class="waymark-settings-section-description">' . wp_kses($section_data['description'], [
+						'span' => [
+							'class' => [],
+						],
+						'a' => [
+							'href' => [],
+							'class' => [],
+							'target' => [],
+						],
+						'br' => [],
+					]) . '</div>' . "\n";
 				}
 
 				//Repeatable?
@@ -1508,7 +1536,10 @@ class Waymark_Settings {
 
 				//Footer
 				if (array_key_exists('footer', $section_data)) {
-					echo '	<div class="waymark-settings-section-footer">' . $section_data['footer'] . '</div>' . "\n";
+					echo '	<div class="waymark-settings-section-footer">' . wp_kses($section_data['footer'], [
+						'small' => [],
+						'b' => [],
+					]) . '</div>' . "\n";
 				}
 
 				echo '</div>' . "\n";
@@ -1530,9 +1561,9 @@ class Waymark_Settings {
 
 		foreach ($this->settings_nav as $content_id => $content_title) {
 			if (strpos($content_id, 'label') === 0) {
-				echo '	<option disabled="disabled">' . $content_title . '</option>' . "\n";
+				echo '	<option disabled="disabled">' . esc_html($content_title) . '</option>' . "\n";
 			} else {
-				echo '	<option value="' . $content_id . '"' . (($current == $content_id) ? ' selected="selected"' : '') . '>' . $content_title . '</option>' . "\n";
+				echo '	<option value="' . esc_attr($content_id) . '"' . (($current == $content_id) ? ' selected="selected"' : '') . '>' . esc_html($content_title) . '</option>' . "\n";
 			}
 		}
 
