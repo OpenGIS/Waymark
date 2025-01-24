@@ -68,7 +68,7 @@ class Waymark_Settings
                     // translators: The description of the section for adding Basemaps
                     'description' => sprintf(__('<span class="waymark-lead">Waymark uses the excellent <a href="%1$s">OpenStreetMap</a> as it’s default Basemap and supports many <a href="%2$s">other providers</a>.<br /><br /><a href="%3$s">Thunderforest</a> and <a href="%4$s">Mapbox</a> are examples of providers that offer easy access to beautiful Basemaps (including satellite imagery). They require registration, but have a free usage tier.', 'waymark'), 'https://www.openstreetmap.org/fixthemap', 'https://leaflet-extras.github.io/leaflet-providers/preview/', 'https://www.thunderforest.com/', 'https://www.mapbox.com/maps/'),
                     // translators: The footer of the section for adding Basemaps
-                    'footer'      => sprintf(__('<small><b>Pro Tip!</b> If you have more than one Basemap, you can switch between them when viewing the Map. The first listed will be used as the default, unless specified in the shortcode like this: %s. Drag to re-order, remove all to restore defaults.</small>', 'waymark'), '[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;1234&quot; basemap=&quot;Basemap Name&quot;]'),
+                    'footer'      => '<small>' . sprintf(__('Pro Tip! If you have more than one Basemap, you can switch between them when viewing the Map. The first listed will be used as the default, unless specified in the shortcode like this: %s. Drag to re-order, remove all to restore defaults.', 'waymark'), '</small>[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;1234&quot; basemap=&quot;Basemap Name&quot;]'),
                     'help'        => [
                         'url'  => esc_attr(Waymark_Helper::site_url('docs/basemaps')),
                         // translators: The link to the Basemaps documentation
@@ -742,7 +742,7 @@ class Waymark_Settings
                     'title'       => esc_html__('Options', 'waymark'),
                     'description' => 'Append listed Properties to the Overlay Description.',
                     // translators: The footer of the section for adding Properties
-                    'footer'      => sprintf(__('<small><b>Pro Tip!</b> Properties are added to the Overlay Description with class names that can be used to target them, e.g. %s.</small>', 'waymark'), '<code class="waymark-code" style="display:inline">&lt;p class="waymark-property waymark-property-property_key"&gt;&lt;b&gt;property_title&lt;/b&gt;&lt;br&gt;proprty_value&lt;/p&gt;</code>'),
+                    'footer'      => '<small>' . sprintf(__('Pro Tip! Properties are added to the Overlay Description with class names that can be used to target them, e.g. %s.', 'waymark'), '</small><code class="waymark-code" style="display:inline">&lt;p class="waymark-property waymark-property-property_key"&gt;&lt;b&gt;property_title&lt;/b&gt;&lt;br&gt;proprty_value&lt;/p&gt;</code>'),
                     'fields'      => [
                         'description_append' => [
                             'name'    => 'description_append',
