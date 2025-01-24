@@ -3,8 +3,8 @@
 class Waymark_HTTP {
 
 	function __construct() {
-		add_filter('query_vars', array($this, 'query_vars'));
-		add_action('template_redirect', array($this, 'template_redirect'));
+		add_filter('query_vars', [$this, 'query_vars']);
+		add_action('template_redirect', [$this, 'template_redirect']);
 
 		//Setup AJAX
 		Waymark_JS::add_chunk('//HTTP');
@@ -19,7 +19,7 @@ class Waymark_HTTP {
 
 	public function template_redirect() {
 		//If not Waymark HTTP request
-		if (!get_query_var('waymark_http')) {
+		if (! get_query_var('waymark_http')) {
 			//WP loads normally
 			return;
 		}
@@ -33,16 +33,16 @@ class Waymark_HTTP {
 		//Action
 		if (array_key_exists('waymark_action', $_REQUEST)) {
 			//Requires Map Data
-			if (in_array($_REQUEST['waymark_action'], array(
+			if (in_array($_REQUEST['waymark_action'], [
 				'get_map_data',
 				'download_map_data',
 				'download_collection_data',
-			))) {
+			])) {
 				//Do we have data?
 				if (array_key_exists('map_id', $_REQUEST) && is_numeric($_REQUEST['map_id'])) {
 					//Valid Map
 					if ($Map = new Waymark_Map($_REQUEST['map_id'])) {
-						if (isset($Map->data['map_data']) && !empty($Map->data['map_data'])) {
+						if (isset($Map->data['map_data']) && ! empty($Map->data['map_data'])) {
 							//Clean
 							$map_data = Waymark_GeoJSON::remove_unwanted_overlay_properties($Map->data['map_data']);
 							//Invalid Map data
@@ -61,7 +61,7 @@ class Waymark_HTTP {
 				}
 
 				//Gzip supported?
-				if (function_exists('gzcompress') && !in_array('ob_gzhandler', ob_list_handlers())) {
+				if (function_exists('gzcompress') && ! in_array('ob_gzhandler', ob_list_handlers())) {
 					ob_start("ob_gzhandler");
 				} else {
 					ob_start();
@@ -78,7 +78,7 @@ class Waymark_HTTP {
 					check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');
 
 					//Required data
-					if (!isset($map_data) || !isset($Map)) {
+					if (! isset($map_data) || ! isset($Map)) {
 						die("-1");
 					}
 
@@ -90,7 +90,9 @@ class Waymark_HTTP {
 
 					//The content
 					if (isset($map_data) && $map_data) {
-						echo $map_data;
+						// Decode then re-encode to ensure valid JSON
+						$map_data = json_decode($map_data, true);
+						echo json_encode($map_data);
 					}
 
 					break;
@@ -102,7 +104,7 @@ class Waymark_HTTP {
 					check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');
 
 					//Required data
-					if (!isset($Collection)) {
+					if (! isset($Collection)) {
 						die("-1");
 					}
 
@@ -118,7 +120,7 @@ class Waymark_HTTP {
 					check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');
 
 					//Required data
-					if (!isset($map_data) || !isset($Map)) {
+					if (! isset($map_data) || ! isset($Map)) {
 						die("-1");
 					}
 
