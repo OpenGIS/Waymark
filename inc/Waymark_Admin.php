@@ -6,27 +6,27 @@ class Waymark_Admin {
 
 	function __construct() {
 		//Don't do anything if we're not logged in to the back-end
-		if (!is_admin()) {
+		if (! is_admin()) {
 			return;
 		}
 
 		//Actions
-		add_action('admin_init', array($this, 'admin_init'));
-		add_action('admin_menu', array($this, 'menu_init'));
-		add_action('current_screen', array($this, 'current_screen'));
-		add_action('admin_notices', array($this, 'admin_notices'));
+		add_action('admin_init', [$this, 'admin_init']);
+		add_action('admin_menu', [$this, 'menu_init']);
+		add_action('current_screen', [$this, 'current_screen']);
+		add_action('admin_notices', [$this, 'admin_notices']);
 		//add_action('widgets_init', array($this, 'widgets_init'));
-		add_action('admin_action_waymark_duplicate_post', array($this, 'duplicate_post'));
-		add_action('manage_waymark_map_posts_custom_column', array($this, 'map_posts_custom_column'), 10, 2);
-		add_action('template_redirect', array($this, 'redirect_view_to_edit'));
+		add_action('admin_action_waymark_duplicate_post', [$this, 'duplicate_post']);
+		add_action('manage_waymark_map_posts_custom_column', [$this, 'map_posts_custom_column'], 10, 2);
+		add_action('template_redirect', [$this, 'redirect_view_to_edit']);
 
 		//Filters
-		add_filter('post_row_actions', array($this, 'edit_post_links'), 10, 2);
-		add_filter('manage_edit-waymark_collection_columns', array($this, 'collection_taxonomy_columns'), 10, 3);
-		add_filter('manage_waymark_collection_custom_column', array($this, 'collection_taxonomy_custom_column'), 10, 3);
-		add_filter('manage_waymark_map_posts_columns', array($this, 'map_posts_columns'));
-		add_filter('wp_read_image_metadata', array($this, 'add_gps_exif'), 10, 3);
-		add_filter('upload_mimes', array($this, 'upload_mimes'), 1);
+		add_filter('post_row_actions', [$this, 'edit_post_links'], 10, 2);
+		add_filter('manage_edit-waymark_collection_columns', [$this, 'collection_taxonomy_columns'], 10, 3);
+		add_filter('manage_waymark_collection_custom_column', [$this, 'collection_taxonomy_custom_column'], 10, 3);
+		add_filter('manage_waymark_map_posts_columns', [$this, 'map_posts_columns']);
+		add_filter('wp_read_image_metadata', [$this, 'add_gps_exif'], 10, 3);
+		add_filter('upload_mimes', [$this, 'upload_mimes'], 1);
 //		add_filter('wp_check_filetype_and_ext', array($this, 'wp_check_filetype_and_ext'), 10, 4);
 	}
 
@@ -87,13 +87,13 @@ class Waymark_Admin {
 
 	function duplicate_post() {
 		//Check for post ID
-		if (!isset($_GET['post_id']) || !is_numeric($_GET['post_id'])) {
-			wp_die(__('Can not duplicate, no post to supplied!', 'waymark'));
+		if (! isset($_GET['post_id']) || ! is_numeric($_GET['post_id'])) {
+			wp_die(esc_html__('Can not duplicate, no post to supplied!', 'waymark'));
 		}
 
 		//Nonce verification
-		if (!isset($_GET['duplicate_nonce']) || !wp_verify_nonce($_GET['duplicate_nonce'], basename(__FILE__))) {
-			wp_die(__('Security verification error!', 'waymark'));
+		if (! isset($_GET['duplicate_nonce']) || ! wp_verify_nonce($_GET['duplicate_nonce'], basename(__FILE__))) {
+			wp_die(esc_html__('Security verification error!', 'waymark'));
 		}
 
 		$Object = new Waymark_Object($_GET['post_id']);
@@ -104,7 +104,7 @@ class Waymark_Admin {
 
 	function edit_post_links($actions, $post) {
 		//Queries & Layout
-		if (in_array($post->post_type, array('waymark_map'))) {
+		if (in_array($post->post_type, ['waymark_map'])) {
 			//Add Duplicate Link
 			$actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=waymark_duplicate_post&post_id=' . $post->ID, basename(__FILE__), 'duplicate_nonce') . '" title="' . esc_attr__('Duplicate this post', 'waymark') . '" rel="permalink">' . esc_html__('Duplicate', 'waymark') . '</a>';
 
@@ -129,7 +129,7 @@ class Waymark_Admin {
 		case 'shortcode';
 
 			//Shortcode output
-			echo '<input type="text" value="[' . Waymark_Config::get_item('shortcode') . ' collection_id=&quot;' . $term_id . '&quot;]" />';
+			echo '<input type="text" value="[' . esc_html(Waymark_Config::get_item('shortcode')) . ' collection_id=&quot;' . esc_attr($term_id) . '&quot;]" />';
 
 			break;
 		}
@@ -149,7 +149,7 @@ class Waymark_Admin {
 		case 'shortcode';
 
 			//Shortcode output
-			echo '<input type="text" value="[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post_id . '&quot;]" />';
+			echo '<input type="text" value="[' . esc_html(Waymark_Config::get_item('shortcode')) . ' map_id=&quot;' . esc_attr($post_id) . '&quot;]" />';
 
 			break;
 		}
@@ -181,12 +181,12 @@ class Waymark_Admin {
 				$description = sprintf(__('Create Maps here, then add them to your content using the <a href="%s">Shortcode</a>. <a href="%s" class="button waymark-right">Watch the Video &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs/getting-started'));
 			}
 
-			$map_posts = get_posts(array(
+			$map_posts = get_posts([
 				'post_type' => 'waymark_map',
-			));
+			]);
 
 			//Map New/Edit Page (not Collections... not pages)
-			if ($this->current_screen->post_type == 'waymark_map' && !$this->current_screen->taxonomy && strpos($this->current_screen->id, 'waymark_page') === false) {
+			if ($this->current_screen->post_type == 'waymark_map' && ! $this->current_screen->taxonomy && strpos($this->current_screen->id, 'waymark_page') === false) {
 				global $post;
 
 				//Waymark_Helper::debug($current_screen, false);
@@ -212,8 +212,11 @@ class Waymark_Admin {
 		if ($title || $description) {
 			echo '<div id="waymark-admin-container" class="wrap">' . "\n";
 			echo '	<div class="card">' . "\n";
-			echo '		<h1>' . $title . '</h1>' . "\n";
-			echo '		<p>' . $description . '</p>' . "\n";
+			echo '		<h1>' . esc_html($title) . '</h1>' . "\n";
+			echo '		<p>' . wp_kses($description, [
+				'a' => ['href' => [], 'class' => []],
+				'code' => [],
+			]) . '</p>' . "\n";
 			echo '	</div>' . "\n";
 			echo '</div>' . "\n";
 		}
@@ -222,7 +225,7 @@ class Waymark_Admin {
 	//Thanks to https://kristarella.blog/2009/04/add-image-exif-metadata-to-wordpress/
 	function add_gps_exif($meta, $file, $sourceImageType) {
 		//Required the PHP EXIF extension
-		if (!function_exists('exif_read_data')) {
+		if (! function_exists('exif_read_data')) {
 			return $meta;
 		}
 
@@ -286,11 +289,11 @@ class Waymark_Admin {
 		//File type we are interested in
 		if (array_key_exists('type', $filetype) && $filetype['type']) {
 			//Allow
-			return array(
+			return [
 				'ext' => $filetype['ext'],
 				'type' => $filetype['type'],
 				'proper_filename' => $filename,
-			);
+			];
 		}
 
 		return $check;
