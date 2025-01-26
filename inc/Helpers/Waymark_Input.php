@@ -455,11 +455,25 @@ class Waymark_Input {
 				$value = $fallback;
 			}
 
-			return $value;
+		case 'valid_zoom':
+			if (! is_numeric($value) || $value < 1 || $value > 18) {
+				$value = $fallback;
+			}
+
+			break;
+
+		case 'valid_opacity':
+			if (! is_numeric($value) || $value < 0 || $value > 1) {
+				$value = $fallback;
+			}
+
+			break;
 		}
+
+		return $value;
 	}
 
-	//Thanks to: https://code.tutsplus.com/articles/attaching-files-to-your-posts-using-wordpress-custom-meta-boxes-part-1--wp-22291
+//Thanks to: https://code.tutsplus.com/articles/attaching-files-to-your-posts-using-wordpress-custom-meta-boxes-part-1--wp-22291
 // 	static function upload_file($file) {
 // 		//Get the file type of the upload
 // 		$filetype = wp_check_filetype(basename($file['name']));

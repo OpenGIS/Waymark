@@ -126,8 +126,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the maximum zoom level of the Basemap
 							'tip' => esc_attr__('Set a maximum zoom level for this Basemap, the default is 18.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value) && $param_value >= 1 && $param_value <= 18) ? $param_value : 18;', //Fallback
+								'valid_zoom',
 							],
+							'fallback' => 18,
 						],
 					],
 				],
@@ -388,8 +389,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the opacity of the Line
 							'tip' => esc_attr__('The opacity of the Line, between 0.0 and 1.0 (e.g. "0.5").', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value) && $param_value > 0 && $param_value <= 1) ? $param_value : 0.7;', //Fallback
+								'valid_opacity',
 							],
+							'fallback' => 0.7,
 						],
 						'line_display' => [
 							'name' => 'line_display',
@@ -491,8 +493,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the opacity of the Shape
 							'tip' => esc_attr__('The opacity of the inside of the shape, between 0.0 and 1.0 (e.g. "0.5").', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value) && $param_value > 0 && $param_value <= 1) ? $param_value : 0.5;', //Fallback
+								'valid_opacity',
 							],
+							'fallback' => 0.5,
 						],
 						'shape_display' => [
 							'name' => 'shape_display',
