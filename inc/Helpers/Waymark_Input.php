@@ -362,7 +362,7 @@ class Waymark_Input {
 	static function process_input($param_def, $param_value) {
 		//Do processing
 		if (array_key_exists('input_processing', $param_def)) {
-			$param_value = self::eval_processes_on_param_value($param_def, $param_value);
+			$param_value = self::run_processes_on_param_value($param_def, $param_value);
 		}
 
 		return $param_value;
@@ -371,20 +371,20 @@ class Waymark_Input {
 	static function process_output($param_def, $param_value) {
 		//Do processing
 		if (array_key_exists('output_processing', $param_def)) {
-			$param_value = self::eval_processes_on_param_value($param_def, $param_value);
+			$param_value = self::run_processes_on_param_value($param_def, $param_value);
 		}
 
 		return $param_value;
 	}
 
-	static function eval_processes_on_param_value($param_def, $param_value) {
+	static function run_processes_on_param_value($param_def, $param_value) {
 		// Return if no processes defined
-		if (! array_key_exists('processes', $param_def)) {
+		if (! array_key_exists('input_processing', $param_def)) {
 			return $param_value;
 		}
 
 		// Get processes
-		$processes = $param_def['processes'];
+		$processes = $param_def['input_processing'];
 
 		// Set fallback
 		if (array_key_exists('fallback', $param_def)) {
@@ -395,8 +395,6 @@ class Waymark_Input {
 
 		if (is_array($processes)) {
 			foreach ($processes as $process) {
-
-				Waymark_Helper::debug($process, false);
 
 				//Values stored in array
 				if (is_array($param_value)) {
