@@ -87,7 +87,7 @@ class Waymark_Settings {
 								'not_empty',
 							],
 							// translators: The fallback for the name of the Basemap
-							'fallback' => esc_html__('Basemap', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5),
+							'fallback' => esc_html__('Basemap', 'waymark') . ' ' . substr(md5(wp_rand(0, 999999)), 0, 5),
 						],
 						'layer_url' => [
 							'name' => 'layer_url',
@@ -174,7 +174,7 @@ class Waymark_Settings {
 								'not_empty',
 							],
 							// translators: The fallback for the name of the Marker
-							'fallback' => esc_html__('Marker', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5),
+							'fallback' => esc_html__('Marker', 'waymark') . ' ' . substr(md5(wp_rand(0, 999999)), 0, 5),
 						],
 						'marker_shape' => [
 							'name' => 'marker_shape',
@@ -346,7 +346,7 @@ class Waymark_Settings {
 								'not_empty',
 							],
 							// translators: The fallback for the name of the Line
-							'fallback' => esc_html__('Line', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5),
+							'fallback' => esc_html__('Line', 'waymark') . ' ' . substr(md5(wp_rand(0, 999999)), 0, 5),
 						],
 						'line_colour' => [
 							'name' => 'line_colour',
@@ -465,7 +465,7 @@ class Waymark_Settings {
 								'not_empty',
 							],
 							// translators: The fallback for the name of the Shape
-							'fallback' => esc_html__('Shape', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5),
+							'fallback' => esc_html__('Shape', 'waymark') . ' ' . substr(md5(wp_rand(0, 999999)), 0, 5),
 						],
 						'shape_colour' => [
 							'name' => 'shape_colour',
@@ -572,7 +572,7 @@ class Waymark_Settings {
 								'not_empty',
 							],
 							// translators: The fallback for the title of the Meta
-							'fallback' => esc_html__('Meta', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5),
+							'fallback' => esc_html__('Meta', 'waymark') . ' ' . substr(md5(wp_rand(0, 999999)), 0, 5),
 						],
 						'meta_default' => [
 							'name' => 'meta_default',
