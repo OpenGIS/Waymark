@@ -1505,15 +1505,15 @@ class Waymark_Settings {
 							'options' => [
 								// translators: The option to enable the title
 								'title' => esc_html__('Title', 'waymark'),
-								// translators: The option to enable the editor
+								// translators: The option to enable the author
 								'author' => esc_html__('Author', 'waymark'),
-								// translators: The option to enable the editor
+								// translators: The option to enable revisions
 								'revisions' => esc_html__('Revisions', 'waymark'),
-								// translators: The option to enable the editor
+								// translators: The option to enable the thumbnail
 								'thumbnail' => esc_html__('Thumbnail', 'waymark'),
-								// translators: The option to enable the editor
+								// translators: The option to enable the comments
 								'comments' => esc_html__('Comments', 'waymark'),
-								// translators: The option to enable the editor
+								// translators: The option to enable the excerpt
 								'excerpt' => esc_html__('Excerpt', 'waymark'),
 							],
 						],
