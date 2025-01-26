@@ -84,8 +84,10 @@ class Waymark_Settings {
 							// translators: The tip for the field for the name of the Basemap
 							'tip' => sprintf(esc_attr__('The Layer Name will appear in a dropdown list shown by the Map when multiple Basemaps have been entered. You can change the default basemap in the shortcode: %s', 'waymark'), '[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;1234&quot; basemap=&quot;Basemap Name&quot;]'),
 							'input_processing' => [
-								'(! empty($param_value)) ? $param_value : "' . esc_html__('Basemap', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5) . '";', //Fallback
+								'not_empty',
 							],
+							// translators: The fallback for the name of the Basemap
+							'fallback' => esc_html__('Basemap', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5),
 						],
 						'layer_url' => [
 							'name' => 'layer_url',
@@ -168,9 +170,10 @@ class Waymark_Settings {
 							// translators: The tip for the field for the name of the Marker
 							'tip' => esc_attr__('What kind of Marker is this? E.g. "Photo", "Grocery Store", "Warning!". Once saved, Marker labels can not be edited. The Marker Label is displayed in the Tooltip (when hovering over the Marker) and in the Info Window (once the Marker is clicked). Hide in Settings > Map > Misc. > Type Labels.', 'waymark'),
 							'input_processing' => [
-								                                                                                                                                  // translators: The fallback for the name of the Marker
-								'(! empty($param_value)) ? $param_value : "' . esc_html__('Marker', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5) . '";', //Fallback
+								'not_empty',
 							],
+							// translators: The fallback for the name of the Marker
+							'fallback' => esc_html__('Marker', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5),
 						],
 						'marker_shape' => [
 							'name' => 'marker_shape',
@@ -220,8 +223,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the background colour of the Marker
 							'tip' => esc_attr__('The Marker background colour. Click "Select Colour" to select.', 'waymark'),
 							'input_processing' => [
-								'(! empty($param_value)) ? $param_value : "white";', //Fallback
+								'not_empty',
 							],
+							'fallback' => 'white',
 						],
 						'marker_display' => [
 							'name' => 'marker_display',
@@ -293,8 +297,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the colour of the Marker
 							'tip' => esc_attr__('The colour of the icon. Click "Select Colour" to select.', 'waymark'),
 							'input_processing' => [
-								'(! empty($param_value)) ? $param_value : "#81d742";', //Fallback
+								'not_empty',
 							],
+							'fallback' => '#81d742',
 						],
 					],
 				],
@@ -335,9 +340,10 @@ class Waymark_Settings {
 							// translators: The tip for the field for the name of the Line
 							'tip' => esc_attr__('What kind of Line is this? E.g. "Easy", "Walking Only", "Dark Red". The Line Label is displayed in the Tooltip (when hovering over the Line) and in the Line Info Window. Once saved, Line labels can not be edited.', 'waymark'),
 							'input_processing' => [
-								                                                                                                                                // translators: The fallback for the name of the Line
-								'(! empty($param_value)) ? $param_value : "' . esc_html__('Line', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5) . '";', //Fallback
+								'not_empty',
 							],
+							// translators: The fallback for the name of the Line
+							'fallback' => esc_html__('Line', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5),
 						],
 						'line_colour' => [
 							'name' => 'line_colour',
@@ -350,8 +356,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the colour of the Line
 							'tip' => esc_attr__('The colour of the Line. Click "Select Colour" to select.', 'waymark'),
 							'input_processing' => [
-								'(! empty($param_value)) ? $param_value : "#81d742";', //Fallback
+								'not_empty',
 							],
+							'fallback' => '#81d742',
 						],
 						'line_weight' => [
 							'name' => 'line_weight',
@@ -447,9 +454,10 @@ class Waymark_Settings {
 							// translators: The tip for the field for the name of the Shape
 							'tip' => esc_attr__('What kind of Shape is this? E.g. "Park", "Danger!", "Light Blue". The Shape Label is displayed in the Tooltip (when hovering over the Shape) and in the Shape Info Window. Once saved, Shape labels can not be edited.', 'waymark'),
 							'input_processing' => [
-								                                                                                                                                 // translators: The fallback for the name of the Shape
-								'(! empty($param_value)) ? $param_value : "' . esc_html__('Shape', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5) . '";', //Fallback
+								'not_empty',
 							],
+							// translators: The fallback for the name of the Shape
+							'fallback' => esc_html__('Shape', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5),
 						],
 						'shape_colour' => [
 							'name' => 'shape_colour',
@@ -462,8 +470,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the colour of the Shape
 							'tip' => esc_attr__('The colour of the Shape. Click "Select Colour" to select.', 'waymark'),
 							'input_processing' => [
-								'(! empty($param_value)) ? $param_value : "#81d742";', //Fallback
+								'not_empty',
 							],
+							'fallback' => '#81d742',
 						],
 						'fill_opacity' => [
 							'name' => 'fill_opacity',
@@ -549,10 +558,10 @@ class Waymark_Settings {
 							'tip' => esc_attr__('The title appears next to the input field.', 'waymark'),
 							'class' => Waymark_Config::get_item('meta', 'inputs') ? 'waymark-uneditable' : '',
 							'input_processing' => [
-								// translators: The fallback for the title of the Meta
-
-								'(! empty($param_value)) ? $param_value : "' . esc_html__('Meta', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5) . '";', //Fallback
+								'not_empty',
 							],
+							// translators: The fallback for the title of the Meta
+							'fallback' => esc_html__('Meta', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5),
 						],
 						'meta_default' => [
 							'name' => 'meta_default',
@@ -1048,8 +1057,9 @@ class Waymark_Settings {
 								'preg_replace("/[^0-9.,-]+/", "", $param_value);',
 							],
 							'output_processing' => [
-								sprintf('(! empty($param_value)) ? $param_value : "%s";', Waymark_Config::get_default('misc', 'map_options', 'map_default_latlng')),
+								'not_empty',
 							],
+							'fallback' => Waymark_Config::get_default('misc', 'map_options', 'map_default_latlng'),
 						],
 						'map_height' => [
 							'name' => 'map_height',
@@ -1067,8 +1077,9 @@ class Waymark_Settings {
 								'preg_replace("/[^0-9]/", "", $param_value);',
 							],
 							'output_processing' => [
-								sprintf('(! empty($param_value)) ? $param_value : %d;', Waymark_Config::get_default('misc', 'map_options', 'map_height')),
+								'not_empty',
 							],
+							'fallback' => Waymark_Config::get_default('misc', 'map_options', 'map_height'),
 						],
 						'map_default_zoom' => [
 							'name' => 'map_default_zoom',
@@ -1084,8 +1095,9 @@ class Waymark_Settings {
 								'preg_replace("/[^0-9]/", "", $param_value);',
 							],
 							'output_processing' => [
-								sprintf('(! empty($param_value)) ? $param_value : "%d";', Waymark_Config::get_default('misc', 'map_options', 'map_default_zoom')),
+								'not_empty',
 							],
+							'fallback' => Waymark_Config::get_default('misc', 'map_options', 'map_default_zoom'),
 						],
 						'show_gallery' => [
 							'name' => 'show_gallery',
@@ -1355,8 +1367,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the elevation colour
 							'tip' => sprintf(esc_attr__('The colour of the elevation graph and associated Line.', 'waymark')),
 							'input_processing' => [
-								'(! empty($param_value)) ? $param_value : "#b42714";', //Fallback
+								'not_empty',
 							],
+							'fallback' => '#b42714',
 						],
 						'elevation_initial' => [
 							'name' => 'elevation_initial',
