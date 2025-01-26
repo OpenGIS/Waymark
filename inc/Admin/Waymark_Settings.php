@@ -10,14 +10,6 @@ class Waymark_Settings {
 
 	public function __construct() {
 
-		//Execute action?
-		if (sizeof($_POST)) {
-			//Clear cache
-			if (isset($_POST['Waymark_Settings']['advanced']['performance']['clear_cache'])) {
-				$this->execute_action('clear_cache');
-			}
-		}
-
 		//Get current settings from DB
 		$current_settings = get_option('Waymark_Settings');
 		if (is_array($current_settings)) {
@@ -1806,20 +1798,6 @@ class Waymark_Settings {
 
 		echo '	</select>' . "\n";
 		echo '</div>' . "\n";
-	}
-
-	public function execute_action($action) {
-		switch ($action) {
-		//Clear cache
-		case 'clear_cache':
-			Waymark_Cache::flush();
-
-			break;
-		}
-
-		wp_redirect(admin_url('admin.php?page=waymark-settings&tab=advanced&settings-updated=waymark_action'));
-
-		die;
 	}
 
 	public function admin_notices() {
