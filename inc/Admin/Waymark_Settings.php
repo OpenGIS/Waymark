@@ -237,8 +237,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for whether the Marker should be shown initially
 							'tip' => esc_attr__('When using the Overlay Filter you can choose to show/hide certain Types when the Map initially loads.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 1;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 1,
 						],
 						'marker_submission' => [
 							'name' => 'marker_submission',
@@ -250,8 +251,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for whether the Marker should be available for front-end submissions
 							'tip' => esc_attr__('Make this Type available in front-end Submissions?', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 1;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 1,
 						],
 						'icon_type' => [
 							'name' => 'icon_type',
@@ -371,8 +373,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the weight of the Line
 							'tip' => esc_attr__('The width of the Line, in pixels.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 3;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 3,
 						],
 						'line_opacity' => [
 							'name' => 'line_opacity',
@@ -398,8 +401,10 @@ class Waymark_Settings {
 							// translators: The tip for the field for whether the Line should be shown initially
 							'tip' => esc_attr__('When using the Overlay Filter you can choose to show/hide certain Types when the Map initially loads.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 1;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 1,
+
 						],
 						'line_submission' => [
 							'name' => 'line_submission',
@@ -411,8 +416,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for whether the Line should be available for front-end submissions
 							'tip' => esc_attr__('Make this Type available in front-end Submissions?', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 1;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 1,
 						],
 					],
 				],
@@ -498,8 +504,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for whether the Shape should be shown initially
 							'tip' => esc_attr__('When using the Overlay Filter you can choose to show/hide certain Types when the Map initially loads.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 1;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 1,
 						],
 						'shape_submission' => [
 							'name' => 'shape_submission',
@@ -511,8 +518,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for whether the Shape should be available for front-end submissions
 							'tip' => esc_attr__('Make this Type available in front-end Submissions?', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 1;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 1,
 						],
 					],
 				],
@@ -1176,8 +1184,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the delay before waking
 							'tip' => esc_attr__('How many seconds before scroll zoom is enabled. 0 seconds will mean no delay (disabling this feature). A large number of seconds like 3600 (an hour) will esentially *disable hover to wake*, meaning the user will need to *click* to wake.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : ' . Waymark_Config::get_default('misc', 'interaction_options', 'delay_seconds') . ';', //Fallback
+								'is_numeric',
 							],
+							'fallback' => Waymark_Config::get_default('misc', 'interaction_options', 'delay_seconds'),
 						],
 						'do_message' => [
 							'name' => 'do_message',
@@ -1240,8 +1249,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the cluster threshold
 							'tip' => esc_attr__('Markers will not be clustered above this zoom level.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : ' . Waymark_Config::get_default('misc', 'cluster_options', 'cluster_threshold') . ';', //Fallback
+								'is_numeric',
 							],
+							'fallback' => Waymark_Config::get_default('misc', 'cluster_options', 'cluster_threshold'),
 						],
 						'cluster_radius' => [
 							'name' => 'cluster_radius',
@@ -1253,10 +1263,10 @@ class Waymark_Settings {
 							'default' => Waymark_Config::get_setting('misc', 'cluster_options', 'cluster_radius'),
 							// translators: The tip for the field for the cluster radius
 							'tip' => esc_attr__('The maximum radius that a cluster will cover from the central marker (in pixels). Decreasing will make more, smaller clusters.	Default 80.', 'waymark'),
-
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : ' . Waymark_Config::get_default('misc', 'cluster_options', 'cluster_radius') . ';', //Fallback
+								'is_numeric',
 							],
+							'fallback' => Waymark_Config::get_default('misc', 'cluster_options', 'cluster_radius'),
 						],
 					],
 				],

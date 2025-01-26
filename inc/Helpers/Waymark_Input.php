@@ -362,7 +362,7 @@ class Waymark_Input {
 	static function process_input($param_def, $param_value) {
 		//Do processing
 		if (array_key_exists('input_processing', $param_def)) {
-			$param_value = self::eval_processes_on_param_value($param_def['input_processing'], $param_value);
+			$param_value = self::eval_processes_on_param_value($param_def, $param_value);
 		}
 
 		return $param_value;
@@ -371,15 +371,33 @@ class Waymark_Input {
 	static function process_output($param_def, $param_value) {
 		//Do processing
 		if (array_key_exists('output_processing', $param_def)) {
-			$param_value = self::eval_processes_on_param_value($param_def['output_processing'], $param_value);
+			$param_value = self::eval_processes_on_param_value($param_def, $param_value);
 		}
 
 		return $param_value;
 	}
 
-	static function eval_processes_on_param_value($processes, $param_value) {
+	static function eval_processes_on_param_value($param_def, $param_value) {
+		// Return if no processes defined
+		if (! array_key_exists('processes', $param_def)) {
+			return $param_value;
+		}
+
+		// Get processes
+		$processes = $param_def['processes'];
+
+		// Set fallback
+		if (array_key_exists('fallback', $param_def)) {
+			$fallback = $param_def['fallback'];
+		} else {
+			$fallback = '';
+		}
+
 		if (is_array($processes)) {
 			foreach ($processes as $process) {
+
+				Waymark_Helper::debug($process, false);
+
 				//Values stored in array
 				if (is_array($param_value)) {
 					//Waymark_Helper::debug($param_value, false);
@@ -391,7 +409,7 @@ class Waymark_Input {
 
 						//Process
 						$param_value = trim($param_value);
-						eval("\$param_value = $process;");
+						$param_value = self::perform_process_on_value($param_value, $process, $fallback);
 
 						//Back into array
 						$param_value = [$param_value];
@@ -403,7 +421,7 @@ class Waymark_Input {
 						foreach ($param_values as $param_value) {
 							//Process each value
 							$param_value = trim($param_value);
-							eval("\$param_value = $process;");
+							$param_value = self::perform_process_on_value($param_value, $process, $fallback);
 
 							$param_value_out[] = $param_value;
 						}
@@ -414,12 +432,31 @@ class Waymark_Input {
 					//Single value stored in string
 				} else {
 					$param_value = trim($param_value);
-					eval("\$param_value = $process;");
+					$param_value = self::perform_process_on_value($param_value, $process, $fallback);
 				}
 			}
 		}
 
 		return $param_value;
+	}
+
+	static function self::perform_process_on_value($value = '', $process = '', $fallback = '') {
+		//Process
+		switch ($process) {
+		case 'not_empty':
+			if (empty($value)) {
+				$value = $fallback;
+			}
+
+			break;
+
+		case 'is_numeric':
+			if (! is_numeric($value)) {
+				$value = $fallback;
+			}
+
+			return $value;
+		}
 	}
 
 	//Thanks to: https://code.tutsplus.com/articles/attaching-files-to-your-posts-using-wordpress-custom-meta-boxes-part-1--wp-22291
