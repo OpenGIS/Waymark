@@ -440,7 +440,7 @@ class Waymark_Input {
 		return $param_value;
 	}
 
-	static function self::perform_process_on_value($value = '', $process = '', $fallback = '') {
+	static function perform_process_on_value($value = '', $process = '', $fallback = '') {
 		//Process
 		switch ($process) {
 		case 'not_empty':
@@ -455,6 +455,8 @@ class Waymark_Input {
 				$value = $fallback;
 			}
 
+			break;
+
 		case 'valid_zoom':
 			if (! is_numeric($value) || $value < 1 || $value > 18) {
 				$value = $fallback;
@@ -466,6 +468,45 @@ class Waymark_Input {
 			if (! is_numeric($value) || $value < 0 || $value > 1) {
 				$value = $fallback;
 			}
+
+			break;
+
+		case 'property_key':
+			$value = preg_replace("/[^0-9a-zA-Z -_.]/", "", $value);
+
+			break;
+
+		case 'valid_latlng':
+			$value = preg_replace("/[^0-9.,-]+/", "", $value);
+
+			break;
+
+		case 'remove_non_numeric':
+			$value = preg_replace("/[^0-9]/", "", $value);
+
+			break;
+
+		case 'remove_non_slug':
+			$value = preg_replace("/[^0-9a-z-]+/", "", $value);
+
+			break;
+
+		case 'layer_attribution':
+			if (! strpos($value, "&")) {
+				$value = htmlspecialchars($value);
+			}
+
+			break;
+
+		case 'marker_icon':
+			if (strpbrk($value, "\">")) {
+				$value = htmlspecialchars($value);
+			}
+
+			break;
+
+		case 'htmlspecialchars':
+			$value = htmlspecialchars($value);
 
 			break;
 		}

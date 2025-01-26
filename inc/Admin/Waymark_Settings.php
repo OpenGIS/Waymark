@@ -112,7 +112,7 @@ class Waymark_Settings {
 							'tip' => esc_attr__('Mapping services often have the requirement that attribution is displayed by the map. Text and HTML links are supported.', 'waymark'),
 							'tip_link' => 'https://www.thunderforest.com/terms/#attribution',
 							'input_processing' => [
-								'(! strpos($param_value, "&")) ? htmlspecialchars($param_value) : $param_value',
+								'layer_attribution',
 							],
 						],
 						'layer_max_zoom' => [
@@ -286,7 +286,7 @@ class Waymark_Settings {
 							// translators: The tip for the field for the name of the Marker
 							'tip' => esc_attr__('The desired icon name from Ionicons or Font Awesome, e.g. "ion-camera", or "fa-camera". Click the links to see the full list of icons available.|Text to display inside the Marker, in the chosen colour. Space is very limited! Pro Tip: adjust text size using CSS; for all Markers: .waymark-icon-text{font-size: 18px}, or by Type: .waymark-marker-photo .waymark-icon-text{...}. Use your browser\'s inspector to dig for Type class names.|The HTML entered will be added inside each Marker. Pro Tip! HTML Entities supported (e.g. &amp;cross; as well as Unicode and Emojis!), or provide HTML to integrate with other Icon providers.', 'waymark'),
 							'input_processing' => [
-								'(strpbrk($param_value, "\">")) ? htmlspecialchars($param_value) : $param_value',
+								'marker_icon',
 							],
 							'append' => '<div class="waymark-icons-help"><a href="https://ionic.io/ionicons/v2/cheatsheet.html">Ionic Icons</a><a href="https://fontawesome.com/v4.7.0/cheatsheet/">Font Awesome</a></div>',
 						],
@@ -738,7 +738,7 @@ class Waymark_Settings {
 							// translators: The tip for the field for the key of the Property
 							'tip' => esc_attr__('This is the key associated with the data you are trying to access, i.e. "properties": {"property_key": "Some content here"}', 'waymark'),
 							'input_processing' => [
-								'preg_replace("/[^0-9a-zA-Z -_.]/", "", $param_value);',
+								'property_key',
 							],
 						],
 						'property_title' => [
@@ -1065,7 +1065,7 @@ class Waymark_Settings {
 							// translators: The tip for the field for the default centre of the map
 							'tip' => esc_attr__('Waymark centres the Map automatically when displaying data. These coordinates (Latitude,Longitude) will be used when there is no data available.', 'waymark'),
 							'input_processing' => [
-								'preg_replace("/[^0-9.,-]+/", "", $param_value);',
+								'valid_latlng',
 							],
 							'output_processing' => [
 								'not_empty',
@@ -1085,7 +1085,7 @@ class Waymark_Settings {
 							// translators:	The tip for the field for the height of the map
 							'tip' => sprintf(esc_attr__('Specify the desired height of the Map (in pixels). Pro Tip! This will affect all Maps, but you can change the height (and width) of an individual Map through the Shortcode: %s', 'waymark'), '[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;1234&quot; map_height=&quot;' . Waymark_Config::get_setting('misc', 'map_options', 'map_height') . '&quot;]'),
 							'input_processing' => [
-								'preg_replace("/[^0-9]/", "", $param_value);',
+								'remove_non_numeric',
 							],
 							'output_processing' => [
 								'not_empty',
@@ -1103,7 +1103,7 @@ class Waymark_Settings {
 							// translators: The tip for the field for the default zoom of the map
 							'tip' => esc_attr__('Waymark zooms the Map automatically when displaying data. This zoom level (0-18) will be used when there is no data available.', 'waymark'),
 							'input_processing' => [
-								'preg_replace("/[^0-9]/", "", $param_value);',
+								'valid_zoom',
 							],
 							'output_processing' => [
 								'not_empty',
@@ -1487,7 +1487,7 @@ class Waymark_Settings {
 							// translators: The tip for the field for the map slug
 							'tip' => esc_attr__('The URL slug that will be used for links to your Maps, i.e. example.com/[map-slug]/example-map/. Only alpha-numeric characters and hyphens (-) are allowed.', 'waymark'),
 							'input_processing' => [
-								'preg_replace("/[^0-9a-z-]+/", "", $param_value);',
+								'remove_non_slug',
 							],
 							'prepend' => '<small>/</small>',
 							'append' => '<small>/map-name/</small>',
@@ -1503,7 +1503,7 @@ class Waymark_Settings {
 							// translators: The tip for the field for the collection slug
 							'tip' => esc_attr__('The URL slug that will be used for links to your Collections, i.e. example.com/[collection-slug]/example-collection/. Only alpha-numeric characters and hyphens (-) are allowed.', 'waymark'),
 							'input_processing' => [
-								'preg_replace("/[^0-9a-z-]+/", "", $param_value);',
+								'remove_non_slug',
 							],
 							'prepend' => '<small>/</small>',
 							'append' => '<small>/collection-name/</small>',
@@ -1574,27 +1574,6 @@ class Waymark_Settings {
 				],
 			],
 		];
-
-		//Debug?
-		if (Waymark_Helper::is_debug()) {
-			$this->tabs['misc']['sections']['advanced']['fields']['settings_output'] = [
-				'name' => 'settings_output',
-				'id' => 'settings_output',
-				'type' => 'textarea',
-				'class' => 'waymark-align-top',
-				// translators: The title of the field for the settings data
-				'title' => esc_html__('Settings Data', 'waymark'),
-				'default' => serialize(get_option('Waymark_Settings')),
-				//Don't save to DB
-				'input_processing' => [
-					'null',
-				],
-				//Don't allow editing
-				'output_processing' => [
-					'serialize(get_option("Waymark_Settings"))',
-				],
-			];
-		}
 
 		add_action('admin_notices', [$this, 'admin_notices']);
 		add_action('admin_init', [$this, 'register_settings']);
@@ -1688,7 +1667,7 @@ class Waymark_Settings {
 								//If no input processing specified
 								if (! array_key_exists('input_processing', $field_definition)) {
 									//Make safe by default
-									$field_definition['input_processing'][] = 'htmlspecialchars($param_value)';
+									$field_definition['input_processing'][] = 'htmlspecialchars';
 								}
 
 								//Process the input
