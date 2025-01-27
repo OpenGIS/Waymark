@@ -10,14 +10,6 @@ class Waymark_Settings {
 
 	public function __construct() {
 
-		//Execute action?
-		if (sizeof($_POST)) {
-			//Clear cache
-			if (isset($_POST['Waymark_Settings']['advanced']['performance']['clear_cache'])) {
-				$this->execute_action('clear_cache');
-			}
-		}
-
 		//Get current settings from DB
 		$current_settings = get_option('Waymark_Settings');
 		if (is_array($current_settings)) {
@@ -84,8 +76,10 @@ class Waymark_Settings {
 							// translators: The tip for the field for the name of the Basemap
 							'tip' => sprintf(esc_attr__('The Layer Name will appear in a dropdown list shown by the Map when multiple Basemaps have been entered. You can change the default basemap in the shortcode: %s', 'waymark'), '[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;1234&quot; basemap=&quot;Basemap Name&quot;]'),
 							'input_processing' => [
-								'(! empty($param_value)) ? $param_value : "' . esc_html__('Basemap', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5) . '";', //Fallback
+								'not_empty',
 							],
+							// translators: The fallback for the name of the Basemap
+							'fallback' => esc_html__('Basemap', 'waymark') . ' ' . substr(md5(wp_rand(0, 999999)), 0, 5),
 						],
 						'layer_url' => [
 							'name' => 'layer_url',
@@ -110,7 +104,7 @@ class Waymark_Settings {
 							'tip' => esc_attr__('Mapping services often have the requirement that attribution is displayed by the map. Text and HTML links are supported.', 'waymark'),
 							'tip_link' => 'https://www.thunderforest.com/terms/#attribution',
 							'input_processing' => [
-								'(! strpos($param_value, "&")) ? htmlspecialchars($param_value) : $param_value',
+								'layer_attribution',
 							],
 						],
 						'layer_max_zoom' => [
@@ -124,8 +118,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the maximum zoom level of the Basemap
 							'tip' => esc_attr__('Set a maximum zoom level for this Basemap, the default is 18.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value) && $param_value >= 1 && $param_value <= 18) ? $param_value : 18;', //Fallback
+								'valid_zoom',
 							],
+							'fallback' => 18,
 						],
 					],
 				],
@@ -168,9 +163,10 @@ class Waymark_Settings {
 							// translators: The tip for the field for the name of the Marker
 							'tip' => esc_attr__('What kind of Marker is this? E.g. "Photo", "Grocery Store", "Warning!". Once saved, Marker labels can not be edited. The Marker Label is displayed in the Tooltip (when hovering over the Marker) and in the Info Window (once the Marker is clicked). Hide in Settings > Map > Misc. > Type Labels.', 'waymark'),
 							'input_processing' => [
-								                                                                                                                                  // translators: The fallback for the name of the Marker
-								'(! empty($param_value)) ? $param_value : "' . esc_html__('Marker', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5) . '";', //Fallback
+								'not_empty',
 							],
+							// translators: The fallback for the name of the Marker
+							'fallback' => esc_html__('Marker', 'waymark') . ' ' . substr(md5(wp_rand(0, 999999)), 0, 5),
 						],
 						'marker_shape' => [
 							'name' => 'marker_shape',
@@ -220,8 +216,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the background colour of the Marker
 							'tip' => esc_attr__('The Marker background colour. Click "Select Colour" to select.', 'waymark'),
 							'input_processing' => [
-								'(! empty($param_value)) ? $param_value : "white";', //Fallback
+								'not_empty',
 							],
+							'fallback' => 'white',
 						],
 						'marker_display' => [
 							'name' => 'marker_display',
@@ -233,8 +230,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for whether the Marker should be shown initially
 							'tip' => esc_attr__('When using the Overlay Filter you can choose to show/hide certain Types when the Map initially loads.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 1;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 1,
 						],
 						'marker_submission' => [
 							'name' => 'marker_submission',
@@ -246,8 +244,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for whether the Marker should be available for front-end submissions
 							'tip' => esc_attr__('Make this Type available in front-end Submissions?', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 1;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 1,
 						],
 						'icon_type' => [
 							'name' => 'icon_type',
@@ -279,7 +278,7 @@ class Waymark_Settings {
 							// translators: The tip for the field for the name of the Marker
 							'tip' => esc_attr__('The desired icon name from Ionicons or Font Awesome, e.g. "ion-camera", or "fa-camera". Click the links to see the full list of icons available.|Text to display inside the Marker, in the chosen colour. Space is very limited! Pro Tip: adjust text size using CSS; for all Markers: .waymark-icon-text{font-size: 18px}, or by Type: .waymark-marker-photo .waymark-icon-text{...}. Use your browser\'s inspector to dig for Type class names.|The HTML entered will be added inside each Marker. Pro Tip! HTML Entities supported (e.g. &amp;cross; as well as Unicode and Emojis!), or provide HTML to integrate with other Icon providers.', 'waymark'),
 							'input_processing' => [
-								'(strpbrk($param_value, "\">")) ? htmlspecialchars($param_value) : $param_value',
+								'marker_icon',
 							],
 							'append' => '<div class="waymark-icons-help"><a href="https://ionic.io/ionicons/v2/cheatsheet.html">Ionic Icons</a><a href="https://fontawesome.com/v4.7.0/cheatsheet/">Font Awesome</a></div>',
 						],
@@ -293,8 +292,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the colour of the Marker
 							'tip' => esc_attr__('The colour of the icon. Click "Select Colour" to select.', 'waymark'),
 							'input_processing' => [
-								'(! empty($param_value)) ? $param_value : "#81d742";', //Fallback
+								'not_empty',
 							],
+							'fallback' => '#81d742',
 						],
 					],
 				],
@@ -335,9 +335,10 @@ class Waymark_Settings {
 							// translators: The tip for the field for the name of the Line
 							'tip' => esc_attr__('What kind of Line is this? E.g. "Easy", "Walking Only", "Dark Red". The Line Label is displayed in the Tooltip (when hovering over the Line) and in the Line Info Window. Once saved, Line labels can not be edited.', 'waymark'),
 							'input_processing' => [
-								                                                                                                                                // translators: The fallback for the name of the Line
-								'(! empty($param_value)) ? $param_value : "' . esc_html__('Line', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5) . '";', //Fallback
+								'not_empty',
 							],
+							// translators: The fallback for the name of the Line
+							'fallback' => esc_html__('Line', 'waymark') . ' ' . substr(md5(wp_rand(0, 999999)), 0, 5),
 						],
 						'line_colour' => [
 							'name' => 'line_colour',
@@ -350,8 +351,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the colour of the Line
 							'tip' => esc_attr__('The colour of the Line. Click "Select Colour" to select.', 'waymark'),
 							'input_processing' => [
-								'(! empty($param_value)) ? $param_value : "#81d742";', //Fallback
+								'not_empty',
 							],
+							'fallback' => '#81d742',
 						],
 						'line_weight' => [
 							'name' => 'line_weight',
@@ -364,8 +366,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the weight of the Line
 							'tip' => esc_attr__('The width of the Line, in pixels.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 3;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 3,
 						],
 						'line_opacity' => [
 							'name' => 'line_opacity',
@@ -378,8 +381,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the opacity of the Line
 							'tip' => esc_attr__('The opacity of the Line, between 0.0 and 1.0 (e.g. "0.5").', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value) && $param_value > 0 && $param_value <= 1) ? $param_value : 0.7;', //Fallback
+								'valid_opacity',
 							],
+							'fallback' => 0.7,
 						],
 						'line_display' => [
 							'name' => 'line_display',
@@ -391,8 +395,10 @@ class Waymark_Settings {
 							// translators: The tip for the field for whether the Line should be shown initially
 							'tip' => esc_attr__('When using the Overlay Filter you can choose to show/hide certain Types when the Map initially loads.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 1;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 1,
+
 						],
 						'line_submission' => [
 							'name' => 'line_submission',
@@ -404,8 +410,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for whether the Line should be available for front-end submissions
 							'tip' => esc_attr__('Make this Type available in front-end Submissions?', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 1;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 1,
 						],
 					],
 				],
@@ -447,9 +454,10 @@ class Waymark_Settings {
 							// translators: The tip for the field for the name of the Shape
 							'tip' => esc_attr__('What kind of Shape is this? E.g. "Park", "Danger!", "Light Blue". The Shape Label is displayed in the Tooltip (when hovering over the Shape) and in the Shape Info Window. Once saved, Shape labels can not be edited.', 'waymark'),
 							'input_processing' => [
-								                                                                                                                                 // translators: The fallback for the name of the Shape
-								'(! empty($param_value)) ? $param_value : "' . esc_html__('Shape', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5) . '";', //Fallback
+								'not_empty',
 							],
+							// translators: The fallback for the name of the Shape
+							'fallback' => esc_html__('Shape', 'waymark') . ' ' . substr(md5(wp_rand(0, 999999)), 0, 5),
 						],
 						'shape_colour' => [
 							'name' => 'shape_colour',
@@ -462,8 +470,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the colour of the Shape
 							'tip' => esc_attr__('The colour of the Shape. Click "Select Colour" to select.', 'waymark'),
 							'input_processing' => [
-								'(! empty($param_value)) ? $param_value : "#81d742";', //Fallback
+								'not_empty',
 							],
+							'fallback' => '#81d742',
 						],
 						'fill_opacity' => [
 							'name' => 'fill_opacity',
@@ -476,8 +485,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the opacity of the Shape
 							'tip' => esc_attr__('The opacity of the inside of the shape, between 0.0 and 1.0 (e.g. "0.5").', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value) && $param_value > 0 && $param_value <= 1) ? $param_value : 0.5;', //Fallback
+								'valid_opacity',
 							],
+							'fallback' => 0.5,
 						],
 						'shape_display' => [
 							'name' => 'shape_display',
@@ -489,8 +499,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for whether the Shape should be shown initially
 							'tip' => esc_attr__('When using the Overlay Filter you can choose to show/hide certain Types when the Map initially loads.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 1;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 1,
 						],
 						'shape_submission' => [
 							'name' => 'shape_submission',
@@ -502,8 +513,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for whether the Shape should be available for front-end submissions
 							'tip' => esc_attr__('Make this Type available in front-end Submissions?', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : 1;', //Fallback
+								'is_numeric',
 							],
+							'fallback' => 1,
 						],
 					],
 				],
@@ -549,10 +561,10 @@ class Waymark_Settings {
 							'tip' => esc_attr__('The title appears next to the input field.', 'waymark'),
 							'class' => Waymark_Config::get_item('meta', 'inputs') ? 'waymark-uneditable' : '',
 							'input_processing' => [
-								// translators: The fallback for the title of the Meta
-
-								'(! empty($param_value)) ? $param_value : "' . esc_html__('Meta', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5) . '";', //Fallback
+								'not_empty',
 							],
+							// translators: The fallback for the title of the Meta
+							'fallback' => esc_html__('Meta', 'waymark') . ' ' . substr(md5(wp_rand(0, 999999)), 0, 5),
 						],
 						'meta_default' => [
 							'name' => 'meta_default',
@@ -718,7 +730,7 @@ class Waymark_Settings {
 							// translators: The tip for the field for the key of the Property
 							'tip' => esc_attr__('This is the key associated with the data you are trying to access, i.e. "properties": {"property_key": "Some content here"}', 'waymark'),
 							'input_processing' => [
-								'preg_replace("/[^0-9a-zA-Z -_.]/", "", $param_value);',
+								'property_key',
 							],
 						],
 						'property_title' => [
@@ -1045,11 +1057,12 @@ class Waymark_Settings {
 							// translators: The tip for the field for the default centre of the map
 							'tip' => esc_attr__('Waymark centres the Map automatically when displaying data. These coordinates (Latitude,Longitude) will be used when there is no data available.', 'waymark'),
 							'input_processing' => [
-								'preg_replace("/[^0-9.,-]+/", "", $param_value);',
+								'valid_latlng',
 							],
 							'output_processing' => [
-								sprintf('(! empty($param_value)) ? $param_value : "%s";', Waymark_Config::get_default('misc', 'map_options', 'map_default_latlng')),
+								'not_empty',
 							],
+							'fallback' => Waymark_Config::get_default('misc', 'map_options', 'map_default_latlng'),
 						],
 						'map_height' => [
 							'name' => 'map_height',
@@ -1064,11 +1077,12 @@ class Waymark_Settings {
 							// translators:	The tip for the field for the height of the map
 							'tip' => sprintf(esc_attr__('Specify the desired height of the Map (in pixels). Pro Tip! This will affect all Maps, but you can change the height (and width) of an individual Map through the Shortcode: %s', 'waymark'), '[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;1234&quot; map_height=&quot;' . Waymark_Config::get_setting('misc', 'map_options', 'map_height') . '&quot;]'),
 							'input_processing' => [
-								'preg_replace("/[^0-9]/", "", $param_value);',
+								'remove_non_numeric',
 							],
 							'output_processing' => [
-								sprintf('(! empty($param_value)) ? $param_value : %d;', Waymark_Config::get_default('misc', 'map_options', 'map_height')),
+								'not_empty',
 							],
+							'fallback' => Waymark_Config::get_default('misc', 'map_options', 'map_height'),
 						],
 						'map_default_zoom' => [
 							'name' => 'map_default_zoom',
@@ -1081,11 +1095,12 @@ class Waymark_Settings {
 							// translators: The tip for the field for the default zoom of the map
 							'tip' => esc_attr__('Waymark zooms the Map automatically when displaying data. This zoom level (0-18) will be used when there is no data available.', 'waymark'),
 							'input_processing' => [
-								'preg_replace("/[^0-9]/", "", $param_value);',
+								'valid_zoom',
 							],
 							'output_processing' => [
-								sprintf('(! empty($param_value)) ? $param_value : "%d";', Waymark_Config::get_default('misc', 'map_options', 'map_default_zoom')),
+								'not_empty',
 							],
+							'fallback' => Waymark_Config::get_default('misc', 'map_options', 'map_default_zoom'),
 						],
 						'show_gallery' => [
 							'name' => 'show_gallery',
@@ -1164,8 +1179,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the delay before waking
 							'tip' => esc_attr__('How many seconds before scroll zoom is enabled. 0 seconds will mean no delay (disabling this feature). A large number of seconds like 3600 (an hour) will esentially *disable hover to wake*, meaning the user will need to *click* to wake.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : ' . Waymark_Config::get_default('misc', 'interaction_options', 'delay_seconds') . ';', //Fallback
+								'is_numeric',
 							],
+							'fallback' => Waymark_Config::get_default('misc', 'interaction_options', 'delay_seconds'),
 						],
 						'do_message' => [
 							'name' => 'do_message',
@@ -1228,8 +1244,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the cluster threshold
 							'tip' => esc_attr__('Markers will not be clustered above this zoom level.', 'waymark'),
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : ' . Waymark_Config::get_default('misc', 'cluster_options', 'cluster_threshold') . ';', //Fallback
+								'is_numeric',
 							],
+							'fallback' => Waymark_Config::get_default('misc', 'cluster_options', 'cluster_threshold'),
 						],
 						'cluster_radius' => [
 							'name' => 'cluster_radius',
@@ -1241,10 +1258,10 @@ class Waymark_Settings {
 							'default' => Waymark_Config::get_setting('misc', 'cluster_options', 'cluster_radius'),
 							// translators: The tip for the field for the cluster radius
 							'tip' => esc_attr__('The maximum radius that a cluster will cover from the central marker (in pixels). Decreasing will make more, smaller clusters.	Default 80.', 'waymark'),
-
 							'input_processing' => [
-								'(is_numeric($param_value)) ? $param_value : ' . Waymark_Config::get_default('misc', 'cluster_options', 'cluster_radius') . ';', //Fallback
+								'is_numeric',
 							],
+							'fallback' => Waymark_Config::get_default('misc', 'cluster_options', 'cluster_radius'),
 						],
 					],
 				],
@@ -1355,8 +1372,9 @@ class Waymark_Settings {
 							// translators: The tip for the field for the elevation colour
 							'tip' => sprintf(esc_attr__('The colour of the elevation graph and associated Line.', 'waymark')),
 							'input_processing' => [
-								'(! empty($param_value)) ? $param_value : "#b42714";', //Fallback
+								'not_empty',
 							],
+							'fallback' => '#b42714',
 						],
 						'elevation_initial' => [
 							'name' => 'elevation_initial',
@@ -1461,7 +1479,7 @@ class Waymark_Settings {
 							// translators: The tip for the field for the map slug
 							'tip' => esc_attr__('The URL slug that will be used for links to your Maps, i.e. example.com/[map-slug]/example-map/. Only alpha-numeric characters and hyphens (-) are allowed.', 'waymark'),
 							'input_processing' => [
-								'preg_replace("/[^0-9a-z-]+/", "", $param_value);',
+								'remove_non_slug',
 							],
 							'prepend' => '<small>/</small>',
 							'append' => '<small>/map-name/</small>',
@@ -1477,7 +1495,7 @@ class Waymark_Settings {
 							// translators: The tip for the field for the collection slug
 							'tip' => esc_attr__('The URL slug that will be used for links to your Collections, i.e. example.com/[collection-slug]/example-collection/. Only alpha-numeric characters and hyphens (-) are allowed.', 'waymark'),
 							'input_processing' => [
-								'preg_replace("/[^0-9a-z-]+/", "", $param_value);',
+								'remove_non_slug',
 							],
 							'prepend' => '<small>/</small>',
 							'append' => '<small>/collection-name/</small>',
@@ -1505,15 +1523,15 @@ class Waymark_Settings {
 							'options' => [
 								// translators: The option to enable the title
 								'title' => esc_html__('Title', 'waymark'),
-								// translators: The option to enable the editor
+								// translators: The option to enable the author
 								'author' => esc_html__('Author', 'waymark'),
-								// translators: The option to enable the editor
+								// translators: The option to enable revisions
 								'revisions' => esc_html__('Revisions', 'waymark'),
-								// translators: The option to enable the editor
+								// translators: The option to enable the thumbnail
 								'thumbnail' => esc_html__('Thumbnail', 'waymark'),
-								// translators: The option to enable the editor
+								// translators: The option to enable the comments
 								'comments' => esc_html__('Comments', 'waymark'),
-								// translators: The option to enable the editor
+								// translators: The option to enable the excerpt
 								'excerpt' => esc_html__('Excerpt', 'waymark'),
 							],
 						],
@@ -1548,27 +1566,6 @@ class Waymark_Settings {
 				],
 			],
 		];
-
-		//Debug?
-		if (Waymark_Helper::is_debug()) {
-			$this->tabs['misc']['sections']['advanced']['fields']['settings_output'] = [
-				'name' => 'settings_output',
-				'id' => 'settings_output',
-				'type' => 'textarea',
-				'class' => 'waymark-align-top',
-				// translators: The title of the field for the settings data
-				'title' => esc_html__('Settings Data', 'waymark'),
-				'default' => serialize(get_option('Waymark_Settings')),
-				//Don't save to DB
-				'input_processing' => [
-					'null',
-				],
-				//Don't allow editing
-				'output_processing' => [
-					'serialize(get_option("Waymark_Settings"))',
-				],
-			];
-		}
 
 		add_action('admin_notices', [$this, 'admin_notices']);
 		add_action('admin_init', [$this, 'register_settings']);
@@ -1662,7 +1659,7 @@ class Waymark_Settings {
 								//If no input processing specified
 								if (! array_key_exists('input_processing', $field_definition)) {
 									//Make safe by default
-									$field_definition['input_processing'][] = 'htmlspecialchars($param_value)';
+									$field_definition['input_processing'][] = 'htmlspecialchars';
 								}
 
 								//Process the input
@@ -1704,7 +1701,12 @@ class Waymark_Settings {
 		echo '	<div class="card">' . "\n";
 
 		//Tabs
-		$active_content = (isset($_GET['content'])) ? esc_html($_GET['content']) : $this->default_content;
+		$get_data = wp_unslash($_GET);
+		if (isset($get_data['content'])) {
+			$active_content = esc_attr($get_data['content']);
+		} else {
+			$active_content = $this->default_content;
+		}
 		$this->settings_nav($active_content);
 
 		//Open form
@@ -1801,20 +1803,6 @@ class Waymark_Settings {
 
 		echo '	</select>' . "\n";
 		echo '</div>' . "\n";
-	}
-
-	public function execute_action($action) {
-		switch ($action) {
-		//Clear cache
-		case 'clear_cache':
-			Waymark_Cache::flush();
-
-			break;
-		}
-
-		wp_redirect(admin_url('admin.php?page=waymark-settings&tab=advanced&settings-updated=waymark_action'));
-
-		die;
 	}
 
 	public function admin_notices() {

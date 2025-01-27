@@ -25,7 +25,7 @@ class Waymark_GeoJSON {
 
 	static public function feature_collection_to_string($FeatureCollection = []) {
 		if (is_array($FeatureCollection)) {
-			return json_encode($FeatureCollection);
+			return wp_json_encode($FeatureCollection);
 		}
 
 		return false;
@@ -68,7 +68,7 @@ class Waymark_GeoJSON {
 
 			//Each Feature
 			foreach ($FeatureCollection['features'] as &$Feature) {
-				if (!isset($Feature['properties']) || !is_array($Feature['properties'])) {
+				if (! isset($Feature['properties']) || ! is_array($Feature['properties'])) {
 					$Feature['properties'] = [];
 				}
 
@@ -112,18 +112,18 @@ class Waymark_GeoJSON {
 
 		// Waymark_Helper::debug($FeatureCollection);
 
-		$overlays = array(
-			'markers' => array(),
-			'lines' => array(),
-			'shapes' => array(),
-		);
+		$overlays = [
+			'markers' => [],
+			'lines' => [],
+			'shapes' => [],
+		];
 
 		foreach ($FeatureCollection['features'] as $feature) {
 
 			// Waymark_Helper::debug($feature);
 
 			//Ensure feature properties has type
-			if (!isset($feature['properties']['type'])) {
+			if (! isset($feature['properties']['type'])) {
 				continue;
 			}
 
@@ -173,7 +173,7 @@ class Waymark_GeoJSON {
 			$do_stringify = true;
 		}
 
-		if (!sizeof($wanted)) {
+		if (! sizeof($wanted)) {
 			$wanted = Waymark_Helper::get_overlay_properties();
 		}
 
@@ -214,7 +214,7 @@ class Waymark_GeoJSON {
 				// Modify description
 
 				// Ensure there is a description
-				if (!array_key_exists('description', $feature['properties'])) {
+				if (! array_key_exists('description', $feature['properties'])) {
 					$feature['properties']['description'] = '';
 				}
 

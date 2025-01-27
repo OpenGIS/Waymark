@@ -33,11 +33,9 @@ class Waymark_AJAX {
 		];
 
 		//Get image metadata
-		if (array_key_exists('attachment_id', $_POST) && is_numeric($_POST['attachment_id'])) {
-			// Sanitize attachment ID
-			$attachment_id = absint(wp_unslash($_POST['attachment_id']));
-
-			$attachment_metadata = wp_get_attachment_metadata($attachment_id);
+		$post_data = wp_unslash($_POST);
+		if (array_key_exists('attachment_id', $post_data) && is_numeric($post_data['attachment_id'])) {
+			$attachment_metadata = wp_get_attachment_metadata(esc_attr($post_data['attachment_id']));
 
 			if (array_key_exists('image_meta', $attachment_metadata) && is_array($attachment_metadata['image_meta'])) {
 				$response = $attachment_metadata['image_meta'];
