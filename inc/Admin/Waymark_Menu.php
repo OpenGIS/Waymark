@@ -6,7 +6,12 @@ class Waymark_Menu {
 	private $menu_slug = 'edit.php?post_type=waymark_map';
 
 	function __construct() {
-		$this->admin_url_request = basename($_SERVER['REQUEST_URI']);
+		$server_data = wp_unslash($_SERVER);
+		if (isset($server_data['REQUEST_URI'])) {
+			$this->admin_url_request = basename(esc_url($server_data['REQUEST_URI']));
+		} else {
+			$this->admin_url_request = '';
+		}
 
 		//Top-level
 		add_menu_page(Waymark_Config::get_name(true), Waymark_Config::get_name(true), 'edit_posts', $this->menu_slug, '', 'none', 21);
@@ -40,9 +45,9 @@ class Waymark_Menu {
 		foreach ($menu as &$m) {
 			if ($m[2] == $this->menu_slug) {
 				//Map Posts
-				$get_data = $_GET;
+				$get_data = wp_unslash($_GET);
 				if ($pagenow == 'post.php' && array_key_exists('post', $get_data)) {
-					$post_type = get_post_type(esc_attr($get_data));
+					$post_type = get_post_type(esc_attr($get_data['post']));
 					if (Waymark_Config::is_custom_type($post_type)) {
 						$m[4] .= ' wp-has-current-submenu';
 					}

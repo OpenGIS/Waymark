@@ -1701,7 +1701,7 @@ class Waymark_Settings {
 		echo '	<div class="card">' . "\n";
 
 		//Tabs
-		$get_data = $_GET;
+		$get_data = wp_unslash($_GET);
 		if (isset($get_data['content'])) {
 			$active_content = esc_attr($get_data['content']);
 		} else {
