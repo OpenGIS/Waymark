@@ -92,11 +92,12 @@ class Waymark_Admin {
 		}
 
 		//Nonce verification
-		if (! isset($_GET['duplicate_nonce']) || ! wp_verify_nonce($_GET['duplicate_nonce'], basename(__FILE__))) {
+		$get_data = wp_unslash($_GET);
+		if (! isset($get_data['duplicate_nonce']) || ! wp_verify_nonce($get_data['duplicate_nonce'], basename(__FILE__))) {
 			wp_die(esc_html__('Security verification error!', 'waymark'));
 		}
 
-		$Object = new Waymark_Object($_GET['post_id']);
+		$Object = new Waymark_Object(esc_attr($get_data['post_id']));
 		$new_post_id = $Object->duplicate_post();
 
 		wp_redirect(admin_url('post.php?action=edit&post=' . $new_post_id));
