@@ -1701,7 +1701,12 @@ class Waymark_Settings {
 		echo '	<div class="card">' . "\n";
 
 		//Tabs
-		$active_content = (isset($_GET['content'])) ? esc_html($_GET['content']) : $this->default_content;
+		$get_data = $_GET;
+		if (isset($get_data['content'])) {
+			$active_content = esc_attr($get_data['content']);
+		} else {
+			$active_content = $this->default_content;
+		}
 		$this->settings_nav($active_content);
 
 		//Open form
