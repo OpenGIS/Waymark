@@ -151,15 +151,17 @@ class Waymark_Submission {
 
 		global $post;
 
+		$request_data = wp_unslash($_REQUEST);
+
 		//Messages
-		if (array_key_exists('waymark_status', $_REQUEST)) {
-			switch ($_REQUEST['waymark_status']) {
+		if (array_key_exists('waymark_status', $request_data)) {
+			switch (esc_attr($request_data['waymark_status'])) {
 			case 'error':
 				$content .= '<div class="waymark-message waymark-error">';
 
 				//Custom message?
-				if (isset($_REQUEST['waymark_message'])) {
-					$content .= $_REQUEST['waymark_message'];
+				if (isset($request_data['waymark_message'])) {
+					$content .= esc_html($request_data['waymark_message']);
 				} else {
 					$content .= __('There was an error with your submission.', 'waymark');
 				}
@@ -177,9 +179,9 @@ class Waymark_Submission {
 				$content .= '	<div class="waymark-message waymark-success">';
 
 				//Custom message?
-				if (isset($_REQUEST['waymark_map_id'])) {
+				if (isset($request_data['waymark_map_id'])) {
 					// translators: %s: link to the published map
-					$content .= sprintf(__('Your submission has been <a href="%s">published</a>.', 'waymark'), get_permalink($_REQUEST['waymark_map_id']));
+					$content .= sprintf(__('Your submission has been <a href="%s">published</a>.', 'waymark'), get_permalink(esc_attr($request_data['waymark_map_id'])));
 				} else {
 					$content .= __('Your submission has been published.', 'waymark');
 				}
@@ -259,7 +261,7 @@ class Waymark_Submission {
 
 		//If no Title provided
 		if (! array_key_exists('map_title', $this->data) || ! $this->data['map_title']) {
-			$this->data['map_title'] = esc_html__('Submission', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5);
+			$this->data['map_title'] = esc_html__('Submission', 'waymark') . ' ' . substr(md5(wp_rand(0, 999999)), 0, 5);
 		}
 
 		//Create Map
