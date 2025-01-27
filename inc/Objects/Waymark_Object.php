@@ -56,7 +56,7 @@ class Waymark_Object {
 				if (sizeof($parameter_value) == 1 && array_key_exists(0, $parameter_value)) {
 					$parameter_value = $parameter_value[0];
 				} else {
-					$parameter_value = json_encode($parameter_value);
+					$parameter_value = wp_json_encode($parameter_value);
 				}
 			}
 
@@ -297,7 +297,7 @@ class Waymark_Object {
 					$map_data = Waymark_GeoJSON::clean_feature_descriptions($map_data);
 
 					//Keep Unicode
-					$meta_value = json_encode($map_data, JSON_UNESCAPED_UNICODE);
+					$meta_value = wp_json_encode($map_data, JSON_UNESCAPED_UNICODE);
 				}
 
 				$post_meta[$meta_key] = $meta_value;

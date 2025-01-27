@@ -310,7 +310,7 @@ class Waymark_Config {
 			if (! $really_short) {
 				return self::get_item('plugin_name_short');
 			} else {
-				return strip_tags(self::get_item('plugin_name_short'));
+				return wp_strip_all_tags(self::get_item('plugin_name_short'));
 			}
 		}
 	}
@@ -401,7 +401,7 @@ class Waymark_Config {
 		// Waymark_Helper::debug($map_config);
 
 		if ($encode) {
-			return json_encode($map_config);
+			return wp_json_encode($map_config);
 		} else {
 			return $map_config;
 		}
