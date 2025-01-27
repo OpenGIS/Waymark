@@ -133,7 +133,7 @@ function waymark_load_map_data(map_instance, map_id, reset_map = true) {
 			$map_config['map_options'][$overlay_name . '_types'] = $submission_types;
 		}
 
-		self::add_call('var waymark_user_config = ' . json_encode($map_config) . ';');
+		self::add_call('var waymark_user_config = ' . wp_json_encode($map_config) . ';');
 
 		//Set basemap
 		if ($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {

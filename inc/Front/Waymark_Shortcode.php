@@ -14,7 +14,7 @@ class Waymark_Shortcode {
 
 		$out = '';
 		$map_class = 'waymark-map';
-		$shortcode_hash = substr(md5(json_encode($shortcode_data)), 0, 6);
+		$shortcode_hash = substr(md5(wp_json_encode($shortcode_data)), 0, 6);
 		$maps_output = [];
 		$shortcode_header = [];
 		$shortcode_meta = [];
@@ -111,7 +111,7 @@ class Waymark_Shortcode {
 					// Collection Maps
 					if (sizeof($collectionMaps['features'])) {
 						$maps_output[$collection_id] = [
-							'map_data' => json_encode($collectionMaps),
+							'map_data' => wp_json_encode($collectionMaps),
 						];
 					}
 
@@ -538,7 +538,7 @@ class Waymark_Shortcode {
 					],
 				];
 
-				$out .= ' let marker_geojson = ' . json_encode($marker_geojson) . ';' . "\n";
+				$out .= ' let marker_geojson = ' . wp_json_encode($marker_geojson) . ';' . "\n";
 				$out .= '	waymark_viewer.load_json(marker_geojson);' . "\n";
 
 				if (Waymark_Helper::is_debug()) {
