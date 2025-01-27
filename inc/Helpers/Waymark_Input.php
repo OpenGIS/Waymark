@@ -8,7 +8,7 @@ class Waymark_Input {
 	static public function create_field($field, $set_value = null, $show_label = true) {
 		//Must have ID
 		if (! array_key_exists('id', $field) || ! $field['id']) {
-			$field['id'] = substr(md5(rand(0, 999999)), 0, 5);
+			$field['id'] = substr(md5(wp_rand(0, 999999)), 0, 5);
 		}
 
 		$out = "\n" . '<!-- START ' . $field['id'] . ' Input -->' . "\n";
