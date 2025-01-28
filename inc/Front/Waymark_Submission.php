@@ -151,45 +151,49 @@ class Waymark_Submission {
 
 		global $post;
 
-		$request_data = wp_unslash($_REQUEST);
+		$get_data = wp_unslash($_GET);
 
-		//Messages
-		if (array_key_exists('waymark_status', $request_data)) {
-			switch (esc_attr($request_data['waymark_status'])) {
-			case 'error':
-				$content .= '<div class="waymark-message waymark-error">';
+		// Check nonce
+		if (array_key_exists(Waymark_Config::get_item('nonce_string'), $get_data) && wp_verify_nonce($get_data[Waymark_Config::get_item('nonce_string')], 'public_add_map')) {
+			//Messages
+			if (array_key_exists('waymark_status', $get_data)) {
+				switch (esc_attr($get_data['waymark_status'])) {
+				case 'error':
+					$content .= '<div class="waymark-message waymark-error">';
 
-				//Custom message?
-				if (isset($request_data['waymark_message'])) {
-					$content .= esc_html($request_data['waymark_message']);
-				} else {
-					$content .= __('There was an error with your submission.', 'waymark');
+					//Custom message?
+					if (isset($get_data['waymark_message'])) {
+						$content .= esc_html($get_data['waymark_message']);
+					} else {
+						$content .= __('There was an error with your submission.', 'waymark');
+					}
+
+					$content .= '</div>' . "\n";
+
+					break;
+				case 'draft':
+					$content .= '	<div class="waymark-message waymark-success">';
+					$content .= __('Your submission has been received and is awaiting moderation.', 'waymark');
+					$content .= '	</div>' . "\n";
+
+					break;
+				case 'publish':
+					$content .= '	<div class="waymark-message waymark-success">';
+
+					//Custom message?
+					if (isset($get_data['waymark_map_id'])) {
+						// translators: %s: link to the published map
+						$content .= sprintf(__('Your submission has been <a href="%s">published</a>.', 'waymark'), get_permalink(esc_attr($get_data['waymark_map_id'])));
+					} else {
+						$content .= __('Your submission has been published.', 'waymark');
+					}
+
+					$content .= '	</div>' . "\n";
+
+					break;
 				}
-
-				$content .= '</div>' . "\n";
-
-				break;
-			case 'draft':
-				$content .= '	<div class="waymark-message waymark-success">';
-				$content .= __('Your submission has been received and is awaiting moderation.', 'waymark');
-				$content .= '	</div>' . "\n";
-
-				break;
-			case 'publish':
-				$content .= '	<div class="waymark-message waymark-success">';
-
-				//Custom message?
-				if (isset($request_data['waymark_map_id'])) {
-					// translators: %s: link to the published map
-					$content .= sprintf(__('Your submission has been <a href="%s">published</a>.', 'waymark'), get_permalink(esc_attr($request_data['waymark_map_id'])));
-				} else {
-					$content .= __('Your submission has been published.', 'waymark');
-				}
-
-				$content .= '	</div>' . "\n";
-
-				break;
 			}
+
 		}
 
 		// Submission Map Div
@@ -307,6 +311,10 @@ class Waymark_Submission {
 			$this->redirect_url .= (strpos($this->redirect_url, '?') === false) ? '?' : '&';
 
 			$this->redirect_url .= http_build_query($this->redirect_data);
+
+			// Nonce URL
+			$this->redirect_url = wp_nonce_url($this->redirect_url, 'public_add_map', Waymark_Config::get_item('nonce_string'));
+			$this->redirect_url = html_entity_decode($this->redirect_url);
 
 			$this->redirect_url .= '#waymark-submission';
 		}

@@ -919,7 +919,7 @@ class Waymark_Settings {
 					// translators: The title of the section for configuring submissions from guests
 					'title' => esc_html__('Public Submissions', 'waymark'),
 					// translators: The description of the section for configuring submissions from guests
-					'description' => __('This will allow Submissions from <b>any visitor</b>, without registration.<!--<br /><br /><b>Important!</b>-->', 'waymark'),
+					'description' => __('This will allow Submissions from <b>any visitor</b>, without registration.', 'waymark'),
 					'fields' => [
 						'submission_public' => [
 							'name' => 'submission_public',
