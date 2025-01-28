@@ -130,22 +130,71 @@ class Waymark_HTTP {
 				if (isset($export_filename) && isset($request_data['map_data'])) {
 					header('Content-Disposition: attachment; filename="' . $export_filename . '"');
 
+					$map_data = rawurldecode($request_data['map_data']);
+
 					switch ($request_data['export_format']) {
 					case 'gpx':
 						header('Content-Type: application/gpx+xml');
+
+						//Clean (allow GPX elements)
+						echo wp_kses($map_data, [
+							'gpx' => [
+								'creator' => true,
+								'version' => true,
+								'xmlns' => true,
+								'xmlns:xsi' => true,
+								'xsi:schemaLocation' => true,
+							],
+							'metadata' => [],
+							'name' => [],
+							'wpt' => [
+								'lat' => true,
+								'lon' => true,
+							],
+							'desc' => [],
+							'trk' => [],
+							'trkseg' => [],
+							'trkpt' => [
+								'lat' => true,
+								'lon' => true,
+							],
+							'ele' => [],
+						]);
 
 						break;
 					case 'kml':
 						header('Content-Type: application/vnd.google-earth.kml+xml');
 
+						// Clean (allow KML elements)
+						echo '<?xml version="1.0" encoding="UTF-8"?>';
+						echo wp_kses($map_data, [
+							'kml' => [
+								'xmlns' => true,
+							],
+							'document' => [],
+							'placemark' => [],
+							'name' => [],
+							'extendeddata' => [],
+							'data' => [
+								'name' => true,
+							],
+							'value' => [],
+							'point' => [],
+							'coordinates' => [],
+							'description' => [],
+							'linestring' => [],
+						]);
+
 						break;
 					case 'geojson':
 						header('Content-Type: application/geo+json');
 
+						//Encode and then decode to ensure valid JSON
+						$map_data = json_decode($map_data, true);
+						echo wp_json_encode($map_data);
+
 						break;
 					}
-
-					echo rawurldecode(wp_strip_all_tags($request_data['map_data']));
 				}
 
 				//That's it, that's all...
