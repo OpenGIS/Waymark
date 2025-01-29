@@ -46,15 +46,20 @@ class Waymark_Meta {
 	public function post_updated() {
 		global $post;
 
-		if (is_object($post) && ! (wp_is_post_revision($post->ID) || wp_is_post_autosave($post->ID))) {
-			switch ($post->post_type) {
-			//Map
-			case 'waymark_map':
-				$Map = new Waymark_Map;
-				$Map->set_data($_POST);
-				$Map->save_meta($post->ID);
+		$post_data = wp_unslash($_POST);
 
-				break;
+		// Check nonce
+		if (array_key_exists(Waymark_Config::get_item('nonce_string'), $post_data) && wp_verify_nonce($post_data[Waymark_Config::get_item('nonce_string')], 'create_form')) {
+			if (is_object($post) && ! (wp_is_post_revision($post->ID) || wp_is_post_autosave($post->ID))) {
+				switch ($post->post_type) {
+				//Map
+				case 'waymark_map':
+					$Map = new Waymark_Map;
+					$Map->set_data($post_data);
+					$Map->save_meta($post->ID);
+
+					break;
+				}
 			}
 		}
 	}
