@@ -132,7 +132,10 @@ class Waymark_Object {
 	}
 
 	function create_form() {
-		return Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups, $this->data, $this->input_name_format, 'waymark-parameters-' . $this->post_type);
+		$out = Waymark_Input::create_parameter_groups($this->parameters, $this->parameter_groups, $this->data, $this->input_name_format, 'waymark-parameters-' . $this->post_type);
+		$out .= wp_nonce_field('create_form', Waymark_Config::get_item('nonce_string'), false, false);
+
+		return $out;
 	}
 
 	//This gets fired when the post is created, saved and *TRASHED*
@@ -141,11 +144,16 @@ class Waymark_Object {
 			$post_id = $this->post_id;
 		}
 
-		// Not Public Submission
-		if (! isset($_POST['waymark_action']) || $_POST['waymark_action'] !== 'public_add_map') {
-			//Only if we are saving a post (i.e. not when trashing)
-			if (! isset($_POST['action']) || $_POST['action'] != 'editpost') {
-				return;
+		$post_data = wp_unslash($_POST);
+
+		// Check nonce
+		if (array_key_exists(Waymark_Config::get_item('nonce_string'), $post_data) && wp_verify_nonce($post_data[Waymark_Config::get_item('nonce_string')], 'create_form')) {
+			// Not Public Submission
+			if (! isset($_POST['waymark_action']) || $_POST['waymark_action'] !== 'public_add_map') {
+				//Only if we are saving a post (i.e. not when trashing)
+				if (! isset($_POST['action']) || $_POST['action'] != 'editpost') {
+					return;
+				}
 			}
 		}
 
