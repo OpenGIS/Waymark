@@ -183,6 +183,11 @@ class Waymark_HTTP {
 							'coordinates' => [],
 							'description' => [],
 							'linestring' => [],
+							'linearring' => [],
+							'polygon' => [],
+							'outerboundaryis' => [],
+							'innerboundaryis' => [],
+							'multigeometry' => [],
 						]);
 
 						break;
