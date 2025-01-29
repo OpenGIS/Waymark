@@ -2,25 +2,25 @@
 
 class Waymark_JS {
 
-	static private $chunks = array();
-	static private $calls = array();
+	static private $chunks = [];
+	static private $calls  = [];
 
 	static function init() {
-		add_action('wp_footer', array('Waymark_JS', 'wp_footer'));
-		add_action('wp_enqueue_scripts', array('Waymark_JS', 'enqueue_scripts'));
+		add_action('wp_footer', ['Waymark_JS', 'wp_footer']);
+		add_action('wp_enqueue_scripts', ['Waymark_JS', 'enqueue_scripts']);
 	}
 
 	static function enqueue_scripts() {
-		wp_register_style('waymark-js', Waymark_Helper::plugin_url('waymark-js/dist/css/waymark-js.min.css'), array(), Waymark_Config::get_version());
+		wp_register_style('waymark-js', Waymark_Helper::plugin_url('waymark-js/dist/css/waymark-js.min.css'), [], Waymark_Config::get_version());
 		wp_enqueue_style('waymark-js');
-		wp_register_script('waymark-js', Waymark_Helper::plugin_url('waymark-js/dist/js/waymark-js.min.js'), array('jquery'), Waymark_Config::get_version(), true);
-		wp_localize_script('waymark-js', 'waymark_js', array(
+		wp_register_script('waymark-js', Waymark_Helper::plugin_url('waymark-js/dist/js/waymark-js.min.js'), ['jquery'], Waymark_Config::get_version(), true);
+		wp_localize_script('waymark-js', 'waymark_js', [
 			//AJAX
 			'ajaxurl' => admin_url('admin-ajax.php'),
-		));
+		]);
 		wp_enqueue_script('waymark-js');
 
-		wp_register_script('waymark_front_js', Waymark_Helper::asset_url('js/front.min.js'), array('jquery'), Waymark_Config::get_version(), true);
+		wp_register_script('waymark_front_js', Waymark_Helper::asset_url('js/front.min.js'), ['jquery'], Waymark_Config::get_version(), true);
 		wp_enqueue_script('waymark_front_js');
 
 		//Config
@@ -48,24 +48,24 @@ function waymark_load_map_data(map_instance, map_id, reset_map = true) {
 	static function add_chunk($chunk) {
 //		Waymark_Helper::debug(strpos($chunk, '//'));
 
-		if ((!in_array($chunk[strlen($chunk) - 1], array(';', "\n")) && (strpos($chunk, '//') === false))) {
+		if ((! in_array($chunk[strlen($chunk) - 1], [';', "\n"]) && (strpos($chunk, '//') === false))) {
 			$chunk .= ';';
 		}
 		self::$chunks[] = $chunk;
 	}
 
 	static function add_call($call) {
-		if (!in_array($call, self::$calls)) {
+		if (! in_array($call, self::$calls)) {
 			self::$calls[] = $call;
 		}
 	}
 
 	static function wp_footer() {
-		echo "\n" . '<!-- START ' . Waymark_Config::get_name(true, true) . ' Footer JS -->' . "\n";
+		echo "\n" . '<!-- START ' . esc_html(Waymark_Config::get_name(true, true)) . ' Footer JS -->' . "\n";
 		echo '<script type="text/javascript">' . "\n";
 		//Lines
 		foreach (self::$chunks as $chunk) {
-			echo $chunk . "\n";
+			echo wp_kses($chunk, []) . "\n";
 		}
 
 		//Calls
@@ -73,18 +73,18 @@ function waymark_load_map_data(map_instance, map_id, reset_map = true) {
 			echo "\n//Call";
 			echo "\n" . 'jQuery(document).ready(function() {' . "\n";
 			foreach (self::$calls as $call) {
-				echo "	" . $call . ";\n";
+				echo "	" . wp_kses($call, []) . ";\n";
 			}
 			echo '});' . "\n";
 		}
 		echo '</script>' . "\n";
-		echo '<!-- END ' . Waymark_Config::get_name(true, true) . ' Footer JS -->' . "\n\n";
+		echo '<!-- END ' . esc_html(Waymark_Config::get_name(true, true)) . ' Footer JS -->' . "\n\n";
 	}
 
 	static function add_editor($map_data = []) {
 
 		// Ensure we have a valid map_data array
-		if (!is_array($map_data)) {
+		if (! is_array($map_data)) {
 			$map_data = [];
 		}
 
@@ -105,7 +105,7 @@ function waymark_load_map_data(map_instance, map_id, reset_map = true) {
 			}
 
 			//If none (i.e. no Types set to Submission in Settings)
-			if (!sizeof($submission_types)) {
+			if (! sizeof($submission_types)) {
 				//Create blank
 				$blank = [];
 				foreach (array_keys($type) as $key) {
@@ -133,7 +133,7 @@ function waymark_load_map_data(map_instance, map_id, reset_map = true) {
 			$map_config['map_options'][$overlay_name . '_types'] = $submission_types;
 		}
 
-		self::add_call('var waymark_user_config = ' . json_encode($map_config) . ';');
+		self::add_call('var waymark_user_config = ' . wp_json_encode($map_config) . ';');
 
 		//Set basemap
 		if ($editor_basemap = Waymark_Config::get_setting('misc', 'editor_options', 'editor_basemap')) {

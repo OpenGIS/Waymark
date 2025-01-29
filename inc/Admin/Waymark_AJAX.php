@@ -4,11 +4,11 @@ class Waymark_AJAX {
 
 	function __construct() {
 		//Public
-		add_action('wp_ajax_nopriv_waymark_read_file', array($this, 'public_handle_read_file'));
+		add_action('wp_ajax_nopriv_waymark_read_file', [$this, 'public_handle_read_file']);
 
 		//User
-		add_action('wp_ajax_waymark_read_file', array($this, 'handle_read_file'));
-		add_action('wp_ajax_waymark_get_attatchment_meta', array($this, 'get_attatchment_meta'));
+		add_action('wp_ajax_waymark_read_file', [$this, 'handle_read_file']);
+		add_action('wp_ajax_waymark_get_attatchment_meta', [$this, 'get_attatchment_meta']);
 
 		//Add nonce
 		Waymark_JS::add_chunk('var waymark_security = "' . wp_create_nonce(Waymark_Config::get_item('nonce_string')) . '";');
@@ -17,7 +17,7 @@ class Waymark_AJAX {
 	//Only crunch the sizes we want
 	function intermediate_image_sizes_advanced($sizes) {
 		foreach ($sizes as $size_key => $size_data) {
-			if (!in_array($size_key, Waymark_Config::get_item('media_library_sizes'))) {
+			if (! in_array($size_key, Waymark_Config::get_item('media_library_sizes'))) {
 				unset($sizes[$size_key]);
 			}
 		}
@@ -33,8 +33,9 @@ class Waymark_AJAX {
 		];
 
 		//Get image metadata
-		if (array_key_exists('attachment_id', $_POST) && is_numeric($_POST['attachment_id'])) {
-			$attachment_metadata = wp_get_attachment_metadata($_POST['attachment_id']);
+		$post_data = wp_unslash($_POST);
+		if (array_key_exists('attachment_id', $post_data) && is_numeric($post_data['attachment_id'])) {
+			$attachment_metadata = wp_get_attachment_metadata(esc_attr($post_data['attachment_id']));
 
 			if (array_key_exists('image_meta', $attachment_metadata) && is_array($attachment_metadata['image_meta'])) {
 				$response = $attachment_metadata['image_meta'];
@@ -42,7 +43,7 @@ class Waymark_AJAX {
 		}
 
 		header('Content-Type: text/javascript');
-		echo json_encode($response);
+		echo wp_json_encode($response);
 		die;
 	}
 
@@ -53,7 +54,7 @@ class Waymark_AJAX {
 		//Custom directory (create or already exists)
 		if (wp_mkdir_p($dir_data['basedir'] . '/' . $custom_dir)) {
 			foreach ($dir_data as $data_key => &$data_value) {
-				if (!in_array($data_key, ['error'])) {
+				if (! in_array($data_key, ['error'])) {
 					//Replace with our custom sub-directory
 					$data_value = str_replace(trim($dir_data['subdir'], '/'), $custom_dir, $data_value);
 				}
@@ -69,11 +70,11 @@ class Waymark_AJAX {
 
 		//Change upload location? (empty string means use default Media Library directory)
 		if (Waymark_Config::get_setting('submission', 'from_public', 'submission_upload_dir')) {
-			add_filter('upload_dir', array($this, 'public_upload_dir'));
+			add_filter('upload_dir', [$this, 'public_upload_dir']);
 		}
 
 		//Only crunch the sizes we want
-		add_filter('intermediate_image_sizes_advanced', array($this, 'intermediate_image_sizes_advanced'));
+		add_filter('intermediate_image_sizes_advanced', [$this, 'intermediate_image_sizes_advanced']);
 
 		$this->handle_read_file();
 	}
@@ -99,12 +100,12 @@ class Waymark_AJAX {
 				//Each file
 				foreach ($_FILES as $file_key => $file_data) {
 					//If no WP error
-					if (!$file_data['error']) {
+					if (! $file_data['error']) {
 						switch ($file_key) {
 						//Read from file
 						case 'add_file':
 							//Ensure feature allowed
-							if (!in_array('file', $Submission->get_features())) {
+							if (! in_array('file', $Submission->get_features())) {
 								//Not allowed
 								$response['error'] = esc_html__('Operation not allowed.', 'waymark');
 							}
@@ -114,7 +115,7 @@ class Waymark_AJAX {
 						case 'marker_photo':
 						case 'add_photo':
 							//Ensure feature allowed
-							if (!in_array('photo', $Submission->get_features())) {
+							if (! in_array('photo', $Submission->get_features())) {
 								//Not allowed
 								$response['error'] = esc_html__('Operation not allowed.', 'waymark');
 							}
@@ -137,7 +138,7 @@ class Waymark_AJAX {
 			if (isset($response['error'])) {
 				//Do not continue
 				header('Content-Type: text/javascript');
-				echo json_encode($response);
+				echo wp_json_encode($response);
 
 				die;
 				//Good to continue
@@ -149,6 +150,8 @@ class Waymark_AJAX {
 	}
 
 	function read_file() {
+		check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');
+
 		$response = [];
 
 		//If we have files
@@ -158,7 +161,7 @@ class Waymark_AJAX {
 				$response = $file_data;
 
 				//If no WP error
-				if (!$file_data['error']) {
+				if (! $file_data['error']) {
 					switch ($file_key) {
 					//Read file contents
 					case 'add_file':
@@ -194,7 +197,7 @@ class Waymark_AJAX {
 						$upload_response = media_handle_upload($file_key, 0);
 
 						//Success
-						if (!is_wp_error($upload_response)) {
+						if (! is_wp_error($upload_response)) {
 							$attachment_id = $upload_response;
 							$response['id'] = $attachment_id;
 
@@ -211,10 +214,10 @@ class Waymark_AJAX {
 								if (array_key_exists('image_meta', $attachment_metadata) && is_array($attachment_metadata['image_meta'])) {
 									//Location EXIF
 									if (array_key_exists('GPSLatitudeNum', $attachment_metadata['image_meta']) && array_key_exists('GPSLongitudeNum', $attachment_metadata['image_meta'])) {
-										$response = array_merge($response, array(
+										$response = array_merge($response, [
 											'GPSLatitudeNum' => $attachment_metadata['image_meta']['GPSLatitudeNum'],
 											'GPSLongitudeNum' => $attachment_metadata['image_meta']['GPSLongitudeNum'],
-										));
+										]);
 									}
 								}
 							}
@@ -227,9 +230,9 @@ class Waymark_AJAX {
 									$size['url'] = wp_get_attachment_image_url($attachment_id, $size_key);
 								}
 
-								$response = array_merge($response, array(
+								$response = array_merge($response, [
 									'sizes' => $attachment_metadata['sizes'],
-								));
+								]);
 							}
 							//Error
 						} else {
@@ -248,12 +251,12 @@ class Waymark_AJAX {
 		}
 
 		//No response?
-		if (!sizeof($response)) {
+		if (! sizeof($response)) {
 			$response['error'] = esc_html__('Unknown file upload error.', 'waymark');
 		}
 
 		header('Content-Type: text/javascript');
-		echo json_encode($response);
+		echo wp_json_encode($response);
 		die;
 	}
 }

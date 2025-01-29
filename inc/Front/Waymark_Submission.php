@@ -17,7 +17,7 @@ class Waymark_Submission {
 	private $redirect_data;
 	private $redirect_url;
 
-	public function __construct($data = array()) {
+	public function __construct($data = []) {
 		$this->data = $data;
 
 		//Default
@@ -115,7 +115,7 @@ class Waymark_Submission {
 
 	private function user_can_submit() {
 		//Guest
-		if (!sizeof($this->user->roles)) {
+		if (! sizeof($this->user->roles)) {
 			return false;
 		}
 
@@ -134,7 +134,7 @@ class Waymark_Submission {
 		return false;
 	}
 
-	public function render_front($data = array()) {
+	public function render_front($data = []) {
 		//Load CSS/Scripts for rich text editor
 		wp_enqueue_editor();
 
@@ -142,7 +142,7 @@ class Waymark_Submission {
 		$content .= '<div id="waymark-submission">' . "\n";
 
 		//Ensure Submissions allowed
-		if (!$this->allowed) {
+		if (! $this->allowed) {
 			$content .= '</div>' . "\n";
 			$content .= '<!-- END Waymark Submission -->' . "\n";
 
@@ -151,42 +151,49 @@ class Waymark_Submission {
 
 		global $post;
 
-		//Messages
-		if (array_key_exists('waymark_status', $_REQUEST)) {
-			switch ($_REQUEST['waymark_status']) {
-			case 'error':
-				$content .= '<div class="waymark-message waymark-error">';
+		$get_data = wp_unslash($_GET);
 
-				//Custom message?
-				if (isset($_REQUEST['waymark_message'])) {
-					$content .= $_REQUEST['waymark_message'];
-				} else {
-					$content .= __('There was an error with your submission.', 'waymark');
+		// Check nonce
+		if (array_key_exists(Waymark_Config::get_item('nonce_string'), $get_data) && wp_verify_nonce($get_data[Waymark_Config::get_item('nonce_string')], 'public_add_map')) {
+			//Messages
+			if (array_key_exists('waymark_status', $get_data)) {
+				switch (esc_attr($get_data['waymark_status'])) {
+				case 'error':
+					$content .= '<div class="waymark-message waymark-error">';
+
+					//Custom message?
+					if (isset($get_data['waymark_message'])) {
+						$content .= esc_html($get_data['waymark_message']);
+					} else {
+						$content .= __('There was an error with your submission.', 'waymark');
+					}
+
+					$content .= '</div>' . "\n";
+
+					break;
+				case 'draft':
+					$content .= '	<div class="waymark-message waymark-success">';
+					$content .= __('Your submission has been received and is awaiting moderation.', 'waymark');
+					$content .= '	</div>' . "\n";
+
+					break;
+				case 'publish':
+					$content .= '	<div class="waymark-message waymark-success">';
+
+					//Custom message?
+					if (isset($get_data['waymark_map_id'])) {
+						// translators: %s: link to the published map
+						$content .= sprintf(__('Your submission has been <a href="%s">published</a>.', 'waymark'), get_permalink(esc_attr($get_data['waymark_map_id'])));
+					} else {
+						$content .= __('Your submission has been published.', 'waymark');
+					}
+
+					$content .= '	</div>' . "\n";
+
+					break;
 				}
-
-				$content .= '</div>' . "\n";
-
-				break;
-			case 'draft':
-				$content .= '	<div class="waymark-message waymark-success">';
-				$content .= __('Your submission has been received and is awaiting moderation.', 'waymark');
-				$content .= '	</div>' . "\n";
-
-				break;
-			case 'publish':
-				$content .= '	<div class="waymark-message waymark-success">';
-
-				//Custom message?
-				if (isset($_REQUEST['waymark_map_id'])) {
-					$content .= sprintf(__('Your submission has been <a href="%s">published</a>.', 'waymark'), get_permalink($_REQUEST['waymark_map_id']));
-				} else {
-					$content .= __('Your submission has been published.', 'waymark');
-				}
-
-				$content .= '	</div>' . "\n";
-
-				break;
 			}
+
 		}
 
 		// Submission Map Div
@@ -235,12 +242,12 @@ class Waymark_Submission {
 
 	public function create_map() {
 		//Ensure Submissions allowed
-		if (!$this->allowed) {
+		if (! $this->allowed) {
 			return false;
 		}
 
 		//Data checks
-		if (!array_key_exists('map_data', $this->data) || !$this->data['map_data']) {
+		if (! array_key_exists('map_data', $this->data) || ! $this->data['map_data']) {
 			$this->status = 'error';
 			$this->redirect_data['waymark_message'] = __('Your Map was empty.', 'waymark');
 
@@ -249,7 +256,7 @@ class Waymark_Submission {
 
 		//Ensure the data passed is valid JSON
 		$raw_map_data = stripslashes($this->data['map_data']);
-		if (!Waymark_GeoJSON::get_feature_count($raw_map_data)) {
+		if (! Waymark_GeoJSON::get_feature_count($raw_map_data)) {
 			$this->status = 'error';
 			$this->redirect_data['waymark_message'] = __('Your Map did not contain valid features.', 'waymark');
 
@@ -257,17 +264,17 @@ class Waymark_Submission {
 		}
 
 		//If no Title provided
-		if (!array_key_exists('map_title', $this->data) || !$this->data['map_title']) {
-			$this->data['map_title'] = esc_html__('Submission', 'waymark') . ' ' . substr(md5(rand(0, 999999)), 0, 5);
+		if (! array_key_exists('map_title', $this->data) || ! $this->data['map_title']) {
+			$this->data['map_title'] = esc_html__('Submission', 'waymark') . ' ' . substr(md5(wp_rand(0, 999999)), 0, 5);
 		}
 
 		//Create Map
 		$this->Map = new Waymark_Map;
 		$this->Map->set_data($this->data);
 
-		$this->Map->create_post($this->data['map_title'], array(
+		$this->Map->create_post($this->data['map_title'], [
 			'post_status' => $this->status,
-		));
+		]);
 
 		//Add to collection?
 		$submission_collection = false;
@@ -304,6 +311,10 @@ class Waymark_Submission {
 			$this->redirect_url .= (strpos($this->redirect_url, '?') === false) ? '?' : '&';
 
 			$this->redirect_url .= http_build_query($this->redirect_data);
+
+			// Nonce URL
+			$this->redirect_url = wp_nonce_url($this->redirect_url, 'public_add_map', Waymark_Config::get_item('nonce_string'));
+			$this->redirect_url = html_entity_decode($this->redirect_url);
 
 			$this->redirect_url .= '#waymark-submission';
 		}

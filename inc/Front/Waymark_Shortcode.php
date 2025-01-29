@@ -2,20 +2,26 @@
 
 class Waymark_Shortcode {
 	function __construct() {
-		add_shortcode(Waymark_Config::get_item('shortcode'), array($this, 'handle_shortcode'));
+		add_shortcode(Waymark_Config::get_item('shortcode'), [$this, 'handle_shortcode']);
 	}
 
 	function handle_shortcode($shortcode_data, $content = null) {
+		// Sanitize
+		foreach ($shortcode_data as $key => $value) {
+			// Escape
+			$shortcode_data[$key] = esc_attr($value);
+		}
+
 		$out = '';
 		$map_class = 'waymark-map';
-		$shortcode_hash = substr(md5(json_encode($shortcode_data)), 0, 6);
-		$maps_output = array();
-		$shortcode_header = array();
-		$shortcode_meta = array();
+		$shortcode_hash = substr(md5(wp_json_encode($shortcode_data)), 0, 6);
+		$maps_output = [];
+		$shortcode_header = [];
+		$shortcode_meta = [];
 
 		//Just in case false is passed
-		if (!$shortcode_data) {
-			$shortcode_data = array();
+		if (! $shortcode_data) {
+			$shortcode_data = [];
 		}
 
 		// ============ Content? ================
@@ -47,10 +53,10 @@ class Waymark_Shortcode {
 			$Map = new Waymark_Map($shortcode_data['map_id']);
 
 			//Shortcode header
-			$shortcode_header = array(
+			$shortcode_header = [
 				'title' => $Map->post_title,
 				'link' => get_permalink($Map->post_id),
-			);
+			];
 
 			//Map Meta?
 			$shortcode_meta = Waymark_Helper::get_map_meta($Map, 'shortcode');
@@ -58,11 +64,11 @@ class Waymark_Shortcode {
 			//Ensure we have data
 			if ($Map && array_key_exists('map_data', $Map->data)) {
 				//Output
-				$maps_output[$Map->post_id] = array(
+				$maps_output[$Map->post_id] = [
 					'map_id' => $Map->post_id,
 					'map_title' => $Map->post_title,
 					'map_data' => $Map->data['map_data'],
-				);
+				];
 
 				//Map Class
 				$map_class .= ' waymark-map-id-' . $Map->post_id;
@@ -91,7 +97,7 @@ class Waymark_Shortcode {
 					//Iterate over Collection
 					foreach ($Collection->Maps as $Map) {
 						//Ensure we have data
-						if (!array_key_exists('map_data', $Map->data)) {
+						if (! array_key_exists('map_data', $Map->data)) {
 							continue;
 						}
 
@@ -104,9 +110,9 @@ class Waymark_Shortcode {
 
 					// Collection Maps
 					if (sizeof($collectionMaps['features'])) {
-						$maps_output[$collection_id] = array(
-							'map_data' => json_encode($collectionMaps),
-						);
+						$maps_output[$collection_id] = [
+							'map_data' => wp_json_encode($collectionMaps),
+						];
 					}
 
 					// Loading Maps via HTTP
@@ -114,7 +120,7 @@ class Waymark_Shortcode {
 					//Iterate over Collection
 					foreach ($Collection->Maps as $Map) {
 						//Ensure we have data
-						if (!array_key_exists('map_data', $Map->data)) {
+						if (! array_key_exists('map_data', $Map->data)) {
 							continue;
 						}
 
@@ -122,20 +128,20 @@ class Waymark_Shortcode {
 						$Map->data['map_data'] = Waymark_Helper::add_map_link_to_description($Map->post_id, $Map->post_title, $Map->data['map_data']);
 
 						//Output
-						$maps_output[$Map->post_id] = array(
+						$maps_output[$Map->post_id] = [
 							'map_id' => $Map->post_id,
 							'map_title' => $Map->post_title,
 							'collection_id' => $collection_id,
 							'map_data' => $Map->data['map_data'],
-						);
+						];
 					}
 				}
 
 				//Shortcode header
-				$shortcode_header = array(
+				$shortcode_header = [
 					'title' => $Collection->title,
 					'link' => get_term_link((int) $Collection->collection_id, 'waymark_collection'),
-				);
+				];
 			}
 		}
 
@@ -146,7 +152,7 @@ class Waymark_Shortcode {
 			$map_height = $shortcode_data['map_height'];
 
 			//Numeric only
-			if (!is_numeric($map_height)) {
+			if (! is_numeric($map_height)) {
 				$map_height = false;
 			}
 		} else {
@@ -158,7 +164,7 @@ class Waymark_Shortcode {
 			$map_width = $shortcode_data['map_width'];
 
 			//Numeric only
-			if (!is_numeric($map_width)) {
+			if (! is_numeric($map_width)) {
 				$map_width = false;
 			}
 		} else {
@@ -224,7 +230,7 @@ class Waymark_Shortcode {
 			}
 
 			//Title
-			if (array_key_exists('title', $shortcode_header) && !empty($shortcode_header['title'])) {
+			if (array_key_exists('title', $shortcode_header) && ! empty($shortcode_header['title'])) {
 				$out .= '		<div class="waymark-title">' . $shortcode_header['title'] . '</div>' . "\n";
 			} else {
 				$out .= '		<div class="waymark-title waymark-empty">&nbsp;</div>' . "\n";
@@ -532,7 +538,7 @@ class Waymark_Shortcode {
 					],
 				];
 
-				$out .= ' let marker_geojson = ' . json_encode($marker_geojson) . ';' . "\n";
+				$out .= ' let marker_geojson = ' . wp_json_encode($marker_geojson) . ';' . "\n";
 				$out .= '	waymark_viewer.load_json(marker_geojson);' . "\n";
 
 				if (Waymark_Helper::is_debug()) {

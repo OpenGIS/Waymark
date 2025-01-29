@@ -2,40 +2,40 @@
 
 class Waymark_Input {
 
-	private static $username_bad = array('.', "\$", '!', '*');
-	private static $username_good = array('__dot__', '__dollar__', '__bang__', '__star__');
+	private static $username_bad  = ['.', "\$", '!', '*'];
+	private static $username_good = ['__dot__', '__dollar__', '__bang__', '__star__'];
 
 	static public function create_field($field, $set_value = null, $show_label = true) {
 		//Must have ID
-		if (!array_key_exists('id', $field) || !$field['id']) {
-			$field['id'] = substr(md5(rand(0, 999999)), 0, 5);
+		if (! array_key_exists('id', $field) || ! $field['id']) {
+			$field['id'] = substr(md5(wp_rand(0, 999999)), 0, 5);
 		}
 
 		$out = "\n" . '<!-- START ' . $field['id'] . ' Input -->' . "\n";
 
 		//Use ID for Name (if absent)
-		if (array_key_exists('id', $field) && (!array_key_exists('name', $field))) {
+		if (array_key_exists('id', $field) && (! array_key_exists('name', $field))) {
 			$field['name'] = $field['id'];
 		}
 
 		//Default type
-		if (!array_key_exists('type', $field)) {
+		if (! array_key_exists('type', $field)) {
 			$field['type'] = 'text';
 		}
 
 		//Boolean
 		if ($field['type'] == 'boolean') {
-			if (!array_key_exists('class', $field)) {
+			if (! array_key_exists('class', $field)) {
 				$field['class'] = 'waymark-short-input';
 			} else {
 				$field['class'] .= ' waymark-short-input';
 			}
 
-			if (!array_key_exists('options', $field) || !is_array($field['options'])) {
-				$field['options'] = array(
+			if (! array_key_exists('options', $field) || ! is_array($field['options'])) {
+				$field['options'] = [
 					'1' => esc_attr__('Yes', 'waymark'),
 					'0' => esc_attr__('No', 'waymark'),
-				);
+				];
 			}
 		}
 
@@ -69,7 +69,7 @@ class Waymark_Input {
 		if (array_key_exists('tip', $field)) {
 			//Add missing periods
 			$last_char = $field['tip'][strlen($field['tip']) - 1];
-			if (!in_array($last_char, ['.', '?', '!'])) {
+			if (! in_array($last_char, ['.', '?', '!'])) {
 				$field['tip'] .= '.';
 			}
 
@@ -97,7 +97,7 @@ class Waymark_Input {
 	static public function create_input($field, $set_value = null) {
 		$out = '';
 
-		if (!array_key_exists('type', $field)) {
+		if (! array_key_exists('type', $field)) {
 			$field['type'] = 'text';
 		}
 
@@ -152,7 +152,7 @@ class Waymark_Input {
 			$set_value = ($set_value && json_decode($set_value)) ? json_decode($set_value) : $set_value;
 
 			//Use default if no set value
-			if (!$set_value && isset($field['default'])) {
+			if (! $set_value && isset($field['default'])) {
 				$set_value = $field['default'];
 			}
 
@@ -191,7 +191,7 @@ class Waymark_Input {
 		case 'textarea':
 			$out .= '		<textarea class="waymark-input waymark-input-' . $field['id'] . '" name="' . $field['name'] . '" data-id="' . $field['id'] . '">';
 			//Do we have a value for this post?
-			if (!is_null($set_value) && $value = htmlspecialchars($set_value)) {
+			if (! is_null($set_value) && $value = htmlspecialchars($set_value)) {
 				$out .= $value;
 				//Do we have a default?
 			} elseif (array_key_exists('default', $field)) {
@@ -203,7 +203,7 @@ class Waymark_Input {
 		case 'textarea_rich':
 			//Content
 			$content = $set_value;
-			if (!$content && array_key_exists('default', $field)) {
+			if (! $content && array_key_exists('default', $field)) {
 				$content = $field['default'];
 			}
 			$content = htmlspecialchars_decode($content);
@@ -213,14 +213,14 @@ class Waymark_Input {
 
 			//Setup rich editor
 			ob_start();
-			wp_editor($content, $field['id'], array(
+			wp_editor($content, $field['id'], [
 				'media_buttons' => false,
 				'drag_drop_upload' => false,
 				'textarea_name' => $field['name'],
 				'textarea_rows' => 5,
 				'teeny' => false,
 				'quicktags' => false,
-			));
+			]);
 			$out .= ob_get_clean();
 
 			break;
@@ -255,7 +255,7 @@ class Waymark_Input {
 	}
 
 	static function group_fields($fields, $groups) {
-		$fields_grouped = array();
+		$fields_grouped = [];
 
 		foreach ($fields as $field_key => $field_data) {
 			$group_id = '';
@@ -268,7 +268,7 @@ class Waymark_Input {
 		return $fields_grouped;
 	}
 
-	static function create_parameter_groups($fields, $groups = array(), $data = array(), $input_name_format = null, $id = '', $class_append = '') {
+	static function create_parameter_groups($fields, $groups = [], $data = [], $input_name_format = null, $id = '', $class_append = '') {
 		//Group
 		$fields = self::group_fields($fields, $groups);
 
@@ -304,7 +304,7 @@ class Waymark_Input {
 				if (array_key_exists($group_id, $groups) && $group_id != false) {
 					$group = $groups[$group_id];
 				} else {
-					$group = array();
+					$group = [];
 				}
 
 				//Close previous fieldset?
@@ -325,7 +325,7 @@ class Waymark_Input {
 
 			foreach ($fields as $field) {
 				//Use ID for Name
-				if (array_key_exists('id', $field) && (!array_key_exists('name', $field))) {
+				if (array_key_exists('id', $field) && (! array_key_exists('name', $field))) {
 					$field['name'] = $field['id'];
 				}
 
@@ -362,7 +362,7 @@ class Waymark_Input {
 	static function process_input($param_def, $param_value) {
 		//Do processing
 		if (array_key_exists('input_processing', $param_def)) {
-			$param_value = self::eval_processes_on_param_value($param_def['input_processing'], $param_value);
+			$param_value = self::run_processes_on_param_value($param_def, $param_value);
 		}
 
 		return $param_value;
@@ -371,15 +371,31 @@ class Waymark_Input {
 	static function process_output($param_def, $param_value) {
 		//Do processing
 		if (array_key_exists('output_processing', $param_def)) {
-			$param_value = self::eval_processes_on_param_value($param_def['output_processing'], $param_value);
+			$param_value = self::run_processes_on_param_value($param_def, $param_value);
 		}
 
 		return $param_value;
 	}
 
-	static function eval_processes_on_param_value($processes, $param_value) {
+	static function run_processes_on_param_value($param_def, $param_value) {
+		// Return if no processes defined
+		if (! array_key_exists('input_processing', $param_def)) {
+			return $param_value;
+		}
+
+		// Get processes
+		$processes = $param_def['input_processing'];
+
+		// Set fallback
+		if (array_key_exists('fallback', $param_def)) {
+			$fallback = $param_def['fallback'];
+		} else {
+			$fallback = '';
+		}
+
 		if (is_array($processes)) {
 			foreach ($processes as $process) {
+
 				//Values stored in array
 				if (is_array($param_value)) {
 					//Waymark_Helper::debug($param_value, false);
@@ -391,19 +407,19 @@ class Waymark_Input {
 
 						//Process
 						$param_value = trim($param_value);
-						eval("\$param_value = $process;");
+						$param_value = self::perform_process_on_value($param_value, $process, $fallback);
 
 						//Back into array
-						$param_value = array($param_value);
+						$param_value = [$param_value];
 						//Multiple values
 					} else {
 						//Each
-						$param_value_out = array();
+						$param_value_out = [];
 						$param_values = $param_value;
 						foreach ($param_values as $param_value) {
 							//Process each value
 							$param_value = trim($param_value);
-							eval("\$param_value = $process;");
+							$param_value = self::perform_process_on_value($param_value, $process, $fallback);
 
 							$param_value_out[] = $param_value;
 						}
@@ -414,7 +430,7 @@ class Waymark_Input {
 					//Single value stored in string
 				} else {
 					$param_value = trim($param_value);
-					eval("\$param_value = $process;");
+					$param_value = self::perform_process_on_value($param_value, $process, $fallback);
 				}
 			}
 		}
@@ -422,7 +438,81 @@ class Waymark_Input {
 		return $param_value;
 	}
 
-	//Thanks to: https://code.tutsplus.com/articles/attaching-files-to-your-posts-using-wordpress-custom-meta-boxes-part-1--wp-22291
+	static function perform_process_on_value($value = '', $process = '', $fallback = '') {
+		//Process
+		switch ($process) {
+		case 'not_empty':
+			if (empty($value)) {
+				$value = $fallback;
+			}
+
+			break;
+
+		case 'is_numeric':
+			if (! is_numeric($value)) {
+				$value = $fallback;
+			}
+
+			break;
+
+		case 'valid_zoom':
+			if (! is_numeric($value) || $value < 1 || $value > 18) {
+				$value = $fallback;
+			}
+
+			break;
+
+		case 'valid_opacity':
+			if (! is_numeric($value) || $value < 0 || $value > 1) {
+				$value = $fallback;
+			}
+
+			break;
+
+		case 'property_key':
+			$value = preg_replace("/[^0-9a-zA-Z -_.]/", "", $value);
+
+			break;
+
+		case 'valid_latlng':
+			$value = preg_replace("/[^0-9.,-]+/", "", $value);
+
+			break;
+
+		case 'remove_non_numeric':
+			$value = preg_replace("/[^0-9]/", "", $value);
+
+			break;
+
+		case 'remove_non_slug':
+			$value = preg_replace("/[^0-9a-z-]+/", "", $value);
+
+			break;
+
+		case 'layer_attribution':
+			if (! strpos($value, "&")) {
+				$value = htmlspecialchars($value);
+			}
+
+			break;
+
+		case 'marker_icon':
+			if (strpbrk($value, "\">")) {
+				$value = htmlspecialchars($value);
+			}
+
+			break;
+
+		case 'htmlspecialchars':
+			$value = htmlspecialchars($value);
+
+			break;
+		}
+
+		return $value;
+	}
+
+//Thanks to: https://code.tutsplus.com/articles/attaching-files-to-your-posts-using-wordpress-custom-meta-boxes-part-1--wp-22291
 // 	static function upload_file($file) {
 // 		//Get the file type of the upload
 // 		$filetype = wp_check_filetype(basename($file['name']));
@@ -462,12 +552,12 @@ class Waymark_Input {
 
 			//Is allowed file
 			if (Waymark_Helper::allowable_file($file_ext, $file_mime)) {
-				$response = array_merge($response, array(
+				$response = array_merge($response, [
 					'file_type' => $file_ext,
 					'file_mime' => $file_mime,
 					'file_contents' => file_get_contents($file['tmp_name']),
 					'file_info' => $file,
-				));
+				]);
 				//Not allowable file
 			} else {
 				$response['error'] = esc_html__('The file extension uploaded is not supported.', 'waymark');
