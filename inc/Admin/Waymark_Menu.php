@@ -47,6 +47,7 @@ class Waymark_Menu {
 				//Map Posts
 				$get_data = wp_unslash($_GET);
 				if ($pagenow == 'post.php' && array_key_exists('post', $get_data)) {
+					// Is the current post a Map?
 					$post_type = get_post_type(esc_attr($get_data['post']));
 					if (Waymark_Config::is_custom_type($post_type)) {
 						$m[4] .= ' wp-has-current-submenu';

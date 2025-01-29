@@ -1700,7 +1700,7 @@ class Waymark_Settings {
 
 		echo '	<div class="card">' . "\n";
 
-		//Tabs
+		//Tabs - get current tab from URL (ensure is valid)
 		$get_data = wp_unslash($_GET);
 		if (isset($get_data['content']) && array_key_exists(esc_attr($get_data['content']), $this->settings_nav)) {
 			$active_content = esc_attr($get_data['content']);
@@ -1807,6 +1807,7 @@ class Waymark_Settings {
 
 	public function admin_notices() {
 		$get_data = wp_unslash($_GET);
+		// Display Settings Updated Notice?
 		if (isset($get_data['settings-updated']) && esc_attr($get_data['settings-updated']) == 'true') {
 			echo '<div class="waymark-notice notice notice-success is-dismissible"><p>' . esc_html__('Settings Updated', 'waymark') . '.</p></div>';
 		}

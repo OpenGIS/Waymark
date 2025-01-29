@@ -423,10 +423,12 @@ class Waymark_Helper {
 	}
 
 	public static function debug($thing, $die = true) {
+		// Only in debug mode
 		if (! self::is_debug()) {
 			return;
 		}
 
+		// Output debug content
 		echo '<pre>';
 		print_r($thing);
 		echo '</pre>';
