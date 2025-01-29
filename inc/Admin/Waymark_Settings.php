@@ -1702,7 +1702,7 @@ class Waymark_Settings {
 
 		//Tabs
 		$get_data = wp_unslash($_GET);
-		if (isset($get_data['content'])) {
+		if (isset($get_data['content']) && array_key_exists(esc_attr($get_data['content']), $this->settings_nav)) {
 			$active_content = esc_attr($get_data['content']);
 		} else {
 			$active_content = $this->default_content;
@@ -1806,14 +1806,9 @@ class Waymark_Settings {
 	}
 
 	public function admin_notices() {
-		if (isset($_GET['settings-updated'])) {
-			//Settings updates
-			if ($_GET['settings-updated'] == 'true') {
-				echo '<div class="waymark-notice notice notice-success is-dismissible"><p>' . esc_html__('Settings Updated', 'waymark') . '.</p></div>';
-				//Action
-			} elseif ($_GET['settings-updated'] == 'waymark_action') {
-				echo '<div class="waymark-notice notice notice-success is-dismissible"><p>' . esc_html__('Action Complete', 'waymark') . '.</p></div>';
-			}
+		$get_data = wp_unslash($_GET);
+		if (isset($get_data['settings-updated']) && esc_attr($get_data['settings-updated']) == 'true') {
+			echo '<div class="waymark-notice notice notice-success is-dismissible"><p>' . esc_html__('Settings Updated', 'waymark') . '.</p></div>';
 		}
 	}
 }
