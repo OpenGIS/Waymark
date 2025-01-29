@@ -175,7 +175,7 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 = ? = 
 
-- Added `waymark_pre_update_post_meta` filter. This filter is called before the `update_post_meta` function is called, allowing you to modify the meta data before it is saved. Thanks to [DrogoNevets](https://github.com/DrogoNevets) for the [PR](https://github.com/OpenGIS/Waymark/issues/58).
+- Added `waymark_pre_update_post_meta` filter. This filter is called before the `update_post_meta` function is called, allowing you to modify the meta data before it is saved. It receives two parameters - `$param_value` and `$param_definition`. Thanks to [DrogoNevets](https://github.com/DrogoNevets) for the [PR](https://github.com/OpenGIS/Waymark/issues/58).
 - Submission button bug fix. Thanks to [DrogoNevets](https://github.com/DrogoNevets) for this.
 
 = 1.4.3 = 
