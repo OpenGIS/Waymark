@@ -193,6 +193,8 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 ### 1.5.0 ###
 
+- **Security update** This is a big update which includes a number of security fixes, many highlighted by the [Plugin Check](https://wordpress.org/plugins/plugin-check/) plugin.
+- Fixed a vulnerability where Shortcode attributes were not being escaped. Thanks to Muhammad Yudha for reporting this via Patchstack.
 - Added `waymark_pre_update_post_meta` filter. This filter is called before the `update_post_meta` function is called, allowing you to modify the meta data before it is saved. It receives two parameters - `$param_value` and `$param_definition`. Thanks to [DrogoNevets](https://github.com/DrogoNevets) for the [PR](https://github.com/OpenGIS/Waymark/issues/58).
 - Submission button bug fix. Thanks to [DrogoNevets](https://github.com/DrogoNevets) for this.
 
