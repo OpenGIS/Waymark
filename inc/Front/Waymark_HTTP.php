@@ -137,29 +137,7 @@ class Waymark_HTTP {
 						header('Content-Type: application/gpx+xml');
 
 						//Clean (allow GPX elements)
-						echo wp_kses($map_data, [
-							'gpx' => [
-								'creator' => true,
-								'version' => true,
-								'xmlns' => true,
-								'xmlns:xsi' => true,
-								'xsi:schemaLocation' => true,
-							],
-							'metadata' => [],
-							'name' => [],
-							'wpt' => [
-								'lat' => true,
-								'lon' => true,
-							],
-							'desc' => [],
-							'trk' => [],
-							'trkseg' => [],
-							'trkpt' => [
-								'lat' => true,
-								'lon' => true,
-							],
-							'ele' => [],
-						]);
+						echo wp_kses($map_data, Waymark_Helper::allowable_tags('gpx'));
 
 						break;
 					case 'kml':
@@ -167,28 +145,7 @@ class Waymark_HTTP {
 
 						// Clean (allow KML elements)
 						echo '<?xml version="1.0" encoding="UTF-8"?>';
-						echo wp_kses($map_data, [
-							'kml' => [
-								'xmlns' => true,
-							],
-							'document' => [],
-							'placemark' => [],
-							'name' => [],
-							'extendeddata' => [],
-							'data' => [
-								'name' => true,
-							],
-							'value' => [],
-							'point' => [],
-							'coordinates' => [],
-							'description' => [],
-							'linestring' => [],
-							'linearring' => [],
-							'polygon' => [],
-							'outerboundaryis' => [],
-							'innerboundaryis' => [],
-							'multigeometry' => [],
-						]);
+						echo wp_kses($map_data, Waymark_Helper::allowable_tags('kml'));
 
 						break;
 					case 'geojson':

@@ -6,12 +6,6 @@ class Waymark_Shortcode {
 	}
 
 	function handle_shortcode($shortcode_data, $content = null) {
-		// Sanitize
-		foreach ($shortcode_data as $key => $value) {
-			// Escape
-			$shortcode_data[$key] = esc_attr($value);
-		}
-
 		$out = '';
 		$map_class = 'waymark-map';
 		$shortcode_hash = substr(md5(wp_json_encode($shortcode_data)), 0, 6);
@@ -83,7 +77,7 @@ class Waymark_Shortcode {
 				$shortcode_meta = Waymark_Helper::get_collection_meta($Collection, 'shortcode');
 
 				//Map Class
-				$map_class .= ' waymark-collection-id-' . $collection_id;
+				$map_class .= ' waymark-collection-id-' . esc_attr($collection_id);
 
 				// Collection Maps as GeoJSON
 
@@ -172,14 +166,14 @@ class Waymark_Shortcode {
 		}
 
 		//Output HTML container
-		$out = "\n\n" . '<!-- START Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";
+		$out = "\n\n" . '<!-- START Waymark Shortcode #' . esc_html($shortcode_hash) . ' -->' . "\n";
 
 		$shortcode_style = '';
 		if ($map_width) {
 			$shortcode_style .= 'width:' . $map_width . 'px';
 		}
 
-		$out .= '<div style="' . $shortcode_style . '" id="waymark-shortcode-' . $shortcode_hash . '" data-shortcode_hash="' . $shortcode_hash . '" class="waymark-shortcode waymark-container">' . "\n";
+		$out .= '<div style="' . esc_attr($shortcode_style) . '" id="waymark-shortcode-' . esc_attr($shortcode_hash) . '" data-shortcode_hash="' . esc_attr($shortcode_hash) . '" class="waymark-shortcode waymark-container">' . "\n";
 
 		//Header ?
 		$do_header = 0;
@@ -256,7 +250,7 @@ class Waymark_Shortcode {
 
 		$map_style = 'display:none;';
 		$map_style .= 'height:' . $map_height . 'px;min-height:' . $map_height . 'px;';
-		$out .= '	<div style="' . $map_style . '" id="waymark-map-' . $shortcode_hash . '" class="' . $map_class . '" data-shortcode_hash="' . $shortcode_hash . '"></div>' . "\n";
+		$out .= '	<div style="' . esc_attr($map_style) . '" id="waymark-map-' . esc_attr($shortcode_hash) . '" class="' . esc_attr($map_class) . '" data-shortcode_hash="' . esc_attr($shortcode_hash) . '"></div>' . "\n";
 
 		//Elevation?
 
@@ -269,7 +263,7 @@ class Waymark_Shortcode {
 		}
 
 		if ($show_elevation) {
-			$out .= '	<div id="waymark-elevation-' . $shortcode_hash . '"></div>' . "\n";
+			$out .= '	<div id="waymark-elevation-' . esc_attr($shortcode_hash) . '"></div>' . "\n";
 		}
 
 		// Waymark_Helper::debug($show_elevation);
@@ -290,10 +284,10 @@ class Waymark_Shortcode {
 		$out .= '	if(typeof waymark_user_config === "undefined") { waymark_viewer.message("Configuration not found! Check for \"var waymark_user_config\" in your page HTML.", "error"); }' . "\n";
 
 		$out .= '	var waymark_config = jQuery.extend(true, {}, waymark_user_config);' . "\n";
-		$out .= '	waymark_config.map_options.map_div_id = "waymark-map-' . $shortcode_hash . '";' . "\n";
-		$out .= '	waymark_config.map_options.map_height = ' . $map_height . ";\n";
+		$out .= '	waymark_config.map_options.map_div_id = "waymark-map-' . esc_js($shortcode_hash) . '";' . "\n";
+		$out .= '	waymark_config.map_options.map_height = ' . esc_js($map_height) . ";\n";
 		if ($map_width) {
-			$out .= '	waymark_config.map_options.map_width = ' . $map_width . ";\n";
+			$out .= '	waymark_config.map_options.map_width = ' . esc_js($map_width) . ";\n";
 		}
 
 		// ===== Shortcode options (2/2) =====
@@ -304,7 +298,7 @@ class Waymark_Shortcode {
 			$map_latlng_array = Waymark_Helper::latlng_string_to_array($latlng_string);
 
 			if (is_array($map_latlng_array)) {
-				$out .= '	waymark_config.map_options.map_init_latlng = [' . $map_latlng_array[0] . ',' . $map_latlng_array[1] . '];' . "\n";
+				$out .= '	waymark_config.map_options.map_init_latlng = [' . esc_js($map_latlng_array[0]) . ',' . esc_js($map_latlng_array[1]) . '];' . "\n";
 			}
 			// } else if ($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
 			// 	// We have a valid LatLng
@@ -318,7 +312,7 @@ class Waymark_Shortcode {
 			$map_init_zoom = $shortcode_data['map_zoom'];
 
 			if (is_numeric($map_init_zoom)) {
-				$out .= '	waymark_config.map_options.map_init_zoom = ' . $map_init_zoom . ";\n";
+				$out .= '	waymark_config.map_options.map_init_zoom = ' . esc_js($map_init_zoom) . ";\n";
 			}
 			// Default Zoom
 			// } elseif ($default_zoom = Waymark_Config::get_setting('misc', 'map_options', 'map_default_zoom')) {
@@ -327,33 +321,33 @@ class Waymark_Shortcode {
 
 		//Max Zoom
 		if (array_key_exists('max_zoom', $shortcode_data) && is_numeric($shortcode_data['max_zoom'])) {
-			$out .= '	waymark_config.map_options.map_max_zoom = ' . $shortcode_data['max_zoom'] . ";\n";
+			$out .= '	waymark_config.map_options.map_max_zoom = ' . esc_js($shortcode_data['max_zoom']) . ";\n";
 		}
 
 		//Basemap?
 		if (array_key_exists('basemap', $shortcode_data)) {
-			$out .= '	waymark_config.map_options.map_init_basemap = "' . $shortcode_data['basemap'] . '";' . "\n";
+			$out .= '	waymark_config.map_options.map_init_basemap = "' . esc_js($shortcode_data['basemap']) . '";' . "\n";
 		}
 
 		//Gallery?
 		if (array_key_exists('show_gallery', $shortcode_data) && in_array($shortcode_data['show_gallery'], ['1', '0'])) {
-			$out .= '	waymark_config.viewer_options.show_gallery = ' . $shortcode_data['show_gallery'] . ';' . "\n";
+			$out .= '	waymark_config.viewer_options.show_gallery = ' . esc_js($shortcode_data['show_gallery']) . ';' . "\n";
 		}
 
 		//Overlay filter?
 		if (array_key_exists('show_filter', $shortcode_data) && in_array($shortcode_data['show_filter'], ['1', '0'])) {
-			$out .= '	waymark_config.viewer_options.show_filter = ' . $shortcode_data['show_filter'] . ';' . "\n";
+			$out .= '	waymark_config.viewer_options.show_filter = ' . esc_js($shortcode_data['show_filter']) . ';' . "\n";
 		}
 
 		//Elevation?
 		if ($show_elevation) {
 			$out .= '	waymark_config.viewer_options.show_elevation = "1";' . "\n";
-			$out .= '	waymark_config.viewer_options.elevation_div_id = "waymark-elevation-' . $shortcode_hash . '";' . "\n";
+			$out .= '	waymark_config.viewer_options.elevation_div_id = "waymark-elevation-' . esc_js($shortcode_hash) . '";' . "\n";
 
 			//Units
 			//Shortcode
 			if (array_key_exists('elevation_units', $shortcode_data) && in_array($shortcode_data['elevation_units'], ['metric', 'imperial'])) {
-				$out .= '	waymark_config.viewer_options.elevation_units = "' . $elevation_units . '";' . "\n";
+				$out .= '	waymark_config.viewer_options.elevation_units = "' . esc_js($shortcode_data['elevation_units']) . '";' . "\n";
 			}
 		}
 
@@ -361,7 +355,7 @@ class Waymark_Shortcode {
 
 		// Shortcode option set?
 		if (array_key_exists('show_cluster', $shortcode_data) && in_array($shortcode_data['show_cluster'], ['1', '0'])) {
-			$out .= '	waymark_config.viewer_options.show_cluster = ' . $shortcode_data['show_cluster'] . ';' . "\n";
+			$out .= '	waymark_config.viewer_options.show_cluster = ' . esc_js($shortcode_data['show_cluster']) . ';' . "\n";
 		}
 
 		// === Initially Show / Hide ===
@@ -385,17 +379,17 @@ class Waymark_Shortcode {
 				$overlay_type_explode = explode(',', $shortcode_data[$show_hide_type]);
 
 				foreach ($overlay_type_explode as $overlay_type) {
-					$out .= '	for(i in waymark_config.map_options.' . $overlay_kind . '_types) {' . "\n";
+					$out .= '	for(i in waymark_config.map_options.' . esc_js($overlay_kind) . '_types) {' . "\n";
 
-					$out .= '		var this_key = waymark_viewer.make_key(waymark_config.map_options.' . $overlay_kind . '_types[i]["' . $overlay_kind . '_title"]);' . "\n";
+					$out .= '		var this_key = waymark_viewer.make_key(waymark_config.map_options.' . esc_js($overlay_kind) . '_types[i]["' . esc_js($overlay_kind) . '_title"]);' . "\n";
 
-					$out .= '		if("' . $overlay_type . '" == "*" || this_key == "' . $overlay_type . '") {' . "\n";
+					$out .= '		if("' . esc_js($overlay_type) . '" == "*" || this_key == "' . esc_js($overlay_type) . '") {' . "\n";
 
 					if (Waymark_Helper::is_debug()) {
 						$debug_output .= ucwords($overlay_kind) . ' ' . ucwords($show_hide_explode[0]) . ' (' . $overlay_type . ') ';
 					}
 
-					$out .= '			waymark_config.map_options.' . $overlay_kind . '_types[i]["' . $overlay_kind . '_display"] = ' . $overlay_display . ';' . "\n";
+					$out .= '			waymark_config.map_options.' . esc_js($overlay_kind) . '_types[i]["' . esc_js($overlay_kind) . '_display"] = ' . esc_js($overlay_display) . ';' . "\n";
 					$out .= '		}' . "\n";
 					$out .= '	}' . "\n";
 				}
@@ -409,11 +403,11 @@ class Waymark_Shortcode {
 		$out .= '	waymark_viewer.init(waymark_config);' . "\n";
 
 		if (Waymark_Helper::is_debug()) {
-			$out .= '	waymark_viewer.debug("Shortcode #' . $shortcode_hash . ' Initialised");' . "\n";
+			$out .= '	waymark_viewer.debug("Shortcode #' . esc_js($shortcode_hash) . ' Initialised");' . "\n";
 			$out .= '	waymark_viewer.debug(waymark_config);' . "\n";
 
 			if ($debug_output) {
-				$out .= '	waymark_viewer.debug("' . $debug_output . '");' . "\n";
+				$out .= '	waymark_viewer.debug("' . esc_js($debug_output) . '");' . "\n";
 			}
 		}
 
@@ -432,7 +426,7 @@ class Waymark_Shortcode {
 					$out .= '	waymark_viewer.load_json(' . $map_output['map_data'] . ');' . "\n";
 
 					if (Waymark_Helper::is_debug()) {
-						$out .= '	waymark_viewer.debug("Shortcode #' . $shortcode_hash . ' Map Loaded");' . "\n";
+						$out .= '	waymark_viewer.debug("Shortcode #' . esc_js($shortcode_hash) . ' Map Loaded");' . "\n";
 						$out .= '	waymark_viewer.debug(' . $map_output['map_data'] . ');' . "\n";
 					}
 
@@ -451,7 +445,7 @@ class Waymark_Shortcode {
 				$out .= '	waymark_load_map_data(waymark_viewer, ' . $map_id . ', ' . $reset_view . ');' . "\n";
 
 				if (Waymark_Helper::is_debug()) {
-					$out .= '	waymark_viewer.debug("Shortcode #' . $shortcode_hash . ' Map Loaded via HTTP (' . $i . '/' . sizeof($maps_output) . ')");' . "\n";
+					$out .= '	waymark_viewer.debug("Shortcode #' . esc_js($shortcode_hash) . ' Map Loaded via HTTP (' . $i . '/' . sizeof($maps_output) . ')");' . "\n";
 					$out .= '	waymark_viewer.debug(' . $map_id . ');' . "\n";
 				}
 
@@ -542,7 +536,7 @@ class Waymark_Shortcode {
 				$out .= '	waymark_viewer.load_json(marker_geojson);' . "\n";
 
 				if (Waymark_Helper::is_debug()) {
-					$out .= '	waymark_viewer.debug("Shortcode #' . $shortcode_hash . ' Marker Loaded");' . "\n";
+					$out .= '	waymark_viewer.debug("Shortcode #' . esc_js($shortcode_hash) . ' Marker Loaded");' . "\n";
 					$out .= '	waymark_viewer.debug(marker_geojson);' . "\n";
 				}
 			}
@@ -582,7 +576,7 @@ class Waymark_Shortcode {
 
 						switch ($file_ext) {
 						case 'gpx':
-							$out .= '	var file_data = \'' . $file_string . '\';' . "\n";
+							$out .= '	var file_data = \'' . wp_kses($file_string, Waymark_Helper::allowable_tags('gpx')) . '\';' . "\n";
 
 							$out .= '	var file_data = (new DOMParser()).parseFromString(file_data, "text/xml");' . "\n";
 							$out .= '	let file_geo_json = toGeoJSON.gpx(file_data) || {};' . "\n";
@@ -607,7 +601,7 @@ class Waymark_Shortcode {
 
 							libxml_clear_errors();
 
-							$out .= '	var file_data = \'' . $file_string . '\';' . "\n";
+							$out .= '	var file_data = \'' . wp_kses($file_string, Waymark_Helper::allowable_tags('kml')) . '\';' . "\n";
 
 							$out .= '	var file_data = (new DOMParser()).parseFromString(file_data, "text/xml");' . "\n";
 							$out .= '	var file_geo_json = toGeoJSON.kml(file_data);' . "\n";
@@ -615,6 +609,8 @@ class Waymark_Shortcode {
 							break;
 
 						default:
+							// Encode & Decode to ensure valid JSON
+							$file_string = wp_json_encode(json_decode($file_string));
 							$out .= '	var file_data = \'' . $file_string . '\';' . "\n";
 
 							$out .= '	var file_geo_json = JSON.parse(file_data);' . "\n";
@@ -655,8 +651,8 @@ class Waymark_Shortcode {
 									break (2);
 								}
 
-								$out .= '	// Casting File ' . ucwords($overlay_type) . 's to "' . $castType . '"' . "\n";
-								$out .= '	file_geo_json.features.filter(feature => feature.geometry.type == "' . $geomType . '").forEach(feature => { feature.properties.type = "' . $castType . '"; });' . "\n";
+								$out .= '	// Casting File ' . ucwords($overlay_type) . 's to "' . esc_js($castType) . '"' . "\n";
+								$out .= '	file_geo_json.features.filter(feature => feature.geometry.type == "' . $geomType . '").forEach(feature => { feature.properties.type = "' . esc_js($castType) . '"; });' . "\n";
 							}
 
 							// By Feature Type
@@ -693,12 +689,12 @@ class Waymark_Shortcode {
 
 									// Add Start Marker
 									if ($marker_start) {
-										$out .= '  	fileAddFeatures.features.push({"geometry":{"type":"Point","coordinates":[start[0],start[1]]},"type":"Feature","properties":{"type":"' . $marker_start . '"}});' . "\n";
+										$out .= '  	fileAddFeatures.features.push({"geometry":{"type":"Point","coordinates":[start[0],start[1]]},"type":"Feature","properties":{"type":"' . esc_js($marker_start) . '"}});' . "\n";
 									}
 
 									// Add End Marker
 									if ($marker_end) {
-										$out .= '	fileAddFeatures.features.push({"geometry":{"type":"Point","coordinates":[end[0],end[1]]},"type":"Feature","properties":{"type":"' . $marker_end . '"}});' . "\n";
+										$out .= '	fileAddFeatures.features.push({"geometry":{"type":"Point","coordinates":[end[0],end[1]]},"type":"Feature","properties":{"type":"' . esc_js($marker_end) . '"}});' . "\n";
 									}
 
 									$out .= '	});' . "\n";
@@ -707,7 +703,7 @@ class Waymark_Shortcode {
 									$out .= '	waymark_viewer.load_json(fileAddFeatures);' . "\n";
 
 									if (Waymark_Helper::is_debug()) {
-										$out .= '	waymark_viewer.debug("Shortcode #' . $shortcode_hash . ' File ' . ucwords($overlay_type) . 's Loaded");' . "\n";
+										$out .= '	waymark_viewer.debug("Shortcode #' . esc_js($shortcode_hash) . ' File ' . ucwords($overlay_type) . 's Loaded");' . "\n";
 										$out .= '	waymark_viewer.debug(fileAddFeatures);' . "\n";
 									}
 								}
@@ -720,7 +716,7 @@ class Waymark_Shortcode {
 						$out .= '	waymark_viewer.load_json(file_geo_json);' . "\n";
 
 						if (Waymark_Helper::is_debug()) {
-							$out .= '	waymark_viewer.debug("Shortcode #' . $shortcode_hash . ' File Loaded");' . "\n";
+							$out .= '	waymark_viewer.debug("Shortcode #' . esc_js($shortcode_hash) . ' File Loaded");' . "\n";
 							$out .= '	waymark_viewer.debug(file_geo_json);' . "\n";
 						}
 					}
@@ -733,12 +729,12 @@ class Waymark_Shortcode {
 		// ========== START CALLBACK ===========
 
 		if (array_key_exists('loaded_callback', $shortcode_data)) {
-			$out .= '	if(typeof ' . $shortcode_data['loaded_callback'] . ' === "function") {' . "\n";
+			$out .= '	if(typeof ' . esc_js($shortcode_data['loaded_callback']) . ' === "function") {' . "\n";
 			if (Waymark_Helper::is_debug()) {
-				$out .= '		waymark_viewer.debug("Shortcode Callback detected ' . $shortcode_data['loaded_callback'] . '(waymark_instance)");' . "\n";
+				$out .= '		waymark_viewer.debug("Shortcode Callback detected ' . esc_js($shortcode_data['loaded_callback']) . '(waymark_instance)");' . "\n";
 			}
 
-			$out .= '		' . $shortcode_data['loaded_callback'] . '(waymark_viewer);' . "\n";
+			$out .= '		' . esc_js($shortcode_data['loaded_callback']) . '(waymark_viewer);' . "\n";
 			$out .= '	} else {' . "\n";
 			$out .= '		waymark_viewer.message("Callback function not found!", "error");' . "\n";
 			$out .= '	}' . "\n";
@@ -747,7 +743,7 @@ class Waymark_Shortcode {
 		// =========== END CALLBACK ============
 		$out .= '});' . "\n";
 		$out .= '</script>' . "\n";
-		$out .= '<!-- END Waymark Shortcode #' . $shortcode_hash . ' -->' . "\n";
+		$out .= '<!-- END Waymark Shortcode #' . esc_html($shortcode_hash) . ' -->' . "\n";
 
 		// ============= END JAVASCRIPT =================
 

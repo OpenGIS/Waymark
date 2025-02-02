@@ -1674,4 +1674,59 @@ class Waymark_Helper {
 		];
 	}
 
+	public static function allowable_tags($kind = '') {
+		switch ($kind) {
+		case 'kml':
+			return [
+				'kml' => [
+					'xmlns' => true,
+				],
+				'document' => [],
+				'placemark' => [],
+				'name' => [],
+				'extendeddata' => [],
+				'data' => [
+					'name' => true,
+				],
+				'value' => [],
+				'point' => [],
+				'coordinates' => [],
+				'description' => [],
+				'linestring' => [],
+				'linearring' => [],
+				'polygon' => [],
+				'outerboundaryis' => [],
+				'innerboundaryis' => [],
+				'multigeometry' => [],
+			];
+
+			break;
+		case 'gpx':
+			return [
+				'gpx' => [
+					'creator' => true,
+					'version' => true,
+					'xmlns' => true,
+					'xmlns:xsi' => true,
+					'xsi:schemaLocation' => true,
+				],
+				'metadata' => [],
+				'name' => [],
+				'wpt' => [
+					'lat' => true,
+					'lon' => true,
+				],
+				'desc' => [],
+				'trk' => [],
+				'trkseg' => [],
+				'trkpt' => [
+					'lat' => true,
+					'lon' => true,
+				],
+				'ele' => [],
+			];
+
+			break;
+		}
+	}
 }
