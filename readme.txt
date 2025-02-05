@@ -4,7 +4,7 @@ Tags: GIS, Map maker, GPX, Track, Elevation
 Requires at least: 4.6
 Tested up to: 6.7
 Requires PHP: 5.2
-Stable tag: 1.5.1
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -172,6 +172,10 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 10. Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website.
 
 == Changelog ==
+
+= 1.5.2 =
+
+- Fixed a bug where Map data was being lost when editing a Map. Thanks to [hogg66](https://wordpress.org/support/users/hogg66/) for [reporting this](https://wordpress.org/support/topic/map-reverts-to-empty-default-when-i-add-a-new-marker/).
 
 = 1.5.1 = 
 

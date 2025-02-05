@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Waymark 1.5.1\n"
+"Project-Id-Version: Waymark 1.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/waymark\n"
-"POT-Creation-Date: 2025-02-02 23:36:51+00:00\n"
+"POT-Creation-Date: 2025-02-05 17:30:40+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -97,21 +97,21 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:74
+#: inc/Admin/Waymark_Meta.php:77
 msgid "Download the Overlays added to this Map in the selected format."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:114
+#: inc/Admin/Waymark_Meta.php:117
 msgid ""
 "Add this Map to your content with this Shortcode. Click here for more "
 "details."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:122
+#: inc/Admin/Waymark_Meta.php:125
 msgid "Image Location Detection Not Supported!"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:125
+#: inc/Admin/Waymark_Meta.php:128
 #. translators: %s: Link to PHP EXIF Extension documentation
 msgid ""
 "Your hosting environment does not currently have the <a href=\"%s\">PHP "
@@ -119,24 +119,24 @@ msgid ""
 "metadata. Try asking your host to enable it."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:128 inc/Admin/Waymark_Settings.php:881
+#: inc/Admin/Waymark_Meta.php:131 inc/Admin/Waymark_Settings.php:881
 #: inc/Admin/Waymark_Settings.php:950
 #. translators: The option for reading from a file
 msgid "Read from File"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:129
+#: inc/Admin/Waymark_Meta.php:132
 msgid ""
 "You can read Lines and Markers from GPX, KML and GeoJSON files (most "
 "mapping apps will be able to export to one of these)."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:131 inc/Admin/Waymark_Settings.php:144
+#: inc/Admin/Waymark_Meta.php:134 inc/Admin/Waymark_Settings.php:144
 #: inc/Admin/Waymark_Settings.php:318 inc/Admin/Waymark_Settings.php:436
 msgid "Types"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:134
+#: inc/Admin/Waymark_Meta.php:137
 #. translators: %s: Link to Waymark Settings
 msgid ""
 "Types allow you to control how Overlays (Markers, Lines and Shapes) are "
@@ -144,7 +144,7 @@ msgid ""
 "target=\"_blank\">Waymark &gt; Settings</a>."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:136 inc/Admin/Waymark_Settings.php:74
+#: inc/Admin/Waymark_Meta.php:139 inc/Admin/Waymark_Settings.php:74
 #: inc/Admin/Waymark_Settings.php:82 inc/Admin/Waymark_Settings.php:89
 #: inc/Admin/Waymark_Settings.php:101 inc/Admin/Waymark_Settings.php:116
 #. translators: The title of the field for the name of the Basemap
@@ -155,7 +155,7 @@ msgstr ""
 msgid "Basemap"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:139
+#: inc/Admin/Waymark_Meta.php:142
 #. translators: %s: Link to Waymark Settings
 msgid ""
 "Add and edit Basemaps in <a href=\"%1$s\" target=\"_blank\">Waymark &gt; "
@@ -163,11 +163,11 @@ msgid ""
 "specified in the shortcode like this: %2$s"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:141
+#: inc/Admin/Waymark_Meta.php:144
 msgid "Read the Docs"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:165
+#: inc/Admin/Waymark_Meta.php:168
 #. translators: %s: Link to Waymark Settings
 msgid "You can manage Meta fields in <a href=\"%s\">Settings</a>."
 msgstr ""
