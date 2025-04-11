@@ -544,25 +544,6 @@ class Waymark_Shortcode {
 
 		// ============== END MARKERS ==============
 
-		// ========== START CALLBACK ===========
-
-		if (array_key_exists('loaded_callback', $shortcode_data)) {
-			$out .= '	if(typeof ' . esc_js($shortcode_data['loaded_callback']) . ' === "function") {' . "\n";
-			if (Waymark_Helper::is_debug()) {
-				$out .= '		waymark_viewer.debug("Shortcode Callback detected ' . esc_js($shortcode_data['loaded_callback']) . '(waymark_instance)");' . "\n";
-			}
-
-			$out .= '		' . esc_js($shortcode_data['loaded_callback']) . '(waymark_viewer);' . "\n";
-			$out .= '	} else {' . "\n";
-			$out .= '		waymark_viewer.message("Callback function not found!", "error");' . "\n";
-			$out .= '	}' . "\n";
-		}
-
-		// =========== END CALLBACK ============
-		$out .= '});' . "\n";
-		$out .= '</script>' . "\n";
-		$out .= '<!-- END Waymark Shortcode #' . esc_html($shortcode_hash) . ' -->' . "\n";
-
 		// ============= END JAVASCRIPT =================
 
 		//Return HTML
