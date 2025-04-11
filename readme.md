@@ -2,7 +2,7 @@
 **Contributors:** [morehawes](https://profiles.wordpress.org/morehawes/)  
 **Tags:** GIS, Map maker, GPX, Track, Elevation  
 **Requires at least:** 4.6  
-**Tested up to:** 6.7  
+**Tested up to:** 6.8  
 **Requires PHP:** 5.2  
 **Stable tag:** 1.5.4  
 **License:** GPLv2 or later  
