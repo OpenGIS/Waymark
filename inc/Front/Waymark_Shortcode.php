@@ -544,6 +544,10 @@ class Waymark_Shortcode {
 
 		// ============== END MARKERS ==============
 
+		$out .= '});' . "\n";
+		$out .= '</script>' . "\n";
+		$out .= '<!-- END Waymark Shortcode #' . esc_html($shortcode_hash) . ' -->' . "\n";
+
 		// ============= END JAVASCRIPT =================
 
 		//Return HTML
