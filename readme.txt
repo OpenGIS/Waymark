@@ -4,7 +4,7 @@ Tags: GIS, Map maker, GPX, Track, Elevation
 Requires at least: 4.6
 Tested up to: 6.8
 Requires PHP: 5.2
-Stable tag: 1.5.5
+Stable tag: 1.5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,7 +76,7 @@ For developers:
   - Embed Maps using the `[Waymark]` [Shortcode](https://www.waymark.dev/docs/shortcodes/) anywhere they are supported, or dynamically using the `do_shortcode(["Waymark"])` [function](https://developer.wordpress.org/reference/functions/do_shortcode/).
 - Geographical data is stored in [GeoJSON](https://geojson.org/) format. [Types](https://www.waymark.dev/docs/types/) are specified using the `type` Property, i.e. `{feature: { geometry: { type: 'Point', coordinates: [0, 0] } }, properties: { type: 'Alert', title: 'Bridge Removed!' }`.
 - Specify which GeoJSON feature properties to store when importing (Settings > Overlays > Properties). These can be automatically appended to the Overlay Description, or accessed programatically via the `layer.feature.properties` Object.
-- Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the callback function.
+- Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the [callback function](https://www.waymark.dev/docs/using-the-global-callback-function/).
 
 Be sure to check out [Map First](https://github.com/opengis/map-first), a minimal WordPress theme with an *obsession* for Maps (it's open-source too and contains lots of comments about customisations).
 
@@ -172,6 +172,10 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 == Changelog ==
 
+= 1.5.6 =
+
+* Improve Leaflet Elevation compatibility with other instances of Leaflet
+
 = 1.5.5 =
 
 * Bug fix
@@ -182,7 +186,7 @@ Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thank
 
 = 1.5.3 =
 
-* Removed Shortcode Files feature
+* Removed Shortcode Files feature. [Details](https://wordpress.org/support/topic/showing-maps-via-file_url-no-longer-works/).
 
 = 1.5.2 =
 
