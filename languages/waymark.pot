@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Waymark 1.5.6\n"
+"Project-Id-Version: Waymark 1.5.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/waymark\n"
-"POT-Creation-Date: 2025-02-05 17:30:40+00:00\n"
+"POT-Creation-Date: 2025-07-23 17:51:46+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,16 +17,16 @@ msgstr ""
 msgid "No image metadata available."
 msgstr ""
 
-#: inc/Admin/Waymark_AJAX.php:110 inc/Admin/Waymark_AJAX.php:120
-#: inc/Admin/Waymark_AJAX.php:128
+#: inc/Admin/Waymark_AJAX.php:97 inc/Admin/Waymark_AJAX.php:107
+#: inc/Admin/Waymark_AJAX.php:115
 msgid "Operation not allowed."
 msgstr ""
 
-#: inc/Admin/Waymark_AJAX.php:190
+#: inc/Admin/Waymark_AJAX.php:179
 msgid "Could not read the file."
 msgstr ""
 
-#: inc/Admin/Waymark_AJAX.php:255
+#: inc/Admin/Waymark_AJAX.php:244
 msgid "Unknown file upload error."
 msgstr ""
 

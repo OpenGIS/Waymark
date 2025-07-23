@@ -7,7 +7,7 @@ class Waymark_AJAX {
 		add_action('wp_ajax_nopriv_waymark_read_file', [$this, 'public_handle_read_file']);
 
 		//User
-		add_action('wp_ajax_waymark_read_file', [$this, 'handle_read_file']);
+		add_action('wp_ajax_waymark_read_file', [$this, 'admin_handle_read_file']);
 		add_action('wp_ajax_waymark_get_attatchment_meta', [$this, 'get_attatchment_meta']);
 
 		//Add nonce
@@ -76,82 +76,71 @@ class Waymark_AJAX {
 		//Only crunch the sizes we want
 		add_filter('intermediate_image_sizes_advanced', [$this, 'intermediate_image_sizes_advanced']);
 
-		$this->handle_read_file();
+		//Additional checks - i.e. Submission settings
+		Waymark_Helper::inc('Front/Waymark_Submission.php');
+		$Submission = new Waymark_Submission;
+
+		$response = [];
+
+		//If we have files
+		if (sizeof($_FILES)) {
+			//Each file
+			foreach ($_FILES as $file_key => $file_data) {
+				//If no WP error
+				if (! $file_data['error']) {
+					switch ($file_key) {
+					//Read from file
+					case 'add_file':
+						//Ensure feature allowed
+						if (! in_array('file', $Submission->get_features())) {
+							//Not allowed
+							$response['error'] = esc_html__('Operation not allowed.', 'waymark');
+						}
+
+						break;
+					//Image upload
+					case 'marker_photo':
+					case 'add_photo':
+						//Ensure feature allowed
+						if (! in_array('photo', $Submission->get_features())) {
+							//Not allowed
+							$response['error'] = esc_html__('Operation not allowed.', 'waymark');
+						}
+
+						break;
+					}
+					//WP Error
+				} else {
+					//Not allowed
+					$response['error'] = esc_html__('Operation not allowed.', 'waymark');
+				}
+			}
+			//No files
+		} else {
+			//Not allowed
+			$response['error'] = $file_data['error'];
+		}
+
+		//Error?
+		if (isset($response['error'])) {
+			//Do not continue
+			header('Content-Type: text/javascript');
+			echo wp_json_encode($response);
+
+			die;
+		}
+
+		$this->read_file();
 	}
 
-	//Perform additional checks	to ensure user is allowed to do this
-	function handle_read_file() {
+	//Admin Submission
+	function admin_handle_read_file() {
 		check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');
 
-		//Back-end
-		if (strpos(wp_get_referer(), get_admin_url()) !== false) {
-			//Let's read some files!
-			$this->read_file();
-			//Front-end
-		} else {
-			//This is a submission
-			Waymark_Helper::inc('Front/Waymark_Submission.php');
-			$Submission = new Waymark_Submission;
-
-			$response = [];
-
-			//If we have files
-			if (sizeof($_FILES)) {
-				//Each file
-				foreach ($_FILES as $file_key => $file_data) {
-					//If no WP error
-					if (! $file_data['error']) {
-						switch ($file_key) {
-						//Read from file
-						case 'add_file':
-							//Ensure feature allowed
-							if (! in_array('file', $Submission->get_features())) {
-								//Not allowed
-								$response['error'] = esc_html__('Operation not allowed.', 'waymark');
-							}
-
-							break;
-						//Image upload
-						case 'marker_photo':
-						case 'add_photo':
-							//Ensure feature allowed
-							if (! in_array('photo', $Submission->get_features())) {
-								//Not allowed
-								$response['error'] = esc_html__('Operation not allowed.', 'waymark');
-							}
-
-							break;
-						}
-						//WP Error
-					} else {
-						//Not allowed
-						$response['error'] = esc_html__('Operation not allowed.', 'waymark');
-					}
-				}
-				//No files
-			} else {
-				//Not allowed
-				$response['error'] = $file_data['error'];
-			}
-
-			//Error?
-			if (isset($response['error'])) {
-				//Do not continue
-				header('Content-Type: text/javascript');
-				echo wp_json_encode($response);
-
-				die;
-				//Good to continue
-			} else {
-				//Let's read some files!
-				$this->read_file();
-			}
-		}
+		$this->read_file();
 	}
 
 	function read_file() {
-		check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');
-
 		$response = [];
 
 		//If we have files
