@@ -7,6 +7,7 @@ Requires PHP: 5.2
 Stable tag: 1.5.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Donate link: https://github.com/sponsors/OpenGIS
 
 Waymark adds powerful mapping features to WordPress that are easy to use. Create beautiful, interactive Maps customised to suit your needs.
 
