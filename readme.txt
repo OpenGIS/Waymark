@@ -13,6 +13,7 @@ Waymark adds powerful mapping features to WordPress that are easy to use. Create
 
 == Description ==
 
+💲 [Support](https://github.com/sponsors/OpenGIS)
 🗺 [Demo](https://www.waymark.dev/)
 🛠️ [Try](https://www.waymark.dev/try/)
 📼 [Watch](https://www.waymark.dev/#footer)
@@ -122,6 +123,10 @@ With Waymark enabled, click on the "Maps" link in the sidebar to create and edit
 
 == Frequently Asked Questions ==
 
+= Is This Free? =
+
+*Yes!*, however if you (or your organisation) benefit from Waymark, please consider supporting the continued development of the plugin through [sponsorship](https://github.com/sponsors/OpenGIS) 🙂
+
 = Is There a Demo? =
 
 Yes, <a href="https://www.waymark.dev/">here</a>. You can also try the Editor <a href="https://www.waymark.dev/try/">here</a>.
@@ -132,15 +137,14 @@ Yes, please view the <a href="https://www.waymark.dev/docs/">Documentation</a>. 
 
 = How Can I Contribute? =
 
-**Please help [translate the plugin](https://translate.wordpress.org/projects/wp-plugins/waymark/)! If you like the plugin and speak multiple languages, **please** consider becoming a [Translation Editor (PTE)](https://make.wordpress.org/polyglots/handbook/about/roles-and-capabilities/#project-translation-editor) for the plugin.**
+**If you find value in Waymark please consider supporting it's continued development through [sponsorship](https://github.com/sponsors/OpenGIS). Any amount is appreciated.**
 
 You could also:
 
+* **[Translate the plugin](https://translate.wordpress.org/projects/wp-plugins/waymark/)** If you like the plugin and speak multiple languages, *please* consider becoming a [Translation Editor (PTE)](https://make.wordpress.org/polyglots/handbook/about/roles-and-capabilities/#project-translation-editor) for the plugin.
 * **Star**, create an Issue or Fork the project on [GitHub](https://github.com/opengis/waymark/).
-* [Rate the plugin](https://wordpress.org/support/plugin/waymark/reviews/#new-post).
+* [Add a Review](https://wordpress.org/support/plugin/waymark/reviews/#new-post).
 * [Report bugs or suggest new features](https://wordpress.org/support/plugin/waymark/#new-topic-0).
-* [Provide Feedback](https://forms.gle/mthqAgSsMoTPM8SR9).
-* Share with *anyone that will listen* how much you like Waymark and what you have built with it 🗺
 
 If you have anything bad to say, please <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">create an issue</a> before leaving a review, this is how the plugin gets better!
 
@@ -156,7 +160,7 @@ Please! Waymark is localization ready, <a href="https://translate.wordpress.org/
 
 Waymark relies on input from it's users, thank you to everyone for providing feedback :)
 
-Built on the shoulders of giants, [thank you](https://www.waymark.dev/docs/thanks/)!
+Built on the shoulders of giants, [thank you Open-Source](https://www.waymark.dev/docs/thanks/)!
 
 == Screenshots ==
 
