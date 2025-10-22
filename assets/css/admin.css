@@ -501,23 +501,7 @@ div#waymark-admin-container {
   position: relative;
   padding-right: 210px;
   max-width: 600px;
-  background: #f7f7f7;
   /* About */
-}
-div#waymark-admin-container.waymark-top h2.promo {
-  padding: 40px 0;
-  font-size: 2.6em;
-}
-div#waymark-admin-container.waymark-top h2.lead {
-  font-size: 1.4em;
-  margin-top: 60px;
-  margin-bottom: 30px;
-}
-div#waymark-admin-container.waymark-top p.lead {
-  margin-left: 20px;
-}
-div#waymark-admin-container.waymark-top p.lead small {
-  font-size: 0.7em;
 }
 div#waymark-admin-container h1 {
   padding-bottom: 9px;
@@ -526,9 +510,6 @@ div#waymark-admin-container h1 {
   background-size: 30px 30px;
   background-position: left center;
   background-repeat: no-repeat;
-}
-div#waymark-admin-container .notice {
-  background-color: #f9f9f9;
 }
 div#waymark-admin-container .card {
   min-width: 266px;
@@ -613,7 +594,11 @@ div#waymark-admin-container #waymark-about {
   right: 0;
   width: 180px;
   padding: 15px;
+  border: 1px solid #ccc;
   background: #f7f7f7;
+}
+div#waymark-admin-container #waymark-about p:first-child {
+  font-size: 18px;
 }
 div#waymark-admin-container #waymark-about p,
 div#waymark-admin-container #waymark-about li {
@@ -633,7 +618,7 @@ div#waymark-admin-container #waymark-about p {
 div#waymark-admin-container #waymark-about p.waymark-first {
   margin: 20px 0 40px 0;
   font-weight: bold;
-  font-size: 23px;
+  font-size: 21px;
   line-height: 1.1em;
 }
 div#waymark-admin-container #waymark-about img {
@@ -652,16 +637,46 @@ div#waymark-admin-container #waymark-about a.button {
  * =========== ADMIN NOTICES ==========
  * ====================================
  */
-body.taxonomy-waymark_collection div#waymark-admin-container,
-body.post-type-waymark_map.post-new-php div#waymark-admin-container,
-body.post-type-waymark_map.edit-php div#waymark-admin-container {
-  max-width: none;
-  padding-right: 0;
+div#waymark-notice-container {
+  /* Survey Callout */
 }
-body.taxonomy-waymark_collection div#waymark-admin-container ol,
-body.post-type-waymark_map.post-new-php div#waymark-admin-container ol,
-body.post-type-waymark_map.edit-php div#waymark-admin-container ol {
-  margin-left: 15px;
+div#waymark-notice-container.survey-callout {
+  width: 100%;
+  margin-top: 5px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  border: 1px solid #fff;
+  background: #b42714;
+}
+div#waymark-notice-container.survey-callout a {
+  color: #fff;
+}
+div#waymark-notice-container.survey-callout .pro-logo {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+div#waymark-notice-container.survey-callout .pro-logo span {
+  padding: 2px 4px;
+  border-radius: 3px;
+  border: 1px solid #fff;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 4px;
+  font-weight: bold;
+}
+div#waymark-notice-container .card {
+  max-width: none;
+}
+div#waymark-notice-container .card h1 {
+  padding-bottom: 9px;
+  padding-left: 34px;
+  background-image: url("../img/waymark-icon-primary.png");
+  background-size: 30px 30px;
+  background-position: left center;
+  background-repeat: no-repeat;
 }
 /**
  * ====================================

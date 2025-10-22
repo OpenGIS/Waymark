@@ -1688,7 +1688,9 @@ class Waymark_Settings {
 				'width' => [],
 				'height' => [],
 			],
-			'p' => [],
+			'p' => [
+				'class' => [],
+			],
 			'strong' => [],
 			'a' => [
 				'href' => [],

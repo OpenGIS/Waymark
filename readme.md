@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.8  
 **Requires PHP:** 5.2  
-**Stable tag:** 1.5.8  
+**Stable tag:** 1.5.9  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 **Donate link:** https://github.com/sponsors/OpenGIS  
@@ -13,11 +13,7 @@ Waymark adds powerful mapping features to WordPress that are easy to use. Create
 
 ## Description ##
 
-🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍
-
-🌍 🌍 🌍 **[TAKE THE WAYMARK SURVEY!](https://www.waymark.dev/survey/)** 🌍 🌍 🌍
-
-🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍 🌍
+### Waymark Pro offers advanced features. See the **Demo** and [take the Waymark Survey!](https://www.waymark.dev/survey/).
 
 ### Creating Maps
 
@@ -56,7 +52,6 @@ Embed your Maps using the `[Waymark]` Shortcode, or link to the [Map Details](ht
   - Display a single Map, or a [Collection](https://www.waymark.dev/docs/collections/) of Maps anywhere that Shortcodes are supported.
   - An optional Shortcode Header displays the Map/Collection title, a link to the Map Details page and any [Meta](https://www.waymark.dev/docs/meta/).
   - Display a [Marker](https://www.waymark.dev/docs/shortcodes/#shortcode-markers) defined through the Shortcode.
-  - Display [Files](https://www.waymark.dev/docs/shortcodes/#shortcode-files) (GPX, KML & GeoJSON) from a URL without the need for a Map to be created.
   - Display a Basemap only, without any Overlays by providing centre and zoom parameters.
 - **[Basemaps](https://www.waymark.dev/docs/basemaps/)** - Uses [OpenStreetMap](https://www.openstreetmap.org/fixthemap) by default, with support for multiple raster tiled/"slippy" Basemaps. You can switch Basemaps using the Overlay Filter.
 - **Overlay Filter** - Allow the user to filter which Overlays are currently visible on the Map.
@@ -88,34 +83,7 @@ Be sure to check out [Map First](https://github.com/opengis/map-first), a minima
 
 **Waymark is free, open-source ([GPL v2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)) and a labour of Love**. I try to keep the plugin well supported, so please feel free to <a href="https://forms.gle/mthqAgSsMoTPM8SR9">reach out</a> with any issues, questions or feedback.
 
-### Development
-
-> [!NOTE]
-> To develop locally you will need to have both Node.js and NPM [installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
-
-[Grunt](https://gruntjs.com/) is used to run the build script, which compiles the JavaScript and CSS and performs some other tasks.
-
-
-	# Clone the repository (and the Waymark JS submodule)
-	git clone --recurse-submodules https://github.com/opengis/waymark.git
-	
-	# Navigate to the Waymark directory
-	cd waymark
-	
-	# Install the dependencies (or pnpm/yarn install)
-	npm install
-	
-	# Run the build script
-	grunt
-
-
-The build script will watch for changes to the JavaScript and CSS files.
-
-Pull requests are welcome!
-
-> [!IMPORTANT]
-> [Waymark JS](https://www.waymark.dev/js) is responsible for the Viewer and Editor and is included as a Git submodule (`/waymark-js` directory). View on [GitHub](https://github.com/OpenGIS/Waymark-JS/).
-
+### Waymark Pro offers advanced features. See the **Demo** and [take the Waymark Survey!](https://www.waymark.dev/survey/).
 
 ## Installation ##
 
@@ -198,6 +166,10 @@ Built on the shoulders of giants, [thank you Open-Source](https://www.waymark.de
 
 
 ## Changelog ##
+
+### 1.5.9 ###
+
+* Minor improvements and bug fixes.
 
 ### 1.5.8 ###
 

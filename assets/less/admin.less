@@ -534,29 +534,27 @@ div#waymark-admin-container {
 	padding-right: 210px;
 	max-width: 600px;
 
-	background: #f7f7f7;
-
-	&.waymark-top {
-		h2 {
-			&.promo {
-				padding: 40px 0;
-				font-size: 2.6em;
-			}
-			&.lead {
-				font-size: 1.4em;
-				margin-top: 60px;
-				margin-bottom: 30px;
-			}
-		}
-		p {
-			&.lead {
-				margin-left: 20px;
-				small {
-					font-size: 0.7em;
-				}
-			}
-		}
-	}
+	// &.waymark-top {
+	// 	h2 {
+	// 		&.promo {
+	// 			padding: 40px 0;
+	// 			font-size: 2.6em;
+	// 		}
+	// 		&.lead {
+	// 			font-size: 1.4em;
+	// 			margin-top: 60px;
+	// 			margin-bottom: 30px;
+	// 		}
+	// 	}
+	// 	p {
+	// 		&.lead {
+	// 			margin-left: 20px;
+	// 			small {
+	// 				font-size: 0.7em;
+	// 			}
+	// 		}
+	// 	}
+	// }
 	h1 {
 		padding-bottom: 9px;
 		padding-left: 34px;
@@ -565,9 +563,9 @@ div#waymark-admin-container {
 		background-position: left center;
 		background-repeat: no-repeat;
 	}
-	.notice {
-		background-color: #f9f9f9;
-	}
+	// .notice {
+	// 	background-color: #f9f9f9;
+	// }
 	.card {
 		min-width: 266px;
 		max-width: none;
@@ -673,8 +671,12 @@ div#waymark-admin-container {
 		right: 0;
 		width: 180px;
 		padding: 15px;
-		// border: 1px solid #ccc;
+		border: 1px solid #ccc;
 		background: #f7f7f7;
+
+		p:first-child {
+			font-size: 18px;
+		}
 
 		p,
 		li {
@@ -700,7 +702,7 @@ div#waymark-admin-container {
 			&.waymark-first {
 				margin: 20px 0 40px 0;
 				font-weight: bold;
-				font-size: 23px;
+				font-size: 21px;
 				line-height: 1.1em;
 			}
 		}
@@ -723,13 +725,53 @@ div#waymark-admin-container {
  * =========== ADMIN NOTICES ==========
  * ====================================
  */
-body.taxonomy-waymark_collection div#waymark-admin-container,
-body.post-type-waymark_map.post-new-php div#waymark-admin-container,
-body.post-type-waymark_map.edit-php div#waymark-admin-container {
-	max-width: none;
-	padding-right: 0;
-	ol {
-		margin-left: 15px;
+div#waymark-notice-container {
+	/* Survey Callout */
+	&.survey-callout {
+		width: 100%;
+		margin-top: 5px;
+		padding: 5px 10px;
+		display: flex;
+		align-items: center;
+		color: #fff;
+		border: 1px solid #fff;
+
+		background: @waymark-primary;
+
+		a {
+			color: #fff;
+		}
+
+		.pro-logo {
+			margin-right: 15px;
+			display: flex;
+			align-items: center;
+
+			span {
+				padding: 2px 4px;
+				border-radius: 3px;
+				border: 1px solid #fff;
+				display: inline-block;
+				font-size: 16px;
+				margin-left: 4px;
+				font-weight: bold;
+				// color: #000;
+				// background: #fff;
+			}
+		}
+	}
+
+	.card {
+		max-width: none;
+
+		h1 {
+			padding-bottom: 9px;
+			padding-left: 34px;
+			background-image: url("../img/waymark-icon-primary.png");
+			background-size: 30px 30px;
+			background-position: left center;
+			background-repeat: no-repeat;
+		}
 	}
 }
 
