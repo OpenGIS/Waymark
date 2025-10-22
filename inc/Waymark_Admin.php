@@ -218,10 +218,23 @@ class Waymark_Admin {
 					$description = sprintf(__('You can add the Map to your content using the %1$s <a href="%2$s">Shortcode</a>. <a class="button waymark-right" href="%3$s">Watch the Video &raquo;</a>', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs/editor'));
 				}
 			}
+
 		}
 
+		// START Survey
+		if ($title || $this->current_screen->base == 'waymark_page_waymark-settings') {
+			echo '<div id="waymark-notice-container" class="survey-callout">' . "\n";
+			echo '	<div class="pro-logo">' . Waymark_Helper::logo('white', 32, 32) . ' <span>Pro</span></div>' . "\n";
+			echo '	<p><b>Waymark Pro</b> offers advanced features. See the <b>Demo</b> and <a href="https://www.waymark.dev/survey/">Take the Waymark Survey</a>.</p>' . "\n";
+
+			echo '</div>' . "\n";
+
+			return;
+		}
+		// END Survey
+
 		if ($title || $description) {
-			echo '<div id="waymark-admin-container" class="wrap">' . "\n";
+			echo '<div id="waymark-notice-container" class="wrap">' . "\n";
 			echo '	<div class="card">' . "\n";
 			echo '		<h1>' . esc_html($title) . '</h1>' . "\n";
 			echo '		<p>' . wp_kses($description, [

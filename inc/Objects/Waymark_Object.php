@@ -337,39 +337,4 @@ class Waymark_Object {
 
 		return $new_post_id;
 	}
-
-	function relationship_field($relationship_type = 'one', $Object_Name = '', $field_name = '', $group = '', $tip = '') {
-		$out = [
-			'input_types' => ['meta'],
-			'name' => $field_name,
-			'id' => $field_name,
-			'tip' => $tip,
-			'group' => $group,
-		];
-
-		if ($relationship_type == 'one') {
-			$out['type'] = 'select';
-			$out['title'] = $Object_Name;
-			$out['options'] = $this->relationship_options($Object_Name, true);
-		} elseif ($relationship_type == 'many') {
-			$out['type'] = 'select_multi';
-			$out['title'] = $Object_Name . 's';
-			$out['options'] = $this->relationship_options($Object_Name);
-		}
-
-		return $out;
-	}
-
-	function relationship_options($Object_Name, $add_none = false) {
-		$Object_Name = 'Waymark_' . $Object_Name;
-
-		$Object = new $Object_Name;
-
-		if ($add_none) {
-			$out = ['' => ''];
-			return $out + $Object->get_list();
-		} else {
-			return $Object->get_list();
-		}
-	}
 }
