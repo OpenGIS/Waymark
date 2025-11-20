@@ -14,6 +14,12 @@ Learn how to separate the export and download options from the Waymark map and p
 - Multiple maps handling
 - Custom styling
 
+**Implementation files:**
+- [Complete Documentation](separate-export-download.md) - Comprehensive guide with multiple examples
+- [JavaScript File](waymark-export-separation.js) - Ready-to-use JavaScript file for theme integration
+- [PHP Snippet](functions-php-snippet.php) - Code to add to your theme's functions.php
+- [HTML Example](export-separation-example.html) - Standalone HTML example for testing
+
 ## Using the Callback Function
 
 Many of these examples use the global `waymark_loaded_callback` function, which allows you to extend Waymark's functionality after a map has loaded.

@@ -2,6 +2,14 @@
 
 This example demonstrates how to separate the export and download options from the Waymark map and place them elsewhere on your page (e.g., below or next to the map).
 
+## Quick Start
+
+**Ready to implement? Choose your approach:**
+
+1. **Copy & Paste** - Use the [ready-made JavaScript file](waymark-export-separation.js) and [PHP snippet](functions-php-snippet.php)
+2. **Custom Implementation** - Follow the implementation guide below
+3. **Testing** - Use the [HTML example](export-separation-example.html) to test the concept
+
 ## Overview
 
 By default, Waymark's export feature appears within the map's interface. Using the `waymark_loaded_callback` function, you can clone the export controls and position them anywhere on your page.

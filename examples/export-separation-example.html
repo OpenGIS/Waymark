@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Waymark Export Separation Example</title>
+    <style>
+        /* Example styling for the separated export form */
+        .waymark-export-cloned {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .waymark-export-cloned select {
+            margin-right: 10px;
+            padding: 8px;
+        }
+
+        .waymark-export-cloned .button {
+            padding: 8px 16px;
+            background: #0073aa;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .waymark-export-cloned .button:hover {
+            background: #005177;
+        }
+
+        /* Hide the original export if desired */
+        .waymark-map-export-original {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        This is a demonstration HTML file showing how to implement
+        the export separation feature with Waymark.
+        
+        Usage Instructions:
+        1. Add this code to your WordPress theme's functions.php or a custom plugin
+        2. Or add the JavaScript portion to your theme's JavaScript file
+        3. Or add it directly to your page/post using HTML blocks or custom HTML
+    -->
+
+    <!-- Your Waymark Map Shortcode -->
+    <!-- [Waymark map_id="YOUR_MAP_ID"] -->
+
+    <!-- Optional: Create a specific container for the export controls -->
+    <div id="my-custom-export-location">
+        <!-- Export controls will be inserted here if you use Option 2 in the callback -->
+    </div>
+
+    <script>
+        /**
+         * Global callback function that runs after Waymark has loaded
+         * This is the recommended approach for extending Waymark functionality
+         * 
+         * @param {Object} Waymark - The Waymark instance for the map
+         */
+        function waymark_loaded_callback(Waymark) {
+            // Only process if we have a valid Waymark instance
+            if (!Waymark || !Waymark.map) {
+                console.log('Waymark instance not valid');
+                return;
+            }
+            
+            console.log('Waymark loaded, processing export separation...');
+            
+            // Find the export form within this map instance
+            var mapContainer = jQuery(Waymark.map.getContainer()).closest('.waymark-map');
+            var exportForm = mapContainer.find('.waymark-map-export, .waymark-collection-export').first();
+            
+            if (exportForm.length === 0) {
+                console.log('No export form found for this map - make sure Public Export is enabled in Waymark Settings');
+                return;
+            }
+            
+            console.log('Export form found, cloning...');
+            
+            // Clone the export form with all data and event handlers
+            var clonedExport = exportForm.clone(true, true);
+            
+            // Add a custom class to identify the cloned export
+            clonedExport.addClass('waymark-export-cloned');
+            
+            // Update the ID to avoid duplicates
+            var originalId = clonedExport.attr('id');
+            if (originalId) {
+                clonedExport.attr('id', originalId + '-cloned');
+            }
+            
+            // OPTION 1: Insert the cloned export after the map (default)
+            mapContainer.after(clonedExport);
+            console.log('Export form cloned and placed after map');
+            
+            // OPTION 2: Insert into a specific container (uncomment to use)
+            // jQuery('#my-custom-export-location').html(clonedExport);
+            // console.log('Export form cloned and placed in custom location');
+            
+            // OPTION 3: Insert before the map (uncomment to use)
+            // mapContainer.before(clonedExport);
+            // console.log('Export form cloned and placed before map');
+            
+            // Hide the original export form
+            exportForm.addClass('waymark-map-export-original');
+            exportForm.hide();
+            
+            // Or remove it completely (uncomment to use instead of hiding)
+            // exportForm.remove();
+            
+            // Re-initialize the export functionality for all export forms
+            // This ensures the cloned form works correctly
+            if (typeof waymark_setup_map_export === 'function') {
+                waymark_setup_map_export();
+                console.log('Export functionality re-initialized');
+            } else {
+                console.warn('waymark_setup_map_export function not found');
+            }
+            
+            console.log('Export separation complete!');
+        }
+    </script>
+</body>
+</html>
