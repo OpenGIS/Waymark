@@ -208,8 +208,8 @@ Place the export controls in a sidebar next to the map:
 <!-- HTML Structure -->
 <div class="map-and-sidebar">
     <div class="map-column">
-        <!-- Your Waymark shortcode goes here -->
-        [Waymark map_id="123"]
+        <!-- Your Waymark shortcode goes here - replace YOUR_MAP_ID with your actual map ID -->
+        [Waymark map_id="YOUR_MAP_ID"]
     </div>
     <div class="sidebar-column">
         <div id="export-sidebar">

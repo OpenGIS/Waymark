@@ -25,6 +25,7 @@ function waymark_enqueue_export_separation_script() {
     // }
     
     // Example 3: Load only when Waymark shortcode is detected in content
+    // Note: Waymark uses 'Waymark' (capital W) as the shortcode name
     global $post;
     if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'Waymark')) {
         wp_enqueue_script('waymark-export-separation', get_stylesheet_directory_uri() . '/js/waymark-export-separation.js', array('jquery'), '1.0', true);

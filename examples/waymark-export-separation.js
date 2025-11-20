@@ -57,6 +57,9 @@
      * Global callback function that Waymark calls when a map is loaded
      * This function is called for each Waymark map instance
      * 
+     * Note: If you already have a waymark_loaded_callback defined elsewhere,
+     * you'll need to merge the functionality manually or rename this function.
+     * 
      * @param {Object} Waymark - The Waymark instance
      */
     window.waymark_loaded_callback = function(Waymark) {
@@ -112,7 +115,8 @@
                 
             case 'custom':
                 if ($(config.customContainer).length > 0) {
-                    $(config.customContainer).html(clonedExport);
+                    // Replace all content in the custom container
+                    $(config.customContainer).empty().append(clonedExport);
                     log('Export placed in custom container: ' + config.customContainer);
                 } else {
                     log('Custom container not found: ' + config.customContainer + ', falling back to after map');
