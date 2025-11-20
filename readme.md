@@ -81,6 +81,12 @@ For developers:
 
 Be sure to check out [Map First](https://github.com/opengis/map-first), a minimal WordPress theme with an *obsession* for Maps (it's open-source too and contains lots of comments about customisations).
 
+### Examples
+
+Check out the [examples directory](examples/) for practical code examples and tutorials on customizing Waymark, including:
+- [Separating export/download from the map](examples/separate-export-download.md)
+- And more...
+
 **Waymark is free, open-source ([GPL v2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)) and a labour of Love**. I try to keep the plugin well supported, so please feel free to <a href="https://forms.gle/mthqAgSsMoTPM8SR9">reach out</a> with any issues, questions or feedback.
 
 ### Development
