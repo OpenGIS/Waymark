@@ -24,6 +24,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Build Waymark JS
+        working-directory: waymark-js
+        run: npm ci && npx grunt less concat terser cssmin copy
+
       - name: Copy Waymark JS assets into docs
         run: |
           mkdir -p docs/assets/waymark-js
