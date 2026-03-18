@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en-GB">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Basemaps &#8211; Waymark</title>
+		<link rel="stylesheet" href="../../assets/css/classic-theme-styles.css" />
+		<link rel="stylesheet" href="../../assets/css/global-styles.css" />
+		<link
+			rel="stylesheet"
+			id="wpo_min-header-0-css"
+			href="../../assets/css/wpo-minify-header-56df5e72.min.css"
+			type="text/css"
+			media="all"
+		/>
+		<link rel="stylesheet" href="../../assets/css/custom.css" />
+		<script
+			type="text/javascript"
+			src="../../assets/js/jquery.min.js"
+			id="jquery-core-js"
+		></script>
+		<script
+			type="text/javascript"
+			src="../../assets/js/jquery-migrate.min.js"
+			id="jquery-migrate-js"
+		></script>
+		<link
+			rel="stylesheet"
+			href="../../assets/waymark-js/css/waymark-js.min.css"
+		/>
+		<script src="../../assets/waymark-js/js/waymark-js.min.js"></script>
+	</head>
+
+	<body
+		class="wp-singular lsvr_kba-template-default single single-lsvr_kba postid-2580 single-format-video wp-custom-logo wp-theme-lore wp-child-theme-lore-child lsvr-accessibility"
+	>
+		<h1 class="main__header-title">Basemaps</h1>
+
+		<div class="post__content">
+			<figure
+				class="wp-block-embed is-type-video is-provider-vimeo wp-block-embed-vimeo wp-embed-aspect-16-9 wp-has-aspect-ratio"
+			>
+				<div class="wp-block-embed__wrapper">
+					<iframe
+						title="Waymark - Changing Basemaps"
+						src="https://player.vimeo.com/video/349573817?dnt=1&amp;app_id=122963"
+						width="500"
+						height="281"
+						frameborder="0"
+						allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+					></iframe>
+				</div>
+			</figure>
+
+			<p class="lead">Use third-party Basemaps as your Map background.</p>
+
+			<p>
+				Waymark uses the excellent
+				<a href="https://www.openstreetmap.org/fixthemap">OpenStreetMap</a> as
+				it&#8217;s default Basemap and allows integration for services that
+				support
+				<a href="https://en.wikipedia.org/wiki/Tiled_web_map">tiled web maps</a
+				>. If you have more than one Basemap, you can switch between them when
+				viewing the Map.
+			</p>
+
+			<hr class="wp-block-separator has-css-opacity" />
+
+			<h2 class="wp-block-heading" id="add">Adding a Basemap</h2>
+
+			<div
+				class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex"
+			>
+				<div
+					class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"
+				>
+					<p>
+						<strong
+							>There are many Basemap providers to choose from.
+							<a
+								href="https://leaflet-extras.github.io/leaflet-providers/preview/"
+								>This page</a
+							>
+							is a great place to preview some of them.</strong
+						>
+					</p>
+
+					<p>
+						<a href="https://www.thunderforest.com/" rel="external nofollow"
+							>Thunderforest</a
+						>
+						and
+						<a href="https://www.mapbox.com/maps/" rel="external nofollow"
+							>Mapbox</a
+						>
+						are examples of providers that offer easy access to beautiful
+						Basemaps (including satellite imagery); they require registration,
+						but have a free usage tier.
+					</p>
+
+					<p>
+						It is also possible to display
+						<a
+							href="https://gist.github.com/morehawes/f2982753074599363ca3a9f8582cd572"
+							>Google Maps tiles</a
+						>.
+					</p>
+				</div>
+
+				<div
+					class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"
+				>
+					<figure class="wp-block-image size-large">
+						<img
+							fetchpriority="high"
+							decoding="async"
+							width="1024"
+							height="673"
+							src="../../assets/img/Screen-Shot-2020-04-22-at-12.53.00-PM-1024x673.png"
+							alt=""
+							class="wp-image-3105"
+							srcset="
+								../../assets/img/Screen-Shot-2020-04-22-at-12.53.00-PM-1024x673.png  1024w,
+								../../assets/img/Screen-Shot-2020-04-22-at-12.53.00-PM-700x460.png    700w,
+								../../assets/img/Screen-Shot-2020-04-22-at-12.53.00-PM-768x504.png    768w,
+								../../assets/img/Screen-Shot-2020-04-22-at-12.53.00-PM-1536x1009.png 1536w,
+								../../assets/img/Screen-Shot-2020-04-22-at-12.53.00-PM.png           1754w
+							"
+							sizes="(max-width: 1024px) 100vw, 1024px"
+						/>
+					</figure>
+				</div>
+			</div>
+
+			<div
+				class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex"
+			>
+				<div
+					class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"
+				>
+					<p>
+						Basemaps can be configured in
+						<em>Waymark &gt; Settings &gt; Basemaps</em>.
+					</p>
+
+					<p>
+						To add the
+						<a href="https://www.thunderforest.com/maps/outdoors/"
+							>Thunderforest Outdoors</a
+						>
+						Basemap, we simply enter the style URL provided:
+					</p>
+
+					<pre
+						class="wp-block-code"
+					><code class="">https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=&lt;insert-your-apikey-here&gt;</code></pre>
+
+					<p>
+						The attribution field allows you to comply with the provider terms
+						and conditions. In the case of Thunderforest, a link to both
+						<a href="https://www.thunderforest.com/">Thunderforest</a> and
+						<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
+						is required:
+					</p>
+
+					<pre
+						class="wp-block-code"
+					><code class="">Maps © &lt;a href="http://www.thunderforest.com"&gt;Thunderforest&lt;/a&gt;, Data © &lt;a href="http://www.openstreetmap.org/copyright"&gt;OpenStreetMap contributors&lt;/a&gt;</code></pre>
+
+					<p>
+						<strong>Pro Tip!</strong> The first Basemap listed will be used by
+						default, unless you specify a different one using the
+						<a href="../shortcodes/index.html">Shortcode</a>.
+					</p>
+				</div>
+
+				<div
+					class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"
+				>
+					<figure class="wp-block-image size-large">
+						<img
+							decoding="async"
+							width="954"
+							height="1024"
+							src="../../assets/img/Screen-Shot-2020-04-22-at-12.59.41-PM-954x1024.png"
+							alt=""
+							class="wp-image-3106"
+							srcset="
+								../../assets/img/Screen-Shot-2020-04-22-at-12.59.41-PM-954x1024.png  954w,
+								../../assets/img/Screen-Shot-2020-04-22-at-12.59.41-PM-652x700.png   652w,
+								../../assets/img/Screen-Shot-2020-04-22-at-12.59.41-PM-768x824.png   768w,
+								../../assets/img/Screen-Shot-2020-04-22-at-12.59.41-PM.png          1344w
+							"
+							sizes="(max-width: 954px) 100vw, 954px"
+						/>
+					</figure>
+				</div>
+			</div>
+
+			<hr class="wp-block-separator has-css-opacity" />
+
+			<h2 class="wp-block-heading" id="examples">Examples</h2>
+
+			<div class="wp-block-group">
+				<div
+					class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow"
+				>
+					<div
+						class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex"
+					>
+						<div
+							class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"
+						>
+							<p>
+								This Map uses
+								<a href="https://www.thunderforest.com/maps/outdoors/"
+									>Thunderforest Outdoors</a
+								>
+								as the Basemap:
+							</p>
+
+							<pre
+								class="wp-block-code shortcode"
+							><code class="">Waymark basemap="Outdoors" map_centre="54.526814,-3.017289" map_zoom="16"</code></pre>
+						</div>
+
+						<div
+							class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"
+						>
+							<!-- START Waymark Shortcode #99d44f -->
+							<div
+								style=""
+								id="waymark-shortcode-99d44f"
+								data-shortcode_hash="99d44f"
+								class="waymark-shortcode waymark-container"
+							>
+								<!-- Map -->
+								<div
+									style="display: none; height: 300px; min-height: 300px"
+									id="waymark-map-99d44f"
+									class="waymark-map"
+									data-shortcode_hash="99d44f"
+								></div>
+							</div>
+							<script>
+								jQuery(document).ready(function () {
+									let waymark_viewer = window.Waymark_Map_Factory.viewer();
+									if (typeof waymark_user_config === "undefined") {
+										waymark_viewer.message(
+											'Configuration not found! Check for "var waymark_user_config" in your page HTML.',
+											"error",
+										);
+									}
+									var waymark_config = jQuery.extend(
+										true,
+										{},
+										waymark_user_config,
+									);
+									waymark_config.map_options.map_div_id = "waymark-map-99d44f";
+									waymark_config.map_options.map_height = 300;
+									waymark_config.map_options.map_init_latlng = [
+										54.526814, -3.017289,
+									];
+									waymark_config.map_options.map_init_zoom = 16;
+									waymark_config.map_options.map_init_basemap = "Outdoors";
+									waymark_viewer.init(waymark_config);
+								});
+							</script>
+							<!-- END Waymark Shortcode #99d44f -->
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="wp-block-group">
+				<div
+					class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow"
+				>
+					<div
+						class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex"
+					>
+						<div
+							class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"
+						>
+							<p>
+								This Map uses
+								<a href="https://www.mapbox.com/maps/satellite"
+									>Mapbox Satellite</a
+								>
+								as the Basemap:
+							</p>
+
+							<pre
+								class="wp-block-code shortcode"
+							><code class="">Waymark basemap="Satellite" map_centre="54.526814,-3.017289" map_zoom="16" </code></pre>
+
+							<p>The Basemap URL entered in Settings is:</p>
+
+							<pre
+								class="wp-block-code"
+							><code class="">https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg90?access_token=[your_api_key]</code></pre>
+
+							<p>
+								View the Mapbox Docs for more information on using
+								<a href="https://docs.mapbox.com/api/maps/raster-tiles/"
+									>Raster Tiles</a
+								>.
+							</p>
+						</div>
+
+						<div
+							class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"
+						>
+							<!-- START Waymark Shortcode #d0630b -->
+							<div
+								style=""
+								id="waymark-shortcode-d0630b"
+								data-shortcode_hash="d0630b"
+								class="waymark-shortcode waymark-container"
+							>
+								<!-- Map -->
+								<div
+									style="display: none; height: 300px; min-height: 300px"
+									id="waymark-map-d0630b"
+									class="waymark-map"
+									data-shortcode_hash="d0630b"
+								></div>
+							</div>
+							<script>
+								jQuery(document).ready(function () {
+									let waymark_viewer = window.Waymark_Map_Factory.viewer();
+									if (typeof waymark_user_config === "undefined") {
+										waymark_viewer.message(
+											'Configuration not found! Check for "var waymark_user_config" in your page HTML.',
+											"error",
+										);
+									}
+									var waymark_config = jQuery.extend(
+										true,
+										{},
+										waymark_user_config,
+									);
+									waymark_config.map_options.map_div_id = "waymark-map-d0630b";
+									waymark_config.map_options.map_height = 300;
+									waymark_config.map_options.map_init_latlng = [
+										54.526814, -3.017289,
+									];
+									waymark_config.map_options.map_init_zoom = 16;
+									waymark_config.map_options.map_init_basemap = "Satellite";
+									waymark_viewer.init(waymark_config);
+								});
+							</script>
+							<!-- END Waymark Shortcode #d0630b -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- START Waymark Footer JS -->
+		<script type="text/javascript">
+			//HTTP
+			var waymark_http_endpoint = "https://www.waymark.dev/?waymark_http=1";
+
+			var waymark_user_config = {
+				map_options: {
+					map_height: "640",
+					tile_layers: [
+						{
+							layer_name: "OpenStreetMap",
+							layer_url:
+								"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?r=1",
+							layer_attribution:
+								'@copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+							layer_max_zoom: "18",
+						},
+					],
+					marker_types: [
+						{
+							marker_title: "Photo",
+							marker_shape: "marker",
+							marker_size: "medium",
+							icon_type: "icon",
+							marker_icon: "ion-camera",
+							marker_colour: "#70af00",
+							icon_colour: "#ffffff",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Water",
+							marker_shape: "marker",
+							marker_size: "medium",
+							icon_type: "icon",
+							marker_icon: "ion-waterdrop",
+							marker_colour: "#2aabe1",
+							icon_colour: "#fff",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Trail Access",
+							marker_shape: "marker",
+							marker_size: "medium",
+							icon_type: "icon",
+							marker_icon: "ion-android-car",
+							marker_colour: "#fbfbfb",
+							icon_colour: "#707070",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Information",
+							marker_shape: "marker",
+							marker_size: "medium",
+							icon_type: "icon",
+							marker_icon: "ion-information-circled",
+							marker_colour: "#fbfbfb",
+							icon_colour: "#0069a5",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Alert",
+							marker_shape: "marker",
+							marker_size: "medium",
+							icon_type: "icon",
+							marker_icon: "ion-android-alert",
+							marker_colour: "#da3d20",
+							icon_colour: "white",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Food",
+							marker_shape: "marker",
+							marker_size: "medium",
+							icon_type: "icon",
+							marker_icon: "ion-pizza",
+							marker_colour: "#da3d20",
+							icon_colour: "#ffba00",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Beer",
+							marker_shape: "marker",
+							marker_size: "medium",
+							icon_type: "icon",
+							marker_icon: "ion-beer",
+							marker_colour: "#fbfbfb",
+							icon_colour: "#754423",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Start",
+							marker_shape: "marker",
+							marker_size: "medium",
+							icon_type: "icon",
+							marker_icon: "fa-flag",
+							marker_colour: "#70af00",
+							icon_colour: "white",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Finish",
+							marker_shape: "marker",
+							marker_size: "medium",
+							icon_type: "icon",
+							marker_icon: "fa-flag-checkered",
+							marker_colour: "#a43233",
+							icon_colour: "white",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Store",
+							marker_shape: "marker",
+							marker_size: "medium",
+							icon_type: "icon",
+							marker_icon: "ion-android-cart",
+							marker_colour: "#416979",
+							icon_colour: "#ffffff",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Camp",
+							marker_shape: "marker",
+							marker_size: "medium",
+							icon_type: "icon",
+							marker_icon: "ion-android-home",
+							marker_colour: "#a43233",
+							icon_colour: "#ffffff",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Wildlife",
+							marker_shape: "marker",
+							marker_size: "medium",
+							icon_type: "icon",
+							marker_icon: "ion-ios-paw",
+							marker_colour: "#a43233",
+							icon_colour: "#ffffff",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Point of Interest",
+							marker_shape: "marker",
+							marker_size: "medium",
+							icon_type: "icon",
+							marker_icon: "ion-eye",
+							marker_colour: "#da3d20",
+							icon_colour: "#e5e5e5",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Waymark",
+							marker_shape: "marker",
+							marker_size: "large",
+							icon_type: "html",
+							marker_icon:
+								"&lt;img style=&quot;width:24px;height:24px;margin-top:5px&quot; src=&quot;https:\/\/www.waymark.dev\/wp-content\/plugins\/waymark\/assets\/img\/waymark-icon-primary.png&quot; \/&gt;",
+							marker_colour: "#ffffff",
+							icon_colour: "#81d742",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+						{
+							marker_title: "Test",
+							marker_shape: "rectangle",
+							marker_size: "large",
+							icon_type: "text",
+							marker_icon: "Test Text Marker",
+							marker_colour: "#dd3333",
+							icon_colour: "#ffffff",
+							marker_display: "1",
+							marker_submission: "1",
+						},
+					],
+					line_types: [
+						{
+							line_title: "Green",
+							line_colour: "#30d100",
+							line_weight: "3",
+							line_opacity: "0.7",
+							line_display: "1",
+							line_submission: "1",
+						},
+						{
+							line_title: "Red",
+							line_colour: "#dd3333",
+							line_weight: "3",
+							line_opacity: "0.7",
+							line_display: "1",
+							line_submission: "1",
+						},
+						{
+							line_title: "Bike Path",
+							line_colour: "#1e73be",
+							line_weight: "3",
+							line_opacity: "0.7",
+							line_display: "1",
+							line_submission: "1",
+						},
+						{
+							line_title: "Foot Path",
+							line_colour: "#dd9933",
+							line_weight: "3",
+							line_opacity: "0.7",
+							line_display: "1",
+							line_submission: "1",
+						},
+						{
+							line_title: "Alternate",
+							line_colour: "#dd9933",
+							line_weight: "3",
+							line_opacity: "0.7",
+							line_display: "1",
+							line_submission: "1",
+						},
+					],
+					shape_types: [
+						{
+							shape_title: "Red",
+							shape_colour: "#d84848",
+							fill_opacity: "0.5",
+							shape_display: "1",
+							shape_submission: "1",
+						},
+						{
+							shape_title: "Green",
+							shape_colour: "#3cbc47",
+							fill_opacity: "0.15",
+							shape_display: "1",
+							shape_submission: "1",
+						},
+						{
+							shape_title: "Blue",
+							shape_colour: "#487bd9",
+							fill_opacity: "0.5",
+							shape_display: "1",
+							shape_submission: "1",
+						},
+						{
+							shape_title: "Purple",
+							shape_colour: "#8224e3",
+							fill_opacity: "1",
+							shape_display: "1",
+							shape_submission: "1",
+						},
+					],
+					show_scale: "1",
+					debug_mode: false,
+				},
+				viewer_options: {
+					show_gallery: "1",
+					show_filter: "1",
+					show_cluster: "1",
+					show_elevation: false,
+					cluster_radius: "80",
+					cluster_threshold: "14",
+					elevation_units: "metric",
+					elevation_initial: "1",
+					elevation_colour: "#2c7137",
+					sleep_delay_seconds: "3",
+					sleep_do_message: "0",
+					sleep_wake_message: "Click or Hover to Wake",
+				},
+				editor_options: { confirm_delete: "0" },
+				language: {
+					action_fullscreen_activate: "View Fullscreen",
+					action_fullscreen_deactivate: "Exit Fullscreen",
+					action_locate_activate: "Show me where I am",
+					action_zoom_in: "Zoom in",
+					action_zoom_out: "Zoom out",
+					label_total_length: "Total Length: ",
+					label_max_elevation: "Max. Elevation: ",
+					label_min_elevation: "Min. Elevation: ",
+					label_ascent: "Total Ascent: ",
+					label_descent: "Total Descent: ",
+					add_line_title: "Draw a Line",
+					add_photo_title: "Upload an Image",
+					add_marker_title: "Place a Marker",
+					add_rectangle_title: "Draw a Rectangle",
+					add_polygon_title: "Draw a Polygon",
+					add_circle_title: "Draw a Circle",
+					upload_file_title:
+						"Read Lines and Markers from file (GPX\/KML\/GeoJSON supported, which most apps should Export to)",
+					action_duplicate: "Duplicate",
+					action_delete: "Delete",
+					action_edit: "Edit",
+					action_edit_done: "Finish editing",
+					action_upload_image: "Upload Image",
+					object_title_placeholder: "Title",
+					object_image_placeholder: "Image URL",
+					object_description_placeholder: "Description",
+					object_type_label: "Type",
+					marker_latlng_label: "Lat,Lng",
+					action_delete_confirm: "Are you sure you want to delete this",
+					action_search_placeholder: "Search...",
+					object_label_marker: "Marker",
+					object_label_line: "Line",
+					object_label_shape: "Shape",
+					object_label_marker_plural: "Markers",
+					object_label_line_plural: "Lines",
+					object_label_shape_plural: "Shapes",
+					error_message_prefix: "Waymark Error",
+					info_message_prefix: "Waymark Info",
+					error_file_type: "This file type is not supported.",
+					error_file_conversion: "Could not convert this file to GeoJSON.",
+					error_file_upload: "File upload error.",
+					error_photo_meta: "Could not retrieve Image metadata.",
+					info_exif_yes: "Image location metadata (EXIF) detected!",
+					info_exif_no: "Image location metadata (EXIF) NOT detected.",
+					no_direction: "No Direction",
+					show_direction: "Show Direction",
+					reverse_direction: "Reverse Direction",
+				},
+			};
+
+			function waymark_load_map_data(map_instance, map_id, reset_map = true) {
+				//Build request
+				var data = {
+					waymark_action: "get_map_data",
+					waymark_security: "6c38ee9589",
+					map_id: map_id,
+				};
+
+				//Do request
+				jQuery.post(waymark_http_endpoint, data, function (map_data) {
+					map_instance.load_json(map_data, reset_map);
+				});
+			}
+
+			//Call
+			jQuery(document).ready(function () {
+				//Random Country
+				if (typeof Waymark_Map_Editor.map == "object") {
+					Waymark_Map_Editor.map.fitBounds([
+						[38.2703775091, 44.7939896991],
+						[41.8606751572, 50.3928210793],
+					]);
+				}
+			});
+		</script>
+		<!-- END Waymark Footer JS -->
+	</body>
+</html>

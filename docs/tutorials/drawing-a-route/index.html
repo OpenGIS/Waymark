@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drawing a Route &#8211; Waymark</title>
+<link rel="stylesheet" href="../../assets/css/classic-theme-styles.css">
+<link rel="stylesheet" href="../../assets/css/global-styles.css">
+<link rel='stylesheet' id='wpo_min-header-0-css' href='../../assets/css/wpo-minify-header-251a5241.min.css' type='text/css' media='all' />
+<link rel="stylesheet" href="../../assets/css/custom.css">
+<script type="text/javascript" src="../../assets/js/jquery.min.js" id="jquery-core-js"></script>
+<script type="text/javascript" src="../../assets/js/jquery-migrate.min.js" id="jquery-migrate-js"></script>
+<link rel="stylesheet" href="../../assets/waymark-js/css/waymark-js.min.css">
+<script src="../../assets/waymark-js/js/waymark-js.min.js"></script>
+</head>
+
+<body class="wp-singular lsvr_kba-template-default single single-lsvr_kba postid-4596 single-format-standard wp-custom-logo wp-theme-lore wp-child-theme-lore-child lsvr-accessibility">
+<h1 class="main__header-title">
+													Drawing a Route												</h1>
+
+<div class="post__content">
+
+									
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<p class="lead">In this tutorial we will use Waymark to create a Route.</p>
+
+
+
+<p>You will be guided through navigating to the Map Editor, drawing a Route on the Map and adding a Description for that Route.</p>
+
+
+
+<p>This tutorial assumes you have a WordPress site (self-hosted) and have created your first Map. Follow the <meta http-equiv="content-type" content="text/html; charset=utf-8"><a href="../creating-your-first-map/index.html" data-type="lsvr_kba" data-id="4525">Creating Your First Map</a> tutorial to learn how to create a Map.</p>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+
+<!-- START Waymark Shortcode #cf40a5 -->
+<div style="" id="waymark-shortcode-cf40a5" data-shortcode_hash="cf40a5" class="waymark-shortcode waymark-container">
+	<!-- Map -->
+	<div style="display:none;height:300px;min-height:300px;" id="waymark-map-cf40a5" class="waymark-map waymark-map-id-4634" data-shortcode_hash="cf40a5"></div>
+</div>
+<script>
+jQuery(document).ready(function() {
+	let waymark_viewer = window.Waymark_Map_Factory.viewer();
+	if(typeof waymark_user_config === "undefined") { waymark_viewer.message("Configuration not found! Check for \"var waymark_user_config\" in your page HTML.", "error"); }
+	var waymark_config = jQuery.extend(true, {}, waymark_user_config);
+	waymark_config.map_options.map_div_id = "waymark-map-cf40a5";
+	waymark_config.map_options.map_height = 300;
+	waymark_config.viewer_options.show_gallery = 0;
+	waymark_viewer.init(waymark_config);
+	waymark_viewer.load_json({"type":"FeatureCollection","features":[{"type":"Feature","properties":{"description":"type=green\ntitle=Our Walk\ndescription=<p>This is the route we took on our walk over the Thames.</p>"},"geometry":{"type":"LineString","coordinates":[[-0.078278,51.50506],[-0.076131,51.504286],[-0.074348,51.507024],[-0.07263,51.506717]]}},{"type":"Feature","properties":{"description":"type=photo\nimage_thumbnail_url=http://joe-dev.local/wordpress/wp-content/uploads/2025/03/1024px-Tower_Bridge_at_Dawn-150x150.jpg\nimage_medium_url=http://joe-dev.local/wordpress/wp-content/uploads/2025/03/1024px-Tower_Bridge_at_Dawn-300x200.jpg\nimage_large_url=http://joe-dev.local/wordpress/wp-content/uploads/2025/03/1024px-Tower_Bridge_at_Dawn.jpg\nimage_full_url=http://joe-dev.local/wordpress/wp-content/uploads/2025/03/1024px-Tower_Bridge_at_Dawn.jpg\ndescription=<p><a href=\"https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Dawn.jpg\">Fuzzypiggy</a>, <a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>, via Wikimedia Commons</p>\ntitle=Tower Bridge"},"geometry":{"type":"Point","coordinates":[-0.075341,51.505538]}}]});
+	waymark_viewer.load_done();
+});
+</script>
+<!-- END Waymark Shortcode #cf40a5 -->
+
+
+
+
+<p><meta http-equiv="content-type" content="text/html; charset=utf-8"></meta>This Map illustrates the end result. Try clicking on the Line to view the Description.</p>
+</div>
+</div>
+
+
+
+<p class="lsvr-alert-message lsvr-alert-message--info">Click on any screenshot to enlarge.</p>
+
+
+
+<h2 class="wp-block-heading">1. Open the Map Editor</h2>
+
+
+
+<p class="lead">In this step we are going to open the Map Editor.</p>
+
+
+
+<p>When logged in to WordPress admin, you can either open the Map Editor whilst viewing a Map on the front-end, or by selecting it from the Waymark > Maps admin screen.</p>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e58e99b&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img fetchpriority="high" decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/first-map-step-16-1024x658.jpg" alt="" class="wp-image-4590" srcset="../../assets/img/first-map-step-16-1024x658.jpg 1024w, ../../assets/img/first-map-step-16-700x450.jpg 700w, ../../assets/img/first-map-step-16-768x494.jpg 768w, ../../assets/img/first-map-step-16-1536x988.jpg 1536w, ../../assets/img/first-map-step-16.jpg 2000w" sizes="(max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">If you are viewing your published Map, click &#8220;Edit Map&#8221; to open the Editor.</figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e58f4b3&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/first-map-step-17-1024x658.jpg" alt="" class="wp-image-4591" srcset="../../assets/img/first-map-step-17-1024x658.jpg 1024w, ../../assets/img/first-map-step-17-700x450.jpg 700w, ../../assets/img/first-map-step-17-768x494.jpg 768w, ../../assets/img/first-map-step-17-1536x988.jpg 1536w, ../../assets/img/first-map-step-17.jpg 2000w" sizes="(max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">From admin, click the &#8220;Waymark &gt; Maps&#8221; admin menu link to view a list of all of your Maps. </figcaption></figure>
+</div>
+</div>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e58fc53&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/draw-route-3-1024x658.png" alt="" class="wp-image-4618" srcset="../../assets/img/draw-route-3-1024x658.png 1024w, ../../assets/img/draw-route-3-700x450.png 700w, ../../assets/img/draw-route-3-768x494.png 768w, ../../assets/img/draw-route-3-1536x988.png 1536w, ../../assets/img/draw-route-3.png 2000w" sizes="(max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption"><meta http-equiv="content-type" content="text/html; charset=utf-8">Click the Map title to open the Editor.</figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"></div>
+</div>
+
+
+
+<h2 class="wp-block-heading"><meta http-equiv="content-type" content="text/html; charset=utf-8">2. Select the Line tool</h2>
+
+
+
+<p class="lead">Now we are going to select the Line tool from the toolbar.</p>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e590482&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/draw-route-5-1024x658.png" alt="" class="wp-image-4621" srcset="../../assets/img/draw-route-5-1024x658.png 1024w, ../../assets/img/draw-route-5-700x450.png 700w, ../../assets/img/draw-route-5-768x494.png 768w, ../../assets/img/draw-route-5-1536x988.png 1536w, ../../assets/img/draw-route-5.png 2000w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">Scroll down to view the Map. Click on the top-left minus symbol &#8220;-&#8221; to zoom out. Do this until you can view both sides of the river.</figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e590ab7&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/draw-route-5-1-1024x658.png" alt="" class="wp-image-4623" srcset="../../assets/img/draw-route-5-1-1024x658.png 1024w, ../../assets/img/draw-route-5-1-700x450.png 700w, ../../assets/img/draw-route-5-1-768x494.png 768w, ../../assets/img/draw-route-5-1-1536x988.png 1536w, ../../assets/img/draw-route-5-1.png 2000w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">Next, click on the Line tool, which is the first button on the Editor toolbar. <meta http-equiv="content-type" content="text/html; charset=utf-8"></meta>With the Line tool activated, the cursor should now look like cross-hairs.</figcaption></figure>
+</div>
+</div>
+
+
+
+<h2 class="wp-block-heading">3. Creating a Line</h2>
+
+
+
+<p class="lead">Now we can draw a Line by clicking on the Map.</p>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e591189&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/draw-route-6-1024x658.png" alt="" class="wp-image-4625" srcset="../../assets/img/draw-route-6-1024x658.png 1024w, ../../assets/img/draw-route-6-700x450.png 700w, ../../assets/img/draw-route-6-768x494.png 768w, ../../assets/img/draw-route-6-1536x988.png 1536w, ../../assets/img/draw-route-6.png 2000w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">Each click on the Map will add to the current Line, with each point appearing as a small white box. First, click on the South side of the river to start the Line. Next, click on the road going over the bridge, then to the North side of the river.</figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e5918d3&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/draw-route-7-1024x658.png" alt="" class="wp-image-4624" srcset="../../assets/img/draw-route-7-1024x658.png 1024w, ../../assets/img/draw-route-7-700x450.png 700w, ../../assets/img/draw-route-7-768x494.png 768w, ../../assets/img/draw-route-7-1536x988.png 1536w, ../../assets/img/draw-route-7.png 2000w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">Finally, extend the Line to the East. Now, click the last point added (white box) to complete the Line.  </figcaption></figure>
+</div>
+</div>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e591fde&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/draw-route-8-1024x658.png" alt="" class="wp-image-4626" srcset="../../assets/img/draw-route-8-1024x658.png 1024w, ../../assets/img/draw-route-8-700x450.png 700w, ../../assets/img/draw-route-8-768x494.png 768w, ../../assets/img/draw-route-8-1536x988.png 1536w, ../../assets/img/draw-route-8.png 2000w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">Once the Line has been completed, the small white boxes will be removed and the cursor will return to a hand &#8211; indicating that the Line tool is no longer active.</figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"></div>
+</div>
+
+
+
+<h2 class="wp-block-heading">4. Adding a Description</h2>
+
+
+
+<p class="lead">We can add information about the Line in the Overlay editor popup.</p>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e5928d7&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/draw-route-9-1-1024x658.png" alt="" class="wp-image-4628" srcset="../../assets/img/draw-route-9-1-1024x658.png 1024w, ../../assets/img/draw-route-9-1-700x450.png 700w, ../../assets/img/draw-route-9-1-768x494.png 768w, ../../assets/img/draw-route-9-1-1536x988.png 1536w, ../../assets/img/draw-route-9-1.png 2000w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">Hover over the Line you just created, your cursor will turn from a hand into a pointing hand. Click the Line to open the Overlay editor popup.</figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e592f67&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/draw-route-9-1024x658.png" alt="" class="wp-image-4627" srcset="../../assets/img/draw-route-9-1024x658.png 1024w, ../../assets/img/draw-route-9-700x450.png 700w, ../../assets/img/draw-route-9-768x494.png 768w, ../../assets/img/draw-route-9-1536x988.png 1536w, ../../assets/img/draw-route-9.png 2000w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">Provide a title and description for the Line by entering them into the appropriate text fields.</figcaption></figure>
+</div>
+</div>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e5937c4&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/draw-route-10-1024x658.png" alt="" class="wp-image-4629" srcset="../../assets/img/draw-route-10-1024x658.png 1024w, ../../assets/img/draw-route-10-700x450.png 700w, ../../assets/img/draw-route-10-768x494.png 768w, ../../assets/img/draw-route-10-1536x988.png 1536w, ../../assets/img/draw-route-10.png 2000w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">Click on the green line to the left of the popup to change the Line colour to green.</figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"></div>
+</div>
+
+
+
+<h2 class="wp-block-heading">5. Updating and Viewing the Map</h2>
+
+
+
+<p class="lead">It&#8217;s time to view our changes on the front-end.</p>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e593f0d&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/draw-route-12-1024x658.png" alt="" class="wp-image-4630" srcset="../../assets/img/draw-route-12-1024x658.png 1024w, ../../assets/img/draw-route-12-700x450.png 700w, ../../assets/img/draw-route-12-768x494.png 768w, ../../assets/img/draw-route-12-1536x988.png 1536w, ../../assets/img/draw-route-12.png 2000w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">Click on the &#8220;Update&#8221; button to the right of the screen to save the Map. Next, click on the permalink to view the Map.</figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e5944cc&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/draw-route-13-1024x658.png" alt="" class="wp-image-4631" srcset="../../assets/img/draw-route-13-1024x658.png 1024w, ../../assets/img/draw-route-13-700x450.png 700w, ../../assets/img/draw-route-13-768x494.png 768w, ../../assets/img/draw-route-13-1536x988.png 1536w, ../../assets/img/draw-route-13.png 2000w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">From the front-end of your site, hover over the Line to see it&#8217;s Title.</figcaption></figure>
+</div>
+</div>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure data-wp-context="{&quot;imageId&quot;:&quot;69bad7e594afa&quot;}" data-wp-interactive="core/image" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="658" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on-async--click="actions.showLightbox" data-wp-on-async--load="callbacks.setButtonStyles" data-wp-on-async-window--resize="callbacks.setButtonStyles" src="../../assets/img/draw-route-14-1024x658.png" alt="" class="wp-image-4632" srcset="../../assets/img/draw-route-14-1024x658.png 1024w, ../../assets/img/draw-route-14-700x450.png 700w, ../../assets/img/draw-route-14-768x494.png 768w, ../../assets/img/draw-route-14-1536x988.png 1536w, ../../assets/img/draw-route-14.png 2000w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Enlarge"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on-async--click="actions.showLightbox"
+			data-wp-style--right="state.imageButtonRight"
+			data-wp-style--top="state.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">Whilst still hovering over the Line, click it to view the Line title and description in a popup.</figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"></div>
+</div>
+
+
+
+<p></p>
+
+									
+								</div>
+
+<!-- START Waymark Footer JS -->
+<script type="text/javascript">
+//HTTP
+var waymark_http_endpoint = "https://www.waymark.dev/?waymark_http=1";
+
+var waymark_user_config = {"map_options":{"map_height":"640","tile_layers":[{layer_name: "OpenStreetMap", layer_url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?r=1", layer_attribution: '@copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', layer_max_zoom: "18"}],"marker_types":[{"marker_title":"Photo","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-camera","marker_colour":"#70af00","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Water","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-waterdrop","marker_colour":"#2aabe1","icon_colour":"#fff","marker_display":"1","marker_submission":"1"},{"marker_title":"Trail Access","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-car","marker_colour":"#fbfbfb","icon_colour":"#707070","marker_display":"1","marker_submission":"1"},{"marker_title":"Information","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-information-circled","marker_colour":"#fbfbfb","icon_colour":"#0069a5","marker_display":"1","marker_submission":"1"},{"marker_title":"Alert","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-alert","marker_colour":"#da3d20","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Food","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-pizza","marker_colour":"#da3d20","icon_colour":"#ffba00","marker_display":"1","marker_submission":"1"},{"marker_title":"Beer","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-beer","marker_colour":"#fbfbfb","icon_colour":"#754423","marker_display":"1","marker_submission":"1"},{"marker_title":"Start","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"fa-flag","marker_colour":"#70af00","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Finish","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"fa-flag-checkered","marker_colour":"#a43233","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Store","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-cart","marker_colour":"#416979","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Camp","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-home","marker_colour":"#a43233","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Wildlife","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-ios-paw","marker_colour":"#a43233","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Point of Interest","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-eye","marker_colour":"#da3d20","icon_colour":"#e5e5e5","marker_display":"1","marker_submission":"1"},{"marker_title":"Waymark","marker_shape":"marker","marker_size":"large","icon_type":"html","marker_icon":"&lt;img style=&quot;width:24px;height:24px;margin-top:5px&quot; src=&quot;https:\/\/www.waymark.dev\/wp-content\/plugins\/waymark\/assets\/img\/waymark-icon-primary.png&quot; \/&gt;","marker_colour":"#ffffff","icon_colour":"#81d742","marker_display":"1","marker_submission":"1"},{"marker_title":"Test","marker_shape":"rectangle","marker_size":"large","icon_type":"text","marker_icon":"Test Text Marker","marker_colour":"#dd3333","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"}],"line_types":[{"line_title":"Green","line_colour":"#30d100","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Red","line_colour":"#dd3333","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Bike Path","line_colour":"#1e73be","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Foot Path","line_colour":"#dd9933","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Alternate","line_colour":"#dd9933","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"}],"shape_types":[{"shape_title":"Red","shape_colour":"#d84848","fill_opacity":"0.5","shape_display":"1","shape_submission":"1"},{"shape_title":"Green","shape_colour":"#3cbc47","fill_opacity":"0.15","shape_display":"1","shape_submission":"1"},{"shape_title":"Blue","shape_colour":"#487bd9","fill_opacity":"0.5","shape_display":"1","shape_submission":"1"},{"shape_title":"Purple","shape_colour":"#8224e3","fill_opacity":"1","shape_display":"1","shape_submission":"1"}],"show_scale":"1","debug_mode":false},"viewer_options":{"show_gallery":"1","show_filter":"1","show_cluster":"1","show_elevation":false,"cluster_radius":"80","cluster_threshold":"14","elevation_units":"metric","elevation_initial":"1","elevation_colour":"#2c7137","sleep_delay_seconds":"3","sleep_do_message":"0","sleep_wake_message":"Click or Hover to Wake"},"editor_options":{"confirm_delete":"0"},"language":{"action_fullscreen_activate":"View Fullscreen","action_fullscreen_deactivate":"Exit Fullscreen","action_locate_activate":"Show me where I am","action_zoom_in":"Zoom in","action_zoom_out":"Zoom out","label_total_length":"Total Length: ","label_max_elevation":"Max. Elevation: ","label_min_elevation":"Min. Elevation: ","label_ascent":"Total Ascent: ","label_descent":"Total Descent: ","add_line_title":"Draw a Line","add_photo_title":"Upload an Image","add_marker_title":"Place a Marker","add_rectangle_title":"Draw a Rectangle","add_polygon_title":"Draw a Polygon","add_circle_title":"Draw a Circle","upload_file_title":"Read Lines and Markers from file (GPX\/KML\/GeoJSON supported, which most apps should Export to)","action_duplicate":"Duplicate","action_delete":"Delete","action_edit":"Edit","action_edit_done":"Finish editing","action_upload_image":"Upload Image","object_title_placeholder":"Title","object_image_placeholder":"Image URL","object_description_placeholder":"Description","object_type_label":"Type","marker_latlng_label":"Lat,Lng","action_delete_confirm":"Are you sure you want to delete this","action_search_placeholder":"Search...","object_label_marker":"Marker","object_label_line":"Line","object_label_shape":"Shape","object_label_marker_plural":"Markers","object_label_line_plural":"Lines","object_label_shape_plural":"Shapes","error_message_prefix":"Waymark Error","info_message_prefix":"Waymark Info","error_file_type":"This file type is not supported.","error_file_conversion":"Could not convert this file to GeoJSON.","error_file_upload":"File upload error.","error_photo_meta":"Could not retrieve Image metadata.","info_exif_yes":"Image location metadata (EXIF) detected!","info_exif_no":"Image location metadata (EXIF) NOT detected.","no_direction":"No Direction","show_direction":"Show Direction","reverse_direction":"Reverse Direction"}};
+
+function waymark_load_map_data(map_instance, map_id, reset_map = true) {
+	//Build request
+	var data = {
+		"waymark_action": "get_map_data",
+		"waymark_security": "6c38ee9589",
+		"map_id": map_id
+	};
+
+	//Do request
+	jQuery.post(waymark_http_endpoint, data, function(map_data) {
+		map_instance.load_json(map_data, reset_map);
+	});
+}
+
+//Call
+jQuery(document).ready(function() {
+	
+			//Random Country
+			if(typeof Waymark_Map_Editor.map == "object") {
+				Waymark_Map_Editor.map.fitBounds([
+					[-2.91785776125, 29.0249263852],
+					[-1.13465911215, 30.8161348813]
+				]);
+			}
+		;
+});
+</script>
+<!-- END Waymark Footer JS -->
+</body>
+</html>
+<!-- Cached by WP-Optimize (gzip) - https://getwpo.com - Last modified: 18th March 2026 4:50 pm (Europe/London UTC:0) -->

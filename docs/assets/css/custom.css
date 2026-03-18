@@ -1,0 +1,291 @@
+p {
+	line-height: 1.35em;
+	margin-bottom: 0.8em;
+}
+h2 {
+	margin: 40px 0 15px 0 !important;
+}
+h3:first-child,
+h2:first-child {
+	margin-top: 0 !important;
+}
+h3 {
+	margin: 30px 0 10px 0 !important;
+}
+.main__inner {
+	padding-top: 30px;
+}
+table tr td {
+  padding-top: 20px;
+  padding-bottom: 20px;	
+	vertical-align: top;
+	border-top: 1px solid #eaedf3;
+}
+.bbp-template-notice.info {
+	display: none;
+}
+.waymark-lead {
+    font-size: 1.25em;
+}
+form input, form select, form textarea {
+	height: unset !important;
+	padding: 6px 10px;
+	margin-bottom: 5px;
+	background-color: #fbfbfb !important;
+	border: 1px solid #e9e9e9;
+	color: #575863 !important;
+}
+form option {
+	padding: 15px !important;;
+}
+.leaflet-control-layers-list label {
+  padding: 3px 0;
+	font-weight: normal;
+}		
+.button {
+	margin-top: 0 !important;
+	border-radius: unset !important;
+	float: unset !important;
+}
+.button.button-primary {
+	padding: 10px 15px;
+	font-size: 110%;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff !important;
+	background-color: #b42714 !important;
+}
+.bbp-the-content-wrapper {
+  border: none;
+}
+.bbp-submit-wrapper {
+	float: unset !important;
+}
+.btn {
+	margin-top: 15px;
+	padding: 10px 30px;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 13px;
+}
+.btn,
+.button {
+	border: 1px solid #e9e9e9;
+	border-radius: 5px !important;
+}
+.btn[type="submit"],
+.button.submit {
+	color: #fff !important;
+	background: #b42714 !important;
+}
+.logout-link {
+	font-size: 12px;
+	border: none !important;
+}
+  .column-shortcode input { font-size: 12px; }
+  .row {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		width: 100%;
+	}
+	.column {
+		display: flex;
+		flex-direction: column;
+		flex-basis: 100%;
+		flex: 2;
+	}
+.column .right {
+	text-align: right;
+}
+@media only screen and (max-width: 768px) {
+  .column {
+    flex: 1;
+  }
+	.column .right {
+		text-align: center;	
+	}
+}
+.single-waymark_map .post__thumbnail {
+	display: none;
+}
+.main__header {
+	margin-bottom: 40px;
+}
+.main__header .main__header-title {
+	margin-bottom: 10px;
+}
+article.post .wp-block-image img {
+	border: 1px solid #f7f7f7;
+}
+article.post .wp-block-image figcaption {
+	text-align: center;
+	font-size: 80%;
+}
+.wp-block-code {
+	margin-bottom: 30px !important;
+}
+.logged-in-as {
+	border: 1px solid #e9e9e9;
+  background-color: #f7f7f7;
+}
+.bbp-topics ul.topic {
+	padding:15px !important;  
+}
+.bbp-topics ul.sticky {
+  background-color: #f7f7f7 !important;
+}
+img.avatar {
+	border-radius: 50%;
+}
+.bbp-topic-meta {
+	font-size: 13px !important;
+}
+.bbp-topic-revision-log .bbp-author-link .bbp-author-avatar img,
+.bbp-topic-meta .bbp-author-link .bbp-author-avatar img {
+  width: 24px;
+	height: 24px;
+	max-width: 24px;
+	max-height: 24px;	
+	margin: 0 5px !important;
+	border: none !important;
+}
+.bbp-author-link {
+	text-decoration: none !important;
+}
+.bbp-reply-author {
+	width: unset !important;
+	text-align: center !important;	
+}
+blockquote p {
+	padding: 15px;
+	font-size: 12px;
+	opacity: 0.8;
+	background: #f7f7f7 !important;
+	border: 1px dashed #e9e9e9;
+  font-family: "Lucida Console", Courier, monospace;
+}
+.topic.sticky .bbp-voting {
+	display: none !important;
+	visibility: hidden !important;
+}
+.bbp-voting {
+	margin-top: 0;
+	min-width: unset !important;
+	padding-right: 15px;
+}
+.bbp-voting a.vote {
+	border-width: 10px !important;	
+}
+.bbp-voting.voted-up:not(.admin-bypass) a.vote.up {
+	border-bottom-color: #74aa7b !important;	
+}
+.bbp-voting.voted-down:not(.admin-bypass) a.vote.down {
+	border-bottom-color: #b42714 !important;	
+}
+.bbp-reply-content ul {
+	margin-left: 30px !important;
+}
+.bbp-voting.bbp-voting-float {
+	float: right !important;
+	padding: 0 !important;
+	margin: 0 0 15px 15px !important;
+}
+.bbp-topic-revision-log li {
+	display:none;
+}
+.bbp-topic-revision-log li:last-child {
+	display:block;
+}
+.bbp-topic-revision-log {
+	margin-top: 45px !important;
+}
+.wp-block-code.shortcode code::before {
+	content: '[';
+}
+.wp-block-code.shortcode code::after {
+	content: ']';
+}
+#home-logos {
+	margin-bottom: 60px;
+	text-align: center;
+	font-size: 72px;
+	letter-spacing: -5px;
+	color: rgb(52, 53, 60);
+}
+#home-logos .icon-wordpress {}
+#home-logos .wrap {
+	position: relative;
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+}
+#home-logos img {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	top: 10px;
+	left: 0;
+}
+/* Changelog */
+body.postid-3048 .np-changelog > h2 {
+	display: none;
+}
+body.postid-3048 .np-changelog > h3 {
+	margin-top: 60px;
+	font-size: 1.6em;
+	font-weight: bold;
+}
+body.postid-3048 .np-changelog > ul {
+	padding-left: 0;
+	list-style-type: none;
+}
+.header-branding__inner .header-title a {
+	font-weight: 300;.
+	font-size: 1.6em;
+}
+.sidebar__inner .widget_display_forums .widget__title,
+.sidebar__inner .widget_display_search .widget__title {
+	display: none;
+}
+body.logged-in .sidebar__inner #block-2 {
+	display: none;
+}
+.post-comments .c-alert-message {
+	display: none;
+}
+#bbpress-forums fieldset.bbp-form p.logged-in-as,
+#bbpress-forums fieldset.bbp-form p.comment-notes {
+    padding: 20px 30px 20px 50px;
+}
+.sidebar__inner a {
+	text-decoration: underline;
+}
+tr:nth-child(odd) {
+	background: #f9f9f9
+}
+.post.type-waymark_map .post__date {
+	display: none;
+}
+.lsvr-alert-message a {
+	color: inherit;
+	border-bottom: 1px dashed;
+	text-decoration: none;
+}
+#bbpress-forums a {
+	color: #1e73be !important;
+}
+body.home #waymark-map-17a7b5 .leaflet-control-locate,
+body.home #waymark-map-17a7b5 .leaflet-control-layers,
+body.home #waymark-map-17a7b5 .leaflet-control-fullscreen,
+body.home #waymark-map-17a7b5 .leaflet-control-zoom {
+  display: none !important;
+}
+
+article p code {
+	padding: 3px 6px;
+	background: #f9f9f9;
+	font-size: 80%;
+	border: 1px dotted #aaa;
+	color: #333;
+}
