@@ -221,7 +221,7 @@ article ul li::before {
 .waymark-shortcode {
   margin: 1.5em 0;
 }
-.waymark-info article ul li::before {
+.waymark-info ul li::before {
   content: none !important;
 }
 
