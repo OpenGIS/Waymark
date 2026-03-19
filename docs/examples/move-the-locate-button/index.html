@@ -58,23 +58,23 @@
 					waymark_viewer.load_json(marker_geojson);
 				});
       </script>
-      <pre><code class="" lang="">// Once the page has loaded<br/>jQuery(document).ready(function() {<br/>  // Get the containers<br/>  const shortcodes = jQuery('.waymark-shortcode');<br/>  <br/>  // Each<br/>  shortcodes.each(function() {<br/>    const shortcode = jQuery(this);<br/>    const locateButton = jQuery('.leaflet-control-locate', shortcode);<br/>    const topLeftControl = jQuery('.leaflet-top.leaflet-left', shortcode);<br/><br/>    // Move locate button to the top left corner<br/>    topLeftControl.append(locateButton);<br/>  });<br/>});</code></pre>
+      <pre><code class="" data-lang="javascript" lang="">// Once the page has loaded<br/>jQuery(document).ready(function() {<br/>  // Get the containers<br/>  const shortcodes = jQuery('.waymark-shortcode');<br/>  <br/>  // Each<br/>  shortcodes.each(function() {<br/>    const shortcode = jQuery(this);<br/>    const locateButton = jQuery('.leaflet-control-locate', shortcode);<br/>    const topLeftControl = jQuery('.leaflet-top.leaflet-left', shortcode);<br/><br/>    // Move locate button to the top left corner<br/>    topLeftControl.append(locateButton);<br/>  });<br/>});</code></pre>
     </article>
     <script>
       // Once the page has loaded
 jQuery(document).ready(function() {
-        // Get the containers
-        const shortcodes = jQuery('.waymark-shortcode');
-        
-        // Each
-        shortcodes.each(function() {
-                const shortcode = jQuery(this);
-                const locateButton = jQuery('.leaflet-control-locate', shortcode);
-                const topLeftControl = jQuery('.leaflet-top.leaflet-left', shortcode);
+                // Get the containers
+                const shortcodes = jQuery('.waymark-shortcode');
+                
+                // Each
+                shortcodes.each(function() {
+                                const shortcode = jQuery(this);
+                                const locateButton = jQuery('.leaflet-control-locate', shortcode);
+                                const topLeftControl = jQuery('.leaflet-top.leaflet-left', shortcode);
 
-                // Move locate button to the top left corner
-                topLeftControl.append(locateButton);
-        });
+                                // Move locate button to the top left corner
+                                topLeftControl.append(locateButton);
+                });
 });
     </script>
     <script>
@@ -402,31 +402,20 @@ jQuery(document).ready(function() {
 					reverse_direction: "Reverse Direction",
 				},
 			};
+    </script>
+    <script type="module">
+      import { codeToHtml } from "https://esm.sh/shiki@3.0.0";
 
-			function waymark_load_map_data(map_instance, map_id, reset_map = true) {
-				//Build request
-				var data = {
-					waymark_action: "get_map_data",
-					waymark_security: "6c38ee9589",
-					map_id: map_id,
-				};
-
-				//Do request
-				jQuery.post(waymark_http_endpoint, data, function (map_data) {
-					map_instance.load_json(map_data, reset_map);
-				});
-			}
-
-			//Call
-			jQuery(document).ready(function () {
-				//Random Country
-				if (typeof Waymark_Map_Editor.map == "object") {
-					Waymark_Map_Editor.map.fitBounds([
-						[-10.3599874813, 95.2930261576],
-						[5.47982086834, 141.03385176],
-					]);
-				}
-			});
+    for (const code of document.querySelectorAll("pre > code[data-lang]")) {
+        const lang = code.dataset.lang;
+        const pre = code.closest("pre");
+        try {
+            const html = await codeToHtml(code.innerText, { lang, theme: "ayu-dark" });
+            pre.outerHTML = html;
+        } catch (e) {
+            console.warn("Shiki failed for lang:", lang, e);
+        }
+    }
     </script>
   </body>
 </html>

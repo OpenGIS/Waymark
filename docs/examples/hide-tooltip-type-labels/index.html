@@ -18,7 +18,7 @@
     <style>
       /* Hide Tooltip Type Labels Button */
 .leaflet-tooltip-pane .waymark-type-label {
-        display: none;
+                display: none;
 }
     </style>
   </head>
@@ -64,7 +64,7 @@
 					waymark_viewer.load_json(marker_geojson);
 				});
       </script>
-      <pre><code class="language-css" lang="css">/* Hide Tooltip Type Labels Button */<br/>.leaflet-tooltip-pane .waymark-type-label {<br/>  display: none;<br/>}</code></pre>
+      <pre><code class="language-css" data-lang="css" lang="css">/* Hide Tooltip Type Labels Button */<br/>.leaflet-tooltip-pane .waymark-type-label {<br/>  display: none;<br/>}</code></pre>
     </article>
     <script>
       //HTTP
@@ -391,31 +391,20 @@
 					reverse_direction: "Reverse Direction",
 				},
 			};
+    </script>
+    <script type="module">
+      import { codeToHtml } from "https://esm.sh/shiki@3.0.0";
 
-			function waymark_load_map_data(map_instance, map_id, reset_map = true) {
-				//Build request
-				var data = {
-					waymark_action: "get_map_data",
-					waymark_security: "0cd24dfffd",
-					map_id: map_id,
-				};
-
-				//Do request
-				jQuery.post(waymark_http_endpoint, data, function (map_data) {
-					map_instance.load_json(map_data, reset_map);
-				});
-			}
-
-			//Call
-			jQuery(document).ready(function () {
-				//Random Country
-				if (typeof Waymark_Map_Editor.map == "object") {
-					Waymark_Map_Editor.map.fitBounds([
-						[-55.61183, -75.6443953112],
-						[-17.5800118954, -66.95992],
-					]);
-				}
-			});
+    for (const code of document.querySelectorAll("pre > code[data-lang]")) {
+        const lang = code.dataset.lang;
+        const pre = code.closest("pre");
+        try {
+            const html = await codeToHtml(code.innerText, { lang, theme: "ayu-dark" });
+            pre.outerHTML = html;
+        } catch (e) {
+            console.warn("Shiki failed for lang:", lang, e);
+        }
+    }
     </script>
   </body>
 </html>

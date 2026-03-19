@@ -35,14 +35,10 @@
       </h2>
       <p class="lead">
         The full
-        <a href="../../getting-started/editor/index.html">
-          Editor
-        </a>
-        and
-        <a href="../../getting-started/meta/index.html">
-          Meta
-        </a>
-        inputs are available.
+                Editor
+                and
+                Meta
+                inputs are available.
       </p>
       <h3>
         Drawing
@@ -90,10 +86,8 @@
       </h3>
       <p>
         Submissions support
-        <a href="../../getting-started/meta/index.html">
-          Meta
-        </a>
-        , whether an individual Meta input is displayed can be set in the
+                Meta
+                , whether an individual Meta input is displayed can be set in the
         <em>
           Settings &gt; Meta.
         </em>
@@ -101,26 +95,6 @@
       <div id="waymark-submission">
         <div class="waymark-submission waymark-map" id="waymark-map">
         </div>
-        <form action="../../index%EF%B9%96waymark_http=1.html" class="waymark-map-add" id="waymark-map-add" method="post">
-          <input name="waymark_action" type="hidden" value="public_add_map"/>
-          <input name="waymark_security" type="hidden" value="6c38ee9589"/>
-          <input name="waymark_redirect" type="hidden" value="https://www.waymark.dev/docs/submissions/"/>
-          <div class="waymark-parameters-container waymark-accordion-container" id="waymark-parameters-waymark_map">
-            <div class="waymark-control-group waymark-control-type-textarea waymark-hidden">
-              <label class="waymark-control-label" for="map_data">
-                Map Data
-              </label>
-              <div class="waymark-controls">
-                <textarea class="waymark-input waymark-input-map_data" name="map_data"></textarea>
-                <a class="waymark-tooltip" href="#" onclick="return false;">
-                  ?
-                </a>
-              </div>
-            </div>
-          </div>
-          <input name="Waymark_Nonce" type="hidden" value="b3c1e54c21"/>
-          <input type="submit" value="Submit"/>
-        </form>
       </div>
       <p>
         If submitted, you will be provided with a link to your Map. All
@@ -517,19 +491,6 @@
 				},
 			};
 
-			function waymark_load_map_data(map_instance, map_id, reset_map = true) {
-				//Build request
-				var data = {
-					waymark_action: "get_map_data",
-					waymark_security: "6c38ee9589",
-					map_id: map_id,
-				};
-
-				//Do request
-				jQuery.post(waymark_http_endpoint, data, function (map_data) {
-					map_instance.load_json(map_data, reset_map);
-				});
-			}
 			var waymark_security = "6c38ee9589";
 
 			//Call
@@ -873,13 +834,6 @@
 
 				waymark_editor.jq_map_container.addClass("waymark-disable-title");
 				waymark_editor.jq_map_container.addClass("waymark-disable-meta");
-				//Random Country
-				if (typeof Waymark_Map_Editor.map == "object") {
-					Waymark_Map_Editor.map.fitBounds([
-						[-22.3999760881, 164.029605748],
-						[-20.1056458473, 167.120011428],
-					]);
-				}
 			});
     </script>
   </body>

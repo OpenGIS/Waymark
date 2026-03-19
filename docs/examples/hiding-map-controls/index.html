@@ -74,7 +74,7 @@
 					waymark_viewer.load_json(marker_geojson);
 				});
       </script>
-      <pre><code class="language-css" lang="css">/* This will hide the Controls on *all* Maps */
+      <pre><code class="language-css" data-lang="css" lang="css">/* This will hide the Controls on *all* Maps */
 .waymark-map .leaflet-control-locate,
 .waymark-map .leaflet-control-layers,
 .waymark-map .leaflet-control-fullscreen,
@@ -407,31 +407,20 @@
 					reverse_direction: "Reverse Direction",
 				},
 			};
+    </script>
+    <script type="module">
+      import { codeToHtml } from "https://esm.sh/shiki@3.0.0";
 
-			function waymark_load_map_data(map_instance, map_id, reset_map = true) {
-				//Build request
-				var data = {
-					waymark_action: "get_map_data",
-					waymark_security: "6c38ee9589",
-					map_id: map_id,
-				};
-
-				//Do request
-				jQuery.post(waymark_http_endpoint, data, function (map_data) {
-					map_instance.load_json(map_data, reset_map);
-				});
-			}
-
-			//Call
-			jQuery(document).ready(function () {
-				//Random Country
-				if (typeof Waymark_Map_Editor.map == "object") {
-					Waymark_Map_Editor.map.fitBounds([
-						[29.0990251735, 38.7923405291],
-						[37.3852635768, 48.5679712258],
-					]);
-				}
-			});
+    for (const code of document.querySelectorAll("pre > code[data-lang]")) {
+        const lang = code.dataset.lang;
+        const pre = code.closest("pre");
+        try {
+            const html = await codeToHtml(code.innerText, { lang, theme: "ayu-dark" });
+            pre.outerHTML = html;
+        } catch (e) {
+            console.warn("Shiki failed for lang:", lang, e);
+        }
+    }
     </script>
   </body>
 </html>
