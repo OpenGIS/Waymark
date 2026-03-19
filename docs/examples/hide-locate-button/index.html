@@ -18,7 +18,7 @@
     <style>
       /* Hide Locate Button */
 .waymark-map .leaflet-control-locate {
-                                                                                                                                display: none !important;
+                                                                                                                                                                                                                                                                display: none !important;
 }
     </style>
   </head>
@@ -61,9 +61,9 @@
 					waymark_viewer.load_json(marker_geojson);
 				});
       </script>
-      <pre><code class="language-css" lang="css">/* Hide Locate Button */
+      <pre><code class="language-css" data-lang="css" lang="css">/* Hide Locate Button */
 .waymark-map .leaflet-control-locate {
-                                                                                                                                display: none !important;
+                                                                                                                                                                                                                                                                display: none !important;
 }</code></pre>
     </article>
     <script>
@@ -391,8 +391,20 @@
 					reverse_direction: "Reverse Direction",
 				},
 			};
+    </script>
+    <script type="module">
+      import { codeToHtml } from "https://esm.sh/shiki@3.0.0";
 
-
+    for (const code of document.querySelectorAll("pre > code[data-lang]")) {
+        const lang = code.dataset.lang;
+        const pre = code.closest("pre");
+        try {
+            const html = await codeToHtml(code.innerText, { lang, theme: "ayu-dark" });
+            pre.outerHTML = html;
+        } catch (e) {
+            console.warn("Shiki failed for lang:", lang, e);
+        }
+    }
     </script>
   </body>
 </html>

@@ -107,6 +107,21 @@ pre code {
   font-size: inherit;
 }
 
+/* Shiki syntax-highlighted blocks */
+pre.shiki {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  border-radius: 6px;
+  padding: 1em 1.25em;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+pre.shiki code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
 /* ── Tables ── */
 
 table {
