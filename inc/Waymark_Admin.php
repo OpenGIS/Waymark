@@ -183,7 +183,7 @@ class Waymark_Admin {
 				// translators: %s: URL to the Waymark documentation
 				$title = esc_html__('Maps', 'waymark');
 				// translators: %s: URL to the Waymark documentation
-				$description = sprintf(__('Create Maps here, then add them to your content using the <a href="%1$s">Shortcode</a>. <a href="%2$s" class="button waymark-right">Watch the Video &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs/getting-started'));
+				$description = sprintf(__('Create Maps here, then add them to your content using the <a href="%1$s">Shortcode</a>.', 'waymark'), Waymark_Helper::site_url('docs/shortcodes'));
 			}
 
 			$map_posts = get_posts([
@@ -204,18 +204,18 @@ class Waymark_Admin {
 						// translators: Creating a new map
 						$title = esc_html__('Creating a Map', 'waymark');
 						// translators: %s: URL to the Waymark documentation
-						$description = sprintf(__('<span class="waymark-lead">Use the Map <a href="%1$s">Editor</a> to place Markers, draw Lines/Shapes and display Photos. Each can be given a <a target="_blank" href="%2$s">Type</a>, title, description and an image.</span><br /><br />You can add the Map to your content using the %3$s <a href="%4$s">Shortcode</a>. <a class="button waymark-right" href="%5$s">Watch the Video &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/editor'), Waymark_Helper::site_url('docs/types'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs/editor'));
+						$description = sprintf(__('<span class="waymark-lead">Use the Map <a href="%1$s">Editor</a> to place Markers, draw Lines/Shapes and display Photos. Each can be given a <a target="_blank" href="%2$s">Type</a>, title, description and an image.</span><br /><br />You can add the Map to your content using the %3$s <a href="%4$s">Shortcode</a>.', 'waymark'), Waymark_Helper::site_url('docs/editor'), Waymark_Helper::site_url('docs/types'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'));
 					} else {
 						// translators: Creating a new map
 						$title = esc_html__('New Map', 'waymark');
 						// translators: %s: URL to the Waymark documentation
-						$description = sprintf(__('You can add the Map to your content using the %1$s <a href="%2$s">Shortcode</a>. <a class="button waymark-right" href="%3$s">Watch the Video &raquo;</a>', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs/editor'));
+						$description = sprintf(__('You can add the Map to your content using the %1$s <a href="%2$s">Shortcode</a>.', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'));
 					}
 				} elseif ($this->current_screen->base == 'post') {
 					// translators: Editing a map
 					$title = esc_html__('Edit Map', 'waymark');
 					// translators: %s: URL to the Waymark documentation
-					$description = sprintf(__('You can add the Map to your content using the %1$s <a href="%2$s">Shortcode</a>. <a class="button waymark-right" href="%3$s">Watch the Video &raquo;</a>', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs/editor'));
+					$description = sprintf(__('You can add the Map to your content using the %1$s <a href="%2$s">Shortcode</a>.', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'));
 				}
 			}
 
