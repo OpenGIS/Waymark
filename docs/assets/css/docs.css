@@ -146,6 +146,24 @@ article ul li::before {
   color: var(--color-link);
 }
 
+/* ── Video grid ── */
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5em 0 2em;
+}
+.video-grid figure {
+  margin: 0;
+}
+.video-grid figcaption {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: 0.5em;
+}
+
 /* ── Waymark maps ── */
 
 .waymark-shortcode {
