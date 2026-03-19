@@ -46,7 +46,8 @@ class Waymark_Helper {
 	}
 
 	public static function site_url($url_path = '') {
-		return Waymark_Config::get_item('site_url') . $url_path;
+		// Just return site home
+		return Waymark_Config::get_item('site_url');
 	}
 
 	public static function asset_url($file_path = '') {
