@@ -33,6 +33,7 @@ jobs:
           cp -r waymark-js/dist/js     docs/assets/waymark-js/js
           cp -r waymark-js/dist/fonts  docs/assets/waymark-js/fonts
           cp -r waymark-js/dist/images docs/assets/waymark-js/images
+          cp assets/css/front.min.css  docs/assets/css/front.min.css
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
