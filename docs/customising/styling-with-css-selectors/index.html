@@ -65,7 +65,7 @@
       </p>
       <pre><code class="language-css" lang="css">/* Target Map Details page of a specific Map by ID */
 body.postid-4089 {
-                border: 10px solid red;
+                                border: 10px solid red;
 }</code></pre>
       <p>
         You can also target by post type, for example to style the
@@ -80,7 +80,7 @@ body.postid-4089 {
       </p>
       <pre><code class="language-css" lang="css">/* Target the Waymark Map on *every* Map Details page */
 body.single-waymark_map .waymark-map {
-                /* Your rules... */
+                                /* Your rules... */
 }</code></pre>
       <h2>
         Shortcodes
@@ -93,15 +93,15 @@ body.single-waymark_map .waymark-map {
       </p>
       <pre><code class="language-markup" lang="markup">&lt;!-- Waymark creates a Hash unless one is provided using map_hash --&gt;
 &lt;div id="waymark-shortcode-d21a75" data-shortcode_hash="d21a75" class="waymark-shortcode waymark-container"&gt;
-                &lt;!-- Map --&gt;
-                &lt;div id="waymark-map-d21a75" class="waymark-map waymark-map-id-4028 waymark-map-container waymark-has-cluster waymark-has-gallery"&gt;
-                                &lt;!-- Leaflet ... --&gt;
-                &lt;/div&gt;
+                                &lt;!-- Map --&gt;
+                                &lt;div id="waymark-map-d21a75" class="waymark-map waymark-map-id-4028 waymark-map-container waymark-has-cluster waymark-has-gallery"&gt;
+                                                                &lt;!-- Leaflet ... --&gt;
+                                &lt;/div&gt;
 
-                &lt;!-- Elevation --&gt;  
-                &lt;div id="waymark-elevation-d21a75" class="waymark-elevation"&gt;
-                                &lt;!-- Leaflet Elevation ... --&gt;
-                &lt;/div&gt;
+                                &lt;!-- Elevation --&gt;  
+                                &lt;div id="waymark-elevation-d21a75" class="waymark-elevation"&gt;
+                                                                &lt;!-- Leaflet Elevation ... --&gt;
+                                &lt;/div&gt;
 &lt;/div&gt;</code></pre>
       <p>
         Waymark adds a class name containing the Map ID to all Shortcodes, so to target
@@ -113,7 +113,7 @@ body.single-waymark_map .waymark-map {
       <pre><code class="">Waymark map_id="4028"</code></pre>
       <pre><code class="language-css" lang="css">/* Every Shortcode of a particular Map */
 .waymark-map.waymark-map-id-4028 {
-                border: 10px solid blue;
+                                border: 10px solid blue;
 }</code></pre>
       <div class="waymark-shortcode waymark-container" id="waymark-shortcode-8dfee3" style="">
         <div class="waymark-map waymark-map-id-4028" data-shortcode_hash="8dfee3" id="waymark-map-8dfee3" style="display:none;height:640px;min-height:640px;">
@@ -154,17 +154,17 @@ body.single-waymark_map .waymark-map {
       </p>
       <pre><code class="language-css" lang="css">/* A particular Map on the Collection archive page */
 body.tax-waymark_collection .waymark-map-id-4071 {
-                /* Your rules... */
+                                /* Your rules... */
 }</code></pre>
       <p>
         When embedded using the Shortcode, the Map has a class name containing the Collection ID. For example:
       </p>
       <pre><code class="language-markup" lang="markup">&lt;!-- There's that map_hash again! (See https://www.waymark.dev/docs/shortcodes/#shortcode-parameters) --&gt;
 &lt;div id="waymark-shortcode-de2540" class="waymark-shortcode waymark-container"&gt;
-                &lt;!-- Map --&gt;
-                &lt;div id="waymark-map-de2540" class="waymark-map waymark-collection-id-27 waymark-map-container"&gt;
-                                &lt;!-- Leaflet... --&gt;
-                &lt;/div&gt;
+                                &lt;!-- Map --&gt;
+                                &lt;div id="waymark-map-de2540" class="waymark-map waymark-collection-id-27 waymark-map-container"&gt;
+                                                                &lt;!-- Leaflet... --&gt;
+                                &lt;/div&gt;
 &lt;/div&gt;</code></pre>
       <p>
         This can be used to style a specific Collection by it’s ID:
@@ -172,7 +172,7 @@ body.tax-waymark_collection .waymark-map-id-4071 {
       <pre><code class="">Waymark collection_id="27"</code></pre>
       <pre><code class="language-css" lang="css">/* A particular Collection Shortcode */
 .waymark-map.waymark-collection-id-27 {
-                border: 10px solid green;
+                                border: 10px solid green;
 }</code></pre>
       <div class="waymark-shortcode waymark-container" id="waymark-shortcode-ff12a2" style="">
         <div class="waymark-map waymark-collection-id-27" data-shortcode_hash="ff12a2" id="waymark-map-ff12a2" style="display:none;height:640px;min-height:640px;">
@@ -214,7 +214,7 @@ body.tax-waymark_collection .waymark-map-id-4071 {
       <pre><code class="">Waymark map_id="4028" map_hash="pink_me"</code></pre>
       <pre><code class="language-css" lang="css">/* Target using a unique Map Hash provided through the Shortcode */
 #waymark-shortcode-pink_me {
-                border: 10px solid pink;
+                                border: 10px solid pink;
 }</code></pre>
       <div class="waymark-shortcode waymark-container" id="waymark-shortcode-pink_me" style="">
         <div class="waymark-map waymark-map-id-4028" data-shortcode_hash="pink_me" id="waymark-map-pink_me" style="display:none;height:640px;min-height:640px;">
@@ -245,16 +245,16 @@ body.tax-waymark_collection .waymark-map-id-4071 {
       </p>
       <pre><code class="language-markup" lang="markup">&lt;!-- Not just beer... waymark-marker-[your_type_key] --&gt;
 &lt;div class="waymark-marker waymark-marker-beer waymark-marker-marker waymark-marker-medium"&gt;
-                &lt;div class="waymark-marker-background" style="background:#fbfbfb;"&gt;&lt;/div&gt;
+                                &lt;div class="waymark-marker-background" style="background:#fbfbfb;"&gt;&lt;/div&gt;
 
-                &lt;!-- Using the "beer" Ionic Font Icon --&gt;
-                &lt;i style="color:#754423;" class="waymark-marker-icon waymark-icon-icon ion ion-beer"&gt;&lt;/i&gt;
+                                &lt;!-- Using the "beer" Ionic Font Icon --&gt;
+                                &lt;i style="color:#754423;" class="waymark-marker-icon waymark-icon-icon ion ion-beer"&gt;&lt;/i&gt;
 &lt;/div&gt;</code></pre>
       <pre><code class="">Waymark collection_id="27" map_hash="beer_markers"</code></pre>
       <pre><code class="language-css" lang="css">/* Target by Overlay Type key (See https://www.waymark.dev/docs/types/#type-keys) */
 #waymark-map-beer_markers .waymark-marker-beer {
-                border: 10px solid orange;
-                border-radius: 50%;
+                                border: 10px solid orange;
+                                border-radius: 50%;
 }</code></pre>
       <div class="waymark-shortcode waymark-container" id="waymark-shortcode-beer_markers" style="">
         <div class="waymark-map waymark-map-id-4028" data-shortcode_hash="beer_markers" id="waymark-map-beer_markers" style="display:none;height:640px;min-height:640px;">
