@@ -37,7 +37,7 @@ Use the intuitive Editor to create Maps with one, or thousands of interactive Ov
 🌟 [GitHub](https://github.com/opengis/waymark)
 📖 [Demo & Docs](https://www.waymark.dev/)
 ❤️ [WordPress](https://wordpress.org/plugins/waymark/)
-☕️ [Waymark JS](https://www.waymark.dev/js)
+☕️ [Waymark JS](https://github.com/OpenGIS/Waymark-JS/)
 
 ### Displaying Maps
 
