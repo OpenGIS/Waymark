@@ -226,6 +226,26 @@
       <pre><code class="" lang="">//Our callback function<br/>function waymark_loaded_callback(Waymark) {<br/>	//Get the container<br/>  let container = jQuery('.leaflet-bottom.leaflet-right', Waymark.jq_map_container);<br/>	<br/>	//Create a button<br/>  let button = jQuery('&lt;div /&gt;')<br/>  	.addClass('waymark-refresh leaflet-bar leaflet-control')<br/>  	.html('&lt;a title="Reset Map"&gt;&lt;span class="ion ion-android-refresh" style="cursor:pointer;margin-top:5px;font-size:20px"&gt;&lt;/span&gt;&lt;/a&gt;')<br/>  	.on('click', function() {<br/>  		//Reset view when clicked<br/>	  	Waymark.reset_map_view();<br/>  	})<br/>	;<br/>	<br/>	//Add to page<br/>	container.prepend(button);<br/>}</code></pre>
     </article>
     <script>
+      //Our callback function
+function waymark_loaded_callback(Waymark) {
+	//Get the container
+    let container = jQuery('.leaflet-bottom.leaflet-right', Waymark.jq_map_container);
+	
+	//Create a button
+    let button = jQuery('<div />')
+    	.addClass('waymark-refresh leaflet-bar leaflet-control')
+    	.html('<a title="Reset Map"><span class="ion ion-android-refresh" style="cursor:pointer;margin-top:5px;font-size:20px"></span></a>')
+    	.on('click', function() {
+    		//Reset view when clicked
+	  	Waymark.reset_map_view();
+    	})
+	;
+	
+	//Add to page
+	container.prepend(button);
+}
+    </script>
+    <script>
       //HTTP
 var waymark_http_endpoint = "https://www.waymark.dev/?waymark_http=1";
 

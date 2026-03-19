@@ -60,6 +60,23 @@
       <pre><code class="" lang="">// Once the page has loaded<br/>jQuery(document).ready(function() {<br/>  // Get the containers<br/>  const shortcodes = jQuery('.waymark-shortcode');<br/>  <br/>  // Each<br/>  shortcodes.each(function() {<br/>    const shortcode = jQuery(this);<br/>    const locateButton = jQuery('.leaflet-control-locate', shortcode);<br/>    const topLeftControl = jQuery('.leaflet-top.leaflet-left', shortcode);<br/><br/>    // Move locate button to the top left corner<br/>    topLeftControl.append(locateButton);<br/>  });<br/>});</code></pre>
     </article>
     <script>
+      // Once the page has loaded
+jQuery(document).ready(function() {
+    // Get the containers
+    const shortcodes = jQuery('.waymark-shortcode');
+    
+    // Each
+    shortcodes.each(function() {
+        const shortcode = jQuery(this);
+        const locateButton = jQuery('.leaflet-control-locate', shortcode);
+        const topLeftControl = jQuery('.leaflet-top.leaflet-left', shortcode);
+
+        // Move locate button to the top left corner
+        topLeftControl.append(locateButton);
+    });
+});
+    </script>
+    <script>
       //HTTP
 			var waymark_http_endpoint = "https://www.waymark.dev/?waymark_http=1";
 

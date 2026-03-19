@@ -2121,6 +2121,24 @@
       <pre><code class="language-markup" lang="markup">&lt;div id="export-here"&gt;&lt;/div&gt;</code></pre>
     </article>
     <script>
+      //Our callback function
+function waymark_loaded_callback(Waymark) {
+    //Get the container
+    const shortcodes = jQuery('.waymark-shortcode');
+    
+    shortcodes.each(function() {
+        const shortcode = jQuery(this);
+        const exportContainer = jQuery('.waymark-meta-export_data', shortcode);
+
+        //Add after the Map
+        shortcode.after(exportContainer.clone());
+
+        //Add to target 
+        jQuery('#export-here').append(exportContainer.clone())
+    });
+}
+    </script>
+    <script>
       //HTTP
 			var waymark_http_endpoint = "https://www.waymark.dev/?waymark_http=1";
 
