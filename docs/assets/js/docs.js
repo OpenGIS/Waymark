@@ -49,3 +49,23 @@ jQuery(function ($) {
 
   $("body").prepend(header).append(footer);
 });
+
+// Shiki syntax highlighting — runs on any page with data-lang code blocks
+if (document.querySelector("pre > code[data-lang]")) {
+  var shikiScript = document.createElement("script");
+  shikiScript.type = "module";
+  shikiScript.textContent = [
+    'import { codeToHtml } from "https://esm.sh/shiki@3.0.0";',
+    'for (const code of document.querySelectorAll("pre > code[data-lang]")) {',
+    '  const lang = code.dataset.lang;',
+    '  const pre = code.closest("pre");',
+    '  try {',
+    '    const html = await codeToHtml(code.innerText, { lang, theme: "ayu-dark" });',
+    '    pre.outerHTML = html;',
+    '  } catch (e) {',
+    '    console.warn("Shiki failed for lang:", lang, e);',
+    '  }',
+    '}',
+  ].join("\n");
+  document.head.appendChild(shikiScript);
+}
