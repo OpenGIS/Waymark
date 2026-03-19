@@ -28,14 +28,14 @@
         By default the Export option (download the current Map in GPX, KML or
 				GeoJSON format) is displayed in the Shortcode Header (clicking
 				“More Details”) when embedding as well as on the
-        <a href="../../map/route-map/index.html">
+        <a href="#">
           Map Details
         </a>
         page.
       </p>
       <p>
         The following code uses the Waymark
-        <a href="../using-the-global-callback-function/index.html">
+        <a href="../../advanced/using-the-global-callback-function/index.html">
           Callback Function
         </a>
         to clone the Export option and adds copies of it to our page.
@@ -50,7 +50,7 @@
       </p>
       <div class="waymark-shortcode waymark-container" id="waymark-shortcode-d63107" style="">
         <header class="waymark-header">
-          <a class="waymark-link" href="../../map/route-map/index.html">
+          <a class="waymark-link" href="#">
             Details
             <i class="ion ion-android-open">
             </i>
@@ -67,7 +67,7 @@
                   <div class="waymark-meta-title" scope="row">
                   </div>
                   <div class="waymark-meta-content">
-                    <a href="../../map/route-map/index.html">
+                    <a href="#">
                       <img alt="" class="waymark-map-thumbnail wp-post-image" decoding="async" fetchpriority="high" height="768" sizes="(max-width: 1024px) 100vw, 1024px" src="../../assets/img/9F43CC56-C8E1-49F2-93D8-A62E69AB4A4A-1024x768.jpeg" srcset="
 													../../assets/img/9F43CC56-C8E1-49F2-93D8-A62E69AB4A4A-1024x768.jpeg  1024w,
 													../../assets/img/9F43CC56-C8E1-49F2-93D8-A62E69AB4A4A-700x525.jpeg    700w,
@@ -82,7 +82,7 @@
                   <div class="waymark-meta-content" colspan="3">
                     <p class="lead">
                       This is a Map created with Waymark. A Map can have
-                      <a href="../meta/index.html">
+                      <a href="../../getting-started/meta/index.html">
                         Meta
                       </a>
                       associated with it,
@@ -90,7 +90,7 @@
                     </p>
                     <p>
                       Using the
-                      <a href="../index.html">
+                      <a href="../../index.html">
                         Editor
                       </a>
                       you can add
@@ -104,7 +104,7 @@
                     </p>
                     <p>
                       Maps can be embedded in your content using the
-                      <a href="../shortcodes/index.html">
+                      <a href="../../getting-started/shortcodes/index.html">
                         Shortcode
                       </a>
                       .
@@ -118,7 +118,7 @@
                     Collection
                   </div>
                   <div class="waymark-meta-content">
-                    <a href="../../collection/demo-collection/index.html" rel="tag">
+                    <a href="#" rel="tag">
                       Demo Collection
                     </a>
                   </div>
@@ -223,7 +223,7 @@
                 </div>
               </div>
             </div>
-            <a class="waymark-link" href="../../map/route-map/index.html">
+            <a class="waymark-link" href="#">
               More Details
               <i class="ion ion-android-open">
               </i>
@@ -2124,19 +2124,19 @@
     <script>
       //Our callback function
 function waymark_loaded_callback(Waymark) {
-        //Get the container
-        const shortcodes = jQuery('.waymark-shortcode');
-        
-        shortcodes.each(function() {
-                const shortcode = jQuery(this);
-                const exportContainer = jQuery('.waymark-meta-export_data', shortcode);
+                //Get the container
+                const shortcodes = jQuery('.waymark-shortcode');
+                
+                shortcodes.each(function() {
+                                const shortcode = jQuery(this);
+                                const exportContainer = jQuery('.waymark-meta-export_data', shortcode);
 
-                //Add after the Map
-                shortcode.after(exportContainer.clone());
+                                //Add after the Map
+                                shortcode.after(exportContainer.clone());
 
-                //Add to target 
-                jQuery('#export-here').append(exportContainer.clone())
-        });
+                                //Add to target 
+                                jQuery('#export-here').append(exportContainer.clone())
+                });
 }
     </script>
     <script>
