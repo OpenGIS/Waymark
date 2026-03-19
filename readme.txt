@@ -13,47 +13,42 @@ Waymark adds powerful mapping features to WordPress that are easy to use. Create
 
 == Description ==
 
-### Waymark Pro offers advanced features. See the **Demo** and [take the Waymark Survey!](https://www.waymark.dev/survey/).
-
 ### Creating Maps
 
-Use the intuitive [Editor](https://www.waymark.dev/docs/editor/) to create Maps with one, or thousands of interactive Overlays.
+Use the intuitive Editor to create Maps with one, or thousands of interactive Overlays.
 
 - **Overlays** - Create Markers, Lines and Shapes with a:
   - Title
   - Image (Media Library or link to external image)
   - Description (Rich text editor, HTML supported)
-  - [Type](https://www.waymark.dev/docs/types/) (defined in Settings)
+  - Type (defined in Settings)
 - **Import**
   - GPX
   - KML
   - GeoJSON
   - EXIF (Image location metadata)
-  - [Elevation data](https://www.waymark.dev/map/track-with-elevation/) (adds an interactive profile chart for Lines with elevation data)
-- **[Meta](https://www.waymark.dev/docs/meta/)** - Add extra information to your Maps; these are customisable form inputs that allow you to add additional content to your Maps.
-- **[Types](https://www.waymark.dev/docs/types/)** - Set options to visually distinguish between Overlays (colours/icons etc.), then select it when using the Editor.
-- **[Collections](https://www.waymark.dev/docs/collections/)** - Group Maps together and display multiple Maps at once. Create complex Collection hierarchies to suit your needs and associate Maps with multiple Collections.
-- **[Submissions](https://www.waymark.dev/docs/submissions/)** - Allow registered users, or guests to create Maps from the front-end of your site. You can control who can Submit Maps, what editor features are available and whether submissions should be approved before they are published.
+  - Elevation data (adds an interactive profile chart for Lines with elevation data)
+- **Meta** - Add extra information to your Maps; these are customisable form inputs that allow you to add additional content to your Maps.
+- **Types** - Set options to visually distinguish between Overlays (colours/icons etc.), then select it when using the Editor.
+- **Collections** - Group Maps together and display multiple Maps at once. Create complex Collection hierarchies to suit your needs and associate Maps with multiple Collections.
+- **Submissions** - Allow registered users, or guests to create Maps from the front-end of your site. You can control who can Submit Maps, what editor features are available and whether submissions should be approved before they are published.
 
 💲 [Support](https://github.com/sponsors/OpenGIS)
-🗺 [Demo](https://www.waymark.dev/)
-🛠️ [Try](https://www.waymark.dev/try/)
-📼 [Watch](https://www.waymark.dev/#footer)
-📖 [Docs](https://www.waymark.dev/docs/)
 🌟 [GitHub](https://github.com/opengis/waymark)
+📖 [Demo & Docs](https://www.waymark.dev/)
 ❤️ [WordPress](https://wordpress.org/plugins/waymark/)
 ☕️ [Waymark JS](https://www.waymark.dev/js)
 
 ### Displaying Maps
 
-Embed your Maps using the `[Waymark]` Shortcode, or link to the [Map Details](https://www.waymark.dev/map/route-map/) page.
+Embed your Maps using the `[Waymark]` Shortcode, or link to the Map Details page.
 
-- **[Shortcodes](https://www.waymark.dev/docs/shortcodes/)**
-  - Display a single Map, or a [Collection](https://www.waymark.dev/docs/collections/) of Maps anywhere that Shortcodes are supported.
-  - An optional Shortcode Header displays the Map/Collection title, a link to the Map Details page and any [Meta](https://www.waymark.dev/docs/meta/).
-  - Display a [Marker](https://www.waymark.dev/docs/shortcodes/#shortcode-markers) defined through the Shortcode.
+- **Shortcodes**
+  - Display a single Map, or a Collection of Maps anywhere that Shortcodes are supported.
+  - An optional Shortcode Header displays the Map/Collection title, a link to the Map Details page and any Meta.
+  - Display a Marker defined through the Shortcode.
   - Display a Basemap only, without any Overlays by providing centre and zoom parameters.
-- **[Basemaps](https://www.waymark.dev/docs/basemaps/)** - Uses [OpenStreetMap](https://www.openstreetmap.org/fixthemap) by default, with support for multiple raster tiled/"slippy" Basemaps. You can switch Basemaps using the Overlay Filter.
+- **Basemaps** - Uses [OpenStreetMap](https://www.openstreetmap.org/fixthemap) by default, with support for multiple raster tiled/"slippy" Basemaps. You can switch Basemaps using the Overlay Filter.
 - **Overlay Filter** - Allow the user to filter which Overlays are currently visible on the Map.
 - **Export**
   - (Optionally) Let anyone Export Maps into GPX, KML and GeoJSON formats through the Shortcode Header or on the Map Details page.
@@ -61,7 +56,7 @@ Embed your Maps using the `[Waymark]` Shortcode, or link to the [Map Details](ht
 
 ### Customising
 
-Built to be flexible, Waymark has lots of [Settings](https://www.waymark.dev/docs/settings/) and [Types](https://www.waymark.dev/docs/types/) provide one place to control how Overlays (Markers/Lines/Shapes) are displayed.
+Built to be flexible, Waymark has lots of [Settings](https://www.waymark.dev/customising/settings/) and Types provide one place to control how Overlays (Markers/Lines/Shapes) are displayed.
 
 Marker Icons can be provided as:
   - Font Icons ([Ionic Icons v2](https://ionic.io/ionicons/v2/cheatsheet.html)/[Font Awesome v4](https://fontawesome.com/v4.7.0/cheatsheet/))
@@ -70,14 +65,14 @@ Marker Icons can be provided as:
 
 For developers:
 
-- Most elements can be [styled using CSS](https://www.waymark.dev/docs/styling-with-css-selectors/) and have sensibly named `waymark-` classes.
+- Most elements can be [styled using CSS](https://www.waymark.dev/customising/styling-with-css-selectors/) and have sensibly named `waymark-` classes.
 - WordPress integration:
   - Maps are stored using the custom post type `waymark_map`.
   - Collections use the `waymark_collection` Taxonomy.
-  - Embed Maps using the `[Waymark]` [Shortcode](https://www.waymark.dev/docs/shortcodes/) anywhere they are supported, or dynamically using the `do_shortcode(["Waymark"])` [function](https://developer.wordpress.org/reference/functions/do_shortcode/).
-- Geographical data is stored in [GeoJSON](https://geojson.org/) format. [Types](https://www.waymark.dev/docs/types/) are specified using the `type` Property, i.e. `{feature: { geometry: { type: 'Point', coordinates: [0, 0] } }, properties: { type: 'Alert', title: 'Bridge Removed!' }`.
+  - Embed Maps using the `[Waymark]` [Shortcode](https://www.waymark.dev/) anywhere they are supported, or dynamically using the `do_shortcode(["Waymark"])` [function](https://developer.wordpress.org/reference/functions/do_shortcode/).
+- Geographical data is stored in [GeoJSON](https://geojson.org/) format. Types are specified using the `type` Property, i.e. `{feature: { geometry: { type: 'Point', coordinates: [0, 0] } }, properties: { type: 'Alert', title: 'Bridge Removed!' }`.
 - Specify which GeoJSON feature properties to store when importing (Settings > Overlays > Properties). These can be automatically appended to the Overlay Description, or accessed programatically via the `layer.feature.properties` Object.
-- Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the `waymark_loaded_callback` [callback function](https://www.waymark.dev/docs/using-the-global-callback-function/).
+- Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the `waymark_loaded_callback` [callback function](https://www.waymark.dev/advanced/using-the-global-callback-function/.
 
 Be sure to check out [Map First](https://github.com/opengis/map-first), a minimal WordPress theme with an *obsession* for Maps (it's open-source too and contains lots of comments about customisations).
 
@@ -111,15 +106,13 @@ Pull requests are welcome!
 > [!IMPORTANT]
 > [Waymark JS](https://www.waymark.dev/js) is responsible for the Viewer and Editor and is included as a Git submodule (`/waymark-js` directory). View on [GitHub](https://github.com/OpenGIS/Waymark-JS/).
 
-### Waymark Pro offers advanced features. See the **Demo** and [take the Waymark Survey!](https://www.waymark.dev/survey/).
-
 == Installation ==
 
 [vimeo https://vimeo.com/349575095]
 
 With Waymark enabled, click on the "Maps" link in the sidebar to create and edit Maps. Once you are happy with your Map, copy the Waymark shortcode and add it to your content.
 
-<a href="https://www.waymark.dev/docs/">Read the Docs &raquo;</a>
+<a href="https://www.waymark.dev/">Read the Docs &raquo;</a>
 
 == Frequently Asked Questions ==
 
@@ -129,11 +122,11 @@ With Waymark enabled, click on the "Maps" link in the sidebar to create and edit
 
 = Is There a Demo? =
 
-Yes, <a href="https://www.waymark.dev/">here</a>. You can also try the Editor <a href="https://www.waymark.dev/try/">here</a>.
+Yes, <a href="https://www.waymark.dev/">here</a>.
 
 = Can I Get More Help? =
 
-Yes, please view the <a href="https://www.waymark.dev/docs/">Documentation</a>. If you still need help, feel free to [reach out](https://wordpress.org/support/plugin/waymark/#new-topic-0).
+Yes, please view the <a href="https://www.waymark.dev/">Documentation</a>. If you still need help, feel free to [reach out](https://wordpress.org/support/plugin/waymark/#new-topic-0).
 
 = How Can I Contribute? =
 
@@ -160,7 +153,7 @@ Please! Waymark is localization ready, <a href="https://translate.wordpress.org/
 
 Waymark relies on input from it's users, thank you to everyone for providing feedback :)
 
-Built on the shoulders of giants, [thank you Open-Source](https://www.waymark.dev/docs/thanks/)!
+Built on the shoulders of giants, thank you Open-Source!
 
 == Screenshots ==
 
@@ -261,7 +254,7 @@ Another Collection Map link fix.
 
 = 1.1.6 =
 
-Removed Link to/from Maps Setting in [Collection options](https://www.waymark.dev/docs/settings/#misc-collection_options). Links to/from Collections and Maps will now be displayed by default, but can be hidden using CSS if desired. Thanks to [wkndwlk](https://wordpress.org/support/users/wkndwlk/) for [reporting this](https://wordpress.org/support/topic/links-within-waymarks-on-collection-maps/).
+Removed Link to/from Maps Setting in Collection options. Links to/from Collections and Maps will now be displayed by default, but can be hidden using CSS if desired. Thanks to [wkndwlk](https://wordpress.org/support/users/wkndwlk/) for [reporting this](https://wordpress.org/support/topic/links-within-waymarks-on-collection-maps/).
 
 = 1.1.5 =
 
@@ -298,7 +291,7 @@ Removed Link to/from Maps Setting in [Collection options](https://www.waymark.de
 
 = 1.0.3 =
 
-- **Global Callback** - If the function `waymark_loaded_callback` is defined globally, it will be called when Waymark has loaded. This allows you to extend Waymark functionality similar to the [Shortcode Callback](https://www.waymark.dev/docs/shortcodes/#callback-function), however it will apply to *all* Waymark Maps.
+- **Global Callback** - If the function `waymark_loaded_callback` is defined globally, it will be called when Waymark has loaded. This allows you to extend Waymark functionality similar to the Shortcode Callback, however it will apply to *all* Waymark Maps.
 - Fix for Export/Overlay Filter [bug](https://github.com/OpenGIS/Waymark/issues/32).
 - Other fixes and improvements.
 
@@ -322,11 +315,11 @@ Thanks for helping Waymark get to Version 1! ❤️
 
 = 0.9.30 =
 
-* **<a href="https://www.waymark.dev/docs/marker-clustering/">Marker Clustering</a>**
+* **Marker Clustering**
     * Once enabled, Markers will be stacked when they are close together. This can help to reduce clutter on the Map.
     * You can enable this feature in Settings > Maps > Clustering, or using the `show_cluster="1"` Shortcode option. 
     * There are also settings to adjust the cluster radius and what what zoom level to start clustering at.
-* Added `file_start_type` and `file_end_type` options to the <a href="https://www.waymark.dev/docs/shortcodes/#shortcode-files">Shortcode Files</a> feature, which allow you to automatically add a Marker of the specified type to the start and/or end of all Lines in the file. Thanks to <a href="https://wordpress.org/support/users/digbymaass/">digbymaass</a> for the <a href="https://wordpress.org/support/topic/shortcode-option-for-start-marker/">suggestion</a>.
+* Added `file_start_type` and `file_end_type` options to the Shortcode Files feature, which allow you to automatically add a Marker of the specified type to the start and/or end of all Lines in the file. Thanks to <a href="https://wordpress.org/support/users/digbymaass/">digbymaass</a> for the <a href="https://wordpress.org/support/topic/shortcode-option-for-start-marker/">suggestion</a>.
 * Stop Elevation plugin from adjusting map bounds. Thanks to <a href="https://wordpress.org/support/users/ellocosolo/">ellocosolo</a> for the <a href="https://wordpress.org/support/topic/map_centre-and-map_zoom-shortcodes-cannot-be-used-at-the-same-time/">report</a>.
 * Improved KML error handling when loading from URL.
 * Improved rendering of multiple Maps through the Collection Shortcode.
@@ -413,7 +406,7 @@ Added `elevation_units` (metric/imperial) Shortcode option, which will override 
 
 = 0.9.26 =
 
-* Individual Overlay Types can now be Shown/Hidden initially using the Shortcode, overriding the "Show Initially" Setting for each. Use the `hide_marker`, `show_marker`, `hide_line`, `show_line`, `hide_shape`, `show_shape` Shortcode parameters, providing one or multiple (comma separated) <a href="https://www.waymark.dev/docs/types/#type-keys">Type Keys</a>. For example:
+* Individual Overlay Types can now be Shown/Hidden initially using the Shortcode, overriding the "Show Initially" Setting for each. Use the `hide_marker`, `show_marker`, `hide_line`, `show_line`, `hide_shape`, `show_shape` Shortcode parameters, providing one or multiple (comma separated) Type Keys. For example:
 
 `[Waymark map_id="1234" hide_marker="photo,alert" show_line="green"]`
 
@@ -434,7 +427,7 @@ Thanks to <a href="https://wordpress.org/support/users/hansolo68/">hansolo68</a>
 = 0.9.24 =
 
 * Editor popup redesign, including Type previews.
-* Front-end <a href="https://www.waymark.dev/docs/submissions/">Submissions</a> improvements.
+* Front-end Submissions improvements.
 * Lots of other bug fixes and improvements.
 
 = 0.9.23 =
@@ -453,18 +446,18 @@ Credit to Werner for getting in touch and prompting these changes.
 
 = 0.9.20 = 
 
-* Front-end <a href="https://www.waymark.dev/docs/submissions/">Submissions</a> can now be added to a <a href="https://www.waymark.dev/docs/collections/">Collection</a> by default. A collection for User and Guest submissions can be specified in Settings > Submissions > Default Collection.
+* Front-end Submissions can now be added to a Collection by default. A collection for User and Guest submissions can be specified in Settings > Submissions > Default Collection.
 
 = 0.9.19 = 
 
-* **<a href="https://www.waymark.dev/docs/shortcodes/#shortcode-files">Shortcode Files</a>**
+* **Shortcode Files**
 	* Files (GPX, KML & GeoJSON) can now be displayed using the Shortcode, without the need for a Map to be created. For example:<br> <code>[Waymark file_url="http://example.com/track.gpx"]</code><br> By default, <em>all</em> Overlays (Markers/Lines/Shapes) will be displayed using the default Type (i.e. the first listed in Settings). You can specify a different Type to use like this:<code>[Waymark file_url="http://example.com/track.gpx" file_line_type="photo"]</code>. Thanks to <a href="https://wordpress.org/support/users/golf1025/" rel="nofollow">Jan de Boer</a> for this <a href="https://wordpress.org/support/topic/migrate-gpx-from-other-app/">suggestion</a> and <a href="https://wordpress.org/support/users/yorobo/">yorobo</a> for <a href="https://wordpress.org/support/topic/cant-upload-kml-gpl-file/">the reminder</a>.
 
 = 0.9.18 =
 
-* **<a href="https://www.waymark.dev/docs/submissions/">Submissions</a>**
+* **Submissions**
     * Allow registered users, or guests to create Maps from the front-end of your site. You can control who can Submit Maps, what editor features are available and whether submissions should be approved before they are published. Originally suggested <a href="https://wordpress.org/support/topic/feature-request-add-marker-from-frontend/">here</a>.
-* **<a href="https://www.waymark.dev/docs/shortcodes/#shortcode-markers">Shortcode Markers</a>**
+* **Shortcode Markers**
 		* Markers can now be displayed using the Shortcode, without the need for a Map to be created. For example:<br> <code>[Waymark marker_centre="54.526814,-3.017289" marker_type="shelter"]</code><br> As well as the Marker location and Type; a Title, Description and an Image can also be provided. Thanks to <a href="https://wordpress.org/support/users/mistermagoo8691/" rel="nofollow">Angelo Mariani</a> for this <a href="https://wordpress.org/support/topic/show-a-marker-on-the-centre-location/">suggestion</a>.
 * Fixed a bug where Shortcode Headers were not displaying on Collection archive pages. Thanks to <a href="https://wordpress.org/support/users/meggsico/">meggsico</a> for <a href="https://wordpress.org/support/topic/maybe-a-bug-7/#post-14815812">bringing this to my attention</a>.
 * Improved "accidental zooms" when scrolling by increasing the <a href="https://github.com/CliffCloud/Leaflet.Sleep">Leaflet.Sleep</a> wakeTime from 1 second to 2 seconds. As <a href="https://wordpress.org/support/topic/disable-user-zooming-panning-on-a-map/#post-15208899">requested</a>.
@@ -555,8 +548,8 @@ Thanks to <a href="https://wordpress.org/support/users/neilhorton740/">neilhorto
 = 0.9.12 =
 
 * **Gallery** - Added the option to display an image gallery for Markers that have images associated with them. Can be changed in Settings > Misc. > Map Options. Can be enabled using the show_gallery="1" Shortcode option.
-* Created <a href="https://www.waymark.dev/docs/">Waymark Documentation</a>.
-* Updated the <a href="https://www.waymark.dev/docs/">Demo</a>.
+* Created <a href="https://www.waymark.dev/">Waymark Documentation</a>.
+* Updated the <a href="https://www.waymark.dev/">Demo</a>.
 * First steps towards <a href="https://developer.wordpress.org/plugins/internationalization/localization/">Localization</a>.
 * Added the ability to change Map author. Thanks to <a href="https://wordpress.org/support/topic/feature-request-shortcode-download-link-author-change/">andreasrns</a> for the suggestion.
 * Maps now support Revisions.
