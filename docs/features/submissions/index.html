@@ -1,174 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
-  <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>
-      Submissions – Waymark
-    </title>
-    <link href="../../assets/css/docs.css" rel="stylesheet"/>
-    <link href="../../assets/waymark-js/css/waymark-js.min.css" rel="stylesheet"/>
-    <link href="../../assets/css/front.min.css" rel="stylesheet"/>
-    <script src="../../assets/js/jquery.min.js">
-    </script>
-    <script src="../../assets/js/jquery-migrate.min.js">
-    <script src="../../assets/js/docs.js"></script>
-    </script>
-    <script src="../../assets/waymark-js/js/waymark-js.min.js">
-    </script>
-  </head>
-  <body>
-    <h1>
-      Submissions
-    </h1>
-    <article>
-      <p class="lead">
-        Allow registered users, or guests to create Maps from the front-end
-						of your site.
-      </p>
-      <p>
-        You can control who can Submit Maps, what editor features are
-						available and whether submissions should be approved before they are
-						published.
-      </p>
-      <h2>
-        Editor Features
-      </h2>
-      <p class="lead">
-        The full
-                                Editor
-                                and
-                                Meta
-                                inputs are available.
-      </p>
-      <h3>
-        Drawing
-      </h3>
-      <p>
-        Drawing tools for Markers, Lines and Shapes. Each can be given a
-						title, description, image and Type.
-      </p>
-      <p>
-        Types can be enabled for Submissions individually in
-        <em>
-          Settings &gt; [Markers/Lines/Shapes]
-        </em>
-        .
-      </p>
-      <h3>
-        Photo Upload
-      </h3>
-      <p>
-        Uploaded images are added to the WordPress Media Library and
-						location meta data will be used if detected (EXIF).
-      </p>
-      <p>
-        Photos upload by guests can be stored separately from other Media
-						Library uploads, to aid with moderation. If enabled, images uploaded
-						by guests will be stored in a single directory found in the upload
-						root (i.e. uploads/waymark_submission).
-      </p>
-      <h3>
-        Read from File
-      </h3>
-      <p>
-        GPX,KML and GeoJSON supported. Reading from file does not keep a
-						copy of the file on the server.
-      </p>
-      <h3>
-        Title
-      </h3>
-      <p>
-        Allows the Map title to be set during Submission. If disabled a
-						random title will be generated.
-      </p>
-      <h3>
-        Meta
-      </h3>
-      <p>
-        Submissions support
-                                Meta
-                                , whether an individual Meta input is displayed can be set in the
-        <em>
-          Settings &gt; Meta.
-        </em>
-      </p>
-      <div id="waymark-submission">
-        <div class="waymark-submission waymark-map" id="waymark-map">
-        </div>
-      </div>
-      <p>
-        If submitted, you will be provided with a link to your Map. All
-						submissions are automatically
-        <strong>
-          deleted after 24 hours
-        </strong>
-        .
-      </p>
-      <hr/>
-      <h2>
-        Settings
-      </h2>
-      <p class="lead">
-        Submissions can be enabled and configured in
-        <em>
-          Settings &gt; Submissions.
-        </em>
-      </p>
-      <p>
-        Submissions can either by accepted from registered users (selectable
-						by role) only, or publicly (i.e. no account necessary).
-      </p>
-      <p>
-        Settings are available for user submissions and public submissions
-						separately.
-      </p>
-      <figure>
-        <img alt="" height="1024" sizes="(max-width: 656px) 100vw, 656px" src="../../assets/img/Screen-Shot-2021-11-08-at-1.54.52-PM-656x1024.png" srcset="
-								../../assets/img/Screen-Shot-2021-11-08-at-1.54.52-PM-656x1024.png  656w,
-								../../assets/img/Screen-Shot-2021-11-08-at-1.54.52-PM-448x700.png   448w,
-								../../assets/img/Screen-Shot-2021-11-08-at-1.54.52-PM-768x1199.png  768w,
-								../../assets/img/Screen-Shot-2021-11-08-at-1.54.52-PM-983x1536.png  983w,
-								../../assets/img/Screen-Shot-2021-11-08-at-1.54.52-PM.png          1100w
-							" width="656"/>
-      </figure>
-      <hr/>
-      <h2>
-        Add to Your Site
-      </h2>
-      <p class="lead">
-        Display using the Waymark Shortcode.
-      </p>
-      <pre><code class="">Waymark content="submission"</code></pre>
-      <h2>
-        Feedback
-      </h2>
-      <p class="lead">
-        This feature was a large undertaking, so please let me know what you
-						think by…
-      </p>
-      <p>
-      </p>
-      <ul>
-        <li>
-          Creating a new
-          <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">
-            support topic
-          </a>
-          on the WordPress plugin directory.
-        </li>
-        <li>
-          Creating a
-          <a href="https://github.com/morehawes/waymark/issues/new">
-            GitHub issue
-          </a>
-          .
-        </li>
-      </ul>
-    </article>
-    <script>
-      //HTTP
-
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<title>Submissions – Waymark</title>
+		<link href="../../assets/css/docs.css" rel="stylesheet" />
+		<link
+			href="../../assets/waymark-js/css/waymark-js.min.css"
+			rel="stylesheet"
+		/>
+		<link href="../../assets/css/front.min.css" rel="stylesheet" />
+		<script src="../../assets/js/jquery.min.js"></script>
+		<script src="../../assets/js/jquery-migrate.min.js"></script>
+		<script src="../../assets/js/docs.js"></script>
+		<script src="../../assets/waymark-js/js/waymark-js.min.js"></script>
+	</head>
+	<body>
+		<h1>Submissions</h1>
+		<article>
+			<p class="lead">
+				Allow registered users, or guests to create Maps from the front-end of
+				your site.
+			</p>
+			<p>
+				You can control who can Submit Maps, what editor features are available
+				and whether submissions should be approved before they are published.
+			</p>
+			<h2>Editor Features</h2>
+			<p class="lead">The full Editor and Meta inputs are available.</p>
+			<h3>Drawing</h3>
+			<p>
+				Drawing tools for Markers, Lines and Shapes. Each can be given a title,
+				description, image and Type.
+			</p>
+			<p>
+				Types can be enabled for Submissions individually in
+				<em> Settings &gt; [Markers/Lines/Shapes] </em>
+				.
+			</p>
+			<h3>Photo Upload</h3>
+			<p>
+				Uploaded images are added to the WordPress Media Library and location
+				meta data will be used if detected (EXIF).
+			</p>
+			<p>
+				Photos upload by guests can be stored separately from other Media
+				Library uploads, to aid with moderation. If enabled, images uploaded by
+				guests will be stored in a single directory found in the upload root
+				(i.e. uploads/waymark_submission).
+			</p>
+			<h3>Read from File</h3>
+			<p>
+				GPX,KML and GeoJSON supported. Reading from file does not keep a copy of
+				the file on the server.
+			</p>
+			<h3>Title</h3>
+			<p>
+				Allows the Map title to be set during Submission. If disabled a random
+				title will be generated.
+			</p>
+			<h3>Meta</h3>
+			<p>
+				Submissions support Meta , whether an individual Meta input is displayed
+				can be set in the
+				<em> Settings &gt; Meta. </em>
+			</p>
+			<div id="waymark-submission">
+				<div class="waymark-submission waymark-map" id="waymark-map"></div>
+			</div>
+			<p>
+				If submitted, you will be provided with a link to your Map. All
+				submissions are automatically
+				<strong> deleted after 24 hours </strong>
+				.
+			</p>
+			<hr />
+			<h2>Settings</h2>
+			<p class="lead">
+				Submissions can be enabled and configured in
+				<em> Settings &gt; Submissions. </em>
+			</p>
+			<p>
+				Submissions can either by accepted from registered users (selectable by
+				role) only, or publicly (i.e. no account necessary).
+			</p>
+			<p>
+				Settings are available for user submissions and public submissions
+				separately.
+			</p>
+			<figure>
+				<img
+					alt=""
+					height="1024"
+					sizes="(max-width: 656px) 100vw, 656px"
+					src="../../assets/img/Screen-Shot-2021-11-08-at-1.54.52-PM-656x1024.png"
+					srcset="
+						../../assets/img/Screen-Shot-2021-11-08-at-1.54.52-PM-656x1024.png  656w,
+						../../assets/img/Screen-Shot-2021-11-08-at-1.54.52-PM-448x700.png   448w,
+						../../assets/img/Screen-Shot-2021-11-08-at-1.54.52-PM-768x1199.png  768w,
+						../../assets/img/Screen-Shot-2021-11-08-at-1.54.52-PM-983x1536.png  983w,
+						../../assets/img/Screen-Shot-2021-11-08-at-1.54.52-PM.png          1100w
+					"
+					width="656"
+				/>
+			</figure>
+			<hr />
+			<h2>Add to Your Site</h2>
+			<p class="lead">Display using the Waymark Shortcode.</p>
+			<pre><code class="">Waymark content="submission"</code></pre>
+			<h2>Feedback</h2>
+			<p class="lead">
+				This feature was a large undertaking, so please let me know what you
+				think by…
+			</p>
+			<p></p>
+			<ul>
+				<li>
+					Creating a new
+					<a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">
+						support topic
+					</a>
+					on the WordPress plugin directory.
+				</li>
+				<li>
+					Creating a
+					<a href="https://github.com/morehawes/waymark/issues/new">
+						GitHub issue
+					</a>
+					.
+				</li>
+			</ul>
+		</article>
+		<script>
+			//HTTP
 
 			var waymark_security = "6c38ee9589";
 
@@ -514,6 +478,6 @@
 				waymark_editor.jq_map_container.addClass("waymark-disable-title");
 				waymark_editor.jq_map_container.addClass("waymark-disable-meta");
 			});
-    </script>
-  </body>
+		</script>
+	</body>
 </html>

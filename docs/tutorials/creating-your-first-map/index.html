@@ -1,219 +1,411 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
   <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>
-      Creating Your First Map – Waymark
-    </title>
-    <link href="../../assets/css/docs.css" rel="stylesheet"/>
-    <link href="../../assets/waymark-js/css/waymark-js.min.css" rel="stylesheet"/>
-    <link href="../../assets/css/front.min.css" rel="stylesheet"/>
-    <script src="../../assets/js/jquery.min.js">
-    </script>
-    <script src="../../assets/js/jquery-migrate.min.js">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Creating Your First Map – Waymark</title>
+    <link href="../../assets/css/docs.css" rel="stylesheet" />
+    <link
+      href="../../assets/waymark-js/css/waymark-js.min.css"
+      rel="stylesheet"
+    />
+    <link href="../../assets/css/front.min.css" rel="stylesheet" />
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/jquery-migrate.min.js"></script>
     <script src="../../assets/js/docs.js"></script>
-    </script>
-    <script src="../../assets/waymark-js/js/waymark-js.min.js">
-    </script>
+    <script src="../../assets/waymark-js/js/waymark-js.min.js"></script>
   </head>
   <body>
-    <h1>
-      Creating Your First Map
-    </h1>
+    <h1>Creating Your First Map</h1>
     <article>
       <p class="lead">
-        In this tutorial we will use Waymark to create a Map with a single Marker.
+        In this tutorial we will use Waymark to create a Map with a single
+        Marker.
       </p>
       <p>
-        You will be guided through how to install the plugin, create a Marker at a specific location and associate an Image and Description with it.
+        You will be guided through how to install the plugin, create a Marker at
+        a specific location and associate an Image and Description with it.
       </p>
       <p>
-        This tutorial assumes you have a WordPress site (self-hosted) and are logged in as an administrator.
+        This tutorial assumes you have a WordPress site (self-hosted) and are
+        logged in as an administrator.
       </p>
-      <div class="waymark-shortcode waymark-container" id="waymark-shortcode-bd7482" style="">
-        <div class="waymark-map waymark-map-id-4562" data-shortcode_hash="bd7482" id="waymark-map-bd7482" style="display:none;height:300px;min-height:300px;">
-        </div>
+      <div
+        class="waymark-shortcode waymark-container"
+        id="waymark-shortcode-bd7482"
+        style=""
+      >
+        <div
+          class="waymark-map waymark-map-id-4562"
+          data-shortcode_hash="bd7482"
+          id="waymark-map-bd7482"
+          style="display: none; height: 300px; min-height: 300px"
+        ></div>
       </div>
       <script>
-        jQuery(document).ready(function() {
-	let waymark_viewer = window.Waymark_Map_Factory.viewer();
-	if(typeof waymark_user_config === "undefined") { waymark_viewer.message("Configuration not found! Check for \"var waymark_user_config\" in your page HTML.", "error"); }
-	var waymark_config = jQuery.extend(true, {}, waymark_user_config);
-	waymark_config.map_options.map_div_id = "waymark-map-bd7482";
-	waymark_config.map_options.map_height = 300;
-	waymark_config.viewer_options.show_gallery = 0;
-	waymark_viewer.init(waymark_config);
-	waymark_viewer.load_json({"type":"FeatureCollection","features":[{"geometry":{"type":"Point","coordinates":[-0.075341,51.505538]},"type":"Feature","properties":{"type":"photo","title":"Tower Bridge","description":"<p><a href=\"https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Dawn.jpg\">Fuzzypiggy</a>, <a href=\"https://creativecommons.org/licenses/by-sa/3.0\">CC BY-SA 3.0</a>, via Wikimedia Commons</p>","image_thumbnail_url":"../../assets/img/1024px-Tower_Bridge_at_Dawn-450x450.jpg","image_medium_url":"../../assets/img/1024px-Tower_Bridge_at_Dawn-700x467.jpg","image_large_url":"../../assets/img/1024px-Tower_Bridge_at_Dawn.jpg","image_full_url":"../../assets/img/1024px-Tower_Bridge_at_Dawn.jpg"}}]});
-	waymark_viewer.load_done();
-});
+        jQuery(document).ready(function () {
+          let waymark_viewer = window.Waymark_Map_Factory.viewer();
+          if (typeof waymark_user_config === "undefined") {
+            waymark_viewer.message(
+              'Configuration not found! Check for "var waymark_user_config" in your page HTML.',
+              "error",
+            );
+          }
+          var waymark_config = jQuery.extend(true, {}, waymark_user_config);
+          waymark_config.map_options.map_div_id = "waymark-map-bd7482";
+          waymark_config.map_options.map_height = 300;
+          waymark_config.viewer_options.show_gallery = 0;
+          waymark_viewer.init(waymark_config);
+          waymark_viewer.load_json({
+            type: "FeatureCollection",
+            features: [
+              {
+                geometry: {
+                  type: "Point",
+                  coordinates: [-0.075341, 51.505538],
+                },
+                type: "Feature",
+                properties: {
+                  type: "photo",
+                  title: "Tower Bridge",
+                  description:
+                    '<p><a href="https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Dawn.jpg">Fuzzypiggy</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons</p>',
+                  image_thumbnail_url:
+                    "../../assets/img/1024px-Tower_Bridge_at_Dawn-450x450.jpg",
+                  image_medium_url:
+                    "../../assets/img/1024px-Tower_Bridge_at_Dawn-700x467.jpg",
+                  image_large_url:
+                    "../../assets/img/1024px-Tower_Bridge_at_Dawn.jpg",
+                  image_full_url:
+                    "../../assets/img/1024px-Tower_Bridge_at_Dawn.jpg",
+                },
+              },
+            ],
+          });
+          waymark_viewer.load_done();
+        });
       </script>
       <p>
-        This Map illustrates the end result. Try clicking on the Marker Icon to view the Image and description.
+        This Map illustrates the end result. Try clicking on the Marker Icon to
+        view the Image and description.
       </p>
-      <p>
-        Click on any screenshot to enlarge.
-      </p>
-      <h2>
-        1. Activating the Plugin
-      </h2>
+      <p>Click on any screenshot to enlarge.</p>
+      <h2>1. Activating the Plugin</h2>
       <p class="lead">
-        In this step we are going to search for, install and activate the Waymark plugin.
+        In this step we are going to search for, install and activate the
+        Waymark plugin.
       </p>
       <figure>
-        <img alt="" height="658" sizes="(max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-1-1024x658.png" srcset="../../assets/img/first-map-step-1-1024x658.png 1024w, ../../assets/img/first-map-step-1-700x450.png 700w, ../../assets/img/first-map-step-1-768x494.png 768w, ../../assets/img/first-map-step-1-1536x988.png 1536w, ../../assets/img/first-map-step-1.png 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          sizes="(max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-1-1024x658.png"
+          srcset="
+            ../../assets/img/first-map-step-1-1024x658.png 1024w,
+            ../../assets/img/first-map-step-1-700x450.png   700w,
+            ../../assets/img/first-map-step-1-768x494.png   768w,
+            ../../assets/img/first-map-step-1-1536x988.png 1536w,
+            ../../assets/img/first-map-step-1.png          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            1.1
-          </strong>
-          In the “Plugins” administration page click on the “Add New Plugin” button.
+          <strong> 1.1 </strong>
+          In the “Plugins” administration page click on the “Add New Plugin”
+          button.
         </figcaption>
       </figure>
       <figure>
-        <img alt="" height="658" sizes="(max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-2-1024x658.png" srcset="../../assets/img/first-map-step-2-1024x658.png 1024w, ../../assets/img/first-map-step-2-700x450.png 700w, ../../assets/img/first-map-step-2-768x494.png 768w, ../../assets/img/first-map-step-2-1536x988.png 1536w, ../../assets/img/first-map-step-2.png 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          sizes="(max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-2-1024x658.png"
+          srcset="
+            ../../assets/img/first-map-step-2-1024x658.png 1024w,
+            ../../assets/img/first-map-step-2-700x450.png   700w,
+            ../../assets/img/first-map-step-2-768x494.png   768w,
+            ../../assets/img/first-map-step-2-1536x988.png 1536w,
+            ../../assets/img/first-map-step-2.png          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            1.2
-          </strong>
-          In the top right “Search Plugins” text field enter “Waymark”. Then click “Install Plugin” next to Waymark in the search results. Once installed, the button text will change to “Activate”. Click this to activate the plugin.
+          <strong> 1.2 </strong>
+          In the top right “Search Plugins” text field enter “Waymark”. Then
+          click “Install Plugin” next to Waymark in the search results. Once
+          installed, the button text will change to “Activate”. Click this to
+          activate the plugin.
         </figcaption>
       </figure>
-      <h2>
-        2. Creating a Map
-      </h2>
+      <h2>2. Creating a Map</h2>
       <p class="lead">
         Next we are going to create a new Map and give it a title.
       </p>
       <figure>
-        <img alt="" height="658" sizes="(max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-3-1024x658.png" srcset="../../assets/img/first-map-step-3-1024x658.png 1024w, ../../assets/img/first-map-step-3-700x450.png 700w, ../../assets/img/first-map-step-3-768x494.png 768w, ../../assets/img/first-map-step-3-1536x988.png 1536w, ../../assets/img/first-map-step-3.png 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          sizes="(max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-3-1024x658.png"
+          srcset="
+            ../../assets/img/first-map-step-3-1024x658.png 1024w,
+            ../../assets/img/first-map-step-3-700x450.png   700w,
+            ../../assets/img/first-map-step-3-768x494.png   768w,
+            ../../assets/img/first-map-step-3-1536x988.png 1536w,
+            ../../assets/img/first-map-step-3.png          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            2.1
-          </strong>
-          Once the plugin is activated you will be taken to the “Maps” page. This screen lists all of the Maps created, which is empty right now. Click “Add New Map”.
+          <strong> 2.1 </strong>
+          Once the plugin is activated you will be taken to the “Maps” page.
+          This screen lists all of the Maps created, which is empty right now.
+          Click “Add New Map”.
         </figcaption>
       </figure>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-4-1024x658.png" srcset="../../assets/img/first-map-step-4-1024x658.png 1024w, ../../assets/img/first-map-step-4-700x450.png 700w, ../../assets/img/first-map-step-4-768x494.png 768w, ../../assets/img/first-map-step-4-1536x988.png 1536w, ../../assets/img/first-map-step-4.png 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-4-1024x658.png"
+          srcset="
+            ../../assets/img/first-map-step-4-1024x658.png 1024w,
+            ../../assets/img/first-map-step-4-700x450.png   700w,
+            ../../assets/img/first-map-step-4-768x494.png   768w,
+            ../../assets/img/first-map-step-4-1536x988.png 1536w,
+            ../../assets/img/first-map-step-4.png          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            2.2
-          </strong>
-          You will be taken to the Map edit screen. Give the Map the title “Tower Bridge” in the top “Add title” text field.
+          <strong> 2.2 </strong>
+          You will be taken to the Map edit screen. Give the Map the title
+          “Tower Bridge” in the top “Add title” text field.
         </figcaption>
       </figure>
-      <h2>
-        3. Adding a Marker
-      </h2>
+      <h2>3. Adding a Marker</h2>
       <p class="lead">
         We will now search for a location and add a Marker there.
       </p>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-5-1024x658.png" srcset="../../assets/img/first-map-step-5-1024x658.png 1024w, ../../assets/img/first-map-step-5-700x450.png 700w, ../../assets/img/first-map-step-5-768x494.png 768w, ../../assets/img/first-map-step-5-1536x988.png 1536w, ../../assets/img/first-map-step-5.png 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-5-1024x658.png"
+          srcset="
+            ../../assets/img/first-map-step-5-1024x658.png 1024w,
+            ../../assets/img/first-map-step-5-700x450.png   700w,
+            ../../assets/img/first-map-step-5-768x494.png   768w,
+            ../../assets/img/first-map-step-5-1536x988.png 1536w,
+            ../../assets/img/first-map-step-5.png          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            3.1
-          </strong>
-          Scroll down to the Map and click on the search icon (magnifying glass) to the bottom right of the Map. Enter “Tower Bridge, London” into the search text field and
-          <strong>
-            hit return/enter
-          </strong>
-          to submit the search.
-                                                                                                                                                                A list of locations will appear, click on the top result.
+          <strong> 3.1 </strong>
+          Scroll down to the Map and click on the search icon (magnifying glass)
+          to the bottom right of the Map. Enter “Tower Bridge, London” into the
+          search text field and
+          <strong> hit return/enter </strong>
+          to submit the search. A list of locations will appear, click on the
+          top result.
         </figcaption>
       </figure>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-6-1024x658.png" srcset="../../assets/img/first-map-step-6-1024x658.png 1024w, ../../assets/img/first-map-step-6-700x450.png 700w, ../../assets/img/first-map-step-6-768x494.png 768w, ../../assets/img/first-map-step-6-1536x988.png 1536w, ../../assets/img/first-map-step-6.png 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-6-1024x658.png"
+          srcset="
+            ../../assets/img/first-map-step-6-1024x658.png 1024w,
+            ../../assets/img/first-map-step-6-700x450.png   700w,
+            ../../assets/img/first-map-step-6-768x494.png   768w,
+            ../../assets/img/first-map-step-6-1536x988.png 1536w,
+            ../../assets/img/first-map-step-6.png          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            3.2
-          </strong>
-          The Map should now be centred on Tower Bridge as in the screenshot (if it isn’t try some of the other search results, but anywhere is fine for this tutorial). Click the Marker icon (the third icon) on the Toolbar to the left of the Map to add a Marker.
+          <strong> 3.2 </strong>
+          The Map should now be centred on Tower Bridge as in the screenshot (if
+          it isn’t try some of the other search results, but anywhere is fine
+          for this tutorial). Click the Marker icon (the third icon) on the
+          Toolbar to the left of the Map to add a Marker.
         </figcaption>
       </figure>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-7-1024x658.png" srcset="../../assets/img/first-map-step-7-1024x658.png 1024w, ../../assets/img/first-map-step-7-700x450.png 700w, ../../assets/img/first-map-step-7-768x494.png 768w, ../../assets/img/first-map-step-7-1536x988.png 1536w, ../../assets/img/first-map-step-7.png 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-7-1024x658.png"
+          srcset="
+            ../../assets/img/first-map-step-7-1024x658.png 1024w,
+            ../../assets/img/first-map-step-7-700x450.png   700w,
+            ../../assets/img/first-map-step-7-768x494.png   768w,
+            ../../assets/img/first-map-step-7-1536x988.png 1536w,
+            ../../assets/img/first-map-step-7.png          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            3.3
-          </strong>
-          This will add a Marker to the middle of the Map, on the bridge. Click on the newly added Marker to open the Overlay editor popup.
+          <strong> 3.3 </strong>
+          This will add a Marker to the middle of the Map, on the bridge. Click
+          on the newly added Marker to open the Overlay editor popup.
         </figcaption>
       </figure>
-      <h2>
-        4. Adding an Image
-      </h2>
+      <h2>4. Adding an Image</h2>
       <p class="lead">
         With the Marker added we will now attach an image to it.
       </p>
       <p>
-        The image we will use first needs to be downloaded onto your computer. Click
-        <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Tower_Bridge_at_Dawn.jpg/1024px-Tower_Bridge_at_Dawn.jpg?20140924042649=&amp;download=">
+        The image we will use first needs to be downloaded onto your computer.
+        Click
+        <a
+          href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Tower_Bridge_at_Dawn.jpg/1024px-Tower_Bridge_at_Dawn.jpg?20140924042649=&amp;download="
+        >
           this link
         </a>
         to download it from
-        <a href="https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Dawn.jpg">
+        <a
+          href="https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Dawn.jpg"
+        >
           Wikimedia
         </a>
-        , the file is called “1024px-Tower_Bridge_at_Dawn.jpg”. We can use this image as long as we provide attribution, which we will do in the next step.
+        , the file is called “1024px-Tower_Bridge_at_Dawn.jpg”. We can use this
+        image as long as we provide attribution, which we will do in the next
+        step.
       </p>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-8-1-1024x658.png" srcset="../../assets/img/first-map-step-8-1-1024x658.png 1024w, ../../assets/img/first-map-step-8-1-700x450.png 700w, ../../assets/img/first-map-step-8-1-768x494.png 768w, ../../assets/img/first-map-step-8-1-1536x988.png 1536w, ../../assets/img/first-map-step-8-1.png 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-8-1-1024x658.png"
+          srcset="
+            ../../assets/img/first-map-step-8-1-1024x658.png 1024w,
+            ../../assets/img/first-map-step-8-1-700x450.png   700w,
+            ../../assets/img/first-map-step-8-1-768x494.png   768w,
+            ../../assets/img/first-map-step-8-1-1536x988.png 1536w,
+            ../../assets/img/first-map-step-8-1.png          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            4.1
-          </strong>
-          In the popup editor click the “Upload Image” button. This will open the standard WordPress Media Library dialog.
+          <strong> 4.1 </strong>
+          In the popup editor click the “Upload Image” button. This will open
+          the standard WordPress Media Library dialog.
         </figcaption>
       </figure>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-9-1024x658.png" srcset="../../assets/img/first-map-step-9-1024x658.png 1024w, ../../assets/img/first-map-step-9-700x450.png 700w, ../../assets/img/first-map-step-9-768x494.png 768w, ../../assets/img/first-map-step-9-1536x988.png 1536w, ../../assets/img/first-map-step-9.png 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-9-1024x658.png"
+          srcset="
+            ../../assets/img/first-map-step-9-1024x658.png 1024w,
+            ../../assets/img/first-map-step-9-700x450.png   700w,
+            ../../assets/img/first-map-step-9-768x494.png   768w,
+            ../../assets/img/first-map-step-9-1536x988.png 1536w,
+            ../../assets/img/first-map-step-9.png          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            4.2
-          </strong>
+          <strong> 4.2 </strong>
           Click on the “Select Files” button to upload an Image.
         </figcaption>
       </figure>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-10-1024x658.jpg" srcset="../../assets/img/first-map-step-10-1024x658.jpg 1024w, ../../assets/img/first-map-step-10-700x450.jpg 700w, ../../assets/img/first-map-step-10-768x494.jpg 768w, ../../assets/img/first-map-step-10-1536x988.jpg 1536w, ../../assets/img/first-map-step-10.jpg 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-10-1024x658.jpg"
+          srcset="
+            ../../assets/img/first-map-step-10-1024x658.jpg 1024w,
+            ../../assets/img/first-map-step-10-700x450.jpg   700w,
+            ../../assets/img/first-map-step-10-768x494.jpg   768w,
+            ../../assets/img/first-map-step-10-1536x988.jpg 1536w,
+            ../../assets/img/first-map-step-10.jpg          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            4.3
-          </strong>
-          Locate the Tower Bridge image on your computer using the file browser and click “Upload”.
+          <strong> 4.3 </strong>
+          Locate the Tower Bridge image on your computer using the file browser
+          and click “Upload”.
         </figcaption>
       </figure>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-11-1024x658.png" srcset="../../assets/img/first-map-step-11-1024x658.png 1024w, ../../assets/img/first-map-step-11-700x450.png 700w, ../../assets/img/first-map-step-11-768x494.png 768w, ../../assets/img/first-map-step-11-1536x988.png 1536w, ../../assets/img/first-map-step-11.png 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-11-1024x658.png"
+          srcset="
+            ../../assets/img/first-map-step-11-1024x658.png 1024w,
+            ../../assets/img/first-map-step-11-700x450.png   700w,
+            ../../assets/img/first-map-step-11-768x494.png   768w,
+            ../../assets/img/first-map-step-11-1536x988.png 1536w,
+            ../../assets/img/first-map-step-11.png          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            4.4
-          </strong>
-          Once the image has finished uploading, you will see a thumbnail appear in the Media Library. Click on the “Insert into post” button.
+          <strong> 4.4 </strong>
+          Once the image has finished uploading, you will see a thumbnail appear
+          in the Media Library. Click on the “Insert into post” button.
         </figcaption>
       </figure>
-      <h2>
-        5. Adding a Description
-      </h2>
+      <h2>5. Adding a Description</h2>
       <p class="lead">
         Let’s add the required attribution in the Marker description.
       </p>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-12-1024x658.png" srcset="../../assets/img/first-map-step-12-1024x658.png 1024w, ../../assets/img/first-map-step-12-700x450.png 700w, ../../assets/img/first-map-step-12-768x494.png 768w, ../../assets/img/first-map-step-12-1536x988.png 1536w, ../../assets/img/first-map-step-12.png 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-12-1024x658.png"
+          srcset="
+            ../../assets/img/first-map-step-12-1024x658.png 1024w,
+            ../../assets/img/first-map-step-12-700x450.png   700w,
+            ../../assets/img/first-map-step-12-768x494.png   768w,
+            ../../assets/img/first-map-step-12-1536x988.png 1536w,
+            ../../assets/img/first-map-step-12.png          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            5.1
-          </strong>
-          In the large text area, enter the provided attribution text. Highlight “Fuzzypiggy” and click on the link icon above the Description field. Add the appropriate link in the text field that appears. Repeat for the “CC BY-SA 3.0” text, adding the appropriate link.
+          <strong> 5.1 </strong>
+          In the large text area, enter the provided attribution text. Highlight
+          “Fuzzypiggy” and click on the link icon above the Description field.
+          Add the appropriate link in the text field that appears. Repeat for
+          the “CC BY-SA 3.0” text, adding the appropriate link.
         </figcaption>
       </figure>
-      <h4>
-        Attribution Text
-      </h4>
+      <h4>Attribution Text</h4>
       <p>
         “
-        <a href="https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Dawn.jpg">
+        <a
+          href="https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Dawn.jpg"
+        >
           Fuzzypiggy
         </a>
         ,
@@ -222,104 +414,476 @@
         </a>
         , via Wikimedia Commons”
       </p>
-      <p>
-        This includes the following two links:
-      </p>
+      <p>This includes the following two links:</p>
       <ul>
         <li>
-          <strong>
-            Fuzzypiggy
-          </strong>
+          <strong> Fuzzypiggy </strong>
           –
-          <a href="https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Dawn.jpg">
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Dawn.jpg"
+          >
             https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Dawn.jpg
           </a>
         </li>
         <li>
-          <strong>
-            CC BY-SA 3.0
-          </strong>
+          <strong> CC BY-SA 3.0 </strong>
           –
           <a href="https://creativecommons.org/licenses/by-sa/3.0">
             https://creativecommons.org/licenses/by-sa/3.0
           </a>
         </li>
       </ul>
-      <h2>
-        6. Publishing the Map
-      </h2>
+      <h2>6. Publishing the Map</h2>
       <p class="lead">
-        We are now ready to publish the Map and make it publicly accessible on your site.
+        We are now ready to publish the Map and make it publicly accessible on
+        your site.
       </p>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-13-1024x658.png" srcset="../../assets/img/first-map-step-13-1024x658.png 1024w, ../../assets/img/first-map-step-13-700x450.png 700w, ../../assets/img/first-map-step-13-768x494.png 768w, ../../assets/img/first-map-step-13-1536x988.png 1536w, ../../assets/img/first-map-step-13.png 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-13-1024x658.png"
+          srcset="
+            ../../assets/img/first-map-step-13-1024x658.png 1024w,
+            ../../assets/img/first-map-step-13-700x450.png   700w,
+            ../../assets/img/first-map-step-13-768x494.png   768w,
+            ../../assets/img/first-map-step-13-1536x988.png 1536w,
+            ../../assets/img/first-map-step-13.png          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            6.1
-          </strong>
-          Give the Marker the title “Tower Bridge” in the “Marker Title” field. Then click the “Publish” button to publish the Map.
+          <strong> 6.1 </strong>
+          Give the Marker the title “Tower Bridge” in the “Marker Title” field.
+          Then click the “Publish” button to publish the Map.
         </figcaption>
       </figure>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-14-1024x658.png" srcset="../../assets/img/first-map-step-14-1024x658.png 1024w, ../../assets/img/first-map-step-14-700x450.png 700w, ../../assets/img/first-map-step-14-768x494.png 768w, ../../assets/img/first-map-step-14-1536x988.png 1536w, ../../assets/img/first-map-step-14.png 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-14-1024x658.png"
+          srcset="
+            ../../assets/img/first-map-step-14-1024x658.png 1024w,
+            ../../assets/img/first-map-step-14-700x450.png   700w,
+            ../../assets/img/first-map-step-14-768x494.png   768w,
+            ../../assets/img/first-map-step-14-1536x988.png 1536w,
+            ../../assets/img/first-map-step-14.png          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            6.2
-          </strong>
-          Once the Map has been published, you will be provided with the “Permalink” for the Map. Click on the permalink above the Map.
+          <strong> 6.2 </strong>
+          Once the Map has been published, you will be provided with the
+          “Permalink” for the Map. Click on the permalink above the Map.
         </figcaption>
       </figure>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-15-1024x658.jpg" srcset="../../assets/img/first-map-step-15-1024x658.jpg 1024w, ../../assets/img/first-map-step-15-700x450.jpg 700w, ../../assets/img/first-map-step-15-768x494.jpg 768w, ../../assets/img/first-map-step-15-1536x988.jpg 1536w, ../../assets/img/first-map-step-15.jpg 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-15-1024x658.jpg"
+          srcset="
+            ../../assets/img/first-map-step-15-1024x658.jpg 1024w,
+            ../../assets/img/first-map-step-15-700x450.jpg   700w,
+            ../../assets/img/first-map-step-15-768x494.jpg   768w,
+            ../../assets/img/first-map-step-15-1536x988.jpg 1536w,
+            ../../assets/img/first-map-step-15.jpg          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          <strong>
-            6.3
-          </strong>
-          You will be taken to your interactive Map on the front-end of your site.
+          <strong> 6.3 </strong>
+          You will be taken to your interactive Map on the front-end of your
+          site.
         </figcaption>
       </figure>
-      <p>
-      </p>
+      <p></p>
       <p class="lead">
-        <strong>
-          Congratulations!
-        </strong>
+        <strong> Congratulations! </strong>
       </p>
-      <p class="lead">
-        You have just created your first Map.
-      </p>
+      <p class="lead">You have just created your first Map.</p>
       <p>
         Feel free to go back to the Editor to explore more features, either by:
       </p>
       <ul>
-        <li>
-          Clicking on the “Edit Map” button in the top admin toolbar, or
-        </li>
-        <li>
-          Clicking the “Waymark &gt; Maps” admin menu link.
-        </li>
+        <li>Clicking on the “Edit Map” button in the top admin toolbar, or</li>
+        <li>Clicking the “Waymark &gt; Maps” admin menu link.</li>
       </ul>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-16-1024x658.jpg" srcset="../../assets/img/first-map-step-16-1024x658.jpg 1024w, ../../assets/img/first-map-step-16-700x450.jpg 700w, ../../assets/img/first-map-step-16-768x494.jpg 768w, ../../assets/img/first-map-step-16-1536x988.jpg 1536w, ../../assets/img/first-map-step-16.jpg 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-16-1024x658.jpg"
+          srcset="
+            ../../assets/img/first-map-step-16-1024x658.jpg 1024w,
+            ../../assets/img/first-map-step-16-700x450.jpg   700w,
+            ../../assets/img/first-map-step-16-768x494.jpg   768w,
+            ../../assets/img/first-map-step-16-1536x988.jpg 1536w,
+            ../../assets/img/first-map-step-16.jpg          2000w
+          "
+          width="1024"
+        />
         <figcaption>
           Click “Edit Map” When viewing a Map to go back to the Editor.
         </figcaption>
       </figure>
       <figure>
-        <img alt="" height="658" loading="lazy" sizes="auto, (max-width: 1024px) 100vw, 1024px" src="../../assets/img/first-map-step-17-1024x658.jpg" srcset="../../assets/img/first-map-step-17-1024x658.jpg 1024w, ../../assets/img/first-map-step-17-700x450.jpg 700w, ../../assets/img/first-map-step-17-768x494.jpg 768w, ../../assets/img/first-map-step-17-1536x988.jpg 1536w, ../../assets/img/first-map-step-17.jpg 2000w" width="1024"/>
+        <img
+          alt=""
+          height="658"
+          loading="lazy"
+          sizes="auto, (max-width: 1024px) 100vw, 1024px"
+          src="../../assets/img/first-map-step-17-1024x658.jpg"
+          srcset="
+            ../../assets/img/first-map-step-17-1024x658.jpg 1024w,
+            ../../assets/img/first-map-step-17-700x450.jpg   700w,
+            ../../assets/img/first-map-step-17-768x494.jpg   768w,
+            ../../assets/img/first-map-step-17-1536x988.jpg 1536w,
+            ../../assets/img/first-map-step-17.jpg          2000w
+          "
+          width="1024"
+        />
         <figcaption>
-          Click the “Maps” admin menu link to view a list of all of your Maps. Your Map should be listed there. Click the Map “Tower Bridge” to open the Editor.
+          Click the “Maps” admin menu link to view a list of all of your Maps.
+          Your Map should be listed there. Click the Map “Tower Bridge” to open
+          the Editor.
         </figcaption>
       </figure>
-      <p>
-      </p>
+      <p></p>
     </article>
     <script>
       //HTTP
 
-var waymark_user_config = {"map_options":{"map_height":"640","tile_layers":[{layer_name: "OpenStreetMap", layer_url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?r=1", layer_attribution: '@copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', layer_max_zoom: "18"}],"marker_types":[{"marker_title":"Photo","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-camera","marker_colour":"#70af00","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Water","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-waterdrop","marker_colour":"#2aabe1","icon_colour":"#fff","marker_display":"1","marker_submission":"1"},{"marker_title":"Trail Access","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-car","marker_colour":"#fbfbfb","icon_colour":"#707070","marker_display":"1","marker_submission":"1"},{"marker_title":"Information","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-information-circled","marker_colour":"#fbfbfb","icon_colour":"#0069a5","marker_display":"1","marker_submission":"1"},{"marker_title":"Alert","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-alert","marker_colour":"#da3d20","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Food","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-pizza","marker_colour":"#da3d20","icon_colour":"#ffba00","marker_display":"1","marker_submission":"1"},{"marker_title":"Beer","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-beer","marker_colour":"#fbfbfb","icon_colour":"#754423","marker_display":"1","marker_submission":"1"},{"marker_title":"Start","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"fa-flag","marker_colour":"#70af00","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Finish","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"fa-flag-checkered","marker_colour":"#a43233","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Store","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-cart","marker_colour":"#416979","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Camp","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-home","marker_colour":"#a43233","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Wildlife","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-ios-paw","marker_colour":"#a43233","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Point of Interest","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-eye","marker_colour":"#da3d20","icon_colour":"#e5e5e5","marker_display":"1","marker_submission":"1"},{"marker_title":"Waymark","marker_shape":"marker","marker_size":"large","icon_type":"html","marker_icon":"&lt;img style=&quot;width:24px;height:24px;margin-top:5px&quot; src=&quot;../../assets/img/waymark-icon-primary.png&quot; \/&gt;","marker_colour":"#ffffff","icon_colour":"#81d742","marker_display":"1","marker_submission":"1"},{"marker_title":"Test","marker_shape":"rectangle","marker_size":"large","icon_type":"text","marker_icon":"Test Text Marker","marker_colour":"#dd3333","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"}],"line_types":[{"line_title":"Green","line_colour":"#30d100","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Red","line_colour":"#dd3333","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Bike Path","line_colour":"#1e73be","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Foot Path","line_colour":"#dd9933","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Alternate","line_colour":"#dd9933","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"}],"shape_types":[{"shape_title":"Red","shape_colour":"#d84848","fill_opacity":"0.5","shape_display":"1","shape_submission":"1"},{"shape_title":"Green","shape_colour":"#3cbc47","fill_opacity":"0.15","shape_display":"1","shape_submission":"1"},{"shape_title":"Blue","shape_colour":"#487bd9","fill_opacity":"0.5","shape_display":"1","shape_submission":"1"},{"shape_title":"Purple","shape_colour":"#8224e3","fill_opacity":"1","shape_display":"1","shape_submission":"1"}],"show_scale":"1","debug_mode":false},"viewer_options":{"show_gallery":"1","show_filter":"1","show_cluster":"1","show_elevation":false,"cluster_radius":"80","cluster_threshold":"14","elevation_units":"metric","elevation_initial":"1","elevation_colour":"#2c7137","sleep_delay_seconds":"3","sleep_do_message":"0","sleep_wake_message":"Click or Hover to Wake"},"editor_options":{"confirm_delete":"0"},"language":{"action_fullscreen_activate":"View Fullscreen","action_fullscreen_deactivate":"Exit Fullscreen","action_locate_activate":"Show me where I am","action_zoom_in":"Zoom in","action_zoom_out":"Zoom out","label_total_length":"Total Length: ","label_max_elevation":"Max. Elevation: ","label_min_elevation":"Min. Elevation: ","label_ascent":"Total Ascent: ","label_descent":"Total Descent: ","add_line_title":"Draw a Line","add_photo_title":"Upload an Image","add_marker_title":"Place a Marker","add_rectangle_title":"Draw a Rectangle","add_polygon_title":"Draw a Polygon","add_circle_title":"Draw a Circle","upload_file_title":"Read Lines and Markers from file (GPX\/KML\/GeoJSON supported, which most apps should Export to)","action_duplicate":"Duplicate","action_delete":"Delete","action_edit":"Edit","action_edit_done":"Finish editing","action_upload_image":"Upload Image","object_title_placeholder":"Title","object_image_placeholder":"Image URL","object_description_placeholder":"Description","object_type_label":"Type","marker_latlng_label":"Lat,Lng","action_delete_confirm":"Are you sure you want to delete this","action_search_placeholder":"Search...","object_label_marker":"Marker","object_label_line":"Line","object_label_shape":"Shape","object_label_marker_plural":"Markers","object_label_line_plural":"Lines","object_label_shape_plural":"Shapes","error_message_prefix":"Waymark Error","info_message_prefix":"Waymark Info","error_file_type":"This file type is not supported.","error_file_conversion":"Could not convert this file to GeoJSON.","error_file_upload":"File upload error.","error_photo_meta":"Could not retrieve Image metadata.","info_exif_yes":"Image location metadata (EXIF) detected!","info_exif_no":"Image location metadata (EXIF) NOT detected.","no_direction":"No Direction","show_direction":"Show Direction","reverse_direction":"Reverse Direction"}};
-
-
+      var waymark_user_config = {
+        map_options: {
+          map_height: "640",
+          tile_layers: [
+            {
+              layer_name: "OpenStreetMap",
+              layer_url:
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?r=1",
+              layer_attribution:
+                '@copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+              layer_max_zoom: "18",
+            },
+          ],
+          marker_types: [
+            {
+              marker_title: "Photo",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-camera",
+              marker_colour: "#70af00",
+              icon_colour: "#ffffff",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Water",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-waterdrop",
+              marker_colour: "#2aabe1",
+              icon_colour: "#fff",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Trail Access",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-android-car",
+              marker_colour: "#fbfbfb",
+              icon_colour: "#707070",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Information",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-information-circled",
+              marker_colour: "#fbfbfb",
+              icon_colour: "#0069a5",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Alert",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-android-alert",
+              marker_colour: "#da3d20",
+              icon_colour: "white",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Food",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-pizza",
+              marker_colour: "#da3d20",
+              icon_colour: "#ffba00",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Beer",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-beer",
+              marker_colour: "#fbfbfb",
+              icon_colour: "#754423",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Start",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "fa-flag",
+              marker_colour: "#70af00",
+              icon_colour: "white",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Finish",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "fa-flag-checkered",
+              marker_colour: "#a43233",
+              icon_colour: "white",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Store",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-android-cart",
+              marker_colour: "#416979",
+              icon_colour: "#ffffff",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Camp",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-android-home",
+              marker_colour: "#a43233",
+              icon_colour: "#ffffff",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Wildlife",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-ios-paw",
+              marker_colour: "#a43233",
+              icon_colour: "#ffffff",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Point of Interest",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-eye",
+              marker_colour: "#da3d20",
+              icon_colour: "#e5e5e5",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Waymark",
+              marker_shape: "marker",
+              marker_size: "large",
+              icon_type: "html",
+              marker_icon:
+                "&lt;img style=&quot;width:24px;height:24px;margin-top:5px&quot; src=&quot;../../assets/img/waymark-icon-primary.png&quot; \/&gt;",
+              marker_colour: "#ffffff",
+              icon_colour: "#81d742",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Test",
+              marker_shape: "rectangle",
+              marker_size: "large",
+              icon_type: "text",
+              marker_icon: "Test Text Marker",
+              marker_colour: "#dd3333",
+              icon_colour: "#ffffff",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+          ],
+          line_types: [
+            {
+              line_title: "Green",
+              line_colour: "#30d100",
+              line_weight: "3",
+              line_opacity: "0.7",
+              line_display: "1",
+              line_submission: "1",
+            },
+            {
+              line_title: "Red",
+              line_colour: "#dd3333",
+              line_weight: "3",
+              line_opacity: "0.7",
+              line_display: "1",
+              line_submission: "1",
+            },
+            {
+              line_title: "Bike Path",
+              line_colour: "#1e73be",
+              line_weight: "3",
+              line_opacity: "0.7",
+              line_display: "1",
+              line_submission: "1",
+            },
+            {
+              line_title: "Foot Path",
+              line_colour: "#dd9933",
+              line_weight: "3",
+              line_opacity: "0.7",
+              line_display: "1",
+              line_submission: "1",
+            },
+            {
+              line_title: "Alternate",
+              line_colour: "#dd9933",
+              line_weight: "3",
+              line_opacity: "0.7",
+              line_display: "1",
+              line_submission: "1",
+            },
+          ],
+          shape_types: [
+            {
+              shape_title: "Red",
+              shape_colour: "#d84848",
+              fill_opacity: "0.5",
+              shape_display: "1",
+              shape_submission: "1",
+            },
+            {
+              shape_title: "Green",
+              shape_colour: "#3cbc47",
+              fill_opacity: "0.15",
+              shape_display: "1",
+              shape_submission: "1",
+            },
+            {
+              shape_title: "Blue",
+              shape_colour: "#487bd9",
+              fill_opacity: "0.5",
+              shape_display: "1",
+              shape_submission: "1",
+            },
+            {
+              shape_title: "Purple",
+              shape_colour: "#8224e3",
+              fill_opacity: "1",
+              shape_display: "1",
+              shape_submission: "1",
+            },
+          ],
+          show_scale: "1",
+          debug_mode: false,
+        },
+        viewer_options: {
+          show_gallery: "1",
+          show_filter: "1",
+          show_cluster: "1",
+          show_elevation: false,
+          cluster_radius: "80",
+          cluster_threshold: "14",
+          elevation_units: "metric",
+          elevation_initial: "1",
+          elevation_colour: "#2c7137",
+          sleep_delay_seconds: "3",
+          sleep_do_message: "0",
+          sleep_wake_message: "Click or Hover to Wake",
+        },
+        editor_options: { confirm_delete: "0" },
+        language: {
+          action_fullscreen_activate: "View Fullscreen",
+          action_fullscreen_deactivate: "Exit Fullscreen",
+          action_locate_activate: "Show me where I am",
+          action_zoom_in: "Zoom in",
+          action_zoom_out: "Zoom out",
+          label_total_length: "Total Length: ",
+          label_max_elevation: "Max. Elevation: ",
+          label_min_elevation: "Min. Elevation: ",
+          label_ascent: "Total Ascent: ",
+          label_descent: "Total Descent: ",
+          add_line_title: "Draw a Line",
+          add_photo_title: "Upload an Image",
+          add_marker_title: "Place a Marker",
+          add_rectangle_title: "Draw a Rectangle",
+          add_polygon_title: "Draw a Polygon",
+          add_circle_title: "Draw a Circle",
+          upload_file_title:
+            "Read Lines and Markers from file (GPX\/KML\/GeoJSON supported, which most apps should Export to)",
+          action_duplicate: "Duplicate",
+          action_delete: "Delete",
+          action_edit: "Edit",
+          action_edit_done: "Finish editing",
+          action_upload_image: "Upload Image",
+          object_title_placeholder: "Title",
+          object_image_placeholder: "Image URL",
+          object_description_placeholder: "Description",
+          object_type_label: "Type",
+          marker_latlng_label: "Lat,Lng",
+          action_delete_confirm: "Are you sure you want to delete this",
+          action_search_placeholder: "Search...",
+          object_label_marker: "Marker",
+          object_label_line: "Line",
+          object_label_shape: "Shape",
+          object_label_marker_plural: "Markers",
+          object_label_line_plural: "Lines",
+          object_label_shape_plural: "Shapes",
+          error_message_prefix: "Waymark Error",
+          info_message_prefix: "Waymark Info",
+          error_file_type: "This file type is not supported.",
+          error_file_conversion: "Could not convert this file to GeoJSON.",
+          error_file_upload: "File upload error.",
+          error_photo_meta: "Could not retrieve Image metadata.",
+          info_exif_yes: "Image location metadata (EXIF) detected!",
+          info_exif_no: "Image location metadata (EXIF) NOT detected.",
+          no_direction: "No Direction",
+          show_direction: "Show Direction",
+          reverse_direction: "Reverse Direction",
+        },
+      };
     </script>
   </body>
 </html>
