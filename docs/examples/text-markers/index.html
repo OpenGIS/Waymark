@@ -18,13 +18,13 @@
     <style>
       /* All Rectangle Markers */
 .waymark-marker-rectangle {
-                                width: max-content !important;
+                                                                width: max-content !important;
 }
 .waymark-marker-rectangle .waymark-marker-background {
-                                width: 100% !important;
+                                                                width: 100% !important;
 }
 .waymark-marker-rectangle .waymark-marker-icon {
-                                padding: 0 5px !important;
+                                                                padding: 0 5px !important;
 }
     </style>
   </head>
@@ -2379,16 +2379,16 @@
     <script type="module">
       import { codeToHtml } from "https://esm.sh/shiki@3.0.0";
 
-    for (const code of document.querySelectorAll("pre > code[data-lang]")) {
-        const lang = code.dataset.lang;
-        const pre = code.closest("pre");
-        try {
-            const html = await codeToHtml(code.innerText, { lang, theme: "ayu-dark" });
-            pre.outerHTML = html;
-        } catch (e) {
-            console.warn("Shiki failed for lang:", lang, e);
+        for (const code of document.querySelectorAll("pre > code[data-lang]")) {
+                const lang = code.dataset.lang;
+                const pre = code.closest("pre");
+                try {
+                        const html = await codeToHtml(code.innerText, { lang, theme: "ayu-dark" });
+                        pre.outerHTML = html;
+                } catch (e) {
+                        console.warn("Shiki failed for lang:", lang, e);
+                }
         }
-    }
     </script>
   </body>
 </html>

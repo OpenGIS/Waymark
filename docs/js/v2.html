@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@ogis/waymark-js/dist/waymark-js.css"
+    />
+    <script
+      defer
+      src="https://unpkg.com/@ogis/waymark-js/dist/waymark-js.umd.cjs"
+    ></script>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="waymark-instance" style="height: 100%"></div>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const instance = new WaymarkJS.Instance({
+          map_options: {
+            div_id: "waymark-instance",
+            marker_types: [
+              {
+                marker_title: "Pub",
+                marker_shape: "marker",
+                marker_size: "large",
+                icon_type: "icon",
+                marker_icon: "ion-beer",
+                marker_colour: "#fbfbfb",
+                icon_colour: "#754423",
+              },
+            ],
+          },
+        });
+
+        instance.loadGeoJSON({
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              properties: {
+                type: "pub",
+                title: "The Scarlet Ibis",
+                description:
+                  "Great pub, great food! Especially after a Long Ride 🚴🍔🍟🍺🍺💤",
+                image_large_url: "https://www.waymark.dev/assets/geo/pub.jpeg",
+              },
+              geometry: {
+                type: "Point",
+                coordinates: [-128.0094, 50.6539],
+              },
+            },
+          ],
+        });
+      });
+    </script>
+  </body>
+</html>
