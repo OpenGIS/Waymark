@@ -230,16 +230,16 @@
       //Our callback function
 function waymark_loaded_callback(Waymark) {
 	//Get the container
-                                let container = jQuery('.leaflet-bottom.leaflet-right', Waymark.jq_map_container);
+                                                                let container = jQuery('.leaflet-bottom.leaflet-right', Waymark.jq_map_container);
 	
 	//Create a button
-                                let button = jQuery('<div />')
-                                	.addClass('waymark-refresh leaflet-bar leaflet-control')
-                                	.html('<a title="Reset Map"><span class="ion ion-android-refresh" style="cursor:pointer;margin-top:5px;font-size:20px"></span></a>')
-                                	.on('click', function() {
-                                		//Reset view when clicked
+                                                                let button = jQuery('<div />')
+                                                                	.addClass('waymark-refresh leaflet-bar leaflet-control')
+                                                                	.html('<a title="Reset Map"><span class="ion ion-android-refresh" style="cursor:pointer;margin-top:5px;font-size:20px"></span></a>')
+                                                                	.on('click', function() {
+                                                                		//Reset view when clicked
 	  	Waymark.reset_map_view();
-                                	})
+                                                                	})
 	;
 	
 	//Add to page
@@ -255,16 +255,16 @@ var waymark_user_config = {"map_options":{"map_height":"640","tile_layers":[{lay
     <script type="module">
       import { codeToHtml } from "https://esm.sh/shiki@3.0.0";
 
-    for (const code of document.querySelectorAll("pre > code[data-lang]")) {
-        const lang = code.dataset.lang;
-        const pre = code.closest("pre");
-        try {
-            const html = await codeToHtml(code.innerText, { lang, theme: "ayu-dark" });
-            pre.outerHTML = html;
-        } catch (e) {
-            console.warn("Shiki failed for lang:", lang, e);
+        for (const code of document.querySelectorAll("pre > code[data-lang]")) {
+                const lang = code.dataset.lang;
+                const pre = code.closest("pre");
+                try {
+                        const html = await codeToHtml(code.innerText, { lang, theme: "ayu-dark" });
+                        pre.outerHTML = html;
+                } catch (e) {
+                        console.warn("Shiki failed for lang:", lang, e);
+                }
         }
-    }
     </script>
   </body>
 </html>
