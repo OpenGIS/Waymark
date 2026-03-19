@@ -19,17 +19,8 @@ jQuery(function ($) {
     '    <img src="' +
       assetRoot +
       'img/waymark-icon-primary.png" alt="Waymark" />',
-    "    <span>Waymark</span>",
+    '    <span>Waymark for WordPress</span>',
     "  </a>",
-    '  <nav id="docs-header__nav">',
-    '    <a href="https://wordpress.org/plugins/waymark/" target="_blank" title="WordPress Plugin Directory">',
-    "      WordPress",
-    "    </a>",
-    '    <a href="https://github.com/OpenGIS/Waymark" target="_blank" title="GitHub Repository">',
-    "      GitHub",
-    "    </a>",
-
-    "  </nav>",
     "</header>",
   ].join("\n");
 
