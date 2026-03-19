@@ -193,10 +193,10 @@ article ul {
   list-style: none;
   padding-left: 0;
 }
-article ul li::before {
+/*article ul li::before {
   content: "→ ";
   color: var(--color-link);
-}
+}*/
 
 /* ── Video grid ── */
 
@@ -220,9 +220,6 @@ article ul li::before {
 
 .waymark-shortcode {
   margin: 1.5em 0;
-}
-.waymark-info ul li::before {
-  content: none !important;
 }
 
 /* ── Site header ── */
