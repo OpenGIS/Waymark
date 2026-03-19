@@ -1,148 +1,81 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-GB">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>The Editor &#8211; Waymark</title>
-		<link rel="stylesheet" href="../../assets/css/classic-theme-styles.css" />
-		<link rel="stylesheet" href="../../assets/css/global-styles.css" />
-		<link
-			rel="stylesheet"
-			id="wpo_min-header-0-css"
-			href="../../assets/css/wpo-minify-header-251a5241.min.css"
-			type="text/css"
-			media="all"
-		/>
-		<link rel="stylesheet" href="../../assets/css/custom.css" />
-		<script
-			type="text/javascript"
-			src="../../assets/js/jquery.min.js"
-			id="jquery-core-js"
-		></script>
-		<script
-			type="text/javascript"
-			src="../../assets/js/jquery-migrate.min.js"
-			id="jquery-migrate-js"
-		></script>
-		<link
-			rel="stylesheet"
-			href="../../assets/waymark-js/css/waymark-js.min.css"
-		/>
-		<script src="../../assets/waymark-js/js/waymark-js.min.js"></script>
-	</head>
-
-	<body
-		class="wp-singular lsvr_kba-template-default single single-lsvr_kba postid-2596 single-format-video wp-custom-logo wp-theme-lore wp-child-theme-lore-child lsvr-accessibility"
-	>
-		<h1 class="main__header-title">The Editor</h1>
-
-		<div class="post__content">
-			<figure
-				class="wp-block-embed is-type-video is-provider-vimeo wp-block-embed-vimeo wp-embed-aspect-16-9 wp-has-aspect-ratio"
-			>
-				<div class="wp-block-embed__wrapper">
-					<iframe
-						title="Waymark - Using the Editor"
-						src="https://player.vimeo.com/video/349784514?dnt=1&amp;app_id=122963"
-						width="500"
-						height="281"
-						frameborder="0"
-						allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-					></iframe>
-				</div>
-			</figure>
-
-			<p class="lead">
-				Using the Editor you can create interactive Maps by adding Overlays
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>
+      The Editor – Waymark
+    </title>
+    <link href="../../assets/css/docs.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <h1>
+      The Editor
+    </h1>
+    <article>
+      <figure>
+        <iframe allow="autoplay; fullscreen; picture-in-picture; clipboard-write" height="281" src="https://player.vimeo.com/video/349784514?dnt=1&amp;app_id=122963" title="Waymark - Using the Editor" width="500">
+        </iframe>
+      </figure>
+      <p class="lead">
+        Using the Editor you can create interactive Maps by adding Overlays
 				(Markers, Lines and Shapes).
-			</p>
-
-			<p>
-				The Editor is displayed when creating or Editing a Map (<em
-					>Waymark &gt; Maps</em
-				>). You can import from GPX, KML and GeoJSON formats and photo location
+      </p>
+      <p>
+        The Editor is displayed when creating or Editing a Map (
+        <em>
+          Waymark &gt; Maps
+        </em>
+        ). You can import from GPX, KML and GeoJSON formats and photo location
 				information is automatically detected.
-			</p>
-
-			<p>
-				Once Maps have been created, you can add them to your content using the
-				Waymark <a href="../shortcodes/index.html">Shortcode</a>.
-			</p>
-
-			<hr class="wp-block-separator" />
-
-			<h2 class="wp-block-heading">Try the Editor</h2>
-
-			<!-- START Waymark Submission -->
-			<div id="waymark-submission">
-				<div id="waymark-map" class="waymark-submission waymark-map"></div>
-				<form
-					action="../../index%EF%B9%96waymark_http=1.html"
-					method="post"
-					id="waymark-map-add"
-					class="waymark-map-add"
-				>
-					<input type="hidden" name="waymark_action" value="public_add_map" />
-					<input type="hidden" name="waymark_security" value="f562c14f9a" />
-					<input
-						type="hidden"
-						name="waymark_redirect"
-						value="https://www.waymark.dev/docs/editor/"
-					/>
-					<!-- START Parameter Container -->
-					<div
-						id="waymark-parameters-waymark_map"
-						class="waymark-parameters-container waymark-accordion-container"
-					>
-						<!-- START map_data Input -->
-						<div
-							class="waymark-control-group waymark-control-type-textarea waymark-hidden map_data-container"
-						>
-							<label class="waymark-control-label" for="map_data"
-								>Map Data</label
-							>
-							<div class="waymark-controls">
-								<textarea
-									class="waymark-input waymark-input-map_data"
-									name="map_data"
-									data-id="map_data"
-								></textarea>
-								<a
-									data-title="You are seeing the Map Data (in GeoJSON format) because you have the Waymark Debug Mode enabled. The amount of text shown here can get VERY large, so your browser might struggle to scroll through it. You can disable Debug Mode in Settings &gt; Misc. &gt; Advanced."
-									href="#"
-									onclick="return false;"
-									class="waymark-tooltip"
-									>?</a
-								>
-							</div>
-						</div>
-						<!-- END map_data Input -->
-					</div>
-					<!-- END Parameter Container -->
-					<input
-						type="hidden"
-						id="Waymark_Nonce"
-						name="Waymark_Nonce"
-						value="f62672c691"
-					/>
-					<input
-						type="submit"
-						value="Submit"
-						class="button button-primary button-large"
-					/>
-				</form>
-			</div>
-			<!-- END Waymark Submission -->
-
-			<p class="lsvr-alert-message">
-				If submitted, you will be provided with a link to your Map. All
-				submissions are automatically <strong>deleted after 24 hours</strong>.
-			</p>
-		</div>
-
-		<!-- START Waymark Footer JS -->
-		<script type="text/javascript">
-			//HTTP
+      </p>
+      <p>
+        Once Maps have been created, you can add them to your content using the
+				Waymark
+        <a href="../shortcodes/index.html">
+          Shortcode
+        </a>
+        .
+      </p>
+      <hr/>
+      <h2>
+        Try the Editor
+      </h2>
+      <div id="waymark-submission">
+        <div class="waymark-submission waymark-map" id="waymark-map">
+        </div>
+        <form action="../../index%EF%B9%96waymark_http=1.html" class="waymark-map-add" id="waymark-map-add" method="post">
+          <input name="waymark_action" type="hidden" value="public_add_map"/>
+          <input name="waymark_security" type="hidden" value="f562c14f9a"/>
+          <input name="waymark_redirect" type="hidden" value="https://www.waymark.dev/docs/editor/"/>
+          <div class="waymark-parameters-container waymark-accordion-container" id="waymark-parameters-waymark_map">
+            <div class="waymark-control-group waymark-control-type-textarea waymark-hidden">
+              <label class="waymark-control-label" for="map_data">
+                Map Data
+              </label>
+              <div class="waymark-controls">
+                <textarea class="waymark-input waymark-input-map_data" name="map_data"></textarea>
+                <a class="waymark-tooltip" href="#" onclick="return false;">
+                  ?
+                </a>
+              </div>
+            </div>
+          </div>
+          <input name="Waymark_Nonce" type="hidden" value="f62672c691"/>
+          <input type="submit" value="Submit"/>
+        </form>
+      </div>
+      <p>
+        If submitted, you will be provided with a link to your Map. All
+				submissions are automatically
+        <strong>
+          deleted after 24 hours
+        </strong>
+        .
+      </p>
+    </article>
+    <script>
+      //HTTP
 			var waymark_http_endpoint = "../../index%EF%B9%96waymark_http=1.html";
 
 			var waymark_user_config = {
@@ -831,8 +764,6 @@
 					]);
 				}
 			});
-		</script>
-		<!-- END Waymark Footer JS -->
-	</body>
+    </script>
+  </body>
 </html>
-<!-- Cached by WP-Optimize (gzip) - https://getwpo.com - Last modified: 17th March 2026 11:38 pm (Europe/London UTC:0) -->

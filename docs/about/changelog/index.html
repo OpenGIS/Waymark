@@ -1,498 +1,1850 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Changelog &#8211; Waymark</title>
-<link rel="stylesheet" href="../../assets/css/classic-theme-styles.css">
-<link rel="stylesheet" href="../../assets/css/global-styles.css">
-<link rel='stylesheet' id='wpo_min-header-0-css' href='../../assets/css/wpo-minify-header-251a5241.min.css' type='text/css' media='all' />
-<link rel="stylesheet" href="../../assets/css/custom.css">
-<script type="text/javascript" src="../../assets/js/jquery.min.js" id="jquery-core-js"></script>
-<script type="text/javascript" src="../../assets/js/jquery-migrate.min.js" id="jquery-migrate-js"></script>
-<link rel="stylesheet" href="../../assets/waymark-js/css/waymark-js.min.css">
-<script src="../../assets/waymark-js/js/waymark-js.min.js"></script>
-</head>
-
-<body class="wp-singular lsvr_kba-template-default single single-lsvr_kba postid-3048 single-format-standard wp-custom-logo wp-theme-lore wp-child-theme-lore-child lsvr-accessibility">
-<h1 class="main__header-title">
-													Changelog												</h1>
-
-<div class="post__content">
-
-									<!-- Plugin README Parser v1.3.15 -->
-<div class="np-notepad"><div class="np-changelog">
-<h2>Changelog</h2>
-<h3>1.5.9</h3>
-<ul>
-<li>Minor improvements and bug fixes.</li>
-</ul>
-<h3>1.5.8</h3>
-<ul>
-<li>Minor improvements.</li>
-</ul>
-<h3>1.5.7</h3>
-<ul>
-<li>Minor improvements and bug fixes.</li>
-</ul>
-<h3>1.5.6</h3>
-<ul>
-<li>Improve Leaflet Elevation compatibility with other instances of Leaflet</li>
-</ul>
-<h3>1.5.5</h3>
-<ul>
-<li>Bug fix</li>
-</ul>
-<h3>1.5.4</h3>
-<ul>
-<li>Removed Shortcode callback feature</li>
-</ul>
-<h3>1.5.3</h3>
-<ul>
-<li>Removed Shortcode Files feature. <a href="https://wordpress.org/support/topic/showing-maps-via-file_url-no-longer-works/">Details</a>.</li>
-</ul>
-<h3>1.5.2</h3>
-<ul>
-<li>Fixed a bug where Map data was being lost when editing a Map. Thanks to <a href="https://wordpress.org/support/users/hogg66/">hogg66</a> for <a href="https://wordpress.org/support/topic/map-reverts-to-empty-default-when-i-add-a-new-marker/">reporting this</a>.</li>
-</ul>
-<h3>1.5.1</h3>
-<ul>
-<li>Improved escaping of Shortcode attributes.</li>
-</ul>
-<h3>1.5.0</h3>
-<ul>
-<li><strong>Security update</strong> This is a big update which includes a number of security fixes, many highlighted by the <a href="https://wordpress.org/plugins/plugin-check/">Plugin Check</a> plugin.</li>
-<li>Fixed a vulnerability where Shortcode attributes were not being escaped. Thanks to Muhammad Yudha for reporting this via Patchstack.</li>
-<li>Added <code class="notranslate">waymark_pre_update_post_meta</code> filter. This filter is called before the <code class="notranslate">update_post_meta</code> function is called, allowing you to modify the meta data before it is saved. It receives two parameters - <code class="notranslate">$param_value</code> and <code class="notranslate">$param_definition</code>. Thanks to <a href="https://github.com/DrogoNevets">DrogoNevets</a> for the <a href="https://github.com/OpenGIS/Waymark/issues/58">PR</a>.</li>
-<li>Submission button bug fix. Thanks to <a href="https://github.com/DrogoNevets">DrogoNevets</a> for this.</li>
-</ul>
-<h3>1.4.3</h3>
-<ul>
-<li>Add missing MultiPolygon support. Raised <a href="https://wordpress.org/support/topic/large-kml-display-issue/">here</a> and <a href="https://github.com/OpenGIS/Waymark/issues/55">here</a>.</li>
-<li><a href="https://github.com/OpenGIS/Waymark/issues/47">Taxonomy label fix</a>.</li>
-<li><a href="https://github.com/OpenGIS/Waymark/issues/48">Added Name to GPX metadata on Export</a>.</li>
-</ul>
-<h3>1.4.2</h3>
-<p>Fixed a vulnerability where content output to the browser was not being escaped. Thanks to vgo0 for reporting this via Wordfence.</p>
-<h3>1.4.1</h3>
-<ul>
-<li>Sleep message fix, thanks to <a href="https://wordpress.org/support/users/jiem31/">jiem31</a> for <a href="https://wordpress.org/support/topic/a-few-ways-for-improvement/">reporting this</a>.</li>
-</ul>
-<h3>1.4.0</h3>
-<ul>
-<li>Added the ability to show/hide all Types initially when using the Shortcode by specifying "*" as the Type key. For example, to initially hide all Marker Types, except "photo" and "alert", use <code class="notranslate">[Waymark map_id="1234" hide_marker="*" show_marker="photo,alert"]</code>. Thanks to <a href="https://www.af-ccc.fr">Association Franc-Comtoise du Chemin de Compostelle</a> for requesting this.</li>
-<li>Improved debugging output.</li>
-</ul>
-<h3>1.3.2</h3>
-<p>Collection background loading bug fix. Thanks to <a href="https://wordpress.org/support/users/zerider/">zerider</a> for <a href="https://wordpress.org/support/topic/collection-map/">reporting this</a>.</p>
-<h3>1.3.0</h3>
-<ul>
-<li><strong>Overlay Properties</strong> - Read GeoJSON feature properties when importing (Settings > Overlays > Properties). If Waymark finds data for the specified property keys they will stored upon import. These can be automatically appended to the Overlay Description, or accessed programatically via the <code class="notranslate">layer.feature.properties</code> Object. Thanks to <a href="https://github.com/dariospace">dariospace</a> for the <a href="https://github.com/OpenGIS/Waymark/issues/45">requesting</a> the return of this feature.</li>
-</ul>
-<h3>1.2.0</h3>
-<p>Enable or disable various WordPress features of the Map Custom Post Type, including the new ability to enable comments and excerpt integration. This Setting is Available in Settings > Advanced > Post Type. Thanks to <a href="https://github.com/YosoraLife">YosoraLife</a> for requesting this (<a href="https://github.com/OpenGIS/Waymark/pull/42">here</a> and <a href="https://github.com/OpenGIS/Waymark/issues/44">here</a>).</p>
-<h3>1.1.8</h3>
-<p>Show/Hide Overlay Types bug fix. Thanks to <a href="https://github.com/YosoraLife">YosoraLife</a> for raising this <a href="https://github.com/OpenGIS/Waymark/issues/41">issue</a>.</p>
-<h3>1.1.7</h3>
-<p>Another Collection Map link fix.</p>
-<h3>1.1.6</h3>
-<p>Removed Link to/from Maps Setting in <a href="../settings/index.html#misc-collection_options">Collection options</a>. Links to/from Collections and Maps will now be displayed by default, but can be hidden using CSS if desired. Thanks to <a href="https://wordpress.org/support/users/wkndwlk/">wkndwlk</a> for <a href="https://wordpress.org/support/topic/links-within-waymarks-on-collection-maps/">reporting this</a>.</p>
-<h3>1.1.5</h3>
-<ul>
-<li>Chinese character fix. Thanks to <a href="https://wordpress.org/support/users/hlv008/">hlv008</a> for <a href="https://wordpress.org/support/topic/the-icon-cannot-be-replaced-or-changed/">reporting this</a>.</li>
-</ul>
-<h3>1.1.4</h3>
-<ul>
-<li>Map height bug fix.</li>
-</ul>
-<h3>1.1.3</h3>
-<ul>
-<li>Submission File Upload bug fix.</li>
-</ul>
-<h3>1.1.2</h3>
-<ul>
-<li>Adding missing localisations.</li>
-</ul>
-<h3>1.1.1</h3>
-<ul>
-<li>Elevation display bug fix. Thanks to <a href="https://wordpress.org/support/users/hsmeets/">hsmeets</a> for <a href="https://wordpress.org/support/topic/height-map-no-longer-shown/">reporting this</a>.</li>
-</ul>
-<h3>1.1.0</h3>
-<ul>
-<li><strong><a href="../../js/index.html">Waymark JS</a></strong> - The plugin has been significantly refactored, with the JavaScript codebase being split into a separate <a href="https://github.com/OpenGIS/Waymark-JS/">project</a>. This makes the Waymark Editor and Viewer available as a standalone library, which can be used in <strong>any web page</strong> and does not require WordPress.</li>
-<li>Removed the Show/Hide "Type Labels" Setting. Type labels are always shown by default, but can be hidden using CSS.</li>
-<li>Removed Settings for importing custom GeoJSON properties.</li>
-<li>Lots of other improvements and bug fixes.</li>
-</ul>
-<h3>1.0.4</h3>
-<ul>
-<li>Removed "Store Read Files" Setting, which was disabled by default and did not work reliably.</li>
-<li>Waymark JS refactoring, preparing for spin-off.</li>
-<li>Other fixes and improvements.</li>
-</ul>
-<h3>1.0.3</h3>
-<ul>
-<li><strong>Global Callback</strong> - If the function <code class="notranslate">waymark_loaded_callback</code> is defined globally, it will be called when Waymark has loaded. This allows you to extend Waymark functionality similar to the <a href="../shortcodes/index.html#callback-function">Shortcode Callback</a>, however it will apply to <em>all</em> Waymark Maps.</li>
-<li>Fix for Export/Overlay Filter <a href="https://github.com/OpenGIS/Waymark/issues/32">bug</a>.</li>
-<li>Other fixes and improvements.</li>
-</ul>
-<h3>1.0.2</h3>
-<p>Fix for colours not appearing correctly in the Overlay Filter. Thanks to <a href="https://wordpress.org/support/users/geomfranzo/">geomfranzo</a> for <a href="https://wordpress.org/support/topic/sort-line-markers-by-name-bug-line-color/">raising this</a>.</p>
-<h3>1.0.1</h3>
-<p>Fixed a bug with Map Exporting. Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for <a href="https://wordpress.org/support/topic/error-when-downloading-gpx-or-kml/">reporting this</a>.</p>
-<h3>1.0.0</h3>
-<p>Thanks for helping Waymark get to Version 1! ❤️</p>
-<ul>
-<li><a href="https://github.com/opengis/map-first">Map First</a> - A minimal WordPress theme with an <em>obsession</em> for Maps. It's open-source too and contains lots of comments about customisations.</li>
-<li>Added Total Ascent and Descent to Elevation Profile. Thanks to <a href="https://github.com/MaximeChallon">MaximeChallon</a> for the <a href="https://github.com/OpenGIS/Waymark/pull/29">Pull Request</a> 🙂</li>
-<li>Improved rendering of multiple Maps through the Collection Shortcode, where the initial view would sometimes not be set correctly to view all Map data.</li>
-<li>Updated documentation.</li>
-<li>Lots of other bug fixes and improvements.</li>
-</ul>
-<h3>0.9.30</h3>
-<ul>
-<li><strong><a href="../text-markers/index.html">Marker Clustering</a></strong>
-<ul>
-<li>Once enabled, Markers will be stacked when they are close together. This can help to reduce clutter on the Map.</li>
-<li>You can enable this feature in Settings > Maps > Clustering, or using the <code class="notranslate">show_cluster="1"</code> Shortcode option.</li>
-<li>There are also settings to adjust the cluster radius and what what zoom level to start clustering at.</li>
-</ul></li>
-<li>Added <code class="notranslate">file_start_type</code> and <code class="notranslate">file_end_type</code> options to the <a href="../shortcodes/index.html#shortcode-files">Shortcode Files</a> feature, which allow you to automatically add a Marker of the specified type to the start and/or end of all Lines in the file. Thanks to <a href="https://wordpress.org/support/users/digbymaass/">digbymaass</a> for the <a href="https://wordpress.org/support/topic/shortcode-option-for-start-marker/">suggestion</a>.</li>
-<li>Stop Elevation plugin from adjusting map bounds. Thanks to <a href="https://wordpress.org/support/users/ellocosolo/">ellocosolo</a> for the <a href="https://wordpress.org/support/topic/map_centre-and-map_zoom-shortcodes-cannot-be-used-at-the-same-time/">report</a>.</li>
-<li>Improved KML error handling when loading from URL.</li>
-<li>Improved rendering of multiple Maps through the Collection Shortcode.</li>
-<li>Minor bug fixes</li>
-</ul>
-<h3>0.9.29.5</h3>
-<ul>
-<li>Fixed a bug where Submissions were not being saved.</li>
-</ul>
-<h3>0.9.29.4</h3>
-<ul>
-<li>Minor bug fix.</li>
-</ul>
-<h3>0.9.29.3</h3>
-<ul>
-<li>Added a Collections > "Shortcode Method" Setting. This allows you to choose whether Map data is loaded in the Background (via AJAX), or Embedded in the page when embedding a Collection via the Shortcode. Embedding may be a bad idea for LARGE COLLECTIONS, but <em>may</em> resolve some (JavaScript) issues where Collections are not displaying correctly.</li>
-</ul>
-<h3>0.9.29.2</h3>
-<ul>
-<li>Fixed a bug where the Shortcode Zoom and Centre parameters were being ignored. Thanks to <a href="https://github.com/killianweid">killianweid</a> for creating <a href="https://github.com/opengis/waymark/issues/25">this issue</a>.</li>
-</ul>
-<h3>0.9.29.1</h3>
-<ul>
-<li>Fixed a bug where the default line_opacity was being set to 0. Thanks to <a href="https://wordpress.org/support/users/digbymaass%20/">digbymaass</a> for <a href="https://wordpress.org/support/topic/update-sets-track-opacity-setting-to-0/">letting me know</a>.</li>
-</ul>
-<h3>0.9.29</h3>
-<ul>
-<li>Added <code class="notranslate">map_width</code> Shortcode option, which has been requested a couple of times. Thanks for bugging me! :0)</li>
-<li>Added Opacity Setting for Line Types (Lines > Opacity), thanks to <a href="https://wordpress.org/support/users/digbymaass/">digbymaass</a> for the <a href="https://wordpress.org/support/topic/feature-request-opacity-setting-for-lines/">suggestion</a>.</li>
-</ul>
-<h3>0.9.28.7</h3>
-<ul>
-<li>Meta data is now preserved when the Map is trashed/restored. Thanks to <a href="https://wordpress.org/support/users/killiandev7/">killiandev7</a> for <a href="https://wordpress.org/support/topic/feature-request-recover-map-data-after-recovering-a-deleted-map/">bringing this to my attention</a>.</li>
-<li>Fixed a bug where special characters in Description were being messed up. Thanks to <a href="https://github.com/killianweid">killianweid</a> for creating this <a href="https://github.com/opengis/waymark/issues/24">issue</a>.</li>
-<li>Fixed a bug with some KML files when loading from URL using Shortcode. Thanks to <a href="https://wordpress.org/support/users/henkna/">henkna</a> for <a href="https://wordpress.org/support/topic/kml-fails-to-load/">letting me know about this</a>.</li>
-<li>Added Leaflet Basemap examples URL to Settings > Basemaps.</li>
-<li>Minor bug fixes and improvements.</li>
-</ul>
-<h3>0.9.28.6</h3>
-<p>Added <code class="notranslate">max_zoom</code> Shortcode option, which will prevent the Map from being zoomed in further that this zoom level (usually ~1-20 range). Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for the <a href="https://wordpress.org/support/topic/shortcode-ma_zoom-request/">suggestion</a>.</p>
-<h3>0.9.28.5</h3>
-<p>Added <code class="notranslate">elevation_units</code> (metric/imperial) Shortcode option, which will override the Waymark > Elevation > Elevation Units option. Thanks to <a href="https://github.com/randombuffalo">randombuffalo</a> for the <a href="https://github.com/opengis/waymark/issues/22">suggestion</a>.</p>
-<h3>0.9.28.4</h3>
-<ul>
-<li>Fixed a Map duplication bug. Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for <a href="https://wordpress.org/support/topic/duplicating-a-map-ends-in-anempty-page/">reporting this</a>.</li>
-</ul>
-<h3>0.9.28.3</h3>
-<ul>
-<li>More fixes!</li>
-</ul>
-<h3>0.9.28.2</h3>
-<ul>
-<li><p>Fixed a bug where Maps initally hidden on page load are broken. Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for <a href="https://wordpress.org/support/topic/map-does-not-center-and-not-zoom-to-content-when-first-hidden/">reporting this</a>.</p></li>
-<li><p>Fix for a weird glitch where <em>sometimes</em> the Map will not "wake" if the mouse is hovering over that Map during initial page load. Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for <a href="https://wordpress.org/support/topic/hovering-over-map-to-zoom/">reporting this</a>.</p></li>
-</ul>
-<h3>0.9.28.1</h3>
-<ul>
-<li>Fixed a bug where Line direction arrows were being shown for hidden Lines. Thanks to <a href="https://wordpress.org/support/users/microteq/">microteq</a> for <a href="https://wordpress.org/support/topic/hiding-track-with-direction-arrows-sometimes-does-not-work/#post-16817555">reporting this</a>.</li>
-</ul>
-<h3>0.9.28</h3>
-<ul>
-<li><strong>Direction Arrows</strong>
-<ul>
-<li>Lines can now have a direction associated with them. To add a direction, click on a Line while editing a Map and select from the direction dropdown. Thanks <a href="https://wordpress.org/support/topic/feature-request-direction-of-travel/">for</a> <a href="https://wordpress.org/support/topic/direction-arrows-in-route/">the</a> <a href="https://github.com/opengis/waymark/issues/4">suggestions</a>!</li>
-</ul></li>
-<li><strong>Interaction</strong></li>
-<li>By default, Waymark disables scroll zoom until the user hovers over the Map for 2 seconds. This behaviour can now be customised in Waymark Settings > Maps > Interaction. Settings allow you to adjust the delay and optionally display a message to the user while scroll zoom is disabled, for example "Click or Hover to Wake".</li>
-<li>Fixed an annoying glitch where mouse "wheeling" over the elevation chart caused the Map to zoom.</li>
-<li>Added Max Zoom setting in Maps > Basemaps, which was <a href="https://wordpress.org/support/topic/feature-request-zoom-level-limit/">requested a long time ago</a>!</li>
-<li><strong>Permalinks</strong></li>
-<li>Customise your Map and Collection URLs in Waymark Settings > Advanced > Permalinks by specifying Map and Collection slugs (i.e. example.com/[map-slug]/example-map/ and example.com/[collection-slug]/example-collection/). Thanks to <a href="https://wordpress.org/support/users/wkndwlk/">wkndwlk</a> for the <a href="https://wordpress.org/support/topic/map-and-collection-slugs/">suggestion</a>.</li>
-<li><strong>GeoJSON Properties</strong></li>
-<li>You can now read GeoJSON feature properties when importing from file by adding them in Waymark Settings > Overlays > Properties. If Waymark finds data for these properties it will be added to the Overlay description when it is imported. Thanks to <a href="https://wordpress.org/support/users/waimek/">waimek</a> for the <a href="https://wordpress.org/support/topic/using-data-from-geojson/">suggestion</a>.</li>
-<li><strong>Collection Export</strong></li>
-<li>You can now Export entire Collections when embedding them with the Shortcode. Click Details in the Shortcode Header to see the Export feature. The Public Export (Settings > Map > Misc.) and Shortcode Header (Settings > Map > Shortcodes) Settings must be enabled. As with Maps only the currently visible Overlays are exported, with GeoJSON, KML and GPX supported. Thanks to <a href="https://wordpress.org/support/users/wimzwag/">wimzwag</a> for the <a href="https://wordpress.org/support/topic/download-all-geojson-gpx/">suggestion</a>.</li>
-<li>Fixed a bug where elevation data remained visible even when a Line was hidden. Thanks to <a href="https://wordpress.org/support/users/canuck069/">Nigel</a> for <a href="https://wordpress.org/support/topic/gpx-tracks-shadowed-with-evelation-colour/">pointing this out</a>.</li>
-</ul>
-<h3>0.9.27</h3>
-<ul>
-<li>Added Map Scale Setting, which displays a distance scale on the Map in kilometers and miles (Settings > Map > Misc.)</li>
-</ul>
-<h3>0.9.26</h3>
-<ul>
-<li>Individual Overlay Types can now be Shown/Hidden initially using the Shortcode, overriding the "Show Initially" Setting for each. Use the <code class="notranslate">hide_marker</code>, <code class="notranslate">show_marker</code>, <code class="notranslate">hide_line</code>, <code class="notranslate">show_line</code>, <code class="notranslate">hide_shape</code>, <code class="notranslate">show_shape</code> Shortcode parameters, providing one or multiple (comma separated) <a href="../types/index.html#type-keys">Type Keys</a>. For example:</li>
-</ul>
-<p><pre class="notranslate">[Waymark map_id="1234" hide_marker="photo,alert" show_line="green"]</pre></p>
-<p>Thanks to <a href="https://wordpress.org/support/users/hansolo68/">hansolo68</a> for the <a href="https://wordpress.org/support/topic/show-markers-initially-as-shortcode/">suggestion</a>.</p>
-<ul>
-<li>Admin Help page removed in favour of a link to the Waymark website Documentation.</li>
-</ul>
-<h3>0.9.25.1</h3>
-<ul>
-<li>Fixed map data container bug, which was causing Map Data not to save.</li>
-</ul>
-<h3>0.9.25</h3>
-<ul>
-<li>Settings navigation improvements.</li>
-<li>Submission localization fixes.</li>
-<li>Minor bug fixes.</li>
-</ul>
-<h3>0.9.24</h3>
-<ul>
-<li>Editor popup redesign, including Type previews.</li>
-<li>Front-end <a href="../submissions/index.html">Submissions</a> improvements.</li>
-<li>Lots of other bug fixes and improvements.</li>
-</ul>
-<h3>0.9.23</h3>
-<ul>
-<li>Bug fix</li>
-</ul>
-<h3>0.9.22</h3>
-<ul>
-<li>Ignore file extension capitalisation when reading from file. This was a bug that meant reading from file.GPX (instead of file.gpx) was rejected for no good reason.</li>
-</ul>
-<p>Credit to Werner for getting in touch and prompting these changes.</p>
-<h3>0.9.21</h3>
-<ul>
-<li>Bug fix. Uncaught TypeError: Assignment to constant variable. Thanks to <a href="https://github.com/huubl">huubl</a> for the <a href="https://github.com/opengis/waymark/pull/13">Pull Request</a>!</li>
-</ul>
-<h3>0.9.20</h3>
-<ul>
-<li>Front-end <a href="../submissions/index.html">Submissions</a> can now be added to a <a href="../collections/index.html">Collection</a> by default. A collection for User and Guest submissions can be specified in Settings > Submissions > Default Collection.</li>
-</ul>
-<h3>0.9.19</h3>
-<ul>
-<li><strong><a href="../shortcodes/index.html#shortcode-files">Shortcode Files</a></strong></li>
-<li>Files (GPX, KML &amp; GeoJSON) can now be displayed using the Shortcode, without the need for a Map to be created. For example:<br> <code class="notranslate">[Waymark file_url="http://example.com/track.gpx"]</code><br> By default, <em>all</em> Overlays (Markers/Lines/Shapes) will be displayed using the default Type (i.e. the first listed in Settings). You can specify a different Type to use like this:<code class="notranslate">[Waymark file_url="http://example.com/track.gpx" file_line_type="photo"]</code>. Thanks to <a href="https://wordpress.org/support/users/golf1025/" rel="nofollow">Jan de Boer</a> for this <a href="https://wordpress.org/support/topic/migrate-gpx-from-other-app/">suggestion</a> and <a href="https://wordpress.org/support/users/yorobo/">yorobo</a> for <a href="https://wordpress.org/support/topic/cant-upload-kml-gpl-file/">the reminder</a>.</li>
-</ul>
-<h3>0.9.18</h3>
-<ul>
-<li><strong><a href="../submissions/index.html">Submissions</a></strong>
-<ul>
-<li>Allow registered users, or guests to create Maps from the front-end of your site. You can control who can Submit Maps, what editor features are available and whether submissions should be approved before they are published. Originally suggested <a href="https://wordpress.org/support/topic/feature-request-add-marker-from-frontend/">here</a>.</li>
-</ul></li>
-<li><strong><a href="../shortcodes/index.html#shortcode-markers">Shortcode Markers</a></strong></li>
-<li>Markers can now be displayed using the Shortcode, without the need for a Map to be created. For example:<br> <code class="notranslate">[Waymark marker_centre="54.526814,-3.017289" marker_type="shelter"]</code><br> As well as the Marker location and Type; a Title, Description and an Image can also be provided. Thanks to <a href="https://wordpress.org/support/users/mistermagoo8691/" rel="nofollow">Angelo Mariani</a> for this <a href="https://wordpress.org/support/topic/show-a-marker-on-the-centre-location/">suggestion</a>.</li>
-<li>Fixed a bug where Shortcode Headers were not displaying on Collection archive pages. Thanks to <a href="https://wordpress.org/support/users/meggsico/">meggsico</a> for <a href="https://wordpress.org/support/topic/maybe-a-bug-7/#post-14815812">bringing this to my attention</a>.</li>
-<li>Improved "accidental zooms" when scrolling by increasing the <a href="https://github.com/CliffCloud/Leaflet.Sleep">Leaflet.Sleep</a> wakeTime from 1 second to 2 seconds. As <a href="https://wordpress.org/support/topic/disable-user-zooming-panning-on-a-map/#post-15208899">requested</a>.</li>
-<li>Lots of back-end fixes and improvements.</li>
-</ul>
-<h3>0.9.17.1</h3>
-<ul>
-<li>Fixed a bug where the Export feature did not work correctly when embedding multiple Maps. Thanks to <a href="https://github.com/shenki">shenki</a> on <a href="https://github.com/opengis/waymark/issues/3">GitHub</a>.</li>
-<li>Waymark now has it's own <a href="../../index.html">website</a>! URLs updated.</li>
-</ul>
-<h3>0.9.17</h3>
-<ul>
-<li><strong>Maps</strong>
-<ul>
-<li>Maps now support Featured Images; if provided this will be displayed on the Map Details page, as well as by the Shortcode. Thanks to David for the suggestion!</li>
-</ul></li>
-<li><strong>Markers</strong>
-<ul>
-<li>Marker Icons can now be custom text or HTML (in addition to Font icons from Ionic Icons and Font Awesome). Thanks for the <a href="https://wordpress.org/support/topic/feature-request-custom-markers/">suggestion</a>!</li>
-<li>Map Exports are now available on mobile devices.</li>
-<li>Updated Acknowledgements.</li>
-</ul></li>
-<li><strong>Bug fixes</strong>
-<ul>
-<li>Settings JavaScript fix.</li>
-<li>Settings repeatable dropdown bug.</li>
-<li>Settings input sanitisation.</li>
-</ul></li>
-</ul>
-<p>A <b>BIG</b> thank you to the following users for their help with testing:</p>
-<ul>
-<li><a href="https://wordpress.org/support/users/dalehopp/">dalehopp</a></li>
-<li><a href="https://wordpress.org/support/users/coloursign/">coloursign</a></li>
-<li><a href="https://wordpress.org/support/users/nhathaway/">nhathaway</a></li>
-</ul>
-<h3>0.9.16</h3>
-<ul>
-<li><strong>Markers</strong>
-<ul>
-<li>Markers can now be different shapes! Markers, Circles or Squares in three different sizes: Small, Medium and Large.</li>
-<li>Markers can now have any colour background, selected using the colour picker or by entering a hexadecimal color (i.e. #RRGGBB)</li>
-<li>Markers now support Font Awesome icons as well as Ionic Icons.</li>
-</ul></li>
-<li><strong>Types</strong>
-<ul>
-<li>Type labels displayed by popups now match the colours of their respective Marker, Line or Shape.</li>
-</ul></li>
-<li><strong>Media Library Uploads</strong>
-<ul>
-<li>By default Waymark does not save any files uploaded through the Editor. Using this option you can use the Media Library to store and import GPX/KML/GeoJSON files into your Map.</li>
-</ul></li>
-<li><strong>Bug fixes</strong>
-<ul>
-<li>Improved location accuracy when relying on device GPS. Thanks to <a href="https://wordpress.org/support/users/coloursign/">coloursign</a> and <a href="https://wordpress.org/support/users/edwinfr/">edwinfr</a> for <a href="https://wordpress.org/support/topic/more-accurate-location-possible/">bringing this to my attention.</a></li>
-<li>Waymark_Helper <code class="notranslate">asset_url()</code> fix. Thanks to <a href="https://wordpress.org/support/topic/filter-by-markers-category/">pwrdp</a> for bringing this to my attention.</li>
-<li>Updated Ion Icons v2 URLs. Thanks to <a href="https://wordpress.org/support/users/gudulemartens/">gudulemartens</a> for <a href="https://wordpress.org/support/topic/ion-icons/">letting me know about this</a>.</li>
-</ul></li>
-</ul>
-<h3>0.9.15.2</h3>
-<ul>
-<li>Localization fixes. Thanks to <a href="https://profiles.wordpress.org/tobifjellner/">tobifjellner</a> for the help via Slack.</li>
-</ul>
-<h3>0.9.15.1</h3>
-<ul>
-<li>Bug fix. Thanks to <a href="https://wordpress.org/support/topic/warning-error-by-new-update/">cameraspots1</a> for bringing this to my attention.</li>
-</ul>
-<h3>0.9.15</h3>
-<ul>
-<li><strong>Meta</strong>
-<ul>
-<li>Meta can now be organised into groups. Meta in the same group will be displayed together when editing and viewing Maps. Groups can be managed in Settings > Meta > Groups.</li>
-<li>New layout for Meta to incorporate Meta Groups on Map Details page.</li>
-</ul></li>
-<li><strong>Shortcode</strong>
-<ul>
-<li>Meta can now be displayed using the Shortcode by clicking "Details" in the Shortcode Header. Use the Settings > Meta > "In Shortcode?" option to specify which Meta is displayed. Note: this feature requires the Shortcode Header be set to "Show" in Settings > Misc. > Shortcode Options.</li>
-<li>The Export option is now available through the Shortcode, if the "Public Export" option is enabled (Settings > Misc. > Map Options).</li>
-</ul></li>
-<li><strong>Editor</strong>
-<ul>
-<li>Overlay descriptions now use a rich text editor.</li>
-<li>Added the ability to duplicate Markers/Lines/Shapes in the Editor.</li>
-<li>Editor circle bug fix.</li>
-</ul></li>
-<li>Gallery JavaScript bug fix.</li>
-<li>Waymark is now localization ready! <a href="https://translate.wordpress.org/projects/wp-plugins/waymark/">Translation contributions</a> greatly appreciated 🙂</li>
-<li>Waymark is now <a href="https://github.com/opengis/waymark">on GitHub</a>.</li>
-</ul>
-<h3>0.9.14</h3>
-<ul>
-<li><strong>Line Elevations</strong> - Display an interactive elevation graph for Lines that have elevation data. Minimum/Maximum elevation and total length statistics are also displayed. Customise in Settings > Misc. > Elevation Options. Thanks to <a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>!</li>
-<li>Cyrillic alphabet fix.</li>
-<li>GPX parsing fix.</li>
-<li>Updated user capabilities for plugin features.</li>
-<li>Other bug fixes.</li>
-</ul>
-<p>A big thank you to everyone who provided input for this release. Extra special thanks goes to <a href="https://wordpress.org/support/users/coloursign/">coloursign</a>, <a href="https://wordpress.org/support/users/meggsico/">meggsico</a>, <a href="https://wordpress.org/support/users/davinian/">davinian</a>, <a href="https://wordpress.org/support/users/snake-plissken/">snake-plissken</a>, <a href="https://wordpress.org/support/users/sunlight1976/">sunlight1976</a> and <a href="https://wordpress.org/support/users/bumbar/">bumbar</a> for their help with testing.</p>
-<h3>0.9.13</h3>
-<ul>
-<li><strong>Overlay Filter</strong> - This allows your visitors to filter which Markers, Lines and Shapes are currently visible on the Map by clicking on the layer icon. You can choose to show/hide certain Types when the Map initially loads. Enable using the global setting (Settings > Misc. > Map Options), or using the Shortcode.</li>
-<li><strong>Export</strong> - There is now an Export function when editing a Map. With "Public Export" enabled (Settings > Misc. > Map Options) site visitors can download the Overlays (Markers, Lines and Shapes) currently displayed on the Map Details page. Can be used in conjunction with the Overlay Filter to select which Overlays to download. GeoJSON, GPX and KML formats  supported.</li>
-<li><strong>Meta</strong> - Added Rich Text, Select and Multi-Select input types.</li>
-<li>Bug fixes.</li>
-</ul>
-<p>Thanks to <a href="https://wordpress.org/support/users/neilhorton740/">neilhorton740</a>, <a href="https://wordpress.org/support/users/carldavidcarlstrom/">carldavidcarlstrom</a>, and <a href="https://wordpress.org/support/users/coloursign/">coloursign</a> for  testing and feedback.</p>
-<h3>0.9.12</h3>
-<ul>
-<li><strong>Gallery</strong> - Added the option to display an image gallery for Markers that have images associated with them. Can be changed in Settings > Misc. > Map Options. Can be enabled using the show_gallery="1" Shortcode option.</li>
-<li>Created <a href="../index.html">Waymark Documentation</a>.</li>
-<li>Updated the <a href="../index.html">Demo</a>.</li>
-<li>First steps towards <a href="https://developer.wordpress.org/plugins/internationalization/localization/">Localization</a>.</li>
-<li>Added the ability to change Map author. Thanks to <a href="https://wordpress.org/support/topic/feature-request-shortcode-download-link-author-change/">andreasrns</a> for the suggestion.</li>
-<li>Maps now support Revisions.</li>
-<li>Added "Header for Admin" to Settings > Shortcode Options. Use this Setting to always show the Shortcode Header when signed in as admin, useful for quickly navigating to embedded Maps.</li>
-<li>Fixed a bug where circles were being added as Markers.</li>
-<li>Removed undocumented shortcode button in Classic Editor.</li>
-<li>Fixed Leaflet JS conflict when other instances of Leaflet exist. Thanks to <a href="https://wordpress.org/support/topic/blank-map-6/">jmruas</a> for bringing this to my attention.</li>
-<li>Fixed a bug where Types were not being saved for Markers/Lines imported from file.</li>
-<li>Other minor improvements.</li>
-</ul>
-<p>A big thanks to <a href="https://wordpress.org/support/users/neilhorton740/">neilhorton740</a> and <a href="https://wordpress.org/support/users/carldavidcarlstrom/">carldavidcarlstrom</a> for bug finding and testing.</p>
-<h3>0.9.11</h3>
-<ul>
-<li><strong>Collections</strong> - Can now be given a description and viewed as an archive (lists Maps in that Collection) on the front-end. A link is displayed on the Map Details page (Collection links support permalinks)</li>
-<li>Map URLs now support permalinks</li>
-<li>Added the ability to duplicate Maps</li>
-<li>In the Editor, Markers now display their Lat,Lng</li>
-<li>Lots of other improvements and bug fixes</li>
-</ul>
-<p>Thanks to <a href="https://wordpress.org/support/users/neilhorton740/">neilhorton740</a> and <a href="https://wordpress.org/support/users/carldavidcarlstrom/">carldavidcarlstrom</a> for suggestions and testing.</p>
-<h3>0.9.10</h3>
-<ul>
-<li><strong>Shortcodes</strong> – Added the ability to specify initial Map centre and zoom through the Shortcode: [Waymark map_centre="<lat>,<lng>" map_zoom="<0-18>"]. Shortcodes no longer require a Map ID/Collection ID. Added Using Shortcodes section to Help page.</li>
-<li><strong>Maps</strong> – Added setting for Default Centre/Zoom when a Map has no data to display.</li>
-<li><strong>Collections</strong> – Added the option to display a link to Map Details pages from Collections</li>
-<li>Improved Settings input sanitisation</li>
-<li>Lots more performance improvements and bug fixes</li>
-</ul>
-<p>Another big thanks to <a href="https://wordpress.org/support/users/neilhorton740/">neilhorton740</a> for suggestions and testing.</p>
-<h3>0.9.9</h3>
-<ul>
-<li>Release date: December 17th, 2019</li>
-</ul>
-<p>Added the ability to specify a default basemap through shortcode: [Waymark map_id="1234" basemap="Basemap Name"]. Which Basemap to use as the Map Editor default can also be specified in Settings > Misc. > Editor Options. Thanks again to <a href="https://wordpress.org/support/users/neilhorton740/">neilhorton740</a> for the suggestion and testing.</p>
-<h3>0.9.8</h3>
-<ul>
-<li>Release date: December 5th, 2019</li>
-</ul>
-<p>Added Line Weight setting for Lines and the ability to override the Shortcode Header setting through the shortcode. A HUGE thank you to <a href="https://wordpress.org/support/users/neilhorton740/">neilhorton740</a> for the <a href="https://wordpress.org/support/topic/great-design-and-well-thought-out/">suggestions and testing</a>.</p>
-<h3>0.9.7</h3>
-<ul>
-<li>Release date: November 8th, 2019</li>
-</ul>
-<p>Added support for Meta, which allows you to customise the input fields that display under the Map Editor. Any data you input will display on the Map Details page. Plus some minor improvements and bug fixes.</p>
-<h3>0.9.6</h3>
-<ul>
-<li>Release date: October 28rd, 2019</li>
-</ul>
-<p>Added support for Collections, which allow you to organise your Maps and display multiple Maps at once. Also more bug fixes.</p>
-<h3>0.9.5</h3>
-<ul>
-<li>Release date: October 23rd, 2019</li>
-</ul>
-<p>Integrated <a href="https://github.com/perliedman/leaflet-control-geocoder">leaflet-control-geocoder</a>, thanks for the <a href="https://wordpress.org/support/topic/search-for-place-in-admin-section/">suggestion</a>! Also minor fixes and tweaks.</p>
-<h3>0.9.4</h3>
-<ul>
-<li>Release date: October 11th, 2019</li>
-</ul>
-<p>Bug fixes and improvements. Thanks again to rottensod!</p>
-<h3>0.9.3</h3>
-<ul>
-<li>Release date: September 4th, 2019</li>
-</ul>
-<p>Bug fixes and minor tweaks. Thanks to rottensod for your bug finding efforts!</p>
-<h3>0.9.2</h3>
-<ul>
-<li>Release date: July 26th, 2019</li>
-</ul>
-<p>Integrated Leaflet.Sleep into Waymark for better zoom/scroll event handling. Thanks to numeeja for this suggestion!</p>
-<h3>0.9.1</h3>
-<ul>
-<li>Release date: July 25th, 2019</li>
-</ul>
-<p>Minor bug fix.</p>
-<h3>0.9</h3>
-<ul>
-<li>Release date: July 23rd, 2019</li>
-</ul>
-<p>First public release of Waymark!</p>
-</div>
-</div>
-<!-- End of Plugin README Parser code -->
-
-
-									
-								</div>
-
-<!-- START Waymark Footer JS -->
-<script type="text/javascript">
-//HTTP
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>
+      Changelog – Waymark
+    </title>
+    <link href="../../assets/css/docs.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <h1>
+      Changelog
+    </h1>
+    <article>
+      <div>
+        <div>
+          <h2>
+            Changelog
+          </h2>
+          <h3>
+            1.5.9
+          </h3>
+          <ul>
+            <li>
+              Minor improvements and bug fixes.
+            </li>
+          </ul>
+          <h3>
+            1.5.8
+          </h3>
+          <ul>
+            <li>
+              Minor improvements.
+            </li>
+          </ul>
+          <h3>
+            1.5.7
+          </h3>
+          <ul>
+            <li>
+              Minor improvements and bug fixes.
+            </li>
+          </ul>
+          <h3>
+            1.5.6
+          </h3>
+          <ul>
+            <li>
+              Improve Leaflet Elevation compatibility with other instances of Leaflet
+            </li>
+          </ul>
+          <h3>
+            1.5.5
+          </h3>
+          <ul>
+            <li>
+              Bug fix
+            </li>
+          </ul>
+          <h3>
+            1.5.4
+          </h3>
+          <ul>
+            <li>
+              Removed Shortcode callback feature
+            </li>
+          </ul>
+          <h3>
+            1.5.3
+          </h3>
+          <ul>
+            <li>
+              Removed Shortcode Files feature.
+              <a href="https://wordpress.org/support/topic/showing-maps-via-file_url-no-longer-works/">
+                Details
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            1.5.2
+          </h3>
+          <ul>
+            <li>
+              Fixed a bug where Map data was being lost when editing a Map. Thanks to
+              <a href="https://wordpress.org/support/users/hogg66/">
+                hogg66
+              </a>
+              for
+              <a href="https://wordpress.org/support/topic/map-reverts-to-empty-default-when-i-add-a-new-marker/">
+                reporting this
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            1.5.1
+          </h3>
+          <ul>
+            <li>
+              Improved escaping of Shortcode attributes.
+            </li>
+          </ul>
+          <h3>
+            1.5.0
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                Security update
+              </strong>
+              This is a big update which includes a number of security fixes, many highlighted by the
+              <a href="https://wordpress.org/plugins/plugin-check/">
+                Plugin Check
+              </a>
+              plugin.
+            </li>
+            <li>
+              Fixed a vulnerability where Shortcode attributes were not being escaped. Thanks to Muhammad Yudha for reporting this via Patchstack.
+            </li>
+            <li>
+              Added
+              <code>
+                waymark_pre_update_post_meta
+              </code>
+              filter. This filter is called before the
+              <code>
+                update_post_meta
+              </code>
+              function is called, allowing you to modify the meta data before it is saved. It receives two parameters -
+              <code>
+                $param_value
+              </code>
+              and
+              <code>
+                $param_definition
+              </code>
+              . Thanks to
+              <a href="https://github.com/DrogoNevets">
+                DrogoNevets
+              </a>
+              for the
+              <a href="https://github.com/OpenGIS/Waymark/issues/58">
+                PR
+              </a>
+              .
+            </li>
+            <li>
+              Submission button bug fix. Thanks to
+              <a href="https://github.com/DrogoNevets">
+                DrogoNevets
+              </a>
+              for this.
+            </li>
+          </ul>
+          <h3>
+            1.4.3
+          </h3>
+          <ul>
+            <li>
+              Add missing MultiPolygon support. Raised
+              <a href="https://wordpress.org/support/topic/large-kml-display-issue/">
+                here
+              </a>
+              and
+              <a href="https://github.com/OpenGIS/Waymark/issues/55">
+                here
+              </a>
+              .
+            </li>
+            <li>
+              <a href="https://github.com/OpenGIS/Waymark/issues/47">
+                Taxonomy label fix
+              </a>
+              .
+            </li>
+            <li>
+              <a href="https://github.com/OpenGIS/Waymark/issues/48">
+                Added Name to GPX metadata on Export
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            1.4.2
+          </h3>
+          <p>
+            Fixed a vulnerability where content output to the browser was not being escaped. Thanks to vgo0 for reporting this via Wordfence.
+          </p>
+          <h3>
+            1.4.1
+          </h3>
+          <ul>
+            <li>
+              Sleep message fix, thanks to
+              <a href="https://wordpress.org/support/users/jiem31/">
+                jiem31
+              </a>
+              for
+              <a href="https://wordpress.org/support/topic/a-few-ways-for-improvement/">
+                reporting this
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            1.4.0
+          </h3>
+          <ul>
+            <li>
+              Added the ability to show/hide all Types initially when using the Shortcode by specifying "*" as the Type key. For example, to initially hide all Marker Types, except "photo" and "alert", use
+              <code>
+                [Waymark map_id="1234" hide_marker="*" show_marker="photo,alert"]
+              </code>
+              . Thanks to
+              <a href="https://www.af-ccc.fr">
+                Association Franc-Comtoise du Chemin de Compostelle
+              </a>
+              for requesting this.
+            </li>
+            <li>
+              Improved debugging output.
+            </li>
+          </ul>
+          <h3>
+            1.3.2
+          </h3>
+          <p>
+            Collection background loading bug fix. Thanks to
+            <a href="https://wordpress.org/support/users/zerider/">
+              zerider
+            </a>
+            for
+            <a href="https://wordpress.org/support/topic/collection-map/">
+              reporting this
+            </a>
+            .
+          </p>
+          <h3>
+            1.3.0
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                Overlay Properties
+              </strong>
+              - Read GeoJSON feature properties when importing (Settings &gt; Overlays &gt; Properties). If Waymark finds data for the specified property keys they will stored upon import. These can be automatically appended to the Overlay Description, or accessed programatically via the
+              <code>
+                layer.feature.properties
+              </code>
+              Object. Thanks to
+              <a href="https://github.com/dariospace">
+                dariospace
+              </a>
+              for the
+              <a href="https://github.com/OpenGIS/Waymark/issues/45">
+                requesting
+              </a>
+              the return of this feature.
+            </li>
+          </ul>
+          <h3>
+            1.2.0
+          </h3>
+          <p>
+            Enable or disable various WordPress features of the Map Custom Post Type, including the new ability to enable comments and excerpt integration. This Setting is Available in Settings &gt; Advanced &gt; Post Type. Thanks to
+            <a href="https://github.com/YosoraLife">
+              YosoraLife
+            </a>
+            for requesting this (
+            <a href="https://github.com/OpenGIS/Waymark/pull/42">
+              here
+            </a>
+            and
+            <a href="https://github.com/OpenGIS/Waymark/issues/44">
+              here
+            </a>
+            ).
+          </p>
+          <h3>
+            1.1.8
+          </h3>
+          <p>
+            Show/Hide Overlay Types bug fix. Thanks to
+            <a href="https://github.com/YosoraLife">
+              YosoraLife
+            </a>
+            for raising this
+            <a href="https://github.com/OpenGIS/Waymark/issues/41">
+              issue
+            </a>
+            .
+          </p>
+          <h3>
+            1.1.7
+          </h3>
+          <p>
+            Another Collection Map link fix.
+          </p>
+          <h3>
+            1.1.6
+          </h3>
+          <p>
+            Removed Link to/from Maps Setting in
+            <a href="../settings/index.html#misc-collection_options">
+              Collection options
+            </a>
+            . Links to/from Collections and Maps will now be displayed by default, but can be hidden using CSS if desired. Thanks to
+            <a href="https://wordpress.org/support/users/wkndwlk/">
+              wkndwlk
+            </a>
+            for
+            <a href="https://wordpress.org/support/topic/links-within-waymarks-on-collection-maps/">
+              reporting this
+            </a>
+            .
+          </p>
+          <h3>
+            1.1.5
+          </h3>
+          <ul>
+            <li>
+              Chinese character fix. Thanks to
+              <a href="https://wordpress.org/support/users/hlv008/">
+                hlv008
+              </a>
+              for
+              <a href="https://wordpress.org/support/topic/the-icon-cannot-be-replaced-or-changed/">
+                reporting this
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            1.1.4
+          </h3>
+          <ul>
+            <li>
+              Map height bug fix.
+            </li>
+          </ul>
+          <h3>
+            1.1.3
+          </h3>
+          <ul>
+            <li>
+              Submission File Upload bug fix.
+            </li>
+          </ul>
+          <h3>
+            1.1.2
+          </h3>
+          <ul>
+            <li>
+              Adding missing localisations.
+            </li>
+          </ul>
+          <h3>
+            1.1.1
+          </h3>
+          <ul>
+            <li>
+              Elevation display bug fix. Thanks to
+              <a href="https://wordpress.org/support/users/hsmeets/">
+                hsmeets
+              </a>
+              for
+              <a href="https://wordpress.org/support/topic/height-map-no-longer-shown/">
+                reporting this
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            1.1.0
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                <a href="../../js/index.html">
+                  Waymark JS
+                </a>
+              </strong>
+              - The plugin has been significantly refactored, with the JavaScript codebase being split into a separate
+              <a href="https://github.com/OpenGIS/Waymark-JS/">
+                project
+              </a>
+              . This makes the Waymark Editor and Viewer available as a standalone library, which can be used in
+              <strong>
+                any web page
+              </strong>
+              and does not require WordPress.
+            </li>
+            <li>
+              Removed the Show/Hide "Type Labels" Setting. Type labels are always shown by default, but can be hidden using CSS.
+            </li>
+            <li>
+              Removed Settings for importing custom GeoJSON properties.
+            </li>
+            <li>
+              Lots of other improvements and bug fixes.
+            </li>
+          </ul>
+          <h3>
+            1.0.4
+          </h3>
+          <ul>
+            <li>
+              Removed "Store Read Files" Setting, which was disabled by default and did not work reliably.
+            </li>
+            <li>
+              Waymark JS refactoring, preparing for spin-off.
+            </li>
+            <li>
+              Other fixes and improvements.
+            </li>
+          </ul>
+          <h3>
+            1.0.3
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                Global Callback
+              </strong>
+              - If the function
+              <code>
+                waymark_loaded_callback
+              </code>
+              is defined globally, it will be called when Waymark has loaded. This allows you to extend Waymark functionality similar to the
+              <a href="../shortcodes/index.html#callback-function">
+                Shortcode Callback
+              </a>
+              , however it will apply to
+              <em>
+                all
+              </em>
+              Waymark Maps.
+            </li>
+            <li>
+              Fix for Export/Overlay Filter
+              <a href="https://github.com/OpenGIS/Waymark/issues/32">
+                bug
+              </a>
+              .
+            </li>
+            <li>
+              Other fixes and improvements.
+            </li>
+          </ul>
+          <h3>
+            1.0.2
+          </h3>
+          <p>
+            Fix for colours not appearing correctly in the Overlay Filter. Thanks to
+            <a href="https://wordpress.org/support/users/geomfranzo/">
+              geomfranzo
+            </a>
+            for
+            <a href="https://wordpress.org/support/topic/sort-line-markers-by-name-bug-line-color/">
+              raising this
+            </a>
+            .
+          </p>
+          <h3>
+            1.0.1
+          </h3>
+          <p>
+            Fixed a bug with Map Exporting. Thanks to
+            <a href="https://wordpress.org/support/users/microteq/">
+              microteq
+            </a>
+            for
+            <a href="https://wordpress.org/support/topic/error-when-downloading-gpx-or-kml/">
+              reporting this
+            </a>
+            .
+          </p>
+          <h3>
+            1.0.0
+          </h3>
+          <p>
+            Thanks for helping Waymark get to Version 1! ❤️
+          </p>
+          <ul>
+            <li>
+              <a href="https://github.com/opengis/map-first">
+                Map First
+              </a>
+              - A minimal WordPress theme with an
+              <em>
+                obsession
+              </em>
+              for Maps. It's open-source too and contains lots of comments about customisations.
+            </li>
+            <li>
+              Added Total Ascent and Descent to Elevation Profile. Thanks to
+              <a href="https://github.com/MaximeChallon">
+                MaximeChallon
+              </a>
+              for the
+              <a href="https://github.com/OpenGIS/Waymark/pull/29">
+                Pull Request
+              </a>
+              🙂
+            </li>
+            <li>
+              Improved rendering of multiple Maps through the Collection Shortcode, where the initial view would sometimes not be set correctly to view all Map data.
+            </li>
+            <li>
+              Updated documentation.
+            </li>
+            <li>
+              Lots of other bug fixes and improvements.
+            </li>
+          </ul>
+          <h3>
+            0.9.30
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                <a href="../text-markers/index.html">
+                  Marker Clustering
+                </a>
+              </strong>
+              <ul>
+                <li>
+                  Once enabled, Markers will be stacked when they are close together. This can help to reduce clutter on the Map.
+                </li>
+                <li>
+                  You can enable this feature in Settings &gt; Maps &gt; Clustering, or using the
+                  <code>
+                    show_cluster="1"
+                  </code>
+                  Shortcode option.
+                </li>
+                <li>
+                  There are also settings to adjust the cluster radius and what what zoom level to start clustering at.
+                </li>
+              </ul>
+            </li>
+            <li>
+              Added
+              <code>
+                file_start_type
+              </code>
+              and
+              <code>
+                file_end_type
+              </code>
+              options to the
+              <a href="../shortcodes/index.html#shortcode-files">
+                Shortcode Files
+              </a>
+              feature, which allow you to automatically add a Marker of the specified type to the start and/or end of all Lines in the file. Thanks to
+              <a href="https://wordpress.org/support/users/digbymaass/">
+                digbymaass
+              </a>
+              for the
+              <a href="https://wordpress.org/support/topic/shortcode-option-for-start-marker/">
+                suggestion
+              </a>
+              .
+            </li>
+            <li>
+              Stop Elevation plugin from adjusting map bounds. Thanks to
+              <a href="https://wordpress.org/support/users/ellocosolo/">
+                ellocosolo
+              </a>
+              for the
+              <a href="https://wordpress.org/support/topic/map_centre-and-map_zoom-shortcodes-cannot-be-used-at-the-same-time/">
+                report
+              </a>
+              .
+            </li>
+            <li>
+              Improved KML error handling when loading from URL.
+            </li>
+            <li>
+              Improved rendering of multiple Maps through the Collection Shortcode.
+            </li>
+            <li>
+              Minor bug fixes
+            </li>
+          </ul>
+          <h3>
+            0.9.29.5
+          </h3>
+          <ul>
+            <li>
+              Fixed a bug where Submissions were not being saved.
+            </li>
+          </ul>
+          <h3>
+            0.9.29.4
+          </h3>
+          <ul>
+            <li>
+              Minor bug fix.
+            </li>
+          </ul>
+          <h3>
+            0.9.29.3
+          </h3>
+          <ul>
+            <li>
+              Added a Collections &gt; "Shortcode Method" Setting. This allows you to choose whether Map data is loaded in the Background (via AJAX), or Embedded in the page when embedding a Collection via the Shortcode. Embedding may be a bad idea for LARGE COLLECTIONS, but
+              <em>
+                may
+              </em>
+              resolve some (JavaScript) issues where Collections are not displaying correctly.
+            </li>
+          </ul>
+          <h3>
+            0.9.29.2
+          </h3>
+          <ul>
+            <li>
+              Fixed a bug where the Shortcode Zoom and Centre parameters were being ignored. Thanks to
+              <a href="https://github.com/killianweid">
+                killianweid
+              </a>
+              for creating
+              <a href="https://github.com/opengis/waymark/issues/25">
+                this issue
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            0.9.29.1
+          </h3>
+          <ul>
+            <li>
+              Fixed a bug where the default line_opacity was being set to 0. Thanks to
+              <a href="https://wordpress.org/support/users/digbymaass%20/">
+                digbymaass
+              </a>
+              for
+              <a href="https://wordpress.org/support/topic/update-sets-track-opacity-setting-to-0/">
+                letting me know
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            0.9.29
+          </h3>
+          <ul>
+            <li>
+              Added
+              <code>
+                map_width
+              </code>
+              Shortcode option, which has been requested a couple of times. Thanks for bugging me! :0)
+            </li>
+            <li>
+              Added Opacity Setting for Line Types (Lines &gt; Opacity), thanks to
+              <a href="https://wordpress.org/support/users/digbymaass/">
+                digbymaass
+              </a>
+              for the
+              <a href="https://wordpress.org/support/topic/feature-request-opacity-setting-for-lines/">
+                suggestion
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            0.9.28.7
+          </h3>
+          <ul>
+            <li>
+              Meta data is now preserved when the Map is trashed/restored. Thanks to
+              <a href="https://wordpress.org/support/users/killiandev7/">
+                killiandev7
+              </a>
+              for
+              <a href="https://wordpress.org/support/topic/feature-request-recover-map-data-after-recovering-a-deleted-map/">
+                bringing this to my attention
+              </a>
+              .
+            </li>
+            <li>
+              Fixed a bug where special characters in Description were being messed up. Thanks to
+              <a href="https://github.com/killianweid">
+                killianweid
+              </a>
+              for creating this
+              <a href="https://github.com/opengis/waymark/issues/24">
+                issue
+              </a>
+              .
+            </li>
+            <li>
+              Fixed a bug with some KML files when loading from URL using Shortcode. Thanks to
+              <a href="https://wordpress.org/support/users/henkna/">
+                henkna
+              </a>
+              for
+              <a href="https://wordpress.org/support/topic/kml-fails-to-load/">
+                letting me know about this
+              </a>
+              .
+            </li>
+            <li>
+              Added Leaflet Basemap examples URL to Settings &gt; Basemaps.
+            </li>
+            <li>
+              Minor bug fixes and improvements.
+            </li>
+          </ul>
+          <h3>
+            0.9.28.6
+          </h3>
+          <p>
+            Added
+            <code>
+              max_zoom
+            </code>
+            Shortcode option, which will prevent the Map from being zoomed in further that this zoom level (usually ~1-20 range). Thanks to
+            <a href="https://wordpress.org/support/users/microteq/">
+              microteq
+            </a>
+            for the
+            <a href="https://wordpress.org/support/topic/shortcode-ma_zoom-request/">
+              suggestion
+            </a>
+            .
+          </p>
+          <h3>
+            0.9.28.5
+          </h3>
+          <p>
+            Added
+            <code>
+              elevation_units
+            </code>
+            (metric/imperial) Shortcode option, which will override the Waymark &gt; Elevation &gt; Elevation Units option. Thanks to
+            <a href="https://github.com/randombuffalo">
+              randombuffalo
+            </a>
+            for the
+            <a href="https://github.com/opengis/waymark/issues/22">
+              suggestion
+            </a>
+            .
+          </p>
+          <h3>
+            0.9.28.4
+          </h3>
+          <ul>
+            <li>
+              Fixed a Map duplication bug. Thanks to
+              <a href="https://wordpress.org/support/users/microteq/">
+                microteq
+              </a>
+              for
+              <a href="https://wordpress.org/support/topic/duplicating-a-map-ends-in-anempty-page/">
+                reporting this
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            0.9.28.3
+          </h3>
+          <ul>
+            <li>
+              More fixes!
+            </li>
+          </ul>
+          <h3>
+            0.9.28.2
+          </h3>
+          <ul>
+            <li>
+              <p>
+                Fixed a bug where Maps initally hidden on page load are broken. Thanks to
+                <a href="https://wordpress.org/support/users/microteq/">
+                  microteq
+                </a>
+                for
+                <a href="https://wordpress.org/support/topic/map-does-not-center-and-not-zoom-to-content-when-first-hidden/">
+                  reporting this
+                </a>
+                .
+              </p>
+            </li>
+            <li>
+              <p>
+                Fix for a weird glitch where
+                <em>
+                  sometimes
+                </em>
+                the Map will not "wake" if the mouse is hovering over that Map during initial page load. Thanks to
+                <a href="https://wordpress.org/support/users/microteq/">
+                  microteq
+                </a>
+                for
+                <a href="https://wordpress.org/support/topic/hovering-over-map-to-zoom/">
+                  reporting this
+                </a>
+                .
+              </p>
+            </li>
+          </ul>
+          <h3>
+            0.9.28.1
+          </h3>
+          <ul>
+            <li>
+              Fixed a bug where Line direction arrows were being shown for hidden Lines. Thanks to
+              <a href="https://wordpress.org/support/users/microteq/">
+                microteq
+              </a>
+              for
+              <a href="https://wordpress.org/support/topic/hiding-track-with-direction-arrows-sometimes-does-not-work/#post-16817555">
+                reporting this
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            0.9.28
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                Direction Arrows
+              </strong>
+              <ul>
+                <li>
+                  Lines can now have a direction associated with them. To add a direction, click on a Line while editing a Map and select from the direction dropdown. Thanks
+                  <a href="https://wordpress.org/support/topic/feature-request-direction-of-travel/">
+                    for
+                  </a>
+                  <a href="https://wordpress.org/support/topic/direction-arrows-in-route/">
+                    the
+                  </a>
+                  <a href="https://github.com/opengis/waymark/issues/4">
+                    suggestions
+                  </a>
+                  !
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>
+                Interaction
+              </strong>
+            </li>
+            <li>
+              By default, Waymark disables scroll zoom until the user hovers over the Map for 2 seconds. This behaviour can now be customised in Waymark Settings &gt; Maps &gt; Interaction. Settings allow you to adjust the delay and optionally display a message to the user while scroll zoom is disabled, for example "Click or Hover to Wake".
+            </li>
+            <li>
+              Fixed an annoying glitch where mouse "wheeling" over the elevation chart caused the Map to zoom.
+            </li>
+            <li>
+              Added Max Zoom setting in Maps &gt; Basemaps, which was
+              <a href="https://wordpress.org/support/topic/feature-request-zoom-level-limit/">
+                requested a long time ago
+              </a>
+              !
+            </li>
+            <li>
+              <strong>
+                Permalinks
+              </strong>
+            </li>
+            <li>
+              Customise your Map and Collection URLs in Waymark Settings &gt; Advanced &gt; Permalinks by specifying Map and Collection slugs (i.e. example.com/[map-slug]/example-map/ and example.com/[collection-slug]/example-collection/). Thanks to
+              <a href="https://wordpress.org/support/users/wkndwlk/">
+                wkndwlk
+              </a>
+              for the
+              <a href="https://wordpress.org/support/topic/map-and-collection-slugs/">
+                suggestion
+              </a>
+              .
+            </li>
+            <li>
+              <strong>
+                GeoJSON Properties
+              </strong>
+            </li>
+            <li>
+              You can now read GeoJSON feature properties when importing from file by adding them in Waymark Settings &gt; Overlays &gt; Properties. If Waymark finds data for these properties it will be added to the Overlay description when it is imported. Thanks to
+              <a href="https://wordpress.org/support/users/waimek/">
+                waimek
+              </a>
+              for the
+              <a href="https://wordpress.org/support/topic/using-data-from-geojson/">
+                suggestion
+              </a>
+              .
+            </li>
+            <li>
+              <strong>
+                Collection Export
+              </strong>
+            </li>
+            <li>
+              You can now Export entire Collections when embedding them with the Shortcode. Click Details in the Shortcode Header to see the Export feature. The Public Export (Settings &gt; Map &gt; Misc.) and Shortcode Header (Settings &gt; Map &gt; Shortcodes) Settings must be enabled. As with Maps only the currently visible Overlays are exported, with GeoJSON, KML and GPX supported. Thanks to
+              <a href="https://wordpress.org/support/users/wimzwag/">
+                wimzwag
+              </a>
+              for the
+              <a href="https://wordpress.org/support/topic/download-all-geojson-gpx/">
+                suggestion
+              </a>
+              .
+            </li>
+            <li>
+              Fixed a bug where elevation data remained visible even when a Line was hidden. Thanks to
+              <a href="https://wordpress.org/support/users/canuck069/">
+                Nigel
+              </a>
+              for
+              <a href="https://wordpress.org/support/topic/gpx-tracks-shadowed-with-evelation-colour/">
+                pointing this out
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            0.9.27
+          </h3>
+          <ul>
+            <li>
+              Added Map Scale Setting, which displays a distance scale on the Map in kilometers and miles (Settings &gt; Map &gt; Misc.)
+            </li>
+          </ul>
+          <h3>
+            0.9.26
+          </h3>
+          <ul>
+            <li>
+              Individual Overlay Types can now be Shown/Hidden initially using the Shortcode, overriding the "Show Initially" Setting for each. Use the
+              <code>
+                hide_marker
+              </code>
+              ,
+              <code>
+                show_marker
+              </code>
+              ,
+              <code>
+                hide_line
+              </code>
+              ,
+              <code>
+                show_line
+              </code>
+              ,
+              <code>
+                hide_shape
+              </code>
+              ,
+              <code>
+                show_shape
+              </code>
+              Shortcode parameters, providing one or multiple (comma separated)
+              <a href="../types/index.html#type-keys">
+                Type Keys
+              </a>
+              . For example:
+            </li>
+          </ul>
+          <p>
+            <pre>[Waymark map_id="1234" hide_marker="photo,alert" show_line="green"]</pre>
+          </p>
+          <p>
+            Thanks to
+            <a href="https://wordpress.org/support/users/hansolo68/">
+              hansolo68
+            </a>
+            for the
+            <a href="https://wordpress.org/support/topic/show-markers-initially-as-shortcode/">
+              suggestion
+            </a>
+            .
+          </p>
+          <ul>
+            <li>
+              Admin Help page removed in favour of a link to the Waymark website Documentation.
+            </li>
+          </ul>
+          <h3>
+            0.9.25.1
+          </h3>
+          <ul>
+            <li>
+              Fixed map data container bug, which was causing Map Data not to save.
+            </li>
+          </ul>
+          <h3>
+            0.9.25
+          </h3>
+          <ul>
+            <li>
+              Settings navigation improvements.
+            </li>
+            <li>
+              Submission localization fixes.
+            </li>
+            <li>
+              Minor bug fixes.
+            </li>
+          </ul>
+          <h3>
+            0.9.24
+          </h3>
+          <ul>
+            <li>
+              Editor popup redesign, including Type previews.
+            </li>
+            <li>
+              Front-end
+              <a href="../submissions/index.html">
+                Submissions
+              </a>
+              improvements.
+            </li>
+            <li>
+              Lots of other bug fixes and improvements.
+            </li>
+          </ul>
+          <h3>
+            0.9.23
+          </h3>
+          <ul>
+            <li>
+              Bug fix
+            </li>
+          </ul>
+          <h3>
+            0.9.22
+          </h3>
+          <ul>
+            <li>
+              Ignore file extension capitalisation when reading from file. This was a bug that meant reading from file.GPX (instead of file.gpx) was rejected for no good reason.
+            </li>
+          </ul>
+          <p>
+            Credit to Werner for getting in touch and prompting these changes.
+          </p>
+          <h3>
+            0.9.21
+          </h3>
+          <ul>
+            <li>
+              Bug fix. Uncaught TypeError: Assignment to constant variable. Thanks to
+              <a href="https://github.com/huubl">
+                huubl
+              </a>
+              for the
+              <a href="https://github.com/opengis/waymark/pull/13">
+                Pull Request
+              </a>
+              !
+            </li>
+          </ul>
+          <h3>
+            0.9.20
+          </h3>
+          <ul>
+            <li>
+              Front-end
+              <a href="../submissions/index.html">
+                Submissions
+              </a>
+              can now be added to a
+              <a href="../collections/index.html">
+                Collection
+              </a>
+              by default. A collection for User and Guest submissions can be specified in Settings &gt; Submissions &gt; Default Collection.
+            </li>
+          </ul>
+          <h3>
+            0.9.19
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                <a href="../shortcodes/index.html#shortcode-files">
+                  Shortcode Files
+                </a>
+              </strong>
+            </li>
+            <li>
+              Files (GPX, KML &amp; GeoJSON) can now be displayed using the Shortcode, without the need for a Map to be created. For example:
+              <br/>
+              <code>
+                [Waymark file_url="http://example.com/track.gpx"]
+              </code>
+              <br/>
+              By default,
+              <em>
+                all
+              </em>
+              Overlays (Markers/Lines/Shapes) will be displayed using the default Type (i.e. the first listed in Settings). You can specify a different Type to use like this:
+              <code>
+                [Waymark file_url="http://example.com/track.gpx" file_line_type="photo"]
+              </code>
+              . Thanks to
+              <a href="https://wordpress.org/support/users/golf1025/" rel="nofollow">
+                Jan de Boer
+              </a>
+              for this
+              <a href="https://wordpress.org/support/topic/migrate-gpx-from-other-app/">
+                suggestion
+              </a>
+              and
+              <a href="https://wordpress.org/support/users/yorobo/">
+                yorobo
+              </a>
+              for
+              <a href="https://wordpress.org/support/topic/cant-upload-kml-gpl-file/">
+                the reminder
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            0.9.18
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                <a href="../submissions/index.html">
+                  Submissions
+                </a>
+              </strong>
+              <ul>
+                <li>
+                  Allow registered users, or guests to create Maps from the front-end of your site. You can control who can Submit Maps, what editor features are available and whether submissions should be approved before they are published. Originally suggested
+                  <a href="https://wordpress.org/support/topic/feature-request-add-marker-from-frontend/">
+                    here
+                  </a>
+                  .
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>
+                <a href="../shortcodes/index.html#shortcode-markers">
+                  Shortcode Markers
+                </a>
+              </strong>
+            </li>
+            <li>
+              Markers can now be displayed using the Shortcode, without the need for a Map to be created. For example:
+              <br/>
+              <code>
+                [Waymark marker_centre="54.526814,-3.017289" marker_type="shelter"]
+              </code>
+              <br/>
+              As well as the Marker location and Type; a Title, Description and an Image can also be provided. Thanks to
+              <a href="https://wordpress.org/support/users/mistermagoo8691/" rel="nofollow">
+                Angelo Mariani
+              </a>
+              for this
+              <a href="https://wordpress.org/support/topic/show-a-marker-on-the-centre-location/">
+                suggestion
+              </a>
+              .
+            </li>
+            <li>
+              Fixed a bug where Shortcode Headers were not displaying on Collection archive pages. Thanks to
+              <a href="https://wordpress.org/support/users/meggsico/">
+                meggsico
+              </a>
+              for
+              <a href="https://wordpress.org/support/topic/maybe-a-bug-7/#post-14815812">
+                bringing this to my attention
+              </a>
+              .
+            </li>
+            <li>
+              Improved "accidental zooms" when scrolling by increasing the
+              <a href="https://github.com/CliffCloud/Leaflet.Sleep">
+                Leaflet.Sleep
+              </a>
+              wakeTime from 1 second to 2 seconds. As
+              <a href="https://wordpress.org/support/topic/disable-user-zooming-panning-on-a-map/#post-15208899">
+                requested
+              </a>
+              .
+            </li>
+            <li>
+              Lots of back-end fixes and improvements.
+            </li>
+          </ul>
+          <h3>
+            0.9.17.1
+          </h3>
+          <ul>
+            <li>
+              Fixed a bug where the Export feature did not work correctly when embedding multiple Maps. Thanks to
+              <a href="https://github.com/shenki">
+                shenki
+              </a>
+              on
+              <a href="https://github.com/opengis/waymark/issues/3">
+                GitHub
+              </a>
+              .
+            </li>
+            <li>
+              Waymark now has it's own
+              <a href="../../index.html">
+                website
+              </a>
+              ! URLs updated.
+            </li>
+          </ul>
+          <h3>
+            0.9.17
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                Maps
+              </strong>
+              <ul>
+                <li>
+                  Maps now support Featured Images; if provided this will be displayed on the Map Details page, as well as by the Shortcode. Thanks to David for the suggestion!
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>
+                Markers
+              </strong>
+              <ul>
+                <li>
+                  Marker Icons can now be custom text or HTML (in addition to Font icons from Ionic Icons and Font Awesome). Thanks for the
+                  <a href="https://wordpress.org/support/topic/feature-request-custom-markers/">
+                    suggestion
+                  </a>
+                  !
+                </li>
+                <li>
+                  Map Exports are now available on mobile devices.
+                </li>
+                <li>
+                  Updated Acknowledgements.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>
+                Bug fixes
+              </strong>
+              <ul>
+                <li>
+                  Settings JavaScript fix.
+                </li>
+                <li>
+                  Settings repeatable dropdown bug.
+                </li>
+                <li>
+                  Settings input sanitisation.
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <p>
+            A
+            <b>
+              BIG
+            </b>
+            thank you to the following users for their help with testing:
+          </p>
+          <ul>
+            <li>
+              <a href="https://wordpress.org/support/users/dalehopp/">
+                dalehopp
+              </a>
+            </li>
+            <li>
+              <a href="https://wordpress.org/support/users/coloursign/">
+                coloursign
+              </a>
+            </li>
+            <li>
+              <a href="https://wordpress.org/support/users/nhathaway/">
+                nhathaway
+              </a>
+            </li>
+          </ul>
+          <h3>
+            0.9.16
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                Markers
+              </strong>
+              <ul>
+                <li>
+                  Markers can now be different shapes! Markers, Circles or Squares in three different sizes: Small, Medium and Large.
+                </li>
+                <li>
+                  Markers can now have any colour background, selected using the colour picker or by entering a hexadecimal color (i.e. #RRGGBB)
+                </li>
+                <li>
+                  Markers now support Font Awesome icons as well as Ionic Icons.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>
+                Types
+              </strong>
+              <ul>
+                <li>
+                  Type labels displayed by popups now match the colours of their respective Marker, Line or Shape.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>
+                Media Library Uploads
+              </strong>
+              <ul>
+                <li>
+                  By default Waymark does not save any files uploaded through the Editor. Using this option you can use the Media Library to store and import GPX/KML/GeoJSON files into your Map.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>
+                Bug fixes
+              </strong>
+              <ul>
+                <li>
+                  Improved location accuracy when relying on device GPS. Thanks to
+                  <a href="https://wordpress.org/support/users/coloursign/">
+                    coloursign
+                  </a>
+                  and
+                  <a href="https://wordpress.org/support/users/edwinfr/">
+                    edwinfr
+                  </a>
+                  for
+                  <a href="https://wordpress.org/support/topic/more-accurate-location-possible/">
+                    bringing this to my attention.
+                  </a>
+                </li>
+                <li>
+                  Waymark_Helper
+                  <code>
+                    asset_url()
+                  </code>
+                  fix. Thanks to
+                  <a href="https://wordpress.org/support/topic/filter-by-markers-category/">
+                    pwrdp
+                  </a>
+                  for bringing this to my attention.
+                </li>
+                <li>
+                  Updated Ion Icons v2 URLs. Thanks to
+                  <a href="https://wordpress.org/support/users/gudulemartens/">
+                    gudulemartens
+                  </a>
+                  for
+                  <a href="https://wordpress.org/support/topic/ion-icons/">
+                    letting me know about this
+                  </a>
+                  .
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <h3>
+            0.9.15.2
+          </h3>
+          <ul>
+            <li>
+              Localization fixes. Thanks to
+              <a href="https://profiles.wordpress.org/tobifjellner/">
+                tobifjellner
+              </a>
+              for the help via Slack.
+            </li>
+          </ul>
+          <h3>
+            0.9.15.1
+          </h3>
+          <ul>
+            <li>
+              Bug fix. Thanks to
+              <a href="https://wordpress.org/support/topic/warning-error-by-new-update/">
+                cameraspots1
+              </a>
+              for bringing this to my attention.
+            </li>
+          </ul>
+          <h3>
+            0.9.15
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                Meta
+              </strong>
+              <ul>
+                <li>
+                  Meta can now be organised into groups. Meta in the same group will be displayed together when editing and viewing Maps. Groups can be managed in Settings &gt; Meta &gt; Groups.
+                </li>
+                <li>
+                  New layout for Meta to incorporate Meta Groups on Map Details page.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>
+                Shortcode
+              </strong>
+              <ul>
+                <li>
+                  Meta can now be displayed using the Shortcode by clicking "Details" in the Shortcode Header. Use the Settings &gt; Meta &gt; "In Shortcode?" option to specify which Meta is displayed. Note: this feature requires the Shortcode Header be set to "Show" in Settings &gt; Misc. &gt; Shortcode Options.
+                </li>
+                <li>
+                  The Export option is now available through the Shortcode, if the "Public Export" option is enabled (Settings &gt; Misc. &gt; Map Options).
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>
+                Editor
+              </strong>
+              <ul>
+                <li>
+                  Overlay descriptions now use a rich text editor.
+                </li>
+                <li>
+                  Added the ability to duplicate Markers/Lines/Shapes in the Editor.
+                </li>
+                <li>
+                  Editor circle bug fix.
+                </li>
+              </ul>
+            </li>
+            <li>
+              Gallery JavaScript bug fix.
+            </li>
+            <li>
+              Waymark is now localization ready!
+              <a href="https://translate.wordpress.org/projects/wp-plugins/waymark/">
+                Translation contributions
+              </a>
+              greatly appreciated 🙂
+            </li>
+            <li>
+              Waymark is now
+              <a href="https://github.com/opengis/waymark">
+                on GitHub
+              </a>
+              .
+            </li>
+          </ul>
+          <h3>
+            0.9.14
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                Line Elevations
+              </strong>
+              - Display an interactive elevation graph for Lines that have elevation data. Minimum/Maximum elevation and total length statistics are also displayed. Customise in Settings &gt; Misc. &gt; Elevation Options. Thanks to
+              <a href="https://github.com/Raruto/leaflet-elevation">
+                leaflet-elevation
+              </a>
+              !
+            </li>
+            <li>
+              Cyrillic alphabet fix.
+            </li>
+            <li>
+              GPX parsing fix.
+            </li>
+            <li>
+              Updated user capabilities for plugin features.
+            </li>
+            <li>
+              Other bug fixes.
+            </li>
+          </ul>
+          <p>
+            A big thank you to everyone who provided input for this release. Extra special thanks goes to
+            <a href="https://wordpress.org/support/users/coloursign/">
+              coloursign
+            </a>
+            ,
+            <a href="https://wordpress.org/support/users/meggsico/">
+              meggsico
+            </a>
+            ,
+            <a href="https://wordpress.org/support/users/davinian/">
+              davinian
+            </a>
+            ,
+            <a href="https://wordpress.org/support/users/snake-plissken/">
+              snake-plissken
+            </a>
+            ,
+            <a href="https://wordpress.org/support/users/sunlight1976/">
+              sunlight1976
+            </a>
+            and
+            <a href="https://wordpress.org/support/users/bumbar/">
+              bumbar
+            </a>
+            for their help with testing.
+          </p>
+          <h3>
+            0.9.13
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                Overlay Filter
+              </strong>
+              - This allows your visitors to filter which Markers, Lines and Shapes are currently visible on the Map by clicking on the layer icon. You can choose to show/hide certain Types when the Map initially loads. Enable using the global setting (Settings &gt; Misc. &gt; Map Options), or using the Shortcode.
+            </li>
+            <li>
+              <strong>
+                Export
+              </strong>
+              - There is now an Export function when editing a Map. With "Public Export" enabled (Settings &gt; Misc. &gt; Map Options) site visitors can download the Overlays (Markers, Lines and Shapes) currently displayed on the Map Details page. Can be used in conjunction with the Overlay Filter to select which Overlays to download. GeoJSON, GPX and KML formats  supported.
+            </li>
+            <li>
+              <strong>
+                Meta
+              </strong>
+              - Added Rich Text, Select and Multi-Select input types.
+            </li>
+            <li>
+              Bug fixes.
+            </li>
+          </ul>
+          <p>
+            Thanks to
+            <a href="https://wordpress.org/support/users/neilhorton740/">
+              neilhorton740
+            </a>
+            ,
+            <a href="https://wordpress.org/support/users/carldavidcarlstrom/">
+              carldavidcarlstrom
+            </a>
+            , and
+            <a href="https://wordpress.org/support/users/coloursign/">
+              coloursign
+            </a>
+            for  testing and feedback.
+          </p>
+          <h3>
+            0.9.12
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                Gallery
+              </strong>
+              - Added the option to display an image gallery for Markers that have images associated with them. Can be changed in Settings &gt; Misc. &gt; Map Options. Can be enabled using the show_gallery="1" Shortcode option.
+            </li>
+            <li>
+              Created
+              <a href="../index.html">
+                Waymark Documentation
+              </a>
+              .
+            </li>
+            <li>
+              Updated the
+              <a href="../index.html">
+                Demo
+              </a>
+              .
+            </li>
+            <li>
+              First steps towards
+              <a href="https://developer.wordpress.org/plugins/internationalization/localization/">
+                Localization
+              </a>
+              .
+            </li>
+            <li>
+              Added the ability to change Map author. Thanks to
+              <a href="https://wordpress.org/support/topic/feature-request-shortcode-download-link-author-change/">
+                andreasrns
+              </a>
+              for the suggestion.
+            </li>
+            <li>
+              Maps now support Revisions.
+            </li>
+            <li>
+              Added "Header for Admin" to Settings &gt; Shortcode Options. Use this Setting to always show the Shortcode Header when signed in as admin, useful for quickly navigating to embedded Maps.
+            </li>
+            <li>
+              Fixed a bug where circles were being added as Markers.
+            </li>
+            <li>
+              Removed undocumented shortcode button in Classic Editor.
+            </li>
+            <li>
+              Fixed Leaflet JS conflict when other instances of Leaflet exist. Thanks to
+              <a href="https://wordpress.org/support/topic/blank-map-6/">
+                jmruas
+              </a>
+              for bringing this to my attention.
+            </li>
+            <li>
+              Fixed a bug where Types were not being saved for Markers/Lines imported from file.
+            </li>
+            <li>
+              Other minor improvements.
+            </li>
+          </ul>
+          <p>
+            A big thanks to
+            <a href="https://wordpress.org/support/users/neilhorton740/">
+              neilhorton740
+            </a>
+            and
+            <a href="https://wordpress.org/support/users/carldavidcarlstrom/">
+              carldavidcarlstrom
+            </a>
+            for bug finding and testing.
+          </p>
+          <h3>
+            0.9.11
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                Collections
+              </strong>
+              - Can now be given a description and viewed as an archive (lists Maps in that Collection) on the front-end. A link is displayed on the Map Details page (Collection links support permalinks)
+            </li>
+            <li>
+              Map URLs now support permalinks
+            </li>
+            <li>
+              Added the ability to duplicate Maps
+            </li>
+            <li>
+              In the Editor, Markers now display their Lat,Lng
+            </li>
+            <li>
+              Lots of other improvements and bug fixes
+            </li>
+          </ul>
+          <p>
+            Thanks to
+            <a href="https://wordpress.org/support/users/neilhorton740/">
+              neilhorton740
+            </a>
+            and
+            <a href="https://wordpress.org/support/users/carldavidcarlstrom/">
+              carldavidcarlstrom
+            </a>
+            for suggestions and testing.
+          </p>
+          <h3>
+            0.9.10
+          </h3>
+          <ul>
+            <li>
+              <strong>
+                Shortcodes
+              </strong>
+              – Added the ability to specify initial Map centre and zoom through the Shortcode: [Waymark map_centre="
+              <lat>
+                ,
+                <lng>
+                  " map_zoom="&lt;0-18&gt;"]. Shortcodes no longer require a Map ID/Collection ID. Added Using Shortcodes section to Help page.
+                </lng>
+              </lat>
+            </li>
+            <li>
+              <strong>
+                Maps
+              </strong>
+              – Added setting for Default Centre/Zoom when a Map has no data to display.
+            </li>
+            <li>
+              <strong>
+                Collections
+              </strong>
+              – Added the option to display a link to Map Details pages from Collections
+            </li>
+            <li>
+              Improved Settings input sanitisation
+            </li>
+            <li>
+              Lots more performance improvements and bug fixes
+            </li>
+          </ul>
+          <p>
+            Another big thanks to
+            <a href="https://wordpress.org/support/users/neilhorton740/">
+              neilhorton740
+            </a>
+            for suggestions and testing.
+          </p>
+          <h3>
+            0.9.9
+          </h3>
+          <ul>
+            <li>
+              Release date: December 17th, 2019
+            </li>
+          </ul>
+          <p>
+            Added the ability to specify a default basemap through shortcode: [Waymark map_id="1234" basemap="Basemap Name"]. Which Basemap to use as the Map Editor default can also be specified in Settings &gt; Misc. &gt; Editor Options. Thanks again to
+            <a href="https://wordpress.org/support/users/neilhorton740/">
+              neilhorton740
+            </a>
+            for the suggestion and testing.
+          </p>
+          <h3>
+            0.9.8
+          </h3>
+          <ul>
+            <li>
+              Release date: December 5th, 2019
+            </li>
+          </ul>
+          <p>
+            Added Line Weight setting for Lines and the ability to override the Shortcode Header setting through the shortcode. A HUGE thank you to
+            <a href="https://wordpress.org/support/users/neilhorton740/">
+              neilhorton740
+            </a>
+            for the
+            <a href="https://wordpress.org/support/topic/great-design-and-well-thought-out/">
+              suggestions and testing
+            </a>
+            .
+          </p>
+          <h3>
+            0.9.7
+          </h3>
+          <ul>
+            <li>
+              Release date: November 8th, 2019
+            </li>
+          </ul>
+          <p>
+            Added support for Meta, which allows you to customise the input fields that display under the Map Editor. Any data you input will display on the Map Details page. Plus some minor improvements and bug fixes.
+          </p>
+          <h3>
+            0.9.6
+          </h3>
+          <ul>
+            <li>
+              Release date: October 28rd, 2019
+            </li>
+          </ul>
+          <p>
+            Added support for Collections, which allow you to organise your Maps and display multiple Maps at once. Also more bug fixes.
+          </p>
+          <h3>
+            0.9.5
+          </h3>
+          <ul>
+            <li>
+              Release date: October 23rd, 2019
+            </li>
+          </ul>
+          <p>
+            Integrated
+            <a href="https://github.com/perliedman/leaflet-control-geocoder">
+              leaflet-control-geocoder
+            </a>
+            , thanks for the
+            <a href="https://wordpress.org/support/topic/search-for-place-in-admin-section/">
+              suggestion
+            </a>
+            ! Also minor fixes and tweaks.
+          </p>
+          <h3>
+            0.9.4
+          </h3>
+          <ul>
+            <li>
+              Release date: October 11th, 2019
+            </li>
+          </ul>
+          <p>
+            Bug fixes and improvements. Thanks again to rottensod!
+          </p>
+          <h3>
+            0.9.3
+          </h3>
+          <ul>
+            <li>
+              Release date: September 4th, 2019
+            </li>
+          </ul>
+          <p>
+            Bug fixes and minor tweaks. Thanks to rottensod for your bug finding efforts!
+          </p>
+          <h3>
+            0.9.2
+          </h3>
+          <ul>
+            <li>
+              Release date: July 26th, 2019
+            </li>
+          </ul>
+          <p>
+            Integrated Leaflet.Sleep into Waymark for better zoom/scroll event handling. Thanks to numeeja for this suggestion!
+          </p>
+          <h3>
+            0.9.1
+          </h3>
+          <ul>
+            <li>
+              Release date: July 25th, 2019
+            </li>
+          </ul>
+          <p>
+            Minor bug fix.
+          </p>
+          <h3>
+            0.9
+          </h3>
+          <ul>
+            <li>
+              Release date: July 23rd, 2019
+            </li>
+          </ul>
+          <p>
+            First public release of Waymark!
+          </p>
+        </div>
+      </div>
+    </article>
+    <script>
+      //HTTP
 var waymark_http_endpoint = "https://www.waymark.dev/?waymark_http=1";
 
 var waymark_user_config = {"map_options":{"map_height":"640","tile_layers":[{layer_name: "OpenStreetMap", layer_url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?r=1", layer_attribution: '@copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', layer_max_zoom: "18"}],"marker_types":[{"marker_title":"Photo","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-camera","marker_colour":"#70af00","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Water","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-waterdrop","marker_colour":"#2aabe1","icon_colour":"#fff","marker_display":"1","marker_submission":"1"},{"marker_title":"Trail Access","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-car","marker_colour":"#fbfbfb","icon_colour":"#707070","marker_display":"1","marker_submission":"1"},{"marker_title":"Information","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-information-circled","marker_colour":"#fbfbfb","icon_colour":"#0069a5","marker_display":"1","marker_submission":"1"},{"marker_title":"Alert","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-alert","marker_colour":"#da3d20","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Food","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-pizza","marker_colour":"#da3d20","icon_colour":"#ffba00","marker_display":"1","marker_submission":"1"},{"marker_title":"Beer","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-beer","marker_colour":"#fbfbfb","icon_colour":"#754423","marker_display":"1","marker_submission":"1"},{"marker_title":"Start","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"fa-flag","marker_colour":"#70af00","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Finish","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"fa-flag-checkered","marker_colour":"#a43233","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Store","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-cart","marker_colour":"#416979","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Camp","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-home","marker_colour":"#a43233","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Wildlife","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-ios-paw","marker_colour":"#a43233","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Point of Interest","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-eye","marker_colour":"#da3d20","icon_colour":"#e5e5e5","marker_display":"1","marker_submission":"1"},{"marker_title":"Waymark","marker_shape":"marker","marker_size":"large","icon_type":"html","marker_icon":"&lt;img style=&quot;width:24px;height:24px;margin-top:5px&quot; src=&quot;https:\/\/www.waymark.dev\/wp-content\/plugins\/waymark\/assets\/img\/waymark-icon-primary.png&quot; \/&gt;","marker_colour":"#ffffff","icon_colour":"#81d742","marker_display":"1","marker_submission":"1"},{"marker_title":"Test","marker_shape":"rectangle","marker_size":"large","icon_type":"text","marker_icon":"Test Text Marker","marker_colour":"#dd3333","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"}],"line_types":[{"line_title":"Green","line_colour":"#30d100","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Red","line_colour":"#dd3333","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Bike Path","line_colour":"#1e73be","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Foot Path","line_colour":"#dd9933","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Alternate","line_colour":"#dd9933","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"}],"shape_types":[{"shape_title":"Red","shape_colour":"#d84848","fill_opacity":"0.5","shape_display":"1","shape_submission":"1"},{"shape_title":"Green","shape_colour":"#3cbc47","fill_opacity":"0.15","shape_display":"1","shape_submission":"1"},{"shape_title":"Blue","shape_colour":"#487bd9","fill_opacity":"0.5","shape_display":"1","shape_submission":"1"},{"shape_title":"Purple","shape_colour":"#8224e3","fill_opacity":"1","shape_display":"1","shape_submission":"1"}],"show_scale":"1","debug_mode":false},"viewer_options":{"show_gallery":"1","show_filter":"1","show_cluster":"1","show_elevation":false,"cluster_radius":"80","cluster_threshold":"14","elevation_units":"metric","elevation_initial":"1","elevation_colour":"#2c7137","sleep_delay_seconds":"3","sleep_do_message":"0","sleep_wake_message":"Click or Hover to Wake"},"editor_options":{"confirm_delete":"0"},"language":{"action_fullscreen_activate":"View Fullscreen","action_fullscreen_deactivate":"Exit Fullscreen","action_locate_activate":"Show me where I am","action_zoom_in":"Zoom in","action_zoom_out":"Zoom out","label_total_length":"Total Length: ","label_max_elevation":"Max. Elevation: ","label_min_elevation":"Min. Elevation: ","label_ascent":"Total Ascent: ","label_descent":"Total Descent: ","add_line_title":"Draw a Line","add_photo_title":"Upload an Image","add_marker_title":"Place a Marker","add_rectangle_title":"Draw a Rectangle","add_polygon_title":"Draw a Polygon","add_circle_title":"Draw a Circle","upload_file_title":"Read Lines and Markers from file (GPX\/KML\/GeoJSON supported, which most apps should Export to)","action_duplicate":"Duplicate","action_delete":"Delete","action_edit":"Edit","action_edit_done":"Finish editing","action_upload_image":"Upload Image","object_title_placeholder":"Title","object_image_placeholder":"Image URL","object_description_placeholder":"Description","object_type_label":"Type","marker_latlng_label":"Lat,Lng","action_delete_confirm":"Are you sure you want to delete this","action_search_placeholder":"Search...","object_label_marker":"Marker","object_label_line":"Line","object_label_shape":"Shape","object_label_marker_plural":"Markers","object_label_line_plural":"Lines","object_label_shape_plural":"Shapes","error_message_prefix":"Waymark Error","info_message_prefix":"Waymark Info","error_file_type":"This file type is not supported.","error_file_conversion":"Could not convert this file to GeoJSON.","error_file_upload":"File upload error.","error_photo_meta":"Could not retrieve Image metadata.","info_exif_yes":"Image location metadata (EXIF) detected!","info_exif_no":"Image location metadata (EXIF) NOT detected.","no_direction":"No Direction","show_direction":"Show Direction","reverse_direction":"Reverse Direction"}};
@@ -523,8 +1875,6 @@ jQuery(document).ready(function() {
 			}
 		;
 });
-</script>
-<!-- END Waymark Footer JS -->
-</body>
+    </script>
+  </body>
 </html>
-<!-- Cached by WP-Optimize (gzip) - https://getwpo.com - Last modified: 18th March 2026 1:59 am (Europe/London UTC:0) -->

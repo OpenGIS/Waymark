@@ -1,63 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-GB">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Hide Locate Button &#8211; Waymark</title>
-		<link rel="stylesheet" href="../../assets/css/classic-theme-styles.css" />
-		<link rel="stylesheet" href="../../assets/css/global-styles.css" />
-		<link
-			rel="stylesheet"
-			id="wpo_min-header-0-css"
-			href="../../assets/css/wpo-minify-header-56df5e72.min.css"
-			type="text/css"
-			media="all"
-		/>
-		<link rel="stylesheet" href="../../assets/css/custom.css" />
-		<script
-			type="text/javascript"
-			src="../../assets/js/jquery.min.js"
-			id="jquery-core-js"
-		></script>
-		<script
-			type="text/javascript"
-			src="../../assets/js/jquery-migrate.min.js"
-			id="jquery-migrate-js"
-		></script>
-		<link
-			rel="stylesheet"
-			href="../../assets/waymark-js/css/waymark-js.min.css"
-		/>
-		<script src="../../assets/waymark-js/js/waymark-js.min.js"></script>
-	</head>
-
-	<body
-		class="wp-singular lsvr_kba-template-default single single-lsvr_kba postid-4270 single-format-standard wp-custom-logo wp-theme-lore wp-child-theme-lore-child lsvr-accessibility"
-	>
-		<h1 class="main__header-title">Hide Locate Button</h1>
-
-		<div class="post__content">
-			<pre
-				class="wp-block-code shortcode"
-			><code class="">Waymark marker_centre="54.526814,-3.017289" marker_type="camp"</code></pre>
-
-			<!-- START Waymark Shortcode #1a1f22 -->
-			<div
-				style=""
-				id="waymark-shortcode-1a1f22"
-				data-shortcode_hash="1a1f22"
-				class="waymark-shortcode waymark-container"
-			>
-				<!-- Map -->
-				<div
-					style="display: none; height: 300px; min-height: 300px"
-					id="waymark-map-1a1f22"
-					class="waymark-map"
-					data-shortcode_hash="1a1f22"
-				></div>
-			</div>
-			<script>
-				jQuery(document).ready(function () {
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>
+      Hide Locate Button – Waymark
+    </title>
+    <link href="../../assets/css/docs.css" rel="stylesheet"/>
+    <link href="../../assets/waymark-js/css/waymark-js.min.css" rel="stylesheet"/>
+    <script src="../../assets/js/jquery.min.js">
+    </script>
+    <script src="../../assets/js/jquery-migrate.min.js">
+    </script>
+    <script src="../../assets/waymark-js/js/waymark-js.min.js">
+    </script>
+  </head>
+  <body>
+    <h1>
+      Hide Locate Button
+    </h1>
+    <article>
+      <pre><code class="">Waymark marker_centre="54.526814,-3.017289" marker_type="camp"</code></pre>
+      <div class="waymark-shortcode waymark-container" id="waymark-shortcode-1a1f22" style="">
+        <div class="waymark-map" data-shortcode_hash="1a1f22" id="waymark-map-1a1f22" style="display: none; height: 300px; min-height: 300px">
+        </div>
+      </div>
+      <script>
+        jQuery(document).ready(function () {
 					let waymark_viewer = window.Waymark_Map_Factory.viewer();
 					if (typeof waymark_user_config === "undefined") {
 						waymark_viewer.message(
@@ -84,20 +53,14 @@
 					};
 					waymark_viewer.load_json(marker_geojson);
 				});
-			</script>
-			<!-- END Waymark Shortcode #1a1f22 -->
-
-			<pre
-				class="wp-block-code"
-			><code lang="css" class="language-css">/* Hide Locate Button */
+      </script>
+      <pre><code class="language-css" lang="css">/* Hide Locate Button */
 .waymark-map .leaflet-control-locate {
-  display: none !important;
+                display: none !important;
 }</code></pre>
-		</div>
-
-		<!-- START Waymark Footer JS -->
-		<script type="text/javascript">
-			//HTTP
+    </article>
+    <script>
+      //HTTP
 			var waymark_http_endpoint = "https://www.waymark.dev/?waymark_http=1";
 
 			var waymark_user_config = {
@@ -446,8 +409,6 @@
 					]);
 				}
 			});
-		</script>
-		<!-- END Waymark Footer JS -->
-	</body>
+    </script>
+  </body>
 </html>
-<!-- Cached by WP-Optimize (gzip) - https://getwpo.com - Last modified: 18th March 2026 6:32 pm (Europe/London UTC:0) -->

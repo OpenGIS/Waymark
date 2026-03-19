@@ -1,78 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-GB">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Markers &#8211; Waymark</title>
-		<link rel="stylesheet" href="../../assets/css/classic-theme-styles.css" />
-		<link rel="stylesheet" href="../../assets/css/global-styles.css" />
-		<link
-			rel="stylesheet"
-			id="wpo_min-header-0-css"
-			href="../../assets/css/wpo-minify-header-56df5e72.min.css"
-			type="text/css"
-			media="all"
-		/>
-		<link rel="stylesheet" href="../../assets/css/custom.css" />
-		<script
-			type="text/javascript"
-			src="../../assets/js/jquery.min.js"
-			id="jquery-core-js"
-		></script>
-		<script
-			type="text/javascript"
-			src="../../assets/js/jquery-migrate.min.js"
-			id="jquery-migrate-js"
-		></script>
-		<link
-			rel="stylesheet"
-			href="../../assets/waymark-js/css/waymark-js.min.css"
-		/>
-		<script src="../../assets/waymark-js/js/waymark-js.min.js"></script>
-	</head>
-
-	<body
-		class="wp-singular lsvr_kba-template-default single single-lsvr_kba postid-2743 single-format-video wp-custom-logo wp-theme-lore wp-child-theme-lore-child lsvr-accessibility"
-	>
-		<h1 class="main__header-title">Markers</h1>
-
-		<div class="post__content">
-			<figure
-				class="wp-block-embed is-type-video is-provider-vimeo wp-block-embed-vimeo wp-embed-aspect-16-9 wp-has-aspect-ratio"
-			>
-				<div class="wp-block-embed__wrapper">
-					<iframe
-						title="Waymark - Markers"
-						src="https://player.vimeo.com/video/572770274?dnt=1&amp;app_id=122963"
-						width="500"
-						height="281"
-						frameborder="0"
-						allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-					></iframe>
-				</div>
-			</figure>
-
-			<hr class="wp-block-separator has-css-opacity" />
-
-			<h2 class="wp-block-heading">Example</h2>
-
-			<!-- START Waymark Shortcode #7cd5bb -->
-			<div
-				style=""
-				id="waymark-shortcode-7cd5bb"
-				data-shortcode_hash="7cd5bb"
-				class="waymark-shortcode waymark-container"
-			>
-				<!-- Map -->
-				<div
-					style="display: none; height: 640px; min-height: 640px"
-					id="waymark-map-7cd5bb"
-					class="waymark-map waymark-map-id-1647"
-					data-shortcode_hash="7cd5bb"
-				></div>
-			</div>
-			<script>
-				jQuery(document).ready(function () {
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>
+      Markers – Waymark
+    </title>
+    <link href="../../assets/css/docs.css" rel="stylesheet"/>
+    <link href="../../assets/waymark-js/css/waymark-js.min.css" rel="stylesheet"/>
+    <script src="../../assets/js/jquery.min.js">
+    </script>
+    <script src="../../assets/js/jquery-migrate.min.js">
+    </script>
+    <script src="../../assets/waymark-js/js/waymark-js.min.js">
+    </script>
+  </head>
+  <body>
+    <h1>
+      Markers
+    </h1>
+    <article>
+      <figure>
+        <iframe allow="autoplay; fullscreen; picture-in-picture; clipboard-write" height="281" src="https://player.vimeo.com/video/572770274?dnt=1&amp;app_id=122963" title="Waymark - Markers" width="500">
+        </iframe>
+      </figure>
+      <hr/>
+      <h2>
+        Example
+      </h2>
+      <div class="waymark-shortcode waymark-container" id="waymark-shortcode-7cd5bb" style="">
+        <div class="waymark-map waymark-map-id-1647" data-shortcode_hash="7cd5bb" id="waymark-map-7cd5bb" style="display: none; height: 640px; min-height: 640px">
+        </div>
+      </div>
+      <script>
+        jQuery(document).ready(function () {
 					let waymark_viewer = window.Waymark_Map_Factory.viewer();
 					if (typeof waymark_user_config === "undefined") {
 						waymark_viewer.message(
@@ -1939,125 +1900,134 @@
 					});
 					waymark_viewer.load_done();
 				});
-			</script>
-			<!-- END Waymark Shortcode #7cd5bb -->
-
-			<hr class="wp-block-separator has-css-opacity" />
-
-			<h2 class="wp-block-heading" id="icons">Icons</h2>
-
-			<p>
-				Every Marker Type can have a unique Icon associated with it, specified
+      </script>
+      <hr/>
+      <h2 id="icons">
+        Icons
+      </h2>
+      <p>
+        Every Marker Type can have a unique Icon associated with it, specified
 				as either:
-			</p>
-
-			<ul class="wp-block-list">
-				<li>
-					<strong>Text</strong> &#8211; plain alpha-numeric characters. Remember
+      </p>
+      <ul>
+        <li>
+          <strong>
+            Text
+          </strong>
+          – plain alpha-numeric characters. Remember
 					space is very limited! Text will be displayed in the chosen colour.
-				</li>
-				<li>
-					<strong>Font</strong> &#8211; Choose from a list of
-					<a href="https://ionic.io/ionicons/v2/cheatsheet.html">Ion Icons</a>
-					or
-					<a href="https://fontawesome.com/v4.7/cheatsheet/">Font Awesome</a>
-					icons by providing the relevant class name, such as
-					&#8220;ion-alert&#8221; or &#8220;fa-bolt&#8221;. The icon will be
+        </li>
+        <li>
+          <strong>
+            Font
+          </strong>
+          – Choose from a list of
+          <a href="https://ionic.io/ionicons/v2/cheatsheet.html">
+            Ion Icons
+          </a>
+          or
+          <a href="https://fontawesome.com/v4.7/cheatsheet/">
+            Font Awesome
+          </a>
+          icons by providing the relevant class name, such as
+					“ion-alert” or “fa-bolt”. The icon will be
 					displayed in the chosen colour.
-				</li>
-				<li>
-					<strong>HTML</strong> &#8211; Supports custom HTML content, these can
+        </li>
+        <li>
+          <strong>
+            HTML
+          </strong>
+          – Supports custom HTML content, these can
 					be simple
-					<a href="https://html.spec.whatwg.org/multipage/named-characters.html"
-						>HTML characters</a
-					>
-					(e.g. &#8220;&amp;bigstar;&#8221;),
-					<a href="https://symbl.cc/en/">Unicode symbols</a> (e.g.
-					&#8220;&amp;#9889;&#8221;) or more complicated structures. For example
+          <a href="https://html.spec.whatwg.org/multipage/named-characters.html">
+            HTML characters
+          </a>
+          (e.g. “&amp;bigstar;”),
+          <a href="https://symbl.cc/en/">
+            Unicode symbols
+          </a>
+          (e.g.
+					“&amp;#9889;”) or more complicated structures. For example
 					you can use this option to specify custom images like so:
-				</li>
-			</ul>
-
-			<pre
-				class="wp-block-code"
-			><code lang="markup" class="language-markup">&lt;img src="https://www.waymark.dev/wp-content/plugins/waymark/assets/img/waymark-icon-primary.png" style="width:24px;height:24px;margin-top:5px" /&gt;</code></pre>
-
-			<p>
-				Where the URL points to your desired image. You can adjust the width,
+        </li>
+      </ul>
+      <pre><code class="language-markup" lang="markup">&lt;img src="https://www.waymark.dev/wp-content/plugins/waymark/assets/img/waymark-icon-primary.png" style="width:24px;height:24px;margin-top:5px" /&gt;</code></pre>
+      <p>
+        Where the URL points to your desired image. You can adjust the width,
 				height and vertical offset by modifying the style properties as desired.
 				You can see an example of this
-				<a href="../../map/marker-image-example/index.html">here</a>.
-			</p>
+        <a href="../../map/marker-image-example/index.html">
+          here
+        </a>
+        .
+      </p>
+      <h2>
+        Markup
+      </h2>
+      <p>
+      </p>
+      <pre><code class="language-markup" lang="markup">&lt;!-- "Photo" Marker with Font Icon --&gt;
+        &lt;div class="waymark-marker waymark-marker-photo waymark-marker-circle waymark-marker-small"&gt;
+                                        &lt;div class="waymark-marker-background" style="background:#70af00;"&gt;&lt;/div&gt;
+                                        &lt;i style="color:#ffffff;" class="waymark-marker-icon waymark-icon-icon ion ion-camera"&gt;&lt;/i&gt;
+        &lt;/div&gt;
 
-			<h2 class="wp-block-heading">Markup</h2>
+        &lt;!-- "Bank" Marker with Text Icon --&gt;
+        &lt;div class="waymark-marker waymark-marker-bank waymark-marker-rectangle waymark-marker-large"&gt;
+                                        &lt;div class="waymark-marker-background" style="background:#000;"&gt;&lt;/div&gt;
+                                        &lt;div style="color:#ffffff;" class="waymark-marker-icon waymark-icon-text"&gt;&amp;dollar;&lt;/div&gt;
+        &lt;/div&gt;
 
-			<p></p>
-
-			<pre
-				class="wp-block-code"
-			><code lang="markup" class="language-markup">&lt;!-- "Photo" Marker with Font Icon --&gt;
- &lt;div class="waymark-marker waymark-marker-photo waymark-marker-circle waymark-marker-small"&gt;
-     &lt;div class="waymark-marker-background" style="background:#70af00;"&gt;&lt;/div&gt;
-     &lt;i style="color:#ffffff;" class="waymark-marker-icon waymark-icon-icon ion ion-camera"&gt;&lt;/i&gt;
- &lt;/div&gt;
-
- &lt;!-- "Bank" Marker with Text Icon --&gt;
- &lt;div class="waymark-marker waymark-marker-bank waymark-marker-rectangle waymark-marker-large"&gt;
-     &lt;div class="waymark-marker-background" style="background:#000;"&gt;&lt;/div&gt;
-     &lt;div style="color:#ffffff;" class="waymark-marker-icon waymark-icon-text"&gt;&amp;dollar;&lt;/div&gt;
- &lt;/div&gt;
-
- &lt;!-- "Beer" Marker with HTML Icon --&gt;
- &lt;div class="waymark-marker waymark-marker-beer waymark-marker-marker waymark-marker-medium"&gt;
-     &lt;div class="waymark-marker-background" style="background:#fbfbfb;"&gt;&lt;/div&gt;
-     &lt;div class="waymark-marker-icon waymark-icon-html"&gt;
-         &lt;!-- HTML Input goes here --&gt;
-         &amp;#127866;
-     &lt;/div&gt;
- &lt;/div&gt;</code></pre>
-
-			<hr class="wp-block-separator has-css-opacity" />
-
-			<h2 class="wp-block-heading">CSS</h2>
-
-			<p class="lead">All Icon content can be modified using CSS.</p>
-
-			<pre
-				class="wp-block-code"
-			><code lang="css" class="language-css">/* Adjust Ionic Icon size */
- .waymark-marker .waymark-icon-icon.ion::before {
-  font-size: 18px !important;
- }
- /* Adjust Font Awesome Icon size */
- .waymark-marker .waymark-icon-icon.fa::before {
-  font-size: 18px !important;
- }
- /* Adjust "Photo" Marker Icon size */
- .waymark-marker-photo .waymark-icon-icon.ion::before {
-  font-size: 18px !important;
- }
- /* Add a border to all Circle Markers */
- .waymark-marker-circle .waymark-marker-background {
-  border: 1px solid #000 !important;
- }
- /* Adjust Text Icon size */
- .waymark-marker .waymark-icon-text {
-  font-size: 18px !important;
- }
- /* Adjust only "Photo" Marker Text Icon size */
- .waymark-marker-photo .waymark-icon-text {
-  font-size: 18px !important;
- }</code></pre>
-
-			<p>
-				Use your browser&#8217;s inspector to dig for Type class names (more
-				info <a href="../types/index.html#type-keys">here</a>).
-			</p>
-		</div>
-
-		<!-- START Waymark Footer JS -->
-		<script type="text/javascript">
-			//HTTP
+        &lt;!-- "Beer" Marker with HTML Icon --&gt;
+        &lt;div class="waymark-marker waymark-marker-beer waymark-marker-marker waymark-marker-medium"&gt;
+                                        &lt;div class="waymark-marker-background" style="background:#fbfbfb;"&gt;&lt;/div&gt;
+                                        &lt;div class="waymark-marker-icon waymark-icon-html"&gt;
+                                                                        &lt;!-- HTML Input goes here --&gt;
+                                                                        &amp;#127866;
+                                        &lt;/div&gt;
+        &lt;/div&gt;</code></pre>
+      <hr/>
+      <h2>
+        CSS
+      </h2>
+      <p class="lead">
+        All Icon content can be modified using CSS.
+      </p>
+      <pre><code class="language-css" lang="css">/* Adjust Ionic Icon size */
+        .waymark-marker .waymark-icon-icon.ion::before {
+                font-size: 18px !important;
+        }
+        /* Adjust Font Awesome Icon size */
+        .waymark-marker .waymark-icon-icon.fa::before {
+                font-size: 18px !important;
+        }
+        /* Adjust "Photo" Marker Icon size */
+        .waymark-marker-photo .waymark-icon-icon.ion::before {
+                font-size: 18px !important;
+        }
+        /* Add a border to all Circle Markers */
+        .waymark-marker-circle .waymark-marker-background {
+                border: 1px solid #000 !important;
+        }
+        /* Adjust Text Icon size */
+        .waymark-marker .waymark-icon-text {
+                font-size: 18px !important;
+        }
+        /* Adjust only "Photo" Marker Text Icon size */
+        .waymark-marker-photo .waymark-icon-text {
+                font-size: 18px !important;
+        }</code></pre>
+      <p>
+        Use your browser’s inspector to dig for Type class names (more
+				info
+        <a href="../types/index.html#type-keys">
+          here
+        </a>
+        ).
+      </p>
+    </article>
+    <script>
+      //HTTP
 			var waymark_http_endpoint = "https://www.waymark.dev/?waymark_http=1";
 
 			var waymark_user_config = {
@@ -2406,8 +2376,6 @@
 					]);
 				}
 			});
-		</script>
-		<!-- END Waymark Footer JS -->
-	</body>
+    </script>
+  </body>
 </html>
-<!-- Cached by WP-Optimize (gzip) - https://getwpo.com - Last modified: 18th March 2026 5:59 pm (Europe/London UTC:0) -->

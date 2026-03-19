@@ -1,106 +1,125 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Collections &#8211; Waymark</title>
-<link rel="stylesheet" href="../../assets/css/classic-theme-styles.css">
-<link rel="stylesheet" href="../../assets/css/global-styles.css">
-<link rel='stylesheet' id='wpo_min-header-0-css' href='../../assets/css/wpo-minify-header-251a5241.min.css' type='text/css' media='all' />
-<link rel="stylesheet" href="../../assets/css/custom.css">
-<script type="text/javascript" src="../../assets/js/jquery.min.js" id="jquery-core-js"></script>
-<script type="text/javascript" src="../../assets/js/jquery-migrate.min.js" id="jquery-migrate-js"></script>
-<link rel="stylesheet" href="../../assets/waymark-js/css/waymark-js.min.css">
-<script src="../../assets/waymark-js/js/waymark-js.min.js"></script>
-</head>
-
-<body class="wp-singular lsvr_kba-template-default single single-lsvr_kba postid-2584 single-format-video wp-custom-logo wp-theme-lore wp-child-theme-lore-child lsvr-accessibility">
-<h1 class="main__header-title">
-													Collections												</h1>
-
-<div class="post__content">
-
-									
-<figure class="wp-block-embed is-type-video is-provider-vimeo wp-block-embed-vimeo wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-<iframe title="Waymark - Using Collections" src="https://player.vimeo.com/video/369427094?dnt=1&amp;app_id=122963" width="500" height="281" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write"></iframe>
-</div></figure>
-
-
-
-<p class="lead">Collections allow you to organise your Maps.</p>
-
-
-
-<p>Collections allow you to create relationships between Maps, you can then display all the Maps in a Collection using the <a href="../shortcodes/index.html">Shortcode</a>. </p>
-
-
-
-<p>Collections can be nested and Maps can be associated with multiple Collections, meaning you can organise your Maps however best suits you.</p>
-
-
-
-<hr class="wp-block-separator"/>
-
-
-
-<h2 class="wp-block-heading">Example</h2>
-
-
-
-<p>All Maps in this Collection are being displayed:</p>
-
-
-
-
-<!-- START Waymark Shortcode #7bceda -->
-<div style="" id="waymark-shortcode-7bceda" data-shortcode_hash="7bceda" class="waymark-shortcode waymark-container">
-	<!-- Shortcode Header -->
-	<header class="waymark-header">
-		<a class="waymark-link" href="../../collection/demo-collection/index.html">Details <i class="ion ion-android-open"></i></a>
-		<div class="waymark-title">Demo Collection</div>
-	<div class="waymark-meta">
-<!-- START Parameter Container -->
-<div class="waymark-map-meta waymark-accordion-container waymark-meta-count-2">
-	<div class="waymark-map-meta-ungrouped waymark-self-clear">
-	<div class="waymark-meta-item waymark-meta-collection_desc">
-		<div class="waymark-meta-info">
-		</div>
-		<div class="waymark-meta-title" scope="row"></div>
-		<div class="waymark-meta-content"><p>This Collection of Maps is to Demonstrate <a href="https://www.joesway.ca/waymark/">Waymark</a>,<br />
-a mapping plugin for WordPress.</p>
-</div>
-	</div>
-	<div class="waymark-meta-item waymark-meta-export_data">
-		<div class="waymark-meta-info">
-<a data-title="This will download the Overlays currently displayed by the Map in the selected format." href="#" onclick="return false;" class="waymark-tooltip">?</a>		</div>
-		<div class="waymark-meta-title" scope="row">Export</div>
-		<div class="waymark-meta-content"><form action="../../index%EF%B9%96waymark_http=1.html" method="post" id="waymark-map-export-27" class="waymark-map-export" data-collection_id="27" data-collection_slug="demo-collection">
-	<select name="export_format">
-		<option value="gpx">GPX</option>
-		<option value="kml">KML</option>
-		<option value="geojson">GeoJSON</option>
-	</select>
-	<input type="hidden" name="waymark_action" value="download_collection_data" />
-	<input type="hidden" name="waymark_security" value="6c38ee9589" />
-	<input type="hidden" name="map_data" value="" />
-	<input type="hidden" name="collection_id" value="27" />
-	<input type="submit" value="Download" class="button" />
-</form>
-</div>
-	</div>
-	</div>
-	<div class="waymark-map-meta-grouped">
-	</div>
-</div>
-<!-- END Parameter Container -->
-		<a class="waymark-link" href="../../collection/demo-collection/index.html">More Details <i class="ion ion-android-open"></i></a>
-	</div>
-	</header>
-	<!-- Map -->
-	<div style="display:none;height:640px;min-height:640px;" id="waymark-map-7bceda" class="waymark-map waymark-collection-id-27" data-shortcode_hash="7bceda"></div>
-</div>
-<script>
-jQuery(document).ready(function() {
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>
+      Collections – Waymark
+    </title>
+    <link href="../../assets/css/docs.css" rel="stylesheet"/>
+    <link href="../../assets/waymark-js/css/waymark-js.min.css" rel="stylesheet"/>
+    <script src="../../assets/js/jquery.min.js">
+    </script>
+    <script src="../../assets/js/jquery-migrate.min.js">
+    </script>
+    <script src="../../assets/waymark-js/js/waymark-js.min.js">
+    </script>
+  </head>
+  <body>
+    <h1>
+      Collections
+    </h1>
+    <article>
+      <figure>
+        <iframe allow="autoplay; fullscreen; picture-in-picture; clipboard-write" height="281" src="https://player.vimeo.com/video/369427094?dnt=1&amp;app_id=122963" title="Waymark - Using Collections" width="500">
+        </iframe>
+      </figure>
+      <p class="lead">
+        Collections allow you to organise your Maps.
+      </p>
+      <p>
+        Collections allow you to create relationships between Maps, you can then display all the Maps in a Collection using the
+        <a href="../shortcodes/index.html">
+          Shortcode
+        </a>
+        .
+      </p>
+      <p>
+        Collections can be nested and Maps can be associated with multiple Collections, meaning you can organise your Maps however best suits you.
+      </p>
+      <hr/>
+      <h2>
+        Example
+      </h2>
+      <p>
+        All Maps in this Collection are being displayed:
+      </p>
+      <div class="waymark-shortcode waymark-container" id="waymark-shortcode-7bceda" style="">
+        <header class="waymark-header">
+          <a class="waymark-link" href="../../collection/demo-collection/index.html">
+            Details
+            <i class="ion ion-android-open">
+            </i>
+          </a>
+          <div class="waymark-title">
+            Demo Collection
+          </div>
+          <div class="waymark-meta">
+            <div class="waymark-map-meta waymark-accordion-container waymark-meta-count-2">
+              <div class="waymark-map-meta-ungrouped waymark-self-clear">
+                <div class="waymark-meta-item waymark-meta-collection_desc">
+                  <div class="waymark-meta-info">
+                  </div>
+                  <div class="waymark-meta-title" scope="row">
+                  </div>
+                  <div class="waymark-meta-content">
+                    <p>
+                      This Collection of Maps is to Demonstrate
+                      <a href="https://www.joesway.ca/waymark/">
+                        Waymark
+                      </a>
+                      ,
+                      <br/>
+                      a mapping plugin for WordPress.
+                    </p>
+                  </div>
+                </div>
+                <div class="waymark-meta-item waymark-meta-export_data">
+                  <div class="waymark-meta-info">
+                    <a class="waymark-tooltip" data-title="This will download the Overlays currently displayed by the Map in the selected format." href="#" onclick="return false;">
+                      ?
+                    </a>
+                  </div>
+                  <div class="waymark-meta-title" scope="row">
+                    Export
+                  </div>
+                  <div class="waymark-meta-content">
+                    <form action="../../index%EF%B9%96waymark_http=1.html" class="waymark-map-export" data-collection_id="27" data-collection_slug="demo-collection" id="waymark-map-export-27" method="post">
+                      <select name="export_format">
+                        <option value="gpx">
+                          GPX
+                        </option>
+                        <option value="kml">
+                          KML
+                        </option>
+                        <option value="geojson">
+                          GeoJSON
+                        </option>
+                      </select>
+                      <input name="waymark_action" type="hidden" value="download_collection_data"/>
+                      <input name="waymark_security" type="hidden" value="6c38ee9589"/>
+                      <input name="map_data" type="hidden" value=""/>
+                      <input name="collection_id" type="hidden" value="27"/>
+                      <input class="button" type="submit" value="Download"/>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="waymark-map-meta-grouped">
+              </div>
+            </div>
+            <a class="waymark-link" href="../../collection/demo-collection/index.html">
+              More Details
+              <i class="ion ion-android-open">
+              </i>
+            </a>
+          </div>
+        </header>
+        <div class="waymark-map waymark-collection-id-27" data-shortcode_hash="7bceda" id="waymark-map-7bceda" style="display:none;height:640px;min-height:640px;">
+        </div>
+      </div>
+      <script>
+        jQuery(document).ready(function() {
 	let waymark_viewer = window.Waymark_Map_Factory.viewer();
 	if(typeof waymark_user_config === "undefined") { waymark_viewer.message("Configuration not found! Check for \"var waymark_user_config\" in your page HTML.", "error"); }
 	var waymark_config = jQuery.extend(true, {}, waymark_user_config);
@@ -118,1419 +137,116 @@ jQuery(document).ready(function() {
 	waymark_load_map_data(waymark_viewer, 1647, true);
 	waymark_viewer.load_done();
 });
-</script>
-<!-- END Waymark Shortcode #7bceda -->
-
-
-									
-								</div>
-								<!-- POST CONTENT : end -->
-
-								
-								
-								<!-- POST FOOTER : begin -->
-								<footer class="post__footer">
-
-									<!-- POST DATE : begin -->
-									<p class="post__date">
-
-										<span class="post__date-published-wrapper">
-
-											<span class="post__date-published">
-												6th July 2021											</span>
-
-											
-												<span class="post__date-author">
-													by <a href="../../author/joe/index.html" class="post__date-author-link" rel="author">Joe</a>												</span>
-
-											
-							</span>
-
-							
-								<span class="post__date-updated">
-									Updated: 26th March 2025								</span>
-
-							
-					</p>
-					<!-- POST DATE : end -->
-
-					
-						<!-- POST META : begin -->
-						<p class="post__meta">
-
-							
-								<span class="post__meta-item post__meta-item--categories">
-									<span class="post__meta-item-icon" aria-hidden="true"></span>
-									<span class="screen-reader-text">Category:</span>
-									
-					<span class="post__terms post__terms--lsvr_kba_cat">
-						<a href="../../docs-cat/start/index.html" class="post__term-link">Getting Started</a>					</span>
-
-												</span>
-
-							
-							
-						</p>
-						<!-- POST META : end -->
-
-					
-				</footer>
-				<!-- POST FOOTER : end -->
-
-				
-				
-				
-				
-	<!-- POST NAVIGATION : begin -->
-	<div class="post-navigation">
-		<ul class="post-navigation__list">
-
-			
-				<!-- PREVIOUS POST : begin -->
-				<li class="post-navigation__prev post-navigation__prev--has-thumb">
-					<div class="post-navigation__prev-inner">
-
-													<a href="../meta/index.html"
-								class="post-navigation__thumb-link">
-								<img class="post-navigation__thumb"
-									src="../../assets/img/Screenshot-2025-03-26-at-3.43.22%E2%80%AFPM-450x450.png"
-									alt="Meta">
-							</a>
-						
-						<h6 class="post-navigation__title">
-							<a href="../meta/index.html"
-								class="post-navigation__title-link">
-								Previous							</a>
-						</h6>
-
-						<a href="../meta/index.html"
-							class="post-navigation__link">
-							Meta						</a>
-
-					</div>
-				</li>
-				<!-- PREVIOUS POST : end -->
-
-			
-			
-		</ul>
-	</div>
-	<!-- POST NAVIGATION : end -->
-
-
-				
-			</div>
-		</article>
-		<!-- POST : end -->
-
-		
-	    
-	
-</div>
-<!-- POST SINGLE : end -->
-
-					</div>
-				</main>
-				<!-- MAIN : end -->
-
-				
-			</div>
-		</div>
-	</div>
-</div>
-<!-- CORE COLUMNS : end -->
-		</div>
-	</div>
-	<!-- CORE : end -->
-
-	
-	<!-- FOOTER : begin -->
-	<footer id="footer" >
-		<div class="footer__inner">
-
-			
-			
-				<div class="footer-top">
-					<div class="lsvr-container">
-						<div class="footer-top__inner">
-
-							
-
-	<!-- FOOTER MENU : begin -->
-	<nav class="footer-menu"
-
-					aria-label="Footer"
-		>
-
-	    <ul id="menu-footer" class="footer-menu__list" role="menu"><li id="menu-item-2639" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-2639"><a href="../../index.html">Demo</a></li>
-<li id="menu-item-3362" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3362"><a href="../../try/index.html">Try</a></li>
-<li id="menu-item-3075" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3075"><a href="https://downloads.wordpress.org/plugin/waymark.zip">Download</a></li>
-</ul>
-	</nav>
-	<!-- FOOTER MENU : end -->
-
-
-
-							
-
-	<!-- FOOTER SOCIAL LINKS : begin -->
-	<div class="footer-social">
-		<ul class="footer-social__list" title="Social Media Links">
-
-			
-				
-					<li class="footer-social__item footer-social__item--custom1">
-
-						<a class="footer-social__item-link footer-social__item-link--custom1" target="_blank"
-
-							
-								href="https://wordpress.org/plugins/waymark/"
-
-							
-							 title="WordPress">
-
-							<span class="footer-social__icon icon-wordpress" aria-hidden="true"></span>
-
-						</a>
-					</li>
-
-				
-			
-				
-					<li class="footer-social__item footer-social__item--custom2">
-
-						<a class="footer-social__item-link footer-social__item-link--custom2" target="_blank"
-
-							
-								href="https://github.com/morehawes/waymark/"
-
-							
-							 title="GitHub">
-
-							<span class="footer-social__icon icon-github" aria-hidden="true"></span>
-
-						</a>
-					</li>
-
-				
-			
-		</ul>
-	</div>
-	<!-- FOOTER SOCIAL LINKS : end -->
-
-
-
-						</div>
-					</div>
-				</div>
-
-			
-			
-			
-	<!-- FOOTER WIDGETS : begin -->
-	<div class="footer-widgets">
-		<div class="footer-widgets__inner">
-			<div class="lsvr-container">
-				<div  class="lsvr-grid lsvr-grid--4-cols lsvr-grid--lg-2-cols lsvr-grid--md-2-cols">
-
-					<div class="footer-widgets__column lsvr-grid__col lsvr-grid__col--span-3 lsvr-grid__col--md lsvr-grid__col--md-span-6 lsvr-grid__col--lg lsvr-grid__col--lg-span-6"><div class="footer-widgets__column-inner"><div id="lsvr_knowledge_base_kba_tree-2" class="widget lsvr_kba-tree-widget"><div class="widget__inner"><h3 class="widget__title">Docs</h3>
-<div class="widget__content lsvr_kba-tree-widget__content">
-
-	<nav class="lsvr_kba-tree-widget__nav"
-        data-label-expand-popup="Expand submenu"
-        data-label-collapse-popup="Collapse submenu">
-
-		<ul class="lsvr_kba-tree-widget__list lsvr_kba-tree-widget__list--level-0"
-			role="menu">
-
-			
-            <li id="lsvr_kba-tree-widget__item-48-173"
-                class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--category lsvr_kba-tree-widget__item--level-0"
-                role="presentation">
-                <div class="lsvr_kba-tree-widget__item-inner">
-
-                	<div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    	                <span class="lsvr_kba-tree-widget__item-icon lsvr_kba-tree-widget__item-icon--default" aria-hidden="true"></span>
-
-    	                <a href="../../docs-cat/tutorials/index.html"
-                            id="lsvr_kba-tree-widget__item-link-48-173"
-    	                	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--category lsvr_kba-tree-widget__item-link--level-0"
-                            role="menuitem">Tutorials</a>
-
-    	                
-    	                    <span class="lsvr_kba-tree-widget__item-count">(2)</span>
-
-    	                
-                	</div>
-
-                </div>
-
-                
-                    <button id="lsvr_kba-tree-widget__submenu-toggle-48-173"
-                        class="lsvr_kba-tree-widget__submenu-toggle header-menu__submenu-toggle--level-0"
-                        type="button"
-                        title="Expand submenu"
-                        aria-controls="lsvr_kba-tree-widget__submenu-48-173"
-                        aria-haspopup="true"
-                        aria-expanded="false">
-                        <span class="lsvr_kba-tree-widget__submenu-toggle-icon" aria-hidden="true"></span>
-                    </button>
-
-                
-                
-                    <div id="lsvr_kba-tree-widget__submenu-48-173"
-                        class="lsvr_kba-tree-widget__submenu"
-                        role="group"
-                        aria-labelledby="lsvr_kba-tree-widget__item-link-48-173"
-                        aria-expanded="false">
-
-                
-            
-                
-                    <ul class="lsvr_kba-tree-widget__list lsvr_kba-tree-widget__list--post lsvr_kba-tree-widget__list--level-1"
-                        aria-label="Articles"
-                        role="menu">
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../creating-your-first-map/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Creating Your First Map</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../drawing-a-route/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Drawing a Route</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                    </ul>
-
-                
-                </div></li>
-            <li id="lsvr_kba-tree-widget__item-42-187"
-                class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--category lsvr_kba-tree-widget__item--level-0 lsvr_kba-tree-widget__item--current-ancestor"
-                role="presentation">
-                <div class="lsvr_kba-tree-widget__item-inner">
-
-                	<div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    	                <span class="lsvr_kba-tree-widget__item-icon lsvr_kba-tree-widget__item-icon--default" aria-hidden="true"></span>
-
-    	                <a href="../../docs-cat/docs/index.html"
-                            id="lsvr_kba-tree-widget__item-link-42-187"
-    	                	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--category lsvr_kba-tree-widget__item-link--level-0"
-                            role="menuitem">Docs</a>
-
-    	                
-    	                    <span class="lsvr_kba-tree-widget__item-count">(14)</span>
-
-    	                
-                	</div>
-
-                </div>
-
-                
-                    <button id="lsvr_kba-tree-widget__submenu-toggle-42-187"
-                        class="lsvr_kba-tree-widget__submenu-toggle header-menu__submenu-toggle--level-0 lsvr_kba-tree-widget__submenu-toggle--default-active lsvr_kba-tree-widget__submenu-toggle--active"
-                        type="button"
-                        title="Expand submenu"
-                        aria-controls="lsvr_kba-tree-widget__submenu-42-187"
-                        aria-haspopup="true"
-                        aria-expanded="true">
-                        <span class="lsvr_kba-tree-widget__submenu-toggle-icon" aria-hidden="true"></span>
-                    </button>
-
-                
-                
-                    <div id="lsvr_kba-tree-widget__submenu-42-187"
-                        class="lsvr_kba-tree-widget__submenu"
-                        role="group"
-                        aria-labelledby="lsvr_kba-tree-widget__item-link-42-187"
-                        aria-expanded="false">
-
-                
-            
-            <ul class="lsvr_kba-tree-widget__list lsvr_kba-tree-widget__list--category lsvr_kba-tree-widget__list--level-1"
-                aria-label="Categories"
-                role="menu">
-
-            
-            <li id="lsvr_kba-tree-widget__item-32-506"
-                class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--category lsvr_kba-tree-widget__item--level-1 lsvr_kba-tree-widget__item--current-ancestor"
-                role="presentation">
-                <div class="lsvr_kba-tree-widget__item-inner">
-
-                	<div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    	                <span class="lsvr_kba-tree-widget__item-icon icon-map" aria-hidden="true"></span>
-
-    	                <a href="../../docs-cat/start/index.html"
-                            id="lsvr_kba-tree-widget__item-link-32-506"
-    	                	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--category lsvr_kba-tree-widget__item-link--level-1"
-                            role="menuitem">Getting Started</a>
-
-    	                
-    	                    <span class="lsvr_kba-tree-widget__item-count">(7)</span>
-
-    	                
-                	</div>
-
-                </div>
-
-                
-                    <button id="lsvr_kba-tree-widget__submenu-toggle-32-506"
-                        class="lsvr_kba-tree-widget__submenu-toggle header-menu__submenu-toggle--level-1 lsvr_kba-tree-widget__submenu-toggle--default-active lsvr_kba-tree-widget__submenu-toggle--active"
-                        type="button"
-                        title="Expand submenu"
-                        aria-controls="lsvr_kba-tree-widget__submenu-32-506"
-                        aria-haspopup="true"
-                        aria-expanded="true">
-                        <span class="lsvr_kba-tree-widget__submenu-toggle-icon" aria-hidden="true"></span>
-                    </button>
-
-                
-                
-                    <div id="lsvr_kba-tree-widget__submenu-32-506"
-                        class="lsvr_kba-tree-widget__submenu"
-                        role="group"
-                        aria-labelledby="lsvr_kba-tree-widget__item-link-32-506"
-                        aria-expanded="false">
-
-                
-            
-                
-                    <ul class="lsvr_kba-tree-widget__list lsvr_kba-tree-widget__list--post lsvr_kba-tree-widget__list--level-2"
-                        aria-label="Articles"
-                        role="menu">
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-lsvr_kba-format-icon c-lsvr_kba-format-icon--video" aria-hidden="true"></span>
-
-    									
-                                        <a href="../getting-started/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Getting Started</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-lsvr_kba-format-icon c-lsvr_kba-format-icon--video" aria-hidden="true"></span>
-
-    									
-                                        <a href="../editor/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	The Editor</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-lsvr_kba-format-icon c-lsvr_kba-format-icon--video" aria-hidden="true"></span>
-
-    									
-                                        <a href="../types/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Types</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-lsvr_kba-format-icon c-lsvr_kba-format-icon--video" aria-hidden="true"></span>
-
-    									
-                                        <a href="../basemaps/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Basemaps</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../shortcodes/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Shortcodes</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-lsvr_kba-format-icon c-lsvr_kba-format-icon--video" aria-hidden="true"></span>
-
-    									
-                                        <a href="../meta/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Meta</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2 lsvr_kba-tree-widget__item--current"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-lsvr_kba-format-icon c-lsvr_kba-format-icon--video" aria-hidden="true"></span>
-
-    									
-                                        <a href="index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Collections</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                    </ul>
-
-                
-                </div></li>
-            <li id="lsvr_kba-tree-widget__item-34-407"
-                class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--category lsvr_kba-tree-widget__item--level-1"
-                role="presentation">
-                <div class="lsvr_kba-tree-widget__item-inner">
-
-                	<div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    	                <span class="lsvr_kba-tree-widget__item-icon icon-settings" aria-hidden="true"></span>
-
-    	                <a href="../../docs-cat/customising/index.html"
-                            id="lsvr_kba-tree-widget__item-link-34-407"
-    	                	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--category lsvr_kba-tree-widget__item-link--level-1"
-                            role="menuitem">Customising</a>
-
-    	                
-    	                    <span class="lsvr_kba-tree-widget__item-count">(3)</span>
-
-    	                
-                	</div>
-
-                </div>
-
-                
-                    <button id="lsvr_kba-tree-widget__submenu-toggle-34-407"
-                        class="lsvr_kba-tree-widget__submenu-toggle header-menu__submenu-toggle--level-1"
-                        type="button"
-                        title="Expand submenu"
-                        aria-controls="lsvr_kba-tree-widget__submenu-34-407"
-                        aria-haspopup="true"
-                        aria-expanded="false">
-                        <span class="lsvr_kba-tree-widget__submenu-toggle-icon" aria-hidden="true"></span>
-                    </button>
-
-                
-                
-                    <div id="lsvr_kba-tree-widget__submenu-34-407"
-                        class="lsvr_kba-tree-widget__submenu"
-                        role="group"
-                        aria-labelledby="lsvr_kba-tree-widget__item-link-34-407"
-                        aria-expanded="false">
-
-                
-            
-                
-                    <ul class="lsvr_kba-tree-widget__list lsvr_kba-tree-widget__list--post lsvr_kba-tree-widget__list--level-2"
-                        aria-label="Articles"
-                        role="menu">
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../styling-with-css-selectors/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Styling with CSS Selectors</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-lsvr_kba-format-icon c-lsvr_kba-format-icon--video" aria-hidden="true"></span>
-
-    									
-                                        <a href="../markers/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Markers</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-lsvr_kba-format-icon c-lsvr_kba-format-icon--video" aria-hidden="true"></span>
-
-    									
-                                        <a href="../settings/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Settings</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                    </ul>
-
-                
-                </div></li>
-            <li id="lsvr_kba-tree-widget__item-43-105"
-                class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--category lsvr_kba-tree-widget__item--level-1"
-                role="presentation">
-                <div class="lsvr_kba-tree-widget__item-inner">
-
-                	<div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    	                <span class="lsvr_kba-tree-widget__item-icon icon-magic-wand" aria-hidden="true"></span>
-
-    	                <a href="../../docs-cat/features/index.html"
-                            id="lsvr_kba-tree-widget__item-link-43-105"
-    	                	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--category lsvr_kba-tree-widget__item-link--level-1"
-                            role="menuitem">Features</a>
-
-    	                
-    	                    <span class="lsvr_kba-tree-widget__item-count">(2)</span>
-
-    	                
-                	</div>
-
-                </div>
-
-                
-                    <button id="lsvr_kba-tree-widget__submenu-toggle-43-105"
-                        class="lsvr_kba-tree-widget__submenu-toggle header-menu__submenu-toggle--level-1"
-                        type="button"
-                        title="Expand submenu"
-                        aria-controls="lsvr_kba-tree-widget__submenu-43-105"
-                        aria-haspopup="true"
-                        aria-expanded="false">
-                        <span class="lsvr_kba-tree-widget__submenu-toggle-icon" aria-hidden="true"></span>
-                    </button>
-
-                
-                
-                    <div id="lsvr_kba-tree-widget__submenu-43-105"
-                        class="lsvr_kba-tree-widget__submenu"
-                        role="group"
-                        aria-labelledby="lsvr_kba-tree-widget__item-link-43-105"
-                        aria-expanded="false">
-
-                
-            
-                
-                    <ul class="lsvr_kba-tree-widget__list lsvr_kba-tree-widget__list--post lsvr_kba-tree-widget__list--level-2"
-                        aria-label="Articles"
-                        role="menu">
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../using-the-global-callback-function/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Using the Global Callback Function</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../submissions/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Submissions</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                    </ul>
-
-                
-                </div></li>
-            <li id="lsvr_kba-tree-widget__item-40-626"
-                class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--category lsvr_kba-tree-widget__item--level-1"
-                role="presentation">
-                <div class="lsvr_kba-tree-widget__item-inner">
-
-                	<div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    	                <span class="lsvr_kba-tree-widget__item-icon icon-coding-settings" aria-hidden="true"></span>
-
-    	                <a href="../../docs-cat/advanced/index.html"
-                            id="lsvr_kba-tree-widget__item-link-40-626"
-    	                	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--category lsvr_kba-tree-widget__item-link--level-1"
-                            role="menuitem">Advanced</a>
-
-    	                
-    	                    <span class="lsvr_kba-tree-widget__item-count">(4)</span>
-
-    	                
-                	</div>
-
-                </div>
-
-                
-                    <button id="lsvr_kba-tree-widget__submenu-toggle-40-626"
-                        class="lsvr_kba-tree-widget__submenu-toggle header-menu__submenu-toggle--level-1"
-                        type="button"
-                        title="Expand submenu"
-                        aria-controls="lsvr_kba-tree-widget__submenu-40-626"
-                        aria-haspopup="true"
-                        aria-expanded="false">
-                        <span class="lsvr_kba-tree-widget__submenu-toggle-icon" aria-hidden="true"></span>
-                    </button>
-
-                
-                
-                    <div id="lsvr_kba-tree-widget__submenu-40-626"
-                        class="lsvr_kba-tree-widget__submenu"
-                        role="group"
-                        aria-labelledby="lsvr_kba-tree-widget__item-link-40-626"
-                        aria-expanded="false">
-
-                
-            
-                
-                    <ul class="lsvr_kba-tree-widget__list lsvr_kba-tree-widget__list--post lsvr_kba-tree-widget__list--level-2"
-                        aria-label="Articles"
-                        role="menu">
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../import-export-move-waymark-data/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Import/Export/Move Waymark Data</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../using-the-global-callback-function/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Using the Global Callback Function</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../debug-mode/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Debug Mode</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-2"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-lsvr_kba-format-icon c-lsvr_kba-format-icon--video" aria-hidden="true"></span>
-
-    									
-                                        <a href="../settings/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-2"
-                                            role="menuitem">
-                                        	Settings</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                    </ul>
-
-                
-                </div></li>
-            </ul>
-
-            
-                
-                </div></li>
-            <li id="lsvr_kba-tree-widget__item-41-346"
-                class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--category lsvr_kba-tree-widget__item--level-0"
-                role="presentation">
-                <div class="lsvr_kba-tree-widget__item-inner">
-
-                	<div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    	                <span class="lsvr_kba-tree-widget__item-icon lsvr_kba-tree-widget__item-icon--default" aria-hidden="true"></span>
-
-    	                <a href="../../docs-cat/examples/index.html"
-                            id="lsvr_kba-tree-widget__item-link-41-346"
-    	                	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--category lsvr_kba-tree-widget__item-link--level-0"
-                            role="menuitem">Examples</a>
-
-    	                
-    	                    <span class="lsvr_kba-tree-widget__item-count">(12)</span>
-
-    	                
-                	</div>
-
-                </div>
-
-                
-                    <button id="lsvr_kba-tree-widget__submenu-toggle-41-346"
-                        class="lsvr_kba-tree-widget__submenu-toggle header-menu__submenu-toggle--level-0"
-                        type="button"
-                        title="Expand submenu"
-                        aria-controls="lsvr_kba-tree-widget__submenu-41-346"
-                        aria-haspopup="true"
-                        aria-expanded="false">
-                        <span class="lsvr_kba-tree-widget__submenu-toggle-icon" aria-hidden="true"></span>
-                    </button>
-
-                
-                
-                    <div id="lsvr_kba-tree-widget__submenu-41-346"
-                        class="lsvr_kba-tree-widget__submenu"
-                        role="group"
-                        aria-labelledby="lsvr_kba-tree-widget__item-link-41-346"
-                        aria-expanded="false">
-
-                
-            
-                
-                    <ul class="lsvr_kba-tree-widget__list lsvr_kba-tree-widget__list--post lsvr_kba-tree-widget__list--level-1"
-                        aria-label="Articles"
-                        role="menu">
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../text-markers/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Text Markers</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../hiding-map-controls/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Hiding Map Controls</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../move-the-locate-button/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Move the Locate Button</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../styling-with-css-selectors/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Styling with CSS Selectors</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../hide-tooltip-type-labels/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Hide Tooltip Type Labels</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../hide-locate-button/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Hide Locate Button</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../marker-without-background/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Marker without Background</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../cloning-the-export-feature/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Cloning the Export Feature</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../using-the-global-callback-function/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Using the Global Callback Function</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../elevation-profile-colours/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Elevation Profile Colours</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../show-hide-types-initially/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Show/Hide Types Initially</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../shortcode/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Shortcode</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                    </ul>
-
-                
-                </div></li>
-            <li id="lsvr_kba-tree-widget__item-39-778"
-                class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--category lsvr_kba-tree-widget__item--level-0"
-                role="presentation">
-                <div class="lsvr_kba-tree-widget__item-inner">
-
-                	<div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    	                <span class="lsvr_kba-tree-widget__item-icon icon-info-circle" aria-hidden="true"></span>
-
-    	                <a href="../../docs-cat/about/index.html"
-                            id="lsvr_kba-tree-widget__item-link-39-778"
-    	                	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--category lsvr_kba-tree-widget__item-link--level-0"
-                            role="menuitem">About</a>
-
-    	                
-    	                    <span class="lsvr_kba-tree-widget__item-count">(3)</span>
-
-    	                
-                	</div>
-
-                </div>
-
-                
-                    <button id="lsvr_kba-tree-widget__submenu-toggle-39-778"
-                        class="lsvr_kba-tree-widget__submenu-toggle header-menu__submenu-toggle--level-0"
-                        type="button"
-                        title="Expand submenu"
-                        aria-controls="lsvr_kba-tree-widget__submenu-39-778"
-                        aria-haspopup="true"
-                        aria-expanded="false">
-                        <span class="lsvr_kba-tree-widget__submenu-toggle-icon" aria-hidden="true"></span>
-                    </button>
-
-                
-                
-                    <div id="lsvr_kba-tree-widget__submenu-39-778"
-                        class="lsvr_kba-tree-widget__submenu"
-                        role="group"
-                        aria-labelledby="lsvr_kba-tree-widget__item-link-39-778"
-                        aria-expanded="false">
-
-                
-            
-                
-                    <ul class="lsvr_kba-tree-widget__list lsvr_kba-tree-widget__list--post lsvr_kba-tree-widget__list--level-1"
-                        aria-label="Articles"
-                        role="menu">
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../thanks/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Thanks</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-post-type-icon c-post-type-icon--lsvr_kba" aria-hidden="true"></span>
-
-    									
-                                        <a href="../changelog/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Changelog</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                            <li class="lsvr_kba-tree-widget__item lsvr_kba-tree-widget__item--post lsvr_kba-tree-widget__item--level-1"
-                                role="presentation">
-                                <div class="lsvr_kba-tree-widget__item-inner">
-
-                                    <div class="lsvr_kba-tree-widget__item-link-wrapper">
-
-    									
-    										<span class="lsvr_kba-tree-widget__item-icon c-lsvr_kba-format-icon c-lsvr_kba-format-icon--video" aria-hidden="true"></span>
-
-    									
-                                        <a href="../settings/index.html"
-                                        	class="lsvr_kba-tree-widget__item-link lsvr_kba-tree-widget__item-link--post lsvr_kba-tree-widget__item-link--level-1"
-                                            role="menuitem">
-                                        	Settings</a>
-
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        
-                    </ul>
-
-                
-                </div></li>
-		</ul>
-
-	</nav>
-
-</div>
-
-</div></div></div></div><div class="footer-widgets__column lsvr-grid__col lsvr-grid__col--span-3 lsvr-grid__col--md lsvr-grid__col--md-span-6 lsvr-grid__col--lg lsvr-grid__col--lg-span-6"><div class="footer-widgets__column-inner"><div id="block-6" class="widget widget_block"><div class="widget__inner"><div class="widget widget_display_forums">
-<div class="widget__inner">
-<h3 class="widget__title">Links</h3>
-<ul class="bbp-forums-widget">
-
-<li>		
-<a class="bbp-forum-title" href="../../js/index.html">Waymark JS</a>
-			</li>
-
-<li>		
-<a class="bbp-forum-title" href="https://wordpress.org/plugins/waymark/">WordPress</a>
-			</li>
-<li>
-				<a class="bbp-forum-title" href="https://github.com/morehawes/waymark/">GitHub</a>
-			</li>
-<li>By 
-				<a class="bbp-forum-title" href="https://www.morehawes.ca/">Joe Hawes</a>
-			</li>
-
-</ul>
-</div>
-</div></div></div></div></div><div class="footer-widgets__column lsvr-grid__col lsvr-grid__col--span-3 lsvr-grid__col--md lsvr-grid__col--md-span-6 lsvr-grid__col--lg lsvr-grid__col--lg-span-6"><div class="footer-widgets__column-inner"><div id="block-9" class="widget widget_block"><div class="widget__inner"><h3 id="contact" class="widget__title">Contact</h3>
-<p>Please feel free to get in touch by either:</p>
-<ul>
-<li>Using the <a href="https://forms.gle/mthqAgSsMoTPM8SR9">Feedback Form</a>.</li>
-<li>Creating a new <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">support topic</a> on the WordPress plugin directory.</li>
-<li>Creating a <a href="https://github.com/morehawes/waymark/issues/new">GitHub issue</a>.</li>
-</ul></div></div></div></div><div class="footer-widgets__column lsvr-grid__col lsvr-grid__col--span-3 lsvr-grid__col--md lsvr-grid__col--md-span-6 lsvr-grid__col--lg lsvr-grid__col--lg-span-6"><div class="footer-widgets__column-inner"><div id="block-12" class="widget widget_block"><div class="widget__inner"><figure class="wp-block-image size-medium" style="float:right;margin-top:-30px"><a  href="https://www.morehawes.ca/"><img loading="lazy" decoding="async" src="../../assets/img/Joe3BW.jpg" alt="Joe Hawes" style="border-radius:50%" width="118" height="118"/></a></figure></div></div></div></div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- FOOTER WIDGETS : end -->
-
-
-			
-			
-	<div class="footer-bottom">
-		<div class="lsvr-container">
-			<div class="footer-bottom__inner">
-
-				
-				
-					<a href="#top" class="footer-scroll-top" title="Back to top">
-						<span class="footer-scroll-top__icon" aria-hidden="true"></span>
-					</a>
-
-				
-			</div>
-		</div>
-	</div>
-
-
-			
-		</div>
-	</footer>
-	<!-- FOOTER : end -->
-
-	
-</div>
-
-<!-- START Waymark Footer JS -->
-<script type="text/javascript">
-//HTTP
+      </script>
+    </article>
+    <footer>
+      <p>
+        <span>
+          <span>
+            6th July 2021
+          </span>
+          <span>
+            by
+            <a href="../../author/joe/index.html" rel="author">
+              Joe
+            </a>
+          </span>
+        </span>
+        <span>
+          Updated: 26th March 2025
+        </span>
+      </p>
+      <p>
+        <span>
+          <span aria-hidden="true">
+          </span>
+          <span>
+            Category:
+          </span>
+          <span>
+            <a href="../../docs-cat/start/index.html">
+              Getting Started
+            </a>
+          </span>
+        </span>
+      </p>
+    </footer>
+    <div>
+      <ul>
+        <li>
+          <div>
+            <a href="../meta/index.html">
+              <img alt="Meta" src="../../assets/img/Screenshot-2025-03-26-at-3.43.22%E2%80%AFPM-450x450.png"/>
+            </a>
+            <h6>
+              <a href="../meta/index.html">
+                Previous
+              </a>
+            </h6>
+            <a href="../meta/index.html">
+              Meta
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <footer>
+      <div>
+        <div>
+          <div>
+            <div>
+              <nav aria-label="Footer">
+                <ul role="menu">
+                  <li>
+                    <a href="../../index.html">
+                      Demo
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../try/index.html">
+                      Try
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://downloads.wordpress.org/plugin/waymark.zip">
+                      Download
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+              <div>
+                <ul title="Social Media Links">
+                  <li>
+                    <a href="https://wordpress.org/plugins/waymark/" target="_blank" title="WordPress">
+                      <span aria-hidden="true">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/morehawes/waymark/" target="_blank" title="GitHub">
+                      <span aria-hidden="true">
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <div>
+              <a href="#top" title="Back to top">
+                <span aria-hidden="true">
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      //HTTP
 var waymark_http_endpoint = "../../index%EF%B9%96waymark_http=1.html";
 
 var waymark_user_config = {"map_options":{"map_height":"640","tile_layers":[{layer_name: "OpenStreetMap", layer_url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?r=1", layer_attribution: '@copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', layer_max_zoom: "18"}],"marker_types":[{"marker_title":"Photo","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-camera","marker_colour":"#70af00","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Water","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-waterdrop","marker_colour":"#2aabe1","icon_colour":"#fff","marker_display":"1","marker_submission":"1"},{"marker_title":"Trail Access","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-car","marker_colour":"#fbfbfb","icon_colour":"#707070","marker_display":"1","marker_submission":"1"},{"marker_title":"Information","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-information-circled","marker_colour":"#fbfbfb","icon_colour":"#0069a5","marker_display":"1","marker_submission":"1"},{"marker_title":"Alert","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-alert","marker_colour":"#da3d20","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Food","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-pizza","marker_colour":"#da3d20","icon_colour":"#ffba00","marker_display":"1","marker_submission":"1"},{"marker_title":"Beer","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-beer","marker_colour":"#fbfbfb","icon_colour":"#754423","marker_display":"1","marker_submission":"1"},{"marker_title":"Start","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"fa-flag","marker_colour":"#70af00","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Finish","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"fa-flag-checkered","marker_colour":"#a43233","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Store","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-cart","marker_colour":"#416979","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Camp","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-home","marker_colour":"#a43233","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Wildlife","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-ios-paw","marker_colour":"#a43233","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Point of Interest","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-eye","marker_colour":"#da3d20","icon_colour":"#e5e5e5","marker_display":"1","marker_submission":"1"},{"marker_title":"Waymark","marker_shape":"marker","marker_size":"large","icon_type":"html","marker_icon":"&lt;img style=&quot;width:24px;height:24px;margin-top:5px&quot; src=&quot;https:\/\/www.waymark.dev\/wp-content\/plugins\/waymark\/assets\/img\/waymark-icon-primary.png&quot; \/&gt;","marker_colour":"#ffffff","icon_colour":"#81d742","marker_display":"1","marker_submission":"1"},{"marker_title":"Test","marker_shape":"rectangle","marker_size":"large","icon_type":"text","marker_icon":"Test Text Marker","marker_colour":"#dd3333","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"}],"line_types":[{"line_title":"Green","line_colour":"#30d100","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Red","line_colour":"#dd3333","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Bike Path","line_colour":"#1e73be","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Foot Path","line_colour":"#dd9933","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Alternate","line_colour":"#dd9933","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"}],"shape_types":[{"shape_title":"Red","shape_colour":"#d84848","fill_opacity":"0.5","shape_display":"1","shape_submission":"1"},{"shape_title":"Green","shape_colour":"#3cbc47","fill_opacity":"0.15","shape_display":"1","shape_submission":"1"},{"shape_title":"Blue","shape_colour":"#487bd9","fill_opacity":"0.5","shape_display":"1","shape_submission":"1"},{"shape_title":"Purple","shape_colour":"#8224e3","fill_opacity":"1","shape_display":"1","shape_submission":"1"}],"show_scale":"1","debug_mode":false},"viewer_options":{"show_gallery":"1","show_filter":"1","show_cluster":"1","show_elevation":false,"cluster_radius":"80","cluster_threshold":"14","elevation_units":"metric","elevation_initial":"1","elevation_colour":"#2c7137","sleep_delay_seconds":"3","sleep_do_message":"0","sleep_wake_message":"Click or Hover to Wake"},"editor_options":{"confirm_delete":"0"},"language":{"action_fullscreen_activate":"View Fullscreen","action_fullscreen_deactivate":"Exit Fullscreen","action_locate_activate":"Show me where I am","action_zoom_in":"Zoom in","action_zoom_out":"Zoom out","label_total_length":"Total Length: ","label_max_elevation":"Max. Elevation: ","label_min_elevation":"Min. Elevation: ","label_ascent":"Total Ascent: ","label_descent":"Total Descent: ","add_line_title":"Draw a Line","add_photo_title":"Upload an Image","add_marker_title":"Place a Marker","add_rectangle_title":"Draw a Rectangle","add_polygon_title":"Draw a Polygon","add_circle_title":"Draw a Circle","upload_file_title":"Read Lines and Markers from file (GPX\/KML\/GeoJSON supported, which most apps should Export to)","action_duplicate":"Duplicate","action_delete":"Delete","action_edit":"Edit","action_edit_done":"Finish editing","action_upload_image":"Upload Image","object_title_placeholder":"Title","object_image_placeholder":"Image URL","object_description_placeholder":"Description","object_type_label":"Type","marker_latlng_label":"Lat,Lng","action_delete_confirm":"Are you sure you want to delete this","action_search_placeholder":"Search...","object_label_marker":"Marker","object_label_line":"Line","object_label_shape":"Shape","object_label_marker_plural":"Markers","object_label_line_plural":"Lines","object_label_shape_plural":"Shapes","error_message_prefix":"Waymark Error","info_message_prefix":"Waymark Info","error_file_type":"This file type is not supported.","error_file_conversion":"Could not convert this file to GeoJSON.","error_file_upload":"File upload error.","error_photo_meta":"Could not retrieve Image metadata.","info_exif_yes":"Image location metadata (EXIF) detected!","info_exif_no":"Image location metadata (EXIF) NOT detected.","no_direction":"No Direction","show_direction":"Show Direction","reverse_direction":"Reverse Direction"}};
@@ -1561,8 +277,6 @@ jQuery(document).ready(function() {
 			}
 		;
 });
-</script>
-<!-- END Waymark Footer JS -->
-</body>
+    </script>
+  </body>
 </html>
-<!-- Cached by WP-Optimize (gzip) - https://getwpo.com - Last modified: 18th March 2026 4:47 pm (Europe/London UTC:0) -->
