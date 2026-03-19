@@ -352,30 +352,7 @@
 				},
 			};
 
-			function waymark_load_map_data(map_instance, map_id, reset_map = true) {
-				//Build request
-				var data = {
-					waymark_action: "get_map_data",
-					waymark_security: "6c38ee9589",
-					map_id: map_id,
-				};
 
-				//Do request
-				jQuery.post(waymark_http_endpoint, data, function (map_data) {
-					map_instance.load_json(map_data, reset_map);
-				});
-			}
-
-			//Call
-			jQuery(document).ready(function () {
-				//Random Country
-				if (typeof Waymark_Map_Editor.map == "object") {
-					Waymark_Map_Editor.map.fitBounds([
-						[7.42192454674, 13.5403935076],
-						[23.40972, 23.88689],
-					]);
-				}
-			});
     </script>
   </body>
 </html>

@@ -403,30 +403,7 @@ jQuery(document).ready(function() {
 				},
 			};
 
-			function waymark_load_map_data(map_instance, map_id, reset_map = true) {
-				//Build request
-				var data = {
-					waymark_action: "get_map_data",
-					waymark_security: "6c38ee9589",
-					map_id: map_id,
-				};
 
-				//Do request
-				jQuery.post(waymark_http_endpoint, data, function (map_data) {
-					map_instance.load_json(map_data, reset_map);
-				});
-			}
-
-			//Call
-			jQuery(document).ready(function () {
-				//Random Country
-				if (typeof Waymark_Map_Editor.map == "object") {
-					Waymark_Map_Editor.map.fitBounds([
-						[-10.3599874813, 95.2930261576],
-						[5.47982086834, 141.03385176],
-					]);
-				}
-			});
     </script>
   </body>
 </html>
