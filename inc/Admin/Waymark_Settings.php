@@ -541,7 +541,7 @@ class Waymark_Settings {
 					// translators: The title of the section for adding Meta Inputs
 					'title' => esc_html__('Meta', 'waymark'),
 					// translators: The description of the section for adding Meta Inputs
-					'description' => '<span class="waymark-lead">' . sprintf(__('Create additional input fields that appear underneath the Map Editor. Any Meta that has been input is displayed on the <a href="%s">Map Details</a> page, and can also be displayed by the Shortcode.', 'waymark'), 'https://www.waymark.dev/map/route-map/') . '</span>',
+					'description' => '<span class="waymark-lead">' . __('Create additional input fields that appear underneath the Map Editor. Any Meta that has been input is displayed on the Map Details page, and can also be displayed by the Shortcode.', 'waymark') . '</span>',
 					'help' => [
 						'url' => esc_attr(Waymark_Helper::site_url('docs/meta')),
 						// translators: The link to the Meta documentation
@@ -1554,7 +1554,7 @@ class Waymark_Settings {
 							'default' => Waymark_Config::get_setting('misc', 'advanced', 'debug_mode'),
 							// translators: The tip for the field for whether to enable debug mode
 							'tip' => esc_attr__('With debug mode enabled, the plugin will output Map and Settings data in Admin Dashboard. This may come in handy if you need to report a bug. Pro Tip! Check the browser console for Waymark output when signed in as an administrator.', 'waymark'),
-							'tip_link' => 'https://www.waymark.dev/docs/debug-mode/',
+							'tip_link' => 'https://www.waymark.dev/advanced/debug-mode/',
 							'options' => [
 								// translators: The option to disable debug mode
 								'0' => esc_html__('Disable', 'waymark'),

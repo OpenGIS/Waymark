@@ -28,8 +28,6 @@ class Waymark_Helper {
 		$out .= '		<p>' . esc_html__('Thanks', 'waymark') . '!</p>' . "\n";
 
 		$out .= '		<hr />' . "\n";
-		// translators: Link to the documentation thanks page
-		$out .= '		<p>' . sprintf(__('Built on the shoulders of giants, <a href="%s">thank you</a>!', 'waymark'), 'https://www.waymark.dev/docs/thanks/') . '</p>' . "\n";
 
 		// Debug Info
 		$debug = (self::is_debug()) ? '1' : '0';
@@ -1294,7 +1292,6 @@ class Waymark_Helper {
 	 * Represent Type as text
 	 *
 	 * Outputs a textual representation of a type, coloured according to the type's colour Settings
-	 * https://www.waymark.dev/docs/settings/
 	 *
 	 * @param string $feature_type - marker, line, shape
 	 * @param array $type_data - array of type data, must have these keys: type_key, type_title, marker_colour, icon_colour
