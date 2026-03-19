@@ -1,36 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
   <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>
-      Settings – Waymark
-    </title>
-    <link href="../../assets/css/docs.css" rel="stylesheet"/>
-    <script src="../../assets/js/jquery.min.js">
-    </script>
-    <script src="../../assets/js/jquery-migrate.min.js">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Settings – Waymark</title>
+    <link href="../../assets/css/docs.css" rel="stylesheet" />
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/jquery-migrate.min.js"></script>
     <script src="../../assets/js/docs.js"></script>
-    </script>
   </head>
   <body>
-    <h1>
-      Settings
-    </h1>
+    <h1>Settings</h1>
     <article>
       <figure>
-        <iframe allow="autoplay; fullscreen; picture-in-picture; clipboard-write" height="281" src="https://player.vimeo.com/video/572375482?dnt=1&amp;app_id=122963" title="Waymark - Settings" width="500">
+        <iframe
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+          height="281"
+          src="https://player.vimeo.com/video/572375482?dnt=1&amp;app_id=122963"
+          title="Waymark - Settings"
+          width="500"
+        >
         </iframe>
       </figure>
-      <h2 id="tiles">
-        Basemaps
-      </h2>
+      <h2 id="tiles">Basemaps</h2>
       <div>
         <div>
           <div>
-            <h3>
-              Basemaps
-            </h3>
+            <h3>Basemaps</h3>
             <p>
               <span class="waymark-lead">
                 Waymark uses the excellent
@@ -38,20 +34,20 @@
                   OpenStreetMap
                 </a>
                 as it’s default Basemap and supports many
-                <a href="https://leaflet-extras.github.io/leaflet-providers/preview/">
+                <a
+                  href="https://leaflet-extras.github.io/leaflet-providers/preview/"
+                >
                   other providers
                 </a>
                 .
-                <br/>
-                <br/>
-                <a href="https://www.thunderforest.com/">
-                  Thunderforest
-                </a>
+                <br />
+                <br />
+                <a href="https://www.thunderforest.com/"> Thunderforest </a>
                 and
-                <a href="https://www.mapbox.com/maps/">
-                  Mapbox
-                </a>
-                are examples of providers that offer easy access to beautiful Basemaps (including satellite imagery). They require registration, but have a free usage tier.
+                <a href="https://www.mapbox.com/maps/"> Mapbox </a>
+                are examples of providers that offer easy access to beautiful
+                Basemaps (including satellite imagery). They require
+                registration, but have a free usage tier.
               </span>
             </p>
           </div>
@@ -59,96 +55,70 @@
       </div>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Basemap Name</td>
           <td>
-            Basemap Name
+            <code> text </code>
           </td>
+          <td>Open Street Map</td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            Open Street Map
-          </td>
-          <td>
-            The Layer Name will appear in a dropdown list shown by the Map when multiple Basemaps have been entered. You can change the default basemap in the shortcode: [Waymark map_id="1234" basemap="Basemap Name"]
+            The Layer Name will appear in a dropdown list shown by the Map when
+            multiple Basemaps have been entered. You can change the default
+            basemap in the shortcode: [Waymark map_id="1234" basemap="Basemap
+            Name"]
           </td>
         </tr>
         <tr>
+          <td>Basemap URL</td>
           <td>
-            Basemap URL
+            <code> text </code>
           </td>
+          <td>https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png</td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
-          </td>
-          <td>
-            Many mapping services support the Slippy Map format. Waymark requires URLs that contain {z} (zoom level) and {x}/{y} (tile coordinates). For example the OpenCycleMap URL is https://tile.thunderforest.com/cycle/{z}/{x}/{y}@2x.png?apikey=[your_api_key].
+            Many mapping services support the Slippy Map format. Waymark
+            requires URLs that contain {z} (zoom level) and {x}/{y} (tile
+            coordinates). For example the OpenCycleMap URL is
+            https://tile.thunderforest.com/cycle/{z}/{x}/{y}@2x.png?apikey=[your_api_key].
           </td>
         </tr>
         <tr>
+          <td>Basemap Attribution</td>
           <td>
-            Basemap Attribution
+            <code> text </code>
           </td>
           <td>
-            <code>
-              text
-            </code>
+            © &lt;a
+            href="https://www.openstreetmap.org/copyright"&gt;OpenStreetMap&lt;/a&gt;
+            contributors
           </td>
           <td>
-            © &lt;a href="https://www.openstreetmap.org/copyright"&gt;OpenStreetMap&lt;/a&gt; contributors
-          </td>
-          <td>
-            Mapping services often have the requirement that attribution is displayed by the map. Text and HTML links are supported.
+            Mapping services often have the requirement that attribution is
+            displayed by the map. Text and HTML links are supported.
           </td>
         </tr>
         <tr>
+          <td>Basemap Max Zoom</td>
           <td>
-            Basemap Max Zoom
+            <code> text </code>
           </td>
-          <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            18
-          </td>
-          <td>
-            Set a maximum zoom level for this Basemap, the default is 18.
-          </td>
+          <td>18</td>
+          <td>Set a maximum zoom level for this Basemap, the default is 18.</td>
         </tr>
       </table>
-      <h2 id="markers">
-        Markers
-      </h2>
+      <h2 id="markers">Markers</h2>
       <div>
         <div>
           <div>
-            <h3>
-              Marker Types
-            </h3>
+            <h3>Marker Types</h3>
             <p>
               <span class="waymark-lead">
-                Customise how Markers are displayed on the Map. Set these styles once, then select the appropriate Type when you add to the Map.
+                Customise how Markers are displayed on the Map. Set these styles
+                once, then select the appropriate Type when you add to the Map.
               </span>
             </p>
           </div>
@@ -156,176 +126,122 @@
       </div>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Marker Label</td>
           <td>
-            Marker Label
+            <code> text </code>
           </td>
+          <td>Photo</td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            Photo
-          </td>
-          <td>
-            What kind of Marker is this? E.g. "Photo", "Grocery Store", "Warning!". Once saved, Marker labels can not be edited. The Marker Label is displayed in the Tooltip (when hovering over the Marker) and in the Info Window (once the Marker is clicked). Hide in Settings &gt; Map &gt; Misc. &gt; Type Labels.
+            What kind of Marker is this? E.g. "Photo", "Grocery Store",
+            "Warning!". Once saved, Marker labels can not be edited. The Marker
+            Label is displayed in the Tooltip (when hovering over the Marker)
+            and in the Info Window (once the Marker is clicked). Hide in
+            Settings &gt; Map &gt; Misc. &gt; Type Labels.
           </td>
         </tr>
         <tr>
+          <td>Marker Shape</td>
           <td>
-            Marker Shape
+            <code> select </code>
           </td>
+          <td>marker</td>
           <td>
-            <code>
-              select
-            </code>
-          </td>
-          <td>
-            marker
-          </td>
-          <td>
-            Which shape of Marker to use. Circles and Squares are centered at the specified location, Markers point down to that location.
+            Which shape of Marker to use. Circles and Squares are centered at
+            the specified location, Markers point down to that location.
           </td>
         </tr>
         <tr>
+          <td>Marker Size</td>
           <td>
-            Marker Size
+            <code> select </code>
           </td>
-          <td>
-            <code>
-              select
-            </code>
-          </td>
-          <td>
-            large
-          </td>
-          <td>
-            Which size of Marker to use.
-          </td>
+          <td>large</td>
+          <td>Which size of Marker to use.</td>
         </tr>
         <tr>
+          <td>Marker Background</td>
           <td>
-            Marker Background
+            <code> text </code>
           </td>
-          <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            white
-          </td>
+          <td>white</td>
           <td>
             The Marker background colour. Click "Select Colour" to select.
           </td>
         </tr>
         <tr>
+          <td>Marker Show Initially</td>
           <td>
-            Marker Show Initially
+            <code> boolean </code>
           </td>
+          <td>1</td>
           <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            1
-          </td>
-          <td>
-            When using the Overlay Filter you can choose to show/hide certain Types when the Map initially loads.
+            When using the Overlay Filter you can choose to show/hide certain
+            Types when the Map initially loads.
           </td>
         </tr>
         <tr>
+          <td>Marker Submissions?</td>
           <td>
-            Marker Submissions?
+            <code> boolean </code>
           </td>
+          <td>1</td>
+          <td>Make this Type available in front-end Submissions?</td>
+        </tr>
+        <tr>
+          <td>IconType</td>
           <td>
-            <code>
-              boolean
-            </code>
+            <code> select </code>
           </td>
+          <td>icon</td>
           <td>
-            1
-          </td>
-          <td>
-            Make this Type available in front-end Submissions?
+            Font Icons are available from Font Awesome and Ionic Icons. Simple
+            Text or Emojis are supported, as well as custom HTML. So you can
+            pretty much use anything you like!
           </td>
         </tr>
         <tr>
+          <td>IconName</td>
           <td>
-            IconType
+            <code> text </code>
           </td>
+          <td>ion-camera</td>
           <td>
-            <code>
-              select
-            </code>
-          </td>
-          <td>
-            icon
-          </td>
-          <td>
-            Font Icons are available from Font Awesome and Ionic Icons. Simple Text or Emojis are supported, as well as custom HTML. So you can pretty much use anything you like!
-          </td>
-        </tr>
-        <tr>
-          <td>
-            IconName
-          </td>
-          <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            ion-camera
-          </td>
-          <td>
-            The desired icon name from Ionicons or Font Awesome, e.g. "ion-camera", or "fa-camera". Click the links to see the full list of icons available.|Text to display inside the Marker, in the chosen colour. Space is very limited! Pro Tip: adjust text size using CSS; for all Markers: .waymark-icon-text{font-size: 18px}, or by Type: .waymark-marker-photo .waymark-icon-text{...}. Use your browser's inspector to dig for Type class names.|The HTML entered will be added inside each Marker. Pro Tip! HTML Entities supported (e.g. &amp;cross; as well as Unicode and Emojis!), or provide HTML to integrate with other Icon providers.
+            The desired icon name from Ionicons or Font Awesome, e.g.
+            "ion-camera", or "fa-camera". Click the links to see the full list
+            of icons available.|Text to display inside the Marker, in the chosen
+            colour. Space is very limited! Pro Tip: adjust text size using CSS;
+            for all Markers: .waymark-icon-text{font-size: 18px}, or by Type:
+            .waymark-marker-photo .waymark-icon-text{...}. Use your browser's
+            inspector to dig for Type class names.|The HTML entered will be
+            added inside each Marker. Pro Tip! HTML Entities supported (e.g.
+            &amp;cross; as well as Unicode and Emojis!), or provide HTML to
+            integrate with other Icon providers.
           </td>
         </tr>
         <tr>
+          <td>IconColour</td>
           <td>
-            IconColour
+            <code> text </code>
           </td>
-          <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            #475260
-          </td>
-          <td>
-            The colour of the icon. Click "Select Colour" to select.
-          </td>
+          <td>#475260</td>
+          <td>The colour of the icon. Click "Select Colour" to select.</td>
         </tr>
       </table>
-      <h2 id="lines">
-        Lines
-      </h2>
+      <h2 id="lines">Lines</h2>
       <div>
         <div>
           <div>
-            <h3>
-              Line Types
-            </h3>
+            <h3>Line Types</h3>
             <p>
               <span class="waymark-lead">
-                Customise how Lines are displayed on the Map. Set these styles once, then select the appropriate Type when you add to the Map.
+                Customise how Lines are displayed on the Map. Set these styles
+                once, then select the appropriate Type when you add to the Map.
               </span>
             </p>
           </div>
@@ -333,237 +249,145 @@
       </div>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Line Label</td>
           <td>
-            Line Label
+            <code> text </code>
           </td>
+          <td>Red</td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            Red
-          </td>
-          <td>
-            What kind of Line is this? E.g. "Easy", "Walking Only", "Dark Red". The Line Label is displayed in the Tooltip (when hovering over the Line) and in the Line Info Window. Once saved, Line labels can not be edited.
+            What kind of Line is this? E.g. "Easy", "Walking Only", "Dark Red".
+            The Line Label is displayed in the Tooltip (when hovering over the
+            Line) and in the Line Info Window. Once saved, Line labels can not
+            be edited.
           </td>
         </tr>
         <tr>
+          <td>Line Colour</td>
           <td>
-            Line Colour
+            <code> text </code>
           </td>
+          <td>#d84848</td>
+          <td>The colour of the Line. Click "Select Colour" to select.</td>
+        </tr>
+        <tr>
+          <td>Line Weight</td>
           <td>
-            <code>
-              text
-            </code>
+            <code> text </code>
           </td>
+          <td>3</td>
+          <td>The width of the Line, in pixels.</td>
+        </tr>
+        <tr>
+          <td>Line Opacity</td>
           <td>
-            #d84848
+            <code> text </code>
           </td>
+          <td>0.7</td>
+          <td>The opacity of the Line, between 0.0 and 1.0 (e.g. "0.5").</td>
+        </tr>
+        <tr>
+          <td>Line Show Initially</td>
           <td>
-            The colour of the Line. Click "Select Colour" to select.
+            <code> boolean </code>
+          </td>
+          <td>1</td>
+          <td>
+            When using the Overlay Filter you can choose to show/hide certain
+            Types when the Map initially loads.
           </td>
         </tr>
         <tr>
+          <td>Line Submissions?</td>
           <td>
-            Line Weight
+            <code> boolean </code>
           </td>
-          <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            3
-          </td>
-          <td>
-            The width of the Line, in pixels.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Line Opacity
-          </td>
-          <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            0.7
-          </td>
-          <td>
-            The opacity of the Line, between 0.0 and 1.0 (e.g. "0.5").
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Line Show Initially
-          </td>
-          <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            1
-          </td>
-          <td>
-            When using the Overlay Filter you can choose to show/hide certain Types when the Map initially loads.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Line Submissions?
-          </td>
-          <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            1
-          </td>
-          <td>
-            Make this Type available in front-end Submissions?
-          </td>
+          <td>1</td>
+          <td>Make this Type available in front-end Submissions?</td>
         </tr>
       </table>
-      <h2 id="shapes">
-        Shapes
-      </h2>
-      <h3 id="shapes-shape_types">
-        Shape Types
-      </h3>
+      <h2 id="shapes">Shapes</h2>
+      <h3 id="shapes-shape_types">Shape Types</h3>
       <p>
         <span class="waymark-lead">
-          Customise how Shapes are displayed on the Map. Set these styles once, then select the appropriate Type when you add to the Map.
+          Customise how Shapes are displayed on the Map. Set these styles once,
+          then select the appropriate Type when you add to the Map.
         </span>
       </p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Shape Label</td>
           <td>
-            Shape Label
+            <code> text </code>
           </td>
+          <td>Red</td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            Red
-          </td>
-          <td>
-            What kind of Shape is this? E.g. "Park", "Danger!", "Light Blue". The Shape Label is displayed in the Tooltip (when hovering over the Shape) and in the Shape Info Window. Once saved, Shape labels can not be edited.
+            What kind of Shape is this? E.g. "Park", "Danger!", "Light Blue".
+            The Shape Label is displayed in the Tooltip (when hovering over the
+            Shape) and in the Shape Info Window. Once saved, Shape labels can
+            not be edited.
           </td>
         </tr>
         <tr>
+          <td>Shape Colour</td>
           <td>
-            Shape Colour
+            <code> text </code>
           </td>
+          <td>#d84848</td>
+          <td>The colour of the Shape. Click "Select Colour" to select.</td>
+        </tr>
+        <tr>
+          <td>Shape Fill Opacity</td>
           <td>
-            <code>
-              text
-            </code>
+            <code> text </code>
           </td>
+          <td>0.5</td>
           <td>
-            #d84848
-          </td>
-          <td>
-            The colour of the Shape. Click "Select Colour" to select.
+            The opacity of the inside of the shape, between 0.0 and 1.0 (e.g.
+            "0.5").
           </td>
         </tr>
         <tr>
+          <td>Shape Show Initially</td>
           <td>
-            Shape Fill Opacity
+            <code> boolean </code>
           </td>
+          <td>1</td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            0.5
-          </td>
-          <td>
-            The opacity of the inside of the shape, between 0.0 and 1.0 (e.g. "0.5").
+            When using the Overlay Filter you can choose to show/hide certain
+            Types when the Map initially loads.
           </td>
         </tr>
         <tr>
+          <td>Shape Submissions?</td>
           <td>
-            Shape Show Initially
+            <code> boolean </code>
           </td>
-          <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            1
-          </td>
-          <td>
-            When using the Overlay Filter you can choose to show/hide certain Types when the Map initially loads.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Shape Submissions?
-          </td>
-          <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            1
-          </td>
-          <td>
-            Make this Type available in front-end Submissions?
-          </td>
+          <td>1</td>
+          <td>Make this Type available in front-end Submissions?</td>
         </tr>
       </table>
-      <h2 id="meta">
-        Meta
-      </h2>
+      <h2 id="meta">Meta</h2>
       <div>
         <div>
           <div>
-            <h3>
-              Meta
-            </h3>
+            <h3>Meta</h3>
             <p>
               <span class="waymark-lead">
-                Create additional input fields that appear underneath the Map Editor. Any Meta that has been input is displayed on the
-                                Map Details
-                                page, and can also be displayed by the Shortcode.
+                Create additional input fields that appear underneath the Map
+                Editor. Any Meta that has been input is displayed on the Map
+                Details page, and can also be displayed by the Shortcode.
               </span>
             </p>
           </div>
@@ -571,1174 +395,755 @@
       </div>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Meta Title</td>
           <td>
-            Meta Title
+            <code> text </code>
           </td>
+          <td>Description</td>
+          <td>The title appears next to the input field.</td>
+        </tr>
+        <tr>
+          <td>Meta Default</td>
           <td>
-            <code>
-              text
-            </code>
+            <code> text </code>
           </td>
+          <td></td>
           <td>
-            Description
-          </td>
-          <td>
-            The title appears next to the input field.
+            The default value for the input field. For Select and Multi-Select
+            enter the option/comma-separated options to be selected by default.
           </td>
         </tr>
         <tr>
+          <td>Meta Tip</td>
           <td>
-            Meta Default
+            <code> text </code>
           </td>
           <td>
-            <code>
-              text
-            </code>
+            The Description you enter here will be displayed on the Map Details
+            page.
           </td>
           <td>
-          </td>
-          <td>
-            The default value for the input field. For Select and Multi-Select enter the option/comma-separated options to be selected by default.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Meta Tip
-          </td>
-          <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            The Description you enter here will be displayed on the Map Details page.
-          </td>
-          <td>
-            A tip provides additional information about an input field... just like this!
+            A tip provides additional information about an input field... just
+            like this!
           </td>
         </tr>
         <tr>
+          <td>Meta Type</td>
           <td>
-            Meta Type
+            <code> select </code>
           </td>
+          <td>textarea_rich</td>
+          <td>The type of input field to use.</td>
+        </tr>
+        <tr>
+          <td>Meta Options</td>
           <td>
-            <code>
-              select
-            </code>
+            <code> text </code>
           </td>
+          <td></td>
+          <td>A comma-separated list of options for the input.</td>
+        </tr>
+        <tr>
+          <td>Meta Group</td>
           <td>
-            textarea_rich
+            <code> select </code>
           </td>
+          <td></td>
           <td>
-            The type of input field to use.
+            Which group this Meta belongs to (if any). Meta in the same group
+            will be displayed together when editing and viewing Maps. Meta not
+            in a group will be displayed above any groups.
           </td>
         </tr>
         <tr>
+          <td>Meta In Shortcode?</td>
           <td>
-            Meta Options
+            <code> boolean </code>
           </td>
+          <td>0</td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-          </td>
-          <td>
-            A comma-separated list of options for the input.
+            Whether this content should be displayed when embedding a Map using
+            the Shortcode.
           </td>
         </tr>
         <tr>
+          <td>Meta In Submissions?</td>
           <td>
-            Meta Group
+            <code> boolean </code>
           </td>
-          <td>
-            <code>
-              select
-            </code>
-          </td>
-          <td>
-          </td>
-          <td>
-            Which group this Meta belongs to (if any). Meta in the same group will be displayed together when editing and viewing Maps. Meta not in a group will be displayed above any groups.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Meta In Shortcode?
-          </td>
-          <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            Whether this content should be displayed when embedding a Map using the Shortcode.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Meta In Submissions?
-          </td>
-          <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            Make this Meta available in front-end Submissions?
-          </td>
+          <td>0</td>
+          <td>Make this Meta available in front-end Submissions?</td>
         </tr>
       </table>
-      <h3 id="meta-groups">
-        Groups
-      </h3>
+      <h3 id="meta-groups">Groups</h3>
       <p>
         <span class="waymark-lead">
-          Create groups to organise your Map Meta. Meta in the same group will be displayed together when editing and viewing Maps.
+          Create groups to organise your Map Meta. Meta in the same group will
+          be displayed together when editing and viewing Maps.
         </span>
       </p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Group Title</td>
           <td>
-            Group Title
+            <code> text </code>
           </td>
-          <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-          </td>
-          <td>
-            The title appears above the Meta in that group.
-          </td>
+          <td></td>
+          <td>The title appears above the Meta in that group.</td>
         </tr>
       </table>
-      <h2 id="properties">
-        Properties
-      </h2>
-      <h3 id="properties-props">
-        Properties
-      </h3>
+      <h2 id="properties">Properties</h2>
+      <h3 id="properties-props">Properties</h3>
       <p>
         <span class="waymark-lead">
           Read
           <b>
-            <a href="https://geojson.org/">
-              GeoJSON
-            </a>
+            <a href="https://geojson.org/"> GeoJSON </a>
           </b>
           feature properties when importing.
         </span>
-        <br/>
-        <br/>
-        If Waymark finds data for the property keys below it will stored when it is imported. These can be automatically appended to the Overlay Description, or accessed programatically the
-        <code>
-          layer.feature.properties
-        </code>
+        <br />
+        <br />
+        If Waymark finds data for the property keys below it will stored when it
+        is imported. These can be automatically appended to the Overlay
+        Description, or accessed programatically the
+        <code> layer.feature.properties </code>
         Object.
       </p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Property Key</td>
           <td>
-            Property Key
+            <code> text </code>
           </td>
+          <td></td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-          </td>
-          <td>
-            This is the key associated with the data you are trying to access, i.e. "properties": {"property_key": "Some content here"}
+            This is the key associated with the data you are trying to access,
+            i.e. "properties": {"property_key": "Some content here"}
           </td>
         </tr>
         <tr>
+          <td>Property Title</td>
           <td>
-            Property Title
+            <code> text </code>
           </td>
+          <td></td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-          </td>
-          <td>
-            The value for this property will be added to the Overlay Description under this title.
+            The value for this property will be added to the Overlay Description
+            under this title.
           </td>
         </tr>
       </table>
-      <h3 id="properties-options">
-        Options
-      </h3>
-      <p>
-        Append listed Properties to the Overlay Description.
-      </p>
+      <h3 id="properties-options">Options</h3>
+      <p>Append listed Properties to the Overlay Description.</p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Append</td>
           <td>
-            Append
+            <code> boolean </code>
           </td>
-          <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            Append the property value to the Overlay Description.
-          </td>
+          <td>0</td>
+          <td>Append the property value to the Overlay Description.</td>
         </tr>
       </table>
-      <h2 id="submission">
-        Submissions
-      </h2>
-      <h3 id="submission-global">
-        Front-End Submissions
-      </h3>
+      <h2 id="submission">Submissions</h2>
+      <h3 id="submission-global">Front-End Submissions</h3>
       <p>
         Use the
         <span class="waymark-code">
-          <code>
-            [Waymark content="submission"]
-          </code>
+          <code> [Waymark content="submission"] </code>
         </span>
         Shortcode to allow Map submissions from the front-end of your site.
       </p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Allow Submissions</td>
           <td>
-            Allow Submissions
+            <code> boolean </code>
           </td>
+          <td>0</td>
           <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            Submissions will be available only to site administrators by default, but can also be allowed for registered users or even to guests without registration.
+            Submissions will be available only to site administrators by
+            default, but can also be allowed for registered users or even to
+            guests without registration.
           </td>
         </tr>
       </table>
-      <h3 id="submission-from_users">
-        User Submissions
-      </h3>
-      <p>
-        Allow registered users to create Maps from the front-end.
-      </p>
+      <h3 id="submission-from_users">User Submissions</h3>
+      <p>Allow registered users to create Maps from the front-end.</p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Allow From</td>
           <td>
-            Allow From
+            <code> select_multi </code>
           </td>
+          <td></td>
           <td>
-            <code>
-              select_multi
-            </code>
-          </td>
-          <td>
-          </td>
-          <td>
-            Users with the selected roles will be able to make Submissions through the front-end
+            Users with the selected roles will be able to make Submissions
+            through the front-end
           </td>
         </tr>
         <tr>
+          <td>Editor Features</td>
           <td>
-            Editor Features
+            <code> select_multi </code>
           </td>
+          <td></td>
           <td>
-            <code>
-              select_multi
-            </code>
-          </td>
-          <td>
-          </td>
-          <td>
-            What features to offer in the Editor. Important! Uploaded images are added to the Media Library, reading from file does not keep a copy of the file on the server. Whether an individual Meta input is displayed can be set in the Settings &gt; Map &gt; Meta.
+            What features to offer in the Editor. Important! Uploaded images are
+            added to the Media Library, reading from file does not keep a copy
+            of the file on the server. Whether an individual Meta input is
+            displayed can be set in the Settings &gt; Map &gt; Meta.
           </td>
         </tr>
         <tr>
+          <td>Default Status</td>
           <td>
-            Default Status
+            <code> select </code>
           </td>
+          <td></td>
           <td>
-            <code>
-              select
-            </code>
-          </td>
-          <td>
-          </td>
-          <td>
-            This is the initial status of the submitted Map. Note! Publish means that the Map (including any images added) will be *immediately* visible on your site.
+            This is the initial status of the submitted Map. Note! Publish means
+            that the Map (including any images added) will be *immediately*
+            visible on your site.
           </td>
         </tr>
         <tr>
+          <td>Default Collection</td>
           <td>
-            Default Collection
+            <code> select </code>
           </td>
+          <td></td>
           <td>
-            <code>
-              select
-            </code>
-          </td>
-          <td>
-          </td>
-          <td>
-            If specified, user submissions will be automatically added to this Collection.
+            If specified, user submissions will be automatically added to this
+            Collection.
           </td>
         </tr>
       </table>
-      <h3 id="submission-from_public">
-        Public Submissions
-      </h3>
+      <h3 id="submission-from_public">Public Submissions</h3>
       <p>
         This will allow Submissions from
-        <b>
-          any visitor
-        </b>
+        <b> any visitor </b>
         , without registration.
       </p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Public Submissions</td>
           <td>
-            Public Submissions
+            <code> boolean </code>
           </td>
-          <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            0
-          </td>
+          <td>0</td>
           <td>
             Allow *anyone* to submit Maps to your site, without registration.
           </td>
         </tr>
         <tr>
+          <td>Editor Features</td>
           <td>
-            Editor Features
+            <code> select_multi </code>
           </td>
+          <td></td>
           <td>
-            <code>
-              select_multi
-            </code>
-          </td>
-          <td>
-          </td>
-          <td>
-            What features to offer in the Editor. Important! Uploaded images are added to the Media Library (see Upload Location below), reading from file does not keep a copy of the file on the server. Whether an individual Meta input is displayed can be set in the Settings &gt; Map &gt; Meta.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Upload Location
-          </td>
-          <td>
-            <code>
-              select
-            </code>
-          </td>
-          <td>
-            waymark_submission
-          </td>
-          <td>
-            Images upload by non-registered users can be stored seperately from other Media Library uploads, to aid with moderation. All uploaded images will be stored in a single directory (/waymark_submission) found in the upload root.
+            What features to offer in the Editor. Important! Uploaded images are
+            added to the Media Library (see Upload Location below), reading from
+            file does not keep a copy of the file on the server. Whether an
+            individual Meta input is displayed can be set in the Settings &gt;
+            Map &gt; Meta.
           </td>
         </tr>
         <tr>
+          <td>Upload Location</td>
           <td>
-            Default Status
+            <code> select </code>
           </td>
+          <td>waymark_submission</td>
           <td>
-            <code>
-              select
-            </code>
-          </td>
-          <td>
-          </td>
-          <td>
-            This is the initial status of the submitted Map. Note! Publish means that the Map (including any images added) will be *immediately* visible on your site.
+            Images upload by non-registered users can be stored seperately from
+            other Media Library uploads, to aid with moderation. All uploaded
+            images will be stored in a single directory (/waymark_submission)
+            found in the upload root.
           </td>
         </tr>
         <tr>
+          <td>Default Status</td>
           <td>
-            Default Collection
+            <code> select </code>
           </td>
+          <td></td>
           <td>
-            <code>
-              select
-            </code>
+            This is the initial status of the submitted Map. Note! Publish means
+            that the Map (including any images added) will be *immediately*
+            visible on your site.
           </td>
+        </tr>
+        <tr>
+          <td>Default Collection</td>
           <td>
+            <code> select </code>
           </td>
+          <td></td>
           <td>
-            If specified, user submissions will be automatically added to this Collection.
+            If specified, user submissions will be automatically added to this
+            Collection.
           </td>
         </tr>
       </table>
-      <h2 id="misc">
-        Misc.
-      </h2>
+      <h2 id="misc">Misc.</h2>
       <div>
         <div>
           <div>
-            <h3>
-              Map Options
-            </h3>
-            <p>
-              Use these options to change how Maps are displayed.
-            </p>
+            <h3>Map Options</h3>
+            <p>Use these options to change how Maps are displayed.</p>
           </div>
         </div>
       </div>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Default Centre</td>
           <td>
-            Default Centre
+            <code> text </code>
           </td>
+          <td>51.38436,-68.74923</td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            51.38436,-68.74923
-          </td>
-          <td>
-            Waymark centres the Map automatically when displaying data. These coordinates (Latitude,Longitude) will be used when there is no data available.
+            Waymark centres the Map automatically when displaying data. These
+            coordinates (Latitude,Longitude) will be used when there is no data
+            available.
           </td>
         </tr>
         <tr>
+          <td>Map Height</td>
           <td>
-            Map Height
+            <code> text </code>
           </td>
+          <td>450</td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            450
-          </td>
-          <td>
-            Specify the desired height of the Map (in pixels). Pro Tip! This will affect all Maps, but you can change the height (and width) of an individual Map through the Shortcode: [Waymark map_id="1234" map_height="640"]
+            Specify the desired height of the Map (in pixels). Pro Tip! This
+            will affect all Maps, but you can change the height (and width) of
+            an individual Map through the Shortcode: [Waymark map_id="1234"
+            map_height="640"]
           </td>
         </tr>
         <tr>
+          <td>Default Zoom</td>
           <td>
-            Default Zoom
+            <code> text </code>
           </td>
+          <td>9</td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            9
-          </td>
-          <td>
-            Waymark zooms the Map automatically when displaying data. This zoom level (0-18) will be used when there is no data available.
+            Waymark zooms the Map automatically when displaying data. This zoom
+            level (0-18) will be used when there is no data available.
           </td>
         </tr>
         <tr>
+          <td>Image Gallery</td>
           <td>
-            Image Gallery
+            <code> boolean </code>
           </td>
+          <td>1</td>
           <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            1
-          </td>
-          <td>
-            Whether to display an image gallery for Markers that have images associated with them. Pro Tip! This will affect all Maps, but you can choose to show/hide the gallery of an individual Map through the shortcode: [Waymark show_gallery="1"]
+            Whether to display an image gallery for Markers that have images
+            associated with them. Pro Tip! This will affect all Maps, but you
+            can choose to show/hide the gallery of an individual Map through the
+            shortcode: [Waymark show_gallery="1"]
           </td>
         </tr>
         <tr>
+          <td>Overlay Filter</td>
           <td>
-            Overlay Filter
+            <code> boolean </code>
           </td>
+          <td>1</td>
           <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            1
-          </td>
-          <td>
-            Allow the user to filter which Markers, Lines and Shapes are currently visible on the Map. Pro Tip! This will affect all Maps, but you can choose to show/hide the filter for individual Maps through the shortcode: [Waymark show_filter="1"]
+            Allow the user to filter which Markers, Lines and Shapes are
+            currently visible on the Map. Pro Tip! This will affect all Maps,
+            but you can choose to show/hide the filter for individual Maps
+            through the shortcode: [Waymark show_filter="1"]
           </td>
         </tr>
         <tr>
+          <td>Public Export</td>
           <td>
-            Public Export
+            <code> boolean </code>
           </td>
+          <td>0</td>
           <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            Offer visitors the ability to Download all Collection/Map Overlays in the Shortcode Header and on the Map Details page. GeoJSON, GPX and KML formats supported.
+            Offer visitors the ability to Download all Collection/Map Overlays
+            in the Shortcode Header and on the Map Details page. GeoJSON, GPX
+            and KML formats supported.
           </td>
         </tr>
         <tr>
+          <td>Show Scale</td>
           <td>
-            Show Scale
+            <code> boolean </code>
           </td>
-          <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            Show a distance scale (km and miles) on the Map.
-          </td>
+          <td>0</td>
+          <td>Show a distance scale (km and miles) on the Map.</td>
         </tr>
       </table>
-      <h3 id="misc-interaction_options">
-        Sleep Options
-      </h3>
+      <h3 id="misc-interaction_options">Sleep Options</h3>
       <p>
-        Waymark Maps will zoom when the user scrolls. This can cause some unexpected/annoying behaviour when scrolling a page.
-        <br/>
-        <br/>
-        <b>
-          Sleeping
-        </b>
+        Waymark Maps will zoom when the user scrolls. This can cause some
+        unexpected/annoying behaviour when scrolling a page.
+        <br />
+        <br />
+        <b> Sleeping </b>
         the Map initially and
-        <b>
-          Waking
-        </b>
-        upon user interaction (i.e. hovering/clicking/tapping) may create a better experience.
+        <b> Waking </b>
+        upon user interaction (i.e. hovering/clicking/tapping) may create a
+        better experience.
       </p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Hover Wake Time</td>
           <td>
-            Hover Wake Time
+            <code> text </code>
           </td>
+          <td>2</td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            2
-          </td>
-          <td>
-            How many seconds before scroll zoom is enabled. 0 seconds will mean no delay (disabling this feature). A large number of seconds like 3600 (an hour) will esentially *disable hover to wake*, meaning the user will need to *click* to wake.
+            How many seconds before scroll zoom is enabled. 0 seconds will mean
+            no delay (disabling this feature). A large number of seconds like
+            3600 (an hour) will esentially *disable hover to wake*, meaning the
+            user will need to *click* to wake.
           </td>
         </tr>
         <tr>
+          <td>Display Message</td>
           <td>
-            Display Message
+            <code> boolean </code>
           </td>
+          <td>0</td>
           <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            This message will be displayed by the Map while scroll zoom is disabled.
+            This message will be displayed by the Map while scroll zoom is
+            disabled.
           </td>
         </tr>
         <tr>
+          <td>Display Message Text</td>
           <td>
-            Display  Message Text
+            <code> text </code>
           </td>
+          <td>Click or Hover to Wake</td>
+          <td></td>
+        </tr>
+      </table>
+      <h3 id="misc-cluster_options">Cluster Options</h3>
+      <p>
+        With Clustering enabled, Markers will be grouped together when they are
+        close together. This can help to reduce clutter on the Map.
+      </p>
+      <table>
+        <tr>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
+        </tr>
+        <tr>
+          <td>Marker Clustering</td>
           <td>
-            <code>
-              text
-            </code>
+            <code> boolean </code>
           </td>
+          <td>0</td>
           <td>
-            Click or Hover to Wake
+            Whether to cluster (stack) Markers that are close together. Pro Tip!
+            This will affect all Maps, but you can also enable/disable
+            clustering through the Shortcode: [Waymark show_cluster="0"]
           </td>
+        </tr>
+        <tr>
+          <td>Cluster Threshold</td>
           <td>
+            <code> text </code>
+          </td>
+          <td>14</td>
+          <td>Markers will not be clustered above this zoom level.</td>
+        </tr>
+        <tr>
+          <td>Cluster Radius</td>
+          <td>
+            <code> text </code>
+          </td>
+          <td>80</td>
+          <td>
+            The maximum radius that a cluster will cover from the central marker
+            (in pixels). Decreasing will make more, smaller clusters. Default
+            80.
           </td>
         </tr>
       </table>
-      <h3 id="misc-cluster_options">
-        Cluster Options
-      </h3>
-      <p>
-        With Clustering enabled, Markers will be grouped together when they are close together. This can help to reduce clutter on the Map.
-      </p>
+      <h3 id="misc-shortcode_options">Shortcode Options</h3>
+      <p>How Maps are embedded into your content using the shortcode.</p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Shortcode Header</td>
           <td>
-            Marker Clustering
+            <code> select </code>
           </td>
+          <td>1</td>
           <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            Whether to cluster (stack) Markers that are close together. Pro Tip! This will affect all Maps, but you can also enable/disable clustering through the Shortcode: [Waymark show_cluster="0"]
+            The shortcode header displays the title and link to the Map or
+            Collection. Pro Tip! This will affect all shortcodes, but you can
+            override the setting through the shortcode: [Waymark map_id="1234"
+            shortcode_header="1"] (the value must be either 0 or 1).
           </td>
         </tr>
         <tr>
+          <td>Header for Admin</td>
           <td>
-            Cluster Threshold
+            <code> select </code>
           </td>
+          <td>0</td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            14
-          </td>
-          <td>
-            Markers will not be clustered above this zoom level.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Cluster  Radius
-          </td>
-          <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            80
-          </td>
-          <td>
-            The maximum radius that a cluster will cover from the central marker (in pixels). Decreasing will make more, smaller clusters.	Default 80.
+            Use this Setting to always show the Shortcode Header when signed in
+            as admin, useful for quickly navigating to embeded Maps.
           </td>
         </tr>
       </table>
-      <h3 id="misc-shortcode_options">
-        Shortcode Options
-      </h3>
-      <p>
-        How Maps are embedded into your content using the shortcode.
-      </p>
+      <h3 id="misc-elevation_options">Elevation Options</h3>
+      <p>Lines with elevation data.</p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Elevation Profile</td>
           <td>
-            Shortcode Header
+            <code> select </code>
           </td>
+          <td>2</td>
           <td>
-            <code>
-              select
-            </code>
-          </td>
-          <td>
-            1
-          </td>
-          <td>
-            The shortcode header displays the title and link to the Map or Collection. Pro Tip! This will affect all shortcodes, but you can override the setting through the shortcode: [Waymark map_id="1234" shortcode_header="1"] (the value must be either 0 or 1).
+            Display an interactive elevation profile graph below the Map for
+            Lines that have elevation data. Pro Tip! You can choose to show/hide
+            the elevation graph of an individual Map through the shortcode:
+            [Waymark map_id="1234" show_elevation="1"]
           </td>
         </tr>
         <tr>
+          <td>Elevation Units</td>
           <td>
-            Header for Admin
+            <code> select </code>
           </td>
-          <td>
-            <code>
-              select
-            </code>
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            Use this Setting to always show the Shortcode Header when signed in as admin, useful for quickly navigating to embeded Maps.
-          </td>
-        </tr>
-      </table>
-      <h3 id="misc-elevation_options">
-        Elevation Options
-      </h3>
-      <p>
-        Lines with elevation data.
-      </p>
-      <table>
-        <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
-        </tr>
-        <tr>
-          <td>
-            Elevation Profile
-          </td>
-          <td>
-            <code>
-              select
-            </code>
-          </td>
-          <td>
-            2
-          </td>
-          <td>
-            Display an interactive elevation profile graph below the Map for Lines that have elevation data. Pro Tip! You can choose to show/hide the elevation graph of an individual Map through the shortcode: [Waymark map_id="1234" show_elevation="1"]
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Elevation Units
-          </td>
-          <td>
-            <code>
-              select
-            </code>
-          </td>
-          <td>
-            metric
-          </td>
+          <td>metric</td>
           <td>
             Display elevation data in metric (m/km) or imperial (ft/mi) units.
           </td>
         </tr>
         <tr>
+          <td>Elevation Colour</td>
           <td>
-            Elevation Colour
+            <code> text </code>
           </td>
-          <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            #b42714
-          </td>
-          <td>
-            The colour of the elevation graph and associated Line.
-          </td>
+          <td>#b42714</td>
+          <td>The colour of the elevation graph and associated Line.</td>
         </tr>
         <tr>
+          <td>Show Initially?</td>
           <td>
-            Show Initially?
+            <code> boolean </code>
           </td>
+          <td>1</td>
           <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            1
-          </td>
-          <td>
-            Whether to show the elevation profile when the Map loads. If set to No, the user must click on a Line in order to display the elevation data. If there are multiple Lines with elevation data, the one added to the editor first will be the one shown initially.
+            Whether to show the elevation profile when the Map loads. If set to
+            No, the user must click on a Line in order to display the elevation
+            data. If there are multiple Lines with elevation data, the one added
+            to the editor first will be the one shown initially.
           </td>
         </tr>
       </table>
-      <h3 id="misc-collection_options">
-        Collection Options
-      </h3>
-      <p>
-        How Collections are displayed.
-      </p>
+      <h3 id="misc-collection_options">Collection Options</h3>
+      <p>How Collections are displayed.</p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Shortcode Method</td>
           <td>
-            Shortcode Method
+            <code> select </code>
           </td>
+          <td>fetch</td>
           <td>
-            <code>
-              select
-            </code>
-          </td>
-          <td>
-            fetch
-          </td>
-          <td>
-            Whether to load multiple Maps in the Background (uses AJAX to improve page load) when embedding with the Shortcode, or to Embed them within the page. Embedding may be a bad idea for LARGE COLLECTIONS, but can resolve some issues where Collections are not displaying correctly.
+            Whether to load multiple Maps in the Background (uses AJAX to
+            improve page load) when embedding with the Shortcode, or to Embed
+            them within the page. Embedding may be a bad idea for LARGE
+            COLLECTIONS, but can resolve some issues where Collections are not
+            displaying correctly.
           </td>
         </tr>
       </table>
-      <h3 id="misc-editor_options">
-        Editor Options
-      </h3>
-      <p>
-        Customising the Map Editor.
-      </p>
+      <h3 id="misc-editor_options">Editor Options</h3>
+      <p>Customising the Map Editor.</p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Confirm Delete?</td>
           <td>
-            Confirm Delete?
+            <code> boolean </code>
           </td>
+          <td>1</td>
           <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            1
-          </td>
-          <td>
-            Whether to show a confirmation dialog before deleting Markers/Lines/Shapes from the Map. Pro Tip! Even if you accidentally delete something, changes are not saved until the "Update" button is clicked.
+            Whether to show a confirmation dialog before deleting
+            Markers/Lines/Shapes from the Map. Pro Tip! Even if you accidentally
+            delete something, changes are not saved until the "Update" button is
+            clicked.
           </td>
         </tr>
         <tr>
+          <td>Default Basemap</td>
           <td>
-            Default Basemap
+            <code> select </code>
           </td>
+          <td>Open Street Map</td>
+          <td>Which Basemap to use as the editor default.</td>
+        </tr>
+      </table>
+      <h3 id="misc-permalinks">Permalinks</h3>
+      <p>Customise your Map and Collection URLs.</p>
+      <table>
+        <tr>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
+        </tr>
+        <tr>
+          <td>Map Slug</td>
           <td>
-            <code>
-              select
-            </code>
+            <code> text </code>
           </td>
+          <td>map</td>
           <td>
-            Open Street Map
+            The URL slug that will be used for links to your Maps, i.e.
+            example.com/[map-slug]/example-map/. Only alpha-numeric characters
+            and hyphens (-) are allowed.
           </td>
+        </tr>
+        <tr>
+          <td>Collection Slug</td>
           <td>
-            Which Basemap to use as the editor default.
+            <code> text </code>
+          </td>
+          <td>collection</td>
+          <td>
+            The URL slug that will be used for links to your Collections, i.e.
+            example.com/[collection-slug]/example-collection/. Only
+            alpha-numeric characters and hyphens (-) are allowed.
           </td>
         </tr>
       </table>
-      <h3 id="misc-permalinks">
-        Permalinks
-      </h3>
-      <p>
-        Customise your Map and Collection URLs.
-      </p>
+      <h3 id="misc-post">Post Type</h3>
+      <p>Enable Custom Post Type features.</p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Supports</td>
           <td>
-            Map Slug
+            <code> select_multi </code>
           </td>
+          <td>title</td>
           <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            map
-          </td>
-          <td>
-            The URL slug that will be used for links to your Maps, i.e. example.com/[map-slug]/example-map/. Only alpha-numeric characters and hyphens (-) are allowed.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Collection Slug
-          </td>
-          <td>
-            <code>
-              text
-            </code>
-          </td>
-          <td>
-            collection
-          </td>
-          <td>
-            The URL slug that will be used for links to your Collections, i.e. example.com/[collection-slug]/example-collection/. Only alpha-numeric characters and hyphens (-) are allowed.
+            Enable or disable various WordPress features of the Map Custom Post
+            Type.
           </td>
         </tr>
       </table>
-      <h3 id="misc-post">
-        Post Type
-      </h3>
-      <p>
-        Enable Custom Post Type features.
-      </p>
+      <h3 id="misc-advanced">Debug</h3>
+      <p></p>
       <table>
         <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
+          <th class="setting-title" width="160">Title</th>
+          <th class="setting-type">Type</th>
+          <th class="setting-options">Default</th>
+          <th class="setting-tip">Tip</th>
         </tr>
         <tr>
+          <td>Debug Mode</td>
           <td>
-            Supports
+            <code> boolean </code>
           </td>
+          <td>0</td>
           <td>
-            <code>
-              select_multi
-            </code>
-          </td>
-          <td>
-            title
-          </td>
-          <td>
-            Enable or disable various WordPress features of the Map Custom Post Type.
-          </td>
-        </tr>
-      </table>
-      <h3 id="misc-advanced">
-        Debug
-      </h3>
-      <p>
-      </p>
-      <table>
-        <tr>
-          <th class="setting-title" width="160">
-            Title
-          </th>
-          <th class="setting-type">
-            Type
-          </th>
-          <th class="setting-options">
-            Default
-          </th>
-          <th class="setting-tip">
-            Tip
-          </th>
-        </tr>
-        <tr>
-          <td>
-            Debug Mode
-          </td>
-          <td>
-            <code>
-              boolean
-            </code>
-          </td>
-          <td>
-            0
-          </td>
-          <td>
-            With debug mode enabled, the plugin will output Map and Settings data in Admin Dashboard. This may come in handy if you need to report a bug. Pro Tip! Check the browser console for Waymark output when signed in as an administrator.
+            With debug mode enabled, the plugin will output Map and Settings
+            data in Admin Dashboard. This may come in handy if you need to
+            report a bug. Pro Tip! Check the browser console for Waymark output
+            when signed in as an administrator.
           </td>
         </tr>
       </table>
@@ -1746,7 +1151,327 @@
     <script>
       //HTTP
 
-var waymark_user_config = {"map_options":{"map_height":"640","tile_layers":[{layer_name: "OpenStreetMap", layer_url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?r=1", layer_attribution: '@copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', layer_max_zoom: "18"}],"marker_types":[{"marker_title":"Photo","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-camera","marker_colour":"#70af00","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Water","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-waterdrop","marker_colour":"#2aabe1","icon_colour":"#fff","marker_display":"1","marker_submission":"1"},{"marker_title":"Trail Access","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-car","marker_colour":"#fbfbfb","icon_colour":"#707070","marker_display":"1","marker_submission":"1"},{"marker_title":"Information","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-information-circled","marker_colour":"#fbfbfb","icon_colour":"#0069a5","marker_display":"1","marker_submission":"1"},{"marker_title":"Alert","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-alert","marker_colour":"#da3d20","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Food","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-pizza","marker_colour":"#da3d20","icon_colour":"#ffba00","marker_display":"1","marker_submission":"1"},{"marker_title":"Beer","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-beer","marker_colour":"#fbfbfb","icon_colour":"#754423","marker_display":"1","marker_submission":"1"},{"marker_title":"Start","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"fa-flag","marker_colour":"#70af00","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Finish","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"fa-flag-checkered","marker_colour":"#a43233","icon_colour":"white","marker_display":"1","marker_submission":"1"},{"marker_title":"Store","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-cart","marker_colour":"#416979","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Camp","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-android-home","marker_colour":"#a43233","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Wildlife","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-ios-paw","marker_colour":"#a43233","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"},{"marker_title":"Point of Interest","marker_shape":"marker","marker_size":"medium","icon_type":"icon","marker_icon":"ion-eye","marker_colour":"#da3d20","icon_colour":"#e5e5e5","marker_display":"1","marker_submission":"1"},{"marker_title":"Waymark","marker_shape":"marker","marker_size":"large","icon_type":"html","marker_icon":"&lt;img style=&quot;width:24px;height:24px;margin-top:5px&quot; src=&quot;../../assets/img/waymark-icon-primary.png&quot; \/&gt;","marker_colour":"#ffffff","icon_colour":"#81d742","marker_display":"1","marker_submission":"1"},{"marker_title":"Test","marker_shape":"rectangle","marker_size":"large","icon_type":"text","marker_icon":"Test Text Marker","marker_colour":"#dd3333","icon_colour":"#ffffff","marker_display":"1","marker_submission":"1"}],"line_types":[{"line_title":"Green","line_colour":"#30d100","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Red","line_colour":"#dd3333","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Bike Path","line_colour":"#1e73be","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Foot Path","line_colour":"#dd9933","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"},{"line_title":"Alternate","line_colour":"#dd9933","line_weight":"3","line_opacity":"0.7","line_display":"1","line_submission":"1"}],"shape_types":[{"shape_title":"Red","shape_colour":"#d84848","fill_opacity":"0.5","shape_display":"1","shape_submission":"1"},{"shape_title":"Green","shape_colour":"#3cbc47","fill_opacity":"0.15","shape_display":"1","shape_submission":"1"},{"shape_title":"Blue","shape_colour":"#487bd9","fill_opacity":"0.5","shape_display":"1","shape_submission":"1"},{"shape_title":"Purple","shape_colour":"#8224e3","fill_opacity":"1","shape_display":"1","shape_submission":"1"}],"show_scale":"1","debug_mode":false},"viewer_options":{"show_gallery":"1","show_filter":"1","show_cluster":"1","show_elevation":false,"cluster_radius":"80","cluster_threshold":"14","elevation_units":"metric","elevation_initial":"1","elevation_colour":"#2c7137","sleep_delay_seconds":"3","sleep_do_message":"0","sleep_wake_message":"Click or Hover to Wake"},"editor_options":{"confirm_delete":"0"},"language":{"action_fullscreen_activate":"View Fullscreen","action_fullscreen_deactivate":"Exit Fullscreen","action_locate_activate":"Show me where I am","action_zoom_in":"Zoom in","action_zoom_out":"Zoom out","label_total_length":"Total Length: ","label_max_elevation":"Max. Elevation: ","label_min_elevation":"Min. Elevation: ","label_ascent":"Total Ascent: ","label_descent":"Total Descent: ","add_line_title":"Draw a Line","add_photo_title":"Upload an Image","add_marker_title":"Place a Marker","add_rectangle_title":"Draw a Rectangle","add_polygon_title":"Draw a Polygon","add_circle_title":"Draw a Circle","upload_file_title":"Read Lines and Markers from file (GPX\/KML\/GeoJSON supported, which most apps should Export to)","action_duplicate":"Duplicate","action_delete":"Delete","action_edit":"Edit","action_edit_done":"Finish editing","action_upload_image":"Upload Image","object_title_placeholder":"Title","object_image_placeholder":"Image URL","object_description_placeholder":"Description","object_type_label":"Type","marker_latlng_label":"Lat,Lng","action_delete_confirm":"Are you sure you want to delete this","action_search_placeholder":"Search...","object_label_marker":"Marker","object_label_line":"Line","object_label_shape":"Shape","object_label_marker_plural":"Markers","object_label_line_plural":"Lines","object_label_shape_plural":"Shapes","error_message_prefix":"Waymark Error","info_message_prefix":"Waymark Info","error_file_type":"This file type is not supported.","error_file_conversion":"Could not convert this file to GeoJSON.","error_file_upload":"File upload error.","error_photo_meta":"Could not retrieve Image metadata.","info_exif_yes":"Image location metadata (EXIF) detected!","info_exif_no":"Image location metadata (EXIF) NOT detected.","no_direction":"No Direction","show_direction":"Show Direction","reverse_direction":"Reverse Direction"}};
+      var waymark_user_config = {
+        map_options: {
+          map_height: "640",
+          tile_layers: [
+            {
+              layer_name: "OpenStreetMap",
+              layer_url:
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?r=1",
+              layer_attribution:
+                '@copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+              layer_max_zoom: "18",
+            },
+          ],
+          marker_types: [
+            {
+              marker_title: "Photo",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-camera",
+              marker_colour: "#70af00",
+              icon_colour: "#ffffff",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Water",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-waterdrop",
+              marker_colour: "#2aabe1",
+              icon_colour: "#fff",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Trail Access",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-android-car",
+              marker_colour: "#fbfbfb",
+              icon_colour: "#707070",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Information",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-information-circled",
+              marker_colour: "#fbfbfb",
+              icon_colour: "#0069a5",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Alert",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-android-alert",
+              marker_colour: "#da3d20",
+              icon_colour: "white",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Food",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-pizza",
+              marker_colour: "#da3d20",
+              icon_colour: "#ffba00",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Beer",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-beer",
+              marker_colour: "#fbfbfb",
+              icon_colour: "#754423",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Start",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "fa-flag",
+              marker_colour: "#70af00",
+              icon_colour: "white",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Finish",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "fa-flag-checkered",
+              marker_colour: "#a43233",
+              icon_colour: "white",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Store",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-android-cart",
+              marker_colour: "#416979",
+              icon_colour: "#ffffff",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Camp",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-android-home",
+              marker_colour: "#a43233",
+              icon_colour: "#ffffff",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Wildlife",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-ios-paw",
+              marker_colour: "#a43233",
+              icon_colour: "#ffffff",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Point of Interest",
+              marker_shape: "marker",
+              marker_size: "medium",
+              icon_type: "icon",
+              marker_icon: "ion-eye",
+              marker_colour: "#da3d20",
+              icon_colour: "#e5e5e5",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Waymark",
+              marker_shape: "marker",
+              marker_size: "large",
+              icon_type: "html",
+              marker_icon:
+                "&lt;img style=&quot;width:24px;height:24px;margin-top:5px&quot; src=&quot;../../assets/img/waymark-icon-primary.png&quot; \/&gt;",
+              marker_colour: "#ffffff",
+              icon_colour: "#81d742",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+            {
+              marker_title: "Test",
+              marker_shape: "rectangle",
+              marker_size: "large",
+              icon_type: "text",
+              marker_icon: "Test Text Marker",
+              marker_colour: "#dd3333",
+              icon_colour: "#ffffff",
+              marker_display: "1",
+              marker_submission: "1",
+            },
+          ],
+          line_types: [
+            {
+              line_title: "Green",
+              line_colour: "#30d100",
+              line_weight: "3",
+              line_opacity: "0.7",
+              line_display: "1",
+              line_submission: "1",
+            },
+            {
+              line_title: "Red",
+              line_colour: "#dd3333",
+              line_weight: "3",
+              line_opacity: "0.7",
+              line_display: "1",
+              line_submission: "1",
+            },
+            {
+              line_title: "Bike Path",
+              line_colour: "#1e73be",
+              line_weight: "3",
+              line_opacity: "0.7",
+              line_display: "1",
+              line_submission: "1",
+            },
+            {
+              line_title: "Foot Path",
+              line_colour: "#dd9933",
+              line_weight: "3",
+              line_opacity: "0.7",
+              line_display: "1",
+              line_submission: "1",
+            },
+            {
+              line_title: "Alternate",
+              line_colour: "#dd9933",
+              line_weight: "3",
+              line_opacity: "0.7",
+              line_display: "1",
+              line_submission: "1",
+            },
+          ],
+          shape_types: [
+            {
+              shape_title: "Red",
+              shape_colour: "#d84848",
+              fill_opacity: "0.5",
+              shape_display: "1",
+              shape_submission: "1",
+            },
+            {
+              shape_title: "Green",
+              shape_colour: "#3cbc47",
+              fill_opacity: "0.15",
+              shape_display: "1",
+              shape_submission: "1",
+            },
+            {
+              shape_title: "Blue",
+              shape_colour: "#487bd9",
+              fill_opacity: "0.5",
+              shape_display: "1",
+              shape_submission: "1",
+            },
+            {
+              shape_title: "Purple",
+              shape_colour: "#8224e3",
+              fill_opacity: "1",
+              shape_display: "1",
+              shape_submission: "1",
+            },
+          ],
+          show_scale: "1",
+          debug_mode: false,
+        },
+        viewer_options: {
+          show_gallery: "1",
+          show_filter: "1",
+          show_cluster: "1",
+          show_elevation: false,
+          cluster_radius: "80",
+          cluster_threshold: "14",
+          elevation_units: "metric",
+          elevation_initial: "1",
+          elevation_colour: "#2c7137",
+          sleep_delay_seconds: "3",
+          sleep_do_message: "0",
+          sleep_wake_message: "Click or Hover to Wake",
+        },
+        editor_options: { confirm_delete: "0" },
+        language: {
+          action_fullscreen_activate: "View Fullscreen",
+          action_fullscreen_deactivate: "Exit Fullscreen",
+          action_locate_activate: "Show me where I am",
+          action_zoom_in: "Zoom in",
+          action_zoom_out: "Zoom out",
+          label_total_length: "Total Length: ",
+          label_max_elevation: "Max. Elevation: ",
+          label_min_elevation: "Min. Elevation: ",
+          label_ascent: "Total Ascent: ",
+          label_descent: "Total Descent: ",
+          add_line_title: "Draw a Line",
+          add_photo_title: "Upload an Image",
+          add_marker_title: "Place a Marker",
+          add_rectangle_title: "Draw a Rectangle",
+          add_polygon_title: "Draw a Polygon",
+          add_circle_title: "Draw a Circle",
+          upload_file_title:
+            "Read Lines and Markers from file (GPX\/KML\/GeoJSON supported, which most apps should Export to)",
+          action_duplicate: "Duplicate",
+          action_delete: "Delete",
+          action_edit: "Edit",
+          action_edit_done: "Finish editing",
+          action_upload_image: "Upload Image",
+          object_title_placeholder: "Title",
+          object_image_placeholder: "Image URL",
+          object_description_placeholder: "Description",
+          object_type_label: "Type",
+          marker_latlng_label: "Lat,Lng",
+          action_delete_confirm: "Are you sure you want to delete this",
+          action_search_placeholder: "Search...",
+          object_label_marker: "Marker",
+          object_label_line: "Line",
+          object_label_shape: "Shape",
+          object_label_marker_plural: "Markers",
+          object_label_line_plural: "Lines",
+          object_label_shape_plural: "Shapes",
+          error_message_prefix: "Waymark Error",
+          info_message_prefix: "Waymark Info",
+          error_file_type: "This file type is not supported.",
+          error_file_conversion: "Could not convert this file to GeoJSON.",
+          error_file_upload: "File upload error.",
+          error_photo_meta: "Could not retrieve Image metadata.",
+          info_exif_yes: "Image location metadata (EXIF) detected!",
+          info_exif_no: "Image location metadata (EXIF) NOT detected.",
+          no_direction: "No Direction",
+          show_direction: "Show Direction",
+          reverse_direction: "Reverse Direction",
+        },
+      };
     </script>
   </body>
 </html>
