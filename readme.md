@@ -4,7 +4,7 @@
 **Requires at least:** 4.6  
 **Tested up to:** 6.8  
 **Requires PHP:** 5.2  
-**Stable tag:** 1.5.9  
+**Stable tag:** 1.5.10  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 **Donate link:** https://github.com/sponsors/OpenGIS  
@@ -187,6 +187,10 @@ Built on the shoulders of giants, thank you Open-Source!
 
 
 ## Changelog ##
+
+### 1.5.10 ###
+
+Migrated [Documentation](https://www.waymark.dev/) to GitHub Pages.
 
 ### 1.5.9 ###
 
