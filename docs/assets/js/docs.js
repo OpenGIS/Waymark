@@ -27,12 +27,10 @@ jQuery(function ($) {
   var footer = [
     '<footer id="docs-footer">',
     '  <nav id="docs-footer__nav">',
-    '    <a href="' + assetRoot + '../index.html">Docs</a>',
     '    <a href="https://wordpress.org/plugins/waymark/" target="_blank">WordPress</a>',
     '    <a href="https://www.morehawes.ca" target="_blank" id="docs-header__author" title="Joe Hawes">',
     '      <img src="https://www.morehawes.ca/assets/images/Joe1BW.jpg" alt="Joe Hawes" />',
     "    </a>",
-    '    <a href="https://downloads.wordpress.org/plugin/waymark.zip">Download</a>',
     '    <a href="https://github.com/OpenGIS/Waymark" target="_blank">GitHub</a>',
     "  </nav>",
     "</footer>",
