@@ -13,6 +13,8 @@ Waymark adds powerful mapping features to WordPress that are easy to use. Create
 
 ## Description ##
 
+❤️ [Sponsor This Project](https://github.com/sponsors/OpenGIS) ❤️
+
 ### Creating Maps
 
 Use the intuitive Editor to create Maps with one, or thousands of interactive Overlays.
@@ -33,11 +35,9 @@ Use the intuitive Editor to create Maps with one, or thousands of interactive Ov
 - **Collections** - Group Maps together and display multiple Maps at once. Create complex Collection hierarchies to suit your needs and associate Maps with multiple Collections.
 - **Submissions** - Allow registered users, or guests to create Maps from the front-end of your site. You can control who can Submit Maps, what editor features are available and whether submissions should be approved before they are published.
 
-💲 [Support](https://github.com/sponsors/OpenGIS)
 🌟 [GitHub](https://github.com/opengis/waymark)
+👐 [WordPress](https://wordpress.org/plugins/waymark/)
 📖 [Demo & Docs](https://www.ogis.org/waymark-wp/)
-❤️ [WordPress](https://wordpress.org/plugins/waymark/)
-☕️ [Waymark JS](https://www.ogis.org/waymark-js/)
 
 ### Displaying Maps
 
@@ -76,7 +76,7 @@ For developers:
 
 Be sure to check out [Map First](https://github.com/opengis/map-first), a minimal WordPress theme with an *obsession* for Maps (it's open-source too and contains lots of comments about customisations).
 
-**Waymark is free, open-source ([GPL v2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)) and a labour of Love**. I try to keep the plugin well supported, so please feel free to <a href="https://forms.gle/mthqAgSsMoTPM8SR9">reach out</a> with any issues, questions or feedback.
+**Waymark is free, open-source ([GPL v2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)) and a labour of Love**. I try to keep the plugin well supported, so please feel free to <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">reach out</a> with any issues, questions or feedback.
 
 ### Development
 
