@@ -13,7 +13,7 @@ class Waymark_Config {
 			'custom_types' => [],
 			'plugin_version' => '1.5.10',
 			'nonce_string' => 'Waymark_Nonce',
-			'site_url' => 'https://www.waymark.dev/',
+			'site_url' => 'https://www.ogis.org/waymark-wp/',
 			'directory_url' => 'https://wordpress.org/support/plugin/waymark/',
 			'multi_value_seperator' => $multi_value_seperator,
 			'overlay_properties' => ['radius', 'type', 'title', 'description', 'image_thumbnail_url', 'image_medium_url', 'image_large_url', 'direction'],

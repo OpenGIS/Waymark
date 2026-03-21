@@ -35,7 +35,7 @@ Use the intuitive Editor to create Maps with one, or thousands of interactive Ov
 
 💲 [Support](https://github.com/sponsors/OpenGIS)
 🌟 [GitHub](https://github.com/opengis/waymark)
-📖 [Demo & Docs](https://www.waymark.dev/)
+📖 [Demo & Docs](https://www.ogis.org/waymark-wp/)
 ❤️ [WordPress](https://wordpress.org/plugins/waymark/)
 ☕️ [Waymark JS](https://www.ogis.org/waymark-js/)
 
@@ -56,7 +56,7 @@ Embed your Maps using the `[Waymark]` Shortcode, or link to the Map Details page
 
 ### Customising
 
-Built to be flexible, Waymark has lots of [Settings](https://www.waymark.dev/customising/settings/) and Types provide one place to control how Overlays (Markers/Lines/Shapes) are displayed.
+Built to be flexible, Waymark has lots of [Settings](https://www.ogis.org/waymark-wp/customising/settings/) and Types provide one place to control how Overlays (Markers/Lines/Shapes) are displayed.
 
 Marker Icons can be provided as:
   - Font Icons ([Ionic Icons v2](https://ionic.io/ionicons/v2/cheatsheet.html)/[Font Awesome v4](https://fontawesome.com/v4.7.0/cheatsheet/))
@@ -65,14 +65,14 @@ Marker Icons can be provided as:
 
 For developers:
 
-- Most elements can be [styled using CSS](https://www.waymark.dev/customising/styling-with-css-selectors/) and have sensibly named `waymark-` classes.
+- Most elements can be [styled using CSS](https://www.ogis.org/waymark-wp/customising/styling-with-css-selectors/) and have sensibly named `waymark-` classes.
 - WordPress integration:
   - Maps are stored using the custom post type `waymark_map`.
   - Collections use the `waymark_collection` Taxonomy.
-  - Embed Maps using the `[Waymark]` [Shortcode](https://www.waymark.dev/) anywhere they are supported, or dynamically using the `do_shortcode(["Waymark"])` [function](https://developer.wordpress.org/reference/functions/do_shortcode/).
+  - Embed Maps using the `[Waymark]` [Shortcode](https://www.ogis.org/waymark-wp/) anywhere they are supported, or dynamically using the `do_shortcode(["Waymark"])` [function](https://developer.wordpress.org/reference/functions/do_shortcode/).
 - Geographical data is stored in [GeoJSON](https://geojson.org/) format. Types are specified using the `type` Property, i.e. `{feature: { geometry: { type: 'Point', coordinates: [0, 0] } }, properties: { type: 'Alert', title: 'Bridge Removed!' }`.
 - Specify which GeoJSON feature properties to store when importing (Settings > Overlays > Properties). These can be automatically appended to the Overlay Description, or accessed programatically via the `layer.feature.properties` Object.
-- Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the `waymark_loaded_callback` [callback function](https://www.waymark.dev/advanced/using-the-global-callback-function/.
+- Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the `waymark_loaded_callback` [callback function](https://www.ogis.org/waymark-wp/advanced/using-the-global-callback-function/.
 
 Be sure to check out [Map First](https://github.com/opengis/map-first), a minimal WordPress theme with an *obsession* for Maps (it's open-source too and contains lots of comments about customisations).
 
@@ -104,7 +104,7 @@ The build script will watch for changes to the JavaScript and CSS files.
 Pull requests are welcome!
 
 > [!IMPORTANT]
-> [Waymark JS](https://www.waymark.dev/js) is responsible for the Viewer and Editor and is included as a Git submodule (`/waymark-js` directory). View on [GitHub](https://github.com/OpenGIS/Waymark-JS/).
+> [Waymark JS](https://www.ogis.org/waymark-js/) is responsible for the Viewer and Editor and is included as a Git submodule (`/waymark-js` directory). View on [GitHub](https://github.com/OpenGIS/Waymark-JS/).
 
 == Installation ==
 
@@ -112,7 +112,7 @@ Pull requests are welcome!
 
 With Waymark enabled, click on the "Maps" link in the sidebar to create and edit Maps. Once you are happy with your Map, copy the Waymark shortcode and add it to your content.
 
-<a href="https://www.waymark.dev/">Read the Docs &raquo;</a>
+<a href="https://www.ogis.org/waymark-wp/">Read the Docs &raquo;</a>
 
 == Frequently Asked Questions ==
 
@@ -122,11 +122,11 @@ With Waymark enabled, click on the "Maps" link in the sidebar to create and edit
 
 = Is There a Demo? =
 
-Yes, <a href="https://www.waymark.dev/">here</a>.
+Yes, <a href="https://www.ogis.org/waymark-wp/">here</a>.
 
 = Can I Get More Help? =
 
-Yes, please view the <a href="https://www.waymark.dev/">Documentation</a>. If you still need help, feel free to [reach out](https://wordpress.org/support/plugin/waymark/#new-topic-0).
+Yes, please view the <a href="https://www.ogis.org/waymark-wp/">Documentation</a>. If you still need help, feel free to [reach out](https://wordpress.org/support/plugin/waymark/#new-topic-0).
 
 = How Can I Contribute? =
 
@@ -166,13 +166,13 @@ Built on the shoulders of giants, thank you Open-Source!
 7. Add Maps to your content using the Waymark Shortcode. You can choose which Meta is displayed.
 8. Organise Maps with Collections and display multiple Maps at once using the Shortcode. Collections can be nested and Maps can be associated with multiple Collections.
 9. Waymark was designed to be very flexible, with lots of Settings to choose from.
-10. Documentation and Help is available from the <a href="https://www.waymark.dev/">Waymark</a> website.
+10. Documentation and Help is available from the <a href="https://www.ogis.org/waymark-wp/">Waymark</a> website.
 
 == Changelog ==
 
 = 1.5.10 =
 
-Migrated [Documentation](https://www.waymark.dev/) to GitHub Pages.
+Migrated [Documentation](https://www.ogis.org/waymark-wp/) to GitHub Pages.
 
 = 1.5.9 =
 
@@ -282,7 +282,7 @@ Removed Link to/from Maps Setting in Collection options. Links to/from Collectio
 
 = 1.1.0 =
 
-- **[Waymark JS](https://www.waymark.dev/js)** - The plugin has been significantly refactored, with the JavaScript codebase being split into a separate [project](https://github.com/OpenGIS/Waymark-JS/). This makes the Waymark Editor and Viewer available as a standalone library, which can be used in **any web page** and does not require WordPress. 
+- **[Waymark JS](https://www.ogis.org/waymark-js/)** - The plugin has been significantly refactored, with the JavaScript codebase being split into a separate [project](https://github.com/OpenGIS/Waymark-JS/). This makes the Waymark Editor and Viewer available as a standalone library, which can be used in **any web page** and does not require WordPress. 
 - Removed the Show/Hide "Type Labels" Setting. Type labels are always shown by default, but can be hidden using CSS.
 - Removed Settings for importing custom GeoJSON properties.
 - Lots of other improvements and bug fixes.
@@ -470,7 +470,7 @@ Credit to Werner for getting in touch and prompting these changes.
 = 0.9.17.1 =
 
 * Fixed a bug where the Export feature did not work correctly when embedding multiple Maps. Thanks to <a href="https://github.com/shenki">shenki</a> on <a href="https://github.com/opengis/waymark/issues/3">GitHub</a>.
-* Waymark now has it's own <a href="https://www.waymark.dev/">website</a>! URLs updated.
+* Waymark now has it's own <a href="https://www.ogis.org/waymark-wp/">website</a>! URLs updated.
 
 = 0.9.17 =
 
@@ -552,8 +552,8 @@ Thanks to <a href="https://wordpress.org/support/users/neilhorton740/">neilhorto
 = 0.9.12 =
 
 * **Gallery** - Added the option to display an image gallery for Markers that have images associated with them. Can be changed in Settings > Misc. > Map Options. Can be enabled using the show_gallery="1" Shortcode option.
-* Created <a href="https://www.waymark.dev/">Waymark Documentation</a>.
-* Updated the <a href="https://www.waymark.dev/">Demo</a>.
+* Created <a href="https://www.ogis.org/waymark-wp/">Waymark Documentation</a>.
+* Updated the <a href="https://www.ogis.org/waymark-wp/">Demo</a>.
 * First steps towards <a href="https://developer.wordpress.org/plugins/internationalization/localization/">Localization</a>.
 * Added the ability to change Map author. Thanks to <a href="https://wordpress.org/support/topic/feature-request-shortcode-download-link-author-change/">andreasrns</a> for the suggestion.
 * Maps now support Revisions.

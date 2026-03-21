@@ -2094,7 +2094,7 @@ msgid "Waymark"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://www.waymark.dev/"
+msgid "https://www.ogis.org/waymark-wp/"
 msgstr ""
 
 #. Description of the plugin/theme

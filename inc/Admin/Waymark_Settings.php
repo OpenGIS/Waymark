@@ -1554,7 +1554,7 @@ class Waymark_Settings {
 							'default' => Waymark_Config::get_setting('misc', 'advanced', 'debug_mode'),
 							// translators: The tip for the field for whether to enable debug mode
 							'tip' => esc_attr__('With debug mode enabled, the plugin will output Map and Settings data in Admin Dashboard. This may come in handy if you need to report a bug. Pro Tip! Check the browser console for Waymark output when signed in as an administrator.', 'waymark'),
-							'tip_link' => 'https://www.waymark.dev/advanced/debug-mode/',
+							'tip_link' => 'https://www.ogis.org/waymark-wp/advanced/debug-mode/',
 							'options' => [
 								// translators: The option to disable debug mode
 								'0' => esc_html__('Disable', 'waymark'),

@@ -24,7 +24,7 @@ class Waymark_Menu {
 		add_submenu_page($this->menu_slug, esc_html__('Collections', 'waymark'), esc_html__('Collections', 'waymark'), 'manage_categories', 'edit-tags.php?taxonomy=waymark_collection&post_type=waymark_map');
 
 		//Help
-		add_submenu_page($this->menu_slug, esc_html__('Documentation', 'waymark'), esc_html__('Docs', 'waymark') . ' <i style="font-size:12px" class="fa fa-external-link"></i>', 'edit_posts', 'https://www.waymark.dev/');
+		add_submenu_page($this->menu_slug, esc_html__('Documentation', 'waymark'), esc_html__('Docs', 'waymark') . ' <i style="font-size:12px" class="fa fa-external-link"></i>', 'edit_posts', 'https://www.ogis.org/waymark-wp/');
 
 		//Settings
 		add_submenu_page($this->menu_slug, esc_html__('Settings', 'waymark'), esc_html__('Settings', 'waymark'), 'manage_options', 'waymark-settings', [new Waymark_Settings, 'content_admin_page']);
