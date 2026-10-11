@@ -32,13 +32,13 @@ npm test
 ```
 
 > [!NOTE]
-> Two of the 7 PHP tests are currently expected-red — they are the regression tests for the map-data slashing bug ([issue #77](https://github.com/OpenGIS/waymark-wp/issues/77)). Once that fix lands they must be green, and no release ships with them failing.
+> The full suite is green: 7 PHP tests, 47 Vitest tests and 1 Playwright test. `npm test` is the pre-release gate — no release ships with any test failing.
 
 ## Release workflow
 
 1. **Agree the version** with the maintainer (e.g. `1.6.9`).
 2. **Edit `Waymark.php:7`** — update the `Version:` line. This is the only manual edit.
-3. **Run the tests** — `npm test`, or `npm run test:php` + `npm run test:e2e` while the two issue-77 reds remain.
+3. **Run the tests** — `npm test` (the full pre-release gate: Vitest, PHPUnit and Playwright).
 4. **Summarise** — list the changed files for the maintainer to review, stage and commit.
 5. **Push to `master`** — CI takes over (see below).
 

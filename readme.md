@@ -97,11 +97,11 @@ For developers:
 [Grunt](https://gruntjs.com/) is used to run the build script, which compiles the JavaScript and CSS and performs some other tasks.
 
 
-	# Clone the repository (and the Waymark JS submodule)
-	git clone --recurse-submodules https://github.com/opengis/waymark.git
+	# Clone the repository
+	git clone https://github.com/opengis/waymark-wp.git
 	
 	# Navigate to the Waymark directory
-	cd waymark
+	cd waymark-wp
 	
 	# Install the dependencies (or pnpm/yarn install)
 	npm install
@@ -113,10 +113,10 @@ For developers:
 	npm run grunt:watch
 
 
-`npm run grunt:watch` rebuilds automatically when the JavaScript, CSS or readme files change.
+`npm run grunt:watch` rebuilds automatically when the JavaScript, CSS or readme files change, including the Waymark JS sources under `waymark-js/src`.
 
 > [!IMPORTANT]
-> [Waymark JS](https://www.ogis.org/waymark-js/) is responsible for the Viewer and Editor and is included as a Git submodule (`/waymark-js` directory). View on [GitHub](https://github.com/OpenGIS/waymark-js/).
+> [Waymark JS](https://www.ogis.org/waymark-js/) powers the Viewer and Editor. The library (v1) is maintained in this repository as part of the plugin — see the `/waymark-js` directory — and is vendored from the [Waymark-JS project](https://github.com/OpenGIS/waymark-js/).
 
 ### Dev Server
 
@@ -137,20 +137,21 @@ This starts WordPress at **http://localhost:8888**, prints the credentials summa
 
 ### Testing
 
-Two test suites run against a disposable wp-env "tests" instance at **http://localhost:8889**; the normal development instance at **http://localhost:8888** is never touched by the tests.
+Three test suites cover the plugin. The PHP and browser suites run against a disposable wp-env "tests" instance at **http://localhost:8889**; the normal development instance at **http://localhost:8888** is never touched by the tests.
 
+- `npm run test:js` - JavaScript unit tests (Vitest, jsdom), covering the Waymark JS Viewer, Editor and description sanitisation.
 - `npm run test:php` - PHP integration tests (PHPUnit against the WordPress test library).
 - `npm run test:e2e` - Browser end-to-end tests (Playwright/Chromium), covering login, Map creation, Marker editing and front-end rendering.
-- `npm test` - Runs `test:php` then `test:e2e`; currently stops after the PHP suite until issue #77 is fixed.
+- `npm test` - Runs `test:js`, `test:php` and `test:e2e` in sequence.
 
 `npm run dev` must be running first. After `npx wp-env destroy`, run `npm run test:php:setup` once to prepare the tests container.
 
-PHPUnit resets the tests-instance database, so Playwright's global setup re-activates the plugin and theme before running; the two suites can be run back-to-back without manual steps.
+PHPUnit resets the tests-instance database, so Playwright's global setup re-activates the plugin and theme before running; the PHP and browser suites can be run back-to-back without manual steps.
 
-Both suites also run automatically in CI on pull requests and pushes to `master`.
+All three suites also run automatically in CI on pull requests and pushes to `master`.
 
 > [!NOTE]
-> Two of the 7 PHP tests currently fail as expected; they are regression tests for the map-data slashing bug ([issue #77](https://github.com/OpenGIS/waymark-wp/issues/77), fix pending), tagged `@group issue-77`.
+> Tests tagged `@group issue-77` are regression tests for the map-data slashing bug ([issue #77](https://github.com/OpenGIS/waymark-wp/issues/77)).
 
 ## Installation ##
 

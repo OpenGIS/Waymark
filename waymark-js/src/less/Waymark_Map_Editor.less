@@ -1,0 +1,407 @@
+@import (reference) "Waymark_Map.less";
+
+@-webkit-keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/*
+	==================================
+	============= EDITOR =============
+	==================================
+*/
+.waymark-map-container {
+	#waymark-loading {
+		display: none;
+	}
+
+	&.waymark-is-editor {
+		//Leaflet UI
+		.leaflet-popup-content {
+			margin: 10px !important;
+		}
+
+		a.leaflet-popup-close-button {
+			display: none;
+		}
+
+		&.waymark-loading {
+			opacity: 0.6 !important;
+			cursor: wait;
+			* {
+				cursor: wait;
+			}
+			#waymark-loading {
+				display: block;
+			}
+		}
+
+		//Loading
+		//Thanks! https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_loader2
+		//And https://css-tricks.com/centering-css-complete-guide/
+		#waymark-loading {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			z-index: 400;
+			.waymark-spinner {
+				position: absolute;
+				top: 50%;
+				height: 100px;
+				margin: -50px auto 0 auto;
+				position: relative;
+				border: 8px solid transparent;
+				border-radius: 50%;
+				border-top: 8px solid @waymark-primary;
+				border-bottom: 8px solid @waymark-primary;
+				width: 100px;
+				height: 100px;
+				-webkit-animation: spin 2s linear infinite;
+				animation: spin 2s linear infinite;
+			}
+		}
+
+		//Toolbar
+		div.waymark-edit-toolbar {
+			* {
+				box-sizing: unset;
+			}
+			a.waymark-edit-button {
+				padding: 5px;
+				color: @waymark-primary;
+				&.waymark-edit-line {
+					&.waymark-icon {
+						background-size: 20px 20px;
+						background-image: url("../images/waymark-icon-red.png");
+					}
+				}
+				&.waymark-edit-marker {
+					i {
+						margin-top: 3px;
+						font-size: 24px;
+					}
+				}
+				&.waymark-edit-polygon {
+					i {
+						font-size: 19px;
+						transform: skew(-36deg, 20deg);
+						margin-top: 5px;
+					}
+				}
+				&.waymark-edit-rectangle {
+					i {
+						margin-top: 6px;
+						font-size: 18px;
+					}
+				}
+				&.waymark-edit-circle {
+					i {
+						margin-top: 5px;
+						font-size: 20px;
+					}
+				}
+				&.waymark-edit-image {
+					i {
+						margin-top: 6px;
+						font-size: 18px;
+					}
+				}
+				&.waymark-edit-upload {
+					position: relative;
+					i {
+						&.ion-document {
+							margin-top: 4px;
+							font-size: 22px;
+						}
+						&.ion-arrow-up-c {
+							position: absolute;
+							top: 40%;
+							left: 40%;
+						}
+					}
+				}
+			}
+		}
+
+		//Popups
+		ul.waymark-info {
+			height: 315px;
+			width: 225px;
+
+			position: relative;
+			list-style-type: none;
+			padding-left: 70px;
+			z-index: 1;
+
+			// background: red;
+
+			li {
+				margin-bottom: 5px;
+
+				&.waymark-info-description,
+				&.waymark-info-title,
+				&.waymark-info-type {
+					width: 100%;
+					max-width: inherit;
+					border-radius: 4px;
+					input,
+					textarea,
+					select {
+						width: 215px !important;
+						max-width: inherit !important;
+					}
+				}
+				&.waymark-info-title {
+					input {
+						padding: 2px 5px !important;
+						font-size: 18px;
+						border-radius: 4px;
+					}
+				}
+				&.waymark-info-description {
+					max-height: 170px;
+					margin-bottom: 8px;
+					overflow: hidden;
+					textarea {
+						padding: 5px;
+						height: 140px;
+						border: none;
+					}
+					border: 1px solid #d2d2d2;
+				}
+
+				//Type Select
+				&.waymark-info-type {
+					&.waymark-marker-type,
+					&.waymark-line-type,
+					&.waymark-shape-type {
+						display: none;
+					}
+					select {
+					}
+				}
+
+				&.waymark-marker-info-latlng {
+					text-align: right;
+				}
+				&.waymark-info-image_large_url {
+					min-height: 63px;
+
+					position: relative;
+					a {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 60px;
+						height: 60px;
+						border: 1px solid #d2d2d2;
+						background-color: #f9f9f9;
+						border-radius: 4px;
+						overflow: hidden;
+						&.waymark-hover {
+							left: -2px;
+							width: 240px;
+							height: 240px;
+							z-index: +1000;
+							img {
+								width: inherit;
+								height: inherit;
+							}
+						}
+						img {
+							width: inherit;
+							height: inherit;
+							border: none;
+						}
+					}
+					input,
+					.button {
+						display: inline-block;
+						margin-left: 65px;
+					}
+					input {
+						border-radius: 4px;
+						padding: 5px;
+						margin-bottom: 6px;
+						max-width: 150px;
+					}
+				}
+				&.waymark-info-button {
+					margin: 0;
+					position: absolute;
+					bottom: 0;
+					left: 70px;
+					&.waymark-info-duplicate {
+						left: 101px;
+					}
+					&.waymark-info-edit {
+						left: 130px;
+					}
+
+					button {
+						padding: 0 8px;
+						max-height: 30px;
+						i {
+							margin-top: 5px;
+							line-height: initial;
+							&.ion-android-done,
+							&.ion-edit,
+							&.ion-ios-copy,
+							&.ion-trash-a {
+								font-size: 16px;
+							}
+						}
+					}
+				}
+				select,
+				textarea,
+				input {
+					// 					width: 100%;
+					// 					max-width: 180px;
+					border: 1px solid #d2d2d2;
+				}
+
+				&.waymark-info-direction {
+					position: absolute;
+					bottom: 0;
+					right: 0;
+
+					select {
+						width: 120px;
+					}
+				}
+			}
+
+			//Preview
+			.waymark-overlay-preview {
+				position: absolute;
+				top: 0;
+				left: -5px;
+				margin-bottom: 10px;
+				width: 70px;
+				max-height: 100%;
+				overflow-y: scroll;
+				overflow-x: hidden;
+				background: #fff;
+				border: 1px solid #d2d2d2;
+				border-radius: 4px;
+				z-index: 1100;
+				// 				&:hover {
+				// 					position: absolute;
+				// 					height: 340px;
+				// 				}
+				.waymark-overlay-wrap {
+					padding: 10px;
+					border-bottom: 1px solid #d2d2d2;
+					cursor: pointer;
+					&:hover,
+					&.waymark-active {
+						background: @waymark-grey;
+					}
+					.waymark-type-title {
+						margin-top: -10px;
+						margin-bottom: 3px;
+						text-align: center;
+						font-size: 10px;
+						word-break: break-all;
+					}
+					.waymark-type-title {
+						margin-top: -10px;
+						margin-bottom: 3px;
+						text-align: center;
+						font-size: 10px;
+						word-break: break-all;
+					}
+					//Markers
+					&.waymark-marker-wrap {
+						.waymark-marker {
+							position: relative;
+							cursor: pointer;
+						}
+					}
+					//Lines
+					&.waymark-line-wrap {
+						.waymark-line {
+						}
+					}
+					//Shapes
+					&.waymark-marker-wrap {
+						.waymark-shape {
+						}
+					}
+				}
+			}
+		}
+
+		//Disable features
+		&.waymark-disable-draw {
+			.waymark-edit-line,
+			.waymark-edit-rectangle,
+			.waymark-edit-polygon,
+			.waymark-edit-circle,
+			.waymark-edit-marker {
+				display: none !important;
+			}
+		}
+		&.waymark-disable-photo {
+			.waymark-edit-image,
+			button#add_photo {
+				display: none !important;
+			}
+		}
+		&.waymark-disable-file {
+			.waymark-edit-upload {
+				display: none !important;
+			}
+		}
+	}
+
+	//Submissions
+	&.waymark-submission {
+		//Popups
+		.leaflet-popup-content {
+			width: 300px !important;
+			ul.waymark-info {
+				margin: 0 !important;
+				padding-left: 70px;
+
+				.waymark-info-title {
+					input {
+						padding: 5px;
+						width: 220px !important;
+						border-radius: 4px;
+					}
+				}
+				.waymark-info-image_large_url {
+					height: 60px;
+					input {
+						padding: 5px;
+						width: 155px !important;
+						border-radius: 4px;
+					}
+					.button {
+						min-width: 85px;
+						padding: 3px 5px;
+						font-size: 11px;
+					}
+				}
+				.waymark-info-description {
+					width: 230px;
+				}
+			}
+		}
+	}
+}

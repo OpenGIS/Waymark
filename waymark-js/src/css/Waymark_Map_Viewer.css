@@ -1,0 +1,145 @@
+/*
+	==================================
+	============ VIEWER ==============
+	==================================
+*/
+.waymark-map-container.waymark-is-viewer {
+  /* Info Window */
+}
+.waymark-map-container.waymark-is-viewer ul.waymark-info {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 260px;
+  list-style-type: none;
+  /* No Title */
+  /* No Image*/
+}
+.waymark-map-container.waymark-is-viewer ul.waymark-info.waymark-no-title .waymark-info-title {
+  display: none;
+}
+.waymark-map-container.waymark-is-viewer ul.waymark-info.waymark-no-image {
+  width: 200px;
+  min-height: 60px;
+}
+.waymark-map-container.waymark-is-viewer ul.waymark-info.waymark-no-image .waymark-info-title,
+.waymark-map-container.waymark-is-viewer ul.waymark-info.waymark-no-image .waymark-info-description {
+  position: relative;
+}
+.waymark-map-container.waymark-is-viewer ul.waymark-info.waymark-no-image .waymark-info-description {
+  height: auto;
+  float: none;
+  width: 100%;
+}
+.waymark-map-container.waymark-is-viewer ul.waymark-info li {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 7px;
+  list-style: none;
+}
+.waymark-map-container.waymark-is-viewer ul.waymark-info li.waymark-info-type {
+  margin-top: -8px;
+}
+.waymark-map-container.waymark-is-viewer ul.waymark-info li.waymark-info-type small {
+  border-radius: 3px;
+  padding: 2px 5px;
+  line-height: 0;
+  color: #666;
+}
+.waymark-map-container.waymark-is-viewer ul.waymark-info li.waymark-info-title {
+  font-size: 14px;
+}
+.waymark-map-container.waymark-is-viewer ul.waymark-info li.waymark-info-description {
+  max-height: 72px;
+  overflow: auto;
+}
+.waymark-map-container.waymark-is-viewer ul.waymark-info li.waymark-info-description p {
+  margin: 0;
+}
+.waymark-map-container.waymark-is-viewer ul.waymark-info li.waymark-info-image_large_url {
+  margin-right: 10px;
+  width: 260px;
+  height: 200px;
+}
+.waymark-map-container.waymark-is-viewer ul.waymark-info li.waymark-info-image_large_url a {
+  display: block;
+  width: inherit;
+  height: inherit;
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+  background-size: 260px;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+.waymark-map-container.waymark-is-viewer.waymark-has-cluster .waymark-cluster .waymark-marker {
+  position: absolute;
+}
+.waymark-map-container.waymark-is-viewer.waymark-has-cluster .waymark-cluster .waymark-marker .waymark-cluster-count {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  padding: 1px 3px;
+  font-size: 8px;
+  color: black;
+  border: 1px solid #333;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.7);
+}
+/*
+	==================================
+	=========== ELEVATION ============
+	==================================
+*/
+.waymark-map-container .circle-lower {
+  fill: white;
+}
+.waymark-map-container .elevation-polyline {
+  stroke: #b42714;
+  stroke-opacity: 0.7;
+}
+.waymark-map-container .waymark-elevation-container {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 2000;
+  width: 50%;
+  max-height: 33.33%;
+}
+.waymark-map-container .waymark-elevation-container .elevation-control {
+  background: rgba(255, 255, 255, 0.47);
+}
+.waymark-map-container .waymark-elevation-container .elevation-control .background {
+  background: none;
+}
+.waymark-map-container.waymark-has-gallery .waymark-elevation-container {
+  bottom: 90px;
+}
+.waymark-elevation-container .elevation-control.elevation * {
+  max-width: 100%;
+}
+.waymark-elevation-container .elevation-control.elevation .elevation-summary {
+  margin: 0;
+  text-align: center;
+  padding: 0 10px;
+}
+.waymark-elevation-container .elevation-control.elevation .legend-altitude {
+  display: none;
+}
+.waymark-elevation-container .elevation-control.elevation .area {
+  fill: #b42714;
+  stroke: hsla(0, 0%, 0%, 0.85);
+  stroke-width: 2.8;
+}
+.waymark-elevation-container .waymark-elevation-close {
+  position: absolute;
+  top: 5px;
+  right: 14px;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 14px;
+  background: #f1f1f1;
+  cursor: pointer;
+  color: #333;
+}

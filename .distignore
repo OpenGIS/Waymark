@@ -15,3 +15,8 @@ readme.md
 tests/
 phpunit.xml.dist
 playwright.config.js
+vitest.config.mjs
+waymark-js/src
+waymark-js/libs
+waymark-js/tests
+waymark-js/readme.md
