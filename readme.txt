@@ -9,11 +9,9 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://github.com/sponsors/OpenGIS
 
-Waymark adds powerful mapping features to WordPress that are easy to use. Create beautiful, interactive Maps customised to suit your needs.
+Create beautiful, interactive Maps with Waymark.
 
 == Description ==
-
-Use the intuitive Editor to create Maps with one, or thousands of interactive Overlays.
 
 ![The Waymark Map Editor displaying a route on a map](.wordpress-org/editor-demo.jpg)
 
@@ -72,8 +70,6 @@ For developers:
 - Specify which GeoJSON feature properties to store when importing (Settings > Overlays > Properties). These can be automatically appended to the Overlay Description, or accessed programatically via the `layer.feature.properties` Object.
 - Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the `waymark_loaded_callback` [callback function](https://www.ogis.org/waymark-wp/advanced/using-the-global-callback-function/.
 
-**Waymark is free, open-source ([GPL v2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)) and a labour of Love**. I try to keep the plugin well supported, so please feel free to <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">reach out</a> with any issues, questions or feedback.
-
 ### User Examples
 
 - [Association Franc-Comtoise du Chemin de Compostelle – eGuide](https://www.af-ccc.fr/eguide/)
@@ -92,7 +88,7 @@ For developers:
 ### Development
 
 > [!NOTE]
-> To develop locally you will need to have both Node.js and NPM [installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+> Docker, Node.js and NPM required.
 
 [Grunt](https://gruntjs.com/) is used to run the build script, which compiles the JavaScript and CSS and performs some other tasks.
 
@@ -113,28 +109,6 @@ npm run grunt
 npm run grunt:watch
 `
 
-`npm run grunt:watch` rebuilds automatically when the JavaScript, CSS or readme files change, including the Waymark JS sources under `waymark-js/src`.
-
-> [!IMPORTANT]
-> [Waymark JS](https://www.ogis.org/waymark-js/) powers the Viewer and Editor. The library (v1) is maintained in this repository as part of the plugin — see the `/waymark-js` directory — and is vendored from the [Waymark-JS project](https://github.com/OpenGIS/waymark-js/).
-
-### Dev Server
-
-A local WordPress environment is provided via [wp-env](https://www.npmjs.com/package/@wordpress/env). [Docker](https://www.docker.com/) must be running.
-
-`
-npm run dev
-`
-
-This starts WordPress at **http://localhost:8888**, prints the credentials summary, and runs the build watcher:
-
-`
-────────────────────────────────────
- MySQL  127.0.0.1  root / password
- Admin  http://localhost:8888/wp-admin  admin / password
-────────────────────────────────────
-`
-
 ### Testing
 
 Three test suites cover the plugin. The PHP and browser suites run against a disposable wp-env "tests" instance at **http://localhost:8889**; the normal development instance at **http://localhost:8888** is never touched by the tests.
@@ -150,17 +124,7 @@ PHPUnit resets the tests-instance database, so Playwright's global setup re-acti
 
 All three suites also run automatically in CI on pull requests and pushes to `master`.
 
-== Installation ==
-
-With Waymark enabled, click on the "Maps" link in the sidebar to create and edit Maps. Once you are happy with your Map, copy the Waymark shortcode and add it to your content.
-
-<a href="https://www.ogis.org/waymark-wp/">Read the Docs &raquo;</a>
-
 == Frequently Asked Questions ==
-
-= Is There a Demo? =
-
-Yes, <a href="https://www.ogis.org/waymark-wp/">here</a>.
 
 = Can I Get More Help? =
 
@@ -171,7 +135,6 @@ Yes, please view the <a href="https://www.ogis.org/waymark-wp/">Documentation</a
 **Please**:
 
 * **[Translate the plugin](https://translate.wordpress.org/projects/wp-plugins/waymark/)** If you like the plugin and speak multiple languages, *please* consider becoming a [Translation Editor (PTE)](https://make.wordpress.org/polyglots/handbook/about/roles-and-capabilities/#project-translation-editor) for the plugin.
-* **Star**, create an Issue or Fork the project on [GitHub](https://github.com/opengis/waymark-wp/).
 * [Add a Review](https://wordpress.org/support/plugin/waymark/reviews/#new-post).
 
 If you have anything bad to say, please <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">create an issue</a> before leaving a review, this is how the plugin gets better!
@@ -183,12 +146,6 @@ Yes! While the Google Maps API is not used, <a href="https://gist.github.com/mor
 = Can I Translate the Plugin? =
 
 Please! Waymark is localization ready, <a href="https://translate.wordpress.org/projects/wp-plugins/waymark/">translation contributions</a> are greatly appreciated.
-
-= Acknowledgements? =
-
-Waymark relies on input from it's users, thank you to everyone for providing feedback :)
-
-Built on the shoulders of giants, thank you Open-Source!
 
 == Screenshots ==
 
