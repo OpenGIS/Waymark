@@ -90,9 +90,7 @@ For developers:
 > [!NOTE]
 > Docker, Node.js and NPM required.
 
-[Grunt](https://gruntjs.com/) is used to run the build script, which compiles the JavaScript and CSS and performs some other tasks.
-
-`
+```bash
 # Clone the repository
 git clone https://github.com/opengis/waymark-wp.git
 
@@ -102,25 +100,37 @@ cd waymark-wp
 # Install the dependencies (or pnpm/yarn install)
 npm install
 
-# Run a one-off build
-npm run grunt
+# Start WordPress at http://localhost:8888 and rebuild assets on change
+npm run dev
+```
 
-# Or watch for changes and rebuild automatically
-npm run grunt:watch
-`
+### Assets
+
+Styles and scripts are compiled from Less and JavaScript sources into the minified bundles enqueued by the plugin — edit the sources, not the build output:
+
+- `assets/` — the plugin CSS (compiled from `assets/less/`) and JavaScript, served as the `front` and `admin` bundles.
+- `waymark-js/` — the bundled [Waymark JS](https://www.ogis.org/waymark-js/) library powering the Viewer and Editor: sources in `src/` and `libs/`, built into `dist/`.
 
 ### Testing
 
-Three test suites cover the plugin. The PHP and browser suites run against a disposable wp-env "tests" instance at **http://localhost:8889**; the normal development instance at **http://localhost:8888** is never touched by the tests.
+Three suites cover the plugin — JavaScript unit tests (Vitest), PHP integration tests (PHPUnit) and browser end-to-end tests (Playwright). The PHP and browser suites run against the disposable wp-env tests instance at **http://localhost:8889**; the development instance is never touched. The wp-env environment (`npm run dev`) must be running first.
 
-- `npm run test:js` - JavaScript unit tests (Vitest, jsdom), covering the Waymark JS Viewer, Editor and description sanitisation.
-- `npm run test:php` - PHP integration tests (PHPUnit against the WordPress test library).
-- `npm run test:e2e` - Browser end-to-end tests (Playwright/Chromium), covering login, Map creation, Marker editing and front-end rendering.
-- `npm test` - Runs `test:js`, `test:php` and `test:e2e` in sequence.
+```bash
+# JavaScript unit tests (Vitest, jsdom) — Viewer, Editor and description sanitisation
+npm run test:js
 
-`npm run dev` must be running first. After `npx wp-env destroy`, run `npm run test:php:setup` once to prepare the tests container.
+# PHP integration tests (PHPUnit against the WordPress test library)
+npm run test:php
 
-PHPUnit resets the tests-instance database, so Playwright's global setup re-activates the plugin and theme before running; the PHP and browser suites can be run back-to-back without manual steps.
+# Browser end-to-end tests (Playwright/Chromium) — login, Maps, Markers, front-end
+npm run test:e2e
+
+# Run all three in sequence
+npm test
+
+# One-off: prepare the tests container (after a fresh "wp-env destroy")
+npm run test:php:setup
+```
 
 All three suites also run automatically in CI on pull requests and pushes to `master`.
 
@@ -132,10 +142,8 @@ Yes, please view the <a href="https://www.ogis.org/waymark-wp/">Documentation</a
 
 = How Can I Contribute? =
 
-**Please**:
-
-* **[Translate the plugin](https://translate.wordpress.org/projects/wp-plugins/waymark/)** If you like the plugin and speak multiple languages, *please* consider becoming a [Translation Editor (PTE)](https://make.wordpress.org/polyglots/handbook/about/roles-and-capabilities/#project-translation-editor) for the plugin.
-* [Add a Review](https://wordpress.org/support/plugin/waymark/reviews/#new-post).
+* Please help **[Translate the plugin](https://translate.wordpress.org/projects/wp-plugins/waymark/)**
+* Or [Add a Review (in your language)](https://wordpress.org/support/plugin/waymark/reviews/#new-post).
 
 If you have anything bad to say, please <a href="https://wordpress.org/support/plugin/waymark/#new-topic-0">create an issue</a> before leaving a review, this is how the plugin gets better!
 
