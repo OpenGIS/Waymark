@@ -11,7 +11,6 @@ class Waymark_Meta {
 		//Map
 		add_meta_box('waymark_map_shortcode', __('Shortcode', 'waymark'), [$this, 'map_shortcode_content'], 'waymark_map', 'side', 'default');
 		add_meta_box('waymark_map_export', __('Export', 'waymark'), [$this, 'map_export_content'], 'waymark_map', 'side', 'default');
-		add_meta_box('waymark_map_help', __('Help', 'waymark'), [$this, 'map_help_content'], 'waymark_map', 'side', 'default');
 
 		add_action('post_edit_form_tag', [$this, 'add_post_enctype']);
 		add_action('post_updated', [$this, 'post_updated'], 10, 2);
@@ -117,33 +116,6 @@ class Waymark_Meta {
 		echo '<a data-title="' . esc_attr__('Add this Map to your content with this Shortcode. Click here for more details.', 'waymark') . '" href="' . esc_url(Waymark_Helper::site_url('docs/shortcodes')) . '" class="waymark-tooltip">?</a>';
 		echo '<input type="text" value="[' . esc_attr(Waymark_Config::get_item('shortcode')) . ' map_id=&quot;' . esc_attr($post->ID) . '&quot;]" />';
 		//echo '<p>' . sprintf(__('Add this Map to your content with this <a href="%s">Shortcode</a>.', 'waymark'), ) . '</p>';
-	}
-
-	public function map_help_content() {
-		//Required the PHP EXIF extension
-		if (! function_exists('exif_read_data')) {
-			echo '<p><b>' . esc_html__('Image Location Detection Not Supported!', 'waymark') . '</b></p>';
-
-			// translators: %s: Link to PHP EXIF Extension documentation
-			echo '<p>' . wp_kses(sprintf(__('Your hosting environment does not currently have the <a href="%s">PHP EXIF Extension</a> enabled, which is required to read Image location metadata. Try asking your host to enable it.', 'waymark'), 'https://www.php.net/manual/en/book.exif.php'), ['a' => ['href' => []]]) . '</p>';
-		}
-
-		echo '<p><b>' . esc_html__('Read from File', 'waymark') . '</b></p>';
-		echo '<p>' . esc_html__('You can read Lines and Markers from GPX, KML and GeoJSON files (most mapping apps will be able to export to one of these).', 'waymark') . '</p>';
-
-		echo '<p><b>' . esc_html__('Types', 'waymark') . '</b></p>';
-
-		// translators: %s: Link to Waymark Settings
-		echo '<p>' . wp_kses(sprintf(__('Types allow you to control how Overlays (Markers, Lines and Shapes) are displayed on the Map. Types can be customised in <a href="%s" target="_blank">Waymark &gt; Settings</a>.', 'waymark'), admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=markers')), ['a' => ['href' => [], 'target' => []]]) . '</p>';
-
-		echo '<p><b>' . esc_html__('Basemap', 'waymark') . '</b></p>';
-
-		// translators: %s: Link to Waymark Settings
-		echo '<p>' . sprintf(wp_kses(__('Add and edit Basemaps in <a href="%1$s" target="_blank">Waymark &gt; Settings</a>. The first listed will be used as the default, unless specified in the shortcode like this: %2$s', 'waymark'), ['a' => ['href' => [], 'target' => []]]), esc_url(admin_url('edit.php?post_type=waymark_map&page=waymark-settings&tab=tiles')), '<code>[Waymark map_id="1234" basemap="Basemap Name"]</code>') . '</p>';
-
-		echo '<p><a class="button" href="' . esc_url(Waymark_Helper::site_url('docs')) . '" target="_blank">' . esc_html__('Read the Docs', 'waymark') . ' &raquo;</a></p>';
-
-		echo '<p>&nbsp;</p>';
 	}
 
 	public function get_map_form() {
