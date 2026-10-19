@@ -12,11 +12,14 @@
     "test:js": "vitest run",
     "test:php": "wp-env run tests-cli --env-cwd=wp-content/plugins/waymark-wp phpunit",
     "test:php:setup": "wp-env run tests-cli bash -c 'composer global require --no-interaction --with-all-dependencies phpunit/phpunit:^9.6 yoast/phpunit-polyfills:^2.0'",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "screenshots": "WAYMARK_SCREENSHOTS=1 playwright test tests/e2e/screenshots.spec.js && node tests/e2e/screenshots.js publish",
+    "screenshots:check": "WAYMARK_SCREENSHOTS=1 playwright test tests/e2e/screenshots.spec.js && node tests/e2e/screenshots.js check"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
     "@wordpress/env": "^11.8.0",
+    "d3": "5.15.0",
     "dompurify": "^3.4.16",
     "grunt": "^1.5.3",
     "grunt-contrib-concat": "^1.0.1",

@@ -32,7 +32,7 @@ npm test
 ```
 
 > [!NOTE]
-> The full suite is green: 7 PHP tests, 47 Vitest tests and 1 Playwright test. `npm test` is the pre-release gate — no release ships with any test failing.
+> `npm test` is the pre-release gate — run it and confirm the full suite is green; no release ships with any test failing.
 
 ## Release workflow
 
@@ -71,6 +71,8 @@ No per-version changelog entry is written — `== Changelog ==` in `readme.txt` 
 ## WordPress.org assets
 
 `.wordpress-org/` mirrors the WordPress.org SVN `assets/` directory (banners, icons, screenshots, and the README hero image). The deploy workflow syncs it to SVN with `rsync --delete`.
+
+The readme screenshots are generated from the tested demo data. Recapture them with `npm run screenshots` (writes `editor-demo.jpg` and `screenshot-1..9.jpg` into `.wordpress-org/`), verify the captures with `npm run screenshots:check`, and include any updated assets in the release.
 
 > [!WARNING]
 > Every asset that should stay live must be present in `.wordpress-org/` — the deploy deletes anything missing. Maintain the full set, not just changed files.

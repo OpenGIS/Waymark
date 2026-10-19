@@ -1,0 +1,96 @@
+{
+    "maps": [
+        {
+            "id": 100,
+            "slug": "cape-scott-trail",
+            "title": "Cape Scott Trail",
+            "permalink": "http://localhost:8889/map/cape-scott-trail/"
+        },
+        {
+            "id": 101,
+            "slug": "san-josef-bay",
+            "title": "San Josef Bay",
+            "permalink": "http://localhost:8889/map/san-josef-bay/"
+        },
+        {
+            "id": 102,
+            "slug": "north-coast-trail",
+            "title": "North Coast Trail",
+            "permalink": "http://localhost:8889/map/north-coast-trail/"
+        }
+    ],
+    "page": {
+        "id": 110,
+        "slug": "waymark-demo",
+        "title": "Waymark Demo",
+        "url": "http://localhost:8889/waymark-demo/"
+    },
+    "collections": [
+        {
+            "term_id": 2,
+            "slug": "vancouver-island",
+            "name": "Vancouver Island",
+            "parent": 0
+        },
+        {
+            "term_id": 3,
+            "slug": "day-hikes",
+            "name": "Day Hikes",
+            "parent": 2
+        },
+        {
+            "term_id": 4,
+            "slug": "backpacking",
+            "name": "Backpacking",
+            "parent": 2
+        }
+    ],
+    "images": {
+        "holberg-road": {
+            "thumbnail": "http://localhost:8889/wp-content/uploads/waymark-demo/holberg-road-150x150.jpg",
+            "medium": "http://localhost:8889/wp-content/uploads/waymark-demo/holberg-road-300x200.jpg",
+            "large": "http://localhost:8889/wp-content/uploads/waymark-demo/holberg-road-1024x683.jpg"
+        },
+        "scarlet-ibis": {
+            "thumbnail": "http://localhost:8889/wp-content/uploads/waymark-demo/scarlet-ibis-150x150.jpeg",
+            "medium": "http://localhost:8889/wp-content/uploads/waymark-demo/scarlet-ibis-300x225.jpeg",
+            "large": "http://localhost:8889/wp-content/uploads/waymark-demo/scarlet-ibis-1024x768.jpeg"
+        },
+        "nahwitti-lake-camp": {
+            "thumbnail": "http://localhost:8889/wp-content/uploads/waymark-demo/nahwitti-lake-camp-150x150.jpg",
+            "medium": "http://localhost:8889/wp-content/uploads/waymark-demo/nahwitti-lake-camp-300x224.jpg",
+            "large": "http://localhost:8889/wp-content/uploads/waymark-demo/nahwitti-lake-camp-1024x766.jpg"
+        },
+        "shoe-tree": {
+            "thumbnail": "http://localhost:8889/wp-content/uploads/waymark-demo/shoe-tree-150x150.jpg",
+            "medium": "http://localhost:8889/wp-content/uploads/waymark-demo/shoe-tree-300x200.jpg",
+            "large": "http://localhost:8889/wp-content/uploads/waymark-demo/shoe-tree-1024x683.jpg"
+        },
+        "san-josef-bay": {
+            "thumbnail": "http://localhost:8889/wp-content/uploads/waymark-demo/san-josef-bay-150x150.jpg",
+            "medium": "http://localhost:8889/wp-content/uploads/waymark-demo/san-josef-bay-300x200.jpg",
+            "large": "http://localhost:8889/wp-content/uploads/waymark-demo/san-josef-bay-1024x683.jpg"
+        },
+        "cape-scott-lighthouse": {
+            "thumbnail": "http://localhost:8889/wp-content/uploads/waymark-demo/cape-scott-lighthouse-150x150.jpeg",
+            "medium": "http://localhost:8889/wp-content/uploads/waymark-demo/cape-scott-lighthouse-300x225.jpeg",
+            "large": "http://localhost:8889/wp-content/uploads/waymark-demo/cape-scott-lighthouse-1024x768.jpeg"
+        },
+        "cape-scott-coast": {
+            "thumbnail": "http://localhost:8889/wp-content/uploads/waymark-demo/cape-scott-coast-150x150.jpeg",
+            "medium": "http://localhost:8889/wp-content/uploads/waymark-demo/cape-scott-coast-300x225.jpeg",
+            "large": "http://localhost:8889/wp-content/uploads/waymark-demo/cape-scott-coast-1024x768.jpeg"
+        },
+        "nahwitti-lake": {
+            "thumbnail": "http://localhost:8889/wp-content/uploads/waymark-demo/nahwitti-lake-150x150.jpg",
+            "medium": "http://localhost:8889/wp-content/uploads/waymark-demo/nahwitti-lake-300x200.jpg",
+            "large": "http://localhost:8889/wp-content/uploads/waymark-demo/nahwitti-lake-1024x683.jpg"
+        },
+        "port-hardy-cape-scott": {
+            "thumbnail": "http://localhost:8889/wp-content/uploads/waymark-demo/port-hardy-cape-scott-150x150.jpg",
+            "medium": "http://localhost:8889/wp-content/uploads/waymark-demo/port-hardy-cape-scott-300x200.jpg",
+            "large": "http://localhost:8889/wp-content/uploads/waymark-demo/port-hardy-cape-scott-1024x683.jpg"
+        }
+    },
+    "settings_url": "/wp-admin/edit.php?post_type=waymark_map&page=waymark-settings&content=waymark-settings-tab-markers"
+}

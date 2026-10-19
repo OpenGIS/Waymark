@@ -65,5 +65,26 @@ module.exports = async (config) => {
     }
   }
 
+  // Seed the deterministic demo dataset (Maps, Collections, Page, Media and
+  // Settings) used by the README screenshot specs. Seeding is idempotent, so
+  // this is safe to run before every suite.
+  try {
+    runWpEnv([
+      "run",
+      "tests-cli",
+      "wp",
+      "eval-file",
+      "wp-content/plugins/waymark-wp/tests/fixtures/demo/seed.php",
+    ]);
+  } catch (error) {
+    const detail = [error.stdout, error.stderr]
+      .filter(Boolean)
+      .join("\n")
+      .trim();
+    throw new Error(
+      `Failed to seed the Waymark demo data (tests/fixtures/demo/seed.php).\n${detail}`,
+    );
+  }
+
   console.log(`[global-setup] wp-env tests instance ready at ${baseURL}`);
 };

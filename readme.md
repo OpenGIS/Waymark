@@ -184,9 +184,6 @@ Please! Waymark is localization ready, <a href="https://translate.wordpress.org/
 ### 9. Waymark was designed to be very flexible, with lots of Settings to choose from. ###
 ![Waymark was designed to be very flexible, with lots of Settings to choose from.](https://ps.w.org/waymark/assets/screenshot-9.jpg)
 
-### 10. Documentation and Help is available from the <a href="https://www.ogis.org/waymark-wp/">Waymark</a> website. ###
-![Documentation and Help is available from the <a href="https://www.ogis.org/waymark-wp/">Waymark</a> website.](https://ps.w.org/waymark/assets/screenshot-10.jpg)
-
 
 ## Changelog ##
 
