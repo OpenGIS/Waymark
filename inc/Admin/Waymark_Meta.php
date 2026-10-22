@@ -113,7 +113,7 @@ class Waymark_Meta {
 		global $post;
 
 		//Shortcode output
-		echo '<a data-title="' . esc_attr__('Add this Map to your content with this Shortcode. Click here for more details.', 'waymark') . '" href="' . esc_url(Waymark_Helper::site_url('docs/shortcodes')) . '" class="waymark-tooltip">?</a>';
+		echo '<a data-title="' . esc_attr__('Add this Map to your content with this Shortcode. Click here for more details.', 'waymark') . '" href="' . esc_url(Waymark_Helper::site_url('#shortcodes')) . '" class="waymark-tooltip">?</a>';
 		echo '<input type="text" value="[' . esc_attr(Waymark_Config::get_item('shortcode')) . ' map_id=&quot;' . esc_attr($post->ID) . '&quot;]" />';
 		//echo '<p>' . sprintf(__('Add this Map to your content with this <a href="%s">Shortcode</a>.', 'waymark'), ) . '</p>';
 	}

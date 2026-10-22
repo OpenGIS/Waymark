@@ -27,6 +27,16 @@ $plugin_dir = dirname(__DIR__, 3);
 require_once $plugin_dir . '/inc/Waymark_Config.php';
 require_once $plugin_dir . '/inc/Helpers/Waymark_Helper.php';
 
+// The seeder must be self-contained: PHPUnit leaves the plugin inactive, so
+// load the post type and taxonomy classes directly when WordPress has not
+// registered them. Guards prevent redeclaration when the plugin is active.
+if (! class_exists('Waymark_Types')) {
+	require_once $plugin_dir . '/inc/Waymark_Types.php';
+}
+if (! class_exists('Waymark_Taxonomies')) {
+	require_once $plugin_dir . '/inc/Waymark_Taxonomies.php';
+}
+
 Waymark_Config::init();
 
 // The development instance (8888) is off-limits to automation. Refuse politely.
@@ -224,6 +234,17 @@ global $wp_rewrite;
 update_option('permalink_structure', '/%postname%/');
 if ($wp_rewrite instanceof WP_Rewrite) {
 	$wp_rewrite->set_permalink_structure('/%postname%/');
+}
+
+// PHPUnit can leave the plugin inactive. Register the demo post type and
+// taxonomy explicitly so permalinks and collection terms are available.
+if (! post_type_exists('waymark_map')) {
+	$waymark_types = new Waymark_Types();
+	$waymark_types->register_types();
+}
+if (! taxonomy_exists('waymark_collection')) {
+	$waymark_taxonomies = new Waymark_Taxonomies();
+	$waymark_taxonomies->register_taxonomies();
 }
 
 flush_rewrite_rules();
@@ -548,7 +569,10 @@ foreach ($demo_maps as $demo_map) {
 		'id'        => $demo_map['id'],
 		'slug'      => $demo_map['slug'],
 		'title'     => $demo_map['title'],
-		'permalink' => get_permalink($post_id),
+		// Build the canonical Map permalink directly. PHPUnit can leave the
+		// rewrite permastruct unregistered in the seeding process, which makes
+		// get_permalink() fall back to a query string.
+		'permalink' => home_url('/' . trim(Waymark_Config::get_setting('misc', 'permalinks', 'permalink_slug_map') ?: 'map', '/') . '/' . $demo_map['slug'] . '/'),
 	];
 }
 

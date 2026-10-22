@@ -24,19 +24,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Copy Waymark JS assets into docs
-        run: |
-          mkdir -p docs/assets/waymark-js
-          cp -r waymark-js/dist/css    docs/assets/waymark-js/css
-          cp -r waymark-js/dist/js     docs/assets/waymark-js/js
-          cp -r waymark-js/dist/fonts  docs/assets/waymark-js/fonts
-          cp -r waymark-js/dist/images docs/assets/waymark-js/images
-          cp assets/css/front.min.css  docs/assets/css/front.min.css
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: docs/package-lock.json
+
+      - name: Install docs dependencies
+        working-directory: docs
+        run: npm ci
+
+      - name: Sync Waymark assets
+        working-directory: docs
+        run: npm run sync-assets
+
+      - name: Generate docs
+        working-directory: docs
+        run: npm run generate
+        env:
+          NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/
+          path: docs/.output/public
+          include-hidden-files: true
 
       - name: Deploy to GitHub Pages
         id: deployment

@@ -176,7 +176,7 @@ class Waymark_Admin {
 				// translators: Collection is a group of maps
 				$title = esc_html__('Collections', 'waymark');
 				// translators: %s: URL to the Waymark documentation
-				$description = sprintf(__('Collections allow you to organise your Maps. Use the <a href="%1$s">Shortcode</a> to display all Maps in a Collection at once. <a href="%2$s" class="button waymark-right">Read the Docs &raquo;</a>', 'waymark'), Waymark_Helper::site_url('docs/shortcodes'), Waymark_Helper::site_url('docs/collections'));
+				$description = sprintf(__('Collections allow you to organise your Maps. Use the <a href="%1$s">Shortcode</a> to display all Maps in a Collection at once. <a href="%2$s" class="button waymark-right">Read the Docs &raquo;</a>', 'waymark'), Waymark_Helper::site_url('#shortcodes'), Waymark_Helper::site_url('customising/settings/#misc-collection_options'));
 			}
 
 			//Map Posts List
@@ -184,7 +184,7 @@ class Waymark_Admin {
 				// translators: %s: URL to the Waymark documentation
 				$title = esc_html__('Maps', 'waymark');
 				// translators: %s: URL to the Waymark documentation
-				$description = sprintf(__('Create Maps here, then add them to your content using the <a href="%1$s">Shortcode</a>.', 'waymark'), Waymark_Helper::site_url('docs/shortcodes'));
+				$description = sprintf(__('Create Maps here, then add them to your content using the <a href="%1$s">Shortcode</a>.', 'waymark'), Waymark_Helper::site_url('#shortcodes'));
 			}
 
 			$map_posts = get_posts([
@@ -205,18 +205,18 @@ class Waymark_Admin {
 						// translators: Creating a new map
 						$title = esc_html__('Creating a Map', 'waymark');
 						// translators: %s: URL to the Waymark documentation
-						$description = sprintf(__('<span class="waymark-lead">Use the Map <a href="%1$s">Editor</a> to place Markers, draw Lines/Shapes and display Photos. Each can be given a <a target="_blank" href="%2$s">Type</a>, title, description and an image.</span><br /><br />You can add the Map to your content using the %3$s <a href="%4$s">Shortcode</a>.', 'waymark'), Waymark_Helper::site_url('docs/editor'), Waymark_Helper::site_url('docs/types'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'));
+						$description = sprintf(__('<span class="waymark-lead">Use the Map <a href="%1$s">Editor</a> to place Markers, draw Lines/Shapes and display Photos. Each can be given a <a target="_blank" href="%2$s">Type</a>, title, description and an image.</span><br /><br />You can add the Map to your content using the %3$s <a href="%4$s">Shortcode</a>.', 'waymark'), Waymark_Helper::site_url('tutorials/creating-your-first-map/'), Waymark_Helper::site_url('customising/settings/#markers'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('#shortcodes'));
 					} else {
 						// translators: Creating a new map
 						$title = esc_html__('New Map', 'waymark');
 						// translators: %s: URL to the Waymark documentation
-						$description = sprintf(__('You can add the Map to your content using the %1$s <a href="%2$s">Shortcode</a>.', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'));
+						$description = sprintf(__('You can add the Map to your content using the %1$s <a href="%2$s">Shortcode</a>.', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('#shortcodes'));
 					}
 				} elseif ($this->current_screen->base == 'post') {
 					// translators: Editing a map
 					$title = esc_html__('Edit Map', 'waymark');
 					// translators: %s: URL to the Waymark documentation
-					$description = sprintf(__('You can add the Map to your content using the %1$s <a href="%2$s">Shortcode</a>.', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('docs/shortcodes'));
+					$description = sprintf(__('You can add the Map to your content using the %1$s <a href="%2$s">Shortcode</a>.', 'waymark'), '<code style="font-size:10px">[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;' . $post->ID . '&quot;]</code>', Waymark_Helper::site_url('#shortcodes'));
 				}
 			}
 
@@ -224,10 +224,13 @@ class Waymark_Admin {
 
 		// START Plugin Callout
 		if ($title || $this->current_screen->base == 'waymark_page_waymark-settings') {
-			// echo '<div id="waymark-notice-container" class="plugin-callout">' . "\n";
-			// echo '	<div class="logo">' . Waymark_Helper::logo('primary', 32, 32) . ' </div>' . "\n";
-			// echo '	<p class="lead">...</p>' . "\n";
-			// echo '	<p style="font-size:150%">...</p>' . "\n";
+			// echo '<div id="waymark-notice-container" class="plugin-callout ogis-panel">' . "\n";
+			// echo '	<p class="ogis-panel__logo"><img width="56" height="56" alt="OpenGIS" src="' . Waymark_Helper::asset_url('img/ogis-logo-white.svg') . '" /></p>' . "\n";
+			// echo '	<p class="ogis-panel__eyebrow">OpenGIS</p>' . "\n";
+			// echo '	<p class="ogis-panel__title">' . esc_html(Waymark_Config::get_name()) . '</p>' . "\n";
+			// echo '	<p class="ogis-panel__body">' . esc_html__('Open source mapping for WordPress.', 'waymark') . ' <a href="https://ogis.org">ogis.org</a></p>' . "\n";
+			// $banner_debug = (Waymark_Helper::is_debug()) ? '1' : '0';
+			// echo '	<p class="ogis-panel__meta">v' . Waymark_Config::get_item('plugin_version') . ' | ' . esc_html__('Debug', 'waymark') . ': ' . $banner_debug . '</p>' . "\n";
 			// echo '</div>' . "\n";
 
 			return;

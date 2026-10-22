@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Waymark 1.6.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/waymark-wp\n"
-"POT-Creation-Date: 2026-10-11 14:29:03+00:00\n"
+"POT-Creation-Date: 2026-10-20 18:38:20+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Collections"
 msgstr ""
 
-#: inc/Admin/Waymark_Menu.php:27
+#: inc/Admin/Waymark_Menu.php:27 inc/Helpers/Waymark_Helper.php:22
 msgid "Documentation"
 msgstr ""
 
@@ -88,86 +88,22 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:13 inc/Helpers/Waymark_Helper.php:198
-#: inc/Helpers/Waymark_Helper.php:227
+#: inc/Admin/Waymark_Meta.php:13 inc/Helpers/Waymark_Helper.php:193
+#: inc/Helpers/Waymark_Helper.php:222
 msgid "Export"
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:14
-msgid "Help"
-msgstr ""
-
-#: inc/Admin/Waymark_Meta.php:77
+#: inc/Admin/Waymark_Meta.php:76
 msgid "Download the Overlays added to this Map in the selected format."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:117
+#: inc/Admin/Waymark_Meta.php:116
 msgid ""
 "Add this Map to your content with this Shortcode. Click here for more "
 "details."
 msgstr ""
 
-#: inc/Admin/Waymark_Meta.php:125
-msgid "Image Location Detection Not Supported!"
-msgstr ""
-
-#: inc/Admin/Waymark_Meta.php:128
-#. translators: %s: Link to PHP EXIF Extension documentation
-msgid ""
-"Your hosting environment does not currently have the <a href=\"%s\">PHP "
-"EXIF Extension</a> enabled, which is required to read Image location "
-"metadata. Try asking your host to enable it."
-msgstr ""
-
-#: inc/Admin/Waymark_Meta.php:131 inc/Admin/Waymark_Settings.php:881
-#: inc/Admin/Waymark_Settings.php:950
-#. translators: The option for reading from a file
-msgid "Read from File"
-msgstr ""
-
-#: inc/Admin/Waymark_Meta.php:132
-msgid ""
-"You can read Lines and Markers from GPX, KML and GeoJSON files (most "
-"mapping apps will be able to export to one of these)."
-msgstr ""
-
-#: inc/Admin/Waymark_Meta.php:134 inc/Admin/Waymark_Settings.php:144
-#: inc/Admin/Waymark_Settings.php:318 inc/Admin/Waymark_Settings.php:436
-msgid "Types"
-msgstr ""
-
-#: inc/Admin/Waymark_Meta.php:137
-#. translators: %s: Link to Waymark Settings
-msgid ""
-"Types allow you to control how Overlays (Markers, Lines and Shapes) are "
-"displayed on the Map. Types can be customised in <a href=\"%s\" "
-"target=\"_blank\">Waymark &gt; Settings</a>."
-msgstr ""
-
-#: inc/Admin/Waymark_Meta.php:139 inc/Admin/Waymark_Settings.php:74
-#: inc/Admin/Waymark_Settings.php:82 inc/Admin/Waymark_Settings.php:89
-#: inc/Admin/Waymark_Settings.php:101 inc/Admin/Waymark_Settings.php:116
-#. translators: The title of the field for the name of the Basemap
-#. translators: The fallback for the name of the Basemap
-#. translators: The title of the field for the attribution of the Basemap
-#. translators: The title of the field for the maximum zoom level of the
-#. Basemap
-msgid "Basemap"
-msgstr ""
-
-#: inc/Admin/Waymark_Meta.php:142
-#. translators: %s: Link to Waymark Settings
-msgid ""
-"Add and edit Basemaps in <a href=\"%1$s\" target=\"_blank\">Waymark &gt; "
-"Settings</a>. The first listed will be used as the default, unless "
-"specified in the shortcode like this: %2$s"
-msgstr ""
-
-#: inc/Admin/Waymark_Meta.php:144
-msgid "Read the Docs"
-msgstr ""
-
-#: inc/Admin/Waymark_Meta.php:168
+#: inc/Admin/Waymark_Meta.php:140
 #. translators: %s: Link to Waymark Settings
 msgid "You can manage Meta fields in <a href=\"%s\">Settings</a>."
 msgstr ""
@@ -238,7 +174,7 @@ msgid "Overlays"
 msgstr ""
 
 #: inc/Admin/Waymark_Settings.php:35 inc/Admin/Waymark_Settings.php:138
-#: inc/Helpers/Waymark_Helper.php:1386 inc/Helpers/Waymark_Lang.php:41
+#: inc/Helpers/Waymark_Helper.php:1381 inc/Helpers/Waymark_Lang.php:41
 #. translators: The name of the tab for customising Markers
 msgid "Markers"
 msgstr ""
@@ -300,6 +236,17 @@ msgstr ""
 msgid "Basemap Docs &raquo;"
 msgstr ""
 
+#: inc/Admin/Waymark_Settings.php:74 inc/Admin/Waymark_Settings.php:82
+#: inc/Admin/Waymark_Settings.php:89 inc/Admin/Waymark_Settings.php:101
+#: inc/Admin/Waymark_Settings.php:116
+#. translators: The title of the field for the name of the Basemap
+#. translators: The fallback for the name of the Basemap
+#. translators: The title of the field for the attribution of the Basemap
+#. translators: The title of the field for the maximum zoom level of the
+#. Basemap
+msgid "Basemap"
+msgstr ""
+
 #: inc/Admin/Waymark_Settings.php:77
 #. translators: The tip for the field for the name of the Basemap
 msgid ""
@@ -348,6 +295,11 @@ msgstr ""
 #. translators: The title of the field for whether the Marker should be
 #. available for front-end submissions
 msgid "Marker"
+msgstr ""
+
+#: inc/Admin/Waymark_Settings.php:144 inc/Admin/Waymark_Settings.php:318
+#: inc/Admin/Waymark_Settings.php:436
+msgid "Types"
 msgstr ""
 
 #: inc/Admin/Waymark_Settings.php:145
@@ -911,6 +863,11 @@ msgstr ""
 #: inc/Admin/Waymark_Settings.php:879 inc/Admin/Waymark_Settings.php:948
 #. translators: The option for an image upload feature
 msgid "Image upload"
+msgstr ""
+
+#: inc/Admin/Waymark_Settings.php:881 inc/Admin/Waymark_Settings.php:950
+#. translators: The option for reading from a file
+msgid "Read from File"
 msgstr ""
 
 #: inc/Admin/Waymark_Settings.php:893 inc/Admin/Waymark_Settings.php:979
@@ -1528,7 +1485,7 @@ msgstr ""
 msgid "Excerpt"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1545 inc/Helpers/Waymark_Helper.php:34
+#: inc/Admin/Waymark_Settings.php:1545 inc/Helpers/Waymark_Helper.php:29
 #. translators: The title of the section for changing advanced options
 msgid "Debug"
 msgstr ""
@@ -1557,7 +1514,7 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
-#: inc/Admin/Waymark_Settings.php:1814
+#: inc/Admin/Waymark_Settings.php:1817
 msgid "Settings Updated"
 msgstr ""
 
@@ -1603,54 +1560,30 @@ msgid "Submission"
 msgstr ""
 
 #: inc/Helpers/Waymark_Helper.php:17
-#. translators: %s: Joe, the author of the plugin
-msgid "Hi, I'm %s."
+msgid "Open-Source"
 msgstr ""
 
-#: inc/Helpers/Waymark_Helper.php:18
-msgid ""
-"Waymark is <strong><a href=\"https://github.com/opengis/waymark\">open "
-"source</a></strong> and a work in progress."
+#: inc/Helpers/Waymark_Helper.php:17
+msgid "Maps for WordPress."
 msgstr ""
 
-#: inc/Helpers/Waymark_Helper.php:19
-msgid "Feedback is very important, so please feel free to get in touch by either:"
-msgstr ""
-
-#: inc/Helpers/Waymark_Helper.php:23
-#. translators: Links to the WordPress plugin directory
-msgid ""
-"Leaving a <strong><a href=\"%1$s\">review</a></strong>, or creating a <a "
-"href=\"%2$s\">support topic</a> on the WordPress plugin directory."
-msgstr ""
-
-#: inc/Helpers/Waymark_Helper.php:25
-#. translators: Links to the GitHub repository
-msgid "Creating a <a href=\"%s\">GitHub issue</a>."
-msgstr ""
-
-#: inc/Helpers/Waymark_Helper.php:28
-#. translators: Thank you message
-msgid "Thanks"
-msgstr ""
-
-#: inc/Helpers/Waymark_Helper.php:183 inc/Waymark_Taxonomies.php:21
+#: inc/Helpers/Waymark_Helper.php:178 inc/Waymark_Taxonomies.php:21
 #: inc/Waymark_Taxonomies.php:22
 msgid "Collection"
 msgstr ""
 
-#: inc/Helpers/Waymark_Helper.php:200 inc/Helpers/Waymark_Helper.php:229
+#: inc/Helpers/Waymark_Helper.php:195 inc/Helpers/Waymark_Helper.php:224
 msgid ""
 "This will download the Overlays currently displayed by the Map in the "
 "selected format."
 msgstr ""
 
-#: inc/Helpers/Waymark_Helper.php:506 inc/Waymark_Types.php:14
+#: inc/Helpers/Waymark_Helper.php:501 inc/Waymark_Types.php:14
 #: inc/Waymark_Types.php:18 inc/Waymark_Types.php:20
 msgid "Map"
 msgstr ""
 
-#: inc/Helpers/Waymark_Helper.php:682 inc/Helpers/Waymark_Helper.php:707
+#: inc/Helpers/Waymark_Helper.php:677 inc/Helpers/Waymark_Helper.php:702
 msgid "Download"
 msgstr ""
 

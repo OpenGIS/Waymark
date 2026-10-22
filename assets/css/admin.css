@@ -497,10 +497,148 @@ body.waymark_page_waymark-help #wpbody-content table tr td {
  * ========= SETUP / SETTINGS =========
  * ====================================
  */
+/**
+ * ====================================
+ * ============ OGIS PANELS ===========
+ * ====================================
+ *
+ * Shared branding for the two OGIS-owned admin surfaces: the settings
+ * sidebar (#waymark-about) and the plugin callout banner. Everything is
+ * scoped under .ogis-panel so the rest of the admin keeps its own styling.
+ */
+.ogis-panel {
+  --ogis-panel-bg: #000b00;
+  --ogis-panel-border: #0e3111;
+  --ogis-panel-fg: #eeeeee;
+  --ogis-panel-heading: #e8f5ea;
+  --ogis-panel-muted: #9bb0a3;
+  --ogis-panel-accent: #0dd70d;
+  --ogis-panel-accent-hover: #5cf05c;
+  --ogis-panel-radius: 6px;
+  --ogis-panel-font: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid var(--ogis-panel-border);
+  border-radius: var(--ogis-panel-radius);
+  background: var(--ogis-panel-bg);
+  color: var(--ogis-panel-fg);
+  font-family: var(--ogis-panel-font);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.ogis-panel p {
+  margin: 0 0 8px;
+  line-height: inherit;
+}
+.ogis-panel p:last-child {
+  margin-bottom: 0;
+}
+.ogis-panel img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+}
+.ogis-panel hr {
+  margin: 12px 0;
+  border: 0;
+  border-top: 1px solid var(--ogis-panel-border);
+}
+.ogis-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.ogis-panel__heading {
+  min-width: 0;
+}
+#waymark-about.ogis-panel .lead {
+  margin: 0;
+  color: var(--ogis-panel-heading);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+.ogis-panel__logo {
+  margin: 0;
+  flex: 0 0 auto;
+}
+.ogis-panel__logo img {
+  width: 56px;
+  height: 56px;
+}
+.ogis-panel__eyebrow {
+  margin: 0 0 2px;
+  color: var(--ogis-panel-accent);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.ogis-panel__title {
+  margin: 0 0 6px;
+  color: var(--ogis-panel-heading);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.ogis-panel__body {
+  color: var(--ogis-panel-muted);
+}
+.ogis-panel__links {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  font-size: 12px;
+}
+.ogis-panel__links li {
+  display: flex;
+  align-items: center;
+}
+.ogis-panel__links li + li::before {
+  content: "·";
+  margin-right: 8px;
+  color: var(--ogis-panel-muted);
+}
+.ogis-panel__meta {
+  color: var(--ogis-panel-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+#waymark-about.ogis-panel {
+  border-left: 3px solid var(--ogis-panel-accent);
+}
+#waymark-about.ogis-panel a,
+#waymark-notice-container.ogis-panel a {
+  color: var(--ogis-panel-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+#waymark-about.ogis-panel a:hover,
+#waymark-notice-container.ogis-panel a:hover,
+#waymark-about.ogis-panel a:focus,
+#waymark-notice-container.ogis-panel a:focus {
+  color: var(--ogis-panel-accent-hover);
+}
 div#waymark-admin-container {
   position: relative;
-  padding-right: 210px;
-  max-width: 600px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 40px;
+  align-items: start;
+  width: calc(100% - 20px);
+  max-width: 1280px;
+  margin: 5px auto 0;
+  padding-right: 0;
   /* About */
 }
 div#waymark-admin-container h1 {
@@ -512,8 +650,11 @@ div#waymark-admin-container h1 {
   background-repeat: no-repeat;
 }
 div#waymark-admin-container .card {
-  min-width: 266px;
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
   max-width: none;
+  margin-top: 0;
 }
 div#waymark-admin-container .card .notice {
   display: none;
@@ -532,7 +673,7 @@ div#waymark-admin-container .button-primary.button-large {
   font-size: 15px;
 }
 div#waymark-admin-container .waymark-settings-tab {
-  max-width: 520px;
+  max-width: none;
 }
 div#waymark-admin-container .waymark-settings-tab.waymark-settings-tab-map table.form-table:last-child th {
   width: 100px;
@@ -580,6 +721,15 @@ div#waymark-admin-container .waymark-settings-tab input[type="text"] {
   border-color: #dddddd;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset;
 }
+div#waymark-admin-container .waymark-settings-tab .waymark-control-group:not(.waymark-short-input) input[type="text"] {
+  width: calc(100% - 32px);
+  max-width: 728px;
+}
+div#waymark-admin-container .waymark-settings-tab .waymark-settings-tab-description,
+div#waymark-admin-container .waymark-settings-tab .waymark-settings-section-description,
+div#waymark-admin-container .waymark-settings-tab > small {
+  max-width: 75ch;
+}
 div#waymark-admin-container .waymark-settings-tab .waymark-short-input select,
 div#waymark-admin-container .waymark-settings-tab .waymark-short-input input[type="file"],
 div#waymark-admin-container .waymark-settings-tab .waymark-short-input input[type="text"] {
@@ -588,49 +738,17 @@ div#waymark-admin-container .waymark-settings-tab .waymark-short-input input[typ
 div#waymark-admin-container .waymark-settings-tab .waymark-controls .waymark-tooltip {
   margin-top: 2px;
 }
-div#waymark-admin-container #waymark-about {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 180px;
-  padding: 15px;
-  border: 1px solid #ccc;
-  background: #f7f7f7;
+div#waymark-admin-container #waymark-about.ogis-panel {
+  position: sticky;
+  top: 52px;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  width: auto;
 }
-div#waymark-admin-container #waymark-about p:first-child {
-  font-size: 18px;
-}
-div#waymark-admin-container #waymark-about p,
-div#waymark-admin-container #waymark-about li {
-  font-size: 16px;
-}
-div#waymark-admin-container #waymark-about ul {
-  padding-left: 15px;
-  list-style: circle;
-}
-div#waymark-admin-container #waymark-about ul li.waymark-multi a {
-  margin-right: -4px;
-}
-div#waymark-admin-container #waymark-about p {
-  margin-top: 0;
-  line-height: 1.5em;
-}
-div#waymark-admin-container #waymark-about p.waymark-first {
-  margin: 20px 0 40px 0;
-  font-weight: bold;
-  font-size: 21px;
-  line-height: 1.1em;
-}
-div#waymark-admin-container #waymark-about img {
-  width: 100px;
-  height: 100px;
-  margin-right: 12px;
-  float: left;
-  border-radius: 50%;
-  border: 1px solid #999;
-}
-div#waymark-admin-container #waymark-about a.button {
-  margin-bottom: 5px;
+div#waymark-admin-container #waymark-about.ogis-panel .ogis-panel__logo img {
+  width: 64px;
+  height: 64px;
 }
 /**
  * ====================================
@@ -638,24 +756,37 @@ div#waymark-admin-container #waymark-about a.button {
  * ====================================
  */
 div#waymark-notice-container {
-  background: #fff !important;
+  clear: both;
   /* Plugin Callout */
 }
 div#waymark-notice-container.plugin-callout {
   position: relative;
-  margin-top: 5px;
-  padding: 5px 10px 5px 50px;
-  z-index: -1;
-  align-items: center;
-  border: 5px solid #b42714;
+  margin: 5px 20px 15px 0;
+  padding: 16px 160px 16px 80px;
+  background: var(--ogis-panel-bg) !important;
+  border: 1px solid var(--ogis-panel-border);
+  border-left: 3px solid var(--ogis-panel-accent);
 }
-div#waymark-notice-container.plugin-callout .logo {
+div#waymark-notice-container.plugin-callout .ogis-panel__logo {
   position: absolute;
-  top: 7px;
-  left: 7px;
+  top: 16px;
+  left: 16px;
+  margin: 0;
 }
-div#waymark-notice-container.plugin-callout p {
-  line-height: 0.9em;
+div#waymark-notice-container.plugin-callout .ogis-panel__logo img {
+  width: 56px;
+  height: 56px;
+}
+div#waymark-notice-container.plugin-callout .ogis-panel__title {
+  font-size: 15px;
+}
+div#waymark-notice-container.plugin-callout .ogis-panel__meta {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  margin: 0;
+  color: #c7d8cc;
+  font-size: 12px;
 }
 div#waymark-notice-container .card {
   max-width: none;
@@ -667,6 +798,11 @@ div#waymark-notice-container .card h1 {
   background-size: 30px 30px;
   background-position: left center;
   background-repeat: no-repeat;
+}
+body.waymark_page_waymark-settings #waymark-notice-container.ogis-panel {
+  width: calc(100% - 20px);
+  max-width: 1280px;
+  margin: 5px auto 20px;
 }
 /**
  * ====================================
@@ -761,21 +897,46 @@ body.wp-admin.post-type-waymark_map.post-php #waymark-admin-container {
  * ============ RESPONSIVE ============
  * ====================================
  */
-/* Phone */
-@media only screen and (max-width: 576px) {
-  /* Admin Container */
+/* Tablet / small desktop */
+@media only screen and (max-width: 1100px) {
   div#waymark-admin-container {
-    padding-right: 0;
-    padding-bottom: 180px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
   }
-  div#waymark-admin-container div#waymark-about {
-    bottom: 0;
-    left: 0;
-    top: unset;
+  div#waymark-admin-container .card {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  div#waymark-admin-container #waymark-about.ogis-panel {
+    position: static;
+    grid-column: 1;
+    grid-row: 2;
     width: auto;
   }
-  div#waymark-admin-container div#waymark-about img {
-    margin-bottom: 20px;
+}
+/* Phone */
+@media only screen and (max-width: 782px) {
+  #waymark-notice-container.plugin-callout {
+    padding-right: 18px;
+  }
+  #waymark-notice-container.plugin-callout .ogis-panel__meta {
+    display: none;
+  }
+  body.waymark_page_waymark-settings div#waymark-admin-container .waymark-settings-tab table.form-table tr th {
+    width: auto;
+  }
+  body.waymark_page_waymark-settings div#waymark-admin-container .waymark-settings-tab .waymark-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  body.waymark_page_waymark-settings div#waymark-admin-container .waymark-settings-tab .waymark-controls input[type="text"] {
+    min-width: 0;
+  }
+  body.waymark_page_waymark-settings div#waymark-admin-container .waymark-settings-tab .waymark-controls .waymark-tooltip {
+    flex: 0 0 auto;
+    margin-top: 10px;
   }
 }
 /* Tablet */

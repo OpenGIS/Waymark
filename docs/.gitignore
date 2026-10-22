@@ -1,0 +1,9 @@
+node_modules
+.nuxt
+.output
+.data
+public/assets/waymark-js/
+public/assets/css/front.min.css
+
+# Legacy output alias
+dist

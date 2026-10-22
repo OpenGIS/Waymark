@@ -104,6 +104,25 @@ npm install
 npm run dev
 ```
 
+### Documentation
+
+The documentation site is a Nuxt 4 app in `docs/`, built with `@nuxt/content`. Node 24.15 or newer is required.
+
+```bash
+cd docs
+npm ci
+npm run sync-assets
+npm run dev
+```
+
+The local preview runs at http://localhost:11003. To build the static site for GitHub Pages:
+
+```bash
+NUXT_APP_BASE_URL=/waymark-wp/ npm run generate
+```
+
+The static site is written to `docs/.output/public`.
+
 ### Assets
 
 Styles and scripts are compiled from Less and JavaScript sources into the minified bundles enqueued by the plugin — edit the sources, not the build output:
@@ -122,7 +141,7 @@ npm run test:js
 # PHP integration tests (PHPUnit against the WordPress test library)
 npm run test:php
 
-# Browser end-to-end tests (Playwright/Chromium) — login, Maps, Markers, front-end
+# Browser end-to-end tests (Playwright/Chromium) — login, Maps, Markers, responsive admin layout, front-end
 npm run test:e2e
 
 # Run all three in sequence

@@ -6,8 +6,8 @@
 //   * `installExternalRequestGuard` fails the test on any network request that
 //     leaves the local test instance (or hits a scheme we do not allow).
 //   * `stubExternalAssets` serves the handful of known third-party assets
-//     (WordPress emoji, Gravatars, the settings-sidebar avatar, the lazily
-//     loaded d3 build) from local, deterministic bodies.
+//     (WordPress emoji, Gravatars, the lazily loaded d3 build) from local,
+//     deterministic bodies.
 //   * `makePageDeterministic` disables motion and caret animation.
 //   * `installTileRoutes` records Leaflet basemap tiles once and replays them
 //     from `tests/fixtures/demo/tiles/` on every later run.
@@ -31,7 +31,6 @@ const ROOT = path.join(__dirname, "..", "..");
 const DEMO_DIR = path.join(ROOT, "tests", "fixtures", "demo");
 const TILES_DIR = path.join(DEMO_DIR, "tiles");
 const IMAGES_DIR = path.join(DEMO_DIR, "images");
-const AVATAR_PATH = path.join(IMAGES_DIR, "avatar.svg");
 const SEED_OUTPUT_PATH = path.join(DEMO_DIR, "seed-output.json");
 const D3_PATH = path.join(ROOT, "node_modules", "d3", "dist", "d3.min.js");
 const TMP_DIR = path.join(ROOT, ".opencode", "tmp");
@@ -236,19 +235,6 @@ async function stubExternalAssets(target) {
       contentType: "image/png",
       body: TRANSPARENT_PNG,
     }),
-  );
-
-  // The plugin settings-sidebar avatar. Served as the seeded SVG; it is used
-  // in an <img>, so the extension is irrelevant.
-  const avatarBody = fs.readFileSync(AVATAR_PATH);
-  await target.route(
-    /www\.morehawes\.ca\/assets\/images\/Joe1BW\.jpg/,
-    (route) =>
-      route.fulfill({
-        status: 200,
-        contentType: "image/svg+xml",
-        body: avatarBody,
-      }),
   );
 
   // d3 is lazy-loaded by the leaflet-elevation chart from this exact URL.
@@ -724,7 +710,6 @@ module.exports = {
   parseTileUrl,
   DETERMINISTIC_CSS,
   TILES_DIR,
-  AVATAR_PATH,
   D3_PATH,
   TILE_RECORD_LOG,
   TILE_SERVE_LOG,

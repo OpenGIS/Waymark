@@ -9,12 +9,12 @@ any time without leaving stale content behind.
 
 ## Contents
 
-| Path                            | Purpose                                                                                                                |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `maps/cape-scott-trail.geojson` | Canonical GeoJSON template for the hero Map, derived from `tests/fixtures/route.geojson`.                              |
-| `images/`                       | The photos referenced by the template, plus a static `avatar.svg` asset.                                               |
-| `seed.php`                      | Idempotent seeder, run with `wp eval-file`.                                                                            |
-| `seed-output.json`              | Generated output (IDs, slugs, permalinks, collection terms and image URLs). Rewritten on every run; commit the latest. |
+| Path                            | Purpose                                                                                                                                                 |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `maps/cape-scott-trail.geojson` | Canonical GeoJSON template for the hero Map, derived from `tests/fixtures/route.geojson`.                                                               |
+| `images/`                       | The photos referenced by the template.                                                                                                                  |
+| `seed.php`                      | Idempotent seeder, run with `wp eval-file`.                                                                                                             |
+| `seed-output.json`              | Generated output (IDs, slugs, permalinks, collection terms and image URLs). Regenerated on every run; output is deterministic and stays byte-identical. |
 
 The template is a normal GeoJSON `FeatureCollection`. On top of the source route
 it:
@@ -63,11 +63,6 @@ The Playwright global setup (`tests/e2e/global.setup.js`) runs it automatically
 before every e2e suite.
 
 ## Licence
-
-`images/avatar.svg` is `Noun_Borg_14249.svg` from Wikimedia Commons, released
-into the public domain under CC0:
-
-<https://upload.wikimedia.org/wikipedia/commons/6/65/Noun_Borg_14249.svg>
 
 The route photos are derived from the repository's existing fixture images in
 `docs/assets/img/` and are normalised with `sips -Z 1920` to keep the committed

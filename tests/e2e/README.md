@@ -17,14 +17,18 @@ auto-use fixture, so a spec only has to navigate and assert:
 | Helper                        | Purpose                                                                                                            |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `installExternalRequestGuard` | Fails the test on any request that leaves the local test instance, or uses a scheme outside the allow-list.        |
-| `stubExternalAssets`          | Serves the known third-party assets (WordPress emoji, Gravatar, the settings-sidebar avatar, the lazy d3 build).   |
+| `stubExternalAssets`          | Serves the known third-party assets (WordPress emoji, Gravatar, the lazy d3 build).                                |
 | `makePageDeterministic`       | Disables motion, transitions and the caret.                                                                        |
 | `installTileRoutes`           | Records and replays the Leaflet basemap tiles from the tile pack.                                                  |
 | `settleMap`                   | Waits for a Leaflet map's tiles and fonts to settle, and closes the popups the editor opens automatically on load. |
 
-Two specs live in this directory:
+Three specs live in this directory:
 
 - `screenshots.spec.js` — the capture specs, and functional smoke coverage. It
+  imports the harness.
+- `responsive-admin.spec.js` — the settings screen at a 500px viewport: the
+  sidebar stacks below the card, the OGIS callout banner is absent, the help icons
+  stay inline with their inputs, and neither tab scrolls horizontally. It
   imports the harness.
 - `map-editor.spec.js` — the legacy smoke test. It intentionally exercises live
   OSM tiles, so it deliberately does **not** import the harness and is not
@@ -96,7 +100,8 @@ npx playwright test tests/e2e/screenshots.spec.js
 
 Each capture is written to `.opencode/tmp/screenshots/` as a PNG, alongside a
 `manifest.json` recording its pixel dimensions and SHA-256. The full suite
-(`npm run test:e2e`) runs these captures and the legacy smoke test together.
+(`npm run test:e2e`) runs these captures, the responsive admin spec and the
+legacy smoke test together.
 
 ## Readme assets
 

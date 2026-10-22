@@ -11,27 +11,23 @@ class Waymark_Helper {
 	public static function plugin_about() {
 		$out = '';
 
-		$out .= '	<div id="waymark-about">' . "\n";
-		$out .= '		<img width="75" height="75" alt="Joe\'s mug" src="//www.morehawes.ca/assets/images/Joe1BW.jpg" />' . "\n";
-		// translators: %s: Joe, the author of the plugin
-		$out .= '		<p class="waymark-first"><b>' . sprintf(esc_html__("Hi, I'm %s.", 'waymark'), "Joe") . '</b></p>' . "\n";
-		$out .= '		<p>' . __('Waymark is <strong><a href="https://github.com/opengis/waymark">open source</a></strong> and a work in progress.', 'waymark') . '</p>' . "\n";
-		$out .= '		<p>' . __('Feedback is very important, so please feel free to get in touch by either:', 'waymark') . '</p>' . "\n";
-
-		$out .= '		<ul>' . "\n";
-		// translators: Links to the WordPress plugin directory
-		$out .= '			<li>' . sprintf(__('Leaving a <strong><a href="%1$s">review</a></strong>, or creating a <a href="%2$s">support topic</a> on the WordPress plugin directory.', 'waymark'), 'https://wordpress.org/support/plugin/waymark/reviews/#new-post', 'https://wordpress.org/support/plugin/waymark/#new-topic-0') . '</li>' . "\n";
-		// translators: Links to the GitHub repository
-		$out .= '			<li>' . sprintf(__('Creating a <a href="%s">GitHub issue</a>.', 'waymark'), 'https://github.com/opengis/waymark-wp/issues/new') . '</li>' . "\n";
+		$out .= '	<div id="waymark-about" class="ogis-panel ogis-panel--about">' . "\n";
+		$out .= '		<div class="ogis-panel__header">' . "\n";
+		$out .= '			<div class="ogis-panel__heading">' . "\n";
+		$out .= '				<p class="lead"><a href="' . esc_url('https://github.com/opengis/waymark-wp') . '" rel="noopener noreferrer" target="_blank">' . esc_html__('Open-Source', 'waymark') . '</a></p>' . "\n";
+		$out .= '				<p>' . esc_html__('by', 'waymark') . ' <a href="' . esc_url('https://www.ogis.org/') . '" rel="noopener noreferrer" target="_blank">' . esc_html__('Open GIS', 'waymark') . '</a>.</p>' . "\n";
+		$out .= '			</div>' . "\n";
+		$out .= '			<p class="ogis-panel__logo"><img width="64" height="64" alt="OpenGIS" src="' . self::asset_url('img/ogis-logo-white.svg') . '" /></p>' . "\n";
+		$out .= '		</div>' . "\n";
+		$out .= '		<ul class="ogis-panel__links">' . "\n";
+		$out .= '			<li><a href="' . esc_url(self::site_url()) . '">' . esc_html__('Read the Docs', 'waymark') . ' &raquo;</a></li>' . "\n";
 		$out .= '		</ul>' . "\n";
-		// translators: Thank you message
-		$out .= '		<p>' . esc_html__('Thanks', 'waymark') . '!</p>' . "\n";
 
 		$out .= '		<hr />' . "\n";
 
 		// Debug Info
 		$debug = (self::is_debug()) ? '1' : '0';
-		$out .= '		Waymark v' . Waymark_Config::get_item('plugin_version') . ' | <a href="' . admin_url('edit.php?post_type=waymark_map&page=waymark-settings&content=waymark-settings-tab-misc#wpfooter') . '">' . __('Debug', 'waymark') . '</a>: ' . $debug . "\n";
+		$out .= '		<p class="ogis-panel__meta">v' . Waymark_Config::get_item('plugin_version') . ' | <a href="' . admin_url('edit.php?post_type=waymark_map&page=waymark-settings&content=waymark-settings-tab-misc#wpfooter') . '">' . __('Debug', 'waymark') . '</a>: ' . $debug . '</p>' . "\n";
 
 		$out .= '	</div>' . "\n";
 
@@ -46,8 +42,18 @@ class Waymark_Helper {
 	}
 
 	public static function site_url($url_path = '') {
-		// Just return site home
-		return Waymark_Config::get_item('site_url');
+		$site_url = trailingslashit(Waymark_Config::get_item('site_url'));
+
+		if (! $url_path) {
+			return $site_url;
+		}
+
+		// Allow links directly to an anchor on the docs landing page.
+		if (substr($url_path, 0, 1) === '#') {
+			return $site_url . $url_path;
+		}
+
+		return $site_url . ltrim($url_path, '/');
 	}
 
 	public static function asset_url($file_path = '') {
