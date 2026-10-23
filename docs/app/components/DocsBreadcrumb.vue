@@ -12,7 +12,10 @@ defineProps<{
         :key="item.path"
         class="breadcrumb__item"
       >
-        <NuxtLink v-if="index < items.length - 1" :to="item.path">
+        <NuxtLink
+          v-if="index < items.length - 1"
+          :to="withPageTrailingSlash(item.path)"
+        >
           {{ item.title }}
         </NuxtLink>
         <span v-else aria-current="page">{{ item.title }}</span>

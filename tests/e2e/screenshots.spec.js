@@ -1,6 +1,6 @@
 // Deterministic capture specs for the Waymark readme screenshots.
 //
-// One spec per capture subject (hero `editor-demo` plus `screenshot-1..9`).
+// One spec per capture subject (hero `editor-demo` plus `screenshot-1..21`).
 // Each navigates, settles the Map, asserts the UI it exercises, gates on zero
 // console/page errors (excluding only the browser-chrome `/favicon.ico`
 // request), waits for the capture target's geometry to stop reflowing, and
@@ -16,7 +16,12 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
-const { test, expect, waitForLayoutStable } = require("./fixtures");
+const {
+  test,
+  expect,
+  waitForLayoutStable,
+  settingsUrl,
+} = require("./fixtures");
 
 const ROOT = path.join(__dirname, "..", "..");
 const SHOT_DIR = path.join(ROOT, ".opencode", "tmp", "screenshots");
@@ -37,6 +42,76 @@ const FAVICON_URL = /\/favicon\.ico$/;
 
 // A seeded marker with an associated photo (see the demo GeoJSON).
 const POPUP_MARKER_TITLE = "The Scarlet Ibis";
+
+// The WordPress.org readme settings captures, in readme order. Each `content`
+// is a Settings nav content id: a whole tab or a single repeatable section.
+const SETTINGS_SCREENS = [
+  {
+    name: "screenshot-9",
+    title: "Basemaps",
+    content: "waymark-settings-tab-tiles",
+  },
+  {
+    name: "screenshot-10",
+    title: "Shortcodes",
+    content: "waymark-settings-section-shortcode_options",
+  },
+  {
+    name: "screenshot-11",
+    title: "Elevation",
+    content: "waymark-settings-section-elevation_options",
+  },
+  {
+    name: "screenshot-12",
+    title: "Meta",
+    content: "waymark-settings-tab-meta",
+  },
+  {
+    name: "screenshot-13",
+    title: "Sleep",
+    content: "waymark-settings-section-interaction_options",
+  },
+  {
+    name: "screenshot-14",
+    title: "Clustering",
+    content: "waymark-settings-section-cluster_options",
+  },
+  {
+    name: "screenshot-15",
+    title: "Misc.",
+    content: "waymark-settings-section-map_options",
+  },
+  {
+    name: "screenshot-16",
+    title: "Markers",
+    content: "waymark-settings-tab-markers",
+  },
+  {
+    name: "screenshot-17",
+    title: "Lines",
+    content: "waymark-settings-tab-lines",
+  },
+  {
+    name: "screenshot-18",
+    title: "Shapes",
+    content: "waymark-settings-tab-shapes",
+  },
+  {
+    name: "screenshot-19",
+    title: "Properties",
+    content: "waymark-settings-tab-properties",
+  },
+  {
+    name: "screenshot-20",
+    title: "Submissions",
+    content: "waymark-settings-tab-submission",
+  },
+  {
+    name: "screenshot-21",
+    title: "Advanced",
+    content: "waymark-settings-tab-misc",
+  },
+];
 
 // ---------------------------------------------------------------------------
 // Capture bookkeeping
@@ -234,44 +309,69 @@ async function captureLocator(locator, name) {
 }
 
 /**
- * Screenshot the front-end content column, cropping the theme's symmetric
- * whitespace around the centred blocks. Uses a full-page clip so tall content
- * is captured whole.
+ * Scroll an element to a fixed distance below the viewport top.
  *
- * `topPad` overrides the whitespace left above the first content block
- * (defaulting to the shared 20px pad). The default reaches into the theme's
- * own header text above the content, which slices a line of glyphs; pass 0 to
- * clip flush with the first content block instead.
+ * Scrolls with an explicit page-coordinate offset rather than
+ * `scrollIntoViewIfNeeded`, whose framing depends on the element's current
+ * visibility, so every capture starts from the same scroll position.
+ *
+ * @param {import("@playwright/test").Locator} locator
+ * @param {number} offset
+ */
+async function scrollToElementTop(locator, offset) {
+  await locator.waitFor({ state: "attached" });
+  await locator.evaluate((element, gap) => {
+    const top = element.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo(0, Math.max(0, Math.round(top - gap)));
+  }, offset);
+}
+
+// Screenshot-only tweaks for Settings screens whose natural height runs past
+// the 1000px viewport. Meta hides the trailing Groups section so the framed
+// card ends cleanly after Meta Inputs with the Save button visible. Advanced is
+// the tallest tab; hiding its section descriptions and the trailing Post Type
+// and Debug sections keeps Collection, Editor and Permalinks framed with Save.
+const SETTINGS_SCREEN_CSS = {
+  "waymark-settings-tab-meta":
+    "#waymark-admin-container .waymark-settings-tab-meta .waymark-settings-section-groups { display: none !important; }",
+  "waymark-settings-tab-misc":
+    "#waymark-admin-container .waymark-settings-tab-misc .waymark-settings-section-description," +
+    "#waymark-admin-container .waymark-settings-tab-misc .waymark-settings-section-post," +
+    "#waymark-admin-container .waymark-settings-tab-misc .waymark-settings-section-advanced { display: none !important; }",
+};
+
+/**
+ * Navigate to a Settings screen and capture the admin viewport.
+ *
+ * Each capture is a 1600x1000 CSS viewport (3200x2000 at DPR2), not a
+ * full-page or element capture, so the Settings chrome frames the screen
+ * consistently. Repeatable sections render their first group only; the clone
+ * templates are hidden with screenshot-only CSS.
  *
  * @param {import("@playwright/test").Page} page
  * @param {string} name
- * @param {{ topPad?: number }} [options]
+ * @param {string} content Settings nav content id
  */
-async function captureContentColumn(page, name, options = {}) {
-  const topPad = options.topPad ?? 20;
+async function captureSettingsScreen(page, name, content) {
+  const url = new URL(settingsUrl);
+  url.searchParams.set("content", content);
 
-  await settleDocumentLayout(page);
+  await page.goto(url.toString());
+  await page.locator("#waymark-admin-container").waitFor({ state: "visible" });
 
-  const clip = await page.evaluate((topPad) => {
-    const parent = document.querySelector(".wp-block-post-content");
-    const boxes = [...parent.children]
-      .map((element) => element.getBoundingClientRect())
-      .filter((box) => box.width > 0 && box.height > 0);
-    const left = Math.min(...boxes.map((box) => box.left + window.scrollX));
-    const right = Math.max(...boxes.map((box) => box.right + window.scrollX));
-    const top = Math.min(...boxes.map((box) => box.top + window.scrollY));
-    const bottom = Math.max(...boxes.map((box) => box.bottom + window.scrollY));
-    const pad = 20;
-    const y = Math.max(0, top - topPad);
-    return {
-      x: Math.max(0, left - pad),
-      y,
-      width: right - left + pad * 2,
-      height: Math.max(0, bottom + pad - y),
-    };
-  }, topPad);
+  await expect(
+    page.locator(`#waymark-settings-nav a[data-content="${content}"]`),
+  ).toHaveClass(/is-active/);
+  await expect(page.locator(`.${content}`).first()).toBeVisible();
 
-  await screenshotPage(page, name, { clip, fullPage: true });
+  await page.addStyleTag({
+    content:
+      "#waymark-admin-container .waymark-settings-tab .waymark-repeatable > .form-table ~ .form-table { display: none !important; }" +
+      (SETTINGS_SCREEN_CSS[content] ?? ""),
+  });
+
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await capturePage(page, name);
 }
 
 // ---------------------------------------------------------------------------
@@ -461,7 +561,11 @@ test("screenshot-1: Map Editor meta box with seeded overlays", async ({
     await mapPanel.locator(".leaflet-overlay-pane path").count(),
   ).toBeGreaterThan(0);
 
-  await captureLocator(page.locator("#waymark_map_meta"), "screenshot-1");
+  // Frame the Map Editor meta box itself: keep the admin chrome, but centre
+  // the Map and its draw toolbar rather than the full editor layout used by
+  // screenshot-3.
+  await scrollToElementTop(page.locator("#waymark_map_meta"), 32);
+  await capturePage(page, "screenshot-1");
   assertNoErrors();
 });
 
@@ -485,6 +589,12 @@ test("screenshot-3: full classic editor framing", async ({ page, waymark }) => {
     page.locator("#waymark_map_export select[name=export_format] option"),
   ).toHaveCount(3);
 
+  // Hide the localhost permalink row so the capture does not expose the test
+  // instance URL. This is WordPress editor chrome, not plugin UI.
+  await page.addStyleTag({
+    content: "#edit-slug-box { display: none !important; }",
+  });
+
   await page.evaluate(() => window.scrollTo(0, 0));
   await capturePage(page, "screenshot-3");
   assertNoErrors();
@@ -506,10 +616,28 @@ test("screenshot-5: seeded meta groups and Featured Image", async ({
   await expect(page.locator("#waymark-parameter-group-details")).toBeVisible();
   await expect(page.locator("#postimagediv img")).toBeVisible();
 
-  // The seeded meta groups (main column) and the Featured Image thumbnail
-  // (side column) sit at different heights, so capture the whole editor page.
-  await page.evaluate(() => window.scrollTo(0, 0));
-  await capturePage(page, "screenshot-5", { fullPage: true });
+  // Collapse About and expand Details so the capture shows the seeded fields.
+  await page.locator("#waymark-parameter-group-about legend").click();
+  await page.locator("#waymark-parameter-group-details legend").click();
+
+  const details = page.locator(
+    "#waymark-parameter-group-details .waymark-accordion-group-content",
+  );
+  await expect(details).toBeVisible();
+
+  await expect(page.locator('input[name="map_date"]')).toHaveValue(
+    "2026-06-15",
+  );
+  await expect(page.locator('input[name="map_distance_km"]')).toHaveValue(
+    "91.4",
+  );
+  await expect(page.locator('input[name="map_weather"]')).toHaveValue(
+    "Overcast",
+  );
+
+  // Frame the Meta box (main column) alongside the Featured Image sidebar.
+  await page.locator("#waymark_map_meta").scrollIntoViewIfNeeded();
+  await capturePage(page, "screenshot-5");
   assertNoErrors();
 });
 
@@ -620,12 +748,12 @@ test("screenshot-4: basemap switcher and type filter", async ({
   await layersControl.evaluate((el) =>
     el.classList.add("leaflet-control-layers-expanded"),
   );
-  await expect(layersControl).toContainText("Open Street Map");
-  await expect(layersControl).toContainText("Open Topo Map");
+  await expect(layersControl).toContainText("OpenStreetMap");
+  await expect(layersControl).toContainText("OpenTopoMap");
 
-  // A real interaction: switch to the Open Topo Map basemap.
+  // A real interaction: switch to the OpenTopoMap basemap.
   await layersControl
-    .locator(".leaflet-control-layers-base label", { hasText: "Open Topo Map" })
+    .locator(".leaflet-control-layers-base label", { hasText: "OpenTopoMap" })
     .click();
   await expect(layersControl.locator("input[type=radio]").nth(1)).toBeChecked();
   await waymark.settleMap(page);
@@ -723,13 +851,54 @@ test("screenshot-6: Map Details page", async ({ page, waymark }) => {
     "Port Hardy",
   );
 
+  // Start just above the first content block (the Map) so the post byline
+  // frames the top edge and the map, gallery and elevation profile share the
+  // viewport without slicing the featured image above. Scroll first: bringing
+  // the Map into view can trigger a Leaflet resize and tile fade, so settling
+  // before scrolling lets that late frame land after the map looked ready.
+  await scrollToElementTop(
+    page.locator(".wp-block-post-content > *").first(),
+    100,
+  );
+
   // Pin the Map to a deterministic data-bounds view (the elevation control
   // otherwise re-fits to its near-degenerate track extent on resize).
   await settleViewerMaps(page);
   await waymark.settleMap(page);
   await expectTilesLoaded(page);
 
-  await captureContentColumn(page, "screenshot-6");
+  // Let any remaining Leaflet tile fade or marker animation finish, then
+  // confirm no late tile request reopened the map loading state.
+  await page.waitForTimeout(1000);
+  await waymark.settleMap(page);
+  await expectTilesLoaded(page);
+
+  console.log(
+    "S6DEBUG " +
+      JSON.stringify(
+        await page.evaluate(() => {
+          const element = document.querySelector(".waymark-map-container");
+          const waymark = window.jQuery(element).data("Waymark");
+          const rect = element.getBoundingClientRect();
+          const center = waymark.map.getCenter();
+          return {
+            scrollY: window.scrollY,
+            rect: {
+              x: rect.x,
+              y: rect.y,
+              width: rect.width,
+              height: rect.height,
+            },
+            size: waymark.map.getSize(),
+            center: { lat: center.lat, lng: center.lng },
+            zoom: waymark.map.getZoom(),
+            containerWidth: window.innerWidth,
+          };
+        }),
+      ),
+  );
+
+  await capturePage(page, "screenshot-6");
   assertNoErrors();
 });
 
@@ -762,9 +931,13 @@ test("screenshot-7: shortcode rendered in page content", async ({
   await waymark.settleMap(page);
   await expectTilesLoaded(page);
 
-  // Clip flush with the first content block (the "Cape Scott Trail" heading) so
-  // the theme header text above it is not sliced in half.
-  await captureContentColumn(page, "screenshot-7", { topPad: 0 });
+  // Start at the first content block (the "Cape Scott Trail" heading) with the
+  // page title above it, framing the first Map and its shortcode.
+  await scrollToElementTop(
+    page.locator(".wp-block-post-content > *").first(),
+    120,
+  );
+  await capturePage(page, "screenshot-7");
   assertNoErrors();
 });
 
@@ -790,17 +963,15 @@ test("screenshot-8: Collections admin table", async ({ page, waymark }) => {
   await expect(list).toContainText("Vancouver Island");
   await expect(list).toContainText("Backpacking");
   await expect(list).toContainText("Day Hikes");
-  await expect(list.locator("input[type=text]").first()).toBeVisible();
 
-  // Widen the Shortcode column's readonly inputs for this capture only: their
-  // default 180px truncates the full value (e.g. [Waymark collection_id="2"]).
-  await page.addStyleTag({
-    content:
-      "#the-list .column-shortcode input[type=text]{width:220px !important}",
-  });
-  await expect(list.locator("input[type=text]").first()).toHaveValue(
-    '[Waymark collection_id="2"]',
-  );
+  // The readonly Shortcode input fills its column, so the full value must fit
+  // without horizontal clipping.
+  const shortcodeInput = list.locator("input[type=text]").first();
+  await expect(shortcodeInput).toBeVisible();
+  await expect(shortcodeInput).toHaveValue('[Waymark collection_id="2"]');
+  expect(
+    await shortcodeInput.evaluate((el) => el.scrollWidth <= el.clientWidth),
+  ).toBe(true);
 
   await page.evaluate(() => window.scrollTo(0, 0));
   await capturePage(page, "screenshot-8");
@@ -808,24 +979,16 @@ test("screenshot-8: Collections admin table", async ({ page, waymark }) => {
 });
 
 // ---------------------------------------------------------------------------
-// screenshot-9: Settings — Markers tab
+// screenshot-9..21: Settings screens
 // ---------------------------------------------------------------------------
 
-test("screenshot-9: Settings Marker Types", async ({ page, waymark }) => {
-  test.setTimeout(120_000);
-  const assertNoErrors = startErrorGate(page);
+for (const { name, title, content } of SETTINGS_SCREENS) {
+  test(`${name}: Settings ${title}`, async ({ page, waymark }) => {
+    test.setTimeout(120_000);
+    const assertNoErrors = startErrorGate(page);
 
-  await waymark.login(page);
-  await page.goto(waymark.settingsUrl);
-  await expect(page.locator("#waymark-admin-container")).toBeVisible();
-
-  const container = page.locator("#waymark-admin-container");
-  await expect(container.locator("input[value=Beer]")).toBeVisible();
-  await expect(
-    container.locator(".waymark-settings-tab-markers"),
-  ).toBeAttached();
-  await expect(container).toContainText("Marker Types");
-
-  await captureLocator(container, "screenshot-9");
-  assertNoErrors();
-});
+    await waymark.login(page);
+    await captureSettingsScreen(page, name, content);
+    assertNoErrors();
+  });
+}

@@ -1870,11 +1870,6 @@ export const routeMapMeta = {
     title: "Demo Collection",
     href: "#",
   },
-  export: {
-    mapId: "1647",
-    slug: "route-map",
-    title: "Route Map",
-  },
   journalEntry:
     "<p>This is a journal entry. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>",
   date: "20/12/1879",

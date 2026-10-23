@@ -21,12 +21,17 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "en-GB",
       },
+      title: "Documentation",
       titleTemplate: "%s – Waymark",
       link: [
         {
           rel: "icon",
           type: "image/svg+xml",
           href: `${baseURL}favicon.svg`,
+        },
+        {
+          rel: "stylesheet",
+          href: `${baseURL}assets/css/ogis.css`,
         },
         {
           rel: "stylesheet",

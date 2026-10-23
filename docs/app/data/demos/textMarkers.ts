@@ -1862,11 +1862,6 @@ const textMarkers: Record<string, any> = {
 
 export const textMarkersMeta = {
   title: "Text Markers",
-  export: {
-    mapId: "4697",
-    slug: "text-markers",
-    title: "Text Markers",
-  },
   journalEntry:
     "<p>This is a journal entry. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>",
   date: "20/12/1879",

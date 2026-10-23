@@ -134,7 +134,7 @@ $settings = [
 	// A second Basemap after the default OSM entry.
 	'tiles' => [
 		'layers' => [
-			'layer_name' => ['Open Street Map', 'Open Topo Map'],
+			'layer_name' => ['OpenStreetMap', 'OpenTopoMap'],
 			'layer_url' => [
 				'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 				'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
@@ -189,19 +189,20 @@ $settings = [
 	// Meta: a base Description plus two groups (About, Details).
 	'meta' => [
 		'inputs' => [
-			'meta_title'      => ['Description', 'Journal Entry', 'Date', 'Distance (km)'],
-			'meta_default'    => ['', '', '', ''],
+			'meta_title'      => ['Description', 'Journal Entry', 'Date', 'Distance (km)', 'Weather'],
+			'meta_default'    => ['', '', '', '', ''],
 			'meta_tip'        => [
 				'A summary of this Map, shown on the Map Details page.',
 				'A longer account of the route.',
 				'When the route was ridden.',
 				'Total distance in kilometres.',
+				'The weather when the Map was created.',
 			],
-			'meta_type'       => ['textarea_rich', 'textarea_rich', 'text', 'text'],
-			'meta_group'      => ['', 'about', 'details', 'details'],
-			'meta_options'    => ['', '', '', ''],
-			'meta_shortcode'  => ['1', '1', '1', '1'],
-			'meta_submission' => ['0', '0', '0', '0'],
+			'meta_type'       => ['textarea_rich', 'textarea_rich', 'text', 'text', 'text'],
+			'meta_group'      => ['', 'about', 'details', 'details', 'details'],
+			'meta_options'    => ['', '', '', '', ''],
+			'meta_shortcode'  => ['1', '1', '1', '1', '1'],
+			'meta_submission' => ['0', '0', '0', '0', '0'],
 		],
 		'groups' => [
 			'group_title' => ['About', 'Details'],
@@ -505,6 +506,7 @@ $demo_maps = [
 		'journal'     => '<p>Day one was the Holberg road and a night at Nahwitti Lake. Day two carried on to San Josef Bay before the final push to the lighthouse.</p>',
 		'date'        => '2026-06-15',
 		'distance'    => '91.4',
+		'weather'     => 'Overcast',
 	],
 	[
 		'id'          => 101,
@@ -560,6 +562,9 @@ foreach ($demo_maps as $demo_map) {
 	update_post_meta($post_id, 'waymark_map_journal_entry', wp_slash($demo_map['journal']));
 	update_post_meta($post_id, 'waymark_map_date', $demo_map['date']);
 	update_post_meta($post_id, 'waymark_map_distance_km', $demo_map['distance']);
+	if (isset($demo_map['weather'])) {
+		update_post_meta($post_id, 'waymark_map_weather', wp_slash($demo_map['weather']));
+	}
 
 	if (isset($image_ids[$demo_map['thumbnail']])) {
 		set_post_thumbnail($post_id, $image_ids[$demo_map['thumbnail']]);

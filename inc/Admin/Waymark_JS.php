@@ -19,6 +19,9 @@ class Waymark_JS {
 			'marker_icon_icon_label' => esc_attr__('Name', 'waymark'),
 			'marker_icon_text_label' => esc_attr__('Text', 'waymark'),
 			'marker_icon_html_label' => esc_attr__('HTML', 'waymark'),
+			'new_type' => esc_attr__('New Type', 'waymark'),
+			'add_type' => esc_attr__('Add Type', 'waymark'),
+			'select_colour' => esc_attr__('Select Colour', 'waymark'),
 		]);
 		wp_enqueue_script('waymark_admin_js');
 	}
@@ -71,7 +74,10 @@ class Waymark_JS {
 
 		//Output Config
 		self::add_call('var waymark_user_config = ' . Waymark_Config::get_map_config(true) . ';');
-		self::add_call('waymark_user_config.map_options.map_height = 600;');
+		self::add_call('var waymark_editor_map = document.getElementById("waymark-map");');
+		self::add_call('var waymark_editor_top = waymark_editor_map ? waymark_editor_map.getBoundingClientRect().top : 0;');
+		self::add_call('var waymark_editor_available = window.innerHeight - waymark_editor_top - 24;');
+		self::add_call('waymark_user_config.map_options.map_height = Math.max(400, Math.min(600, waymark_editor_available));');
 
 		if ($default_latlng = Waymark_Config::get_setting('misc', 'map_options', 'map_default_latlng')) {
 			// We have a valid LatLng

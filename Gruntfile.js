@@ -160,6 +160,10 @@ module.exports = function (grunt) {
 					mainFile: "Waymark.php",
 					type: "wp-plugin",
 					updateTimestamp: false,
+					potHeaders: {
+						"report-msgid-bugs-to":
+							"https://wordpress.org/support/plugin/waymark",
+					},
 				},
 			},
 		},

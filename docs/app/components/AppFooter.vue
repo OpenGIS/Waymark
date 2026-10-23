@@ -22,7 +22,7 @@ const baseURL = useRuntimeConfig().app.baseURL;
           >
           by
           <a
-            href="https://www.ogis.org/"
+            href="https://www.ogis.org"
             rel="noopener noreferrer"
             target="_blank"
             >Open GIS</a

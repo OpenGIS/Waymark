@@ -55,6 +55,17 @@ jobs:
         if: steps.version_check.outputs.changed == 'true'
         run: npx grunt sync_version build
 
+      - name: Build distributable zip
+        if: steps.version_check.outputs.changed == 'true'
+        env:
+          VERSION: ${{ steps.version_check.outputs.current }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/waymark"
+          rsync -rc --exclude-from=.distignore ./ "$RUNNER_TEMP/waymark/" --delete --delete-excluded
+          cd "$RUNNER_TEMP"
+          rm -f "waymark-$VERSION.zip"
+          zip -r -X "waymark-$VERSION.zip" waymark
+
       - name: Deploy to WordPress.org
         if: steps.version_check.outputs.changed == 'true'
         uses: 10up/action-wordpress-plugin-deploy@stable
@@ -63,16 +74,6 @@ jobs:
           SVN_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
           SLUG: waymark
           VERSION: ${{ steps.version_check.outputs.current }}
-
-      - name: Create tag and release
-        if: steps.version_check.outputs.changed == 'true'
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ steps.version_check.outputs.current }}
-          name: v${{ steps.version_check.outputs.current }}
-          make_latest: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit synced release files
         if: steps.version_check.outputs.changed == 'true'
@@ -86,3 +87,16 @@ jobs:
             git commit -m "chore: sync release artefacts for v${{ steps.version_check.outputs.current }}"
             git push
           fi
+
+      - name: Create tag and release
+        if: steps.version_check.outputs.changed == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.VERSION }}
+          name: v${{ env.VERSION }}
+          target_commitish: master
+          files: ${{ runner.temp }}/waymark-${{ env.VERSION }}.zip
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.version_check.outputs.current }}

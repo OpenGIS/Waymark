@@ -12,12 +12,16 @@ class Waymark_Helper {
 		$out = '';
 
 		$out .= '	<div id="waymark-about" class="ogis-panel ogis-panel--about">' . "\n";
+		$out .= '		<h1 class="waymark-settings-sidebar__title">' . esc_html__('Settings', 'waymark') . '</h1>' . "\n";
+		$out .= '		<div class="ogis-panel__brand">' . "\n";
+		$out .= '			<img class="ogis-panel__waymark" src="' . self::asset_url('img/waymark-icon-white.png') . '" alt="' . esc_attr__('Waymark', 'waymark') . '" width="48" height="48" />' . "\n";
+		$out .= '			<img class="ogis-panel__logo" src="' . self::asset_url('img/ogis-logo-white.svg') . '" alt="' . esc_attr__('Open GIS', 'waymark') . '" width="48" height="48" />' . "\n";
+		$out .= '		</div>' . "\n";
 		$out .= '		<div class="ogis-panel__header">' . "\n";
 		$out .= '			<div class="ogis-panel__heading">' . "\n";
 		$out .= '				<p class="lead"><a href="' . esc_url('https://github.com/opengis/waymark-wp') . '" rel="noopener noreferrer" target="_blank">' . esc_html__('Open-Source', 'waymark') . '</a></p>' . "\n";
-		$out .= '				<p>' . esc_html__('by', 'waymark') . ' <a href="' . esc_url('https://www.ogis.org/') . '" rel="noopener noreferrer" target="_blank">' . esc_html__('Open GIS', 'waymark') . '</a>.</p>' . "\n";
+		$out .= '				<p>' . esc_html__('by', 'waymark') . ' <a href="' . esc_url('https://www.ogis.org') . '" rel="noopener noreferrer" target="_blank">' . esc_html__('Open GIS', 'waymark') . '</a>.</p>' . "\n";
 		$out .= '			</div>' . "\n";
-		$out .= '			<p class="ogis-panel__logo"><img width="64" height="64" alt="OpenGIS" src="' . self::asset_url('img/ogis-logo-white.svg') . '" /></p>' . "\n";
 		$out .= '		</div>' . "\n";
 		$out .= '		<ul class="ogis-panel__links">' . "\n";
 		$out .= '			<li><a href="' . esc_url(self::site_url()) . '">' . esc_html__('Read the Docs', 'waymark') . ' &raquo;</a></li>' . "\n";
@@ -521,7 +525,7 @@ class Waymark_Helper {
 		if (sizeof($collections)) {
 			//Sort by count ASC
 			usort($collections, function ($a, $b) {
-				return $a->count < $b->count;
+				return $a->count - $b->count;
 			});
 
 			// Add link to first

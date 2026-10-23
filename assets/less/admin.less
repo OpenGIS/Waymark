@@ -1,5 +1,8 @@
 @waymark-primary: #b42714;
 @waymark-grey: #f1f1f1;
+@waymark-green: #2f8f46;
+@waymark-green-dark: #14532d;
+@waymark-green-pale: #e7f4ea;
 
 /**
  * ====================================
@@ -7,22 +10,22 @@
  * ====================================
  */
 .waymark-primary {
-	color: @waymark-primary;
+  color: @waymark-primary;
 }
 .waymark-icon {
-	background-image: url("../img/waymark-icon-primary.png");
-	background-size: 20px 20px;
-	background-position: left center;
-	background-repeat: no-repeat;
+  background-image: url("../img/waymark-icon-primary.png");
+  background-size: 20px 20px;
+  background-position: left center;
+  background-repeat: no-repeat;
 }
 .waymark-lead {
-	font-size: 1.1em;
+  font-size: 1.1em;
 }
 .waymark-right {
-	float: right;
+  float: right;
 }
 .waymark-left {
-	float: left;
+  float: left;
 }
 
 /*
@@ -32,20 +35,20 @@
 */
 
 div.postbox {
-	//Map
-	&#waymark_map_meta {
-		div.waymark-parameters-container {
-			.waymark-parameter-group {
-				margin: 0;
-				.waymark-parameter-group-content {
-					min-height: 0;
-				}
-				.waymark-control-group:nth-child(2n) {
-					background: #f9f9f9 !important;
-				}
-			}
-		}
-	}
+  //Map
+  &#waymark_map_meta {
+    div.waymark-parameters-container {
+      .waymark-parameter-group {
+        margin: 0;
+        .waymark-parameter-group-content {
+          min-height: 0;
+        }
+        .waymark-control-group:nth-child(2n) {
+          background: #f9f9f9 !important;
+        }
+      }
+    }
+  }
 }
 
 /*
@@ -57,28 +60,28 @@ div.postbox#waymark_collectiondiv,
 div.postbox#waymark_map_shortcode,
 div.postbox#waymark_map_export,
 div.postbox#waymark_map_help {
-	h2.hndle {
-		span {
-			padding-left: 24px;
-			// 			font-size: 18px;
-			background-image: url("../img/waymark-icon-dark.png");
-			background-size: 20px 20px;
-			background-position: left center;
-			background-repeat: no-repeat;
-		}
-	}
+  h2.hndle {
+    span {
+      padding-left: 24px;
+      // 			font-size: 18px;
+      background-image: url("../img/waymark-icon-dark.png");
+      background-size: 20px 20px;
+      background-position: left center;
+      background-repeat: no-repeat;
+    }
+  }
 }
 div.postbox#waymark_map_help {
-	.inside {
-		padding: 10px 15px;
-		max-height: 210px;
-		overflow-y: auto;
-		p {
-			&:first-child {
-				margin-top: 0;
-			}
-		}
-	}
+  .inside {
+    padding: 10px 15px;
+    max-height: 210px;
+    overflow-y: auto;
+    p {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
 }
 
 /**
@@ -88,9 +91,9 @@ div.postbox#waymark_map_help {
  */
 
 p#waymark-tooltip-active {
-	background-color: @waymark-primary;
-	color: #fff;
-	border: none;
+  background-color: @waymark-primary;
+  color: #fff;
+  border: none;
 }
 
 /**
@@ -99,127 +102,127 @@ p#waymark-tooltip-active {
  * ====================================
  */
 div.waymark-control-group {
-	padding: 1%;
-	clear: both;
-	overflow: hidden;
-	border-bottom: 1px solid @waymark-grey;
-	&:nth-child(even) {
-		background: #f9f9f9;
-	}
-	.waymark-control-label {
-		display: block;
-		padding-top: 12px;
-		float: left;
-		width: 160px;
-		font-weight: bold;
-		font-size: 1.1em;
-	}
-	.waymark-controls {
-		padding: 5px 0;
-		.waymark-input {
-			&.waymark-disabled {
-				opacity: 0.5;
-				&:hover {
-					cursor: not-allowed;
-				}
-			}
-		}
-		select {
-			width: 200px;
-			border: 1px solid #ddd;
-		}
-		input[type="file"],
-		input[type="text"] {
-			padding: 2px 8px;
-			width: 200px;
-			border: 1px solid #ddd;
-		}
-		input[type="file"] {
-			font-size: 12px;
-		}
-	}
-	&.waymark-short-input {
-		div.waymark-controls {
-			select,
-			input {
-				width: 80px;
-			}
-		}
-	}
-	&.waymark-control-type-select_multi {
-		option {
-			padding-top: 3px;
-			padding-bottom: 3px;
-		}
-	}
-	&.waymark-control-type-textarea_rich,
-	&.waymark-control-type-textarea {
-		position: relative;
-		//background-color: transparent !important;
-		border: none !important;
-		.waymark-controls {
-			width: 100%;
-		}
-		label {
-			float: none;
-		}
-		.waymark-tooltip {
-			position: absolute;
-			top: 5px;
-			right: 5px;
-		}
-		textarea {
-			width: 100%;
-			height: 200px;
-		}
-	}
+  padding: 1%;
+  clear: both;
+  overflow: hidden;
+  border-bottom: 1px solid @waymark-grey;
+  &:nth-child(even) {
+    background: #f9f9f9;
+  }
+  .waymark-control-label {
+    display: block;
+    padding-top: 12px;
+    float: left;
+    width: 160px;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  .waymark-controls {
+    padding: 5px 0;
+    .waymark-input {
+      &.waymark-disabled {
+        opacity: 0.5;
+        &:hover {
+          cursor: not-allowed;
+        }
+      }
+    }
+    select {
+      width: 200px;
+      border: 1px solid #ddd;
+    }
+    input[type="file"],
+    input[type="text"] {
+      padding: 2px 8px;
+      width: 200px;
+      border: 1px solid #ddd;
+    }
+    input[type="file"] {
+      font-size: 12px;
+    }
+  }
+  &.waymark-short-input {
+    div.waymark-controls {
+      select,
+      input {
+        width: 80px;
+      }
+    }
+  }
+  &.waymark-control-type-select_multi {
+    option {
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
+  }
+  &.waymark-control-type-textarea_rich,
+  &.waymark-control-type-textarea {
+    position: relative;
+    //background-color: transparent !important;
+    border: none !important;
+    .waymark-controls {
+      width: 100%;
+    }
+    label {
+      float: none;
+    }
+    .waymark-tooltip {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+    }
+  }
 
-	/* Inline - All */
-	&.waymark-inline {
-		padding: 1% 0;
-		float: left;
-		background: transparent;
+  /* Inline - All */
+  &.waymark-inline {
+    padding: 1% 0;
+    float: left;
+    background: transparent;
 
-		/* First Column */
-		&:nth-child(even) {
-			padding-left: 1%;
-			padding-right: 0;
-			width: 49%;
-			label.waymark-control-label {
-				width: 120px;
-			}
-			/*
+    /* First Column */
+    &:nth-child(even) {
+      padding-left: 1%;
+      padding-right: 0;
+      width: 49%;
+      label.waymark-control-label {
+        width: 120px;
+      }
+      /*
 			select.waymark-input {
 				width: 100px;
 			}			
 */
-		}
+    }
 
-		/* Second Column */
-		&:nth-child(odd) {
-			width: 49%;
-			padding-right: 1%;
-			float: left;
-			clear: none;
-			.waymark-control-label {
-				width: auto;
-				margin-right: 10px;
-			}
-		}
+    /* Second Column */
+    &:nth-child(odd) {
+      width: 49%;
+      padding-right: 1%;
+      float: left;
+      clear: none;
+      .waymark-control-label {
+        width: auto;
+        margin-right: 10px;
+      }
+    }
 
-		/* Alternating Rows */
-		&:nth-child(4n-1),
-		&:nth-child(4n-2) {
-			background: #f9f9f9;
-		}
-	}
+    /* Alternating Rows */
+    &:nth-child(4n-1),
+    &:nth-child(4n-2) {
+      background: #f9f9f9;
+    }
+  }
 
-	.waymark-controls {
-		float: none;
-	}
+  .waymark-controls {
+    float: none;
+  }
 }
 p + div.waymark-control-group {
-	border-top: 1px solid @waymark-grey;
+  border-top: 1px solid @waymark-grey;
 }
 
 /**
@@ -229,63 +232,63 @@ p + div.waymark-control-group {
  */
 
 li#toplevel_page_edit-post_type-waymark_map {
-	.wp-menu-name abbr {
-		text-decoration: none;
-		border-bottom: none;
-	}
-	.wp-submenu-head > span,
-	.wp-menu-name > span,
-	.wp-first-item abbr,
-	li.hidden {
-		display: none;
-	}
-	.wp-menu-image {
-		height: 34px !important;
-		background-image: url("../img/waymark-icon-light.png");
-		background-size: 18px 18px;
-		background-position: center center;
-		background-repeat: no-repeat;
-	}
-	&:hover {
-		.wp-menu-image {
-			background-image: url("../img/waymark-icon-white.png");
-		}
-	}
-	&.wp-has-current-submenu,
-	&.wp-menu-open {
-		.wp-menu-image {
-			background-image: url("../img/waymark-icon-white.png");
-		}
-	}
+  .wp-menu-name abbr {
+    text-decoration: none;
+    border-bottom: none;
+  }
+  .wp-submenu-head > span,
+  .wp-menu-name > span,
+  .wp-first-item abbr,
+  li.hidden {
+    display: none;
+  }
+  .wp-menu-image {
+    height: 34px !important;
+    background-image: url("../img/waymark-icon-light.png");
+    background-size: 18px 18px;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  &:hover {
+    .wp-menu-image {
+      background-image: url("../img/waymark-icon-white.png");
+    }
+  }
+  &.wp-has-current-submenu,
+  &.wp-menu-open {
+    .wp-menu-image {
+      background-image: url("../img/waymark-icon-white.png");
+    }
+  }
 }
 
 /* Shortcode UI */
 div#waymark_shortcode_ui-insert-dialog {
-	div.waymark-parameters-container {
-		padding: 15px;
-	}
+  div.waymark-parameters-container {
+    padding: 15px;
+  }
 }
 
 /* Widget UI */
 div.widget-content {
-	.waymark-widget-title {
-		margin-bottom: 5px;
-		label {
-			font-size: 14px;
-			font-weight: bold;
-		}
-	}
-	div.waymark-parameters-container {
-		padding: 15px 0;
-		div.waymark-controls {
-			position: relative;
-			select,
-			input[type="file"],
-			input[type="text"] {
-				width: 180px;
-			}
-		}
-	}
+  .waymark-widget-title {
+    margin-bottom: 5px;
+    label {
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+  div.waymark-parameters-container {
+    padding: 15px 0;
+    div.waymark-controls {
+      position: relative;
+      select,
+      input[type="file"],
+      input[type="text"] {
+        width: 180px;
+      }
+    }
+  }
 }
 
 /**
@@ -293,208 +296,427 @@ div.widget-content {
  * ============= SETTINGS =============
  * ====================================
  */
+//Match WordPress's left content padding on the right so the page gutters
+//stay symmetrical at every width.
+body.waymark_page_waymark-settings #wpcontent {
+  padding-right: 20px;
+}
+
+@media only screen and (max-width: 782px) {
+  body.waymark_page_waymark-settings #wpcontent {
+    padding-right: 10px;
+  }
+}
+
 body.waymark_page_waymark-settings {
-	#waymark-admin-container {
-		&.waymark-active-waymark-settings-tab-misc {
-			//Remove from Misc.
-			.waymark-settings-section-cluster_options,
-			.waymark-settings-section-interaction_options,
-			.waymark-settings-section-elevation_options,
-			.waymark-settings-section-shortcode_options,
-			.waymark-settings-section-map_options {
-				display: none !important;
-			}
-		}
-	}
+  .waymark-invisible {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 
-	//Nav
-	div#waymark-settings-nav {
-		margin-top: 10px;
-		height: 35px;
-		margin-bottom: 5px;
-		padding-left: 45px;
-		background-image: url("../img/waymark-icon-primary.png");
-		background-size: 35px 35px;
-		background-position: center left;
-		background-repeat: no-repeat;
-		select {
-			min-width: 200px;
-			position: absolute;
-			padding: 0;
-			z-index: +1000;
-			font-size: 16px;
-			&:hover {
-				background: #fff;
-			}
-			option {
-				padding: 10px 20px;
-				&[disabled] {
-					color: #000 !important;
-					background: #f7f7f7;
-				}
-				&:hover {
-					color: #0073aa;
-				}
-			}
-		}
-	}
+  .wp-picker-container .wp-color-result:not(:focus) {
+    border: 1px solid #c3c4c7;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  }
 
-	//Tabs
-	// 	h2.nav-tab-wrapper {
-	// 		a {
-	// 			font-size: 13px !important;
-	// 			margin-left: 4px;
-	// 			&:first-child {}
-	// 			&.nav-tab-active {
-	// 				background: #fff;
-	// 				border-bottom: 1px solid #fff;
-	// 			}
-	// 		}
-	// 	}
-	div.waymark-settings-tab {
-		//Help
-		.waymark-docs-link {
-			position: absolute;
-			top: 20px;
-			right: 20px;
-		}
-		//Pro Tip
-		> small {
-			display: block;
-			margin-top: 20px;
-			font-size: 0.9em;
-		}
+  .wp-picker-container .wp-color-result-text {
+    background: #fbfbfb;
+    border-left: 1px solid #dcdcde;
+    color: #50575e;
+    text-shadow: none;
+    opacity: 1;
+  }
 
-		//Repeatable
-		.waymark-repeatable {
-			.form-table {
-				position: relative;
-				box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.25);
-				&:hover {
-					div.waymark-delete {
-						visibility: visible;
-					}
-				}
-				&.ui-sortable-handle {
-					cursor: move;
-				}
-			}
-			button.waymark-add {
-				display: block;
-				width: 100%;
-				opacity: 0.7;
-			}
-			div.waymark-delete {
-				position: absolute;
-				top: 2px;
-				left: 2px;
-				padding: 0 5px 2px 5px;
-				background: #ac2b2b;
-				color: white;
-				cursor: pointer;
-				visibility: hidden;
-			}
-		}
+  #waymark-admin-container {
+    &.waymark-active-waymark-settings-tab-misc {
+      //Remove from Misc.
+      .waymark-settings-section-cluster_options,
+      .waymark-settings-section-interaction_options,
+      .waymark-settings-section-elevation_options,
+      .waymark-settings-section-shortcode_options,
+      .waymark-settings-section-map_options {
+        display: none !important;
+      }
+    }
+  }
 
-		//Colour Pickers
-		.wp-picker-container {
-			display: inline-block;
-			button {
-				span {
-					color: #444;
-					text-shadow: 1px 1px 0px #ddd;
-					opacity: 0.8;
-				}
-			}
-		}
+  //Nav
+  #waymark-settings-nav {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 0 0 8px;
+    background: transparent;
+    border-bottom: 1px solid #dcdcde;
 
-		//Misc
-		&.waymark-settings-tab-misc {
-			.form-table {
-				margin-bottom: 40px;
-			}
-		}
+    .waymark-settings-nav__links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      flex: 1 1 auto;
+      gap: 2px 0;
+      min-width: 0;
+      overflow: visible;
+    }
 
-		//Markers
-		&.waymark-settings-tab-markers {
-			.marker_icon-container {
-				.waymark-controls {
-					position: relative;
-					input {
-						width: 175px;
-					}
-					i {
-						height: 100%;
-						vertical-align: middle;
-						font-size: 26px;
-					}
-				}
-				.waymark-icons-help {
-					display: inline-block;
-					position: absolute;
-					margin-top: -3px;
-					margin-left: 5px;
-					width: 88px;
-					a {
-						display: inline-block;
-						font-size: 10px;
-						line-height: 1em;
-					}
-				}
-			}
-		}
-		div.waymark-settings-section-description {
-			margin-bottom: 15px;
-			font-size: 1.1em;
-			ul {
-				margin: 20px 0 40px 0;
-				li {
-					margin: 15px 0;
-					padding-left: 20px;
-				}
-			}
-		}
-		div.waymark-settings-section-footer {
-			margin-top: 20px;
-			margin-bottom: 20px;
-		}
-		table.form-table {
-			.waymark-control-group {
-				border: none;
-			}
-			tr {
-				th,
-				td {
-					background: #f9f9f9;
-					border-bottom: 1px solid @waymark-grey;
-				}
+    .waymark-settings-nav__group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
 
-				&:first-child {
-					th,
-					td {
-						border-top: 1px solid @waymark-grey;
-					}
-				}
+      & + .waymark-settings-nav__group {
+        margin-left: 6px;
+        padding-left: 6px;
+        border-left: 1px solid #dcdcde;
+      }
 
-				&:nth-child(even) {
-					th,
-					td {
-						background: #fff;
-					}
-				}
-			}
-		}
-	}
+      a {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 7px;
+        font-size: 13px;
+        line-height: 1.4;
+        color: #50575e;
+        text-decoration: none;
+        white-space: nowrap;
+        border-bottom: 2px solid transparent;
+        border-radius: 3px 3px 0 0;
 
-	//Permalinks Section
-	div.waymark-settings-section-permalinks {
-		table.form-table {
-			margin-bottom: 10px !important;
-		}
-		.waymark-settings-section-footer {
-			margin-top: 0 !important;
-		}
-	}
+        &:hover,
+        &:focus {
+          color: @waymark-green-dark;
+          background: #f1f9f3;
+          border-bottom-color: @waymark-green;
+        }
+
+        &.is-active,
+        &[aria-current="page"] {
+          color: @waymark-green-dark;
+          font-weight: 600;
+          background: #d7ecdc;
+          border-bottom-color: @waymark-green-dark;
+          box-shadow: inset 0 0 0 1px #b9dcc2;
+        }
+      }
+    }
+
+    .waymark-docs-link.button {
+      display: inline-flex;
+      align-items: center;
+      height: 32px;
+      min-height: 0;
+      line-height: 1;
+      padding: 0 12px;
+      box-sizing: border-box;
+      margin-left: auto;
+      flex: 0 0 auto;
+      align-self: flex-start;
+      font-size: 13px;
+      border-color: @waymark-green;
+      color: @waymark-green-dark;
+      background: #fff;
+
+      &:hover,
+      &:focus {
+        border-color: @waymark-green;
+        background: @waymark-green-pale;
+        color: @waymark-green-dark;
+      }
+    }
+  }
+
+  //Below the widest layout there is no room for grouped columns on one line.
+  //Flatten the groups so every link wraps naturally and separators never break.
+  @media only screen and (max-width: 1279px) {
+    #waymark-settings-nav {
+      align-items: flex-start;
+
+      .waymark-settings-nav__group {
+        display: contents;
+
+        & + .waymark-settings-nav__group {
+          margin-left: 0;
+          padding-left: 0;
+          border-left: 0;
+        }
+      }
+
+      .waymark-settings-nav__group
+        + .waymark-settings-nav__group
+        > li:first-child {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 960px) {
+    #waymark-settings-nav {
+      .waymark-settings-nav__group a {
+        padding: 5px 7px;
+        font-size: 12.5px;
+      }
+
+      .waymark-docs-link.button {
+        height: 30px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    #waymark-settings-nav {
+      .waymark-settings-nav__links {
+        gap: 1px 0;
+      }
+
+      .waymark-settings-nav__group a {
+        padding: 4px 5px;
+        font-size: 12px;
+      }
+
+      .waymark-settings-nav__group
+        + .waymark-settings-nav__group
+        > li:first-child {
+        margin-left: 3px;
+      }
+    }
+  }
+
+  //Tabs
+  // 	h2.nav-tab-wrapper {
+  // 		a {
+  // 			font-size: 13px !important;
+  // 			margin-left: 4px;
+  // 			&:first-child {}
+  // 			&.nav-tab-active {
+  // 				background: #fff;
+  // 				border-bottom: 1px solid #fff;
+  // 			}
+  // 		}
+  // 	}
+  div.waymark-settings-tab {
+    //Pro Tip
+    > small {
+      display: block;
+      margin-top: 20px;
+      font-size: 0.9em;
+    }
+
+    //Repeatable
+    .waymark-repeatable {
+      .form-table {
+        position: relative;
+        border: 1px solid #dcdcde;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+        &:hover {
+          div.waymark-delete {
+            visibility: visible;
+          }
+        }
+        &.ui-sortable-handle {
+          cursor: move;
+        }
+      }
+      .waymark-group-title {
+        caption-side: top;
+        padding: 0 0 8px 10px;
+        border-left: 3px solid @waymark-green;
+        color: @waymark-green-dark;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: left;
+      }
+      button.waymark-add {
+        display: block;
+        width: 100%;
+        color: @waymark-green-dark;
+        background: transparent;
+        border: 1px dashed #a7aaad;
+        &:hover {
+          background: #f0f7f1;
+        }
+      }
+      .waymark-add-label {
+        margin-left: 6px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      div.waymark-delete {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        padding: 0 5px 2px 5px;
+        background: #ac2b2b;
+        color: white;
+        cursor: pointer;
+        visibility: hidden;
+      }
+    }
+
+    //Colour Pickers
+    .wp-picker-container {
+      display: inline-block;
+      button {
+        span:not(.wp-color-result-text) {
+          color: #444;
+          text-shadow: 1px 1px 0px #ddd;
+          opacity: 0.8;
+        }
+      }
+    }
+
+    //Misc
+    &.waymark-settings-tab-misc {
+      .form-table {
+        margin-bottom: 40px;
+      }
+    }
+
+    //Markers
+    &.waymark-settings-tab-markers {
+      .marker_icon-container {
+        .waymark-controls {
+          position: relative;
+          input {
+            width: 175px;
+          }
+          i {
+            height: 100%;
+            vertical-align: middle;
+            font-size: 26px;
+          }
+        }
+        .waymark-icons-help {
+          display: inline-block;
+          position: absolute;
+          margin-top: -3px;
+          margin-left: 5px;
+          width: 88px;
+          a {
+            display: inline-block;
+            font-size: 10px;
+            line-height: 1em;
+          }
+        }
+      }
+
+      @media only screen and (max-width: 960px) {
+        .marker_icon-container {
+          .waymark-controls {
+            flex-wrap: wrap;
+          }
+
+          .waymark-icons-help {
+            position: static;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            width: auto;
+            max-width: 100%;
+            margin: 4px auto 0 0;
+          }
+        }
+      }
+    }
+    div.waymark-settings-section-description {
+      margin-bottom: 15px;
+      padding-left: 13px;
+      font-size: 1.1em;
+      ul {
+        margin: 20px 0 40px 0;
+        li {
+          margin: 15px 0;
+          padding-left: 20px;
+        }
+      }
+    }
+    div.waymark-settings-section-footer {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    table.form-table {
+      .waymark-control-group {
+        border: none;
+      }
+      tr {
+        th,
+        td {
+          background: #f9f9f9;
+          border-bottom: 1px solid @waymark-grey;
+        }
+
+        &:first-child {
+          th,
+          td {
+            border-top: 1px solid @waymark-grey;
+          }
+        }
+
+        &:nth-child(even) {
+          th,
+          td {
+            background: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  //Permalinks Section
+  div.waymark-settings-section-permalinks {
+    table.form-table {
+      margin-bottom: 10px !important;
+    }
+    .waymark-settings-section-footer {
+      margin-top: 0 !important;
+    }
+  }
+}
+
+//OGIS accents
+body.waymark_page_waymark-settings
+  #waymark-admin-container
+  .waymark-settings-section
+  h2 {
+  padding-left: 10px;
+  border-left: 3px solid @waymark-green;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+body.waymark_page_waymark-settings
+  #waymark-admin-container
+  .waymark-settings-tab {
+  input[type="text"],
+  input[type="url"],
+  input[type="email"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="search"],
+  select,
+  textarea {
+    &:focus {
+      border-color: #0e3111;
+      box-shadow: 0 0 0 1px #0e3111;
+    }
+  }
 }
 
 /**
@@ -503,24 +725,24 @@ body.waymark_page_waymark-settings {
  * ====================================
  */
 body.waymark_page_waymark-help {
-	#wpbody-content {
-		h2 {
-			margin-top: 40px;
-		}
-		table {
-			tr {
-				&:nth-child(even) {
-					background: #f9f9f9;
-				}
-				th {
-					text-align: left;
-				}
-				td {
-					padding: 7px;
-				}
-			}
-		}
-	}
+  #wpbody-content {
+    h2 {
+      margin-top: 40px;
+    }
+    table {
+      tr {
+        &:nth-child(even) {
+          background: #f9f9f9;
+        }
+        th {
+          text-align: left;
+        }
+        td {
+          padding: 7px;
+        }
+      }
+    }
+  }
 }
 
 /**
@@ -539,318 +761,369 @@ body.waymark_page_waymark-help {
  * scoped under .ogis-panel so the rest of the admin keeps its own styling.
  */
 .ogis-panel {
-	--ogis-panel-bg: #000b00;
-	--ogis-panel-border: #0e3111;
-	--ogis-panel-fg: #eeeeee;
-	--ogis-panel-heading: #e8f5ea;
-	--ogis-panel-muted: #9bb0a3;
-	--ogis-panel-accent: #0dd70d;
-	--ogis-panel-accent-hover: #5cf05c;
-	--ogis-panel-radius: 6px;
-	--ogis-panel-font: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --ogis-panel-bg: #000b00;
+  --ogis-panel-border: #0e3111;
+  --ogis-panel-fg: #eeeeee;
+  --ogis-panel-heading: #e8f5ea;
+  --ogis-panel-muted: #9bb0a3;
+  --ogis-panel-accent: @waymark-green;
+  --ogis-panel-accent-hover: #7ad48a;
+  --ogis-panel-radius: 8px;
+  --ogis-panel-font:
+    ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
 
-	box-sizing: border-box;
-	padding: 16px;
-	border: 1px solid var(--ogis-panel-border);
-	border-radius: var(--ogis-panel-radius);
-	background: var(--ogis-panel-bg);
-	color: var(--ogis-panel-fg);
-	font-family: var(--ogis-panel-font);
-	font-size: 13px;
-	line-height: 1.6;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid var(--ogis-panel-border);
+  border-radius: var(--ogis-panel-radius);
+  background: var(--ogis-panel-bg);
+  color: var(--ogis-panel-fg);
+  font-family: var(--ogis-panel-font);
+  font-size: 13px;
+  line-height: 1.6;
 
-	p {
-		margin: 0 0 8px;
-		line-height: inherit;
+  p {
+    margin: 0 0 8px;
+    line-height: inherit;
 
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 
-	img {
-		display: block;
-		max-width: 100%;
-		height: auto;
-		margin: 0;
-		border: 0;
-		border-radius: 0;
-	}
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+  }
 
-	hr {
-		margin: 12px 0;
-		border: 0;
-		border-top: 1px solid var(--ogis-panel-border);
-	}
+  hr {
+    width: 100%;
+    max-width: 100%;
+    margin: 12px 0;
+    box-sizing: border-box;
+    border: 0;
+    border-top: 1px solid var(--ogis-panel-border);
+  }
 }
 
 .ogis-panel__header {
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
-	gap: 12px;
-	margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .ogis-panel__heading {
-	min-width: 0;
+  min-width: 0;
 }
 
 #waymark-about.ogis-panel .lead {
-	margin: 0;
-	color: var(--ogis-panel-heading);
-	font-size: 14px;
-	font-weight: 600;
-	line-height: 1.45;
+  margin: 0;
+  color: var(--ogis-panel-heading);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
 .ogis-panel__logo {
-	margin: 0;
-	flex: 0 0 auto;
+  margin: 0;
+  flex: 0 0 auto;
 
-	img {
-		width: 56px;
-		height: 56px;
-	}
+  img {
+    width: 56px;
+    height: 56px;
+  }
 }
 
 .ogis-panel__eyebrow {
-	margin: 0 0 2px;
-	color: var(--ogis-panel-accent);
-	font-size: 10px;
-	font-weight: 700;
-	line-height: 1.4;
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
+  margin: 0 0 2px;
+  color: var(--ogis-panel-accent);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .ogis-panel__title {
-	margin: 0 0 6px;
-	color: var(--ogis-panel-heading);
-	font-size: 16px;
-	font-weight: 700;
-	line-height: 1.25;
-	letter-spacing: -0.01em;
+  margin: 0 0 6px;
+  color: var(--ogis-panel-heading);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
 .ogis-panel__body {
-	color: var(--ogis-panel-muted);
+  color: var(--ogis-panel-muted);
 }
 
 .ogis-panel__links {
-	margin: 0 0 12px;
-	padding: 0;
-	list-style: none;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 4px 8px;
-	font-size: 12px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  font-size: 12px;
 
-	li {
-		display: flex;
-		align-items: center;
-	}
+  li {
+    display: flex;
+    align-items: center;
+  }
 
-	li + li::before {
-		content: "·";
-		margin-right: 8px;
-		color: var(--ogis-panel-muted);
-	}
+  li + li::before {
+    content: "·";
+    margin-right: 8px;
+    color: var(--ogis-panel-muted);
+  }
 }
 
 .ogis-panel__meta {
-	color: var(--ogis-panel-muted);
-	font-size: 11px;
-	line-height: 1.5;
+  color: var(--ogis-panel-muted);
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 #waymark-about.ogis-panel {
-	border-left: 3px solid var(--ogis-panel-accent);
+  border-left: 3px solid var(--ogis-panel-accent);
 }
 
-#waymark-about.ogis-panel,
 #waymark-notice-container.ogis-panel {
-	a {
-		color: var(--ogis-panel-accent);
-		text-decoration: underline;
-		text-underline-offset: 0.15em;
+  a {
+    color: var(--ogis-panel-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
 
-		&:hover,
-		&:focus {
-			color: var(--ogis-panel-accent-hover);
-		}
-	}
+    &:hover,
+    &:focus {
+      color: var(--ogis-panel-accent-hover);
+    }
+  }
+}
+
+#waymark-about.ogis-panel {
+  a {
+    color: #c7d8cc;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+
+    &:hover,
+    &:focus {
+      color: var(--ogis-panel-accent-hover);
+    }
+  }
+
+  .lead a {
+    color: var(--ogis-panel-accent);
+    font-weight: 600;
+  }
 }
 
 div#waymark-admin-container {
-	position: relative;
-	display: grid;
-	grid-template-columns: minmax(0, 1fr) 280px;
-	gap: 40px;
-	align-items: start;
-	width: calc(100% - 20px);
-	max-width: 1280px;
-	margin: 5px auto 0;
-	padding-right: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  grid-template-rows: auto auto;
+  column-gap: 32px;
+  row-gap: 20px;
+  align-items: start;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1280px;
+  margin: 5px auto 0;
+  padding: 0;
+  background: transparent;
 
-	// &.waymark-top {
-	// 	h2 {
-	// 		&.promo {
-	// 			padding: 40px 0;
-	// 			font-size: 2.6em;
-	// 		}
-	// 		&.lead {
-	// 			font-size: 1.4em;
-	// 			margin-top: 60px;
-	// 			margin-bottom: 30px;
-	// 		}
-	// 	}
-	// 	p {
-	// 		&.lead {
-	// 			margin-left: 20px;
-	// 			small {
-	// 				font-size: 0.7em;
-	// 			}
-	// 		}
-	// 	}
-	// }
-	h1 {
-		padding-bottom: 9px;
-		padding-left: 34px;
-		background-image: url("../img/waymark-icon-primary.png");
-		background-size: 30px 30px;
-		background-position: left center;
-		background-repeat: no-repeat;
-	}
-	// .notice {
-	// 	background-color: #f9f9f9;
-	// }
-	.card {
-		grid-column: 1;
-		grid-row: 1;
-		min-width: 0;
-		max-width: none;
-		margin-top: 0;
-		.notice {
-			display: none;
-			&.waymark-notice {
-				display: block;
-			}
-		}
-		.lead {
-			font-size: 1.2em;
-		}
-	}
-	.waymark-video {
-		iframe {
-			width: 550px;
-			height: 308px;
-		}
-	}
-	.button-primary.button-large {
-		font-size: 15px;
-	}
-	.waymark-settings-tab {
-		max-width: none;
-		&.waymark-settings-tab-map {
-			table.form-table {
-				&:last-child {
-					th {
-						width: 100px;
-						vertical-align: top;
-					}
-				}
-				tr {
-					&.waymark-capability-disabled {
-						th {
-							opacity: 0.5;
-						}
-					}
-				}
-			}
-			textarea {
-				position: relative;
-				height: 400px;
-				width: 92%;
-				font-family: "Lucida Console", Monaco, monospace;
-			}
-			.waymark-tooltip {
-				top: 6px;
-				right: 5px;
-			}
-		}
-		.waymark-settings-tab-description {
-			font-size: 1.1em;
-			h2 {
-				display: none;
-			}
-		}
-		table.form-table {
-			margin-bottom: 30px;
-			tr {
-				&.waymark-align-top {
-					th {
-						vertical-align: top;
-					}
-				}
-				th {
-					padding: 10px 20px;
-					width: 160px;
-					vertical-align: middle;
-				}
-				td {
-					padding: 0;
-				}
-			}
-		}
-		select,
-		input[type="file"],
-		input[type="text"] {
-			width: 200px;
-			border-style: solid;
-			border-width: 1px;
-			border-color: #dddddd;
-			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset;
-		}
-		.waymark-control-group:not(.waymark-short-input) {
-			input[type="text"] {
-				width: calc(100% - 32px);
-				max-width: 728px;
-			}
-		}
-		.waymark-settings-tab-description,
-		.waymark-settings-section-description,
-		> small {
-			max-width: 75ch;
-		}
-		.waymark-short-input {
-			select,
-			input[type="file"],
-			input[type="text"] {
-				width: 100px;
-			}
-		}
-		.waymark-controls {
-			.waymark-tooltip {
-				margin-top: 2px;
-			}
-		}
-	}
+  // &.waymark-top {
+  // 	h2 {
+  // 		&.promo {
+  // 			padding: 40px 0;
+  // 			font-size: 2.6em;
+  // 		}
+  // 		&.lead {
+  // 			font-size: 1.4em;
+  // 			margin-top: 60px;
+  // 			margin-bottom: 30px;
+  // 		}
+  // 	}
+  // 	p {
+  // 		&.lead {
+  // 			margin-left: 20px;
+  // 			small {
+  // 				font-size: 0.7em;
+  // 			}
+  // 		}
+  // 	}
+  // }
+  // .notice {
+  // 	background-color: #f9f9f9;
+  // }
+  .card {
+    grid-column: 1;
+    grid-row: 2;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    margin-top: 0;
+    background: #fff;
+    .notice {
+      display: none;
+      &.waymark-notice {
+        display: block;
+      }
+    }
+    .lead {
+      font-size: 1.2em;
+    }
+  }
+  .waymark-video {
+    iframe {
+      width: 550px;
+      height: 308px;
+    }
+  }
+  .button-primary.button-large {
+    font-size: 15px;
+  }
+  .waymark-settings-tab {
+    max-width: none;
+    &.waymark-settings-tab-map {
+      table.form-table {
+        &:last-child {
+          th {
+            width: 100px;
+            vertical-align: top;
+          }
+        }
+        tr {
+          &.waymark-capability-disabled {
+            th {
+              opacity: 0.5;
+            }
+          }
+        }
+      }
+      textarea {
+        position: relative;
+        height: 400px;
+        width: 92%;
+        font-family: "Lucida Console", Monaco, monospace;
+      }
+      .waymark-tooltip {
+        top: 6px;
+        right: 5px;
+      }
+    }
+    .waymark-settings-tab-description {
+      font-size: 1.1em;
+      h2 {
+        display: none;
+      }
+    }
+    table.form-table {
+      margin-bottom: 30px;
+      tr {
+        &.waymark-align-top {
+          th {
+            vertical-align: top;
+          }
+        }
+        th {
+          padding: 10px 20px;
+          width: 160px;
+          vertical-align: middle;
+        }
+        td {
+          padding: 0;
+        }
+      }
+    }
+    select,
+    input[type="file"],
+    input[type="text"] {
+      width: 200px;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #dddddd;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset;
+    }
+    .waymark-control-group:not(.waymark-short-input) {
+      input[type="text"] {
+        width: calc(100% - 32px);
+        max-width: 728px;
+      }
+    }
+    .waymark-settings-tab-description,
+    .waymark-settings-section-description,
+    > small {
+      max-width: 75ch;
+    }
+    .waymark-short-input {
+      select {
+        width: auto;
+        min-width: 100px;
+      }
+      input[type="file"],
+      input[type="text"] {
+        width: 100px;
+      }
+    }
+    .waymark-controls {
+      .waymark-tooltip {
+        margin-top: 2px;
+      }
+    }
+  }
 
-	/* About */
-	#waymark-about.ogis-panel {
-		position: sticky;
-		top: 52px;
-		grid-column: 2;
-		grid-row: 1;
-		align-self: start;
-		width: auto;
+  /* About */
+  #waymark-about.ogis-panel {
+    position: sticky;
+    top: 52px;
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    justify-self: stretch;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 16px 18px;
+    border-radius: 8px;
 
-		.ogis-panel__logo img {
-			width: 64px;
-			height: 64px;
-		}
-	}
+    .waymark-settings-sidebar__title {
+      color: #e8f5ea;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin: 0 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #1b3a22;
+    }
+
+    .ogis-panel__brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .ogis-panel__waymark,
+    .ogis-panel__logo {
+      display: block;
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+  }
 }
 
 /**
@@ -859,61 +1132,61 @@ div#waymark-admin-container {
  * ====================================
  */
 div#waymark-notice-container {
-	clear: both;
+  clear: both;
 
-	/* Plugin Callout */
-	&.plugin-callout {
-		position: relative;
-		margin: 5px 20px 15px 0;
-		padding: 16px 160px 16px 80px;
-		background: var(--ogis-panel-bg) !important;
-		border: 1px solid var(--ogis-panel-border);
-		border-left: 3px solid var(--ogis-panel-accent);
+  /* Plugin Callout */
+  &.plugin-callout {
+    position: relative;
+    margin: 5px 20px 15px 0;
+    padding: 16px 160px 16px 80px;
+    background: var(--ogis-panel-bg) !important;
+    border: 1px solid var(--ogis-panel-border);
+    border-left: 3px solid var(--ogis-panel-accent);
 
-		.ogis-panel__logo {
-			position: absolute;
-			top: 16px;
-			left: 16px;
-			margin: 0;
+    .ogis-panel__logo {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      margin: 0;
 
-			img {
-				width: 56px;
-				height: 56px;
-			}
-		}
+      img {
+        width: 56px;
+        height: 56px;
+      }
+    }
 
-		.ogis-panel__title {
-			font-size: 15px;
-		}
+    .ogis-panel__title {
+      font-size: 15px;
+    }
 
-		.ogis-panel__meta {
-			position: absolute;
-			right: 18px;
-			bottom: 16px;
-			margin: 0;
-			color: #c7d8cc;
-			font-size: 12px;
-		}
-	}
+    .ogis-panel__meta {
+      position: absolute;
+      right: 18px;
+      bottom: 16px;
+      margin: 0;
+      color: #c7d8cc;
+      font-size: 12px;
+    }
+  }
 
-	.card {
-		max-width: none;
+  .card {
+    max-width: none;
 
-		h1 {
-			padding-bottom: 9px;
-			padding-left: 34px;
-			background-image: url("../img/waymark-icon-primary.png");
-			background-size: 30px 30px;
-			background-position: left center;
-			background-repeat: no-repeat;
-		}
-	}
+    h1 {
+      padding-bottom: 9px;
+      padding-left: 34px;
+      background-image: url("../img/waymark-icon-primary.png");
+      background-size: 30px 30px;
+      background-position: left center;
+      background-repeat: no-repeat;
+    }
+  }
 }
 
 body.waymark_page_waymark-settings #waymark-notice-container.ogis-panel {
-	width: calc(100% - 20px);
-	max-width: 1280px;
-	margin: 5px auto 20px;
+  width: calc(100% - 20px);
+  max-width: 1280px;
+  margin: 5px auto 20px;
 }
 
 /**
@@ -923,18 +1196,18 @@ body.waymark_page_waymark-settings #waymark-notice-container.ogis-panel {
  */
 
 .waymark-self-clear {
-	overflow: hidden;
+  overflow: hidden;
 }
 * html .waymark-self-clear {
-	height: 1%;
+  height: 1%;
 }
 
 /* Shortcode */
 i.mce-i-waymark-shortcode-icon {
-	background-image: url("../img/waymark-editor-icon.png");
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: 20px 20px;
+  background-image: url("../img/waymark-editor-icon.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
 }
 
 /* Logo */
@@ -952,72 +1225,87 @@ body.wp-admin {
 }
 */
 #waymark_shortcode_ui-insert-dialog-dragh {
-	background-image: url("../img/waymark-icon-primary.png");
-	background-size: 24px 24px;
-	background-position: center center;
-	background-repeat: no-repeat;
+  background-image: url("../img/waymark-icon-primary.png");
+  background-size: 24px 24px;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 /* Meta */
 .postbox-container {
-	.control-group a.an-tooltip {
-		position: absolute;
-		top: 6px;
-		right: 0;
-	}
-	p.lead {
-		margin: 15px 0 0 0;
-		font-size: 1.2em;
-	}
+  .control-group a.an-tooltip {
+    position: absolute;
+    top: 6px;
+    right: 0;
+  }
+  p.lead {
+    margin: 15px 0 0 0;
+    font-size: 1.2em;
+  }
 }
 
 /* Media Uploader */
 body.post-type-waymark_map {
-	.media-modal.wp-core-ui {
-		.media-menu * {
-			display: none;
-		}
-		#alt-text-description,
-		.attachment-details label.setting,
-		.attachment-display-settings {
-			display: none;
-		}
-		/*
+  .media-modal.wp-core-ui {
+    .media-menu * {
+      display: none;
+    }
+    #alt-text-description,
+    .attachment-details label.setting,
+    .attachment-display-settings {
+      display: none;
+    }
+    /*
 		.button.media-button::before {
 			content: 'T';
 			color: red;
 		}
 */
-	}
+  }
 }
 
 /* Admin Pages */
 body.wp-admin {
-	//Maps
-	&.post-type-waymark_map {
-		//Add, Edit, Collections
-		&.taxonomy-waymark_collection,
-		&.edit-php,
-		&.post-php,
-		&.post-new-php {
-			#message {
-				margin: 10px 0 0 0;
-			}
-			.wp-heading-inline {
-				display: none;
-			}
-			.page-title-action {
-				top: 0;
-			}
-		}
-		//Edit
-		&.post-php {
-			#waymark-admin-container {
-				padding-right: 0 !important;
-				max-width: none !important;
-			}
-		}
-	}
+  //Maps
+  &.post-type-waymark_map {
+    //Add, Edit, Collections
+    &.taxonomy-waymark_collection,
+    &.edit-php,
+    &.post-php,
+    &.post-new-php {
+      #message {
+        margin: 10px 0 0 0;
+      }
+    }
+    //Edit
+    &.post-php {
+      #waymark-admin-container {
+        padding-right: 0 !important;
+        max-width: none !important;
+      }
+    }
+  }
+}
+
+/* Shortcode columns and meta box */
+body.wp-admin.post-type-waymark_map {
+  .fixed .column-shortcode {
+    width: 260px;
+  }
+  .column-shortcode input[type="text"] {
+    width: 100%;
+    font-family: monospace;
+  }
+  #waymark_map_shortcode .inside input[type="text"] {
+    width: calc(100% - 32px);
+    font-family: monospace;
+  }
+}
+
+@media only screen and (min-width: 783px) {
+  body.wp-admin.post-type-waymark_map.edit-php .fixed .column-date {
+    width: 190px;
+  }
 }
 
 /**
@@ -1026,153 +1314,274 @@ body.wp-admin {
  * ====================================
  */
 
-/* Tablet / small desktop */
-@media only screen and (max-width: 1100px) {
-	div#waymark-admin-container {
-		grid-template-columns: minmax(0, 1fr);
-		gap: 30px;
-
-		.card {
-			grid-column: 1;
-			grid-row: 1;
-		}
-
-		#waymark-about.ogis-panel {
-			position: static;
-			grid-column: 1;
-			grid-row: 2;
-			width: auto;
-		}
-	}
-}
-
 /* Phone */
 @media only screen and (max-width: 782px) {
-	#waymark-notice-container.plugin-callout {
-		padding-right: 18px;
+  div#waymark-admin-container {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 20px;
 
-		.ogis-panel__meta {
-			display: none;
-		}
-	}
+    #waymark-settings-nav {
+      grid-column: 1;
+      grid-row: 1;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
 
-	body.waymark_page_waymark-settings div#waymark-admin-container .waymark-settings-tab table.form-table tr th {
-		width: auto;
-	}
+      .waymark-settings-nav__links {
+        flex-wrap: wrap;
+        overflow: visible;
+      }
 
-	body.waymark_page_waymark-settings div#waymark-admin-container .waymark-settings-tab .waymark-controls {
-		display: flex;
-		flex-direction: row;
-		align-items: flex-start;
-		gap: 4px;
+      .waymark-settings-nav__group {
+        flex-wrap: wrap;
+      }
 
-		input[type="text"] {
-			min-width: 0;
-		}
+      .waymark-docs-link.button {
+        align-self: flex-start;
+        margin-left: 0;
+      }
+    }
 
-		.waymark-tooltip {
-			flex: 0 0 auto;
-			margin-top: 10px;
-		}
-	}
+    #waymark-about.ogis-panel {
+      position: static;
+      grid-column: 1;
+      grid-row: 2;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .card {
+      grid-column: 1;
+      grid-row: 3;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  #waymark-notice-container.plugin-callout {
+    padding-right: 18px;
+
+    .ogis-panel__meta {
+      display: none;
+    }
+  }
+
+  body.waymark_page_waymark-settings
+    div#waymark-admin-container
+    .waymark-settings-tab {
+    table.form-table {
+      tr {
+        th,
+        td {
+          display: block;
+          width: auto;
+          padding-left: 0;
+          padding-right: 0;
+          text-align: left;
+        }
+
+        th {
+          padding-bottom: 4px;
+        }
+      }
+    }
+
+    .waymark-control-group {
+      input[type="text"],
+      input[type="url"],
+      input[type="email"],
+      input[type="number"],
+      input[type="tel"],
+      input[type="password"],
+      input[type="search"],
+      input[type="file"],
+      select,
+      textarea {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+      }
+    }
+
+    .waymark-controls {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 6px;
+
+      > .waymark-tooltip {
+        flex: 0 0 auto;
+        margin: 0;
+        float: none;
+      }
+
+      > .wp-picker-container {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+    }
+  }
+}
+
+/* Narrow desktop with the sidebar still alongside the card */
+@media only screen and (min-width: 783px) and (max-width: 960px) {
+  body.waymark_page_waymark-settings
+    div#waymark-admin-container
+    .waymark-settings-tab {
+    table.form-table {
+      tr {
+        th,
+        td {
+          display: block;
+          width: auto;
+          padding-left: 0;
+          padding-right: 0;
+          text-align: left;
+        }
+
+        th {
+          padding-bottom: 4px;
+        }
+      }
+    }
+
+    .waymark-control-group {
+      input[type="text"],
+      input[type="url"],
+      input[type="email"],
+      input[type="number"],
+      input[type="tel"],
+      input[type="password"],
+      input[type="search"],
+      input[type="file"],
+      select,
+      textarea {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+      }
+    }
+
+    .waymark-controls {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 6px;
+
+      > .waymark-tooltip {
+        flex: 0 0 auto;
+        margin: 0;
+        float: none;
+      }
+
+      > .wp-picker-container {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+    }
+  }
 }
 
 /* Tablet */
 @media only screen and (min-width: 578px) and (max-width: 768px) {
-	/* Admin Container */
-	div#waymark-admin-container {
-		.waymark-video {
-			iframe {
-				width: 485px;
-				height: 271px;
-			}
-		}
-	}
+  /* Admin Container */
+  div#waymark-admin-container {
+    .waymark-video {
+      iframe {
+        width: 485px;
+        height: 271px;
+      }
+    }
+  }
 }
 
 /* Phone */
 @media only screen and (max-width: 768px) {
-	/* Admin Container */
-	div#waymark-admin-container {
-		&.waymark-top {
-			.card {
-				margin-bottom: 60px;
-			}
-		}
-		.waymark-video {
-			iframe {
-				width: 280px;
-				height: 156px;
-			}
-		}
-	}
+  /* Admin Container */
+  div#waymark-admin-container {
+    &.waymark-top {
+      .card {
+        margin-bottom: 60px;
+      }
+    }
+    .waymark-video {
+      iframe {
+        width: 280px;
+        height: 156px;
+      }
+    }
+  }
 
-	/* Widget UI */
-	div.widget-content {
-		div.waymark-parameters-container {
-			div.waymark-control-group {
-				&.waymark-short-input {
-					select,
-					input[type="file"],
-					input[type="text"] {
-						width: 80px !important;
-					}
-				}
-				.waymark-control-label {
-					float: none;
-				}
-			}
-			#waymark-feed-create {
-				margin-left: 3px !important;
-			}
-		}
-	}
+  /* Widget UI */
+  div.widget-content {
+    div.waymark-parameters-container {
+      div.waymark-control-group {
+        &.waymark-short-input {
+          select,
+          input[type="file"],
+          input[type="text"] {
+            width: 80px !important;
+          }
+        }
+        .waymark-control-label {
+          float: none;
+        }
+      }
+      #waymark-feed-create {
+        margin-left: 3px !important;
+      }
+    }
+  }
 
-	/* Settings Page */
-	body.waymark-setup_page_waymark-settings {
-		.card {
-			padding: 15px;
-		}
+  /* Settings Page */
+  body.waymark-setup_page_waymark-settings {
+    .card {
+      padding: 15px;
+    }
 
-		h2.nav-tab-wrapper {
-			a {
-				margin-left: 4px;
-				&.nav-tab-active {
-					background: #fff;
-					border-bottom: 1px solid #fff;
-				}
-			}
-		}
+    h2.nav-tab-wrapper {
+      a {
+        margin-left: 4px;
+        &.nav-tab-active {
+          background: #fff;
+          border-bottom: 1px solid #fff;
+        }
+      }
+    }
 
-		table.form-table {
-			tr {
-				&:first-child {
-					th,
-					td {
-						border-top: none;
-					}
-				}
-				th,
-				td {
-					background: #fff;
-					border-bottom: none;
-				}
-				th {
-					padding-left: 5px !important;
-					padding-bottom: 0 !important;
-				}
-				.waymark-control-group {
-					border: none;
-					position: relative;
-					.waymark-tooltip {
-						position: absolute;
-						top: 6px;
-						right: 0;
-					}
-				}
-			}
-		}
-	}
+    table.form-table {
+      tr {
+        &:first-child {
+          th,
+          td {
+            border-top: none;
+          }
+        }
+        th,
+        td {
+          background: #fff;
+          border-bottom: none;
+        }
+        th {
+          padding-left: 5px !important;
+          padding-bottom: 0 !important;
+        }
+        .waymark-control-group {
+          border: none;
+          position: relative;
+          .waymark-tooltip {
+            position: absolute;
+            top: 6px;
+            right: 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 /**
@@ -1182,19 +1591,19 @@ body.wp-admin {
  */
 
 .waymark-settings-tab.waymark-settings-tab-properties {
-	pre {
-		border: 1px solid @waymark-grey;
-		background: #f9f9f9;
-		line-height: 90%;
-		code {
-			background: none;
-			font-size: 10px;
-		}
-	}
+  pre {
+    border: 1px solid @waymark-grey;
+    background: #f9f9f9;
+    line-height: 90%;
+    code {
+      background: none;
+      font-size: 10px;
+    }
+  }
 
-	small {
-		code {
-			font-size: 10px;
-		}
-	}
+  small {
+    code {
+      font-size: 10px;
+    }
+  }
 }

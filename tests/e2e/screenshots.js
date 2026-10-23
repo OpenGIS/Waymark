@@ -26,10 +26,10 @@ const CANONICAL_DIR = path.join(
 );
 const TARGET_DIR = path.join(ROOT, ".wordpress-org");
 
-// The hero plus screenshot-1..9.
+// The hero plus screenshot-1..21.
 const MANAGED = [
   "editor-demo",
-  ...Array.from({ length: 9 }, (_unused, index) => `screenshot-${index + 1}`),
+  ...Array.from({ length: 21 }, (_unused, index) => `screenshot-${index + 1}`),
 ];
 
 /**

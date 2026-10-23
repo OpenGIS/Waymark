@@ -48,12 +48,12 @@ test("stacks the settings sidebar and keeps help icons inline at 500px", async (
   }));
   expect(viewport.scrollWidth).toBeLessThanOrEqual(viewport.innerWidth);
 
-  // The sidebar stacks below the card and spans the content width.
+  // The sidebar stacks above the card and spans the content width.
   const cardBox = await card.boundingBox();
   const aboutBox = await about.boundingBox();
   expect(cardBox).not.toBeNull();
   expect(aboutBox).not.toBeNull();
-  expect(aboutBox.y).toBeGreaterThan(cardBox.y + cardBox.height);
+  expect(aboutBox.y + aboutBox.height).toBeLessThanOrEqual(cardBox.y);
   expect(Math.abs(aboutBox.width - cardBox.width)).toBeLessThanOrEqual(2);
 
   // The lead line matches the docs footer: project repo, then OGIS.
@@ -70,7 +70,7 @@ test("stacks the settings sidebar and keeps help icons inline at 500px", async (
   await expect(leadLinks.nth(0)).toHaveText("Open-Source");
   await expect(leadLinks.nth(1)).toHaveAttribute(
     "href",
-    "https://www.ogis.org/",
+    "https://www.ogis.org",
   );
   await expect(leadLinks.nth(1)).toHaveAttribute("target", "_blank");
   await expect(leadLinks.nth(1)).toHaveAttribute("rel", "noopener noreferrer");
@@ -103,11 +103,13 @@ test("stacks the settings sidebar and keeps help icons inline at 500px", async (
 
   // Reveal the Tiles tab, home of the long Basemap URL input and the short
   // Max Zoom input.
-  await page.selectOption(
-    "#waymark-settings-nav select",
-    "waymark-settings-tab-tiles",
-  );
+  await page
+    .locator(
+      '#waymark-settings-nav a[data-content="waymark-settings-tab-tiles"]',
+    )
+    .click();
   await expect(page.locator(".waymark-settings-tab-tiles")).toBeVisible();
+  await expect(page.locator(".waymark-settings-tab-markers")).toBeHidden();
 
   // Both inputs keep their help icon on the same row, to the right, without
   // overlapping the input. The section is repeatable and renders two Basemaps

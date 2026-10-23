@@ -1,9 +1,9 @@
-# Waymark  #
+# Waymark #
 **Contributors:** [morehawes](https://profiles.wordpress.org/morehawes/)  
 **Tags:** GIS, Map maker, GPX, Track, Elevation  
 **Requires at least:** 4.6  
 **Tested up to:** 7.1  
-**Requires PHP:** 5.2  
+**Requires PHP:** 5.4  
 **Stable tag:** 1.6.8  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
@@ -13,7 +13,7 @@ Create beautiful, interactive Maps with Waymark.
 
 ## Description ##
 
-![The Waymark Map Editor displaying a route on a map](.wordpress-org/editor-demo.jpg)
+![The Waymark Map Editor displaying a route on a map](https://ps.w.org/waymark/assets/editor-demo.jpg)
 
 - **Overlays** - Create Markers, Lines and Shapes with a:
   - Title
@@ -121,8 +121,6 @@ The local preview runs at http://localhost:11003. To build the static site for G
 NUXT_APP_BASE_URL=/waymark-wp/ npm run generate
 ```
 
-The static site is written to `docs/.output/public`.
-
 ### Assets
 
 Styles and scripts are compiled from Less and JavaScript sources into the minified bundles enqueued by the plugin — edit the sources, not the build output:
@@ -200,8 +198,44 @@ Please! Waymark is localization ready, <a href="https://translate.wordpress.org/
 ### 8. Organise Maps with Collections and display multiple Maps at once using the Shortcode. Collections can be nested and Maps can be associated with multiple Collections. ###
 ![Organise Maps with Collections and display multiple Maps at once using the Shortcode. Collections can be nested and Maps can be associated with multiple Collections.](https://ps.w.org/waymark/assets/screenshot-8.jpg)
 
-### 9. Waymark was designed to be very flexible, with lots of Settings to choose from. ###
-![Waymark was designed to be very flexible, with lots of Settings to choose from.](https://ps.w.org/waymark/assets/screenshot-9.jpg)
+### 9. Basemaps — Add, reorder and configure raster basemaps. ###
+![Basemaps — Add, reorder and configure raster basemaps.](https://ps.w.org/waymark/assets/screenshot-9.jpg)
+
+### 10. Shortcodes — Control the Shortcode header and admin preview. ###
+![Shortcodes — Control the Shortcode header and admin preview.](https://ps.w.org/waymark/assets/screenshot-10.jpg)
+
+### 11. Elevation — Configure the elevation profile, units, colours and initial visibility. ###
+![Elevation — Configure the elevation profile, units, colours and initial visibility.](https://ps.w.org/waymark/assets/screenshot-11.jpg)
+
+### 12. Meta — Create custom Meta inputs and organise them into groups. ###
+![Meta — Create custom Meta inputs and organise them into groups.](https://ps.w.org/waymark/assets/screenshot-12.jpg)
+
+### 13. Sleep — Set the scroll-zoom wake delay and message. ###
+![Sleep — Set the scroll-zoom wake delay and message.](https://ps.w.org/waymark/assets/screenshot-13.jpg)
+
+### 14. Clustering — Group nearby Markers and tune the cluster threshold and radius. ###
+![Clustering — Group nearby Markers and tune the cluster threshold and radius.](https://ps.w.org/waymark/assets/screenshot-14.jpg)
+
+### 15. Misc. — Configure map height, zoom, gallery, filter and export behaviour. ###
+![Misc. — Configure map height, zoom, gallery, filter and export behaviour.](https://ps.w.org/waymark/assets/screenshot-15.jpg)
+
+### 16. Markers — Define Marker Types: label, shape, size, colour, icon and visibility. ###
+![Markers — Define Marker Types: label, shape, size, colour, icon and visibility.](https://ps.w.org/waymark/assets/screenshot-16.jpg)
+
+### 17. Lines — Define Line Types: colour, weight, opacity and visibility. ###
+![Lines — Define Line Types: colour, weight, opacity and visibility.](https://ps.w.org/waymark/assets/screenshot-17.jpg)
+
+### 18. Shapes — Define Shape Types: colour, fill opacity and visibility. ###
+![Shapes — Define Shape Types: colour, fill opacity and visibility.](https://ps.w.org/waymark/assets/screenshot-18.jpg)
+
+### 19. Properties — Choose which GeoJSON feature properties are imported and shown. ###
+![Properties — Choose which GeoJSON feature properties are imported and shown.](https://ps.w.org/waymark/assets/screenshot-19.jpg)
+
+### 20. Submissions — Control front-end submissions by role and for guests. ###
+![Submissions — Control front-end submissions by role and for guests.](https://ps.w.org/waymark/assets/screenshot-20.jpg)
+
+### 21. Advanced — Configure editor, collection, permalink, post type and debug options. ###
+![Advanced — Configure editor, collection, permalink, post type and debug options.](https://ps.w.org/waymark/assets/screenshot-21.jpg)
 
 
 ## Changelog ##

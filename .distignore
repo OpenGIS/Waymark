@@ -1,22 +1,31 @@
+# Git / tooling / local environment
 .dist*
 .git
 .github
 .gitignore
 .gitmodules
 .DS_Store
-assets/less
-docs
+.opencode
+.wp-env.json
 node_modules
 package.json
 package-lock.json
 Gruntfile.js
-readme.md
-/.wordpress-org
+
+# Source / development-only
+assets/less
+assets/img/waymark-icon-template.psd
+docs
+scripts
 tests/
 phpunit.xml.dist
 playwright.config.js
 vitest.config.mjs
 waymark-js/src
 waymark-js/libs
-waymark-js/tests
-waymark-js/readme.md
+
+# Markdown documentation (readme.txt is not matched)
+*.md
+
+# WordPress.org SVN assets
+/.wordpress-org

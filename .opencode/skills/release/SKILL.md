@@ -64,6 +64,12 @@ npx grunt sync_version build
 
 If CI fails before the deploy step, run the command above, inspect the result, then re-run the workflow from the GitHub Actions tab. For local development, use `npm run grunt` for a one-shot build or `npm run grunt:watch` to rebuild on change — do not run bare `grunt` (the default task ends with a blocking watch).
 
+## Local distributable
+
+`npm run dist` builds a CI-faithful plugin zip at `.opencode/tmp/waymark-<version>.zip`.
+
+It copies tracked files into a temporary tree, runs `grunt sync_version build`, applies `.distignore`, and zips the `waymark/` folder. The repository is not modified; use the zip to inspect or test-install the distributable.
+
 ## Changelog
 
 No per-version changelog entry is written — `== Changelog ==` in `readme.txt` only links to the GitHub commit history.

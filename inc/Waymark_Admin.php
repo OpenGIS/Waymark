@@ -225,10 +225,10 @@ class Waymark_Admin {
 		// START Plugin Callout
 		if ($title || $this->current_screen->base == 'waymark_page_waymark-settings') {
 			// echo '<div id="waymark-notice-container" class="plugin-callout ogis-panel">' . "\n";
-			// echo '	<p class="ogis-panel__logo"><img width="56" height="56" alt="OpenGIS" src="' . Waymark_Helper::asset_url('img/ogis-logo-white.svg') . '" /></p>' . "\n";
-			// echo '	<p class="ogis-panel__eyebrow">OpenGIS</p>' . "\n";
+			// echo '	<p class="ogis-panel__logo"><img width="56" height="56" alt="Open GIS" src="' . Waymark_Helper::asset_url('img/ogis-logo-white.svg') . '" /></p>' . "\n";
+			// echo '	<p class="ogis-panel__eyebrow">Open GIS</p>' . "\n";
 			// echo '	<p class="ogis-panel__title">' . esc_html(Waymark_Config::get_name()) . '</p>' . "\n";
-			// echo '	<p class="ogis-panel__body">' . esc_html__('Open source mapping for WordPress.', 'waymark') . ' <a href="https://ogis.org">ogis.org</a></p>' . "\n";
+			// echo '	<p class="ogis-panel__body">' . esc_html__('Open-Source mapping for WordPress.', 'waymark') . ' <a href="https://www.ogis.org">ogis.org</a></p>' . "\n";
 			// $banner_debug = (Waymark_Helper::is_debug()) ? '1' : '0';
 			// echo '	<p class="ogis-panel__meta">v' . Waymark_Config::get_item('plugin_version') . ' | ' . esc_html__('Debug', 'waymark') . ': ' . $banner_debug . '</p>' . "\n";
 			// echo '</div>' . "\n";

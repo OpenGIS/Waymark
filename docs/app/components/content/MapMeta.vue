@@ -76,26 +76,6 @@ function resolveSrcset(srcset?: string) {
             <a :href="meta.collection.href">{{ meta.collection.title }}</a>
           </p>
         </div>
-
-        <div v-if="meta.export" class="map-meta__item">
-          <p class="map-meta__label">Export</p>
-          <form class="map-meta__export" @submit.prevent>
-            <select name="export_format" aria-label="Export format">
-              <option value="gpx">GPX</option>
-              <option value="kml">KML</option>
-              <option value="geojson">GeoJSON</option>
-            </select>
-            <input
-              name="waymark_action"
-              type="hidden"
-              value="download_map_data"
-            />
-            <input name="map_data" type="hidden" value="" />
-            <input name="map_id" type="hidden" :value="meta.export.mapId" />
-            <input name="map_title" type="hidden" :value="meta.export.title" />
-            <button type="submit">Download</button>
-          </form>
-        </div>
       </div>
     </div>
 

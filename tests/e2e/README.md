@@ -119,7 +119,7 @@ PNGs under `.opencode/tmp/screenshots/`. The publish or compare step only runs
 when that capture run passes:
 
 - `npm run screenshots` copies the managed files (`editor-demo.jpg` and
-  `screenshot-1.jpg` through `screenshot-9.jpg`) into `.wordpress-org/`.
+  `screenshot-1.jpg` through `screenshot-21.jpg`) into `.wordpress-org/`.
 - `npm run screenshots:check` compares each managed canonical file against its
   published copy by SHA-256 and exits non-zero, listing the mismatches, when a
   published asset has drifted. It never writes to `.wordpress-org/`.

@@ -9,7 +9,7 @@ defineProps<{
   <nav v-if="prev || next" class="prev-next" aria-label="Pagination">
     <NuxtLink
       v-if="prev"
-      :to="prev.path"
+      :to="withPageTrailingSlash(prev.path)"
       class="prev-next__item prev-next__item--prev"
     >
       <span class="prev-next__label">Previous</span>
@@ -19,7 +19,7 @@ defineProps<{
 
     <NuxtLink
       v-if="next"
-      :to="next.path"
+      :to="withPageTrailingSlash(next.path)"
       class="prev-next__item prev-next__item--next"
     >
       <span class="prev-next__label">Next</span>

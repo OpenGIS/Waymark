@@ -24,20 +24,21 @@ class Waymark_Settings {
 
 		$this->settings_nav = [
 			'label_maps' => esc_html__('Maps', 'waymark'),
-			'waymark-settings-tab-tiles' => '-- ' . esc_html__('Basemaps', 'waymark'),
-			'waymark-settings-section-shortcode_options' => '-- ' . esc_html__('Shortcodes', 'waymark'),
-			'waymark-settings-section-elevation_options' => '-- ' . esc_html__('Elevation', 'waymark'),
-			'waymark-settings-tab-meta' => '-- ' . esc_html__('Meta', 'waymark'),
-			'waymark-settings-section-interaction_options' => '-- ' . esc_html__('Sleep', 'waymark'),
-			'waymark-settings-section-cluster_options' => '-- ' . esc_html__('Clustering', 'waymark'),
-			'waymark-settings-section-map_options' => '-- ' . esc_html__('Misc.', 'waymark'),
+			'waymark-settings-tab-tiles' => esc_html__('Basemaps', 'waymark'),
+			'waymark-settings-section-shortcode_options' => esc_html__('Shortcodes', 'waymark'),
+			'waymark-settings-section-elevation_options' => esc_html__('Elevation', 'waymark'),
+			'waymark-settings-tab-meta' => esc_html__('Meta', 'waymark'),
+			'waymark-settings-section-interaction_options' => esc_html__('Sleep', 'waymark'),
+			'waymark-settings-section-cluster_options' => esc_html__('Clustering', 'waymark'),
+			'waymark-settings-section-map_options' => esc_html__('Misc.', 'waymark'),
 			'label_overlays' => esc_html__('Overlays', 'waymark'),
-			'waymark-settings-tab-markers' => '-- ' . esc_html__('Markers', 'waymark'),
-			'waymark-settings-tab-lines' => '-- ' . esc_html__('Lines', 'waymark'),
-			'waymark-settings-tab-shapes' => '-- ' . esc_html__('Shapes', 'waymark'),
-			'waymark-settings-tab-properties' => '-- ' . esc_html__('Properties', 'waymark'),
+			'waymark-settings-tab-markers' => esc_html__('Markers', 'waymark'),
+			'waymark-settings-tab-lines' => esc_html__('Lines', 'waymark'),
+			'waymark-settings-tab-shapes' => esc_html__('Shapes', 'waymark'),
+			'waymark-settings-tab-properties' => esc_html__('Properties', 'waymark'),
 			'label_sources' => esc_html__('Sources', 'waymark'),
-			'waymark-settings-tab-submission' => '-- ' . esc_html__('Submissions', 'waymark'),
+			'waymark-settings-tab-submission' => esc_html__('Submissions', 'waymark'),
+			'label_advanced' => esc_html__('Advanced', 'waymark'),
 			'waymark-settings-tab-misc' => esc_html__('Advanced', 'waymark'),
 		];
 
@@ -56,7 +57,7 @@ class Waymark_Settings {
 					// translators: The name of the section for adding Basemaps
 					'title' => esc_html__('Basemaps', 'waymark'),
 					// translators: The description of the section for adding Basemaps
-					'description' => sprintf(__('<span class="waymark-lead">Waymark uses the excellent <a href="%1$s">OpenStreetMap</a> as it’s default Basemap and supports many <a href="%2$s">other providers</a>.<br /><br /><a href="%3$s">Thunderforest</a> and <a href="%4$s">Mapbox</a> are examples of providers that offer easy access to beautiful Basemaps (including satellite imagery). They require registration, but have a free usage tier.', 'waymark'), 'https://www.openstreetmap.org/fixthemap', 'https://leaflet-extras.github.io/leaflet-providers/preview/', 'https://www.thunderforest.com/', 'https://www.mapbox.com/maps/'),
+					'description' => sprintf(__('<span class="waymark-lead">Waymark uses the excellent <a href="%1$s">OpenStreetMap</a> as its default Basemap and supports many <a href="%2$s">other providers</a>.<br /><br /><a href="%3$s">Thunderforest</a> and <a href="%4$s">Mapbox</a> are examples of providers that offer easy access to beautiful Basemaps (including satellite imagery). They require registration, but have a free usage tier.', 'waymark'), 'https://www.openstreetmap.org/fixthemap', 'https://leaflet-extras.github.io/leaflet-providers/preview/', 'https://www.thunderforest.com/', 'https://www.mapbox.com/maps/'),
 					// translators: The footer of the section for adding Basemaps
 					'footer' => '<small>' . sprintf(__('Pro Tip! If you have more than one Basemap, you can switch between them when viewing the Map. The first listed will be used as the default, unless specified in the shortcode like this: %s. Drag to re-order, remove all to restore defaults.', 'waymark'), '</small>[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;1234&quot; basemap=&quot;Basemap Name&quot;]'),
 					'help' => [
@@ -71,7 +72,7 @@ class Waymark_Settings {
 							'type' => 'text',
 							'class' => '',
 							// translators: The title of the field for the name of the Basemap
-							'title' => '<u>' . esc_html__('Basemap', 'waymark') . '</u> ' . esc_html__('Name', 'waymark'),
+							'title' => esc_html__('Basemap', 'waymark') . ' ' . esc_html__('Name', 'waymark'),
 							'default' => Waymark_Config::get_setting('tiles', 'layers', 'layer_name'),
 							// translators: The tip for the field for the name of the Basemap
 							'tip' => sprintf(esc_attr__('The Layer Name will appear in a dropdown list shown by the Map when multiple Basemaps have been entered. You can change the default basemap in the shortcode: %s', 'waymark'), '[' . Waymark_Config::get_item('shortcode') . ' map_id=&quot;1234&quot; basemap=&quot;Basemap Name&quot;]'),
@@ -158,7 +159,7 @@ class Waymark_Settings {
 							'type' => 'text',
 							'class' => 'waymark-uneditable',
 							// translators: The title of the field for the name of the Marker
-							'title' => '<u>' . esc_html__('Marker', 'waymark') . '</u> ' . esc_html__('Label', 'waymark'),
+							'title' => esc_html__('Marker', 'waymark') . ' ' . esc_html__('Label', 'waymark'),
 							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'marker_title'),
 							// translators: The tip for the field for the name of the Marker
 							'tip' => esc_attr__('What kind of Marker is this? E.g. "Photo", "Grocery Store", "Warning!". Once saved, Marker labels can not be edited. The Marker Label is displayed in the Tooltip (when hovering over the Marker) and in the Info Window (once the Marker is clicked). Hide in Settings > Map > Misc. > Type Labels.', 'waymark'),
@@ -254,7 +255,7 @@ class Waymark_Settings {
 							'type' => 'select',
 							'class' => '',
 							// translators: The title of the field for the type of the Marker
-							'title' => '<span style="display:inline-block;min-width:50px">' . esc_html__('Icon', 'waymark') . '</span>' . esc_html__('Type', 'waymark'),
+							'title' => esc_html__('Icon', 'waymark') . ' ' . esc_html__('Type', 'waymark'),
 							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'icon_type'),
 							// translators: The tip for the field for the type of the Marker
 							'tip' => esc_attr__('Font Icons are available from Font Awesome and Ionic Icons. Simple Text or Emojis are supported, as well as custom HTML. So you can pretty much use anything you like!', 'waymark'),
@@ -273,7 +274,7 @@ class Waymark_Settings {
 							'id' => 'marker_icon',
 							'type' => 'text',
 							'class' => 'waymark-short-input',
-							'title' => '<span class="waymark-invisible" style="display:inline-block;min-width:50px">' . esc_html__('Icon', 'waymark') . '</span><span class="waymark-icon-type">' . esc_html__('Name', 'waymark') . '</span>',
+							'title' => '<span class="waymark-invisible">' . esc_html__('Icon', 'waymark') . '</span> <span class="waymark-icon-type">' . esc_html__('Name', 'waymark') . '</span>',
 							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'marker_icon'),
 							// translators: The tip for the field for the name of the Marker
 							'tip' => esc_attr__('The desired icon name from Ionicons or Font Awesome, e.g. "ion-camera", or "fa-camera". Click the links to see the full list of icons available.|Text to display inside the Marker, in the chosen colour. Space is very limited! Pro Tip: adjust text size using CSS; for all Markers: .waymark-icon-text{font-size: 18px}, or by Type: .waymark-marker-photo .waymark-icon-text{...}. Use your browser\'s inspector to dig for Type class names.|The HTML entered will be added inside each Marker. Pro Tip! HTML Entities supported (e.g. &amp;cross; as well as Unicode and Emojis!), or provide HTML to integrate with other Icon providers.', 'waymark'),
@@ -287,7 +288,7 @@ class Waymark_Settings {
 							'id' => 'icon_colour',
 							'type' => 'text',
 							'class' => 'waymark-short-input waymark-colour-picker',
-							'title' => '<span class="waymark-invisible" style="display:inline-block;min-width:50px">' . esc_html__('Icon', 'waymark') . '</span>' . esc_html__('Colour', 'waymark'),
+							'title' => '<span class="waymark-invisible">' . esc_html__('Icon', 'waymark') . '</span> ' . esc_html__('Colour', 'waymark'),
 							'default' => Waymark_Config::get_setting('markers', 'marker_types', 'icon_colour'),
 							// translators: The tip for the field for the colour of the Marker
 							'tip' => esc_attr__('The colour of the icon. Click "Select Colour" to select.', 'waymark'),
@@ -330,7 +331,7 @@ class Waymark_Settings {
 							'type' => 'text',
 							'class' => 'waymark-uneditable',
 							// translators: The title of the field for the name of the Line
-							'title' => '<u>' . esc_html__('Line', 'waymark') . '</u> ' . esc_html__('Label', 'waymark'),
+							'title' => esc_html__('Line', 'waymark') . ' ' . esc_html__('Label', 'waymark'),
 							'default' => Waymark_Config::get_setting('lines', 'line_types', 'line_title'),
 							// translators: The tip for the field for the name of the Line
 							'tip' => esc_attr__('What kind of Line is this? E.g. "Easy", "Walking Only", "Dark Red". The Line Label is displayed in the Tooltip (when hovering over the Line) and in the Line Info Window. Once saved, Line labels can not be edited.', 'waymark'),
@@ -449,7 +450,7 @@ class Waymark_Settings {
 							'type' => 'text',
 							'class' => 'waymark-uneditable',
 							// translators: The title of the field for the name of the Shape
-							'title' => '<u>' . esc_html__('Shape', 'waymark') . '</u> ' . esc_html__('Label', 'waymark'),
+							'title' => esc_html__('Shape', 'waymark') . ' ' . esc_html__('Label', 'waymark'),
 							'default' => Waymark_Config::get_setting('shapes', 'shape_types', 'shape_title'),
 							// translators: The tip for the field for the name of the Shape
 							'tip' => esc_attr__('What kind of Shape is this? E.g. "Park", "Danger!", "Light Blue". The Shape Label is displayed in the Tooltip (when hovering over the Shape) and in the Shape Info Window. Once saved, Shape labels can not be edited.', 'waymark'),
@@ -555,7 +556,7 @@ class Waymark_Settings {
 							'type' => 'text',
 							'class' => '',
 							// translators: The title of the field for the title of the Meta
-							'title' => '<u>' . esc_html__('Meta', 'waymark') . '</u> ' . esc_html__('Title', 'waymark'),
+							'title' => esc_html__('Meta', 'waymark') . ' ' . esc_html__('Title', 'waymark'),
 							'default' => Waymark_Config::get_setting('meta', 'inputs', 'meta_title'),
 							// translators: The tip for the field for the title of the Meta
 							'tip' => esc_attr__('The title appears next to the input field.', 'waymark'),
@@ -673,7 +674,7 @@ class Waymark_Settings {
 							'type' => 'text',
 							'class' => '',
 							// translators: The title of the field for the title of the Group
-							'title' => '<u>' . esc_html__('Group', 'waymark') . '</u> ' . esc_html__('Title', 'waymark'),
+							'title' => esc_html__('Group', 'waymark') . ' ' . esc_html__('Title', 'waymark'),
 							'default' => '',
 							// translators: The tip for the field for the title of the Group
 							'tip' => esc_attr__('The title appears above the Meta in that group.', 'waymark'),
@@ -699,9 +700,9 @@ class Waymark_Settings {
 					// translators: The title of the section for adding Properties
 					'title' => esc_html__('Properties', 'waymark'),
 					// translators: The description of the section for adding Properties
-					'description' => '<span class="waymark-lead">' . __('Read <b><a href="https://geojson.org/">GeoJSON</a></b> feature properties when importing.', 'waymark') . '</span><br /><br />' . __('If Waymark finds data for the property keys below it will stored when it is imported. These can be automatically appended to the Overlay Description, or accessed programatically the <code>layer.feature.properties</code> Object.', 'waymark'),
+					'description' => '<span class="waymark-lead">' . __('Read <b><a href="https://geojson.org/">GeoJSON</a></b> feature properties when importing.', 'waymark') . '</span><br /><br />' . __('If Waymark finds data for the property keys below it will be stored when it is imported. These can be automatically appended to the Overlay Description, or accessed programmatically via the <code>layer.feature.properties</code> Object.', 'waymark'),
 					// translators: The footer of the section for adding Properties
-					'footer' => '<small>' . sprintf(__('For example, the properties below can be accessed through the %1$s, %2$s, %3$s Property Keys:', 'waymark'), '<code>created_date</code>', '<code>updated_date</code>', '<code>expires_date</code>') . '</small>
+					'footer' => '<small>' . sprintf(__('For example, the properties below can be accessed through the %1$s, %2$s, %3$s Property Keys:', 'waymark'), '<code>created_date</code>', '<code>updated_date</code>', '<code>expire_date</code>') . '</small>
 					<pre><code>{
   "type": "FeatureCollection",
   "features": [
@@ -711,7 +712,7 @@ class Waymark_Settings {
       "properties": {
         "created_date": "2021-07-15T00:42:41Z",
         "updated_date": "2021-07-16T00:42:41Z",
-        "expires_date": "2021-07-17T00:42:41Z"
+        "expire_date": "2021-07-17T00:42:41Z"
       }
     }
   ]
@@ -725,7 +726,7 @@ class Waymark_Settings {
 							'type' => 'text',
 							'class' => '',
 							// translators: The title of the field for the key of the Property
-							'title' => '<u>' . esc_html__('Property', 'waymark') . '</u> ' . esc_html__('Key', 'waymark'),
+							'title' => esc_html__('Property', 'waymark') . ' ' . esc_html__('Key', 'waymark'),
 							'default' => Waymark_Config::get_setting('property', 'props', 'property_key'),
 							// translators: The tip for the field for the key of the Property
 							'tip' => esc_attr__('This is the key associated with the data you are trying to access, i.e. "properties": {"property_key": "Some content here"}', 'waymark'),
@@ -739,7 +740,7 @@ class Waymark_Settings {
 							'type' => 'text',
 							'class' => '',
 							// translators: The title of the field for the title of the Property
-							'title' => '<u><span class="waymark-invisible">' . esc_html__('Property', 'waymark') . '</span></u> ' . esc_html__('Title', 'waymark'),
+							'title' => '<span class="waymark-invisible">' . esc_html__('Property', 'waymark') . '</span> ' . esc_html__('Title', 'waymark'),
 							'default' => Waymark_Config::get_setting('property', 'props', 'property_title'),
 							// translators: The tip for the field for the title of the Property
 							'tip' => esc_attr__('The value for this property will be added to the Overlay Description under this title.', 'waymark'),
@@ -1466,7 +1467,7 @@ class Waymark_Settings {
 					// translators: The title of the section for changing permalinks
 					'title' => esc_html__('Permalinks', 'waymark'),
 					'description' => 'Customise your Map and Collection URLs.',
-					'footer' => '<small>For the changes to take affect you must rebuild your Permalinks by going to WP Settings > Permalinks and clicking "Save Changes".</small>',
+					'footer' => '<small>For the changes to take effect you must rebuild your Permalinks by going to WP Settings > Permalinks and clicking "Save Changes".</small>',
 					'fields' => [
 						'permalink_slug_map' => [
 							'name' => 'permalink_slug_map',
@@ -1675,7 +1676,20 @@ class Waymark_Settings {
 	}
 
 	public function content_admin_page() {
-		echo '<div id="waymark-admin-container">' . "\n";
+		//Tabs - get current tab from URL (ensure is valid)
+		$get_data = wp_unslash($_GET);
+		$active_content = $this->default_content;
+		if (isset($get_data['content'])) {
+			$requested_content = esc_attr($get_data['content']);
+			if (strpos($requested_content, 'label') !== 0 && array_key_exists($requested_content, $this->settings_nav)) {
+				$active_content = $requested_content;
+			}
+		}
+		$active_help = $this->get_active_help($active_content);
+
+		echo '<div id="waymark-admin-container" class="waymark-active-' . esc_attr($active_content) . '">' . "\n";
+
+		$this->settings_nav($active_content, $active_help);
 
 		// About
 		echo wp_kses(Waymark_Helper::plugin_about(), [
@@ -1683,11 +1697,15 @@ class Waymark_Settings {
 				'id' => [],
 				'class' => [],
 			],
+			'h1' => [
+				'class' => [],
+			],
 			'img' => [
 				'alt' => [],
 				'src' => [],
 				'width' => [],
 				'height' => [],
+				'class' => [],
 			],
 			'p' => [
 				'class' => [],
@@ -1707,15 +1725,6 @@ class Waymark_Settings {
 
 		echo '	<div class="card">' . "\n";
 
-		//Tabs - get current tab from URL (ensure is valid)
-		$get_data = wp_unslash($_GET);
-		if (isset($get_data['content']) && array_key_exists(esc_attr($get_data['content']), $this->settings_nav)) {
-			$active_content = esc_attr($get_data['content']);
-		} else {
-			$active_content = $this->default_content;
-		}
-		$this->settings_nav($active_content);
-
 		//Open form
 		echo '		<form action="' . esc_url(admin_url('options.php')) . '" method="post">' . "\n";
 		settings_fields($this->page_slug);
@@ -1733,13 +1742,6 @@ class Waymark_Settings {
 			foreach ($tab_data['sections'] as $section_key => $section_data) {
 				$class = (isset($section_data['class'])) ? ' ' . $section_data['class'] : '';
 				echo '		<div class="waymark-settings-section waymark-settings-section-' . esc_attr($section_key . $class) . '">' . "\n";
-
-				//Help
-				if (array_key_exists('help', $section_data) && isset($section_data['help']['url'])) {
-					$help_text = (isset($section_data['help']['text'])) ? $section_data['help']['text'] : 'View Help &raquo;';
-
-					echo '		<a class="waymark-docs-link button" href="' . esc_url($section_data['help']['url']) . '" target="_blank">' . esc_html($help_text) . '</a>' . "\n";
-				}
 
 				//Title
 				if (isset($section_data['title'])) {
@@ -1796,20 +1798,80 @@ class Waymark_Settings {
 		echo '</div>' . "\n";
 	}
 
-	public function settings_nav($current = 'tiles') {
-		echo '<div id="waymark-settings-nav" data-init_tab_key="' . esc_html($current) . '">' . "\n";
-		echo '	<select>' . "\n";
+	public function settings_nav($current = 'tiles', $active_help = null) {
+		if ($active_help === null) {
+			$active_help = $this->get_active_help($current);
+		}
 
+		echo '<nav id="waymark-settings-nav" data-init_tab_key="' . esc_attr($current) . '" aria-label="' . esc_attr__('Waymark settings', 'waymark') . '">' . "\n";
+		echo '	<div class="waymark-settings-nav__links">' . "\n";
+
+		$group_open = false;
 		foreach ($this->settings_nav as $content_id => $content_title) {
 			if (strpos($content_id, 'label') === 0) {
-				echo '	<option disabled="disabled">' . esc_html($content_title) . '</option>' . "\n";
+				if ($group_open) {
+					echo '		</ul>' . "\n";
+				}
+
+				echo '		<ul class="waymark-settings-nav__group" role="list" aria-label="' . esc_attr($content_title) . '">' . "\n";
+				$group_open = true;
 			} else {
-				echo '	<option value="' . esc_attr($content_id) . '"' . (($current == $content_id) ? ' selected="selected"' : '') . '>' . esc_html($content_title) . '</option>' . "\n";
+				$content_url = add_query_arg([
+					'post_type' => 'waymark_map',
+					'page' => $this->page_slug,
+					'content' => $content_id,
+				], admin_url('edit.php'));
+				$is_active = ($current === $content_id);
+
+				echo '			<li><a href="' . esc_url($content_url) . '" data-content="' . esc_attr($content_id) . '"' . ($is_active ? ' class="is-active" aria-current="page"' : '') . '>' . esc_html($content_title) . '</a></li>' . "\n";
 			}
 		}
 
-		echo '	</select>' . "\n";
-		echo '</div>' . "\n";
+		if ($group_open) {
+			echo '		</ul>' . "\n";
+		}
+
+		echo '	</div>' . "\n";
+
+		if ($active_help !== null) {
+			$help_text = (isset($active_help['text'])) ? $active_help['text'] : esc_html__('View Help &raquo;', 'waymark');
+
+			echo '	<a class="waymark-docs-link button" href="' . esc_url($active_help['url']) . '" target="_blank">' . esc_html($help_text) . '</a>' . "\n";
+		}
+
+		echo '</nav>' . "\n";
+	}
+
+	public function get_active_help($active_content) {
+		if (strpos($active_content, 'waymark-settings-tab-') === 0) {
+			$tab_key = substr($active_content, strlen('waymark-settings-tab-'));
+
+			if (! array_key_exists($tab_key, $this->tabs)) {
+				return null;
+			}
+
+			$skip_sections = ($tab_key === 'misc') ? ['map_options', 'interaction_options', 'cluster_options', 'shortcode_options', 'elevation_options'] : [];
+
+			foreach ($this->tabs[$tab_key]['sections'] as $section_key => $section_data) {
+				if (in_array($section_key, $skip_sections, true)) {
+					continue;
+				}
+
+				if (isset($section_data['help']['url'])) {
+					return $section_data['help'];
+				}
+			}
+		} elseif (strpos($active_content, 'waymark-settings-section-') === 0) {
+			$section_key = substr($active_content, strlen('waymark-settings-section-'));
+
+			foreach ($this->tabs as $tab_data) {
+				if (isset($tab_data['sections'][$section_key]['help']['url'])) {
+					return $tab_data['sections'][$section_key]['help'];
+				}
+			}
+		}
+
+		return null;
 	}
 
 	public function admin_notices() {
