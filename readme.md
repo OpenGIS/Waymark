@@ -248,9 +248,21 @@ Please! Waymark is localization ready, <a href="https://translate.wordpress.org/
 
 ## Changelog ##
 
+### 1.7.1 ###
+* Documentation: record the 1.7.0 changes in this changelog.
+
+### 1.7.0 ###
+* Security: Waymark now requires PHP 8.3 and WordPress 6.4.
+* Fix fatal errors when attachment metadata, GeoJSON or Collection data is malformed.
+* Fix PHP 8.1+ deprecation notices when optional values are empty or missing.
+* Development: test against the PHP 8.3 / WordPress 6.4 floor as well as current releases.
+
 [View changes on GitHub &raquo;](https://github.com/OpenGIS/waymark-wp/commits/master/)
 
 ## Upgrade Notice ##
+
+### 1.7.1 ###
+Waymark now requires PHP 8.3 and WordPress 6.4, introduced in the 1.7.0 security release. Sites running older versions will remain on the previous release and will not receive further updates, including security fixes. Update PHP and WordPress before upgrading.
 
 ### 1.7.0 ###
 This is a security release. Waymark now requires PHP 8.3 and WordPress 6.4. Sites running older versions will remain on the previous release and will not receive further updates, including security fixes. Update PHP and WordPress before upgrading.
