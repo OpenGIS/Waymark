@@ -15,26 +15,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
 
       - name: Check if version changed
         id: version_check
         run: |
           CURRENT_VERSION=$(grep -m1 'Version:' Waymark.php | awk '{print $NF}')
-
-          if git show HEAD~1:Waymark.php > /dev/null 2>&1; then
-            PREVIOUS_VERSION=$(git show HEAD~1:Waymark.php | grep -m1 'Version:' | awk '{print $NF}')
-          else
-            PREVIOUS_VERSION=""
-          fi
+          DEPLOYED_VERSION=$(grep -m1 'Stable tag:' readme.txt | awk '{print $NF}')
 
           echo "current=$CURRENT_VERSION" >> $GITHUB_OUTPUT
-          echo "previous=$PREVIOUS_VERSION" >> $GITHUB_OUTPUT
+          echo "previous=$DEPLOYED_VERSION" >> $GITHUB_OUTPUT
 
-          if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
+          if [ "$CURRENT_VERSION" != "$DEPLOYED_VERSION" ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
-            echo "Version changed: $PREVIOUS_VERSION → $CURRENT_VERSION"
+            echo "Version changed: $DEPLOYED_VERSION → $CURRENT_VERSION"
           else
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "Version unchanged ($CURRENT_VERSION), skipping deploy."
@@ -96,6 +89,7 @@ jobs:
           name: v${{ env.VERSION }}
           target_commitish: master
           files: ${{ runner.temp }}/waymark-${{ env.VERSION }}.zip
+          generate_release_notes: true
           make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
