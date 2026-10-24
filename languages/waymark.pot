@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Waymark 1.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/waymark\n"
-"POT-Creation-Date: 2026-10-23 23:15:04+00:00\n"
+"POT-Creation-Date: 2026-10-24 04:41:21+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,20 +13,20 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 1.0.4\n"
 
-#: inc/Admin/Waymark_AJAX.php:32
+#: inc/Admin/Waymark_AJAX.php:42
 msgid "No image metadata available."
 msgstr ""
 
-#: inc/Admin/Waymark_AJAX.php:97 inc/Admin/Waymark_AJAX.php:107
-#: inc/Admin/Waymark_AJAX.php:115
+#: inc/Admin/Waymark_AJAX.php:107 inc/Admin/Waymark_AJAX.php:117
+#: inc/Admin/Waymark_AJAX.php:125
 msgid "Operation not allowed."
 msgstr ""
 
-#: inc/Admin/Waymark_AJAX.php:179
+#: inc/Admin/Waymark_AJAX.php:189
 msgid "Could not read the file."
 msgstr ""
 
-#: inc/Admin/Waymark_AJAX.php:244
+#: inc/Admin/Waymark_AJAX.php:257
 msgid "Unknown file upload error."
 msgstr ""
 
@@ -187,7 +187,7 @@ msgid "Overlays"
 msgstr ""
 
 #: inc/Admin/Waymark_Settings.php:35 inc/Admin/Waymark_Settings.php:139
-#: inc/Helpers/Waymark_Helper.php:1396 inc/Helpers/Waymark_Lang.php:41
+#: inc/Helpers/Waymark_Helper.php:1410 inc/Helpers/Waymark_Lang.php:41
 #. translators: The name of the tab for customising Markers
 msgid "Markers"
 msgstr ""
@@ -1539,11 +1539,11 @@ msgstr ""
 msgid "Settings Updated"
 msgstr ""
 
-#: inc/Front/Waymark_Shortcode.php:223
+#: inc/Front/Waymark_Shortcode.php:227
 msgid "Details"
 msgstr ""
 
-#: inc/Front/Waymark_Shortcode.php:239
+#: inc/Front/Waymark_Shortcode.php:243
 msgid "More Details"
 msgstr ""
 
@@ -1611,12 +1611,12 @@ msgid ""
 "selected format."
 msgstr ""
 
-#: inc/Helpers/Waymark_Helper.php:516 inc/Waymark_Types.php:14
+#: inc/Helpers/Waymark_Helper.php:524 inc/Waymark_Types.php:14
 #: inc/Waymark_Types.php:18 inc/Waymark_Types.php:20
 msgid "Map"
 msgstr ""
 
-#: inc/Helpers/Waymark_Helper.php:692 inc/Helpers/Waymark_Helper.php:717
+#: inc/Helpers/Waymark_Helper.php:703 inc/Helpers/Waymark_Helper.php:728
 msgid "Download"
 msgstr ""
 
@@ -1632,7 +1632,7 @@ msgstr ""
 msgid "Click here for more details."
 msgstr ""
 
-#: inc/Helpers/Waymark_Input.php:563
+#: inc/Helpers/Waymark_Input.php:572
 msgid "The file extension uploaded is not supported."
 msgstr ""
 
