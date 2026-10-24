@@ -111,9 +111,9 @@ div.waymark-accordion-container .waymark-accordion-group .waymark-parameter-grou
   float: left;
 }
 /*
-	==================================
-	========== OBJECT META ===========
-	==================================
+  ==================================
+  ========== OBJECT META ===========
+  ==================================
 */
 div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter-group {
   margin: 0;
@@ -125,9 +125,9 @@ div.postbox#waymark_map_meta div.waymark-parameters-container .waymark-parameter
   background: #f9f9f9 !important;
 }
 /*
-	==================================
-	============ MAP META ============
-	==================================
+  ==================================
+  ============ MAP META ============
+  ==================================
 */
 div.postbox#waymark_collectiondiv h2.hndle span,
 div.postbox#waymark_map_shortcode h2.hndle span,
@@ -247,9 +247,9 @@ div.waymark-control-group.waymark-inline:nth-child(even) {
   padding-right: 0;
   width: 49%;
   /*
-			select.waymark-input {
-				width: 100px;
-			}			
+      select.waymark-input {
+        width: 100px;
+      }     
 */
 }
 div.waymark-control-group.waymark-inline:nth-child(even) label.waymark-control-label {
@@ -969,6 +969,10 @@ div#waymark-admin-container #waymark-about.ogis-panel .ogis-panel__logo {
 div#waymark-admin-container #waymark-about.ogis-panel .ogis-panel__header {
   margin-bottom: 16px;
 }
+div#waymark-admin-container #waymark-about.ogis-panel .ogis-panel__heading {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
 div#waymark-admin-container #waymark-about.ogis-panel .ogis-panel__heading .lead {
   margin: 0 0 2px;
   font-size: 24px;
@@ -1056,15 +1060,15 @@ i.mce-i-waymark-shortcode-icon {
 /* Logo */
 /*
 body.wp-admin {
-	&.post-type-waymark_map {
-		h1.wp-heading-inline {				
-			padding-left: 34px;
-			background-image: url('../img/waymark-icon-primary.png');
-			background-size: 30px 30px;
-			background-position: left 9px;
-			background-repeat: no-repeat;
-		}
-	}
+  &.post-type-waymark_map {
+    h1.wp-heading-inline {        
+      padding-left: 34px;
+      background-image: url('../img/waymark-icon-primary.png');
+      background-size: 30px 30px;
+      background-position: left 9px;
+      background-repeat: no-repeat;
+    }
+  }
 }
 */
 #waymark_shortcode_ui-insert-dialog-dragh {
@@ -1086,10 +1090,10 @@ body.wp-admin {
 /* Media Uploader */
 body.post-type-waymark_map .media-modal.wp-core-ui {
   /*
-		.button.media-button::before {
-			content: 'T';
-			color: red;
-		}
+    .button.media-button::before {
+      content: 'T';
+      color: red;
+    }
 */
 }
 body.post-type-waymark_map .media-modal.wp-core-ui .media-menu * {

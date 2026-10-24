@@ -68,7 +68,7 @@ For developers:
   - Embed Maps using the `[Waymark]` [Shortcode](https://www.ogis.org/waymark-wp/) anywhere they are supported, or dynamically using the `do_shortcode(["Waymark"])` [function](https://developer.wordpress.org/reference/functions/do_shortcode/).
 - Geographical data is stored in [GeoJSON](https://geojson.org/) format. Types are specified using the `type` Property, i.e. `{feature: { geometry: { type: 'Point', coordinates: [0, 0] } }, properties: { type: 'Alert', title: 'Bridge Removed!' }`.
 - Specify which GeoJSON feature properties to store when importing (Settings > Overlays > Properties). These can be automatically appended to the Overlay Description, or accessed programatically via the `layer.feature.properties` Object.
-- Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the `waymark_loaded_callback` [callback function](https://www.ogis.org/waymark-wp/advanced/using-the-global-callback-function/.
+- Maps are displayed using the [Leaflet](https://leafletjs.com/) JavaScript library, which is bundled with Waymark and can be extended using the `waymark_loaded_callback` [callback function](https://www.ogis.org/waymark-wp/advanced/using-the-global-callback-function/).
 
 ### User Examples
 
@@ -87,10 +87,9 @@ For developers:
 
 ### Development
 
-> [!NOTE]
-> Docker, Node.js and NPM required.
+**Note:** Docker, Node.js and NPM required.
 
-```bash
+~~~bash
 # Clone the repository
 git clone https://github.com/opengis/waymark-wp.git
 
@@ -102,24 +101,24 @@ npm install
 
 # Start WordPress at http://localhost:8888 and rebuild assets on change
 npm run dev
-```
+~~~
 
 ### Documentation
 
 The documentation site is a Nuxt 4 app in `docs/`, built with `@nuxt/content`. Node 24.15 or newer is required.
 
-```bash
+~~~bash
 cd docs
 npm ci
 npm run sync-assets
 npm run dev
-```
+~~~
 
 The local preview runs at http://localhost:11003. To build the static site for GitHub Pages:
 
-```bash
+~~~bash
 NUXT_APP_BASE_URL=/waymark-wp/ npm run generate
-```
+~~~
 
 ### Assets
 
@@ -132,7 +131,7 @@ Styles and scripts are compiled from Less and JavaScript sources into the minifi
 
 Three suites cover the plugin — JavaScript unit tests (Vitest), PHP integration tests (PHPUnit) and browser end-to-end tests (Playwright). The PHP and browser suites run against the disposable wp-env tests instance at **http://localhost:8889**; the development instance is never touched. The wp-env environment (`npm run dev`) must be running first.
 
-```bash
+~~~bash
 # JavaScript unit tests (Vitest, jsdom) — Viewer, Editor and description sanitisation
 npm run test:js
 
@@ -147,15 +146,15 @@ npm test
 
 # One-off: prepare the tests container (after a fresh "wp-env destroy")
 npm run test:php:setup
-```
+~~~
 
 All three suites also run automatically in CI on pull requests and pushes to `master`.
 
 wp-env pins PHP 8.3 to match the plugin's declared floor. `WP_ENV_PHP_VERSION` and `WP_ENV_CORE` override the PHP and WordPress versions — useful for testing a release candidate or a newer PHP:
 
-```bash
+~~~bash
 WP_ENV_PHP_VERSION=8.5 WP_ENV_CORE=WordPress/WordPress#trunk npm run test:php
-```
+~~~
 
 `npm run test:php:lint` checks PHP syntax at the floor. CI exercises both boundaries — WordPress 6.4 with PHP 8.3, and current WordPress with PHP 8.5 — while the browser suite runs on current WordPress only.
 

@@ -873,31 +873,6 @@ test("screenshot-6: Map Details page", async ({ page, waymark }) => {
   await waymark.settleMap(page);
   await expectTilesLoaded(page);
 
-  console.log(
-    "S6DEBUG " +
-      JSON.stringify(
-        await page.evaluate(() => {
-          const element = document.querySelector(".waymark-map-container");
-          const waymark = window.jQuery(element).data("Waymark");
-          const rect = element.getBoundingClientRect();
-          const center = waymark.map.getCenter();
-          return {
-            scrollY: window.scrollY,
-            rect: {
-              x: rect.x,
-              y: rect.y,
-              width: rect.width,
-              height: rect.height,
-            },
-            size: waymark.map.getSize(),
-            center: { lat: center.lat, lng: center.lng },
-            zoom: waymark.map.getZoom(),
-            containerWidth: window.innerWidth,
-          };
-        }),
-      ),
-  );
-
   await capturePage(page, "screenshot-6");
   assertNoErrors();
 });
