@@ -85,4 +85,4 @@ The readme screenshots are generated from the tested demo data. Recapture them w
 > [!WARNING]
 > Every asset that should stay live must be present in `.wordpress-org/` — the deploy deletes anything missing. Maintain the full set, not just changed files.
 
-Asset and readme changes only reach WordPress.org on the next **version bump** (the deploy workflow fires only when the pushed commit changes `Version:` in `Waymark.php`). The 10up `action-wordpress-plugin-asset-update` action could push readme/asset updates between releases — not currently configured.
+Readme and `.wordpress-org/` changes deploy automatically on any push to `master` that does not change `Version:` in `Waymark.php` — the `readme_assets` job commits `readme.txt` and the assets to SVN `trunk` and to the current stable tag (WordPress.org serves the readme from the tag directory, so both must be updated). Version bumps still deploy everything through the `deploy` job.

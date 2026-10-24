@@ -12,6 +12,8 @@ jobs:
       contents: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    outputs:
+      version_changed: ${{ steps.version_check.outputs.changed }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,14 +24,14 @@ jobs:
           CURRENT_VERSION=$(grep -m1 'Version:' Waymark.php | awk '{print $NF}')
           DEPLOYED_VERSION=$(grep -m1 'Stable tag:' readme.txt | awk '{print $NF}')
 
-          echo "current=$CURRENT_VERSION" >> $GITHUB_OUTPUT
-          echo "previous=$DEPLOYED_VERSION" >> $GITHUB_OUTPUT
+          echo "current=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
+          echo "previous=$DEPLOYED_VERSION" >> "$GITHUB_OUTPUT"
 
           if [ "$CURRENT_VERSION" != "$DEPLOYED_VERSION" ]; then
-            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "Version changed: $DEPLOYED_VERSION → $CURRENT_VERSION"
           else
-            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "Version unchanged ($CURRENT_VERSION), skipping deploy."
           fi
 
@@ -94,3 +96,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ steps.version_check.outputs.current }}
+
+  readme_assets:
+    name: Deploy readme and assets to WordPress.org SVN
+    needs: deploy
+    if: needs.deploy.outputs.version_changed != 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # WordPress.org serves the readme from the stable tag directory, so the
+      # action commits the readme and assets to both trunk and that tag.
+      - name: Deploy readme and assets to WordPress.org
+        uses: 10up/action-wordpress-plugin-asset-update@stable
+        env:
+          SVN_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
+          SLUG: waymark
+          IGNORE_OTHER_FILES: true
