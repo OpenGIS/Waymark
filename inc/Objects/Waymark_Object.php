@@ -149,8 +149,12 @@ class Waymark_Object {
 				continue;
 			}
 
+			//Normalise the raw value so null and non-scalars can be tested safely
+			$raw_value = isset($this->data[$param_definition['name']]) ? $this->data[$param_definition['name']] : null;
+			$raw_value_string = is_scalar($raw_value) ? (string) $raw_value : '';
+
 			//Ensure value exists and is not blank EXCEPT where blank values are allowed
-			if (isset($this->data[$param_definition['name']]) && (trim($this->data[$param_definition['name']]) !== '' || (array_key_exists('allow_blank', $param_definition) && $param_definition['allow_blank'] == true))) {
+			if (isset($this->data[$param_definition['name']]) && (trim($raw_value_string) !== '' || (array_key_exists('allow_blank', $param_definition) && $param_definition['allow_blank'] == true))) {
 				$param_value = $this->data[$param_definition['name']];
 
 				//Process input

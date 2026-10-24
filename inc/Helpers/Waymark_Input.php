@@ -405,6 +405,9 @@ class Waymark_Input {
 						//Make string
 						$param_value = array_pop($param_value);
 
+						//Normalise so null and non-scalars are handled safely
+						$param_value = is_scalar($param_value) ? (string) $param_value : '';
+
 						//Process
 						$param_value = trim($param_value);
 						$param_value = self::perform_process_on_value($param_value, $process, $fallback);
@@ -417,6 +420,9 @@ class Waymark_Input {
 						$param_value_out = [];
 						$param_values = $param_value;
 						foreach ($param_values as $param_value) {
+							//Normalise so null and non-scalars are handled safely
+							$param_value = is_scalar($param_value) ? (string) $param_value : '';
+
 							//Process each value
 							$param_value = trim($param_value);
 							$param_value = self::perform_process_on_value($param_value, $process, $fallback);
@@ -429,6 +435,9 @@ class Waymark_Input {
 					}
 					//Single value stored in string
 				} else {
+					//Normalise so null and non-scalars are handled safely
+					$param_value = is_scalar($param_value) ? (string) $param_value : '';
+
 					$param_value = trim($param_value);
 					$param_value = self::perform_process_on_value($param_value, $process, $fallback);
 				}

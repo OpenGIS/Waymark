@@ -69,10 +69,13 @@ class Waymark_Map extends Waymark_Object {
 
 						$this->parameters[$meta_key]['options'] = Waymark_Helper::comma_string_to_array($meta['meta_options']);
 
+						//Normalise the default so null and non-scalars are handled safely
+						$meta_default = (isset($meta['meta_default']) && is_scalar($meta['meta_default'])) ? (string) $meta['meta_default'] : '';
+
 						//Ensure the default is keyified
 						//Multi
-						if (strpos($meta['meta_default'], ',')) {
-							$default_exploded = explode(',', $meta['meta_default']);
+						if (strpos($meta_default, ',')) {
+							$default_exploded = explode(',', $meta_default);
 							foreach ($default_exploded as &$val) {
 								$val = Waymark_Helper::make_key(trim($val));
 							}
@@ -81,7 +84,7 @@ class Waymark_Map extends Waymark_Object {
 							$this->parameters[$meta_key]['default'] = $default_imploded;
 							//Single
 						} else {
-							$this->parameters[$meta_key]['default'] = Waymark_Helper::make_key(trim($meta['meta_default']));
+							$this->parameters[$meta_key]['default'] = Waymark_Helper::make_key(trim($meta_default));
 						}
 					}
 				}

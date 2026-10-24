@@ -1105,23 +1105,48 @@ div#waymark-admin-container {
       line-height: 1.25;
       margin: 0 0 16px;
       padding-bottom: 12px;
+      padding-right: 64px;
       border-bottom: 1px solid #1b3a22;
     }
 
     .ogis-panel__brand {
+      position: absolute;
+      top: 18px;
+      right: 18px;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 16px;
+      flex-direction: row;
+      align-items: center;
+      gap: 6px;
+      margin: 0;
+      opacity: 0.7;
     }
 
     .ogis-panel__waymark,
     .ogis-panel__logo {
       display: block;
-      width: 48px;
-      height: 48px;
+      width: 20px;
+      height: 20px;
       object-fit: contain;
+    }
+
+    .ogis-panel__header {
+      margin-bottom: 16px;
+    }
+
+    .ogis-panel__heading {
+      .lead {
+        margin: 0 0 2px;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+      }
+
+      .lead + p {
+        font-size: 18px;
+        line-height: 1.35;
+        color: var(--ogis-panel-muted);
+      }
     }
   }
 }

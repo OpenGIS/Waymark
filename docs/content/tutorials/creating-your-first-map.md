@@ -5,7 +5,7 @@ description: In this tutorial we will use Waymark to create a Map with a single 
 
 You will be guided through how to install the plugin, create a Marker at a specific location and associate an Image and Description with it.
 
-This tutorial assumes you have a WordPress site (self-hosted) and are logged in as an administrator.
+This tutorial assumes you have a WordPress site (self-hosted) and are logged in as an administrator. Waymark requires WordPress 6.4 or later and PHP 8.3 or later.
 
 ::map-demo{demo="creating-your-first-map" height="300"}
 ::

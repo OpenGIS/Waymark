@@ -14,8 +14,8 @@ class Waymark_Submission {
 	private $alert;
 	private $features = [];
 
-	private $redirect_data;
-	private $redirect_url;
+	private $redirect_data = [];
+	private $redirect_url = '';
 
 	public function __construct($data = []) {
 		$this->data = $data;

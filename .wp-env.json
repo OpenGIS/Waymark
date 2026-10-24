@@ -1,4 +1,5 @@
 {
   "plugins": ["."],
-  "testsEnvironment": true
+  "testsEnvironment": true,
+  "phpVersion": "8.3"
 }

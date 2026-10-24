@@ -25,6 +25,16 @@ class Waymark_AJAX {
 		return $sizes;
 	}
 
+	public static function get_attachment_image_meta($attachment_id) {
+		$metadata = wp_get_attachment_metadata($attachment_id);
+
+		if (! is_array($metadata) || ! isset($metadata['image_meta']) || ! is_array($metadata['image_meta'])) {
+			return null;
+		}
+
+		return $metadata['image_meta'];
+	}
+
 	function get_attatchment_meta() {
 		check_ajax_referer(Waymark_Config::get_item('nonce_string'), 'waymark_security');
 
@@ -35,10 +45,10 @@ class Waymark_AJAX {
 		//Get image metadata
 		$post_data = wp_unslash($_POST);
 		if (array_key_exists('attachment_id', $post_data) && is_numeric($post_data['attachment_id'])) {
-			$attachment_metadata = wp_get_attachment_metadata(esc_attr($post_data['attachment_id']));
+			$image_meta = self::get_attachment_image_meta(esc_attr($post_data['attachment_id']));
 
-			if (array_key_exists('image_meta', $attachment_metadata) && is_array($attachment_metadata['image_meta'])) {
-				$response = $attachment_metadata['image_meta'];
+			if ($image_meta !== null) {
+				$response = $image_meta;
 			}
 		}
 
@@ -197,31 +207,34 @@ class Waymark_AJAX {
 							//Meta?
 							$attachment_metadata = wp_get_attachment_metadata($attachment_id);
 
-							//Only when adding an image
-							if ($file_key == 'add_photo') {
-								//Image Meta
-								if (array_key_exists('image_meta', $attachment_metadata) && is_array($attachment_metadata['image_meta'])) {
-									//Location EXIF
-									if (array_key_exists('GPSLatitudeNum', $attachment_metadata['image_meta']) && array_key_exists('GPSLongitudeNum', $attachment_metadata['image_meta'])) {
-										$response = array_merge($response, [
-											'GPSLatitudeNum' => $attachment_metadata['image_meta']['GPSLatitudeNum'],
-											'GPSLongitudeNum' => $attachment_metadata['image_meta']['GPSLongitudeNum'],
-										]);
+							//Only when we have valid metadata
+							if (is_array($attachment_metadata)) {
+								//Only when adding an image
+								if ($file_key == 'add_photo') {
+									//Image Meta
+									if (array_key_exists('image_meta', $attachment_metadata) && is_array($attachment_metadata['image_meta'])) {
+										//Location EXIF
+										if (array_key_exists('GPSLatitudeNum', $attachment_metadata['image_meta']) && array_key_exists('GPSLongitudeNum', $attachment_metadata['image_meta'])) {
+											$response = array_merge($response, [
+												'GPSLatitudeNum' => $attachment_metadata['image_meta']['GPSLatitudeNum'],
+												'GPSLongitudeNum' => $attachment_metadata['image_meta']['GPSLongitudeNum'],
+											]);
+										}
 									}
 								}
-							}
 
-							//Sizes
-							if (array_key_exists('sizes', $attachment_metadata) && is_array($attachment_metadata['sizes'])) {
-								//Each size
-								foreach ($attachment_metadata['sizes'] as $size_key => &$size) {
-									//Add URL
-									$size['url'] = wp_get_attachment_image_url($attachment_id, $size_key);
+								//Sizes
+								if (array_key_exists('sizes', $attachment_metadata) && is_array($attachment_metadata['sizes'])) {
+									//Each size
+									foreach ($attachment_metadata['sizes'] as $size_key => &$size) {
+										//Add URL
+										$size['url'] = wp_get_attachment_image_url($attachment_id, $size_key);
+									}
+
+									$response = array_merge($response, [
+										'sizes' => $attachment_metadata['sizes'],
+									]);
 								}
-
-								$response = array_merge($response, [
-									'sizes' => $attachment_metadata['sizes'],
-								]);
 							}
 							//Error
 						} else {

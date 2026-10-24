@@ -1,9 +1,9 @@
 # Waymark #
 **Contributors:** [morehawes](https://profiles.wordpress.org/morehawes/)  
 **Tags:** GIS, Map maker, GPX, Track, Elevation  
-**Requires at least:** 4.6  
+**Requires at least:** 6.4  
 **Tested up to:** 7.1  
-**Requires PHP:** 5.4  
+**Requires PHP:** 8.3  
 **Stable tag:** 1.6.8  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
@@ -151,6 +151,14 @@ npm run test:php:setup
 
 All three suites also run automatically in CI on pull requests and pushes to `master`.
 
+wp-env pins PHP 8.3 to match the plugin's declared floor. `WP_ENV_PHP_VERSION` and `WP_ENV_CORE` override the PHP and WordPress versions — useful for testing a release candidate or a newer PHP:
+
+```bash
+WP_ENV_PHP_VERSION=8.5 WP_ENV_CORE=WordPress/WordPress#trunk npm run test:php
+```
+
+`npm run test:php:lint` checks PHP syntax at the floor. CI exercises both boundaries — WordPress 6.4 with PHP 8.3, and current WordPress with PHP 8.5 — while the browser suite runs on current WordPress only.
+
 ## Frequently Asked Questions ##
 
 ### Can I Get More Help? ###
@@ -241,3 +249,8 @@ Please! Waymark is localization ready, <a href="https://translate.wordpress.org/
 ## Changelog ##
 
 [View changes on GitHub &raquo;](https://github.com/OpenGIS/waymark-wp/commits/master/)
+
+## Upgrade Notice ##
+
+### 1.7.0 ###
+This is a security release. Waymark now requires PHP 8.3 and WordPress 6.4. Sites running older versions will remain on the previous release and will not receive further updates, including security fixes. Update PHP and WordPress before upgrading.

@@ -99,7 +99,11 @@ class Waymark_Shortcode {
 						$Map->data['map_data'] = Waymark_Helper::add_map_link_to_description($Map->post_id, $Map->post_title, $Map->data['map_data']);
 
 						//Add to GeoJSON
-						$collectionMaps['features'] = array_merge($collectionMaps['features'], json_decode($Map->data['map_data'], true)['features']);
+						$map_data = json_decode($Map->data['map_data'], true);
+
+						if (is_array($map_data) && isset($map_data['features']) && is_array($map_data['features'])) {
+							$collectionMaps['features'] = array_merge($collectionMaps['features'], $map_data['features']);
+						}
 					}
 
 					// Collection Maps

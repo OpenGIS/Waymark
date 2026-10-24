@@ -410,6 +410,9 @@ class Waymark_Helper {
 	}
 
 	public static function make_key($str, $prefix = '', $use_underscores = true) {
+		//Normalise so null and non-scalars are handled safely
+		$str = is_scalar($str) ? (string) $str : '';
+
 		$str = str_replace(' ', '_', $str);
 
 		if ($prefix) {
@@ -481,6 +484,11 @@ class Waymark_Helper {
 	public static function set_map_data_property($map_data, $key = false, $value = false, $append = false) {
 		$FeatureCollection = json_decode($map_data);
 
+		//Invalid data
+		if (! is_object($FeatureCollection) || ! isset($FeatureCollection->features) || ! is_array($FeatureCollection->features)) {
+			return $map_data;
+		}
+
 		//Ensure valid data
 		if ($FeatureCollection && sizeof($FeatureCollection->features)) {
 			foreach ($FeatureCollection->features as &$feature) {
@@ -522,7 +530,7 @@ class Waymark_Helper {
 		$collections = wp_get_post_terms($map_id, 'waymark_collection');
 
 		//If we have Collections
-		if (sizeof($collections)) {
+		if (! is_wp_error($collections) && is_array($collections) && sizeof($collections)) {
 			//Sort by count ASC
 			usort($collections, function ($a, $b) {
 				return $a->count - $b->count;
@@ -652,6 +660,9 @@ class Waymark_Helper {
 	}
 
 	public static function array_string_to_array($string) {
+		//Normalise so null and non-scalars are handled safely
+		$string = is_scalar($string) ? (string) $string : '';
+
 		$string = str_replace(['[', ']', '"', '"'], ['', '', '', ''], $string);
 
 		return self::comma_string_to_array($string);
@@ -1040,6 +1051,9 @@ class Waymark_Helper {
 			}
 		}
 
+		//Normalise the icon so null and non-scalars are handled safely
+		$marker_icon = (isset($type['marker_icon']) && is_scalar($type['marker_icon'])) ? (string) $type['marker_icon'] : '';
+
 		//CSS Styles
 		$background_css = 'background:' . self::get_marker_background($type['marker_colour']) . ';';
 		$icon_css = 'color:' . $type['icon_colour'] . ';';
@@ -1056,7 +1070,7 @@ class Waymark_Helper {
 		case 'text':
 			$icon_class .= ' waymark-icon-text';
 
-			$icon_data['html'] .= '<div style="' . esc_attr($icon_css) . '" class="' . esc_attr($icon_class) . '">' . esc_html($type['marker_icon']) . '</div>';
+			$icon_data['html'] .= '<div style="' . esc_attr($icon_css) . '" class="' . esc_attr($icon_class) . '">' . esc_html($marker_icon) . '</div>';
 
 			break;
 
@@ -1065,7 +1079,7 @@ class Waymark_Helper {
 			$icon_class .= ' waymark-icon-html';
 
 			//Decode HTML entities
-			$icon_html = wp_kses_post(html_entity_decode($type['marker_icon']));
+			$icon_html = wp_kses_post(html_entity_decode($marker_icon));
 
 			$icon_data['html'] .= '<div class="' . esc_attr($icon_class) . '">' . $icon_html . '</div>';
 
@@ -1077,17 +1091,17 @@ class Waymark_Helper {
 			$icon_class .= ' waymark-icon-icon';
 
 			//If Ionic Icons
-			if (strpos($type['marker_icon'], 'ion-') === 0) {
+			if (strpos($marker_icon, 'ion-') === 0) {
 				$icon_class .= ' ion ';
-				$icon_class .= ' ' . $type['marker_icon'];
+				$icon_class .= ' ' . $marker_icon;
 				//Font Awesome
-			} elseif (strpos($type['marker_icon'], 'fa-') === 0) {
+			} elseif (strpos($marker_icon, 'fa-') === 0) {
 				$icon_class .= ' fa';
-				$icon_class .= ' ' . $type['marker_icon'];
+				$icon_class .= ' ' . $marker_icon;
 				//Default to Ionic
 			} else {
 				$icon_class .= ' ion';
-				$icon_class .= ' ion-' . $type['marker_icon'];
+				$icon_class .= ' ion-' . $marker_icon;
 			}
 
 			$icon_data['html'] .= '<i style="' . esc_attr($icon_css) . '" class="' . esc_attr($icon_class) . '"></i>';
